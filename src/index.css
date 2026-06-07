@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Cairo", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Global Font & Readability overrides */
+html {
+  font-family: "Cairo", system-ui, -apple-system, sans-serif;
+}
+
+body {
+  font-family: "Cairo", system-ui, -apple-system, sans-serif;
+  line-height: 1.8;
+  letter-spacing: -0.01em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Supercharge text readability with optimized spacing for Arabic texts */
+p, li {
+  line-height: 1.85 !important;
+  font-size: 0.95rem !important;
+}
+
+@media (min-width: 640px) {
+  p, li {
+    font-size: 1.025rem !important; /* Larger clearer font sizes on screens */
+  }
+}
+
+/* High contrast modifications to prevent faint/gray texts on mobile */
+.text-slate-600 {
+  color: #334155 !important; /* Darker Slate-700 equivalent */
+}
+.dark .text-slate-300 {
+  color: #f1f5f9 !important; /* Brighter Slate-100 equivalent */
+}
+.text-slate-500 {
+  color: #475569 !important; /* Darker slate-600 equivalent */
+}
+.dark .text-slate-400 {
+  color: #cbd5e1 !important; /* Brighter slate-300 equivalent */
+}
+
+/* Custom high-performance animations and utility stylings */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Background highlighted term animation */
+@keyframes pulseHighlight {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(245, 158, 11, 0.2);
+  }
+}
+
+.ring-amber-500\/50 {
+  animation: pulseHighlight 1.5s ease-in-out infinite;
+}
+
+/* Smooth fade updates */
+.animate-fade {
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Tiny text helper */
+.text-xxs {
+  font-size: 0.72rem;
+}
+
+/* Extra support for old Oppo A15 browsers to prevent overflow text clipping */
+article p, article h3 {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+

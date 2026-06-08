@@ -1,4 +1,4 @@
-import { Sparkles, Moon, Sun, Volume2, VolumeX } from 'lucide-react';
+import { Sparkles, Moon, Sun } from 'lucide-react';
 import { TranslationType } from '../translations';
 
 interface HeaderProps {
@@ -13,64 +13,53 @@ interface HeaderProps {
 
 export default function Header({
   theme,
-  soundEnabled,
-  setSoundEnabled,
   handleToggleTheme,
   locale,
   setLocale,
   t,
-}: HeaderProps) {
+}: Omit<HeaderProps, 'soundEnabled' | 'setSoundEnabled'>) {
   return (
-    <header className="sticky top-0 z-40 backdrop-blur-xl bg-white/90 dark:bg-slate-950/80 border-b border-slate-100 dark:border-slate-900 shadow-xs transition-colors duration-200">
-      <div className="max-w-7xl mx-auto px-4 py-3 sm:py-4 flex items-center justify-between">
+    <header className="sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-slate-950/70 border-b border-slate-100 dark:border-slate-900 shadow-xs transition-colors duration-200">
+      <div className="max-w-7xl mx-auto px-4 py-3 sm:py-3.5 flex items-center justify-between">
         
         {/* Logo and branding */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#ff1a40] to-rose-500 flex items-center justify-center text-white shadow-md shadow-rose-500/20 transform hover:scale-105 transition-transform">
-            <Sparkles className="w-5 h-5 animate-pulse" />
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#ff1a40] to-rose-500 flex items-center justify-center text-white shadow-sm shadow-rose-500/10">
+            <Sparkles className="w-4.5 h-4.5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white font-sans">
-                img<span className="text-[#ff1a40]">dkora</span> <span className="text-xs text-slate-400 font-normal">{t.header.logoSuffix}</span>
+              <span className="text-lg font-black tracking-tight text-slate-900 dark:text-white font-sans">
+                img<span className="text-[#ff1a40]">dkora</span> <span className="text-[10px] text-slate-400 font-normal">{t.header.logoSuffix}</span>
               </span>
-              <span className="hidden sm:inline-block px-1.5 py-0.5 bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 text-[9px] font-bold rounded-md">
+              <span className="hidden sm:inline-block px-1.5 py-0.5 bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 text-[9px] font-bold rounded-md">
                 {t.header.badge}
               </span>
             </div>
-            <p className="text-[10px] text-slate-500 dark:text-slate-400 font-medium leading-none mt-1">
+            <p className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 font-medium leading-none mt-0.5">
               {t.header.subtitle}
             </p>
           </div>
         </div>
 
         {/* Left: Interactive controls */}
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        <div className="flex items-center gap-2">
           {/* Real Language Toggle Button */}
           <button 
             onClick={() => {
               const nextLocale = locale === 'ar' ? 'en' : 'ar';
               setLocale(nextLocale);
             }}
-            className="flex items-center gap-1 px-2 py-1.5 sm:px-3 sm:py-1.5 text-xs text-rose-700 dark:text-rose-400 bg-rose-500/10 dark:bg-rose-950/40 hover:bg-rose-500/20 dark:hover:bg-rose-950/60 border border-rose-200 dark:border-rose-900/60 rounded-xl transition-all cursor-pointer font-bold"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-rose-700 dark:text-rose-400 bg-rose-500/10 dark:bg-rose-950/40 hover:bg-rose-500/15 dark:hover:bg-rose-950/60 border border-rose-200/50 dark:border-rose-900/40 rounded-xl transition-all cursor-pointer font-extrabold"
           >
             <span>{t.header.langButton}</span>
-            <span className="text-[10px] opacity-60">文A</span>
-          </button>
-
-          {/* Sound cue button */}
-          <button
-            onClick={() => { setSoundEnabled(!soundEnabled); }}
-            className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-350 transition-all cursor-pointer focus:outline-none"
-            title={soundEnabled ? t.header.muteTitle : t.header.unmuteTitle}
-          >
-            {soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+            <span className="text-[9px] opacity-70">文A</span>
           </button>
 
           {/* Theme button switcher */}
           <button
             onClick={handleToggleTheme}
-            className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-705 dark:text-slate-200 transition-all cursor-pointer focus:outline-none"
+            className="p-1.5 sm:p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-all cursor-pointer focus:outline-none"
             title={t.header.themeTitle}
           >
             {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
@@ -81,3 +70,4 @@ export default function Header({
     </header>
   );
 }
+

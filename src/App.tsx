@@ -877,8 +877,6 @@ export default function App() {
       {/* Premium Modular Header with full controls */}
       <Header 
         theme={theme} 
-        soundEnabled={soundEnabled} 
-        setSoundEnabled={setSoundEnabled} 
         handleToggleTheme={handleToggleTheme} 
         locale={locale}
         setLocale={setLocale}

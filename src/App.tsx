@@ -59,8 +59,14 @@ export default function App() {
       if (urlLang === 'en' || urlLang === 'ar') {
         return urlLang;
       }
+
+      // Automatic browser preference language detection (Arabic for Arabs, English for foreigners)
+      const userLanguages = navigator.languages || [];
+      const isArabicSpeaker = userLanguages.some(l => l.toLowerCase().startsWith('ar')) || 
+                             (navigator.language || (navigator as any).userLanguage || '').toLowerCase().startsWith('ar');
+      return isArabicSpeaker ? 'ar' : 'en';
     }
-    return 'ar'; // Default language is Arabic
+    return 'ar'; // Default fallback
   });
 
   const t = translations[locale];
@@ -70,11 +76,7 @@ export default function App() {
     const params = new URLSearchParams(window.location.search);
     const currentLang = params.get('lang');
     if (currentLang !== locale) {
-      if (locale === 'en') {
-        params.set('lang', 'en');
-      } else {
-        params.delete('lang'); // Arabic gets a clean default main link
-      }
+      params.set('lang', locale); // Keep explicit lang parameter in URL for both lang=ar and lang=en dedicated links
       const newSearch = params.toString();
       const newPath = window.location.pathname + (newSearch ? `?${newSearch}` : '');
       window.history.replaceState({}, '', newPath);

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, FormEvent, MouseEvent, TouchEvent, DragEve
 import Header from './components/Header';
 import LegalModals from './components/LegalModals';
 import SeoHub from './components/SeoHub';
+import { translations } from './translations';
 import { 
   Sparkles, 
   Moon, 
@@ -51,6 +52,49 @@ interface ImageHistoryItem {
 }
 
 export default function App() {
+  // Localization state supporting English and Arabic
+  const [locale, setLocale] = useState<'ar' | 'en'>(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const urlLang = params.get('lang');
+      if (urlLang === 'en' || urlLang === 'ar') {
+        return urlLang;
+      }
+    }
+    return 'ar'; // Default language is Arabic
+  });
+
+  const t = translations[locale];
+
+  // Synchronize dynamic direction, metadata, title, and query parameters
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const currentLang = params.get('lang');
+    if (currentLang !== locale) {
+      if (locale === 'en') {
+        params.set('lang', 'en');
+      } else {
+        params.delete('lang'); // Arabic gets a clean default main link
+      }
+      const newSearch = params.toString();
+      const newPath = window.location.pathname + (newSearch ? `?${newSearch}` : '');
+      window.history.replaceState({}, '', newPath);
+    }
+    
+    document.documentElement.lang = locale;
+    document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr';
+    document.title = locale === 'ar' ? translations.ar.meta.titleAr : translations.en.meta.titleEn;
+
+    // Dynamically update the meta description tag as well for full SEO compliance!
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', locale === 'ar' ? translations.ar.meta.descAr : translations.en.meta.descEn);
+  }, [locale]);
+
   // Theme state
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
@@ -835,23 +879,26 @@ export default function App() {
         soundEnabled={soundEnabled} 
         setSoundEnabled={setSoundEnabled} 
         handleToggleTheme={handleToggleTheme} 
+        locale={locale}
+        setLocale={setLocale}
+        t={t}
       />
 
       {/* Modern white background that turns cosmic dark-blue in dark mode */}
       <div className="bg-white dark:bg-slate-950 bg-gradient-to-b from-white via-white to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white pt-10 pb-20 px-4 text-center relative overflow-hidden transition-colors duration-200 border-b border-slate-100 dark:border-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,26,64,0.03),transparent_40%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(255,26,64,0.12),transparent_40%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.02),transparent_40%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.08),transparent_40%)]" />
-        <div className="max-w-4xl mx-auto space-y-6 relative z-10 animate-fade-in">
+        <div className="max-w-4xl mx-auto space-y-6 relative z-10 animate-fade-in text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-[11px] sm:text-xs font-bold rounded-full">
             <Sparkles className="w-3.5 h-3.5 animate-spin text-[#ff1a40]" />
-            <span>أفضل أداة مجانية لمعالجة وضغط الصور وصناع المحتوى لعام 2026</span>
+            <span>{locale === 'ar' ? 'أفضل أداة مجانية لمعالجة وضغط الصور وصناع المحتوى لعام 2026' : 'Ultimate Free Image Optimizer & Processor for Creators in 2026'}</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight leading-snug">
-            حوّل صورتك العادية إلى <br />
-            <span className="text-[#ff1a40] drop-shadow-[0_0_15px_rgba(255,26,64,0.15)] dark:drop-shadow-[0_0_15px_rgba(255,26,64,0.3)]">تحفة فنية احترافية.</span>
+            {t.hero.headlinePrefix} <br />
+            <span className="text-[#ff1a40] drop-shadow-[0_0_15px_rgba(255,26,64,0.15)] dark:drop-shadow-[0_0_15px_rgba(255,26,64,0.3)]">{t.hero.headlineHighlight}</span>
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-350 max-w-2xl mx-auto leading-relaxed">
-            قم بضغط حجم الصورة لنسب خيالية، عزل وتفريغ الألوان الخلفية يدوياً وتلقائياً، وتعديل مستويات السطوع والتشبع بكل أمان وخصوصية تامة دون رَفْع أي بايت خارج متصفحك!
+            {t.hero.subtitle}
           </p>
         </div>
       </div>
@@ -869,7 +916,7 @@ export default function App() {
             }`}
           >
             <Scissors className="w-4 h-4" />
-            <span>الضغط والمقاسات</span>
+            <span>{t.tabs.compress}</span>
           </button>
 
           <button
@@ -881,7 +928,7 @@ export default function App() {
             }`}
           >
             <Eraser className="w-4 h-4" />
-            <span>عزل وتفريغ الخلفية</span>
+            <span>{t.tabs.background}</span>
           </button>
 
           <button
@@ -893,7 +940,7 @@ export default function App() {
             }`}
           >
             <SlidersHorizontal className="w-4 h-4" />
-            <span>التعديل والفلاتر</span>
+            <span>{t.tabs.enhance}</span>
           </button>
 
           <button
@@ -905,7 +952,7 @@ export default function App() {
             }`}
           >
             <Type className="w-4 h-4" />
-            <span>العلامة المائية</span>
+            <span>{t.tabs.watermark}</span>
           </button>
 
         </div>
@@ -968,10 +1015,10 @@ export default function App() {
               </div>
 
               <h4 className="text-md sm:text-lg font-black text-slate-800 dark:text-white leading-snug">
-                اسحب وأفلت صورتك هنا لبدء تحسينها بالكامل دون رَفْع أو انتظار!
+                {t.dropzone.title}
               </h4>
               <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-lg mx-auto leading-relaxed mt-2.5">
-                تتم معالجة الصور بالكامل محلياً داخل المتصفح وبحماية مطلقة بنسبة 100٪. صورك آمنة ولن يتم مشاركتها أو حفظها خارج جهازك أبداً. نقبل الامتدادات JPG أو PNG أو WebP أو SVG ومقاسات تصل حتى 4K.
+                {t.dropzone.formats}
               </p>
 
               {/* Browse file button */}
@@ -980,7 +1027,7 @@ export default function App() {
                 className="mt-8 inline-flex items-center gap-2 px-6 py-3.5 bg-slate-900 hover:bg-slate-800 dark:bg-slate-850 dark:hover:bg-slate-800 text-white font-extrabold text-xs rounded-xl shadow-lg transition-all cursor-pointer"
               >
                 <Upload className="w-4 h-4" />
-                <span>تصفح واختيار ملف صورة من جهازك</span>
+                <span>{t.dropzone.btn}</span>
                 <input
                   id="main_file_input"
                   type="file"
@@ -992,11 +1039,11 @@ export default function App() {
 
               {/* Speed notes */}
               <div className="mt-10 flex gap-4 text-[10px] font-bold text-slate-400 justify-center" onClick={(e) => e.stopPropagation()}>
-                <span className="flex items-center gap-1">🛡️ أمان محلي 100٪</span>
+                <span className="flex items-center gap-1">🛡️ {locale === 'ar' ? 'أمان محلي 100٪' : '100% Local Security'}</span>
                 <span>•</span>
-                <span className="flex items-center gap-1">⚡ فوري بدون سيرفر</span>
+                <span className="flex items-center gap-1">⚡ {locale === 'ar' ? 'فوري بدون سيرفر' : 'Instant No Server'}</span>
                 <span>•</span>
-                <span className="flex items-center gap-1">🗜️ ضغط WebP فائق</span>
+                <span className="flex items-center gap-1">🗜️ {locale === 'ar' ? 'ضغط WebP فائق' : 'High WebP Compression'}</span>
               </div>
             </div>
           </div>
@@ -1005,20 +1052,20 @@ export default function App() {
           <div className="bg-white dark:bg-slate-950 border border-slate-200/90 dark:border-slate-800 rounded-3xl p-6 sm:p-8 text-slate-800 dark:text-white space-y-4 shadow-sm">
             <h4 className="text-xs font-black text-[#ff1a40] uppercase tracking-wider flex items-center gap-1.5 font-sans">
               <Info className="w-4.5 h-4.5 text-[#ff1a40]" />
-              لماذا يؤثر حجم وعزل الصور على أرشفة وتصدر موقعك في محركات البحث؟
+              {t.infoBanner.title}
             </h4>
             <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-350 leading-relaxed font-semibold">
-              المواقع الحديثة تتطلب سرعة تحميل فائقة لحصد نقاط PageSpeed ممتازة من جوجل. عندما تستخدم تفريغ وضغط <b>Client-Side</b> محلي هنا:
+              {t.infoBanner.desc}
             </p>
             <ul className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 space-y-2 list-disc list-inside">
-              <li>يقل زمن انتظار استجابة السيرفر للصفر وتتحمل الصورة بلمح البصر.</li>
-              <li>التحويل التلقائي لصيغة <b>WebP</b> يضمن معدلات خفض للمساحة تتجاوز 80٪ مع الحفاظ على وضوح الحواف.</li>
-              <li>عزل وإزالة خلفيات صور المنتجات يدوياً بمرونة وسهولة لتمثيلها في متاجرك بأسلوب مذهل.</li>
+              <li>{t.infoBanner.point1}</li>
+              <li>{t.infoBanner.point2}</li>
+              <li>{t.infoBanner.point3}</li>
             </ul>
           </div>
 
           {/* Interactive SEO Strategy Hub */}
-          <SeoHub />
+          <SeoHub t={t} locale={locale} />
         </div>
       ) : (
         <main className="flex-grow max-w-7xl w-full mx-auto px-4 py-8 sm:py-12 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
@@ -1033,13 +1080,13 @@ export default function App() {
                   STEP 2
                 </span>
                 <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center justify-between w-full">
-                  <span>🎨 الخطوة الثانية: اضبط التفاصيل والخيارات</span>
+                  <span>🎨 {locale === 'ar' ? 'الخطوة الثانية: اضبط التفاصيل والخيارات' : 'Step 2: Adjust Layout & Settings'}</span>
                   <button 
                     onClick={handleResetAllControls}
                     className="text-[10px] text-rose-500 hover:underline flex items-center gap-1 cursor-pointer font-bold"
                   >
                     <RotateCcw className="w-3 h-3" />
-                    إعادة الموازنة للتلقائي
+                    {locale === 'ar' ? 'إعادة الموازنة للتلقائي' : 'Reset to Default'}
                   </button>
                 </h3>
               </div>
@@ -2007,10 +2054,10 @@ export default function App() {
       {/* FOOTER NOTIFY AND METRICS ACCENTS */}
       <footer className="border-t border-slate-200/60 dark:border-slate-900 bg-white dark:bg-slate-950 py-8 text-center text-xs text-slate-400 space-y-4 mt-auto">
         <div className="font-sans font-black text-[11px] text-slate-400">
-          مستودع أدوات معالجة الصور ومسح الخلفية بمتصفح العميل ٢٠٢٦ 🚀
+          {locale === 'ar' ? 'مستودع أدوات معالجة الصور ومسح الخلفية بمتصفح العميل ٢٠٢٦ 🚀' : 'Secure In-Browser Image Compressor & Background Remover 2026 🚀'}
         </div>
-        <p className="text-[10px] text-slate-500 dark:text-slate-400 max-w-sm mx-auto leading-relaxed animate-pulse">
-          السرعة والخصوصية في قلب التطبيقات لضمان أرشفة وتصدر موقعك أداءً كاملاً وبنسبة PageSpeed 100%. جميع العمليات تجرى محلياً.
+        <p className="text-[10px] text-slate-500 dark:text-slate-400 max-w-sm mx-auto leading-relaxed">
+          {t.legal.copyright}
         </p>
 
         {/* Legal Actions Triggers */}
@@ -2019,20 +2066,20 @@ export default function App() {
             onClick={() => { setLegalModal('privacy'); playSound(550, 0.05); }}
             className="hover:text-rose-500 transition-all cursor-pointer hover:underline"
           >
-            سياسة الخصوصية والسرّية
+            {t.legal.privacyBtn}
           </button>
           <span>•</span>
           <button 
             onClick={() => { setLegalModal('terms'); playSound(550, 0.05); }}
             className="hover:text-rose-500 transition-all cursor-pointer hover:underline"
           >
-            شروط وبنود الاستخدام المقبول
+            {t.legal.termsBtn}
           </button>
         </div>
       </footer>
 
       {/* Render Legal Modals with connected actions */}
-      <LegalModals isOpen={legalModal} onClose={() => setLegalModal(null)} />
+      <LegalModals isOpen={legalModal} onClose={() => setLegalModal(null)} t={t} />
 
     </div>
   );

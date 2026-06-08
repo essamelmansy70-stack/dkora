@@ -1,0 +1,12 @@
+# User-Agent rules for dkora.online
+# Optimized for Image Processing & Background Removal Tools 2026
+
+User-agent: *
+Allow: /
+
+# Exclude sensitive developer assets or system files if any
+Disallow: /node_modules/
+Disallow: /dist/
+
+# Link to the dynamic sitemap
+Sitemap: https://dkora.online/sitemap.xml

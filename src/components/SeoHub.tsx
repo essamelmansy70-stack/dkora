@@ -342,6 +342,39 @@ export async function removeImageBackgroundAI(
 
       </div>
 
+      {/* Sitemap and Robots status indicator */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="bg-emerald-500/5 border border-emerald-500/10 p-4.5 rounded-2xl flex items-start gap-3">
+          <div className="p-2 bg-emerald-500/10 rounded-xl text-emerald-600 dark:text-emerald-400 shrink-0">
+            <CheckCircle className="w-5 h-5 animate-pulse text-emerald-500" />
+          </div>
+          <div className="space-y-1 text-right">
+            <h5 className="text-xs font-black text-slate-800 dark:text-white uppercase tracking-wider flex items-center gap-1.5">
+              <span>خريطة الموقع النشطة sitemap.xml</span>
+              <span className="px-1 text-[8px] bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 rounded-sm font-sans">نشط 100%</span>
+            </h5>
+            <p className="text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed">
+              تم تكوين خريطة الموقع بنجاح على المسار <code className="bg-slate-100 dark:bg-slate-950 p-0.5 px-1 rounded font-mono text-[9px] text-[#ff1a40]">/sitemap.xml</code> لتمكين أرشفة فورية لروابطك وتوجيه جوجل بوت بأولوية قصوى.
+            </p>
+          </div>
+        </div>
+        
+        <div className="bg-indigo-500/5 border border-indigo-500/10 p-4.5 rounded-2xl flex items-start gap-3">
+          <div className="p-2 bg-indigo-500/10 rounded-xl text-indigo-600 dark:text-indigo-400 shrink-0">
+            <ShieldCheck className="w-5 h-5 text-indigo-500" />
+          </div>
+          <div className="space-y-1 text-right">
+            <h5 className="text-xs font-black text-slate-800 dark:text-white uppercase tracking-wider flex items-center gap-1.5">
+              <span>ملف الروبوتات Robots.txt</span>
+              <span className="px-1 text-[8px] bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 rounded-sm font-sans">مُهيأ</span>
+            </h5>
+            <p className="text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed">
+              ملف <code className="bg-slate-100 dark:bg-slate-950 p-0.5 px-1 rounded font-mono text-[9px] text-indigo-500">/robots.txt</code> يوجه العناكب لتجنب المجلدات البرمجية العملاقة، لتقليل لود السيرفر وتوفير الباندويث المخصص.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Structured Strategy and Google Core Web Vitals Guidance */}
       <div className="bg-slate-50 dark:bg-slate-950 p-5 rounded-2xl border border-slate-100 dark:border-slate-900 flex flex-col md:flex-row gap-5 items-start">
         <div className="p-3 rounded-2xl bg-[#ff1a40]/5 border border-[#ff1a40]/10 text-[#ff1a40] self-start">

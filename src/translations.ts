@@ -182,6 +182,18 @@ export interface TranslationType {
     termsTitle: string;
     privacyBtn: string;
     termsBtn: string;
+    aboutTitle: string;
+    aboutBtn: string;
+    aboutHeaderBadge: string;
+    aboutHeaderBadgeDesc: string;
+    contactTitle: string;
+    contactBtn: string;
+    contactHeaderBadge: string;
+    contactHeaderBadgeDesc: string;
+    disclaimerTitle: string;
+    disclaimerBtn: string;
+    disclaimerHeaderBadge: string;
+    disclaimerHeaderBadgeDesc: string;
     closeBtn: string;
     acceptBtn: string;
     privacyHeaderBadge: string;
@@ -389,33 +401,45 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
       activeText: "نشط ومهيأ 100%",
     },
     legal: {
-      privacyTitle: "سياسة الخصوصية وسرية البيانات والأمان",
-      termsTitle: "شروط الخدمة وبنود الاستخدام",
-      privacyBtn: "سياسة الخصوصية الأمنية",
-      termsBtn: "اتفاقية بنود الخدمة",
+      privacyTitle: "سياسة الخصوصية وسرية البيانات والأمان (متوافقة مع AdSense)",
+      termsTitle: "شروط الخدمة واتفاقية بنود الاستخدام المعتمدة",
+      privacyBtn: "سياسة الخصوصية والأمان",
+      termsBtn: "اتفاقية بنود الاستخدام",
+      aboutTitle: "من نحن - رسالتنا وهويتنا الرقمية",
+      aboutBtn: "من نحن",
+      aboutHeaderBadge: "منصة imgdkora لمعالجة وضغط الصور رقمياً",
+      aboutHeaderBadgeDesc: "نحن مشروع عربي ريادي ومطور يهدف إلى تقديم أدوات ويب مستقلة ومتطورة لتوفير خيارات ضغط وتعديل قياسات الصور محلياً بالكامل بداخل المتصفح وبسعة أمان ١٠٠٪ حرصاً على حماية ملفات وصور أصحاب المواقع والمدونين وصانعي المحتوى الإعلاني.",
+      contactTitle: "اتصل بنا - الدعم التقني والاستفسارات المباشرة",
+      contactBtn: "اتصل بنا",
+      contactHeaderBadge: "نسعد دائماً بالتواصل الفعّال والإجابة على اقتراحاتكم",
+      contactHeaderBadgeDesc: "يتوفر فريقنا التقني للرد السريع على استفساراتكم ومقترحات التعاون بخصوص خدمات وأدوات المنصة، أو الإبلاغ عن ثغرات أو أخطاء، عبر البريد المعتمد للمشروع (essamelmansy67@gmail.com).",
+      disclaimerTitle: "إخلاء المسؤولية الفنية والقانونية",
+      disclaimerBtn: "إخلاء المسؤولية",
+      disclaimerHeaderBadge: "إخلاء مسؤولية فني وحقوقي بخصوص معالجة البكسل",
+      disclaimerHeaderBadgeDesc: "يتم توفير خدمات المنصة ومحركات المعالجة الفورية المدمجة في المتصفح كما هي مجاناً ودون أي ضمانات فنية على الأجهزة ذات الموارد الضعيفة أو القديمة أثناء ضغط الصور الضخمة.",
       closeBtn: "إغلاق",
-      acceptBtn: "موافق وفهمت",
-      privacyHeaderBadge: "خصوصية بنسبة ١٠٠٪ (المعالجة في المتصفح فقط)",
-      privacyHeaderBadgeDesc: "نحن نضمن حماية صورك بالكامل. جميع عمليات ضغط الصور، وعزل الخلفية، وتركيب الشعارات والعلامات المائية تتم محلياً بالكامل داخل متصفح الإنترنت الخاص بك ولا يتم رفعها أو نسخها أو حفظها نهائياً في أي خادم أو سيرفر خارجي.",
-      privacyLabel1: "1. جمع البيانات الشخصية:",
-      privacyDesc1: "تطبيق imgdkora لا يقوم بطلب أو جمع أي بيانات تعريفية شخصية، أو حسابات تواصل، أو سجلات تتبع للمستعملين. إننا لا نستخدم ملفات تتبع غازية لجمع معلوماتك الخاصة.",
-      privacyLabel2: "2. معالجة الصور الكثيفة:",
-      privacyDesc2: "كافة الحسابات الرياضية المتقدمة للذكاء اللوني وتكثيف البكسل والمسح التسامحي تجري محلياً عبر وحدة المعالجة المركزية (CPU) والرسومية الخاصة بجهازك مباشرة، مما يضمن أعلى سقف من الأمان والسرية الفائقة للمصورين وصانعي المحتوى الإعلاني.",
-      privacyLabel3: "3. ملفات كوكيز والطرف الثالث:",
-      privacyDesc3: "نحن نستخدم كوكيز تخزين محلي (LocalStorage) فقط وحصرياً لحفظ خيارات تفضيلاتك مثل (اختيار الوضع الليلي، تفعيل كتم الصوت) لضمان تجربة مستخدم سلسة في الزيارات القادمة.",
-      privacyLabel4: "4. تعديلات السياسة:",
-      privacyDesc4: "قد يتم تحديث بنود سياسة الخصوصية بشكل دوري لمواكبة تقنيات المتصفحات الحديثة، وسيتم نشر التغييرات الفنية في هذه الصفحة مباشرة.",
-      termsHeaderBadge: "تراخيص استخدام حرة مجانية مدى الحياة",
-      termsHeaderBadgeDesc: "يرخص لك استخدام الصور الناتجة والمعدلة عبر تطبيق imgdkora في كافة الأغراض الشخصية والتجارية، كاليوتيوب، إنستجرام، فيسبوك، والمتاجر الإلكترونية دون أي التزام أو حقوق قانونية أو عمولات مالية.",
-      termsLabel1: "1. قبول الشروط:",
-      termsDesc1: "باستخدامك لتطبيق imgdkora معالج الصور الرقمي، فإنك توافق طواعية بالكامل على كافة هذه البنود المذكورة هنا دون أي تحفظ قانوني.",
-      termsLabel2: "2. قيود الاستعمال والمسؤولية:",
-      termsDesc2: "يمنع استخدام الأداة في إنتاج أو صياغة أو تعديل صور تنتهك القوانين العامة، أو تحتوي على محتويات مضللة، أو تمس بحقوق الملكية الفكرية لطرف آخر. يتحمل المستخدم المسؤولية الكاملة والمنفردة لملفات الصور التي يقوم بمعالجتها محلياً.",
-      termsLabel3: "3. إخلاء المسؤولية من الأعطال:",
-      termsDesc3: "يقدم التطبيق ومحركات المعالجة \"كما هي\" دون أي وساطة أو ضمان عيني لسرعة أداء أجهزة المستخدم الضعيفة أو القديمة أثناء حسابات التفريغ اللوني الضخم للصور ذات الدقة 4K.",
-      termsLabel4: "4. تواصل الدعم والتحسينات:",
-      termsDesc4: "نحن نعمل بشغف لتطوير وتحسين سرعة وخوارزميات المعالجة باستمرار، ويسعدنا دائماً تلقي اقتراحاتكم البنّاءة لزيادة فعالية الكود.",
-      copyright: "imgdkora هو مشروع محلي معالج للويب مفتوح المصدر وآمن بالكامل. جميع عمليات المعالجة للصور تتم فورياً محلياً بدون إمكانية التجسس أو المراقبة."
+      acceptBtn: "موافق وقبول البنود",
+      privacyHeaderBadge: "خصوصية بنسبة ١٠٠٪ ومتوافقة كلياً مع شروط Google AdSense",
+      privacyHeaderBadgeDesc: "نحن نضمن حماية خصوصية بياناتك وصورك بالكامل كأولوية قاطعة. جميع عمليات ضغط الصور وعزل الخلفيات وإعادة تحجيم الأبعاد والتحويل لصيغة WebP تتم محلياً بالكامل (Client-Side) داخل متصفحك دون رفعها أو تخزينها أو مشاركتها مع أي جهة خارجية.",
+      privacyLabel1: "1. جمع ومعالجة البيانات الشخصية:",
+      privacyDesc1: "لا يطلب تطبيق imgdkora ولا يجمع أو يخزن أي بيانات تعريفية شخصية للمستخدمين، أو عناوين بريد، أو أرقام تواصل. الخدمة مخصصة كلياً للاستفادة التقنية المباشرة بدون تسجيل مسبق.",
+      privacyLabel2: "2. ملفات تعريف الارتباط وإعلانات الطرف الثالث (Google AdSense Cookies):",
+      privacyDesc2: "يستعين موقعنا بشركات إعلان من طرف ثالث (وعلى رأسها Google AdSense) لعرض الإعلانات المخصصة عندما تزور موقعنا. تستخدم هذه الشركات ملفات تعريف ارتباط (مثل DART cookie) لتقديم إعلانات موجهة تهم زوارنا بناءً على تصفحهم لموقعنا ومواقع أخرى على شبكة الإنترنت. يمكنك كزوّار اختيار تعطيل أو مراجعة ممارسات استخدام ملف تعريف الارتباط DART لخدمات إعلانات جوجل عبر مراجعة شبكة الخصوصية الرسمية لإعلانات جوجل ومواقع الطرف الثالث الموثوقة.",
+      privacyLabel3: "3. ملفات تعريف الارتباط المحلية (LocalStorage & Session):",
+      privacyDesc3: "نحن نستعمل تقنيات تخزين المتصفح المحلية (LocalStorage) لتخزين وتذكر تفضيلات الزائر المباشرة فقط مثل خيارات الوضع الليلي وتفضيل كتم المؤثرات الصوتية لضمان استخدام سلس ومريح وتلقائي في الزيارات المستقبلية.",
+      privacyLabel4: "4. التحديثات والالتزام القانوني للسياسة:",
+      privacyDesc4: "يتم تحديث بنود سياسة الخصوصية والأمان بشكل دوري لتتماشى وتتطابق مع معايير حماية البيانات العالمية GDPR وقواعد شراكة ناشري جوجل AdSense. استمرارك في استخدام المنصة يعد موافقة صريحة على هذه الضوابط.",
+      termsHeaderBadge: "رخصة استخدام مجانية وحرة بالكامل مدى الحياة (CC0 License)",
+      termsHeaderBadgeDesc: "يرخص لك استخدام كافة الصور المحسنة والمحولة والصادرة عبر تطبيق imgdkora في كافة المشاريع الشخصية والتجارية، كالمتاجر والمواقع والمدونات، دون أي مسائلة أو شروط مادية أو قيود مالية.",
+      termsLabel1: "1. شروط وقواعد الاستخدام:",
+      termsDesc1: "باستخدامك لمنصة imgdkora وتعديل صورك عليها، فإنك تقر وتوافق صراحة على كافة البنود وبنود العمل المذكورة هنا دون أي تحفظ قانوني طوعاً.",
+      termsLabel2: "2. حدود ومسؤولية البكسل والمحتوى:",
+      termsDesc2: "يحظر تماماً استخدام الأداة لمعالجة أو ضغط صور تحمل انتهاكات للقوانين الإنسانية والآداب والتشريعات العامة، أو صور تنتهك الملكية الفكرية لطرف ثالث بشكل غير مرخص. يقع عاتق ومسؤولية قانونية الصور بالكامل على عاتق المستخدم المباشر.",
+      termsLabel3: "3. حدود الضمان الفني والمسؤولية:",
+      termsDesc3: "معالجة الصور وتفريغ الحواف لونيًا تجري بقوة معالج جهازك (Client-Side). ولذلك تخلي المنصة مسؤوليتها الكاملة عن أي بطء أو تجميد في متصفحك إذا كانت موارد جهازك ضعيفة مقارنة بحجم الملفات المستهدفة.",
+      termsLabel4: "4. الدعم التقني والتواصل:",
+      termsDesc4: "جميع خدماتنا مجانية ومفتوحة المصدر للمجتمع الرقمي. إذا واجهت أي مشاكل أو رغبت في التعاون، يمكنك دائماً التواصل مع الدعم التقني عبر البريد الإلكتروني المعتمد للمشروع (essamelmansy67@gmail.com).",
+      copyright: "imgdkora هو مشروع عربي ريادي مخصص لمعالجة الصور محلياً بالكامل. جميع شاشات وخدمات هذا التطبيق مفتوحة المصدر وقانونية للقبول في جوجل أدسنس ٢٠٢٦."
     }
   },
   en: {
@@ -598,22 +622,34 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
       activeText: "Clean & Active 100%",
     },
     legal: {
-      privacyTitle: "Data Confidentiality, Safety & Privacy Policy",
-      termsTitle: "Terms of Service & Free Use Policy",
+      privacyTitle: "Data Confidentiality, Safety & Privacy Policy (AdSense Compliant)",
+      termsTitle: "Terms of Service & Free Use Policy Agreement",
       privacyBtn: "Security & Privacy Policy",
       termsBtn: "Terms Of Service Agreement",
+      aboutTitle: "About Us - Our Mission & Vision",
+      aboutBtn: "About Us",
+      aboutHeaderBadge: "About imgdkora Local Smart Engine",
+      aboutHeaderBadgeDesc: "We are an independent web tool platform focused on providing world-class, high-speed, local browser-based image compression and background removal tools with total privacy protection.",
+      contactTitle: "Contact Us - Technical Support",
+      contactBtn: "Contact Us",
+      contactHeaderBadge: "We would love to hear your feedback & inquiries",
+      contactHeaderBadgeDesc: "If you have any technical questions, optimization feedback, or bugs to report, please reach out to us at our professional support inbox (essamelmansy67@gmail.com).",
+      disclaimerTitle: "Legal Disclaimer & Liability Limits",
+      disclaimerBtn: "Disclaimer",
+      disclaimerHeaderBadge: "Technical & Legal Limitations of Liability",
+      disclaimerHeaderBadgeDesc: "Our on-device client-side services and image extraction frameworks are provided for free as-is, without implicit guarantees on outdated devices or heavy workload operations.",
       closeBtn: "Close Window",
       acceptBtn: "I Understand & Accept",
-      privacyHeaderBadge: "100% Secure Local Processing (Privacy Guarantee)",
-      privacyHeaderBadgeDesc: "We guarantee that none of your photos are ever uploaded, processed, or saved on external servers. All operations—including compression, pixel alterations, and watermark compositions—take place directly in your device's browser memory.",
+      privacyHeaderBadge: "100% Secure Local Processing & AdSense Compliant",
+      privacyHeaderBadgeDesc: "We guarantee that none of your photos are ever uploaded, processed, or saved on external servers. All operations—including compression, pixel alterations, and watermark compositions—take place directly in your device's browser memory (Client-side).",
       privacyLabel1: "1. Handling of Personal Information:",
-      privacyDesc1: "imgdkora does not request, solicit, collect, or store any personal data, analytical profiles, addresses, or user tracking cookies. We are entirely cookie-free for maximum comfort.",
-      privacyLabel2: "2. Image Computation Execution:",
-      privacyDesc2: "Advanced pixel mathematics, matrix transparency calculation, and canvas redrawing execute on your machine's CPU/GPU. No data stream exists outside your physical client.",
-      privacyLabel3: "3. Local Storage Cookie Uses:",
-      privacyDesc3: "We call the LocalStorage API only to securely track static configuration choices (dark mode, sound state) across consecutive visits for a seamless user experience.",
-      privacyLabel4: "4. Policy Adjustments:",
-      privacyDesc4: "We update our safety policy occasionally to align with modern native sandbox standard upgrades. Updates are instantly published to this localized dialog.",
+      privacyDesc1: "imgdkora does not request, solicit, collect, or store any personal data, analytical profiles, addresses, or user tracking cookies. We are entirely cookie-free for native features.",
+      privacyLabel2: "2. Cookies and Google AdSense Advertising Disclosures:",
+      privacyDesc2: "We partner with third-party advertising companies such as Google AdSense to serve programmatic ads when you visit our website. These companies may use tracking cookies (such as the DART cookie) to serve ads based on your prior visits to this and other websites across the web. You can opt out of personalized ad tracking by visiting the Google Ads Settings page or tools hosted at aboutads.info.",
+      privacyLabel3: "3. Local Storage Browser Cache Usage:",
+      privacyDesc3: "We call the LocalStorage API only to securely track static configuration choices (dark mode, sound state) across consecutive sessions for a seamless user experience.",
+      privacyLabel4: "4. Policy Adjustments & Compliance Standards:",
+      privacyDesc4: "We update our safety policy occasionally to align with modern native sandbox standard upgrades (including GDPR and Google Publisher Policies). Continued use of this app signifies your acceptance.",
       termsHeaderBadge: "Creative Commons Zero License (CC0)",
       termsHeaderBadgeDesc: "You are granted a perpetual, worldwide, non-exclusive license to use any asset generated or processed with imgdkora for both personal and commercial distribution (YouTube, online shops, Facebook Ads, newsletters) with zero fees.",
       termsLabel1: "1. Acceptance of Terms:",
@@ -623,8 +659,8 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
       termsLabel3: "3. Service Provisioning Limit:",
       termsDesc3: "The tool is offered 'as is' without warranty of performance coefficients on ancient or resource-depleted browser environments when converting huge 4K file formats.",
       termsLabel4: "4. Constant Code Advancements:",
-      termsDesc4: "Our team operates out of pure passion for open source. We constantly revise our image processing matrices and appreciate any feature feedback or layout ideas.",
-      copyright: "imgdkora is a privacy-first open-source web compiler. All pixel calculations execute on-device to avert security risks or tracking."
+      termsDesc4: "Our team operates out of pure passion for open source. We constantly revise our image processing matrices and appreciate any feature feedback or layout ideas via contact support (essamelmansy67@gmail.com).",
+      copyright: "imgdkora is a privacy-first open-source web compiler. All core templates and pages are fully prepared and compliant for Google AdSense program acceptance in 2026."
     }
   }
 };

@@ -175,7 +175,7 @@ export default function App() {
   const eraserMaskCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const previewContainerRef = useRef<HTMLDivElement | null>(null);
   const isDraggingSplitRef = useRef<boolean>(false);
-  const [legalModal, setLegalModal] = useState<'privacy' | 'terms' | null>(null);
+  const [legalModal, setLegalModal] = useState<'privacy' | 'terms' | 'about' | 'contact' | 'disclaimer' | null>(null);
 
   // Setup sound cues (synthesizer on the fly!)
   const playSound = (freq = 440, duration = 0.08, type: OscillatorType = 'sine') => {
@@ -963,12 +963,13 @@ export default function App() {
               <h4 className="text-md sm:text-lg font-black text-slate-800 dark:text-white leading-snug">
                 {t.dropzone.title}
               </h4>
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-lg mx-auto leading-relaxed mt-2.5">
+              <p className="text-xs sm:text-sm text-slate-650 dark:text-slate-350 max-w-lg mx-auto leading-relaxed mt-2.5 font-medium">
                 {t.dropzone.formats}
               </p>
 
               {/* Browse file button */}
               <label 
+                htmlFor="main_file_input"
                 onClick={(e) => e.stopPropagation()}
                 className="mt-8 inline-flex items-center gap-2 px-6 py-3.5 bg-slate-900 hover:bg-slate-800 dark:bg-slate-850 dark:hover:bg-slate-800 text-white font-extrabold text-xs rounded-xl shadow-lg transition-all cursor-pointer"
               >
@@ -980,11 +981,12 @@ export default function App() {
                   accept="image/*"
                   onChange={handleFileInputChange}
                   className="hidden"
+                  aria-label={locale === 'ar' ? 'اختر ملف صورة من جهازك' : 'Choose an image file from your device'}
                 />
               </label>
 
               {/* Speed notes */}
-              <div className="mt-10 flex gap-4 text-[10px] font-bold text-slate-400 justify-center" onClick={(e) => e.stopPropagation()}>
+              <div className="mt-10 flex gap-4 text-[10px] sm:text-xs font-extrabold text-slate-600 dark:text-slate-400 justify-center" onClick={(e) => e.stopPropagation()}>
                 <span className="flex items-center gap-1">🛡️ {locale === 'ar' ? 'أمان محلي 100٪' : '100% Local Security'}</span>
                 <span>•</span>
                 <span className="flex items-center gap-1">⚡ {locale === 'ar' ? 'فوري بدون سيرفر' : 'Instant No Server'}</span>
@@ -1006,11 +1008,12 @@ export default function App() {
                 <span className="px-2.5 py-0.5 bg-[#ff1a40] text-white text-[10px] font-black rounded-lg">
                   STEP 2
                 </span>
-                <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center justify-between w-full">
+                <h3 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center justify-between w-full">
                   <span>🎨 {locale === 'ar' ? 'الخطوة الثانية: اضبط التفاصيل والخيارات' : 'Step 2: Adjust Layout & Settings'}</span>
                   <button 
                     onClick={handleResetAllControls}
                     className="text-[10px] text-rose-500 hover:underline flex items-center gap-1 cursor-pointer font-bold"
+                    aria-label={locale === 'ar' ? 'إعادة الموازنة للتلقائي' : 'Reset to Default'}
                   >
                     <RotateCcw className="w-3 h-3" />
                     {locale === 'ar' ? 'إعادة الموازنة للتلقائي' : 'Reset to Default'}
@@ -1022,10 +1025,10 @@ export default function App() {
                 
                 {/* File Format Output */}
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-bold text-slate-505 dark:text-slate-350">
+                  <label className="block text-xs font-extrabold text-slate-700 dark:text-slate-300">
                     صيغة التصدير التكتيكية:
                   </label>
-                  <p className="text-[10px] text-slate-400">صيغة WebP تناسب المواقع الحديثة وسرعة أرشفة جوجل.</p>
+                  <p className="text-[10.5px] sm:text-xs text-slate-600 dark:text-slate-400 font-semibold">صيغة WebP تناسب المواقع الحديثة وسرعة أرشفة جوجل.</p>
                   <div className="grid grid-cols-3 gap-2">
                     {(['image/webp', 'image/jpeg', 'image/png'] as const).map((type) => (
                       <button
@@ -1034,8 +1037,9 @@ export default function App() {
                         className={`py-1.5 text-xs font-bold rounded-xl border transition-all cursor-pointer ${
                           format === type 
                             ? 'bg-emerald-500/10 text-emerald-650 dark:text-emerald-400 border-emerald-500' 
-                            : 'bg-transparent border-slate-200 dark:border-slate-800 text-slate-500'
+                            : 'bg-transparent border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400'
                         }`}
+                        aria-label={type.split('/')[1].toUpperCase()}
                       >
                         {type.split('/')[1].toUpperCase()}
                       </button>
@@ -1046,18 +1050,20 @@ export default function App() {
                 {/* Compression Level Quality Slider */}
                 <div className="space-y-1.5 bg-slate-50/50 dark:bg-slate-950 p-3 rounded-2xl border border-slate-100 dark:border-slate-900">
                   <div className="flex items-center justify-between text-xs font-bold">
-                    <span className="text-slate-600 dark:text-slate-300">معدل جودة الصورة المضغوطة:</span>
+                    <span className="text-slate-700 dark:text-slate-300">معدل جودة الصورة المضغوطة:</span>
                     <span className="font-mono text-emerald-600 dark:text-emerald-400 text-sm">{quality}%</span>
                   </div>
                   <input
+                    id="quality_slider"
                     type="range"
                     min="10"
                     max="100"
                     value={quality}
                     onChange={(e) => setQuality(parseInt(e.target.value))}
                     className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                    aria-label={locale === 'ar' ? 'معدل جودة الصورة المضغوطة' : 'Compressed image quality level'}
                   />
-                  <div className="flex justify-between text-[10px] text-slate-400">
+                  <div className="flex justify-between text-[10px] sm:text-xs text-slate-600 dark:text-slate-405 font-bold">
                     <span>حجم أصغر (١٠٪)</span>
                     <span>مثالي وموصى به (٧٠٪ - ٨٥٪)</span>
                     <span>بدون ضغط (١٠٠٪)</span>
@@ -1067,20 +1073,20 @@ export default function App() {
                 {/* Resizing Mode Selector */}
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <label className="text-xs font-bold text-slate-606 dark:text-slate-350">أبعاد ومقاس الصورة:</label>
+                    <label className="text-xs font-bold text-slate-700 dark:text-slate-300">أبعاد ومقاس الصورة:</label>
                     <div className="flex gap-1.5 bg-slate-100 dark:bg-slate-950 p-0.5 rounded-lg">
                       <button
                         onClick={() => setResizeMode('percent')}
-                        className={`px-2 py-0.5 text-[10px] font-bold rounded-md transition-all ${
-                          resizeMode === 'percent' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs' : 'text-slate-400'
+                        className={`px-2 py-1 text-[10px] font-bold rounded-md transition-all cursor-pointer ${
+                          resizeMode === 'percent' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs' : 'text-slate-650 dark:text-slate-400'
                         }`}
                       >
                         نسبة مئوية
                       </button>
                       <button
                         onClick={() => setResizeMode('pixels')}
-                        className={`px-2 py-0.5 text-[10px] font-bold rounded-md transition-all ${
-                          resizeMode === 'pixels' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs' : 'text-slate-400'
+                        className={`px-2 py-1 text-[10px] font-bold rounded-md transition-all cursor-pointer ${
+                          resizeMode === 'pixels' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs' : 'text-slate-650 dark:text-slate-400'
                         }`}
                       >
                         بكسل محدد
@@ -1091,72 +1097,82 @@ export default function App() {
                   {resizeMode === 'percent' ? (
                     <div className="space-y-2 bg-slate-100/30 dark:bg-slate-955 p-3 rounded-2xl border border-slate-100 dark:border-slate-900/50">
                       <div className="flex justify-between text-xs font-mono font-bold">
-                        <span>نسبة تقليص المقاس:</span>
-                        <span className="text-emerald-500">{resizePercent}%</span>
+                        <span className="text-slate-700 dark:text-slate-300">نسبة تقليص المقاس:</span>
+                        <span className="text-emerald-550 font-black">{resizePercent}%</span>
                       </div>
                       <input
+                        id="resize_percent_slider"
                         type="range"
                         min="10"
                         max="100"
                         value={resizePercent}
                         onChange={(e) => setResizePercent(parseInt(e.target.value))}
                         className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                        aria-label={locale === 'ar' ? 'نسبة مئوية لتقليص المقاس' : 'Resizing percentage level'}
                       />
                     </div>
                   ) : (
                     <div className="space-y-2">
                       <div className="grid grid-cols-2 gap-2">
                         <div className="space-y-1">
-                          <span className="text-[10px] font-bold text-slate-400">العرض (الافتراضي):</span>
+                          <label htmlFor="custom_width_input" className="text-[10px] sm:text-xs font-extrabold text-slate-700 dark:text-slate-305">العرض (الافتراضي):</label>
                           <input 
+                            id="custom_width_input"
                             type="number"
                             value={customWidth || ''}
                             onChange={(e) => handleWidthChange(parseInt(e.target.value) || 0)}
                             className="w-full p-2 rounded-xl text-xs sm:text-sm font-bold border border-slate-200 dark:border-slate-800 bg-transparent text-slate-900 dark:text-white outline-none focus:border-emerald-500"
+                            aria-label={locale === 'ar' ? 'العرض بالبكسل' : 'Width in pixels'}
                           />
                         </div>
                         <div className="space-y-1">
-                          <span className="text-[10px] font-bold text-slate-400">الارتفاع (الافتراضي):</span>
+                          <label htmlFor="custom_height_input" className="text-[10px] sm:text-xs font-extrabold text-slate-700 dark:text-slate-305">الارتفاع (الافتراضي):</label>
                           <input 
+                            id="custom_height_input"
                             type="number"
                             value={customHeight || ''}
                             onChange={(e) => handleHeightChange(parseInt(e.target.value) || 0)}
                             className="w-full p-2 rounded-xl text-xs sm:text-sm font-bold border border-slate-200 dark:border-slate-800 bg-transparent text-slate-900 dark:text-white outline-none focus:border-emerald-500"
+                            aria-label={locale === 'ar' ? 'الارتفاع بالبكسل' : 'Height in pixels'}
                           />
                         </div>
                       </div>
 
-                      <label className="flex items-center gap-1.5 cursor-pointer select-none">
+                      <label htmlFor="lock_aspect_ratio" className="flex items-center gap-1.5 cursor-pointer select-none">
                         <input
+                          id="lock_aspect_ratio"
                           type="checkbox"
                           checked={lockAspectRatio}
                           onChange={(e) => setLockAspectRatio(e.target.checked)}
                           className="rounded text-emerald-500 focus:ring-emerald-500 accent-emerald-500"
                         />
-                        <span className="text-[11px] text-slate-500 dark:text-slate-400 font-bold">حفظ نسبة التناسب وتثبيت الأبعاد تلقائياً</span>
+                        <span className="text-[11px] text-slate-700 dark:text-slate-300 font-bold">حفظ نسبة التناسب وتثبيت الأبعاد تلقائياً</span>
                       </label>
                     </div>
                   )}
 
                   {/* High Quality Preset Dimensions for Creators */}
                   <div className="space-y-1.5">
-                    <span className="block text-[11px] font-bold text-slate-400">مقاسات سريعة جاهزة لصناع المحتوى:</span>
+                    <span className="block text-[11px] font-bold text-slate-650 dark:text-slate-400">مقاسات سريعة جاهزة لصناع المحتوى:</span>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
                       <button
                         onClick={() => applyPresetSize(1280, 720, 'مصغرات يوتيوب HD')}
-                        className="p-1 px-2 text-[10px] font-bold rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-900 hover:border-emerald-550 transition-all text-right cursor-pointer"
+                        className="p-1 px-2 text-[10px] font-extrabold rounded-lg border border-slate-200 dark:border-slate-800 text-slate-750 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-900 hover:border-emerald-555 transition-all text-right cursor-pointer"
+                        aria-label="يوتيوب 1280x720"
                       >
                         📺 يوتيوب (720p HD)
                       </button>
                       <button
                         onClick={() => applyPresetSize(1080, 1080, 'بوست انستجرام مربع')}
-                        className="p-1 px-2 text-[10px] font-bold rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-900 hover:border-emerald-550 transition-all text-right cursor-pointer"
+                        className="p-1 px-2 text-[10px] font-extrabold rounded-lg border border-slate-200 dark:border-slate-800 text-slate-755 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-900 hover:border-emerald-555 transition-all text-right cursor-pointer"
+                        aria-label="انستجرام بوست 1080x1080"
                       >
                         📸 انستجرام مربع (1:1)
                       </button>
                       <button
                         onClick={() => applyPresetSize(1920, 1080, 'غلاف فيسبوك HD')}
-                        className="p-1 px-2 text-[10px] font-bold rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-900 hover:border-emerald-550 transition-all text-right cursor-pointer"
+                        className="p-1 px-2 text-[10px] font-extrabold rounded-lg border border-slate-200 dark:border-slate-800 text-slate-755 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-900 hover:border-emerald-555 transition-all text-right cursor-pointer"
+                        aria-label="فيسبوك بوست 1920x1080"
                       >
                         👥 بوست فيسبوك HD
                       </button>
@@ -1173,11 +1189,11 @@ export default function App() {
               <Info className="w-4 h-4" />
               لماذا يؤثر حجم الصورة على الأرشفة وسرعة موقعك المقفل؟
             </h4>
-            <p className="text-[11px] text-slate-605 dark:text-slate-300 leading-relaxed font-semibold">
+            <p className="text-[11px] text-slate-705 dark:text-slate-200 leading-relaxed font-bold">
               المواقع الإعلانية والذكية تحتاج سرعة تحميل فائقة لحصد نقاط PageSpeed ممتازة من جوجل. 
               عند تقليص حجم الخلفية وضغط الصورة بطريقة <b>Client-Side</b> هنا:
             </p>
-            <ul className="text-[10px] text-slate-505 dark:text-slate-400 space-y-1 list-disc list-inside">
+            <ul className="text-[10px] sm:text-xs text-slate-650 dark:text-slate-300 space-y-1 list-disc list-inside font-semibold">
               <li>يقل زمن انتظار استجابة السيرفر للصفر.</li>
               <li>توفر عرض الباقة لعملائك ومثالي جداً لأرشفة صور محركات البحث SEO.</li>
               <li>التحويل لـ <b>WebP</b> يضمن معدلات توفير تتجاوز الـ ٧٥٪ مع الحفاظ التام والكامل للعناصر الحادة.</li>
@@ -1194,35 +1210,35 @@ export default function App() {
             <div className="bg-white dark:bg-slate-900 border border-slate-200/85 dark:border-slate-900/60 rounded-3xl p-4.5 shadow-xs grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
               
               <div className="space-y-0.5 border-l border-slate-100 dark:border-slate-800/80">
-                <span className="text-[10px] text-slate-400 font-bold block">الحجم الأصلي للملف:</span>
+                <span className="text-[10px] text-slate-650 dark:text-slate-350 font-extrabold block">الحجم الأصلي للملف:</span>
                 <span className="text-xs sm:text-sm font-mono font-black text-slate-700 dark:text-slate-105">
                   {(metrics.originalSize / 1024).toFixed(1)} KB
                 </span>
-                <span className="text-[9px] block text-slate-400 font-mono">({metrics.originalWidth}x{metrics.originalHeight}px)</span>
+                <span className="text-[9px] block text-slate-500 dark:text-slate-400 font-bold font-mono">({metrics.originalWidth}x{metrics.originalHeight}px)</span>
               </div>
 
               <div className="space-y-0.5 border-l border-slate-100 dark:border-slate-800/80">
-                <span className="text-[10px] text-slate-400 font-bold block">الملف بعد التحسين:</span>
-                <span className="text-xs sm:text-sm font-mono font-black text-emerald-500">
+                <span className="text-[10px] text-slate-650 dark:text-slate-350 font-extrabold block">الملف بعد التحسين:</span>
+                <span className="text-xs sm:text-sm font-mono font-black text-emerald-600 dark:text-emerald-400">
                   {(metrics.compressedSize / 1024).toFixed(1)} KB
                 </span>
-                <span className="text-[9px] block text-slate-400 font-mono">({metrics.compressedWidth}x{metrics.compressedHeight}px)</span>
+                <span className="text-[9px] block text-slate-500 dark:text-slate-350 font-bold font-mono">({metrics.compressedWidth}x{metrics.compressedHeight}px)</span>
               </div>
 
               <div className="space-y-0.5 border-l border-slate-100 dark:border-slate-800/80">
-                <span className="text-[10px] text-slate-400 font-bold block">نسبة التوفير المحسوبة:</span>
-                <span className="text-xs sm:text-sm font-mono font-black text-emerald-600 dark:text-emerald-400">
+                <span className="text-[10px] text-slate-650 dark:text-slate-350 font-extrabold block">نسبة التوفير المحسوبة:</span>
+                <span className="text-xs sm:text-sm font-mono font-black text-emerald-700 dark:text-emerald-400">
                   {metrics.ratioSaved}% توفير 🔥
                 </span>
-                <span className="text-[9px] block text-slate-400">تخفيض هائل بمساحة الذاكرة</span>
+                <span className="text-[9px] block text-slate-500 dark:text-slate-350 font-bold">تخفيض هائل بمساحة الذاكرة</span>
               </div>
 
               <div className="space-y-0.5">
-                <span className="text-[10px] text-slate-400 font-bold block">صيغة المخرجات الحالية:</span>
-                <span className="text-xs sm:text-sm font-black text-indigo-400 uppercase">
+                <span className="text-[10px] text-slate-650 dark:text-slate-350 font-extrabold block">صيغة المخرجات الحالية:</span>
+                <span className="text-xs sm:text-sm font-black text-indigo-600 dark:text-indigo-400 uppercase">
                   {format.split('/')[1]} output
                 </span>
-                <span className="text-[9px] text-slate-400 block">بدون رفع أي شيء لسيرفر</span>
+                <span className="text-[9px] text-slate-500 dark:text-slate-350 block font-bold">بدون رفع أي شيء لسيرفر</span>
               </div>
 
             </div>
@@ -1381,6 +1397,16 @@ export default function App() {
                         {/* Interactive drag split line handle */}
                         <div 
                           onMouseDown={startSplitDrag}
+                          role="slider"
+                          aria-valuenow={compareSplitPercent}
+                          aria-valuemin={0}
+                          aria-valuemax={100}
+                          aria-label={locale === 'ar' ? 'شريط مقارنة الصورة قبل وبعد' : 'Image comparison slider before and after'}
+                          tabIndex={0}
+                          onKeyDown={(e) => {
+                            if (e.key === 'ArrowLeft') setCompareSplitPercent(p => Math.max(0, p - 5));
+                            if (e.key === 'ArrowRight') setCompareSplitPercent(p => Math.min(100, p + 5));
+                          }}
                           className="absolute h-full w-1 bg-white hover:bg-emerald-450 cursor-ew-resize flex items-center justify-center active:bg-emerald-600 transition-colors z-30"
                           style={{ left: `${compareSplitPercent}%` }}
                         >
@@ -1507,19 +1533,40 @@ export default function App() {
         </p>
 
         {/* Legal Actions Triggers */}
-        <div className="flex items-center justify-center gap-3.5 text-[11px] font-extrabold text-slate-400">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3.5 text-[11px] font-extrabold text-slate-400 max-w-lg mx-auto px-4">
           <button 
             onClick={() => { setLegalModal('privacy'); playSound(550, 0.05); }}
-            className="hover:text-rose-500 transition-all cursor-pointer hover:underline"
+            className="hover:text-[#ff1a40] transition-colors cursor-pointer hover:underline"
           >
             {t.legal.privacyBtn}
           </button>
           <span>•</span>
           <button 
             onClick={() => { setLegalModal('terms'); playSound(550, 0.05); }}
-            className="hover:text-rose-500 transition-all cursor-pointer hover:underline"
+            className="hover:text-[#ff1a40] transition-colors cursor-pointer hover:underline"
           >
             {t.legal.termsBtn}
+          </button>
+          <span>•</span>
+          <button 
+            onClick={() => { setLegalModal('about'); playSound(550, 0.05); }}
+            className="hover:text-[#ff1a40] transition-colors cursor-pointer hover:underline"
+          >
+            {t.legal.aboutBtn}
+          </button>
+          <span>•</span>
+          <button 
+            onClick={() => { setLegalModal('contact'); playSound(550, 0.05); }}
+            className="hover:text-[#ff1a40] transition-colors cursor-pointer hover:underline"
+          >
+            {t.legal.contactBtn}
+          </button>
+          <span>•</span>
+          <button 
+            onClick={() => { setLegalModal('disclaimer'); playSound(550, 0.05); }}
+            className="hover:text-[#ff1a40] transition-colors cursor-pointer hover:underline"
+          >
+            {t.legal.disclaimerBtn}
           </button>
         </div>
       </footer>

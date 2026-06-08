@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, FormEvent, MouseEvent, TouchEvent, DragEvent, ChangeEvent } from 'react';
 import Header from './components/Header';
 import LegalModals from './components/LegalModals';
+import SeoHub from './components/SeoHub';
 import { 
   Sparkles, 
   Moon, 
@@ -51,8 +52,17 @@ interface ImageHistoryItem {
 
 export default function App() {
   // Theme state
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
+
+  // Synchronize theme with document element
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [theme]);
 
   // Core image state
   const [originalImageSrc, setOriginalImageSrc] = useState<string | null>(null);
@@ -744,7 +754,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 font-sans flex flex-col antialiased">
+    <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 font-sans flex flex-col antialiased">
       
       {/* Premium Modular Header with full controls */}
       <Header 
@@ -754,20 +764,20 @@ export default function App() {
         handleToggleTheme={handleToggleTheme} 
       />
 
-      {/* Modern dark-blue cosmic gradient background */}
-      <div className="bg-slate-950 dark:bg-slate-950 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white pt-10 pb-20 px-4 text-center relative overflow-hidden transition-colors duration-200">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,26,64,0.12),transparent_40%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.08),transparent_40%)]" />
+      {/* Modern white background that turns cosmic dark-blue in dark mode */}
+      <div className="bg-white dark:bg-slate-950 bg-gradient-to-b from-white via-white to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white pt-10 pb-20 px-4 text-center relative overflow-hidden transition-colors duration-200 border-b border-slate-100 dark:border-none">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,26,64,0.03),transparent_40%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(255,26,64,0.12),transparent_40%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.02),transparent_40%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.08),transparent_40%)]" />
         <div className="max-w-4xl mx-auto space-y-6 relative z-10 animate-fade-in">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-rose-500/10 border border-rose-500/20 text-rose-400 text-[11px] sm:text-xs font-bold rounded-full">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-[11px] sm:text-xs font-bold rounded-full">
             <Sparkles className="w-3.5 h-3.5 animate-spin text-[#ff1a40]" />
             <span>أفضل أداة مجانية لمعالجة وضغط الصور وصناع المحتوى لعام 2026</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight leading-snug">
             حوّل صورتك العادية إلى <br />
-            <span className="text-[#ff1a40] drop-shadow-[0_0_15px_rgba(255,26,64,0.3)]">تحفة فنية احترافية.</span>
+            <span className="text-[#ff1a40] drop-shadow-[0_0_15px_rgba(255,26,64,0.15)] dark:drop-shadow-[0_0_15px_rgba(255,26,64,0.3)]">تحفة فنية احترافية.</span>
           </h2>
-          <p className="text-xs sm:text-sm text-slate-350 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-350 max-w-2xl mx-auto leading-relaxed">
             قم بضغط حجم الصورة لنسب خيالية، عزل وتفريغ الألوان الخلفية يدوياً وتلقائياً، وتعديل مستويات السطوع والتشبع بكل أمان وخصوصية تامة دون رَفْع أي بايت خارج متصفحك!
           </p>
         </div>
@@ -919,20 +929,23 @@ export default function App() {
           </div>
 
           {/* Speed Info Banner */}
-          <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950/40 border border-slate-800 rounded-3xl p-6 sm:p-8 text-white space-y-4">
-            <h4 className="text-xs font-black text-rose-400 uppercase tracking-wider flex items-center gap-1.5 font-sans">
+          <div className="bg-gradient-to-r from-slate-50 via-slate-100 to-indigo-50/50 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 text-slate-800 dark:text-white space-y-4">
+            <h4 className="text-xs font-black text-[#ff1a40] uppercase tracking-wider flex items-center gap-1.5 font-sans">
               <Info className="w-4.5 h-4.5 text-[#ff1a40]" />
               لماذا يؤثر حجم وعزل الصور على أرشفة وتصدر موقعك في محركات البحث؟
             </h4>
-            <p className="text-[11px] sm:text-xs text-slate-350 leading-relaxed font-semibold">
+            <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-350 leading-relaxed font-semibold">
               المواقع الحديثة تتطلب سرعة تحميل فائقة لحصد نقاط PageSpeed ممتازة من جوجل. عندما تستخدم تفريغ وضغط <b>Client-Side</b> محلي هنا:
             </p>
-            <ul className="text-[10px] sm:text-xs text-slate-400 space-y-2 list-disc list-inside">
+            <ul className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 space-y-2 list-disc list-inside">
               <li>يقل زمن انتظار استجابة السيرفر للصفر وتتحمل الصورة بلمح البصر.</li>
               <li>التحويل التلقائي لصيغة <b>WebP</b> يضمن معدلات خفض للمساحة تتجاوز 80٪ مع الحفاظ على وضوح الحواف.</li>
               <li>عزل وإزالة خلفيات صور المنتجات يدوياً بمرونة وسهولة لتمثيلها في متاجرك بأسلوب مذهل.</li>
             </ul>
           </div>
+
+          {/* Interactive SEO Strategy Hub */}
+          <SeoHub />
         </div>
       ) : (
         <main className="flex-grow max-w-7xl w-full mx-auto px-4 py-8 sm:py-12 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">

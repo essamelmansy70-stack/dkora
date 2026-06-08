@@ -39,7 +39,7 @@ export default function Header({
                 {t.header.badge}
               </span>
             </div>
-            <p className="text-[7.5px] sm:text-[8.5px] text-slate-500 dark:text-slate-400 font-medium leading-none mt-0.5">
+            <p className="text-[6px] sm:text-[7px] text-slate-500 dark:text-slate-400 font-medium leading-none mt-0.5">
               {t.header.subtitle}
             </p>
           </div>

@@ -144,7 +144,7 @@ export async function removeImageBackgroundAI(
         </div>
         
         {/* Switcher */}
-        <div className="flex gap-1.5 bg-slate-50 dark:bg-slate-950 p-1 rounded-xl self-start sm:self-center">
+        <div className="flex gap-1.5 bg-white border border-slate-200/80 dark:border-slate-800 p-1 rounded-xl self-start sm:self-center">
           <button
             onClick={() => { setSelectedCreatorType('ecommerce'); playLocalSound(400); }}
             className={`px-3 py-1.5 text-[11px] font-black rounded-lg transition-all cursor-pointer ${
@@ -242,7 +242,7 @@ export async function removeImageBackgroundAI(
           </div>
 
           {/* Keyword Match tables (Medium Comp) */}
-          <div className="bg-slate-50 dark:bg-slate-950 rounded-2xl p-4.5 space-y-3">
+          <div className="bg-white border border-slate-200/70 dark:bg-slate-950 rounded-2xl p-4.5 space-y-3">
             <h4 className="text-xs font-black text-rose-500 flex items-center gap-1.5">
               <Search className="w-4 h-4" />
               الكلمات الدلالية الموصى بها لمستهدفي dkora.online:
@@ -376,7 +376,7 @@ export async function removeImageBackgroundAI(
       </div>
 
       {/* Structured Strategy and Google Core Web Vitals Guidance */}
-      <div className="bg-slate-50 dark:bg-slate-950 p-5 rounded-2xl border border-slate-100 dark:border-slate-900 flex flex-col md:flex-row gap-5 items-start">
+      <div className="bg-white dark:bg-slate-950 p-5 rounded-2xl border border-slate-200 dark:border-slate-900 flex flex-col md:flex-row gap-5 items-start">
         <div className="p-3 rounded-2xl bg-[#ff1a40]/5 border border-[#ff1a40]/10 text-[#ff1a40] self-start">
           <BookOpen className="w-5 h-5" />
         </div>

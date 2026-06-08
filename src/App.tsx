@@ -356,9 +356,13 @@ export default function App() {
       const data = imgData.data;
       const { r: tR, g: tG, b: tB } = targetColor;
       
-      // Cache factor
-      const maxDist = tolerance / 100 * 255;
-      const fRange = feather / 100 * 255;
+      // Setup parameters for Redmean (human perception model) color distance
+      const maxDist = (tolerance / 100) * 765;
+      const fRange = (feather / 100) * 200;
+      
+      const maxDistSq = maxDist * maxDist;
+      const innerDist = Math.max(0, maxDist - fRange);
+      const innerDistSq = innerDist * innerDist;
 
       for (let i = 0; i < data.length; i += 4) {
         const r = data[i];
@@ -368,18 +372,23 @@ export default function App() {
 
         if (a === 0) continue;
 
-        // Eucledian distance between colors
-        const distance = Math.sqrt(
-          (r - tR) * (r - tR) + 
-          (g - tG) * (g - tG) + 
-          (b - tB) * (b - tB)
-        );
+        const dR = r - tR;
+        const dG = g - tG;
+        const dB = b - tB;
+        const rMean = (r + tR) / 2;
 
-        if (distance < maxDist) {
-          if (fRange > 0 && distance > (maxDist - fRange)) {
+        // Fast Redmean squared distance calculation - avoids Math.sqrt inside the hot path!
+        const rWeight = 2 + rMean / 256;
+        const gWeight = 4;
+        const bWeight = 2 + (255 - rMean) / 256;
+        const distSq = rWeight * dR * dR + gWeight * dG * dG + bWeight * dB * dB;
+
+        if (distSq < maxDistSq) {
+          if (fRange > 0 && distSq > innerDistSq) {
             // Smooth transparency transition (feather edge)
-            const alphaMul = (distance - (maxDist - fRange)) / fRange;
-            data[i + 3] = Math.round(a * alphaMul);
+            const distance = Math.sqrt(distSq);
+            const alphaMul = (distance - innerDist) / fRange;
+            data[i + 3] = Math.max(0, Math.min(255, Math.round(a * alphaMul)));
           } else {
             data[i + 3] = 0; // complete knockout
           }
@@ -598,6 +607,70 @@ export default function App() {
       } catch (err) {
         console.error('Failed reading pixel data: ', err);
       }
+    }
+  };
+
+  // Auto-detect dominant background color from the 4 corners of the image
+  const autoDetectBackground = () => {
+    const img = hiddenOriginalImageRef.current;
+    if (!img || !img.complete) {
+      showToast('يرجى اختيار صورة أولاً لتفعيل ميزة الكشف التلقائي.');
+      return;
+    }
+    const canvas = document.createElement('canvas');
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    ctx.drawImage(img, 0, 0);
+    const w = img.naturalWidth;
+    const h = img.naturalHeight;
+
+    try {
+      // Sample the 4 corners
+      const corners = [
+        ctx.getImageData(0, 0, 1, 1).data,
+        ctx.getImageData(w - 1, 0, 1, 1).data,
+        ctx.getImageData(0, h - 1, 1, 1).data,
+        ctx.getImageData(w - 1, h - 1, 1, 1).data
+      ];
+
+      // Average the corner colors
+      let rSum = 0, gSum = 0, bSum = 0, count = 0;
+      corners.forEach(p => {
+        // Only count pixels that are not fully transparent
+        if (p[3] > 10) {
+          rSum += p[0];
+          gSum += p[1];
+          bSum += p[2];
+          count++;
+        }
+      });
+
+      if (count === 0) {
+        showToast('فشل الكشف التلقائي: حواف الصورة شفافة بالفعل.');
+        return;
+      }
+
+      const avgColor = {
+        r: Math.round(rSum / count),
+        g: Math.round(gSum / count),
+        b: Math.round(bSum / count)
+      };
+
+      setTargetColor(avgColor);
+      setBgColorMode(true);
+      setTolerance(32); // Slightly higher balanced tolerance as a default for corner-matching
+      setFeather(12);   // Balanced default feathering
+      showToast(`المستشعر الذكي كشف الحواف واقتطع لون الخلفية بنجاح: RGB(${avgColor.r}, ${avgColor.g}, ${avgColor.b})`);
+      playSound(780, 0.15);
+    } catch (err) {
+      console.error('Error auto-detecting background:', err);
+      // Fallback
+      setTargetColor({ r: 255, g: 255, b: 255 });
+      setBgColorMode(true);
+      showToast('تم تهيئة الإزالة الافتراضية على اللون البيضاء.');
     }
   };
 
@@ -929,7 +1002,7 @@ export default function App() {
           </div>
 
           {/* Speed Info Banner */}
-          <div className="bg-gradient-to-r from-slate-50 via-slate-100 to-indigo-50/50 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 text-slate-800 dark:text-white space-y-4">
+          <div className="bg-white dark:bg-slate-950 border border-slate-200/90 dark:border-slate-800 rounded-3xl p-6 sm:p-8 text-slate-800 dark:text-white space-y-4 shadow-sm">
             <h4 className="text-xs font-black text-[#ff1a40] uppercase tracking-wider flex items-center gap-1.5 font-sans">
               <Info className="w-4.5 h-4.5 text-[#ff1a40]" />
               لماذا يؤثر حجم وعزل الصور على أرشفة وتصدر موقعك في محركات البحث؟
@@ -1151,19 +1224,30 @@ export default function App() {
                         اللون المستهدف للاستبعاد:
                       </span>
 
-                      {/* Eyedropper dynamic trigger */}
-                      <button
-                        onClick={() => { setIsEyedropperActive(!isEyedropperActive); playSound(490, 0.08); }}
-                        className={`w-full sm:w-auto p-2 px-3 text-[10px] font-bold rounded-xl flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
-                          isEyedropperActive 
-                            ? 'bg-rose-500 text-white border-rose-600 animate-pulse' 
-                            : 'bg-emerald-600 text-white border-emerald-700 hover:bg-emerald-700'
-                        }`}
-                        title="انقر هنا ثم اضغط على أي نقطة بالصورة لالتقاط لونها بدقة!"
-                      >
-                        <Pipette className="w-3.5 h-3.5" />
-                        {isEyedropperActive ? 'انقر على الصورة للاقتطاف...' : 'اقتطف لوناً من الصورة 🎯'}
-                      </button>
+                      {/* Removal Triggers: Precision Eyedropper and Smart Auto-detect */}
+                      <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+                        <button
+                          onClick={() => { autoDetectBackground(); }}
+                          className="w-full sm:w-auto p-2 px-2.5 text-[10px] sm:text-xs font-bold rounded-xl flex items-center justify-center gap-1 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white shadow-md hover:shadow-lg transition-all cursor-pointer border border-emerald-600"
+                          title="دع النظام يستشعر ويكشف لون الحواف الخارجية تلقائياً ويفرغه فوراً!"
+                        >
+                          <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
+                          كشف اللون تلقائياً 🪄
+                        </button>
+
+                        <button
+                          onClick={() => { setIsEyedropperActive(!isEyedropperActive); playSound(490, 0.08); }}
+                          className={`w-full sm:w-auto p-2 px-2.5 text-[10px] sm:text-xs font-bold rounded-xl flex items-center justify-center gap-1 transition-all cursor-pointer border ${
+                            isEyedropperActive 
+                              ? 'bg-rose-500 text-white border-rose-600 animate-pulse shadow-sm' 
+                              : 'bg-emerald-600 text-white border-emerald-700 hover:bg-emerald-700 shadow-sm'
+                          }`}
+                          title="انقر هنا ثم اضغط على أي نقطة بالصورة لالتقاط لونها بدقة!"
+                        >
+                          <Pipette className="w-3.5 h-3.5" />
+                          {isEyedropperActive ? 'اضغط على الصورة...' : 'اقتطف لوناً يدوياً 🎯'}
+                        </button>
+                      </div>
                     </div>
 
                     {/* Show Active Selected Color */}
@@ -1591,16 +1675,16 @@ export default function App() {
           </div>
 
           {/* Sizing Info Cards explaining PageSpeed */}
-          <div className="bg-gradient-to-br from-emerald-950/40 to-slate-900 border border-emerald-500/10 rounded-3xl p-5 text-white space-y-3">
-            <h4 className="text-xs font-extrabold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+          <div className="bg-emerald-500/5 dark:bg-emerald-950/20 border border-emerald-500/10 rounded-3xl p-5 text-slate-800 dark:text-white space-y-3">
+            <h4 className="text-xs font-extrabold text-emerald-650 dark:text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
               <Info className="w-4 h-4" />
               لماذا يؤثر حجم الصورة على الأرشفة وسرعة موقعك المقفل؟
             </h4>
-            <p className="text-[11px] text-slate-350 leading-relaxed font-semibold">
+            <p className="text-[11px] text-slate-605 dark:text-slate-300 leading-relaxed font-semibold">
               المواقع الإعلانية والذكية تحتاج سرعة تحميل فائقة لحصد نقاط PageSpeed ممتازة من جوجل. 
               عند تقليص حجم الخلفية وضغط الصورة بطريقة <b>Client-Side</b> هنا:
             </p>
-            <ul className="text-[10px] text-slate-400 space-y-1 list-disc list-inside">
+            <ul className="text-[10px] text-slate-505 dark:text-slate-400 space-y-1 list-disc list-inside">
               <li>يقل زمن انتظار استجابة السيرفر للصفر.</li>
               <li>توفر عرض الباقة لعملائك ومثالي جداً لأرشفة صور محركات البحث SEO.</li>
               <li>التحويل لـ <b>WebP</b> يضمن معدلات توفير تتجاوز الـ ٧٥٪ مع الحفاظ التام والكامل للعناصر الحادة.</li>
@@ -1729,8 +1813,13 @@ export default function App() {
                 {/* Main Studio Render Viewport */}
                 <div 
                   ref={previewContainerRef}
-                  className="relative flex-grow min-h-[350px] bg-slate-100 dark:bg-slate-950 rounded-3xl border border-slate-200 dark:border-slate-800 flex items-center justify-center overflow-hidden"
-                  style={{ backgroundImage: 'radial-gradient(#e2e8f0 1.5px, transparent 1.5px), radial-gradient(#202c3a 1px, transparent 1px)', backgroundSize: '20px 20px' }}
+                  className="relative flex-grow min-h-[350px] bg-white dark:bg-slate-950 rounded-3xl border border-slate-200 dark:border-slate-800 flex items-center justify-center overflow-hidden"
+                  style={{ 
+                    backgroundImage: theme === 'dark' 
+                      ? 'radial-gradient(#1e293b 1px, transparent 1px)' 
+                      : 'radial-gradient(#f1f5f9 1.5px, transparent 1.5px), radial-gradient(#e2e8f0 1px, transparent 1px)', 
+                    backgroundSize: '20px 20px' 
+                  }}
                 >
                   
                   {/* Eyedropper notification mask overlay */}

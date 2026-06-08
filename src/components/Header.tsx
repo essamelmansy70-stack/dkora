@@ -24,9 +24,12 @@ export default function Header({
         
         {/* Logo and branding */}
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#ff1a40] to-rose-500 flex items-center justify-center text-white shadow-sm shadow-rose-500/10">
-            <Sparkles className="w-4.5 h-4.5" />
-          </div>
+          <img 
+            src="/logo.png" 
+            alt="imgdkora" 
+            className="w-9 h-9 object-contain rounded-xl shadow-xs shrink-0 select-none"
+            referrerPolicy="no-referrer"
+          />
           <div>
             <div className="flex items-center gap-2">
               <span className="text-sm sm:text-base font-black tracking-tight text-slate-900 dark:text-white font-sans">

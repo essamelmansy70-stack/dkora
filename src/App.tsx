@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, FormEvent, MouseEvent, TouchEvent, DragEvent, ChangeEvent } from 'react';
 import Header from './components/Header';
 import LegalModals from './components/LegalModals';
+import ArticlesPage from './components/ArticlesPage';
 import { translations } from './translations';
 import { 
   Sparkles, 
@@ -176,6 +177,47 @@ export default function App() {
   const previewContainerRef = useRef<HTMLDivElement | null>(null);
   const isDraggingSplitRef = useRef<boolean>(false);
   const [legalModal, setLegalModal] = useState<'privacy' | 'terms' | 'about' | 'contact' | 'disclaimer' | null>(null);
+
+  // Main high-level view routing: 'editor' (Image tool), 'blog' (Articles page)
+  const [currentView, setCurrentView] = useState<'editor' | 'blog'>('editor');
+
+  // Synchronize deep linking search parameters for indexing and sharing!
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const articleSlug = params.get('article');
+      const viewParam = params.get('view');
+      
+      if (articleSlug) {
+        setCurrentView('blog');
+      } else if (viewParam === 'blog' || viewParam === 'editor') {
+        setCurrentView(viewParam as 'editor' | 'blog');
+      }
+    }
+  }, []);
+
+  // Update query params when viewing different tabs
+  const handleSetCurrentView = (view: 'editor' | 'blog') => {
+    setCurrentView(view);
+    playSound(480, 0.08);
+    
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (view === 'editor') {
+        params.delete('view'); // Clean up default view tag
+      } else {
+        params.set('view', view);
+      }
+      // If we switch away from blog, remove the specific article query
+      if (view !== 'blog') {
+        params.delete('article');
+      }
+      
+      const newQuery = params.toString();
+      const newPath = window.location.pathname + (newQuery ? `?${newQuery}` : '');
+      window.history.pushState({}, '', newPath);
+    }
+  };
 
   // Setup sound cues (synthesizer on the fly!)
   const playSound = (freq = 440, duration = 0.08, type: OscillatorType = 'sine') => {
@@ -922,7 +964,9 @@ export default function App() {
       )}
 
       {/* Center Layout Workspace */}
-      {!originalImageSrc ? (
+      {currentView === 'editor' && (
+        <>
+          {!originalImageSrc ? (
         <div className="max-w-4xl w-full mx-auto px-4 py-12 animate-fade-in space-y-8">
           {/* STEP 1 Block */}
           <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl overflow-hidden shadow-xl">
@@ -1521,12 +1565,37 @@ export default function App() {
         </section>
 
       </main>
-    )}
+          )}
+        </>
+      )}
+
+      {currentView === 'blog' && (
+        <div className="max-w-7xl w-full mx-auto px-4 py-8.5 animate-fade-in">
+          <ArticlesPage locale={locale} t={t} />
+        </div>
+      )}
 
       {/* FOOTER NOTIFY AND METRICS ACCENTS */}
       <footer className="border-t border-slate-200/60 dark:border-slate-900 bg-white dark:bg-slate-950 py-8 text-center text-xs text-slate-400 space-y-4 mt-auto">
         <div className="font-sans font-black text-[11px] text-slate-400">
           {locale === 'ar' ? 'مستودع أدوات معالجة الصور ومسح الخلفية بمتصفح العميل ٢٠٢٦ 🚀' : 'Secure In-Browser Image Compressor & Background Remover 2026 🚀'}
+        </div>
+
+        {/* Dynamic Nav Tabs Footer Navigation */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 px-4 pb-2.5 max-w-lg mx-auto text-[11.5px] font-black border-b border-dashed border-slate-100 dark:border-slate-900/40 mb-3.5">
+          <button 
+            onClick={() => handleSetCurrentView('editor')}
+            className={`transition bg-transparent border-0 cursor-pointer ${currentView === 'editor' ? 'text-[#ff1a40]' : 'text-slate-500 hover:text-[#ff1a40]'}`}
+          >
+            {locale === 'ar' ? '💻 أداة معالجة وضغط الصور' : '💻 Image Optimizer Tool'}
+          </button>
+          <span className="text-slate-200 dark:text-slate-800">|</span>
+          <button 
+            onClick={() => handleSetCurrentView('blog')}
+            className={`transition bg-transparent border-0 cursor-pointer ${currentView === 'blog' ? 'text-[#ff1a40]' : 'text-slate-500 hover:text-[#ff1a40]'}`}
+          >
+            {locale === 'ar' ? '📝 دليل سيو ٢٠٢٦ وأسرار الصور' : '📝 SEO 2026 & Image Guide'}
+          </button>
         </div>
         <p className="text-[10px] text-slate-500 dark:text-slate-400 max-w-sm mx-auto leading-relaxed">
           {t.legal.copyright}

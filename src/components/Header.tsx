@@ -27,19 +27,19 @@ export default function Header({
           <img 
             src="/logo.png" 
             alt="imgdkora" 
-            className="w-9 h-9 object-contain rounded-xl shadow-xs shrink-0 select-none"
+            className="w-11 h-11 sm:w-12 sm:h-12 object-contain rounded-xl shadow-xs shrink-0 select-none"
             referrerPolicy="no-referrer"
           />
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-sm sm:text-base font-black tracking-tight text-slate-900 dark:text-white font-sans">
+              <span className="text-xs sm:text-sm font-black tracking-tight text-slate-900 dark:text-white font-sans">
                 img<span className="text-[#ff1a40]">dkora</span> <span className="text-[9px] text-slate-600 dark:text-slate-300 font-semibold">{t.header.logoSuffix}</span>
               </span>
               <span className="hidden sm:inline-block px-1.5 py-0.5 bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 text-[8px] font-bold rounded-md">
                 {t.header.badge}
               </span>
             </div>
-            <p className="text-[8px] sm:text-[9.5px] text-slate-700 dark:text-slate-200 font-semibold leading-none mt-0.5">
+            <p className="text-[7.5px] sm:text-[8.5px] text-slate-500 dark:text-slate-400 font-medium leading-none mt-0.5">
               {t.header.subtitle}
             </p>
           </div>

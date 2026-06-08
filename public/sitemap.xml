@@ -1,10 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Hlavná stránka - أداة ضغط الصور وعزل الخلفيات -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- 1. الرئيسية - الصفحة الرئيسية الافتراضية (Default Home) -->
   <url>
     <loc>https://dkora.online/</loc>
     <lastmod>2026-06-08</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dkora.online/" />
   </url>
+
+  <!-- 2. الرئيسية باللغة العربية (Arabic Home) -->
+  <url>
+    <loc>https://dkora.online/?lang=ar</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en" />
+  </url>
+
+  <!-- 3. الرئيسية باللغة الإنجليزية (English Home) -->
+  <url>
+    <loc>https://dkora.online/?lang=en</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en" />
+  </url>
+
+  <!-- 4. واجهة أداة المعالجة والتحرير (Default Editor View) -->
+  <url>
+    <loc>https://dkora.online/?view=editor</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 5. واجهة أداة المعالجة باللغة العربية (Arabic Editor View) -->
+  <url>
+    <loc>https://dkora.online/?view=editor&amp;lang=ar</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 6. واجهة أداة المعالجة باللغة الإنجليزية (English Editor View) -->
+  <url>
+    <loc>https://dkora.online/?view=editor&amp;lang=en</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 7. أرشيف المدونة ودليل السيّو (Default Blog Index) -->
+  <url>
+    <loc>https://dkora.online/?view=blog</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=blog&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=blog&amp;lang=en" />
+  </url>
+
+  <!-- 8. أرشيف المدونة باللغة العربية (Arabic Blog Index) -->
+  <url>
+    <loc>https://dkora.online/?view=blog&amp;lang=ar</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=blog&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=blog&amp;lang=en" />
+  </url>
+
+  <!-- 9. أرشيف المدونة باللغة الإنجليزية (English Blog Index) -->
+  <url>
+    <loc>https://dkora.online/?view=blog&amp;lang=en</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=blog&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=blog&amp;lang=en" />
+  </url>
+
+  <!-- ==================== BLOG ARTICLES Section ==================== -->
+
+  <!-- Article 1: Speed Up WordPress (Arabic) -->
+  <url>
+    <loc>https://dkora.online/?lang=ar&amp;article=speed-up-wordpress-images</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar&amp;article=speed-up-wordpress-images" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en&amp;article=speed-up-wordpress-images" />
+  </url>
+
+  <!-- Article 1: Speed Up WordPress (English) -->
+  <url>
+    <loc>https://dkora.online/?lang=en&amp;article=speed-up-wordpress-images</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar&amp;article=speed-up-wordpress-images" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en&amp;article=speed-up-wordpress-images" />
+  </url>
+
+  <!-- Article 2: WebP vs AVIF comparison (Arabic) -->
+  <url>
+    <loc>https://dkora.online/?lang=ar&amp;article=webp-vs-avif-modern-formats</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar&amp;article=webp-vs-avif-modern-formats" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en&amp;article=webp-vs-avif-modern-formats" />
+  </url>
+
+  <!-- Article 2: WebP vs AVIF comparison (English) -->
+  <url>
+    <loc>https://dkora.online/?lang=en&amp;article=webp-vs-avif-modern-formats</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar&amp;article=webp-vs-avif-modern-formats" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en&amp;article=webp-vs-avif-modern-formats" />
+  </url>
+
+  <!-- Article 3: Local privacy & security (Arabic) -->
+  <url>
+    <loc>https://dkora.online/?lang=ar&amp;article=on-device-image-privacy</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar&amp;article=on-device-image-privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en&amp;article=on-device-image-privacy" />
+  </url>
+
+  <!-- Article 3: Local privacy & security (English) -->
+  <url>
+    <loc>https://dkora.online/?lang=en&amp;article=on-device-image-privacy</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar&amp;article=on-device-image-privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en&amp;article=on-device-image-privacy" />
+  </url>
+
+  <!-- Article 4: Product dimensions and Aspect Ratios (Arabic) -->
+  <url>
+    <loc>https://dkora.online/?lang=ar&amp;article=product-image-dimensions-ecommerce</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar&amp;article=product-image-dimensions-ecommerce" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en&amp;article=product-image-dimensions-ecommerce" />
+  </url>
+
+  <!-- Article 4: Product dimensions and Aspect Ratios (English) -->
+  <url>
+    <loc>https://dkora.online/?lang=en&amp;article=product-image-dimensions-ecommerce</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar&amp;article=product-image-dimensions-ecommerce" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en&amp;article=product-image-dimensions-ecommerce" />
+  </url>
+
 </urlset>

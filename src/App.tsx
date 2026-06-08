@@ -1,8 +1,1937 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
+import { useState, useEffect, useRef, FormEvent, MouseEvent, TouchEvent, DragEvent, ChangeEvent } from 'react';
+import Header from './components/Header';
+import LegalModals from './components/LegalModals';
+import { 
+  Sparkles, 
+  Moon, 
+  Sun, 
+  Check, 
+  Share2, 
+  RotateCcw, 
+  Upload, 
+  Download, 
+  Sliders, 
+  Contrast, 
+  Type, 
+  Info, 
+  HelpCircle, 
+  Scissors, 
+  Eraser, 
+  Eye, 
+  Pipette, 
+  Maximize, 
+  CheckCircle2, 
+  Layers, 
+  Volume2, 
+  VolumeX, 
+  FileImage, 
+  RefreshCw, 
+  SlidersHorizontal 
+} from 'lucide-react';
+
+// Interfaces for structured state
+interface ProcessedMetrics {
+  originalSize: number;
+  originalWidth: number;
+  originalHeight: number;
+  compressedSize: number;
+  compressedWidth: number;
+  compressedHeight: number;
+  ratioSaved: number;
+}
+
+interface ImageHistoryItem {
+  id: string;
+  name: string;
+  originalSize: number;
+  compressedSize: number;
+  savedSrc: string;
+  timestamp: string;
+}
 
 export default function App() {
-  return <div></div>;
+  // Theme state
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
+
+  // Core image state
+  const [originalImageSrc, setOriginalImageSrc] = useState<string | null>(null);
+  const [originalFileName, setOriginalFileName] = useState<string>('image.png');
+  const [originalFileType, setOriginalFileType] = useState<string>('image/png');
+  const [isProcessing, setIsProcessing] = useState<boolean>(false);
+  const [processedImageSrc, setProcessedImageSrc] = useState<string | null>(null);
+  
+  // Undo/Redo/Reset Cache values
+  const [historyList, setHistoryList] = useState<ImageHistoryItem[]>([]);
+
+  // Main navigation tabs
+  const [activeTab, setActiveTab] = useState<'compress' | 'background' | 'enhance' | 'watermark'>('compress');
+
+  // Tool states: 1. Compression Settings
+  const [quality, setQuality] = useState<number>(80);
+  const [format, setFormat] = useState<'image/jpeg' | 'image/png' | 'image/webp'>('image/webp');
+  const [resizeMode, setResizeMode] = useState<'percent' | 'pixels'>('percent');
+  const [resizePercent, setResizePercent] = useState<number>(100);
+  const [customWidth, setCustomWidth] = useState<number>(0);
+  const [customHeight, setCustomHeight] = useState<number>(0);
+  const [lockAspectRatio, setLockAspectRatio] = useState<boolean>(true);
+  const [aspectRatioValue, setAspectRatioValue] = useState<number>(1);
+
+  // Tool states: 2. Background Removal Settings
+  const [bgColorMode, setBgColorMode] = useState<boolean>(false);
+  const [targetColor, setTargetColor] = useState<{r: number, g: number, b: number}>({ r: 255, g: 255, b: 255 });
+  const [tolerance, setTolerance] = useState<number>(20);
+  const [feather, setFeather] = useState<number>(5);
+  const [isEyedropperActive, setIsEyedropperActive] = useState<boolean>(false);
+  
+  // Manual Eraser states
+  const [manualEraserActive, setManualEraserActive] = useState<boolean>(false);
+  const [eraserBrushSize, setEraserBrushSize] = useState<number>(25);
+  const [eraserMode, setEraserMode] = useState<'erase' | 'restore'>('erase');
+  
+  // Tool states: 3. Color Enhancements / Adjustments
+  const [brightness, setBrightness] = useState<number>(100); // 50 to 150
+  const [contrast, setContrast] = useState<number>(100);     // 50 to 150
+  const [saturation, setSaturation] = useState<number>(100);   // 0 to 200
+  const [blur, setBlur] = useState<number>(0);               // 0 to 10px
+  const [grayscale, setGrayscale] = useState<boolean>(false);
+  const [sepia, setSepia] = useState<boolean>(false);
+
+  // Tool states: 4. Watermark Settings
+  const [useWatermark, setUseWatermark] = useState<boolean>(false);
+  const [watermarkType, setWatermarkType] = useState<'text' | 'image'>('text');
+  const [watermarkText, setWatermarkText] = useState<string>('موسوعة dkora');
+  const [watermarkColor, setWatermarkColor] = useState<string>('#ffffff');
+  const [watermarkOpacity, setWatermarkOpacity] = useState<number>(40); // 10 to 100
+  const [watermarkSize, setWatermarkSize] = useState<number>(20); // Font size or image scale percentage
+  const [watermarkPosition, setWatermarkPosition] = useState<'center' | 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left' | 'pattern'>('bottom-left');
+  const [logoImageSrc, setLogoImageSrc] = useState<string | null>(null);
+
+  // Studio and Drag & Drop elements
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [compareSplitPercent, setCompareSplitPercent] = useState<number>(50);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  // Metrics state
+  const [metrics, setMetrics] = useState<ProcessedMetrics | null>(null);
+
+  // Canvas and Image DOM References for client processing
+  const hiddenOriginalImageRef = useRef<HTMLImageElement | null>(null);
+  const eraserMaskCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const previewContainerRef = useRef<HTMLDivElement | null>(null);
+  const isDraggingSplitRef = useRef<boolean>(false);
+  const [legalModal, setLegalModal] = useState<'privacy' | 'terms' | null>(null);
+
+  // Setup sound cues (synthesizer on the fly!)
+  const playSound = (freq = 440, duration = 0.08, type: OscillatorType = 'sine') => {
+    if (!soundEnabled) return;
+    try {
+      const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      
+      osc.type = type;
+      osc.frequency.value = freq;
+      
+      gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+      
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    } catch (e) {
+      // Ignored if sound card is busy
+    }
+  };
+
+  // Helper Toast Alert
+  const showToast = (message: string) => {
+    setToastMessage(message);
+    setTimeout(() => {
+      setToastMessage(null);
+    }, 4000);
+  };
+
+  // Toggle Dark Mode
+  const handleToggleTheme = () => {
+    const nextTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(nextTheme);
+    if (nextTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    playSound(nextTheme === 'dark' ? 350 : 580, 0.12);
+  };
+
+  // Dropzone file parser
+  const parseSelectedFile = (file: File) => {
+    if (!file.type.startsWith('image/')) {
+      showToast('خطأ: يرجى رفع ملف صورة صحيح بصيغة (PNG, JPG, WebP أو SVG).');
+      playSound(250, 0.2, 'square');
+      return;
+    }
+
+    setIsProcessing(true);
+    setOriginalFileName(file.name);
+    setOriginalFileType(file.type);
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const result = e.target?.result as string;
+      setOriginalImageSrc(result);
+      playSound(520, 0.15);
+      
+      // Reset manual eraser layer whenever a new image is loaded
+      if (eraserMaskCanvasRef.current) {
+        const ctx = eraserMaskCanvasRef.current.getContext('2d');
+        if (ctx) {
+          ctx.clearRect(0, 0, eraserMaskCanvasRef.current.width, eraserMaskCanvasRef.current.height);
+        }
+      }
+    };
+    reader.onerror = () => {
+      showToast('حدث خطأ أثناء تحميل وقراءة الصورة.');
+      setIsProcessing(false);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleDragOver = (e: DragEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      parseSelectedFile(e.dataTransfer.files[0]);
+    }
+  };
+
+  const handleFileInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      parseSelectedFile(e.target.files[0]);
+    }
+  };
+
+  // Watermark logo loader helper
+  const handleLogoUpload = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setLogoImageSrc(event.target?.result as string);
+        showToast('تم رفع شعار المائي بنجاح! سيتم وضعه فوق الكومبو المحسن.');
+        playSound(600, 0.1);
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
+
+  // Listen to original image load to update aspect ratios and sizes
+  const handleOriginalImageLoad = () => {
+    const img = hiddenOriginalImageRef.current;
+    if (!img) return;
+
+    const width = img.naturalWidth;
+    const height = img.naturalHeight;
+    setCustomWidth(width);
+    setCustomHeight(height);
+    setAspectRatioValue(width / height);
+
+    // Synchronize size of eraser mask canvas to match the original layout sizes
+    if (eraserMaskCanvasRef.current) {
+      eraserMaskCanvasRef.current.width = width;
+      eraserMaskCanvasRef.current.height = height;
+      const ctx = eraserMaskCanvasRef.current.getContext('2d');
+      if (ctx) {
+        ctx.fillStyle = 'rgba(0,0,0,0)';
+        ctx.fillRect(0, 0, width, height);
+      }
+    }
+
+    // Trigger initial calculation
+    setTimeout(() => {
+      triggerReprocess();
+    }, 100);
+  };
+
+  // Ratio lock resize handlers
+  const handleWidthChange = (val: number) => {
+    setCustomWidth(val);
+    if (lockAspectRatio) {
+      setCustomHeight(Math.round(val / aspectRatioValue));
+    }
+  };
+
+  const handleHeightChange = (val: number) => {
+    setCustomHeight(val);
+    if (lockAspectRatio) {
+      setCustomWidth(Math.round(val * aspectRatioValue));
+    }
+  };
+
+  // Helper color parsing
+  const hexToRgb = (hex: string) => {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : { r: 255, g: 255, b: 255 };
+  };
+
+  // Preset size appender
+  const applyPresetSize = (w: number, h: number, descriptionSec: string) => {
+    setResizeMode('pixels');
+    setCustomWidth(w);
+    setCustomHeight(h);
+    showToast(`تم تطبيق قالب مقاس: ${descriptionSec}`);
+    playSound(450, 0.08);
+  };
+
+  // Main high-performance image reconstruction pipeline
+  const triggerReprocess = () => {
+    const imgElement = hiddenOriginalImageRef.current;
+    if (!imgElement || !imgElement.complete) return;
+
+    setIsProcessing(true);
+
+    // Configure core canvas sizing
+    const renderCanvas = document.createElement('canvas');
+    let targetW = imgElement.naturalWidth;
+    let targetH = imgElement.naturalHeight;
+
+    if (resizeMode === 'percent') {
+      const scale = resizePercent / 100;
+      targetW = Math.round(imgElement.naturalWidth * scale);
+      targetH = Math.round(imgElement.naturalHeight * scale);
+    } else {
+      targetW = customWidth || imgElement.naturalWidth;
+      targetH = customHeight || imgElement.naturalHeight;
+    }
+
+    renderCanvas.width = targetW;
+    renderCanvas.height = targetH;
+
+    const ctx = renderCanvas.getContext('2d');
+    if (!ctx) {
+      setIsProcessing(false);
+      return;
+    }
+
+    // STEP 1: Process and render with hardware-accelerated color filter Adjustments
+    ctx.clearRect(0, 0, targetW, targetH);
+    
+    // Build filter string
+    let filterString = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%)`;
+    if (blur > 0) filterString += ` blur(${blur}px)`;
+    if (grayscale) filterString += ' grayscale(100%)';
+    if (sepia) filterString += ' sepia(100%)';
+    
+    ctx.filter = filterString;
+    ctx.drawImage(imgElement, 0, 0, targetW, targetH);
+    ctx.filter = 'none'; // reset to native graphics
+
+    // STEP 2: Background Removal algorithms
+    if (bgColorMode) {
+      const imgData = ctx.getImageData(0, 0, targetW, targetH);
+      const data = imgData.data;
+      const { r: tR, g: tG, b: tB } = targetColor;
+      
+      // Cache factor
+      const maxDist = tolerance / 100 * 255;
+      const fRange = feather / 100 * 255;
+
+      for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        const a = data[i + 3];
+
+        if (a === 0) continue;
+
+        // Eucledian distance between colors
+        const distance = Math.sqrt(
+          (r - tR) * (r - tR) + 
+          (g - tG) * (g - tG) + 
+          (b - tB) * (b - tB)
+        );
+
+        if (distance < maxDist) {
+          if (fRange > 0 && distance > (maxDist - fRange)) {
+            // Smooth transparency transition (feather edge)
+            const alphaMul = (distance - (maxDist - fRange)) / fRange;
+            data[i + 3] = Math.round(a * alphaMul);
+          } else {
+            data[i + 3] = 0; // complete knockout
+          }
+        }
+      }
+      ctx.putImageData(imgData, 0, 0);
+    }
+
+    // STEP 3: Subtractive compositing for manual brush strokes overlay
+    if (eraserMaskCanvasRef.current) {
+      ctx.save();
+      // Enable source-out configuration to punch holes through the canvas
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.drawImage(eraserMaskCanvasRef.current, 0, 0, targetW, targetH);
+      ctx.restore();
+    }
+
+    // STEP 4: Add Creative Watermarks (Text or Custom Logo graphic)
+    if (useWatermark) {
+      ctx.save();
+      
+      // Set opacity
+      ctx.globalAlpha = watermarkOpacity / 100;
+
+      if (watermarkType === 'text') {
+        const fontSizeVal = Math.max(16, Math.round((targetW * 0.05) * (watermarkSize / 20)));
+        ctx.font = `600 ${fontSizeVal}px Cairo, system-ui, sans-serif`;
+        ctx.fillStyle = watermarkColor;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        // Calculate location coordinates based on preset selection
+        let x = targetW / 2;
+        let y = targetH / 2;
+        const padding = fontSizeVal * 1.2;
+
+        if (watermarkPosition === 'bottom-left') {
+          ctx.textAlign = 'left';
+          x = padding;
+          y = targetH - padding;
+        } else if (watermarkPosition === 'bottom-right') {
+          ctx.textAlign = 'right';
+          x = targetW - padding;
+          y = targetH - padding;
+        } else if (watermarkPosition === 'top-left') {
+          ctx.textAlign = 'left';
+          x = padding;
+          y = padding;
+        } else if (watermarkPosition === 'top-right') {
+          ctx.textAlign = 'right';
+          x = targetW - padding;
+          y = padding;
+        } else if (watermarkPosition === 'pattern') {
+          // Repeated slate patterns over grid
+          ctx.textAlign = 'center';
+          const spacingX = targetW / 3;
+          const spacingY = targetH / 3;
+          ctx.rotate(-Math.PI / 8);
+          for (let gx = -1; gx < 4; gx++) {
+            for (let gy = -1; gy < 4; gy++) {
+              ctx.fillText(watermarkText, gx * spacingX + spacingX / 2, gy * spacingY + spacingY / 2);
+            }
+          }
+        }
+
+        if (watermarkPosition !== 'pattern') {
+          ctx.fillText(watermarkText, x, y);
+        }
+
+      } else if (watermarkType === 'image' && logoImageSrc) {
+        // Render logo image
+        const logoImg = new Image();
+        logoImg.onload = () => {
+          const lScale = (watermarkSize / 100);
+          const logoW = Math.round(targetW * 0.25 * lScale);
+          const logoH = Math.round(logoW * (logoImg.naturalHeight / logoImg.naturalWidth));
+
+          let lx = (targetW - logoW) / 2;
+          let ly = (targetH - logoH) / 2;
+          const offset = 20;
+
+          if (watermarkPosition === 'bottom-left') {
+            lx = offset;
+            ly = targetH - logoH - offset;
+          } else if (watermarkPosition === 'bottom-right') {
+            lx = targetW - logoW - offset;
+            ly = targetH - logoH - offset;
+          } else if (watermarkPosition === 'top-left') {
+            lx = offset;
+            ly = offset;
+          } else if (watermarkPosition === 'top-right') {
+            lx = targetW - logoW - offset;
+            ly = offset;
+          }
+
+          // Composite logo
+          ctx.drawImage(logoImg, lx, ly, logoW, logoH);
+          ctx.restore();
+          
+          // Re-generate output blobs
+          exportCompressedImage(renderCanvas, targetW, targetH);
+        };
+        logoImg.src = logoImageSrc;
+        return; // Async handler handles end flow
+      }
+      ctx.restore();
+    }
+
+    // Finish synchronous path
+    exportCompressedImage(renderCanvas, targetW, targetH);
+  };
+
+  // Convert canvas output to configured format and quality blob
+  const exportCompressedImage = (canvas: HTMLCanvasElement, targetW: number, targetH: number) => {
+    const originalLength = originalImageSrc?.length ? Math.round((originalImageSrc.length * 3) / 4) : 10000;
+    const targetMime = format;
+    const compressionQuality = quality / 100;
+
+    canvas.toBlob((blob) => {
+      if (blob) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const processedDataUrl = reader.result as string;
+          setProcessedImageSrc(processedDataUrl);
+          
+          // Calculate high precise ratios
+          const finalSize = blob.size;
+          const ratioPercent = Math.max(0, Math.round(((originalLength - finalSize) / originalLength) * 100));
+
+          setMetrics({
+            originalSize: originalLength,
+            originalWidth: hiddenOriginalImageRef.current?.naturalWidth || targetW,
+            originalHeight: hiddenOriginalImageRef.current?.naturalHeight || targetH,
+            compressedSize: finalSize,
+            compressedWidth: targetW,
+            compressedHeight: targetH,
+            ratioSaved: ratioPercent
+          });
+
+          setIsProcessing(false);
+        };
+        reader.readAsDataURL(blob);
+      } else {
+        setIsProcessing(false);
+      }
+    }, targetMime, compressionQuality);
+  };
+
+  // Recalculating monitor
+  useEffect(() => {
+    if (originalImageSrc) {
+      triggerReprocess();
+    }
+  }, [
+    quality, 
+    format, 
+    resizeMode, 
+    resizePercent, 
+    customWidth, 
+    customHeight,
+    lockAspectRatio,
+    bgColorMode,
+    targetColor,
+    tolerance,
+    feather,
+    brightness,
+    contrast,
+    saturation,
+    blur,
+    grayscale,
+    sepia,
+    useWatermark,
+    watermarkType,
+    watermarkText,
+    watermarkColor,
+    watermarkOpacity,
+    watermarkSize,
+    watermarkPosition,
+    logoImageSrc
+  ]);
+
+  // Handle Eyedropper sampling logic manually on click
+  const handleImageCanvasClick = (e: MouseEvent<HTMLCanvasElement>) => {
+    if (!isEyedropperActive) return;
+
+    const canvas = e.currentTarget;
+    const rect = canvas.getBoundingClientRect();
+    
+    // Calculate fractional click coordinate
+    const clickXPercent = (e.clientX - rect.left) / rect.width;
+    const clickYPercent = (e.clientY - rect.top) / rect.height;
+
+    // Create secondary temporary memory canvas to read the actual original pixel
+    const pixelCanvas = document.createElement('canvas');
+    const img = hiddenOriginalImageRef.current;
+    if (!img) return;
+
+    pixelCanvas.width = img.naturalWidth;
+    pixelCanvas.height = img.naturalHeight;
+    const ctx = pixelCanvas.getContext('2d');
+    if (ctx) {
+      ctx.drawImage(img, 0, 0);
+      const px = Math.round(clickXPercent * img.naturalWidth);
+      const py = Math.round(clickYPercent * img.naturalHeight);
+      try {
+        const pixel = ctx.getImageData(px, py, 1, 1).data;
+        setTargetColor({
+          r: pixel[0],
+          g: pixel[1],
+          b: pixel[2]
+        });
+        setBgColorMode(true); // turn context filter on immediately
+        setIsEyedropperActive(false); // deactivate
+        showToast(`تم التقاط اللون المستهدف بنجاح! RGB(${pixel[0]}, ${pixel[1]}, ${pixel[2]})`);
+        playSound(800, 0.1);
+      } catch (err) {
+        console.error('Failed reading pixel data: ', err);
+      }
+    }
+  };
+
+  // Manual brush drawing mechanisms
+  const drawManualMask = (clientX: number, clientY: number, isDrawingActive: boolean) => {
+    const maskCanvas = eraserMaskCanvasRef.current;
+    if (!maskCanvas || !isDrawingActive) return;
+
+    const rect = maskCanvas.getBoundingClientRect();
+    // Fractional coordinate translation
+    const pxFrac = (clientX - rect.left) / rect.width;
+    const pyFrac = (clientY - rect.top) / rect.height;
+
+    const ctx = maskCanvas.getContext('2d');
+    if (ctx) {
+      ctx.save();
+      // Translate coordinates to natural mask pixels
+      const x = pxFrac * maskCanvas.width;
+      const y = pyFrac * maskCanvas.height;
+
+      // Draw radius circle on mask canvas
+      ctx.beginPath();
+      // Map scale brush size proportionally to image natural width
+      const mappedBrushSize = (eraserBrushSize / rect.width) * maskCanvas.width;
+      ctx.arc(x, y, mappedBrushSize, 0, Math.PI * 2);
+
+      if (eraserMode === 'erase') {
+        ctx.fillStyle = 'rgba(0,0,0,1)'; 
+        ctx.globalCompositeOperation = 'source-over'; // write to black mask
+        ctx.fill();
+      } else {
+        ctx.globalCompositeOperation = 'destination-out'; // clear black mask
+        ctx.fill();
+      }
+      ctx.restore();
+      
+      // Instantly refresh output pipeline
+      triggerReprocess();
+    }
+  };
+
+  const handleBrushStart = (e: MouseEvent<HTMLCanvasElement>) => {
+    if (!manualEraserActive) return;
+    drawManualMask(e.clientX, e.clientY, true);
+  };
+
+  const handleBrushMove = (e: MouseEvent<HTMLCanvasElement>) => {
+    if (!manualEraserActive) return;
+    if (e.buttons === 1) { // Left-click down
+      drawManualMask(e.clientX, e.clientY, true);
+    }
+  };
+
+  const handleTouchDraw = (e: TouchEvent<HTMLCanvasElement>) => {
+    if (!manualEraserActive || e.touches.length === 0) return;
+    const touch = e.touches[0];
+    drawManualMask(touch.clientX, touch.clientY, true);
+  };
+
+  // Clear manual edits completely
+  const handleResetManualMask = () => {
+    const maskCanvas = eraserMaskCanvasRef.current;
+    if (maskCanvas) {
+      const ctx = maskCanvas.getContext('2d');
+      if (ctx) {
+        ctx.clearRect(0, 0, maskCanvas.width, maskCanvas.height);
+        triggerReprocess();
+        showToast('تم مسح تدوينات فرشاة التفريغ واستعادة الخلفية الأصلية للكامل.');
+        playSound(330, 0.15, 'triangle');
+      }
+    }
+  };
+
+  // Quick Preset Colors
+  const applyPresetColor = (r: number, g: number, b: number, title: string) => {
+    setBgColorMode(true);
+    setTargetColor({ r, g, b });
+    showToast(`تم تعيين فحص لون: ${title}`);
+    playSound(720, 0.08);
+  };
+
+  // Save current processed file to history and download
+  const handleDownloadImage = () => {
+    if (!processedImageSrc) return;
+
+    // Save to local session log
+    const indexName = originalFileName.substring(0, originalFileName.lastIndexOf('.')) || originalFileName;
+    const outputExt = format.split('/')[1] || 'webp';
+    const outputFilename = `${indexName}_dkora_optimized.${outputExt}`;
+
+    const newHistory: ImageHistoryItem = {
+      id: Date.now().toString(),
+      name: outputFilename,
+      originalSize: metrics?.originalSize || 0,
+      compressedSize: metrics?.compressedSize || 0,
+      savedSrc: processedImageSrc,
+      timestamp: new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })
+    };
+
+    setHistoryList([newHistory, ...historyList]);
+
+    const activeLink = document.createElement('a');
+    activeLink.href = processedImageSrc;
+    activeLink.download = outputFilename;
+    document.body.appendChild(activeLink);
+    activeLink.click();
+    document.body.removeChild(activeLink);
+
+    playSound(880, 0.22, 'sine');
+    showToast(`🔥 تم تحميل الصورة بنجاح وتوفير ${metrics?.ratioSaved}% من الحجم!`);
+  };
+
+  // Comparison slider mouse and touch listeners
+  const startSplitDrag = (e: MouseEvent) => {
+    e.preventDefault();
+    isDraggingSplitRef.current = true;
+    document.addEventListener('mousemove', handleSplitDragging);
+    document.addEventListener('mouseup', stopSplitDrag);
+  };
+
+  const handleSplitDragging = (e: globalThis.MouseEvent) => {
+    if (!isDraggingSplitRef.current || !previewContainerRef.current) return;
+    const rect = previewContainerRef.current.getBoundingClientRect();
+    const positionX = e.clientX - rect.left;
+    const percentage = Math.max(0, Math.min(100, (positionX / rect.width) * 100));
+    setCompareSplitPercent(percentage);
+  };
+
+  const stopSplitDrag = () => {
+    isDraggingSplitRef.current = false;
+    document.removeEventListener('mousemove', handleSplitDragging);
+    document.removeEventListener('mouseup', stopSplitDrag);
+  };
+
+  // Helper reset utility
+  const handleResetAllControls = () => {
+    setQuality(80);
+    setFormat('image/webp');
+    setResizePercent(100);
+    setLockAspectRatio(true);
+    setBgColorMode(false);
+    setTolerance(20);
+    setFeather(5);
+    setManualEraserActive(false);
+    setBrightness(100);
+    setContrast(100);
+    setSaturation(100);
+    setBlur(0);
+    setGrayscale(false);
+    setSepia(false);
+    setUseWatermark(false);
+    showToast('تمت إعادة تعيين الفلاتر وقيم الضغط لقيمها القياسية.');
+    playSound(400, 0.2);
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 font-sans flex flex-col antialiased">
+      
+      {/* Premium Modular Header with full controls */}
+      <Header 
+        theme={theme} 
+        soundEnabled={soundEnabled} 
+        setSoundEnabled={setSoundEnabled} 
+        handleToggleTheme={handleToggleTheme} 
+      />
+
+      {/* Modern dark-blue cosmic gradient background */}
+      <div className="bg-slate-950 dark:bg-slate-950 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white pt-10 pb-20 px-4 text-center relative overflow-hidden transition-colors duration-200">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,26,64,0.12),transparent_40%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.08),transparent_40%)]" />
+        <div className="max-w-4xl mx-auto space-y-6 relative z-10 animate-fade-in">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-rose-500/10 border border-rose-500/20 text-rose-400 text-[11px] sm:text-xs font-bold rounded-full">
+            <Sparkles className="w-3.5 h-3.5 animate-spin text-[#ff1a40]" />
+            <span>أفضل أداة مجانية لمعالجة وضغط الصور وصناع المحتوى لعام 2026</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-black tracking-tight leading-snug">
+            حوّل صورتك العادية إلى <br />
+            <span className="text-[#ff1a40] drop-shadow-[0_0_15px_rgba(255,26,64,0.3)]">تحفة فنية احترافية.</span>
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-350 max-w-2xl mx-auto leading-relaxed">
+            قم بضغط حجم الصورة لنسب خيالية، عزل وتفريغ الألوان الخلفية يدوياً وتلقائياً، وتعديل مستويات السطوع والتشبع بكل أمان وخصوصية تامة دون رَفْع أي بايت خارج متصفحك!
+          </p>
+        </div>
+      </div>
+
+      {/* Floating Navigation Selector Pill bridging upper Hero and lower Workspace */}
+      <div className="max-w-3xl mx-auto w-full px-4 -mt-9 relative z-20">
+        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl p-1.5 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-1">
+          
+          <button
+            onClick={() => { setActiveTab('compress'); playSound(500, 0.05); }}
+            className={`w-full sm:flex-1 py-3 text-[11px] sm:text-xs font-black rounded-2xl transition-all cursor-pointer flex items-center justify-center gap-2 ${
+              activeTab === 'compress' 
+                ? 'bg-[#ff1a40] text-white shadow-md shadow-rose-500/20' 
+                : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
+            }`}
+          >
+            <Scissors className="w-4 h-4" />
+            <span>الضغط والمقاسات</span>
+          </button>
+
+          <button
+            onClick={() => { setActiveTab('background'); playSound(500, 0.05); }}
+            className={`w-full sm:flex-1 py-3 text-[11px] sm:text-xs font-black rounded-2xl transition-all cursor-pointer flex items-center justify-center gap-2 ${
+              activeTab === 'background' 
+                ? 'bg-[#ff1a40] text-white shadow-md shadow-rose-500/20' 
+                : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
+            }`}
+          >
+            <Eraser className="w-4 h-4" />
+            <span>عزل وتفريغ الخلفية</span>
+          </button>
+
+          <button
+            onClick={() => { setActiveTab('enhance'); playSound(500, 0.05); }}
+            className={`w-full sm:flex-1 py-3 text-[11px] sm:text-xs font-black rounded-2xl transition-all cursor-pointer flex items-center justify-center gap-2 ${
+              activeTab === 'enhance' 
+                ? 'bg-[#ff1a40] text-white shadow-md shadow-rose-500/20' 
+                : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
+            }`}
+          >
+            <SlidersHorizontal className="w-4 h-4" />
+            <span>التعديل والفلاتر</span>
+          </button>
+
+          <button
+            onClick={() => { setActiveTab('watermark'); playSound(500, 0.05); }}
+            className={`w-full sm:flex-1 py-3 text-[11px] sm:text-xs font-black rounded-2xl transition-all cursor-pointer flex items-center justify-center gap-2 ${
+              activeTab === 'watermark' 
+                ? 'bg-[#ff1a40] text-white shadow-md shadow-rose-500/20' 
+                : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
+            }`}
+          >
+            <Type className="w-4 h-4" />
+            <span>العلامة المائية</span>
+          </button>
+
+        </div>
+      </div>
+      {toastMessage && (
+        <div className="fixed bottom-6 left-6 z-50 bg-slate-900 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-bold px-4.5 py-3 rounded-2xl shadow-2xl flex items-center gap-2.5 animate-slide-up">
+          <CheckCircle2 className="w-4 h-4 text-[#ff1a40] animate-bounce" />
+          <span>{toastMessage}</span>
+        </div>
+      )}
+
+      {/* hidden raw original image loading controller */}
+      {originalImageSrc && (
+        <img
+          ref={hiddenOriginalImageRef}
+          src={originalImageSrc}
+          alt="original secret renderer"
+          onLoad={handleOriginalImageLoad}
+          style={{ display: 'none' }}
+        />
+      )}
+
+      {/* Center Layout Workspace */}
+      {!originalImageSrc ? (
+        <div className="max-w-4xl w-full mx-auto px-4 py-12 animate-fade-in space-y-8">
+          {/* STEP 1 Block */}
+          <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl overflow-hidden shadow-xl">
+            {/* Step card header bar */}
+            <div className="bg-slate-50 dark:bg-slate-950 px-6 py-4.5 border-b border-slate-150 dark:border-slate-850 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="px-3 py-1 bg-[#ff1a40] text-white text-xxs sm:text-xs font-black rounded-lg">
+                  STEP 1
+                </span>
+                <h3 className="text-sm font-black text-slate-800 dark:text-white">
+                  الخطوة الأولى: أضف صورتك هنا لبدء المعالجة الذكية
+                </h3>
+              </div>
+              <div className="w-8 h-8 rounded-full bg-rose-200/50 dark:bg-rose-950/40 text-[#ff1a40] flex items-center justify-center font-bold">
+                📸
+              </div>
+            </div>
+
+            {/* Drag drop zone body exactly styled like the reference */}
+            <div
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              onClick={() => {
+                const inputEl = document.getElementById('main_file_input');
+                if (inputEl) inputEl.click();
+              }}
+              className={`p-10 text-center flex flex-col items-center justify-center transition-all min-h-[360px] cursor-pointer ${
+                isDragging
+                  ? 'bg-rose-500/10 scale-95'
+                  : 'bg-transparent hover:bg-slate-50/40 dark:hover:bg-slate-900/30'
+              }`}
+            >
+              <div className="w-16 h-16 rounded-2xl bg-rose-100 dark:bg-rose-950 flex items-center justify-center text-[#ff1a40] mb-4 shadow-sm animate-bounce">
+                <Upload className="w-8 h-8" />
+              </div>
+
+              <h4 className="text-md sm:text-lg font-black text-slate-800 dark:text-white leading-snug">
+                اسحب وأفلت صورتك هنا لبدء تحسينها بالكامل دون رَفْع أو انتظار!
+              </h4>
+              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-lg mx-auto leading-relaxed mt-2.5">
+                تتم معالجة الصور بالكامل محلياً داخل المتصفح وبحماية مطلقة بنسبة 100٪. صورك آمنة ولن يتم مشاركتها أو حفظها خارج جهازك أبداً. نقبل الامتدادات JPG أو PNG أو WebP أو SVG ومقاسات تصل حتى 4K.
+              </p>
+
+              {/* Browse file button */}
+              <label 
+                onClick={(e) => e.stopPropagation()}
+                className="mt-8 inline-flex items-center gap-2 px-6 py-3.5 bg-slate-900 hover:bg-slate-800 dark:bg-slate-850 dark:hover:bg-slate-800 text-white font-extrabold text-xs rounded-xl shadow-lg transition-all cursor-pointer"
+              >
+                <Upload className="w-4 h-4" />
+                <span>تصفح واختيار ملف صورة من جهازك</span>
+                <input
+                  id="main_file_input"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileInputChange}
+                  className="hidden"
+                />
+              </label>
+
+              {/* Speed notes */}
+              <div className="mt-10 flex gap-4 text-[10px] font-bold text-slate-400 justify-center" onClick={(e) => e.stopPropagation()}>
+                <span className="flex items-center gap-1">🛡️ أمان محلي 100٪</span>
+                <span>•</span>
+                <span className="flex items-center gap-1">⚡ فوري بدون سيرفر</span>
+                <span>•</span>
+                <span className="flex items-center gap-1">🗜️ ضغط WebP فائق</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Speed Info Banner */}
+          <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950/40 border border-slate-800 rounded-3xl p-6 sm:p-8 text-white space-y-4">
+            <h4 className="text-xs font-black text-rose-400 uppercase tracking-wider flex items-center gap-1.5 font-sans">
+              <Info className="w-4.5 h-4.5 text-[#ff1a40]" />
+              لماذا يؤثر حجم وعزل الصور على أرشفة وتصدر موقعك في محركات البحث؟
+            </h4>
+            <p className="text-[11px] sm:text-xs text-slate-350 leading-relaxed font-semibold">
+              المواقع الحديثة تتطلب سرعة تحميل فائقة لحصد نقاط PageSpeed ممتازة من جوجل. عندما تستخدم تفريغ وضغط <b>Client-Side</b> محلي هنا:
+            </p>
+            <ul className="text-[10px] sm:text-xs text-slate-400 space-y-2 list-disc list-inside">
+              <li>يقل زمن انتظار استجابة السيرفر للصفر وتتحمل الصورة بلمح البصر.</li>
+              <li>التحويل التلقائي لصيغة <b>WebP</b> يضمن معدلات خفض للمساحة تتجاوز 80٪ مع الحفاظ على وضوح الحواف.</li>
+              <li>عزل وإزالة خلفيات صور المنتجات يدوياً بمرونة وسهولة لتمثيلها في متاجرك بأسلوب مذهل.</li>
+            </ul>
+          </div>
+        </div>
+      ) : (
+        <main className="flex-grow max-w-7xl w-full mx-auto px-4 py-8 sm:py-12 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
+          
+          {/* LEFT COLUMN: Controls Panel & Tools Toolbar (5 Cols) */}
+          <section className="lg:col-span-12 xl:col-span-5 space-y-6">
+            
+            {/* Step tag indicating STEP 2 for Controls toolbar */}
+            <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl p-5 shadow-xs flex flex-col space-y-4">
+              <div className="flex items-center gap-2.5 pb-2 border-b border-slate-100 dark:border-slate-800">
+                <span className="px-2.5 py-0.5 bg-[#ff1a40] text-white text-[10px] font-black rounded-lg">
+                  STEP 2
+                </span>
+                <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center justify-between w-full">
+                  <span>🎨 الخطوة الثانية: اضبط التفاصيل والخيارات</span>
+                  <button 
+                    onClick={handleResetAllControls}
+                    className="text-[10px] text-rose-500 hover:underline flex items-center gap-1 cursor-pointer font-bold"
+                  >
+                    <RotateCcw className="w-3 h-3" />
+                    إعادة الموازنة للتلقائي
+                  </button>
+                </h3>
+              </div>
+            {/* TAB CONTENT 1: Image Compression and Resizing Settings */}
+            {activeTab === 'compress' && (
+              <div className="space-y-4 pt-1 animate-fade">
+                
+                {/* File Format Output */}
+                <div className="space-y-1.5">
+                  <label className="block text-xs font-bold text-slate-505 dark:text-slate-350">
+                    صيغة التصدير التكتيكية:
+                  </label>
+                  <p className="text-[10px] text-slate-400">صيغة WebP تناسب المواقع الحديثة وسرعة أرشفة جوجل.</p>
+                  <div className="grid grid-cols-3 gap-2">
+                    {(['image/webp', 'image/jpeg', 'image/png'] as const).map((type) => (
+                      <button
+                        key={type}
+                        onClick={() => { setFormat(type); playSound(640, 0.06); }}
+                        className={`py-1.5 text-xs font-bold rounded-xl border transition-all cursor-pointer ${
+                          format === type 
+                            ? 'bg-emerald-500/10 text-emerald-650 dark:text-emerald-400 border-emerald-500' 
+                            : 'bg-transparent border-slate-200 dark:border-slate-800 text-slate-500'
+                        }`}
+                      >
+                        {type.split('/')[1].toUpperCase()}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Compression Level Quality Slider */}
+                <div className="space-y-1.5 bg-slate-50/50 dark:bg-slate-950 p-3 rounded-2xl border border-slate-100 dark:border-slate-900">
+                  <div className="flex items-center justify-between text-xs font-bold">
+                    <span className="text-slate-600 dark:text-slate-300">معدل جودة الصورة المضغوطة:</span>
+                    <span className="font-mono text-emerald-600 dark:text-emerald-400 text-sm">{quality}%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="10"
+                    max="100"
+                    value={quality}
+                    onChange={(e) => setQuality(parseInt(e.target.value))}
+                    className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                  />
+                  <div className="flex justify-between text-[10px] text-slate-400">
+                    <span>حجم أصغر (١٠٪)</span>
+                    <span>مثالي وموصى به (٧٠٪ - ٨٥٪)</span>
+                    <span>بدون ضغط (١٠٠٪)</span>
+                  </div>
+                </div>
+
+                {/* Resizing Mode Selector */}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-bold text-slate-606 dark:text-slate-350">أبعاد ومقاس الصورة:</label>
+                    <div className="flex gap-1.5 bg-slate-100 dark:bg-slate-950 p-0.5 rounded-lg">
+                      <button
+                        onClick={() => setResizeMode('percent')}
+                        className={`px-2 py-0.5 text-[10px] font-bold rounded-md transition-all ${
+                          resizeMode === 'percent' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs' : 'text-slate-400'
+                        }`}
+                      >
+                        نسبة مئوية
+                      </button>
+                      <button
+                        onClick={() => setResizeMode('pixels')}
+                        className={`px-2 py-0.5 text-[10px] font-bold rounded-md transition-all ${
+                          resizeMode === 'pixels' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs' : 'text-slate-400'
+                        }`}
+                      >
+                        بكسل محدد
+                      </button>
+                    </div>
+                  </div>
+
+                  {resizeMode === 'percent' ? (
+                    <div className="space-y-2 bg-slate-100/30 dark:bg-slate-955 p-3 rounded-2xl border border-slate-100 dark:border-slate-900/50">
+                      <div className="flex justify-between text-xs font-mono font-bold">
+                        <span>نسبة تقليص المقاس:</span>
+                        <span className="text-emerald-500">{resizePercent}%</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="10"
+                        max="100"
+                        value={resizePercent}
+                        onChange={(e) => setResizePercent(parseInt(e.target.value))}
+                        className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                      />
+                    </div>
+                  ) : (
+                    <div className="space-y-2">
+                      <div className="grid grid-cols-2 gap-2">
+                        <div className="space-y-1">
+                          <span className="text-[10px] font-bold text-slate-400">العرض (الافتراضي):</span>
+                          <input 
+                            type="number"
+                            value={customWidth || ''}
+                            onChange={(e) => handleWidthChange(parseInt(e.target.value) || 0)}
+                            className="w-full p-2 rounded-xl text-xs sm:text-sm font-bold border border-slate-200 dark:border-slate-800 bg-transparent text-slate-900 dark:text-white outline-none focus:border-emerald-500"
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <span className="text-[10px] font-bold text-slate-400">الارتفاع (الافتراضي):</span>
+                          <input 
+                            type="number"
+                            value={customHeight || ''}
+                            onChange={(e) => handleHeightChange(parseInt(e.target.value) || 0)}
+                            className="w-full p-2 rounded-xl text-xs sm:text-sm font-bold border border-slate-200 dark:border-slate-800 bg-transparent text-slate-900 dark:text-white outline-none focus:border-emerald-500"
+                          />
+                        </div>
+                      </div>
+
+                      <label className="flex items-center gap-1.5 cursor-pointer select-none">
+                        <input
+                          type="checkbox"
+                          checked={lockAspectRatio}
+                          onChange={(e) => setLockAspectRatio(e.target.checked)}
+                          className="rounded text-emerald-500 focus:ring-emerald-500 accent-emerald-500"
+                        />
+                        <span className="text-[11px] text-slate-500 dark:text-slate-400 font-bold">حفظ نسبة التناسب وتثبيت الأبعاد تلقائياً</span>
+                      </label>
+                    </div>
+                  )}
+
+                  {/* High Quality Preset Dimensions for Creators */}
+                  <div className="space-y-1.5">
+                    <span className="block text-[11px] font-bold text-slate-400">مقاسات سريعة جاهزة لصناع المحتوى:</span>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
+                      <button
+                        onClick={() => applyPresetSize(1280, 720, 'مصغرات يوتيوب HD')}
+                        className="p-1 px-2 text-[10px] font-bold rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-900 hover:border-emerald-550 transition-all text-right cursor-pointer"
+                      >
+                        📺 يوتيوب (720p HD)
+                      </button>
+                      <button
+                        onClick={() => applyPresetSize(1080, 1080, 'بوست انستجرام مربع')}
+                        className="p-1 px-2 text-[10px] font-bold rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-900 hover:border-emerald-550 transition-all text-right cursor-pointer"
+                      >
+                        📸 انستجرام مربع (1:1)
+                      </button>
+                      <button
+                        onClick={() => applyPresetSize(1920, 1080, 'غلاف فيسبوك HD')}
+                        className="p-1 px-2 text-[10px] font-bold rounded-lg border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 bg-slate-50/50 dark:bg-slate-900 hover:border-emerald-550 transition-all text-right cursor-pointer"
+                      >
+                        👥 بوست فيسبوك HD
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            )}
+
+            {/* TAB CONTENT 2: Background Removal and Solid-Color Keying */}
+            {activeTab === 'background' && (
+              <div className="space-y-4 pt-1 animate-fade">
+                
+                {/* Background Isolation Toggle */}
+                <div className="flex items-center justify-between bg-slate-50/50 dark:bg-slate-950 p-2.5 rounded-2xl border border-slate-100 dark:border-slate-900">
+                  <div className="space-y-0.5">
+                    <span className="block text-xs font-bold text-slate-800 dark:text-slate-200">التفريغ الذكي بالألوان:</span>
+                    <p className="text-[9px] text-slate-400">إزالة الخلفيات ذات الألوان الموحدة فوراً كالأبيض أو الأخضر.</p>
+                  </div>
+                  <label className="relative inline-flex items-center cursor-pointer">
+                    <input 
+                      type="checkbox" 
+                      checked={bgColorMode} 
+                      onChange={(e) => { setBgColorMode(e.target.checked); playSound(680, 0.1); }}
+                      className="sr-only peer"
+                    />
+                    <div className="w-9 h-5 bg-slate-250 dark:bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:content-[''] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-350 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"></div>
+                  </label>
+                </div>
+
+                {/* Eyedropper and custom color config */}
+                {bgColorMode && (
+                  <div className="space-y-3.5 bg-emerald-500/5 p-3.5 rounded-2xl border border-emerald-550/20">
+                    <div className="flex flex-col sm:flex-row gap-2.5 items-start sm:items-center justify-between">
+                      <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400 flex items-center gap-1">
+                        <Pipette className="w-4 h-4" />
+                        اللون المستهدف للاستبعاد:
+                      </span>
+
+                      {/* Eyedropper dynamic trigger */}
+                      <button
+                        onClick={() => { setIsEyedropperActive(!isEyedropperActive); playSound(490, 0.08); }}
+                        className={`w-full sm:w-auto p-2 px-3 text-[10px] font-bold rounded-xl flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
+                          isEyedropperActive 
+                            ? 'bg-rose-500 text-white border-rose-600 animate-pulse' 
+                            : 'bg-emerald-600 text-white border-emerald-700 hover:bg-emerald-700'
+                        }`}
+                        title="انقر هنا ثم اضغط على أي نقطة بالصورة لالتقاط لونها بدقة!"
+                      >
+                        <Pipette className="w-3.5 h-3.5" />
+                        {isEyedropperActive ? 'انقر على الصورة للاقتطاف...' : 'اقتطف لوناً من الصورة 🎯'}
+                      </button>
+                    </div>
+
+                    {/* Show Active Selected Color */}
+                    <div className="flex items-center gap-2.5">
+                      <div 
+                        className="w-10 h-10 rounded-xl border border-white dark:border-slate-800 shadow-inner" 
+                        style={{ backgroundColor: `rgb(${targetColor.r}, ${targetColor.g}, ${targetColor.b})` }} 
+                      />
+                      <div className="text-xs space-y-0.5">
+                        <span className="block font-mono font-bold">RGB({targetColor.r}, {targetColor.g}, {targetColor.b})</span>
+                        <div className="flex items-center gap-1">
+                          <input 
+                            type="color" 
+                            value={`#${((1 << 24) + (targetColor.r << 16) + (targetColor.g << 8) + targetColor.b).toString(16).slice(1)}`}
+                            onChange={(e) => setTargetColor(hexToRgb(e.target.value))}
+                            className="w-5 h-5 p-0 bg-transparent rounded border-0 outline-none cursor-pointer"
+                          />
+                          <span className="text-[10px] text-slate-400">تعديل اللون يدوياً</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Quick presets for creators */}
+                    <div className="space-y-1">
+                      <span className="text-[9px] font-bold text-slate-400 block">مرشحات خلفية جاهزة شيوعاً:</span>
+                      <div className="flex gap-1.5 flex-wrap">
+                        <button
+                          onClick={() => applyPresetColor(255, 255, 255, 'البيضاء الناصعة')}
+                          className="px-2 py-0.5 bg-white text-slate-800 border border-slate-300 rounded-md text-[10px] font-bold cursor-pointer"
+                        >
+                          خلفية بيضاء للمنتجات
+                        </button>
+                        <button
+                          onClick={() => applyPresetColor(0, 255, 0, 'الشاشة الخضراء')}
+                          className="px-2 py-0.5 bg-green-500 text-white rounded-md text-[10px] font-bold cursor-pointer"
+                        >
+                          شاشة خضراء (Chroma)
+                        </button>
+                        <button
+                          onClick={() => applyPresetColor(0, 0, 0, 'الاستوديو المظلم')}
+                          className="px-2 py-0.5 bg-black text-white rounded-md text-[10px] font-bold cursor-pointer"
+                        >
+                          خلفية سوداء
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Tolerance setting */}
+                    <div className="space-y-1">
+                      <div className="flex justify-between text-[11px] font-bold">
+                        <span>قوة البحث والتسامح (Tolerance):</span>
+                        <span className="font-mono text-emerald-600">{tolerance}%</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="5"
+                        max="85"
+                        value={tolerance}
+                        onChange={(e) => setTolerance(parseInt(e.target.value))}
+                        className="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-lg accent-emerald-500"
+                      />
+                    </div>
+
+                    {/* Edge Feather smoothing setting */}
+                    <div className="space-y-1">
+                      <div className="flex justify-between text-[11px] font-bold">
+                        <span>تنعيم الحواف الاقتطاعية (Feather):</span>
+                        <span className="font-mono text-emerald-600">{feather}%</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="0"
+                        max="24"
+                        value={feather}
+                        onChange={(e) => setFeather(parseInt(e.target.value))}
+                        className="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-lg accent-emerald-500"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* MANUAL ERASER AND RESTORE BRUSH CONTROLLER */}
+                <div className="bg-slate-50/50 dark:bg-slate-950 p-3.5 rounded-2xl border border-slate-100 dark:border-slate-900 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-0.5">
+                      <span className="block text-xs font-bold text-slate-800 dark:text-slate-200">فرشاة المسح الحر للشوائب:</span>
+                      <p className="text-[9px] text-slate-400">امسح أو استعد أجزاء محددة من الصورة بيدك مباشرة.</p>
+                    </div>
+                    
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input 
+                        type="checkbox" 
+                        checked={manualEraserActive} 
+                        onChange={(e) => { setManualEraserActive(e.target.checked); playSound(680, 0.1); }}
+                        className="sr-only peer"
+                      />
+                      <div className="w-9 h-5 bg-slate-250 dark:bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:content-[''] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-350 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"></div>
+                    </label>
+                  </div>
+
+                  {manualEraserActive && (
+                    <div className="space-y-3 pt-2 border-t border-slate-100 dark:border-slate-900 animate-slide-up">
+                      
+                      {/* Eraser / Restore Toggle */}
+                      <div className="flex gap-2 p-1 bg-slate-100 dark:bg-slate-900 rounded-xl">
+                        <button
+                          onClick={() => { setEraserMode('erase'); playSound(510, 0.05); }}
+                          className={`flex-1 py-1 text-[10px] sm:text-xs font-bold rounded-lg transition-all ${
+                            eraserMode === 'erase' ? 'bg-white dark:bg-slate-800 text-red-500 shadow-xs' : 'text-slate-405'
+                          }`}
+                        >
+                          🧹 وضع المحاية والمسح
+                        </button>
+                        <button
+                          onClick={() => { setEraserMode('restore'); playSound(510, 0.05); }}
+                          className={`flex-1 py-1 text-[10px] sm:text-xs font-bold rounded-lg transition-all ${
+                            eraserMode === 'restore' ? 'bg-white dark:bg-slate-800 text-emerald-505 shadow-xs' : 'text-slate-405'
+                          }`}
+                        >
+                          ✏️ استعادة وتراجع جزئي
+                        </button>
+                      </div>
+
+                      {/* Brush Size setting */}
+                      <div className="space-y-1">
+                        <div className="flex justify-between text-[11px] font-bold">
+                          <span>حجم فرشاة اللمس الذكية:</span>
+                          <span className="font-mono text-emerald-600">{eraserBrushSize}px</span>
+                        </div>
+                        <input
+                          type="range"
+                          min="5"
+                          max="100"
+                          value={eraserBrushSize}
+                          onChange={(e) => setEraserBrushSize(parseInt(e.target.value))}
+                          className="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-lg accent-emerald-500"
+                        />
+                      </div>
+
+                      {/* Reset Mask action button */}
+                      <button
+                        onClick={handleResetManualMask}
+                        className="w-full py-2 bg-slate-100 hover:bg-rose-500/10 text-slate-700 hover:text-rose-600 dark:bg-slate-900 dark:hover:bg-rose-500/10 dark:text-slate-300 dark:hover:text-rose-450 border border-slate-200 dark:border-slate-800 text-[11px] font-extrabold rounded-xl transition-all cursor-pointer"
+                      >
+                        استرجاع الخلفية الأصلية للفرشاة
+                      </button>
+
+                    </div>
+                  )}
+
+                </div>
+
+              </div>
+            )}
+
+            {/* TAB CONTENT 3: Color Enhancements Adjustments */}
+            {activeTab === 'enhance' && (
+              <div className="space-y-4 pt-1 animate-fade">
+                <span className="block text-[10px] text-slate-400">فلاتر وتصحيح فوري دون الخروج من المتصفح.</span>
+                
+                {/* 1. Brightness */}
+                <div className="space-y-1">
+                  <div className="flex justify-between text-xs font-bold text-slate-650 dark:text-slate-300">
+                    <span>السطوع والإضاءة (Brightness):</span>
+                    <span className="font-mono text-emerald-600">{brightness}%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="50"
+                    max="150"
+                    value={brightness}
+                    onChange={(e) => setBrightness(parseInt(e.target.value))}
+                    className="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-lg accent-emerald-500"
+                  />
+                </div>
+
+                {/* 2. Contrast */}
+                <div className="space-y-1">
+                  <div className="flex justify-between text-xs font-bold text-slate-650 dark:text-slate-300">
+                    <span>قوة التباين اللوني (Contrast):</span>
+                    <span className="font-mono text-emerald-600">{contrast}%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="50"
+                    max="150"
+                    value={contrast}
+                    onChange={(e) => setContrast(parseInt(e.target.value))}
+                    className="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-lg accent-emerald-500"
+                  />
+                </div>
+
+                {/* 3. Saturation */}
+                <div className="space-y-1">
+                  <div className="flex justify-between text-xs font-bold text-slate-650 dark:text-slate-300">
+                    <span>تشبع وفرز الألوان (Saturation):</span>
+                    <span className="font-mono text-emerald-600">{saturation}%</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="200"
+                    value={saturation}
+                    onChange={(e) => setSaturation(parseInt(e.target.value))}
+                    className="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-lg accent-emerald-500"
+                  />
+                </div>
+
+                {/* 4. Blur */}
+                <div className="space-y-1">
+                  <div className="flex justify-between text-xs font-bold text-slate-650 dark:text-slate-300">
+                    <span>تأثير الضبابية والنعومة (Blur):</span>
+                    <span className="font-mono text-emerald-600">{blur}px</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="10"
+                    value={blur}
+                    onChange={(e) => setBlur(parseInt(e.target.value))}
+                    className="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-lg accent-emerald-500"
+                  />
+                </div>
+
+                {/* Presets Filters checkboxes */}
+                <div className="grid grid-cols-2 gap-2 pt-2">
+                  <label className="flex items-center gap-1.5 p-2 bg-slate-50 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-850 rounded-xl cursor-pointer select-none">
+                    <input 
+                      type="checkbox" 
+                      checked={grayscale} 
+                      onChange={(e) => { setGrayscale(e.target.checked); playSound(640, 0.08); }}
+                      className="rounded text-emerald-500 accent-emerald-500"
+                    />
+                    <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300">أبيض وأسود كلاسيك</span>
+                  </label>
+
+                  <label className="flex items-center gap-1.5 p-2 bg-slate-50 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-850 rounded-xl cursor-pointer select-none">
+                    <input 
+                      type="checkbox" 
+                      checked={sepia} 
+                      onChange={(e) => { setSepia(e.target.checked); playSound(640, 0.08); }}
+                      className="rounded text-emerald-500 accent-emerald-500"
+                    />
+                    <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300">تأثير فنتج دافئ (Sepia)</span>
+                  </label>
+                </div>
+
+              </div>
+            )}
+
+            {/* TAB CONTENT 4: Watermarking Controls */}
+            {activeTab === 'watermark' && (
+              <div className="space-y-4 pt-1 animate-fade">
+                
+                {/* Activate Watermark Toggle */}
+                <div className="flex items-center justify-between bg-slate-50/50 dark:bg-slate-950 p-2.5 rounded-2xl border border-slate-100 dark:border-slate-900">
+                  <span className="text-xs font-bold text-slate-800 dark:text-slate-200">تطبيق العلامة المائية لحفظ الحقوق:</span>
+                  <label className="relative inline-flex items-center cursor-pointer">
+                    <input 
+                      type="checkbox" 
+                      checked={useWatermark} 
+                      onChange={(e) => { setUseWatermark(e.target.checked); playSound(680, 0.1); }}
+                      className="sr-only peer"
+                    />
+                    <div className="w-9 h-5 bg-slate-250 dark:bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:content-[''] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-350 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"></div>
+                  </label>
+                </div>
+
+                {useWatermark && (
+                  <div className="space-y-4 pt-2 animate-slide-up">
+                    
+                    {/* Watermark type selector */}
+                    <div className="space-y-1">
+                      <span className="text-[11px] font-bold text-slate-400">نوع العلامة المائية:</span>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => { setWatermarkType('text'); playSound(500, 0.05); }}
+                          className={`flex-1 py-1.5 text-xs font-bold rounded-xl border transition-all ${
+                            watermarkType === 'text' 
+                              ? 'bg-emerald-600 text-white border-emerald-700 shadow-sm' 
+                              : 'bg-transparent border-slate-200 dark:border-slate-800 text-slate-550'
+                          }`}
+                        >
+                          ✍️ نص مخصص للعلامة
+                        </button>
+                        <button
+                          onClick={() => { setWatermarkType('image'); playSound(500, 0.05); }}
+                          className={`flex-1 py-1.5 text-xs font-bold rounded-xl border transition-all ${
+                            watermarkType === 'image' 
+                              ? 'bg-emerald-600 text-white border-emerald-700 shadow-sm' 
+                              : 'bg-transparent border-slate-200 dark:border-slate-800 text-slate-550'
+                          }`}
+                        >
+                          🖼️ شعارك الخاص (PNG/Logo)
+                        </button>
+                      </div>
+                    </div>
+
+                    {watermarkType === 'text' ? (
+                      /* Text settings */
+                      <div className="space-y-3 bg-slate-50 dark:bg-slate-950 p-3.5 rounded-2xl border border-slate-200/80 dark:border-slate-900">
+                        <div>
+                          <label className="block text-[11px] font-bold text-slate-400 mb-1">العبارة أو النص المقترح:</label>
+                          <input
+                            type="text"
+                            value={watermarkText}
+                            onChange={(e) => setWatermarkText(e.target.value)}
+                            placeholder="مثال: © موسوعة dkora"
+                            className="w-full p-2 bg-transparent border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-bold text-slate-800 dark:text-slate-100 outline-none focus:border-emerald-500"
+                          />
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-2">
+                          <div>
+                            <label className="block text-[11px] font-bold text-slate-400 mb-1">لون الفونت:</label>
+                            <input
+                              type="color"
+                              value={watermarkColor}
+                              onChange={(e) => setWatermarkColor(e.target.value)}
+                              className="w-full h-8 p-0 bg-transparent rounded border-0 cursor-pointer"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[11px] font-bold text-slate-400 mb-1">حجم الخط الكوانتي:</label>
+                            <input
+                              type="number"
+                              min="10"
+                              max="100"
+                              value={watermarkSize}
+                              onChange={(e) => setWatermarkSize(parseInt(e.target.value) || 20)}
+                              className="w-full p-1.5 bg-transparent border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-bold text-slate-800 dark:text-slate-100"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      /* Image logo settings */
+                      <div className="space-y-3 bg-slate-50 dark:bg-slate-950 p-3.5 rounded-2xl border border-slate-200/80 dark:border-slate-900">
+                        <label className="block border border-dashed border-slate-200 dark:border-slate-800 rounded-xl p-3 text-center cursor-pointer hover:border-emerald-500 transition-all">
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleLogoUpload}
+                            className="hidden"
+                          />
+                          <Upload className="w-5 h-5 mx-auto text-slate-400 mb-1" />
+                          <span className="text-[10px] text-slate-400 block font-bold">ارفف شعار الشركة مفرغ (PNG)</span>
+                        </label>
+
+                        {logoImageSrc && (
+                          <div className="flex items-center justify-between bg-emerald-500/10 p-2 rounded-xl">
+                            <span className="text-[10px] text-emerald-700 dark:text-emerald-400 font-bold">تم تحميل الشعار المائي!</span>
+                            <button
+                              onClick={() => setLogoImageSrc(null)}
+                              className="text-[10px] text-red-500 font-bold hover:underline"
+                            >
+                              مسح الشعار
+                            </button>
+                          </div>
+                        )}
+
+                        <div>
+                          <label className="block text-[11px] font-bold text-slate-400 mb-1">حجم لوجو الشعار (النسبة):</label>
+                          <input
+                            type="range"
+                            min="10"
+                            max="100"
+                            value={watermarkSize}
+                            onChange={(e) => setWatermarkSize(parseInt(e.target.value))}
+                            className="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-lg accent-emerald-500"
+                          />
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Shared watermark opacity */}
+                    <div className="space-y-1.5">
+                      <div className="flex justify-between text-xs font-bold">
+                        <span>معدل الشفافية للملحق:</span>
+                        <span className="font-mono text-emerald-600">{watermarkOpacity}%</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="10"
+                        max="100"
+                        value={watermarkOpacity}
+                        onChange={(e) => setWatermarkOpacity(parseInt(e.target.value))}
+                        className="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-lg accent-emerald-500"
+                      />
+                    </div>
+
+                    {/* Watermark placement position */}
+                    <div className="space-y-1">
+                      <span className="text-[11px] font-bold text-slate-400 block">مكان وتمركز التثبيت:</span>
+                      <div className="grid grid-cols-3 gap-1.5">
+                        {([
+                          ['top-left', 'أعلى اليسار'],
+                          ['top-right', 'أعلى اليمين'],
+                          ['center', 'بالوسط'],
+                          ['bottom-left', 'أسفل اليسار'],
+                          ['bottom-right', 'أسفل اليمين'],
+                          ['pattern', 'نمط متكرر 🏁']
+                        ] as const).map(([pos, title]) => (
+                          <button
+                            key={pos}
+                            onClick={() => { setWatermarkPosition(pos); playSound(590, 0.05); }}
+                            className={`p-1 text-[10px] font-bold rounded-lg border transition-all cursor-pointer ${
+                              watermarkPosition === pos 
+                                ? 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500' 
+                                : 'bg-transparent border-slate-200 dark:border-slate-800 text-slate-400 hover:text-slate-600'
+                            }`}
+                          >
+                            {title}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                  </div>
+                )}
+
+              </div>
+            )}
+
+          </div>
+
+          {/* Sizing Info Cards explaining PageSpeed */}
+          <div className="bg-gradient-to-br from-emerald-950/40 to-slate-900 border border-emerald-500/10 rounded-3xl p-5 text-white space-y-3">
+            <h4 className="text-xs font-extrabold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+              <Info className="w-4 h-4" />
+              لماذا يؤثر حجم الصورة على الأرشفة وسرعة موقعك المقفل؟
+            </h4>
+            <p className="text-[11px] text-slate-350 leading-relaxed font-semibold">
+              المواقع الإعلانية والذكية تحتاج سرعة تحميل فائقة لحصد نقاط PageSpeed ممتازة من جوجل. 
+              عند تقليص حجم الخلفية وضغط الصورة بطريقة <b>Client-Side</b> هنا:
+            </p>
+            <ul className="text-[10px] text-slate-400 space-y-1 list-disc list-inside">
+              <li>يقل زمن انتظار استجابة السيرفر للصفر.</li>
+              <li>توفر عرض الباقة لعملائك ومثالي جداً لأرشفة صور محركات البحث SEO.</li>
+              <li>التحويل لـ <b>WebP</b> يضمن معدلات توفير تتجاوز الـ ٧٥٪ مع الحفاظ التام والكامل للعناصر الحادة.</li>
+            </ul>
+          </div>
+
+        </section>
+
+        {/* RIGHT COLUMN: Studio Canvas Preview Box (7 Cols) */}
+        <section className="lg:col-span-7 flex flex-col space-y-4">
+          
+          {/* Active Image loaded and metrics controller */}
+          {metrics && originalImageSrc && (
+            <div className="bg-white dark:bg-slate-900 border border-slate-200/85 dark:border-slate-900/60 rounded-3xl p-4.5 shadow-xs grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+              
+              <div className="space-y-0.5 border-l border-slate-100 dark:border-slate-800/80">
+                <span className="text-[10px] text-slate-400 font-bold block">الحجم الأصلي للملف:</span>
+                <span className="text-xs sm:text-sm font-mono font-black text-slate-700 dark:text-slate-105">
+                  {(metrics.originalSize / 1024).toFixed(1)} KB
+                </span>
+                <span className="text-[9px] block text-slate-400 font-mono">({metrics.originalWidth}x{metrics.originalHeight}px)</span>
+              </div>
+
+              <div className="space-y-0.5 border-l border-slate-100 dark:border-slate-800/80">
+                <span className="text-[10px] text-slate-400 font-bold block">الملف بعد التحسين:</span>
+                <span className="text-xs sm:text-sm font-mono font-black text-emerald-500">
+                  {(metrics.compressedSize / 1024).toFixed(1)} KB
+                </span>
+                <span className="text-[9px] block text-slate-400 font-mono">({metrics.compressedWidth}x{metrics.compressedHeight}px)</span>
+              </div>
+
+              <div className="space-y-0.5 border-l border-slate-100 dark:border-slate-800/80">
+                <span className="text-[10px] text-slate-400 font-bold block">نسبة التوفير المحسوبة:</span>
+                <span className="text-xs sm:text-sm font-mono font-black text-emerald-600 dark:text-emerald-400">
+                  {metrics.ratioSaved}% توفير 🔥
+                </span>
+                <span className="text-[9px] block text-slate-400">تخفيض هائل بمساحة الذاكرة</span>
+              </div>
+
+              <div className="space-y-0.5">
+                <span className="text-[10px] text-slate-400 font-bold block">صيغة المخرجات الحالية:</span>
+                <span className="text-xs sm:text-sm font-black text-indigo-400 uppercase">
+                  {format.split('/')[1]} output
+                </span>
+                <span className="text-[9px] text-slate-400 block">بدون رفع أي شيء لسيرفر</span>
+              </div>
+
+            </div>
+          )}
+
+          {/* STUDIO PREVIEW VIEW BOX CONTAINER */}
+          <div className="flex-grow flex flex-col">
+            
+            {/* If no image loaded, show big file uploader drag drop zone */}
+            {!originalImageSrc ? (
+              <div
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onDrop={handleDrop}
+                className={`flex-grow min-h-[350px] sm:min-h-[480px] border-4 border-dashed rounded-3xl p-6 sm:p-10 text-center flex flex-col items-center justify-center transition-all ${
+                  isDragging
+                    ? 'border-emerald-500 bg-emerald-500/10 scale-95'
+                    : 'border-slate-200 dark:border-slate-900 bg-white dark:bg-slate-900/50 hover:bg-white/80 dark:hover:bg-slate-900'
+                }`}
+              >
+                <div className="w-16 h-16 rounded-2xl bg-slate-100 dark:bg-slate-950 flex items-center justify-center text-slate-400 dark:text-slate-500 mb-4 shadow-sm">
+                  <Upload className="w-8 h-8 animate-bounce" />
+                </div>
+                
+                <h3 className="text-md sm:text-lg font-black text-slate-800 dark:text-white leading-snug">
+                  اسحب وأسقط صورتك هنا لبدء معالجتها مجاناً!
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-450 dark:text-slate-400 max-w-md mx-auto leading-relaxed mt-2">
+                  يدعم الصيغ القياسية: PNG، JPG، WebP، وغيرها. نحن لا نرفع صورك نهائياً؛ تجري المعالجة وتفريغ الخلفية المعزولة بالكامل محلياً داخل متصفحك بشكل سري وآمن تماماً.
+                </p>
+
+                {/* Upload File Button UI */}
+                <label className="mt-6 inline-flex items-center gap-2 px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-lg shadow-emerald-500/20 transition-all cursor-pointer">
+                  <Upload className="w-4 h-4" />
+                  <span>تصفح واختيار صورة من جهازك</span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileInputChange}
+                    className="hidden"
+                  />
+                </label>
+
+                <div className="mt-8 flex gap-3 text-[10px] font-bold text-slate-400 justify-center">
+                  <span className="flex items-center gap-1">🛡️ حماية وخصوصية تامة</span>
+                  <span>•</span>
+                  <span className="flex items-center gap-1">⚡ حوسبة طرفية سريعة</span>
+                </div>
+              </div>
+            ) : (
+              
+              /* Studio workspace layout view with original and processed comparison */
+              <div className="flex-grow flex flex-col space-y-4">
+                
+                {/* Visual view controller bar */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="inline-block w-2.5 h-2.5 bg-emerald-500 rounded-full animate-ping" />
+                    <span className="text-xs font-bold text-slate-505 dark:text-slate-350">
+                      اسم الملف: <code className="bg-slate-100 dark:bg-slate-900 px-1 rounded text-emerald-600">{originalFileName}</code>
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    {/* Reset Button */}
+                    <button
+                      onClick={() => {
+                        setOriginalImageSrc(null);
+                        setProcessedImageSrc(null);
+                        setMetrics(null);
+                        setLogoImageSrc(null);
+                        playSound(300, 0.12, 'square');
+                      }}
+                      className="text-xs text-rose-500 font-bold hover:underline cursor-pointer flex items-center gap-1"
+                    >
+                      مسح وإغلاق الصورة
+                    </button>
+                  </div>
+                </div>
+
+                {/* Main Studio Render Viewport */}
+                <div 
+                  ref={previewContainerRef}
+                  className="relative flex-grow min-h-[350px] bg-slate-100 dark:bg-slate-950 rounded-3xl border border-slate-200 dark:border-slate-800 flex items-center justify-center overflow-hidden"
+                  style={{ backgroundImage: 'radial-gradient(#e2e8f0 1.5px, transparent 1.5px), radial-gradient(#202c3a 1px, transparent 1px)', backgroundSize: '20px 20px' }}
+                >
+                  
+                  {/* Eyedropper notification mask overlay */}
+                  {isEyedropperActive && (
+                    <div className="absolute inset-0 z-30 bg-emerald-950/20 pointer-events-none flex items-center justify-center text-center">
+                      <div className="bg-slate-900/95 text-white p-3 rounded-2xl border border-slate-700 max-w-xs space-y-1">
+                        <Pipette className="w-5 h-5 mx-auto text-emerald-400 animate-bounce" />
+                        <span className="block text-xs font-bold">نمط قطارة الألوان نشط!</span>
+                        <p className="text-[10px] text-slate-300">اضغط فوق أي بكسل في الصورة لتحديده كخلفية مستقطعة ومزالّة.</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Canvas container representing live modified buffer inputs */}
+                  <div className="relative max-w-full max-h-[480px] aspect-video flex items-center justify-center">
+                    
+                    {/* ORIGINAL LIVE CANVAS - Used to bind eyedropper clicks and manual drawing eraser canvas on top */}
+                    <canvas
+                      onClick={handleImageCanvasClick}
+                      onMouseDown={handleBrushStart}
+                      onMouseMove={handleBrushMove}
+                      onTouchStart={handleTouchDraw}
+                      onTouchMove={handleTouchDraw}
+                      ref={eraserMaskCanvasRef}
+                      className={`max-w-full max-h-[480px] object-contain cursor-crosshair rounded-xl ${
+                        manualEraserActive ? 'ring-2 ring-emerald-500 z-20 opacity-30 shadow-2xl' : ''
+                      }`}
+                      style={{ 
+                        // Show the original loaded image behind our canvas layers
+                        backgroundImage: `url(${originalImageSrc})`,
+                        backgroundSize: 'contain',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                        // If no manual brush eraser is active, it stays subtle
+                        opacity: manualEraserActive ? 0.75 : 0
+                      }}
+                    />
+
+                    {/* Draggable slider splitting comparison of BEFORE / AFTER */}
+                    {!manualEraserActive && !isEyedropperActive && processedImageSrc && (
+                      <div className="absolute inset-0 z-10 w-full h-full pointer-events-auto">
+                        
+                        {/* BEFORE VIEW (Background / left side) */}
+                        <div 
+                          className="absolute inset-0 w-full h-full select-none"
+                          style={{
+                            backgroundImage: `url(${originalImageSrc})`,
+                            backgroundSize: 'contain',
+                            backgroundPosition: 'center',
+                            backgroundRepeat: 'no-repeat'
+                          }}
+                        />
+
+                        {/* AFTER VIEW (Clipped right side) */}
+                        <div 
+                          className="absolute inset-0 h-full overflow-hidden select-none"
+                          style={{
+                            backgroundImage: `url(${processedImageSrc})`,
+                            backgroundSize: 'contain',
+                            backgroundPosition: 'center',
+                            backgroundRepeat: 'no-repeat',
+                            width: `${compareSplitPercent}%`
+                          }}
+                        />
+
+                        {/* Interactive drag split line handle */}
+                        <div 
+                          onMouseDown={startSplitDrag}
+                          className="absolute h-full w-1 bg-white hover:bg-emerald-450 cursor-ew-resize flex items-center justify-center active:bg-emerald-600 transition-colors z-30"
+                          style={{ left: `${compareSplitPercent}%` }}
+                        >
+                          <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-900 border-2 border-emerald-550 flex items-center justify-center text-emerald-600 shadow-xl pointer-events-none select-none">
+                            <Maximize className="w-4 h-4 rotate-45" />
+                          </div>
+                          
+                          {/* Helper visual badge guides */}
+                          <span className="absolute top-2 right-4 bg-slate-900/85 text-white text-[9px] font-black p-1 px-2 rounded backdrop-blur-md whitespace-nowrap">البداية</span>
+                          <span className="absolute top-2 left-4 bg-emerald-650/95 text-white text-[9px] font-black p-1 px-2 rounded backdrop-blur-md whitespace-nowrap">المحسن والمعدل</span>
+                        </div>
+
+                      </div>
+                    )}
+
+                    {/* Loading spinner overlay */}
+                    {isProcessing && (
+                      <div className="absolute inset-0 z-30 bg-slate-900/30 backdrop-blur-xs flex items-center justify-center">
+                        <div className="bg-slate-900 text-white p-4.5 rounded-2xl flex items-center gap-3 border border-slate-700">
+                          <RefreshCw className="w-5 h-5 text-emerald-400 animate-spin" />
+                          <span className="text-xs font-black">جاري المعالجة الحية للثنائيات...</span>
+                        </div>
+                      </div>
+                    )}
+
+                  </div>
+
+                </div>
+
+                {/* Subtext tips on manual brush */}
+                {manualEraserActive && (
+                  <div className="bg-amber-500/10 border-r-4 border-amber-500 p-3 rounded-xl text-xs text-amber-800 dark:text-amber-400">
+                    💡 <b>تلميح اللمس الحر:</b> اسحب إصبعك أو حرك الماوس بالضغط والتحريك فوق الصورة ليقوم بمسح اللون محلياً من الصورة.
+                  </div>
+                )}
+
+                {/* Main Download Call To Action block */}
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <button
+                    onClick={handleDownloadImage}
+                    disabled={isProcessing || !processedImageSrc}
+                    className="flex-1 py-4.5 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-400 text-white font-extrabold text-xs sm:text-sm rounded-2xl transition-all cursor-pointer flex items-center justify-center gap-2.5 shadow-xl shadow-emerald-500/15"
+                  >
+                    <Download className="w-5 h-5" />
+                    <span>تحميل الصورة المُحسّنة فورأً مجاناً</span>
+                  </button>
+                  
+                  {/* Copy Link shortcut to copy base64 preview */}
+                  <button
+                    onClick={() => {
+                      if (processedImageSrc) {
+                        navigator.clipboard.writeText(processedImageSrc);
+                        showToast('تم نسخ كود الصورة المفرغة (Base64) للحافظة!');
+                        playSound(620, 0.1);
+                      }
+                    }}
+                    className="p-4 bg-slate-100 hover:bg-slate-205 text-slate-705 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-xs font-bold rounded-2xl transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                    title="انسخ كود الرابط البرمجي Base64 مباشرة بدون رفع"
+                  >
+                    <Share2 className="w-4 h-4" />
+                    <span>نسخ كود Base64</span>
+                  </button>
+                </div>
+
+              </div>
+            )}
+
+            {/* HISTORY SHEET FOR SAVED OPTIMIZED IMAGES DURING SESSION */}
+            {historyList.length > 0 && (
+              <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-905 rounded-3xl p-5 shadow-xs space-y-3.5 mt-6 animate-slide-up">
+                <h4 className="text-xs font-black text-slate-400 uppercase tracking-widest border-b border-slate-100 dark:border-slate-805 pb-2">
+                  💾 تاريخ التحسين المنجز (بجلسة العمل الحالية):
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {historyList.map((item) => {
+                    const savedKb = ((item.originalSize - item.compressedSize) / 1024).toFixed(1);
+                    return (
+                      <div 
+                        key={item.id} 
+                        className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-150 dark:border-slate-850"
+                      >
+                        <div className="flex items-center gap-3 overflow-hidden">
+                          <img 
+                            src={item.savedSrc} 
+                            alt={item.name} 
+                            className="w-10 h-10 object-cover rounded-lg border border-slate-300/60 dark:border-slate-800 bg-slate-200/50"
+                          />
+                          <div className="text-xs space-y-0.5 overflow-hidden">
+                            <span className="block font-bold text-slate-800 dark:text-slate-100 truncate">{item.name}</span>
+                            <span className="text-[10px] text-emerald-500 block">
+                              وفرت <b>{savedKb} KB</b> من الذاكرة ({item.timestamp})
+                            </span>
+                          </div>
+                        </div>
+
+                        <a 
+                          href={item.savedSrc} 
+                          download={item.name} 
+                          className="p-1 px-2.5 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-bold rounded-lg text-[10px] hover:bg-emerald-500 hover:text-white transition-all cursor-pointer shrink-0"
+                        >
+                          تحميل مجدداً
+                        </a>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+          </div>
+
+        </section>
+
+      </main>
+    )}
+
+      {/* FOOTER NOTIFY AND METRICS ACCENTS */}
+      <footer className="border-t border-slate-200/60 dark:border-slate-900 bg-white dark:bg-slate-950 py-8 text-center text-xs text-slate-400 space-y-4 mt-auto">
+        <div className="font-sans font-black text-[11px] text-slate-400">
+          مستودع أدوات معالجة الصور ومسح الخلفية بمتصفح العميل ٢٠٢٦ 🚀
+        </div>
+        <p className="text-[10px] text-slate-500 dark:text-slate-400 max-w-sm mx-auto leading-relaxed animate-pulse">
+          السرعة والخصوصية في قلب التطبيقات لضمان أرشفة وتصدر موقعك أداءً كاملاً وبنسبة PageSpeed 100%. جميع العمليات تجرى محلياً.
+        </p>
+
+        {/* Legal Actions Triggers */}
+        <div className="flex items-center justify-center gap-3.5 text-[11px] font-extrabold text-slate-400">
+          <button 
+            onClick={() => { setLegalModal('privacy'); playSound(550, 0.05); }}
+            className="hover:text-rose-500 transition-all cursor-pointer hover:underline"
+          >
+            سياسة الخصوصية والسرّية
+          </button>
+          <span>•</span>
+          <button 
+            onClick={() => { setLegalModal('terms'); playSound(550, 0.05); }}
+            className="hover:text-rose-500 transition-all cursor-pointer hover:underline"
+          >
+            شروط وبنود الاستخدام المقبول
+          </button>
+        </div>
+      </footer>
+
+      {/* Render Legal Modals with connected actions */}
+      <LegalModals isOpen={legalModal} onClose={() => setLegalModal(null)} />
+
+    </div>
+  );
 }

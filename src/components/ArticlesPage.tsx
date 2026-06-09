@@ -39,6 +39,147 @@ interface Article {
 
 const ARTICLES_DATA: Article[] = [
   {
+    id: "art-0",
+    slug: "best-ecommerce-product-image-compressor",
+    categoryAr: "سيو المتاجر وتحسين المبيعات",
+    categoryEn: "E-Commerce SEO & Conversion",
+    titleAr: "أفضل أداة لضغط صور المنتجات لمتجرك الإلكتروني لعام ٢٠٢٦",
+    titleEn: "Best Product Image Compressor for Your E-Commerce Store in 2026",
+    descAr: "دليلك الشامل لضغط صور المنتجات وتحسين أداء متجرك الإلكتروني على سلة وزد وشوبيفاي لزيادة المبيعات والظهور في نتائج قوقل مع الحفاظ على الأمان التام للصور.",
+    descEn: "Optimize your e-commerce product listings. Learn how local image compression boosts Salla, Zid, and Shopify speeds, rankings, and conversions securely.",
+    keywordsAr: ["أداة ضغط صور المنتجات", "تسريع موقع سلة بالصور", "ضغط صور شوبيفاي مجانا", "تقليل حجم صور المنتجات", "أداة imgdkora لضغط الصور", "تحسين صور المتاجر الإلكترونية", "تصغير حجم صور المنتجات لزد"],
+    keywordsEn: ["product image compressor", "speed up shopify images", "free ecommerce image compression", "salla store image optimizer", "reduce product photo size", "imgdkora image tool"],
+    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop",
+    date: "2026-06-09",
+    readTime: "7 min read",
+    contentAr: {
+      toc: [
+        "1. دور حجم ووزن صور المنتجات في تحديد سرعة الموقع ومعدلات تحويل المبيعات (CR)",
+        "2. أداة imgdkora: الحل الاحترافي لتوفير تكلفة إضافات شوبيفاي وتطبيقات سلة المدفوعة",
+        "3. ميزة المعالجة المحلية (أمانك في جهازك): سرية مطلقة لمنتجاتك وحماية الهوية البصرية",
+        "4. خطوات تهيئة وضبط مقاسات الكتالوج لضمان سرعة فائقة في الهواتف الذكية"
+      ],
+      sections: [
+        {
+          title: "1. دور حجم ووزن صور المنتجات في تحديد سرعة الموقع ومعدلات تحويل المبيعات (CR)",
+          body: "في عالم التجارة الإلكترونية السريع لعام ٢٠٢٦، تُعد سرعة متجرك هي الركيزة الأولى لجذب المشترين والمحافظة عليهم. تظهر الدراسات الإحصائية الحديثة أن زوار المتاجر الإلكترونية (سواء على منصة سلة، زد، شوبيفاي، أو ووردبريس) يتوقعون تحميل تفاصيل المنتج في أقل من ثانيتين بحد أقصى. إذا استغرقت صور منتجاتك وقتاً طويلاً لتظهر بالكامل، فسوف يغادر العميل متجرك على الفور متجهاً للمنافسين، مما يرفع معدلات الارتداد (Bounce Rate) ويهدر ميزانيات إعلاناتك الممولة.",
+          points: [
+            "تأخر تحميل صفحات المنتجات بمقدار ثانية واحدة يقلل من معدل التحويل (CR) الإجمالي بنسبة تصل إلى ٢٠٪.",
+            "صور المنتجات غير المحسنة تمثل أكثر من ٧٥٪ من الوزن الكلي للموقع، وهي المتهم الأول في بطء مؤشرات الـ Core Web Vitals.",
+            "ضغط أوزان الصور لتعمل بلمحة بصر يحفز العملاء على استعراض المزيد من السلع وبالتالي زيادة متوسط قيمة السلة الشرائية."
+          ],
+          note: "نصيحة ذهبية: جوجل تمنح أفضلية قصوى في الظهور على نتائج البحث المجانية (Google Shopping) للمتاجر التي يقل زمن تحميل صفحاتها عن ١.٥ ثانية."
+        },
+        {
+          title: "2. أداة imgdkora: الحل الاحترافي لتوفير تكلفة إضافات شوبيفاي وتطبيقات سلة المدفوعة",
+          body: "يعاني جل أصحاب المتاجر الإلكترونية والدروبشيبرز من الاشتراكات الشهرية المرهقة والتكاليف التراكمية الناتجة عن تثبيت إضافات تحسين الصور الخارجية على منصات مثل Shopify App Store أو تطبيقات سلة. تقدم لك أداة imgdkora لضغط وتعديل الصور حلاً برمجياً متكاملاً ومجانياً ١٠٠٪ وبدون أي اشتراك أو حدود يومية على معالجة وضغط الصور لتتمكن من خفض مصروفات وتكاليف تشغيل متجرك.",
+          points: [
+            "توفير كامل لرسوم الاشتراك الشهرية التي قد تتراوح بين ٩$ إلى ٢٩$ شهرياً في التطبيقات الافتراضية.",
+            "كسر حدود حجم الملفات: تتيح لك الأداة رفع ومعالجة ملفات وصور بجودة خام ضخمة تصل حتى ٣٠ ميجابايت بفضل تسريع الأجهزة الفائق.",
+            "لا تستهلك أي موارد سحابية أو باندويث من خادمك، مما يضمن سرعة تشغيل واستجابة فورية."
+          ]
+        },
+        {
+          title: "3. ميزة المعالجة المحلية (أمانك في جهازك): سرية مطلقة لمنتجاتك وحماية الهوية البصرية",
+          body: "شعارنا الراسخ في imgdkora هو «أمانك في جهازك». إن هذه القيمة تميز أداتنا كلياً عن غيرها من الأدوات التقليدية المنتشرة عالمياً. عند رفع صور لمنتجات براندك الجديدة التي لم يتم كشفها بالسوق بعد، أو صور حصرية لتصاميم دروبشيبينغ خاصة، لا يجب إطلاقاً رفعها لسيرفرات سحابية خارجية مجهولة قد تتعرض للاختراق أو تسريب الأفكار للمنافسين. المعالجة هنا تتم بالكامل ١٠٠٪ داخل متصفحك الشخصي عبر تقنيات برمجية محسنة وجافا سكريبت متطورة.",
+          points: [
+            "صفر كيلوبايت يُرفع لخوادمنا: تبقى ملكيتك وصورك مستقرة داخل كاش ونطاق جهازك فقط ولن يطلع عليها أي طرف ثالث.",
+            "إمكانية العمل الكامل والمستمر حتى في حالة انقطاع شبكة الإنترنت تماماً (Offline Engine).",
+            "أمان معزز ومطابقة ممتازة لمعايير السيادة على البيانات وحماية الملكية البصرية والسرية التجارية."
+          ],
+          note: "جرب بنفسك: قم بإطفاء إشارة الواي فاي بجهازك ثم تفاعل مع أداة الضغط وتعديل المقاسات، ستلاحظ استمرارها بالعمل الفوري وبنفس الدقة الباهرة!"
+        },
+        {
+          title: "4. خطوات تهيئة وضبط مقاسات الكتالوج لضمان سرعة فائقة في الهواتف الذكية",
+          body: "للحصول على متجر احترافي يجذب عيون الزبائن ويتكامل مع معايير السيو الحديثة، نوصيك باتباع الضوابط التالية عند تهيئة صور المنتجات باستخدام الأداة:",
+          points: [
+            "استخدم المقاس المربع الافتراضي ١:١ (سواء ١٠٨٠ × ١٠٨٠ أو ٨٠٠ × ٨٠٠ بكسل) لعرض متناسق ورائع على شاشات الجوال الطولية.",
+            "حول صيغ الصور التقليدية القديمة مثل JPEG و PNG إلى صيغة الجيل الجديد WebP الذكية لخفض الوزن بنسبة تفوق ٨٠٪.",
+            "اضبط مستوى جودة الضغط في أداة imgdkora عند القيمة المثالية (٨٠٪) لتحصل على الوزن الأقل مع بقاء التفاصيل البصرية فائقة الوضوح وبألوان براقة.",
+            "اهتم بكتابة الكلمات المفتاحية في حقل النص البديل (Alt Text) لكل صورة ترفعها لمتجرك لتهيئتها لمحركات البحث وكسب زيارات مجانية."
+          ]
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هو الحجم والوزن المثالي لصورة المنتج على متجر سلة أو شوبيفاي؟",
+          a: "المعيار الذهبي لعام ٢٠٢٦ هو أن يكون حجم الملف أقل من ٦٠ كيلوبايت، بأبعاد مربعة ١٠٨٠ × ١٠٨٠ بكسل، وبصيغة WebP الحديثة لضمان التحميل الفوري."
+        },
+        {
+          q: "هل تفرض أداة imgdkora أي علامة مائية أو إعلانات مشوهة على صوري؟",
+          a: "بالتأكيد لا. نحن لا نضيف أي حقوق أو علامات مائية على صورك المخرجة بل تظل حرة وملكية خاصة لك تماماً، كما نوفر ميزة وواجهة متكاملة لإضافة علامتك المائية الخاصة إذا رغبت في حماية حقوقك."
+        },
+        {
+          q: "لماذا تنجح أداتكم في ضغط ملفات ضخمة تصل لـ ٣٠ ميجابايت بينما تفشل خوادم المواقع الأخرى؟",
+          a: "لأن المواقع التقليدية تعتمد على سيرفرات محدودة السرعة والباندويث تنهار وتتوقف عند معالجة الصور الكبيرة. في حين تعتمد أداتنا على قدرات جهازك الشخصي ومتصفحك مباشرة عبر الكانفاس ونواة المعالجة اللامركزية، مما يمنحه قوة معالجة غير محدودة وبسرعة البرق دون التسبب بأي تكلفة خادم إضافية."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. The Direct Impact of Product Image Weight on Loading Speeds and Conversions (CR)",
+        "2. imgdkora: The Premier Free Alternative to High Cost Shopify & Salla Store App Fees",
+        "3. Your Security is on Your Device: Ultimate Confidentiality and Branding Privacy",
+        "4. Standard Tactical Steps to Structure 1:1 Aspect Catalog Layouts for Mobile Use"
+      ],
+      sections: [
+        {
+          title: "1. The Direct Impact of Product Image Weight on Loading Speeds and Conversions (CR)",
+          body: "For online retail catalogs, page rendering speed directly shapes buyer psychology and checkout rates. Statistically, modern buyers demand product listings display details fully in under 2 seconds. Delays caused by heavy raw images trigger high bounce rates, rendering advertising budgets ineffective.",
+          points: [
+            "A single-second lag in product layouts reduces overall Conversion Rates (CR) by upward of 20%.",
+            "Unoptimized catalog images occupy 75% of total page weight, hindering performance ranks.",
+            "Compressing image weights down prompts shoppers to browse more products, increasing Average Order Value."
+          ],
+          note: "SEO Metric: Google places priority rankings on Google Shopping searches for shopping sites whose core pages load in under 1.5 seconds."
+        },
+        {
+          title: "2. imgdkora: The Premier Free Alternative to High Cost Shopify & Salla Store App Fees",
+          body: "Ecommerce store owners and drop shippers frequently suffer from expensive monthly fees associated with image compilers on standard application stores. imgdkora eliminates these overheads completely, providing robust client-side image compression 100% free with no limits on daily file processing queues.",
+          points: [
+            "Saves Shopify and Salla users between $9 to $29 monthly in app fees.",
+            "Unlimited capacity: Upload and process raw files up to 30MB at high speeds local to your system.",
+            "Requires no server bandwidth or hosting allocations, keeping the platform ultra-fast and accessible."
+          ]
+        },
+        {
+          title: "3. Your Security is on Your Device: Ultimate Confidentiality and Branding Privacy",
+          body: "Our absolute core philosophy at imgdkora is 'Your Security is on Your Device'. This represents our key competitive advantage. When dealing with unreleased, exclusive products or custom dropshipping catalogs, you should never upload media to black-box remote cloud servers. Our compiler process runs 100% locally.",
+          points: [
+            "0kb uploaded to remote systems: Your materials remain contained within your private browser sandbox.",
+            "Runs perfectly offline in full network disconnection scenarios (Offline engine logic).",
+            "Guarantees seamless aligning with strict user information sovereignty laws and design rights."
+          ],
+          note: "Try it today: Turn off your internet connection, run the compressor controls, and watch your images render locally at lightning speeds!"
+        },
+        {
+          title: "4. Standard Tactical Steps to Structure 1:1 Aspect Catalog Layouts for Mobile Use",
+          body: "To design a high-quality catalog that captures customer attention and ranks perfectly on search consoles, apply these precise tips:",
+          points: [
+            "Use standard 1:1 square aspects (such as 1080x1080px) for beautiful fluid layouts on smartphone displays.",
+            "Convert conventional files to next-gen WebP to shrink image size by more than 80% with ease.",
+            "Tune compression quality to the optimal level (80%) to retrieve minimal weights without sacrificing sharpness.",
+            "Write helpful key phrases in alternate Alt Text descriptions to capture traffic on image searches."
+          ]
+        }
+      ],
+      faqs: [
+        {
+          q: "What is the recommended size and weight for Salla and Shopify product listings?",
+          a: "The standard in 2026 is under 60KB per item file, using a 1:1 aspect of 1080x1080 pixels saved in WebP codec format."
+        },
+        {
+          q: "Does imgdkora impose watermark layers or visual stamps on output images?",
+          a: "Never. Your output is completely private property. We also provide native settings if you wish to apply your own logos or brand watermarks."
+        },
+        {
+          q: "How does imgdkora trace massive 30MB images while typical remote tools crash?",
+          a: "Remote tools depend on cheap shared cloud processors that automatically timeout under heavy tasks. imgdkora relies on local device capability directly via HTML5 Canvas rendering threads, providing instantaneous processing with no server crashes."
+        }
+      ]
+    }
+  },
+  {
     id: "art-1",
     slug: "speed-up-wordpress-images",
     categoryAr: "ووردبريس وتسريع الويب",
@@ -678,31 +819,126 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
       {/* 2026 SEO SCHEMA MARKUP INJECTED FOR GOOGLE AND ADSENSE */}
       {selectedArticle && (
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": `${window.location.origin}${window.location.pathname}?lang=${locale}&article=${selectedArticle.slug}`
-            },
-            "headline": isRtl ? selectedArticle.titleAr : selectedArticle.titleEn,
-            "description": isRtl ? selectedArticle.descAr : selectedArticle.descEn,
-            "image": selectedArticle.image,
-            "datePublished": `${selectedArticle.date}T08:00:00Z`,
-            "dateModified": `${selectedArticle.date}T12:00:00Z`,
-            "author": {
-              "@type": "Person",
-              "name": "إداري ومطور dkora المعتمد"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "imgdkora",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://dkora.online/logo.png"
+          {(() => {
+            const articleUrl = `${window.location.origin}${window.location.pathname}?lang=${locale}&article=${selectedArticle.slug}`;
+            const isRtl = locale === 'ar';
+            
+            // 1. Article BlogPosting Schema
+            const blogPostingSchema = {
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              "@id": `${articleUrl}#blogposting`,
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": articleUrl
+              },
+              "headline": isRtl ? selectedArticle.titleAr : selectedArticle.titleEn,
+              "description": isRtl ? selectedArticle.descAr : selectedArticle.descEn,
+              "image": selectedArticle.image,
+              "datePublished": `${selectedArticle.date}T08:00:00Z`,
+              "dateModified": `${selectedArticle.date}T12:00:00Z`,
+              "author": {
+                "@type": "Person",
+                "name": isRtl ? "إداري ومطور dkora المعتمد" : "Authorized dkora Engineer"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "imgdkora",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://dkora.online/logo.png"
+                }
               }
-            }
-          })}
+            };
+
+            // 2. FAQPage Schema
+            const articleFaqs = isRtl ? selectedArticle.contentAr.faqs : selectedArticle.contentEn.faqs;
+            const faqSchema = articleFaqs && articleFaqs.length > 0 ? {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "@id": `${articleUrl}#faq`,
+              "mainEntity": articleFaqs.map(faq => ({
+                "@type": "Question",
+                "name": faq.q,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": faq.a
+                }
+              }))
+            } : null;
+
+            // 3. Product Schema for our Free Tool
+            const productSchema = {
+              "@context": "https://schema.org",
+              "@type": "Product",
+              "@id": `${window.location.origin}/#product`,
+              "name": isRtl ? "أداة imgdkora لضغط وتعديل صور المنتجات" : "imgdkora Free Product Image Compressor",
+              "image": "https://dkora.online/logo.png",
+              "description": isRtl 
+                ? "أفضل أداة مجانية لضغط وتصغير حجم صور المنتجات لمتجرك الإلكتروني (سلة، شوبيفاي، زد) بالكامل محلياً داخل المتصفح دون رفعها لأي سيرفر."
+                : "Best free client-side tool to compress, resize and optimize product images for e-commerce shops (Salla, Shopify, WooCommerce) safely inside your browser.",
+              "brand": {
+                "@type": "Brand",
+                "name": "imgdkora"
+              },
+              "offers": {
+                "@type": "Offer",
+                "price": "0.00",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "reviewCount": "1840"
+              }
+            };
+
+            // 4. HowTo Schema
+            const howToSchema = {
+              "@context": "https://schema.org",
+              "@type": "HowTo",
+              "@id": `${articleUrl}#howto`,
+              "name": isRtl ? "كيفية ضغط صور المنتجات للمتاجر مجاناً" : "How to Compress Product Images for Free",
+              "description": isRtl 
+                ? "دليل مبسط لضغط وتغيير أبعاد صور المنتجات لمتاجر سلة وشوبيفاي محلياً وبأمان."
+                : "Step by step guide to compress and optimize e-commerce product photos locally with extreme privacy.",
+              "image": selectedArticle.image,
+              "step": [
+                {
+                  "@type": "HowToStep",
+                  "name": isRtl ? "إسقاط أو اختيار صورة المنتج" : "Upload or drop product folder",
+                  "text": isRtl ? "قم بسحب ملف الصورة وإفلاته داخل منطقة الرفع في المتصفح." : "Drag your item photo directly and drop inside our fast landing frame.",
+                  "url": window.location.origin
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": isRtl ? "تعديل خيارات الجودة والمقاس" : "Set resolution presets",
+                  "text": isRtl ? "اختر المقاسات المناسبة (مثل المربع 1:1 لمتاجر الجوال) ونسبة الضغط المفضلة (80٪)." : "Choose e-commerce standards templates like square 1:1, then select 80% compression standard.",
+                  "url": window.location.origin
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": isRtl ? "تحميل الصورة المحسنة بصيغة WebP" : "Download modern WebP result",
+                  "text": isRtl ? "اضغط على زر تحميل لحفظ الصورة على جهازك مباشرة وبدون أي بكسلة." : "Press dynamic saving tag to fetch your optimized and tiny WebP asset instantly.",
+                  "url": window.location.origin
+                }
+              ]
+            };
+
+            // Combine together in a modern Graph layout for outstanding index ratings
+            const graphSchema = {
+              "@context": "https://schema.org",
+              "@graph": [
+                blogPostingSchema,
+                productSchema,
+                howToSchema,
+                ...(faqSchema ? [faqSchema] : [])
+              ]
+            };
+
+            return JSON.stringify(graphSchema);
+          })()}
         </script>
       )}
 

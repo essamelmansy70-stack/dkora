@@ -3,6 +3,7 @@ import Header from './components/Header';
 import LegalModals from './components/LegalModals';
 import ArticlesPage from './components/ArticlesPage';
 import SvgConverterPage from './components/SvgConverterPage';
+import CropperPage from './components/CropperPage';
 import { translations } from './translations';
 import { 
   Sparkles, 
@@ -154,8 +155,8 @@ export default function App() {
   const isDraggingSplitRef = useRef<boolean>(false);
   const [legalModal, setLegalModal] = useState<'privacy' | 'terms' | 'about' | 'contact' | 'disclaimer' | null>(null);
 
-  // Main high-level view routing: 'editor' (Image tool), 'blog' (Articles page), 'svg' (Vectorization tool)
-  const [currentView, setCurrentView] = useState<'editor' | 'blog' | 'svg'>('editor');
+  // Main high-level view routing: 'editor' (Image tool), 'blog' (Articles page), 'svg' (Vectorization tool), 'cropper' (Cropper tool)
+  const [currentView, setCurrentView] = useState<'editor' | 'blog' | 'svg' | 'cropper'>('editor');
 
   // Synchronize deep linking search parameters for indexing and sharing!
   useEffect(() => {
@@ -166,14 +167,14 @@ export default function App() {
       
       if (articleSlug) {
         setCurrentView('blog');
-      } else if (viewParam === 'blog' || viewParam === 'editor' || viewParam === 'svg') {
-        setCurrentView(viewParam === 'svg' ? 'svg' : (viewParam as 'editor' | 'blog'));
+      } else if (viewParam === 'blog' || viewParam === 'editor' || viewParam === 'svg' || viewParam === 'cropper') {
+        setCurrentView(viewParam as 'editor' | 'blog' | 'svg' | 'cropper');
       }
     }
   }, []);
 
   // Update query params when viewing different tabs
-  const handleSetCurrentView = (view: 'editor' | 'blog' | 'svg') => {
+  const handleSetCurrentView = (view: 'editor' | 'blog' | 'svg' | 'cropper') => {
     setCurrentView(view);
     playSound(480, 0.08);
     
@@ -215,6 +216,9 @@ export default function App() {
     if (currentView === 'svg') {
       pageTitle = locale === 'ar' ? translations.ar.svgConverter.metaTitle : translations.en.svgConverter.metaTitle;
       pageDesc = locale === 'ar' ? translations.ar.svgConverter.metaDesc : translations.en.svgConverter.metaDesc;
+    } else if (currentView === 'cropper') {
+      pageTitle = locale === 'ar' ? "أداة dkora | قص وتعديل مقاسات وأبعاد الصور مجاناً وبأمان 100٪" : "dkora Tool | Free Online Browser-Based Image Cropper & Aspect Resizer";
+      pageDesc = locale === 'ar' ? "أسرع أداة مجانية لقص الصور وتعديل أبعادها لمتجر سلة أو زد أو شوبيفاي مع الحفاظ على دقة الجودة محلياً وآمنة تماماً داخل متصفحك." : "The fastest free tool to crop and resize your images for Salla, Zid, or Shopify while maintaining crisp resolution, 100% locally and safely in your browser.";
     } else {
       pageTitle = locale === 'ar' ? translations.ar.meta.titleAr : translations.en.meta.titleEn;
       pageDesc = locale === 'ar' ? translations.ar.meta.descAr : translations.en.meta.descEn;
@@ -1598,6 +1602,12 @@ export default function App() {
         </div>
       )}
 
+      {currentView === 'cropper' && (
+        <div className="max-w-7xl w-full mx-auto px-4 py-8.5 animate-fade-in">
+          <CropperPage locale={locale} />
+        </div>
+      )}
+
       </main>
 
       {/* FOOTER NOTIFY AND METRICS ACCENTS */}
@@ -1607,12 +1617,19 @@ export default function App() {
         </div>
 
         {/* Dynamic Nav Tabs Footer Navigation */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 px-4 pb-2.5 max-w-2xl mx-auto text-[11.5px] font-black border-b border-dashed border-slate-100 dark:border-slate-900/40 mb-3.5 animate-fade-in font-sans">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 px-4 pb-2.5 max-w-4xl mx-auto text-[11.5px] font-black border-b border-dashed border-slate-100 dark:border-slate-900/40 mb-3.5 animate-fade-in font-sans">
           <button 
             onClick={() => handleSetCurrentView('editor')}
             className={`transition bg-transparent border-0 cursor-pointer ${currentView === 'editor' ? 'text-[#ff1a40]' : 'text-slate-700 hover:text-[#ff1a40] dark:text-slate-300'}`}
           >
             {locale === 'ar' ? '💻 ضغط ومعالجة الصور' : '💻 Compress & Resize'}
+          </button>
+          <span className="text-slate-300 dark:text-slate-800">|</span>
+          <button 
+            onClick={() => handleSetCurrentView('cropper')}
+            className={`transition bg-transparent border-0 cursor-pointer ${currentView === 'cropper' ? 'text-[#ff1a40]' : 'text-slate-700 hover:text-[#ff1a40] dark:text-slate-300'}`}
+          >
+            {locale === 'ar' ? '✂️ قص وتعديل مقاس الصور' : '✂️ Image Cropper'}
           </button>
           <span className="text-slate-300 dark:text-slate-800">|</span>
           <button 

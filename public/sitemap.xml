@@ -87,6 +87,36 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=blog&amp;lang=en" />
   </url>
 
+  <!-- 9.1. أداة تحويل الصور إلى فيكتور (Default SVG View) -->
+  <url>
+    <loc>https://dkora.online/?view=svg</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=svg&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=svg&amp;lang=en" />
+  </url>
+
+  <!-- 9.2. أداة تحويل الصور إلى فيكتور باللغة العربية (Arabic SVG View) -->
+  <url>
+    <loc>https://dkora.online/?view=svg&amp;lang=ar</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=svg&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=svg&amp;lang=en" />
+  </url>
+
+  <!-- 9.3. أداة تحويل الصور إلى فيكتور باللغة الإنجليزية (English SVG View) -->
+  <url>
+    <loc>https://dkora.online/?view=svg&amp;lang=en</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=svg&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=svg&amp;lang=en" />
+  </url>
+
   <!-- ==================== BLOG ARTICLES Section ==================== -->
 
   <!-- Article 1: Speed Up WordPress (Arabic) -->

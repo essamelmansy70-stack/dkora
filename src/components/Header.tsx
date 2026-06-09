@@ -32,14 +32,14 @@ export default function Header({
           />
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs sm:text-sm font-black tracking-tight text-slate-900 dark:text-white font-sans">
-                img<span className="text-[#ff1a40]">dkora</span> <span className="text-[9px] text-slate-600 dark:text-slate-300 font-semibold">{t.header.logoSuffix}</span>
+              <span className="text-sm sm:text-base font-black tracking-tight text-slate-900 dark:text-white font-sans">
+                img<span className="text-[#ff1a40]">dkora</span> <span className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">{t.header.logoSuffix}</span>
               </span>
               <span className="hidden sm:inline-block px-1.5 py-0.5 bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 text-[8px] font-bold rounded-md">
                 {t.header.badge}
               </span>
             </div>
-            <p className="text-[6px] sm:text-[7px] text-slate-500 dark:text-slate-400 font-medium leading-none mt-0.5">
+            <p className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 font-normal leading-normal mt-0.5 opacity-80">
               {t.header.subtitle}
             </p>
           </div>
@@ -53,11 +53,11 @@ export default function Header({
               const nextLocale = locale === 'ar' ? 'en' : 'ar';
               setLocale(nextLocale);
             }}
-            className="flex items-center gap-1 px-2 py-1 text-[10px] text-rose-700 dark:text-rose-400 bg-rose-500/10 dark:bg-rose-950/40 hover:bg-rose-500/15 dark:hover:bg-rose-950/60 border border-rose-200/50 dark:border-rose-900/40 rounded-lg transition-all cursor-pointer font-bold"
+            className="flex items-center gap-1.5 px-2 py-1 text-[10px] sm:text-xs text-rose-700 dark:text-rose-400 bg-rose-500/10 dark:bg-rose-950/40 hover:bg-rose-500/15 dark:hover:bg-rose-950/60 border border-rose-200/50 dark:border-rose-900/40 rounded-lg transition-all cursor-pointer font-bold"
             aria-label={locale === 'ar' ? 'تغيير لغة الموقع إلى الإنجليزية' : 'Change website language to Arabic'}
           >
             <span>{t.header.langButton}</span>
-            <span className="text-[8px] opacity-70">文A</span>
+            <span className="text-[9px] sm:text-[10px] opacity-70">文A</span>
           </button>
 
           {/* Theme button switcher */}

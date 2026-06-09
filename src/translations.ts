@@ -218,6 +218,30 @@ export interface TranslationType {
     termsDesc4: string;
     copyright: string;
   };
+  svgConverter: {
+    title: string;
+    subtitle: string;
+    metaTitle: string;
+    metaDesc: string;
+    dropzoneTitle: string;
+    dropzoneSubtitle: string;
+    dropzoneBtn: string;
+    btnConvert: string;
+    btnConverting: string;
+    originalLabel: string;
+    resultLabel: string;
+    btnDownload: string;
+    controlColors: string;
+    controlBlur: string;
+    controlPrecision: string;
+    controlOmit: string;
+    infoTitle: string;
+    infoDesc: string;
+    infoNote: string;
+    unsupportedFile: string;
+    sizeLabel: string;
+    pathsLabel: string;
+  };
 }
 
 export const translations: Record<'ar' | 'en', TranslationType> = {
@@ -440,6 +464,30 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
       termsLabel4: "4. الدعم التقني والتواصل:",
       termsDesc4: "جميع خدماتنا مجانية ومفتوحة المصدر للمجتمع الرقمي. إذا واجهت أي مشاكل أو رغبت في التعاون، يمكنك دائماً التواصل مع الدعم التقني عبر البريد الإلكتروني المعتمد للمشروع (essamelmansy67@gmail.com).",
       copyright: "imgdkora هو مشروع عربي ريادي مخصص لمعالجة الصور محلياً بالكامل. جميع شاشات وخدمات هذا التطبيق مفتوحة المصدر وقانونية للقبول في جوجل أدسنس ٢٠٢٦."
+    },
+    svgConverter: {
+      title: "محول الصور النقطية إلى متجهات (SVG Vector)",
+      subtitle: "حوّل صور PNG و JPG إلى رسومات متجهة SVG عالية الدقة وقابلة للتكبير دون بكسلة مجاناً ومحلياً 100٪",
+      metaTitle: "أداة imgdkora | محول الصور النقطية إلى متجهات SVG مجاناً",
+      metaDesc: "حوّل صور PNG و JPG إلى ملفات متجهة SVG قابلة للتكبير لا متناهياً ومجاناً بالكامل. أداة آمنة تعمل 100٪ بمتصفحك بدون الحاجة إلى رفع صورك على سيرفر.",
+      dropzoneTitle: "اسحب صورتك النقطية هنا أو اضغط للاختيار",
+      dropzoneSubtitle: "يدعم PNG، JPG، JPEG، WebP، BMP (بحد أقصى 10MB)",
+      dropzoneBtn: "اختر صورة للتحويل",
+      btnConvert: "تحويل إلى رسم متجه (SVG)",
+      btnConverting: "جاري المعالجة وتتبع المنحنيات...",
+      originalLabel: "الصورة الأصلية النقطية (Raster)",
+      resultLabel: "الرسم المتجه الناتج (Scalable SVG)",
+      btnDownload: "تحميل ملف SVG الناتج",
+      controlColors: "عدد الألوان المستهدفة",
+      controlBlur: "تنعيم ما قبل التتبع (تقليل الضوضاء)",
+      controlPrecision: "دقة تتبع المنحنيات (تنعيم الخطوط)",
+      controlOmit: "تجاهل التفاصيل الصغيرة جداً (بكسل)",
+      infoTitle: "كيف يعمل محول المتجهات المحلي؟",
+      infoDesc: "تستخدم الأداة خوارزمية تتبع متقدمة (Tracing & Vectorization) لفرز الألوان وبناء منحنيات بيزير تفاعلية وتوليد مسارات SVG دقيقة دون إرسال بياناتك لخادم خارجي.",
+      infoNote: "ملاحظة: للحصول على أفضل النتائج، يفضل استخدام صور شعارات (Logos)، رسم خطي، أيقونات مسطحة، أو لقطات شاشة نصية واضحة.",
+      unsupportedFile: "صيغة الملف غير مدعومة. يرجى اختيار ملف صورة صالح مثل PNG أو JPG.",
+      sizeLabel: "الحجم المعالج: ",
+      pathsLabel: "عدد مسارات الرسم: "
     }
   },
   en: {
@@ -661,6 +709,30 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
       termsLabel4: "4. Constant Code Advancements:",
       termsDesc4: "Our team operates out of pure passion for open source. We constantly revise our image processing matrices and appreciate any feature feedback or layout ideas via contact support (essamelmansy67@gmail.com).",
       copyright: "imgdkora is a privacy-first open-source web compiler. All core templates and pages are fully prepared and compliant for Google AdSense program acceptance in 2026."
+    },
+    svgConverter: {
+      title: "Raster Image to Vector (SVG) Converter",
+      subtitle: "Convert PNG and JPG images to scalable SVG vector graphics without pixelation, fully local & 100% free",
+      metaTitle: "imgdkora Tool | Free Online JPG & PNG to SVG Vector Converter",
+      metaDesc: "Convert raster images like PNG, JPG, and WebP into high-quality scalable vector graphics SVG. Secure client-side processing, no images ever uploaded to a server.",
+      dropzoneTitle: "Drag your raster image here or click to choose",
+      dropzoneSubtitle: "Supports PNG, JPG, JPEG, WebP, BMP (Max 10MB)",
+      dropzoneBtn: "Select Image to Vectorize",
+      btnConvert: "Trace Image to Vector (SVG)",
+      btnConverting: "Tracing lines & vectorizing...",
+      originalLabel: "Original Raster Image",
+      resultLabel: "Generated Vector Result (SVG)",
+      btnDownload: "Download Generated SVG File",
+      controlColors: "Target Color Count",
+      controlBlur: "Pre-processing Noise Filter (Blur)",
+      controlPrecision: "Trace Line Smoothing",
+      controlOmit: "Omit Speckle Noise (px)",
+      infoTitle: "How does the local SVG vectorizer work?",
+      infoDesc: "The tool runs a fast and precise client-side tracing. It quantizes image colors, tracks edge boundaries, and synthesizes smooth Bézier curve paths perfectly inside your browser memory.",
+      infoNote: "Note: For stellar vectorization results, prefer using clean high-contrast flat logos, monograms, outlines, line drawings, or text captures.",
+      unsupportedFile: "Unsupported file format. Please choose a valid image file like PNG or JPG.",
+      sizeLabel: "Processed Size: ",
+      pathsLabel: "Created Vector Paths: "
     }
   }
 };

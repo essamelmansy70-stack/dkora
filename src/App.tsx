@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, FormEvent, MouseEvent, TouchEvent, DragEve
 import Header from './components/Header';
 import LegalModals from './components/LegalModals';
 import ArticlesPage from './components/ArticlesPage';
+import SvgConverterPage from './components/SvgConverterPage';
 import { translations } from './translations';
 import { 
   Sparkles, 
@@ -71,31 +72,6 @@ export default function App() {
   });
 
   const t = translations[locale];
-
-  // Synchronize dynamic direction, metadata, title, and query parameters
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const currentLang = params.get('lang');
-    if (currentLang !== locale) {
-      params.set('lang', locale); // Keep explicit lang parameter in URL for both lang=ar and lang=en dedicated links
-      const newSearch = params.toString();
-      const newPath = window.location.pathname + (newSearch ? `?${newSearch}` : '');
-      window.history.replaceState({}, '', newPath);
-    }
-    
-    document.documentElement.lang = locale;
-    document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr';
-    document.title = locale === 'ar' ? translations.ar.meta.titleAr : translations.en.meta.titleEn;
-
-    // Dynamically update the meta description tag as well for full SEO compliance!
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (!metaDesc) {
-      metaDesc = document.createElement('meta');
-      metaDesc.setAttribute('name', 'description');
-      document.head.appendChild(metaDesc);
-    }
-    metaDesc.setAttribute('content', locale === 'ar' ? translations.ar.meta.descAr : translations.en.meta.descEn);
-  }, [locale]);
 
   // Theme state
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
@@ -178,8 +154,8 @@ export default function App() {
   const isDraggingSplitRef = useRef<boolean>(false);
   const [legalModal, setLegalModal] = useState<'privacy' | 'terms' | 'about' | 'contact' | 'disclaimer' | null>(null);
 
-  // Main high-level view routing: 'editor' (Image tool), 'blog' (Articles page)
-  const [currentView, setCurrentView] = useState<'editor' | 'blog'>('editor');
+  // Main high-level view routing: 'editor' (Image tool), 'blog' (Articles page), 'svg' (Vectorization tool)
+  const [currentView, setCurrentView] = useState<'editor' | 'blog' | 'svg'>('editor');
 
   // Synchronize deep linking search parameters for indexing and sharing!
   useEffect(() => {
@@ -190,14 +166,14 @@ export default function App() {
       
       if (articleSlug) {
         setCurrentView('blog');
-      } else if (viewParam === 'blog' || viewParam === 'editor') {
-        setCurrentView(viewParam as 'editor' | 'blog');
+      } else if (viewParam === 'blog' || viewParam === 'editor' || viewParam === 'svg') {
+        setCurrentView(viewParam === 'svg' ? 'svg' : (viewParam as 'editor' | 'blog'));
       }
     }
   }, []);
 
   // Update query params when viewing different tabs
-  const handleSetCurrentView = (view: 'editor' | 'blog') => {
+  const handleSetCurrentView = (view: 'editor' | 'blog' | 'svg') => {
     setCurrentView(view);
     playSound(480, 0.08);
     
@@ -218,6 +194,43 @@ export default function App() {
       window.history.pushState({}, '', newPath);
     }
   };
+
+  // Synchronize dynamic direction, metadata, title, and query parameters
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const currentLang = params.get('lang');
+    if (currentLang !== locale) {
+      params.set('lang', locale); // Keep explicit lang parameter in URL for both lang=ar and lang=en dedicated links
+      const newSearch = params.toString();
+      const newPath = window.location.pathname + (newSearch ? `?${newSearch}` : '');
+      window.history.replaceState({}, '', newPath);
+    }
+    
+    document.documentElement.lang = locale;
+    document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr';
+
+    let pageTitle = '';
+    let pageDesc = '';
+
+    if (currentView === 'svg') {
+      pageTitle = locale === 'ar' ? translations.ar.svgConverter.metaTitle : translations.en.svgConverter.metaTitle;
+      pageDesc = locale === 'ar' ? translations.ar.svgConverter.metaDesc : translations.en.svgConverter.metaDesc;
+    } else {
+      pageTitle = locale === 'ar' ? translations.ar.meta.titleAr : translations.en.meta.titleEn;
+      pageDesc = locale === 'ar' ? translations.ar.meta.descAr : translations.en.meta.descEn;
+    }
+
+    document.title = pageTitle;
+
+    // Dynamically update the meta description tag as well for full SEO compliance!
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', pageDesc);
+  }, [locale, currentView]);
 
   // Setup sound cues (synthesizer on the fly!)
   const playSound = (freq = 440, duration = 0.08, type: OscillatorType = 'sine') => {
@@ -926,23 +939,25 @@ export default function App() {
       />
 
       {/* Modern white background that turns cosmic dark-blue in dark mode */}
-      <div className="bg-white dark:bg-slate-950 bg-gradient-to-b from-white via-white to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white pt-10 pb-20 px-4 text-center relative overflow-hidden transition-colors duration-200 border-b border-slate-100 dark:border-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,26,64,0.03),transparent_40%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(255,26,64,0.12),transparent_40%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.02),transparent_40%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.08),transparent_40%)]" />
-        <div className="max-w-4xl mx-auto space-y-6 relative z-10 animate-fade-in text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-[11px] sm:text-xs font-bold rounded-full">
-            <Sparkles className="w-3.5 h-3.5 animate-spin text-[#ff1a40]" />
-            <span>{locale === 'ar' ? 'أفضل أداة مجانية لمعالجة وضغط الصور وصناع المحتوى لعام 2026' : 'Ultimate Free Image Optimizer & Processor for Creators in 2026'}</span>
+      {currentView === 'editor' && (
+        <div className="bg-white dark:bg-slate-950 bg-gradient-to-b from-white via-white to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white pt-10 pb-20 px-4 text-center relative overflow-hidden transition-colors duration-200 border-b border-slate-100 dark:border-none">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,26,64,0.03),transparent_40%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(255,26,64,0.12),transparent_40%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.02),transparent_40%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(16,185,129,0.08),transparent_40%)]" />
+          <div className="max-w-4xl mx-auto space-y-6 relative z-10 animate-fade-in text-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-[11px] sm:text-xs font-bold rounded-full">
+              <Sparkles className="w-3.5 h-3.5 animate-spin text-[#ff1a40]" />
+              <span>{locale === 'ar' ? 'أفضل أداة مجانية لمعالجة وضغط الصور وصناع المحتوى لعام 2026' : 'Ultimate Free Image Optimizer & Processor for Creators in 2026'}</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-black tracking-tight leading-snug">
+              {t.hero.headlinePrefix} <br />
+              <span className="text-[#ff1a40] drop-shadow-[0_0_15px_rgba(255,26,64,0.15)] dark:drop-shadow-[0_0_15px_rgba(255,26,64,0.3)]">{t.hero.headlineHighlight}</span>
+            </h2>
+            <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              {t.hero.subtitle}
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black tracking-tight leading-snug">
-            {t.hero.headlinePrefix} <br />
-            <span className="text-[#ff1a40] drop-shadow-[0_0_15px_rgba(255,26,64,0.15)] dark:drop-shadow-[0_0_15px_rgba(255,26,64,0.3)]">{t.hero.headlineHighlight}</span>
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-350 max-w-2xl mx-auto leading-relaxed">
-            {t.hero.subtitle}
-          </p>
         </div>
-      </div>
+      )}
 
 
       {toastMessage && (
@@ -1575,6 +1590,12 @@ export default function App() {
         </div>
       )}
 
+      {currentView === 'svg' && (
+        <div className="max-w-7xl w-full mx-auto px-4 py-8.5 animate-fade-in">
+          <SvgConverterPage locale={locale} t={t} />
+        </div>
+      )}
+
       {/* FOOTER NOTIFY AND METRICS ACCENTS */}
       <footer className="border-t border-slate-200/60 dark:border-slate-900 bg-white dark:bg-slate-950 py-8 text-center text-xs text-slate-400 space-y-4 mt-auto">
         <div className="font-sans font-black text-[11px] text-slate-400">
@@ -1582,19 +1603,26 @@ export default function App() {
         </div>
 
         {/* Dynamic Nav Tabs Footer Navigation */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 px-4 pb-2.5 max-w-lg mx-auto text-[11.5px] font-black border-b border-dashed border-slate-100 dark:border-slate-900/40 mb-3.5">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 px-4 pb-2.5 max-w-2xl mx-auto text-[11.5px] font-black border-b border-dashed border-slate-100 dark:border-slate-900/40 mb-3.5 animate-fade-in">
           <button 
             onClick={() => handleSetCurrentView('editor')}
             className={`transition bg-transparent border-0 cursor-pointer ${currentView === 'editor' ? 'text-[#ff1a40]' : 'text-slate-500 hover:text-[#ff1a40]'}`}
           >
-            {locale === 'ar' ? '💻 أداة معالجة وضغط الصور' : '💻 Image Optimizer Tool'}
+            {locale === 'ar' ? '💻 ضغط ومعالجة الصور' : '💻 Compress & Resize'}
+          </button>
+          <span className="text-slate-200 dark:text-slate-800">|</span>
+          <button 
+            onClick={() => handleSetCurrentView('svg')}
+            className={`transition bg-transparent border-0 cursor-pointer ${currentView === 'svg' ? 'text-[#ff1a40]' : 'text-slate-500 hover:text-[#ff1a40]'}`}
+          >
+            {locale === 'ar' ? '📐 محول صور إلى SVG متجهات' : '📐 Raster to SVG Vector'}
           </button>
           <span className="text-slate-200 dark:text-slate-800">|</span>
           <button 
             onClick={() => handleSetCurrentView('blog')}
             className={`transition bg-transparent border-0 cursor-pointer ${currentView === 'blog' ? 'text-[#ff1a40]' : 'text-slate-500 hover:text-[#ff1a40]'}`}
           >
-            {locale === 'ar' ? '📝 دليل سيو ٢٠٢٦ وأسرار الصور' : '📝 SEO 2026 & Image Guide'}
+            {locale === 'ar' ? '📝 دليل سيو وأسرار الصور' : '📝 SEO & Image Guide'}
           </button>
         </div>
         <p className="text-[10px] text-slate-500 dark:text-slate-400 max-w-sm mx-auto leading-relaxed">

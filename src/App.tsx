@@ -938,6 +938,8 @@ export default function App() {
         t={t}
       />
 
+      <main className="flex-grow flex flex-col">
+
       {/* Modern white background that turns cosmic dark-blue in dark mode */}
       {currentView === 'editor' && (
         <div className="bg-white dark:bg-slate-950 bg-gradient-to-b from-white via-white to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 text-slate-900 dark:text-white pt-10 pb-20 px-4 text-center relative overflow-hidden transition-colors duration-200 border-b border-slate-100 dark:border-none">
@@ -952,7 +954,7 @@ export default function App() {
               {t.hero.headlinePrefix} <br />
               <span className="text-[#ff1a40] drop-shadow-[0_0_15px_rgba(255,26,64,0.15)] dark:drop-shadow-[0_0_15px_rgba(255,26,64,0.3)]">{t.hero.headlineHighlight}</span>
             </h2>
-            <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-[11px] sm:text-xs text-slate-700 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
               {t.hero.subtitle}
             </p>
           </div>
@@ -1045,7 +1047,7 @@ export default function App() {
               </label>
 
               {/* Speed notes */}
-              <div className="mt-10 flex gap-4 text-[10px] sm:text-xs font-extrabold text-slate-600 dark:text-slate-400 justify-center" onClick={(e) => e.stopPropagation()}>
+              <div className="mt-10 flex gap-4 text-[10px] sm:text-xs font-extrabold text-slate-705 dark:text-slate-300 justify-center" onClick={(e) => e.stopPropagation()}>
                 <span className="flex items-center gap-1">🛡️ {locale === 'ar' ? 'أمان محلي 100٪' : '100% Local Security'}</span>
                 <span>•</span>
                 <span className="flex items-center gap-1">⚡ {locale === 'ar' ? 'فوري بدون سيرفر' : 'Instant No Server'}</span>
@@ -1056,7 +1058,7 @@ export default function App() {
           </div>
         </div>
       ) : (
-        <main className="flex-grow max-w-7xl w-full mx-auto px-4 py-8 sm:py-12 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
+        <div className="flex-grow max-w-7xl w-full mx-auto px-4 py-8 sm:py-12 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
           
           {/* LEFT COLUMN: Controls Panel & Tools Toolbar (5 Cols) */}
           <section className="lg:col-span-12 xl:col-span-5 space-y-6">
@@ -1579,7 +1581,7 @@ export default function App() {
 
         </section>
 
-      </main>
+      </div>
           )}
         </>
       )}
@@ -1596,41 +1598,43 @@ export default function App() {
         </div>
       )}
 
+      </main>
+
       {/* FOOTER NOTIFY AND METRICS ACCENTS */}
-      <footer className="border-t border-slate-200/60 dark:border-slate-900 bg-white dark:bg-slate-950 py-8 text-center text-xs text-slate-400 space-y-4 mt-auto">
-        <div className="font-sans font-black text-[11px] text-slate-400">
+      <footer className="border-t border-slate-200/60 dark:border-slate-900 bg-white dark:bg-slate-950 py-8 text-center text-xs text-slate-700 dark:text-slate-300 space-y-4 mt-auto">
+        <div className="font-sans font-black text-[11px] text-slate-700 dark:text-slate-350">
           {locale === 'ar' ? 'مستودع أدوات معالجة الصور ومسح الخلفية بمتصفح العميل ٢٠٢٦ 🚀' : 'Secure In-Browser Image Compressor & Background Remover 2026 🚀'}
         </div>
 
         {/* Dynamic Nav Tabs Footer Navigation */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 px-4 pb-2.5 max-w-2xl mx-auto text-[11.5px] font-black border-b border-dashed border-slate-100 dark:border-slate-900/40 mb-3.5 animate-fade-in">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 px-4 pb-2.5 max-w-2xl mx-auto text-[11.5px] font-black border-b border-dashed border-slate-100 dark:border-slate-900/40 mb-3.5 animate-fade-in font-sans">
           <button 
             onClick={() => handleSetCurrentView('editor')}
-            className={`transition bg-transparent border-0 cursor-pointer ${currentView === 'editor' ? 'text-[#ff1a40]' : 'text-slate-500 hover:text-[#ff1a40]'}`}
+            className={`transition bg-transparent border-0 cursor-pointer ${currentView === 'editor' ? 'text-[#ff1a40]' : 'text-slate-700 hover:text-[#ff1a40] dark:text-slate-300'}`}
           >
             {locale === 'ar' ? '💻 ضغط ومعالجة الصور' : '💻 Compress & Resize'}
           </button>
-          <span className="text-slate-200 dark:text-slate-800">|</span>
+          <span className="text-slate-300 dark:text-slate-800">|</span>
           <button 
             onClick={() => handleSetCurrentView('svg')}
-            className={`transition bg-transparent border-0 cursor-pointer ${currentView === 'svg' ? 'text-[#ff1a40]' : 'text-slate-500 hover:text-[#ff1a40]'}`}
+            className={`transition bg-transparent border-0 cursor-pointer ${currentView === 'svg' ? 'text-[#ff1a40]' : 'text-slate-700 hover:text-[#ff1a40] dark:text-slate-300'}`}
           >
             {locale === 'ar' ? '📐 محول صور إلى SVG متجهات' : '📐 Raster to SVG Vector'}
           </button>
-          <span className="text-slate-200 dark:text-slate-800">|</span>
+          <span className="text-slate-300 dark:text-slate-800">|</span>
           <button 
             onClick={() => handleSetCurrentView('blog')}
-            className={`transition bg-transparent border-0 cursor-pointer ${currentView === 'blog' ? 'text-[#ff1a40]' : 'text-slate-500 hover:text-[#ff1a40]'}`}
+            className={`transition bg-transparent border-0 cursor-pointer ${currentView === 'blog' ? 'text-[#ff1a40]' : 'text-slate-700 hover:text-[#ff1a40] dark:text-slate-300'}`}
           >
             {locale === 'ar' ? '📝 دليل سيو وأسرار الصور' : '📝 SEO & Image Guide'}
           </button>
         </div>
-        <p className="text-[10px] text-slate-500 dark:text-slate-400 max-w-sm mx-auto leading-relaxed">
+        <p className="text-[10px] text-slate-700 dark:text-slate-300 max-w-sm mx-auto leading-relaxed">
           {t.legal.copyright}
         </p>
 
         {/* Legal Actions Triggers */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3.5 text-[11px] font-extrabold text-slate-400 max-w-lg mx-auto px-4">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3.5 text-[11px] font-extrabold text-slate-700 dark:text-slate-300 max-w-lg mx-auto px-4">
           <button 
             onClick={() => { setLegalModal('privacy'); playSound(550, 0.05); }}
             className="hover:text-[#ff1a40] transition-colors cursor-pointer hover:underline"

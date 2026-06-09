@@ -33,37 +33,37 @@ export default function Header({
           <div>
             <div className="flex items-center gap-2">
               <span className="text-sm sm:text-base font-black tracking-tight text-slate-900 dark:text-white font-sans">
-                img<span className="text-[#ff1a40]">dkora</span> <span className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold">{t.header.logoSuffix}</span>
+                img<span className="text-[#ff1a40]">dkora</span> <span className="text-[10px] text-slate-700 dark:text-slate-300 font-semibold">{t.header.logoSuffix}</span>
               </span>
               <span className="hidden sm:inline-block px-1.5 py-0.5 bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 text-[8px] font-bold rounded-md">
                 {t.header.badge}
               </span>
             </div>
-            <p className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 font-normal leading-normal mt-0.5 opacity-80">
+            <p className="text-[9px] sm:text-[10px] text-slate-705 dark:text-slate-300 font-normal leading-normal mt-0.5 opacity-80">
               {t.header.subtitle}
             </p>
           </div>
         </div>
 
         {/* Left: Interactive controls */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           {/* Real Language Toggle Button */}
           <button 
             onClick={() => {
               const nextLocale = locale === 'ar' ? 'en' : 'ar';
               setLocale(nextLocale);
             }}
-            className="flex items-center gap-1.5 px-2 py-1 text-[10px] sm:text-xs text-rose-700 dark:text-rose-400 bg-rose-500/10 dark:bg-rose-950/40 hover:bg-rose-500/15 dark:hover:bg-rose-950/60 border border-rose-200/50 dark:border-rose-900/40 rounded-lg transition-all cursor-pointer font-bold"
+            className="flex items-center justify-center gap-1.5 px-3 py-2 text-xs sm:text-xs text-rose-750 dark:text-rose-300 bg-rose-500/10 dark:bg-rose-950/40 hover:bg-rose-500/15 dark:hover:bg-rose-950/60 border border-rose-200/50 dark:border-rose-900/40 rounded-lg transition-all cursor-pointer font-bold min-h-[44px] min-w-[44px]"
             aria-label={locale === 'ar' ? 'تغيير لغة الموقع إلى الإنجليزية' : 'Change website language to Arabic'}
           >
             <span>{t.header.langButton}</span>
-            <span className="text-[9px] sm:text-[10px] opacity-70">文A</span>
+            <span className="text-[10px] sm:text-xs opacity-75">文A</span>
           </button>
 
           {/* Theme button switcher */}
           <button
             onClick={handleToggleTheme}
-            className="p-1.5 sm:p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-all cursor-pointer focus:outline-none"
+            className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-all cursor-pointer focus:outline-none min-w-[44px] min-h-[44px] flex items-center justify-center"
             title={t.header.themeTitle}
             aria-label={t.header.themeTitle}
           >

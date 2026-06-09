@@ -1,5 +1,5 @@
 {
-  "name": "أداة معالجة الصور لصناع المحتوى",
+  "name": "dkora",
   "description": "أداة احترافية قوية وفائقة السرعة تعمل بالكامل في المتصفح لضغط الصور، تغيير المقاسات، وإزالة الخلفيات والمجسمات مع معاينة حية وجودة استثنائية.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]

@@ -10,15 +10,50 @@
     <link rel="apple-touch-icon" href="/logo.png" />
     <link rel="preload" href="/logo.png" as="image" type="image/png" fetchpriority="high" />
     
-    <!-- Google Analytics (gtag.js) with Performance Optimizations -->
+    <!-- Google Analytics (gtag.js) - Delayed/Lazy-Loaded on User Interaction/Scroll -->
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1X9DTB7PL5"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-1X9DTB7PL5');
+      (function() {
+        let loaded = false;
+        function loadGA() {
+          if (loaded) return;
+          loaded = true;
+          
+          // Remove event listeners to prevent duplicate executions
+          window.removeEventListener('scroll', loadGA, { passive: true });
+          window.removeEventListener('mousemove', loadGA, { passive: true });
+          window.removeEventListener('touchstart', loadGA, { passive: true });
+          window.removeEventListener('keydown', loadGA, { passive: true });
+          
+          // Dynamically inject Google Analytics script
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-1X9DTB7PL5';
+          document.head.appendChild(script);
+          
+          // Initialize gtag
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function() { window.dataLayer.push(arguments); };
+          gtag('js', new Date());
+          gtag('config', 'G-1X9DTB7PL5');
+        }
+        
+        // Bind to multiple user interaction gestures for instant response
+        window.addEventListener('scroll', loadGA, { passive: true });
+        window.addEventListener('mousemove', loadGA, { passive: true });
+        window.addEventListener('touchstart', loadGA, { passive: true });
+        window.addEventListener('keydown', loadGA, { passive: true });
+        
+        // Fallback load on page load when browser is idle to ensure tracking isn't lost
+        if (window.requestIdleCallback) {
+          window.requestIdleCallback(function() {
+            setTimeout(loadGA, 4000);
+          });
+        } else {
+          setTimeout(loadGA, 5000);
+        }
+      })();
     </script>
     
     <!-- On-Page SEO Primary Metadata -->

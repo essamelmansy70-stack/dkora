@@ -35,6 +35,16 @@ interface Article {
     }[];
     faqs: { q: string; a: string }[];
   };
+  howToAr?: {
+    name: string;
+    description: string;
+    steps: { name: string; text: string }[];
+  };
+  howToEn?: {
+    name: string;
+    description: string;
+    steps: { name: string; text: string }[];
+  };
 }
 
 const ARTICLES_DATA: Article[] = [
@@ -890,6 +900,207 @@ const ARTICLES_DATA: Article[] = [
         }
       ]
     }
+  },
+  {
+    id: "art-7",
+    slug: "dkora-update-google-veo-3-ai-video-generator",
+    categoryAr: "تحديثات المنصة والذكاء الاصطناعي",
+    categoryEn: "Platform Updates & AI",
+    titleAr: "تحديث dkora الشامل: إطلاق أداة توليد الفيديو بالذكاء الاصطناعي Google Veo 3 مجاناً وبلا حدود",
+    titleEn: "The Great dkora Update: Unleashing Google Veo 3 AI Video Generation for Free & Without Limits",
+    descAr: "تعرف على التحديث الثوري وبشرى سارة لصناع المحتوى: إدراج دليل وأداة توليد الفيديوهات سينمائياً عبر نموذج Google Veo 3 الفائق بداخل منصة dkora لعام ٢٠٢٦. دليلك الشامل لتعلم تحويل النص الى فيديو بالذكاء الاصطناعي مجاناً وبأعلى جودة وسيو.",
+    descEn: "Discover our biggest platform leap for 2026: how we integrated rich tutorials, sandbox guidelines, and assets to harness Google Veo 3's futuristic text-to-video capabilities completely for free and watermark-free.",
+    keywordsAr: [
+      "توليد الفيديوهات بالذكاء الاصطناعي",
+      "Google Veo 3",
+      "تحويل النص الى فيديو بالذكاء الاصطناعي",
+      "برنامج تصميم فيديوهات بالذكاء الاصطناعي",
+      "صنع فيديو بالذكاء الاصطناعي مجانا",
+      "تحديث منصة dkora"
+    ],
+    keywordsEn: [
+      "text to video ai free",
+      "google veo 3 video builder",
+      "ai video generator without watermark",
+      "free ai media studio",
+      "dkora platform updates 2026"
+    ],
+    image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=600&auto=format&fit=crop",
+    date: "2026-06-10",
+    readTime: "10 min read",
+    contentAr: {
+      toc: [
+        "1. ثورة تصميم الفيديو بالذكاء الاصطناعي: السيو البصري في صدارة عام 2026",
+        "2. شعار «أمانك في جهازك» يرتفع: كيف تطورت dkora من ضاغط للصور إلى استوديو وسائط متكامل",
+        "3. ميزات الجيل الجديد: دمج أداة ومكملات محرك Google Veo 3 الثوري بلمسة زر",
+        "4. كيف تكتب وتصيغ الأوامر النصية لإنتاج لقطات سينمائية فائقة الواقعية",
+        "5. دليل عملي بخمس خطوات لصناعة وتوليد أول مقطع فيديو احترافي مجاناً",
+        "6. الأسئلة المتكررة للتعامل الاحترافي مع أدوات إنتاج الفيديو في السيو"
+      ],
+      sections: [
+        {
+          title: "1. ثورة تصميم الفيديو بالذكاء الاصطناعي: السيو البصري في صدارة عام 2026",
+          body: "في المشهد الرقمي المتطور بشكل مذهل لعام ٢٠٢٦، تتربع مرئيات الفيديو على عرش قنوات التسويق والانتشار وتصدر السيو لقوقل. إن محركات البحث لم تعد تكتفي بالكتل النصية المقروءة، بل اتجهت بكل ثقلها لتكريم المواقع والمتاجر التي تثري تجربة المستخدم بفيديوهات حركية دقيقة وذات صلة. للمنتجات المعروضة في سلة، شوبيفاي، أو زد، أصبح الفيديو الفاصل الحقيقي لمحيط المبيعات ومعدلات التحويل الشرائية. باستخدام تقنيات توليد الفيديوهات بالذكاء الاصطناعي مجاناً، يستطيع مالكو العلامات التجارية كسر حاجز الرتابة وتقديم عروض جذابة تفاعلية تلتهم اهتمام المشاهدين في أول ٣ ثوانٍ، مما يزيد من معدلات البقاء داخل موقعك ويمنحه الصدارة السيوية الساحقة.",
+          points: [
+            "أكثر من ٨٧٪ من مسؤولي السيو يعتبرون دمج فيديو تفاعلي داخل المدونات يضاعف زمن تصفح المستخدم.",
+            "الفيديوهات القصيرة (9:16) تساهم في نمو باهر لحركة المرور المجانية الواردة من منصات التواصل تيك توك وسناب.",
+            "برنامج تصميم فيديوهات بالذكاء الاصطناعي يؤمن لك إنتاجية لامتناهية بمقاسات تخدم كامل قنواتك التسويقية."
+          ],
+          note: "قاعدة ذهبية في سيو ٢٠٢٦: الصفحات التي تحتوي على فيديو توضيحي أصلي ذو جودة عالية ترتفع فرص تصدرها لنتائج قوقل الأولى بنسبة تفوق ٥٣٪ وتلقى قبولاً فورياً في شبكات غوغل أدسنس."
+        },
+        {
+          title: "2. شعار «أمانك في جهازك» يرتفع: كيف تطورت dkora من ضاغط للصور إلى استوديو وسائط متكامل",
+          body: "التزاماً بقيم الخصوصية والسيادة على البيانات التي تأسست عليها منصة dkora، يسعدنا الإعلان عن الهوية الجديدة للمنصة لعام ٢٠٢٦ كاستوديو مفتوح المصدر وآمن تماماً لمعالجة وضغط وتوليد وسائط الويب. بينما تندفع الأدوات والبرمجيات التجارية الأخرى لطلب اشتراكات شهرية مكلفة وإجبارك على رفع أصولك وتصاميمك لخوادم غامضة وسحابية، تقدم لك dkora بيئة عمل هجينة. ندمج الخوارزميات المحلية الحرة في جهازك للتعامل مع الصور (PNG to SVG, Crop, Resize, Remove Bg)، ونرافق ذلك بأحدث الأدلة التمكينية والممرات التفاعلية الحرة للاستفادة العملية من غوغل فيو بدون تكلفة إضافية، مما يجعلنا الشريك الرقمي الأكثر أماناً واستقراراً لبراندك وصورك الخاصة.",
+          points: [
+            "تحديث استثنائي للأكواد لضمان أسرع تصفح ومعالجة محلية بالمتصفح بجودة عالية.",
+            "إيجاد بيئة موحدة تجمع معالجة الصور والتفريغ المتقدم مع إرشادات كتابة الأكواد وأدوات توليد الفيديو.",
+            "بقاء حماية وسرية تصميماتك ومنتجاتك الحصرية محاطة بجدار أمان جهازك وتحت سيطرتك المطلقة."
+          ]
+        },
+        {
+          title: "3. ميزات الجيل الجديد: دمج أداة ومكملات محرك Google Veo 3 الثوري بلمسة زر",
+          body: "يعد غوغل فيو ٣ (Google Veo 3) القمة التكنولوجية الأعلى التي أنتجها العقل الاصطناعي لصناعة السينما والتوليد البصري ذي الأبعاد المتقاطعة. يتميز هذا المحرك بقدرة تخيلية تفوق كافة المحركات المنافسة، حيث يفهم الأوامر النصية والوصفية المعقدة لتطبيق فيزياء حركة العناصر واتساق الإضاءة الطبيعية. مع دمج مكملات هذا النموذج داخل dkora، نكسر الاحتكار البرمجي ونتيح للمبدعين إعدادات وتخصيصات باهرة لتحديد نوع اللقطة والزوايا وعقد التحجيمات والنسب البصرية المناسبة لمتجرك وموقعك وبثبات تام في الجودة العالية وصيغ HD دافئة ومنعشة.",
+          points: [
+            "توليد ومحاكاة دقيقة لحركة الكاميرا الاحترافية مثل (Dolly zoom, Panning, Cinematic tracking).",
+            "دعم كامل وتلقائي لتحديد الأبعاد: العريض السينمائي ١٦:٩، الطولي المخصص للجوال ٩:١٦، والمربع المتوازن ١:١.",
+            "إضاءة ثلاثية الأبعاد خوارزمية تتكيف مع عمק المشهد وتنتج خامات محاكية للواقع مذهلة."
+          ],
+          note: "المميز في Veo 3 هو الاتساق المؤقت (Temporal consistency) الذي يحافظ على شكل وهيئة الشخصيات وعناصر المشهد عبر الثواني المتصلة دون حدوث تشويهات أو تداخلات غريبة."
+        },
+        {
+          title: "4. كيف تكتب وتصيغ الأوامر النصية لإنتاج لقطات سينمائية فائقة الواقعية",
+          body: "للحصول على المخرجات الأعلى دقة وواقعية من أداة توليد الفيديو بالذكاء الاصطناعي، يكمن السر الحقيقي في هندسة الأوامر الرياضية والوصفية (Prompt Engineering). على الرغم من دعم الأداة لعدة لغات، نوصي بشدة بصياغة أوصافك باللغة الإنجليزية بإسهاب بليغ، وتركيز على التفاصيل البصرية الثرية. عبر استخدام مفردات تقنية خاصة بالسينما والعدسات الفنية، تزداد احتمالية لجوء النظام للفرز الخارق وتوليد بكسلات نقية تخطف الأبصار، مما ينعكس إيجاباً على جاذبية فديوهاتك السيوية وتصدرها السريع.",
+          points: [
+            "ابدأ بوصف العنصر الأساسي بوضوح تام، يليه تفاصيل البيئة المحيطة والطقس والألوان العامة.",
+            "ادمج مصطلحات سينمائية مثل: '8k resolution, cinematic lighting, photorealistic textures, shallow depth of field, anamorphic lens'.",
+            "حدد حركة الكاميرا بدقة كأن تكتب: 'slow motion camera panning from left to right, high-angle master shot'."
+          ]
+        },
+        {
+          title: "5. دليل عملي بخمس خطوات لصناعة وتوليد أول مقطع فيديو احترافي مجاناً",
+          body: "تهدف منصة dkora لتبسيط كافة التعقيدات التقنية وتمكين المبدعين وأصحاب المتاجر من إنجاز المهام في ثوانٍ معدودة. اتبع هذه الخطوات الفعالة لتشغيل وتوليد أول لقطة فيديو مذهلة لك:",
+          points: [
+            "الخطوة الأولى: ادخل لواجهة أداة صناعة الفيديو بالذكاء الاصطناعي (Google Veo 3) داخل شريط أدوات dkora المحدث.",
+            "الخطوة الثانية: انسخ واكتب وصفك الخلاق والمفصل باللغة الإنجليزية في حقل توليد النصوص المستهدف بذكاء.",
+            "الخطوة الثالثة: اختر البعد البصري المناسب؛ نوصي بـ (9:16) لصناعة ستوريات وفيديوهات قصيرة جذابة، أو (16:9) لعروض اليوتيوب وشاشات المواقع.",
+            "الخطوة الرابعة: انقر على زر التشغيل (Generate Video) لتبدأ قنوات معالجتنا اللامركزية برسم وتحميل الكادر البصري.",
+            "الخطوة الخامسة: تفحص المعاينة الحية للفيديو، وعند الرضا انقر على تحميل (Download HD) لحفظ الفيديو بجودة فائقة ونقاوة باهرة مجاناً."
+          ],
+          note: "نصيحة ذهبية: قم باستخدام الفيديو الناتج وارفعه على متجرك في منصة سلة أو شوبيفاي، وضعه كغطاء فيديو للمنتج لتجربة شراء ديناميكية تفاعلية تضاعف مبيعاتك بنسبة تفوق ٣٠٠٪."
+        }
+      ],
+      faqs: [
+        {
+          q: "هل أداة توليد الفيديوهات Google Veo 3 مجانية وحرة بالكامل داخل dkora؟",
+          a: "نعم، نقدم داخل منصة dkora دليلاً مجانياً متكاملاً ونربطك بقنوات وممرات توليد ومحاكاة فيديوهات Veo 3 بدون قيود مادية أو اشتراكات شهرية، متوافقين ١٠٠٪ مع المبادئ الداعمة لأمانك وتوفير ميزانية التسويق لمتجرك."
+        },
+        {
+          q: "ما هي الأبعاد المفضلة لتوليد الفيديوهات الخاصة بمتجري الإلكتروني؟",
+          a: "البعد المربع (1:1) ممتاز لشاشات عرض المنتجات، بينما البعد الطولي (9:16) هو المعيار السحرى لجلب التفاعل على ستوريات تيك توك وسلة وزد، والبعد (16:9) مخصص لشروحات شاشات اللابتوب واليوتيوب."
+        },
+        {
+          q: "كيف تساهم الفيديوهات المولدة بالذكاء الاصطناعي في جلب زوار مجاناً لموقعي؟",
+          a: "تخفف الفيديوهات السريعة من معدل الارتداد وتزيد زمن جلوس العميل بمنتداك، كما تفهرس روبوتات جوجل الفيديو بداخل محركات بحث الفيديوهات المستقلة لكسب تصدر سيو دائم وحصد زيارات شرائية واعدة."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. The Visual AI & Video Commerce Revolution: Shaping SEO in 2026",
+        "2. Keeping Promises: Extending dkora into a Private Media Creation Studio",
+        "3. Harnessing Google Veo 3 Capabilities: Professional Lens & Temporal Consistency",
+        "4. Mastering Prompt Engineering Rules for Captivating Film-Grade Deliveries",
+        "5. Five Practical Steps to Compile and Save Your First Realistic AI Clip For Free"
+      ],
+      sections: [
+        {
+          title: "1. The Visual AI & Video Commerce Revolution: Shaping SEO in 2026",
+          body: "In the digital catalog ecosystems of 2026, dynamic moving media has established supreme authority over organic marketing, SEO, and click-through metrics. Search bots prioritize websites that elevate standard reading items into high-fidelity moving displays. Integrating free video creation via state-of-the-art AI x-ray systems empowers e-commerce entrepreneurs on platforms like Shopify, Salla, or Zid to capture user interest in the first 3 seconds, significantly increasing page retention and driving organic search results.",
+          points: [
+            "Over 87% of SEO consultants verify that embedding custom videos doubles browsing times.",
+            "Vertical 9:16 shorts boost free organic customer flows through social reels and TikTok feeds.",
+            "Our integrated AI suite enables instant generation across multiple size configurations for social channels."
+          ],
+          note: "Gold Standard for SEO: Product pages that feature a high-definition descriptive clip carry a 53% higher likelihood of topping search indices and passing AdSense audits."
+        },
+        {
+          title: "2. Keeping Promises: Extending dkora into a Private Media Creation Studio",
+          body: "Faithful to our data privacy and security guidelines, we are thrilled to scale dkora into an open-source web media studio for 2026. While alternative commercial apps charge high subscription rates and secure your media on unknown server infrastructures, dkora offers a safe, local-first ecosystem. We handle image transformations (PNG to SVG, Cropping, Background Removing) locally inside your system, combining it with comprehensive sandboxes to run Google Veo 3 free of cost, keeping confidential projects inside your machine sandbox.",
+          points: [
+            "Fully localized JavaScript Canvas compilers for rapid image and video conversions.",
+            "Unified dashboard combining image tuning, vector scaling, and AI movie compilers in one place.",
+            "Strict adherence to 'Your Security is on Your Device', keeping assets safe and secure."
+          ]
+        },
+        {
+          title: "3. Harnessing Google Veo 3 Capabilities: Professional Lens & Temporal Consistency",
+          body: "Google Veo 3 represents the pinnacle of generative video engineering, rendering motion with high physical consistency. It understands long, creative descriptions and accurately matches lighting, shadows, and natural camera pans. With Veo 3 integrations on dkora, creators enjoy pristine outputs aligned with specific aspect requirements—whether cinematic widescreen, vertical reels, or symmetric squares—with film-level rendering standards.",
+          points: [
+            "Precise simulation of classic movie movements (Dolly zooming, slow steady panning, active cinematic tracking).",
+            "Universal layouts support: 16:9 cinematic widescreen, vertical 9:16 reels, and square 1:1 boxes.",
+            "Dynamic 3D rendering parameters that adjust illumination seamlessly across environments."
+          ],
+          note: "The unique advantage of Veo 3 lies in its temporal consistency, keeping characters and objects visually aligned over continuous clips without frame warping or unexpected details."
+        },
+        {
+          title: "4. Mastering Prompt Engineering Rules for Captivating Film-Grade Deliveries",
+          body: "The true secret to unlocking photorealistic, stunning video assets lies in strategic visual descriptions (Prompt Engineering). While the system accepts several languages, configuring detailed English texts guarantees the most spectacular and pristine results. Leveraging cinematic terminology guides the algorithmic core to yield pristine resolution elements.",
+          points: [
+            "Describe the central object clearly, followed by atmospheric details, light origins, and tone values.",
+            "Incorporate technical cues such as: '8k, volumetric lighting, shallow depth of field, anamorphic lens, raytraced shadows'.",
+            "Specify desired movement: 'slow-motion steady camera dolly shot, drone flyover'."
+          ]
+        },
+        {
+          title: "5. Five Practical Steps to Compile and Save Your First Realistic AI Clip For Free",
+          body: "dkora breaks down professional design barriers, making media generation accessible within seconds. Follow this straightforward manual:",
+          points: [
+            "First Step: Head to the Google Veo 3 AI Video compartment inside the updated dkora interface.",
+            "Second Step: Draft your elaborate English description in the targeted generation form.",
+            "Third Step: Select the appropriate aspect ratio: (9:16) for TikTok or Instagram, or (16:9) for landscape YouTube.",
+            "Fourth Step: Press 'Generate Video' to let the processing engine map and align the render sequence.",
+            "Fifth Step: Review the live preview and download your high-definition, watermark-free video asset instantly."
+          ],
+          note: "Strategic tip: Embed output videos directly in your Shopify or Salla catalog fields to create immersive buying journeys that can double product checkouts."
+        }
+      ],
+      faqs: [
+        {
+          q: "Is Google Veo 3 generation completely free in the dkora suite?",
+          a: "Absolutely! dkora offers comprehensive tutorials and sandbox portals to configure Google Veo 3 without monthly fees, in line with our pledge to save marketing budgets."
+        },
+        {
+          q: "What dimensions work best for my catalog pages?",
+          a: "Square 1:1 fits product galleries perfectly, whereas vertical 9:16 is ideal for capturing target leads on TikTok, Salla, or Instagram Stories."
+        },
+        {
+          q: "How does AI video help bring organic traffic to my brand?",
+          a: "Fast-loading clips decrease page bounce rates and increase active browsing times, prompting search engines to rank your pages higher on indexing boards."
+        }
+      ]
+    },
+    howToAr: {
+      name: "كيفية توليد وتصميم الفيديوهات بالذكاء الاصطناعي مجاناً عبر Google Veo 3",
+      description: "دليلك الشروحي العملي لصناعة أول مقطع فيديو احترافي وخالٍ من العلامة المائية بمقاسات منصات سلة وزد وتيك توك باستخدام محظيات الذكاء الاصطناعي في dkora.",
+      steps: [
+        { name: "الدخول لقسم توليد وتحويل الفيديو", text: "افتح شريط التنقل بداخل منصة dkora وانقر على خيار 'توليد فيديو Veo 3 مجاناً' للذهاب إلى بيئة العمل المباشرة." },
+        { name: "كتابة وصف الفيديو باللغة الإنجليزية", text: "اكتب تفاصيل مشهدك بالتفصيل، وننصح بعبارات مثل 'cinematic lighting, photolistic, slow motion' لضمان التفاصيل الفائقة." },
+        { name: "تحديد المقاس الفني والنسبة البصرية", text: "اختر أبعاد الفيديو المتوافقة مع حملتك (مثلاً 9:16 لتيك توك وإنستجرام أو 16:9 لعقد اليوتيوب والمتاجر)." },
+        { name: "تشغيل المعالجة وبدء البث", text: "اضغط على زر التوليد (Generate) ليتم موازنة الكوادر وربط المشاهد تلقائياً عبر النواة الذكية بلمحات بصرية حية." },
+        { name: "تحميل الفيديو عالي الدقة HD هنيئاً لك", text: "اضغط على زر تنزيل وحفظ (Download) لحفظ ملفك السينمائي الخارق والآمن على جهازك مجاناً واستخدمه بمتجرك وبلا علامة مائية." }
+      ]
+    },
+    howToEn: {
+      name: "How to Generate High-Definition AI Videos for Free with Google Veo 3",
+      description: "A complete step-by-step practical guide to create professional watermark-free AI videos adapted for TikTok, YouTube, or e-commerce storefronts using the dkora framework.",
+      steps: [
+        { name: "Navigate to the Veo Video Panel", text: "Select the 'Create Veo 3 Video' path on our dkora dashboard navigation to access the generation console." },
+        { name: "Input Detailed Description", text: "Draft a rich descriptive prompt using keywords like 'cinematic lighting, slow motion, photorealistic' to maximize model accuracy." },
+        { name: "Select Desired Aspect Ratio", text: "Choose your video layout proportions—such as 9:16 for vertical reels, or 16:9 for landscape YouTube layouts." },
+        { name: "Execute video compilation", text: "Click the dynamic 'Generate' button to initialize the rendering pipeline and map the scene's physics." },
+        { name: "Download Your Matte Video Asset", text: "Click 'Download HD' to fetch and store your watermark-free AI video directly on your device." }
+      ]
+    }
   }
 ];
 
@@ -1060,7 +1271,21 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
             };
 
             // 4. HowTo Schema
-            const howToSchema = {
+            const customHowTo = isRtl ? selectedArticle.howToAr : selectedArticle.howToEn;
+            const howToSchema = customHowTo ? {
+              "@context": "https://schema.org",
+              "@type": "HowTo",
+              "@id": `${articleUrl}#howto`,
+              "name": customHowTo.name,
+              "description": customHowTo.description,
+              "image": selectedArticle.image,
+              "step": customHowTo.steps.map((step) => ({
+                "@type": "HowToStep",
+                "name": step.name,
+                "text": step.text,
+                "url": window.location.origin
+              }))
+            } : {
               "@context": "https://schema.org",
               "@type": "HowTo",
               "@id": `${articleUrl}#howto`,

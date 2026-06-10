@@ -463,7 +463,7 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
       termsDesc3: "معالجة الصور وتفريغ الحواف لونيًا تجري بقوة معالج جهازك (Client-Side). ولذلك تخلي المنصة مسؤوليتها الكاملة عن أي بطء أو تجميد في متصفحك إذا كانت موارد جهازك ضعيفة مقارنة بحجم الملفات المستهدفة.",
       termsLabel4: "4. الدعم التقني والتواصل:",
       termsDesc4: "جميع خدماتنا مجانية ومفتوحة المصدر للمجتمع الرقمي. إذا واجهت أي مشاكل أو رغبت في التعاون، يمكنك دائماً التواصل مع الدعم التقني عبر البريد الإلكتروني المعتمد للمشروع (essamelmansy67@gmail.com).",
-      copyright: "dkora هو مشروع عربي ريادي مخصص لمعالجة الصور محلياً بالكامل. جميع شاشات وخدمات هذا التطبيق مفتوحة المصدر وقانونية للقبول في جوجل أدسنس ٢٠٢٦."
+      copyright: "أدوات معالجة وصنع الصور بالذكاء الاصطناعي محلياً بالكامل وآمنة ومفتوحة المصدر."
     },
     svgConverter: {
       title: "محول الصور النقطية إلى متجهات (SVG Vector)",
@@ -708,7 +708,7 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
       termsDesc3: "The tool is offered 'as is' without warranty of performance coefficients on ancient or resource-depleted browser environments when converting huge 4K file formats.",
       termsLabel4: "4. Constant Code Advancements:",
       termsDesc4: "Our team operates out of pure passion for open source. We constantly revise our image processing matrices and appreciate any feature feedback or layout ideas via contact support (essamelmansy67@gmail.com).",
-      copyright: "dkora is a privacy-first open-source web compiler. All core templates and pages are fully prepared and compliant for Google AdSense program acceptance in 2026."
+      copyright: "Fully local, secure, and open-source AI image processing and creation tools."
     },
     svgConverter: {
       title: "Raster Image to Vector (SVG) Converter",

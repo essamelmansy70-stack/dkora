@@ -1633,7 +1633,7 @@ export default function App() {
       {/* FOOTER NOTIFY AND METRICS ACCENTS */}
       <footer className="border-t border-slate-200/60 dark:border-slate-900 bg-white dark:bg-slate-950 py-8 text-center text-xs text-slate-700 dark:text-slate-300 space-y-4 mt-auto">
         <div className="font-sans font-black text-[11px] text-slate-700 dark:text-slate-350">
-          {locale === 'ar' ? 'مستودع أدوات معالجة الصور ومسح الخلفية بمتصفح العميل ٢٠٢٦ 🚀' : 'Secure In-Browser Image Compressor & Background Remover 2026 🚀'}
+          {locale === 'ar' ? 'أدوات معالجة وصنع الصور ٢٠٢٦ 🚀' : 'Secure In-Browser Image & AI Video Tools 2026 🚀'}
         </div>
 
         {/* Dynamic Nav Tabs Footer Navigation */}

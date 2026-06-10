@@ -5,6 +5,7 @@ import ArticlesPage from './components/ArticlesPage';
 import SvgConverterPage from './components/SvgConverterPage';
 import CropperPage from './components/CropperPage';
 import BackgroundRemoverPage from './components/BackgroundRemoverPage';
+import VeoVideoPage from './components/VeoVideoPage';
 import { translations } from './translations';
 import { 
   Sparkles, 
@@ -156,8 +157,8 @@ export default function App() {
   const isDraggingSplitRef = useRef<boolean>(false);
   const [legalModal, setLegalModal] = useState<'privacy' | 'terms' | 'about' | 'contact' | 'disclaimer' | null>(null);
 
-  // Main high-level view routing: 'editor' (Image tool), 'blog' (Articles page), 'svg' (Vectorization tool), 'cropper' (Cropper tool), 'remover' (Background Remover)
-  const [currentView, setCurrentView] = useState<'editor' | 'blog' | 'svg' | 'cropper' | 'remover'>('editor');
+  // Main high-level view routing: 'editor' (Image tool), 'blog' (Articles page), 'svg' (Vectorization tool), 'cropper' (Cropper tool), 'remover' (Background Remover), 'veo' (VEO Video Generator)
+  const [currentView, setCurrentView] = useState<'editor' | 'blog' | 'svg' | 'cropper' | 'remover' | 'veo'>('editor');
 
   // Synchronize deep linking search parameters for indexing and sharing!
   useEffect(() => {
@@ -168,14 +169,14 @@ export default function App() {
       
       if (articleSlug) {
         setCurrentView('blog');
-      } else if (viewParam === 'blog' || viewParam === 'editor' || viewParam === 'svg' || viewParam === 'cropper' || viewParam === 'remover') {
-        setCurrentView(viewParam as 'editor' | 'blog' | 'svg' | 'cropper' | 'remover');
+      } else if (viewParam === 'blog' || viewParam === 'editor' || viewParam === 'svg' || viewParam === 'cropper' || viewParam === 'remover' || viewParam === 'veo') {
+        setCurrentView(viewParam as 'editor' | 'blog' | 'svg' | 'cropper' | 'remover' | 'veo');
       }
     }
   }, []);
 
   // Update query params when viewing different tabs
-  const handleSetCurrentView = (view: 'editor' | 'blog' | 'svg' | 'cropper' | 'remover') => {
+  const handleSetCurrentView = (view: 'editor' | 'blog' | 'svg' | 'cropper' | 'remover' | 'veo') => {
     setCurrentView(view);
     playSound(480, 0.08);
     
@@ -223,6 +224,9 @@ export default function App() {
     } else if (currentView === 'remover') {
       pageTitle = locale === 'ar' ? "أداة dkora | إزالة وتفريغ خلفية الصور مجاناً وبأمان 100٪ وبنقرة واحدة" : "dkora Tool | Free Online Browser-Based Background Remover & Transparency Masker";
       pageDesc = locale === 'ar' ? "أسرع وأدق أداة مجانية بمكان واحد لتفريغ خلفية الصور وتغييرها لمتجرك في سلة أو زد أو شوبيفاي مجاناً وبأمان تام دون رفع صورك لأي خادم." : "The fastest free tool to isolate image backgrounds, crop, and erase elements with high resolution, 100% locally and safely in your browser.";
+    } else if (currentView === 'veo') {
+      pageTitle = locale === 'ar' ? "إنشاء فيديو veo 3 مجاناً بلا حدود | دليل dkora الشامل" : "dkora | Create Veo 3 Video Free Without Limits - Complete Tutorial Guide";
+      pageDesc = locale === 'ar' ? "الدليل الحصري والعملي خطوة بخطوة لتوليد فيديوهات سينمائية مجانية فائقة الدقة والواقعية عبر محرك Google Veo 3 المتطور وبلا حدود." : "The exclusive step-by-step roadmap to generate unlimited cinematic, high-definition videos with Google's state-of-the-art Veo 3 engine completely for free.";
     } else {
       pageTitle = locale === 'ar' ? translations.ar.meta.titleAr : translations.en.meta.titleEn;
       pageDesc = locale === 'ar' ? translations.ar.meta.descAr : translations.en.meta.descEn;
@@ -1618,6 +1622,12 @@ export default function App() {
         </div>
       )}
 
+      {currentView === 'veo' && (
+        <div className="max-w-7xl w-full mx-auto px-4 py-8.5 animate-fade-in">
+          <VeoVideoPage locale={locale} t={t} />
+        </div>
+      )}
+
       </main>
 
       {/* FOOTER NOTIFY AND METRICS ACCENTS */}
@@ -1647,6 +1657,13 @@ export default function App() {
             className={`transition bg-transparent border-0 cursor-pointer ${currentView === 'remover' ? 'text-[#ff1a40]' : 'text-slate-700 hover:text-[#ff1a40] dark:text-slate-300'}`}
           >
             {locale === 'ar' ? '✨ إزالة وتفريغ الخلفية' : '✨ Background Remover'}
+          </button>
+          <span className="text-slate-300 dark:text-slate-800">|</span>
+          <button 
+            onClick={() => handleSetCurrentView('veo')}
+            className={`transition bg-transparent border-0 cursor-pointer ${currentView === 'veo' ? 'text-[#ff1a40]' : 'text-slate-700 hover:text-[#ff1a40] dark:text-slate-300'}`}
+          >
+            {locale === 'ar' ? '🎬 إنشاء فيديو veo 3 مجاناً' : '🎬 Create Veo 3 Video Free'}
           </button>
           <span className="text-slate-300 dark:text-slate-800">|</span>
           <button 

@@ -12,7 +12,7 @@ import {
 
 // --- Monetag monetization configuration ---
 const monetagLink = "https://omg10.com/4/11125764"; // Monetag Smart Link (رابط موني تاج الذكي الخاص بك)
-const finalDestination = "https://geminigen.ai/profile/orders"; // Original generator page link (الرابط الأصلي المستهدف)
+const finalDestination = "https://geminigen.ai"; // Original generator page link (الرابط الأصلي المستهدف)
 
 interface VeoVideoPageProps {
   locale: 'ar' | 'en';
@@ -22,17 +22,17 @@ interface VeoVideoPageProps {
 const contentData = {
   ar: {
     badge: "✨ تقنية Veo 3 الجديدة للذكاء الاصطناعي",
-    title: "إنشاء فيديو veo 3 مجاناً بلا حدود",
-    subtitle: "الدليل الشامل والحصري لتوليد فيديوهات سينمائية فائقة الدقة والواقعية باستخدام محرك Google Veo 3 المتطور مجاناً بالكامل وبأسهل طريقة.",
+    title: "إنشاء فيديو veo 3 مجاناً بلا حدود | برنامج تصميم فيديوهات بالذكاء الاصطناعي",
+    subtitle: "الدليل الشامل والحصري لتعلم كيفية صنع فيديو بالذكاء الاصطناعي مجاناً بالكامل. سنشرح لك بالتفصيل كيفية تحويل النص إلى فيديو بالذكاء الاصطناعي بدقة سينمائية فائقة عبر محرك Google Veo 3 المتطور وبأسهل طريقة ممكنة.",
     ctaBtn: "انتقل إلى موقع التوليد والطلبات الآن",
     ctaDesc: "بوابة التوليد المباشرة",
     
     sections: {
       introTitle: "ما هو نموذج Google Veo 3؟",
-      introDesc: "هو الجيل الأحدث والأقوى من نماذج توليد الفيديو من Google. يتميز بقدرة مذهلة على فهم الفيزياء، محاكاة حركة الكاميرا السينمائية بدقة شديدة، تمثيل الواقع بدقة بصرية متناهية، والتحكم الفائق في حركة وحيوية الأجسام والشخصيات بناءً على الوصف النصي فقط.",
+      introDesc: "هو الجيل الأحدث والأقوى من نماذج توليد الفيديو من Google، حيث يُعد حالياً أفضل موقع ذكاء اصطناعي للفيديوهات مجاناً للمصممين وصناع المحتوى. يتميز بقدرة مذهلة على فهم الفيزياء، ومحاكاة حركة الكاميرا السينمائية بدقة شديدة، وتمثيل الواقع بجودة بصرية متناهية، والتحكم الفائق في حركة وحيوية الأجسام والشخصيات بناءً على الوصف النصي فقط.",
       
       stepsTitle: "خطوات التوليد المجاني واللامحدود عبر المنصة",
-      stepsDesc: "اتبع الشرح التفصيلي التالي لتوليد أول فيديو احترافي لك وحفظه بجودة عالية:",
+      stepsDesc: "اتبع الشرح التفصيلي التالي لتصميم وتوليد أول مقطع سينمائي احترافي لك وحفظه بجودة عالية:",
       
       faqTitle: "💬 أسئلة شائعة وحلول برمجية للتحميل",
       faqDesc: "كل ما تود معرفته للحصول على أفضل تجربة توليد ممكنة."
@@ -43,21 +43,21 @@ const contentData = {
         id: "step1",
         num: "١",
         title: "الدخول للموقع والتسجيل المباشر",
-        desc: "اضغط على الزر الموجود أسفل الصفحة للذهاب مباشرة إلى صفحة التوليد والمتابعة الخاصة بك. قم بتسجيل الدخول باستخدام حساب Google الخاص بك بثانية واحدة.",
+        desc: "اضغط على الزر الموجود أسفل الصفحة للذهاب مباشرة إلى صفحة التوليد والمتابعة الخاصة بك للبدء في صنع فيديو بالذكاء الاصطناعي. قم بتسجيل الدخول باستخدام حساب Google الخاص بك بثانية واحدة.",
         icon: Tv
       },
       {
         id: "step2",
         num: "٢",
         title: "الذهاب لقسم التوليد (Generate Video)",
-        desc: "بمجرد الدخول، انتقل لقسم إنشاء الفيديوهات. هناك ستجد واجهة مخصصة لكتابة الوصف (Prompt)، اختيار الأبعاد (مربع، طولي للستوري، أو عرضي لليوتيوب)، والتحكم في إعدادات اللقطة وحفاوة التفاصيل.",
+        desc: "بمجرد الدخول، انتقل لقسم إنشاء الفيديوهات للبدء في تحويل النص إلى فيديو بالذكاء الاصطناعي مجاناً وبسرعة فائقة. هناك ستجد واجهة مخصصة لكتابة الوصف (Prompt)، واختيار الأبعاد (مربع، طولي للستوري، أو عرضي لليوتيوب).",
         icon: Sliders
       },
       {
         id: "step3",
         num: "٣",
         title: "كتابة الوصف النصي الدقيق بالإنجليزية",
-        desc: "للحصول على أفضل جودة من Veo 3، يفضل كتابة الأوصاف باللغة الإنجليزية بالتفصيل. مثل تحديد الإضاءة (Cinematic lighting)، وحركة الكاميرا (Dolly zoom, Slow motion) والتفاصيل الدقيقة للأجسام.",
+        desc: "للحصول على أفضل جودة من برنامج تصميم فيديوهات بالذكاء الاصطناعي، يفضل كتابة الأوصاف باللغة الإنجليزية بالتفصيل. مثل تحديد الإضاءة (Cinematic lighting)، وحركة الكاميرا (Dolly zoom, Slow motion) والتفاصيل الدقيقة للأجسام.",
         icon: Sparkles
       },
       {
@@ -86,14 +86,14 @@ const contentData = {
   },
   en: {
     badge: "✨ Advanced Veo 3 AI Technology",
-    title: "Create Veo 3 Video Free with Unlimited Access",
-    subtitle: "The ultimate exclusive roadmap to generating ultra-realistic high-definition cinematic videos using Google's revolutionary Veo 3 model easily and completely for free.",
+    title: "Create Veo 3 Video Free | Best AI Video Generator Without Watermark",
+    subtitle: "The ultimate exclusive roadmap to convert text to video AI free. Learn how to create professional videos with AI using Google's revolutionary Veo 3 model easily and completely for free.",
     ctaBtn: "Go to Video Generation & Orders Page Now",
     ctaDesc: "Direct Access Portal",
     
     sections: {
       introTitle: "What is Google Veo 3?",
-      introDesc: "It is Google's most advanced and highly capable video generation model to date. It features an incredible understanding of physics, precise simulation of cinematic camera pans, hyper-realistic rendering, and exceptional control over physical dynamics, all from a simple text description.",
+      introDesc: "It is Google's most advanced and highly capable video generation model to date, serving as a powerful and free text to video AI tool. It features an incredible understanding of physics, precise simulation of cinematic camera pans, hyper-realistic rendering, and exceptional control over physical dynamics, all from a simple text description.",
       
       stepsTitle: "How to Generate Free & Unlimited Videos",
       stepsDesc: "Follow this step-by-step tutorial to produce and download your first professional masterpiece:",
@@ -107,21 +107,21 @@ const contentData = {
         id: "step1",
         num: "1",
         title: "Access the Portal & Secure Log In",
-        desc: "Click the red button at the bottom of the page to go directly to your customized workspace. Authenticate securely using your Google account in one simple tap.",
+        desc: "Click the red button at the bottom of the page to go directly to your customized workspace to create professional videos with AI. Authenticate securely using your Google account in one simple tap.",
         icon: Tv
       },
       {
         id: "step2",
         num: "2",
         title: "Go to 'Generate Video' Section",
-        desc: "Once logged in, open the generation space. You will find intuitive controls to insert your text prompt, select aspect ratios (Square, Widescreen 16:9, or Widescreen Verticals), and adjust camera settings.",
+        desc: "Once logged in, open the generation space. You will find intuitive controls to convert text to video AI free, select aspect ratios (Square, Widescreen 16:9, or Widescreen Verticals), and adjust camera settings.",
         icon: Sliders
       },
       {
         id: "step3",
         num: "3",
         title: "Draft a Rich English Description",
-        desc: "To get spectacular details, write descriptions in English with rich descriptive terms like 'Cinematic lighting', 'slow motion', 'Dolly zoom panning', and 'photorealistic materials'.",
+        desc: "To get spectacular details using this best AI video generator without watermark, write descriptions in English with rich descriptive terms like 'Cinematic lighting', 'slow motion', 'Dolly zoom panning', and 'photorealistic materials'.",
         icon: Sparkles
       },
       {
@@ -152,7 +152,16 @@ const contentData = {
 
 export default function VeoVideoPage({ locale }: VeoVideoPageProps) {
   const data = contentData[locale];
-  const [clickCount, setClickCount] = useState<number>(0);
+  
+  // Track clicks count persistently using sessionStorage to ensure state survives any state resets
+  const [clickCount, setClickCount] = useState<number>(() => {
+    try {
+      const saved = sessionStorage.getItem('veo_cta_clicks');
+      return saved ? parseInt(saved, 10) : 0;
+    } catch (e) {
+      return 0;
+    }
+  });
 
   const playSfx = () => {
     try {
@@ -181,15 +190,31 @@ export default function VeoVideoPage({ locale }: VeoVideoPageProps) {
     playSfx();
 
     if (clickCount === 0) {
-      setClickCount(1);
+      // Record the click first, update state & storage
+      const nextCount = 1;
+      setClickCount(nextCount);
       try {
-        // First Click: Open Monetag Smart Link in a new window/tab
+        sessionStorage.setItem('veo_cta_clicks', String(nextCount));
+      } catch (err) {
+        console.error("Storage error:", err);
+      }
+
+      // First Click: Open the Monetag Smart Link in a new window/tab
+      try {
         window.open(monetagLink, '_blank', 'noopener,noreferrer');
       } catch (err) {
-        console.error("Popup window blocked or failed to load:", err);
+        console.error("Popup window blocked or failed:", err);
+        // Fallback: If blocked, redirect directly to avoid user stuckness
+        window.location.href = monetagLink;
       }
     } else {
-      // Second Click: Redirect the user to the original destination URL in the same window
+      // Reset the click count for any future cycles (if they come back or click again)
+      setClickCount(0);
+      try {
+        sessionStorage.removeItem('veo_cta_clicks');
+      } catch (err) {}
+
+      // Second Click: Safe, instant redirection to the main target geminigen.ai in the current frame
       window.location.href = finalDestination;
     }
   };

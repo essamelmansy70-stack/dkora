@@ -214,34 +214,97 @@ export default function App() {
 
     let pageTitle = '';
     let pageDesc = '';
+    let pageKeywords = '';
 
     if (currentView === 'svg') {
-      pageTitle = locale === 'ar' ? translations.ar.svgConverter.metaTitle : translations.en.svgConverter.metaTitle;
-      pageDesc = locale === 'ar' ? translations.ar.svgConverter.metaDesc : translations.en.svgConverter.metaDesc;
+      pageTitle = locale === 'ar' 
+        ? "أداة تحويل الصور إلى SVG مجاناً وبأمان 100٪ | تحويل الصور النقطية لمتجهات" 
+        : "Free Online SVG Vector Converter | Convert PNG/JPG to Vector";
+      pageDesc = locale === 'ar' 
+        ? "أفضل محول لصورك النقطية (PNG, JPG) إلى صيغة SVG المتجهة فائقة الوضوح محلياً وبأمان 150٪ في متصفحك مجاناً وبنقرة واحدة." 
+        : "Convert raster images (PNG, JPG, WebP) to high-quality responsive SVG vector assets 100% locally and safely inside your browser for free.";
+      pageKeywords = locale === 'ar' 
+        ? "تحويل الصور ل svg, png to svg, jpg to svg, تحويل لمتجه, محول svg مجاني, تصميم ويب" 
+        : "png to svg converter, raster to vector, convert image to vector, free svg converter, web design assets";
     } else if (currentView === 'cropper') {
-      pageTitle = locale === 'ar' ? "أداة dkora | قص وتعديل مقاسات وأبعاد الصور مجاناً وبأمان 100٪" : "dkora Tool | Free Online Browser-Based Image Cropper & Aspect Resizer";
-      pageDesc = locale === 'ar' ? "أسرع أداة مجانية لقص الصور وتعديل أبعادها لمتجر سلة أو زد أو شوبيفاي مع الحفاظ على دقة الجودة محلياً وآمنة تماماً داخل متصفحك." : "The fastest free tool to crop and resize your images for Salla, Zid, or Shopify while maintaining crisp resolution, 100% locally and safely in your browser.";
+      pageTitle = locale === 'ar' 
+        ? "أداة قص وتعديل مقاسات وأبعاد الصور مجاناً وبأمان 100٪" 
+        : "Free Online Image Cropper & Aspect Resizer | 100% Local";
+      pageDesc = locale === 'ar' 
+        ? "صمّم وقص صور متجرك الإلكتروني في سلة أو زد أو شوبيفاي بأي أبعاد دائرية أو مربعة ومستطيلة قياسية مجاناً وبأعلى جودة وأمان تام." 
+        : "Easily crop, rotate, and resize your images for ecommerce stores like Shopify, Salla, or Zid securely with custom and standard aspect ratios.";
+      pageKeywords = locale === 'ar' 
+        ? "قص الصور اون لاين, تعديل مقاسات الصور, تغيير ابعاد الصورة, تعديل صور سلة وزد, مقاسات الصور شوبيفاي" 
+        : "crop image online, image resizer, aspect ratio cropper, crop photos online, ecommerce image size editor";
     } else if (currentView === 'remover') {
-      pageTitle = locale === 'ar' ? "أداة dkora | إزالة وتفريغ خلفية الصور مجاناً وبأمان 100٪ وبنقرة واحدة" : "dkora Tool | Free Online Browser-Based Background Remover & Transparency Masker";
-      pageDesc = locale === 'ar' ? "أسرع وأدق أداة مجانية بمكان واحد لتفريغ خلفية الصور وتغييرها لمتجرك في سلة أو زد أو شوبيفاي مجاناً وبأمان تام دون رفع صورك لأي خادم." : "The fastest free tool to isolate image backgrounds, crop, and erase elements with high resolution, 100% locally and safely in your browser.";
+      pageTitle = locale === 'ar' 
+        ? "أداة إزالة وتفريغ خلفية الصور مجاناً وبنقرة واحدة وبأمان 100٪" 
+        : "Free Online Background Remover | Transparency Masker";
+      pageDesc = locale === 'ar' 
+        ? "أزل خلفيات الصور تلقائياً وبدقة فائقة دون رفعها لأي خادم. أفضل أداة لتوفير صور شفافة لمنتجاتك على منصات التجارة الإلكترونية." 
+        : "Isolate image backgrounds and generate high-resolution transparent PNG cutouts 100% locally and securely in your browser with one click.";
+      pageKeywords = locale === 'ar' 
+        ? "ازالة الخلفية من الصورة, تفريغ الصور, حذف خلفية الصورة اون لاين, خلفية شفافة للمنتجات, pngmaker" 
+        : "remove background, transparent background, background eraser, free cut out photo, remove bg";
     } else if (currentView === 'veo') {
-      pageTitle = locale === 'ar' ? "إنشاء فيديو veo 3 مجاناً بلا حدود | دليل dkora الشامل" : "dkora | Create Veo 3 Video Free Without Limits - Complete Tutorial Guide";
-      pageDesc = locale === 'ar' ? "الدليل الحصري والعملي خطوة بخطوة لتوليد فيديوهات سينمائية مجانية فائقة الدقة والواقعية عبر محرك Google Veo 3 المتطور وبلا حدود." : "The exclusive step-by-step roadmap to generate unlimited cinematic, high-definition videos with Google's state-of-the-art Veo 3 engine completely for free.";
+      pageTitle = locale === 'ar' 
+        ? "إنشاء فيديو veo 3 مجاناً بلا حدود | برنامج تصميم فيديوهات بالذكاء الاصطناعي" 
+        : "Create Veo 3 Video Free | Best AI Video Generator Without Watermark";
+      pageDesc = locale === 'ar' 
+        ? "دليلك الشامل لتعلم كيفية صنع فيديو وتحويل النص إلى فيديو بالذكاء الاصطناعي مجاناً بالكامل بدقة سينمائية فائقة عبر محرك Google Veo 3 المتطور." 
+        : "Comprehensive guide to convert text to video AI free. Learn to generate and create professional cinematic videos with Google's revolutionary Veo 3 model.";
+      pageKeywords = locale === 'ar' 
+        ? "صنع فيديو بالذكاء الاصطناعي, تحويل النص الى فيديو بالذكاء الاصطناعي, برنامج تصميم فيديوهات بالذكاء الاصطناعي, ذكاء اصطناعي للفيديوهات مجانا, google veo 3" 
+        : "text to video ai free, create video with ai, free ai video generator, best ai video maker, google veo 3 tutorial";
+    } else if (currentView === 'blog') {
+      pageTitle = locale === 'ar' 
+        ? "مقالات ودراسات dkora لمعالجة وتصميم وتوليد الصور والفيديوهات" 
+        : "dkora Blog | Tutorials, Guides & Insights in Image & Video Creation";
+      pageDesc = locale === 'ar' 
+        ? "تصفح أحدث المقالات التعليمية التقنية والشروحات التطبيقية المفصلة حول معالجة الصور والتصميم الرقمي وتوليد الفيديوهات باستخدام الذكاء الاصطناعي." 
+        : "Explore state-of-the-art tutorials, technical roadmaps, and guides covering web-scale image processing, vector formatting, and AI video generators.";
+      pageKeywords = locale === 'ar' 
+        ? "مدونة معالجة الصور, دروس ذكاء اصطناعي, شروحات تصميم صور, تعزيز جودة الصور, مقالات تقنية" 
+        : "image processing blog, design tutorials, vector graphics guides, ai video tutorials, digital design guides";
     } else {
       pageTitle = locale === 'ar' ? translations.ar.meta.titleAr : translations.en.meta.titleEn;
       pageDesc = locale === 'ar' ? translations.ar.meta.descAr : translations.en.meta.descEn;
+      pageKeywords = locale === 'ar' 
+        ? "ضغط الصور, تقليل حجم الصور, تقليل حجم الملف, تحويل الصور الى webp, تصغير الصور بالكيلوبايت, تعديل ابعاد الصورة" 
+        : "compress image size, reduce photo size kb, change image dimension, converter webp, safe photo compressor";
     }
 
+    // Set Document Title
     document.title = pageTitle;
 
-    // Dynamically update the meta description tag as well for full SEO compliance!
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (!metaDesc) {
-      metaDesc = document.createElement('meta');
-      metaDesc.setAttribute('name', 'description');
-      document.head.appendChild(metaDesc);
+    // Helper to safely select/create or update meta/link tags
+    const updateMetaTag = (attrName: string, attrVal: string, contentVal: string) => {
+      let element = document.querySelector(`meta[${attrName}="${attrVal}"]`);
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute(attrName, attrVal);
+        document.head.appendChild(element);
+      }
+      element.setAttribute('content', contentVal);
+    };
+
+    updateMetaTag('name', 'description', pageDesc);
+    updateMetaTag('name', 'keywords', pageKeywords);
+    updateMetaTag('property', 'og:title', pageTitle);
+    updateMetaTag('property', 'og:description', pageDesc);
+    updateMetaTag('property', 'og:url', window.location.href);
+    updateMetaTag('name', 'twitter:title', pageTitle);
+    updateMetaTag('name', 'twitter:description', pageDesc);
+    updateMetaTag('name', 'twitter:url', window.location.href);
+
+    // Update canonical link in header
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
     }
-    metaDesc.setAttribute('content', pageDesc);
+    canonical.setAttribute('href', window.location.href);
   }, [locale, currentView]);
 
   // Setup sound cues (synthesizer on the fly!)

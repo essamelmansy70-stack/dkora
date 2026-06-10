@@ -23,23 +23,29 @@ export default function Header({
       <div className="max-w-7xl mx-auto px-4 py-3 sm:py-3.5 flex items-center justify-between">
         
         {/* Logo and branding */}
-        <div className="flex items-center gap-3">
-          <img 
-            src="/logo.png" 
-            alt="dkora" 
-            className="w-14 h-14 sm:w-16 sm:h-16 object-contain rounded-xl shadow-md shrink-0 select-none"
-            referrerPolicy="no-referrer"
-          />
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-sm sm:text-base font-black tracking-tight text-slate-900 dark:text-white font-sans">
-                d<span className="text-[#ff1a40]">kora</span> <span className="text-[10px] text-slate-700 dark:text-slate-300 font-semibold">{t.header.logoSuffix}</span>
-              </span>
-              <span className="hidden sm:inline-block px-1.5 py-0.5 bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 text-[8px] font-bold rounded-md">
+        <div className="flex flex-row items-center gap-3 py-1">
+          {/* Logo container with brand title directly under it */}
+          <div className="flex flex-col items-center shrink-0">
+            <img 
+              src="/logo.png" 
+              alt="dkora" 
+              className="w-11 h-11 sm:w-12 sm:h-12 object-contain rounded-lg shadow-sm select-none animate-fade-in"
+              referrerPolicy="no-referrer"
+            />
+            <span className="text-[10px] sm:text-[11px] font-black tracking-tight text-slate-900 dark:text-white font-sans mt-0.5 select-none">
+              d<span className="text-[#ff1a40]">kora</span>
+            </span>
+          </div>
+
+          {/* Description details aligned side-by-side with the logo */}
+          <div className="flex flex-col justify-center min-h-[44px]">
+            <div className="flex items-center gap-1.5 mb-0.5">
+              <span className="inline-block px-1.5 py-0.5 bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 text-[8px] sm:text-[9px] font-bold rounded">
                 {t.header.badge}
               </span>
+              <span className="text-[9px] text-slate-500 dark:text-slate-400 font-semibold">{t.header.logoSuffix}</span>
             </div>
-            <p className="text-[7.5px] sm:text-[8px] text-slate-705 dark:text-slate-300 font-normal leading-normal mt-0.5 opacity-80 max-w-xs sm:max-w-md">
+            <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 font-medium leading-snug max-w-[180px] sm:max-w-md">
               {t.header.subtitle}
             </p>
           </div>
@@ -53,11 +59,11 @@ export default function Header({
               const nextLocale = locale === 'ar' ? 'en' : 'ar';
               setLocale(nextLocale);
             }}
-            className="flex items-center justify-center gap-1.5 px-2 py-1 text-[10px] sm:text-[11px] text-[#ff1a40] dark:text-rose-400 bg-rose-500/10 dark:bg-rose-950/40 hover:bg-rose-500/15 dark:hover:bg-rose-950/60 border border-rose-200/50 dark:border-rose-900/40 rounded-lg transition-all cursor-pointer font-bold min-h-[32px] min-w-[32px]"
+            className="flex items-center justify-center gap-1 px-1.5 py-0.5 text-[8px] sm:text-[9px] text-[#ff1a40] dark:text-rose-400 bg-rose-500/10 dark:bg-rose-950/40 hover:bg-rose-500/15 dark:hover:bg-rose-950/60 border border-rose-200/50 dark:border-rose-900/40 rounded-md transition-all cursor-pointer font-bold h-fit w-fit"
             aria-label={locale === 'ar' ? 'تغيير لغة الموقع إلى الإنجليزية' : 'Change website language to Arabic'}
           >
             <span>{t.header.langButton}</span>
-            <span className="text-[10px] sm:text-[11px] opacity-75 mr-1">文A</span>
+            <span className="text-[8px] sm:text-[9px] opacity-75 mr-0.5">文A</span>
           </button>
 
           {/* Theme button switcher */}

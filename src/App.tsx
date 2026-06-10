@@ -4,6 +4,7 @@ import LegalModals from './components/LegalModals';
 import ArticlesPage from './components/ArticlesPage';
 import SvgConverterPage from './components/SvgConverterPage';
 import CropperPage from './components/CropperPage';
+import BackgroundRemoverPage from './components/BackgroundRemoverPage';
 import { translations } from './translations';
 import { 
   Sparkles, 
@@ -155,8 +156,8 @@ export default function App() {
   const isDraggingSplitRef = useRef<boolean>(false);
   const [legalModal, setLegalModal] = useState<'privacy' | 'terms' | 'about' | 'contact' | 'disclaimer' | null>(null);
 
-  // Main high-level view routing: 'editor' (Image tool), 'blog' (Articles page), 'svg' (Vectorization tool), 'cropper' (Cropper tool)
-  const [currentView, setCurrentView] = useState<'editor' | 'blog' | 'svg' | 'cropper'>('editor');
+  // Main high-level view routing: 'editor' (Image tool), 'blog' (Articles page), 'svg' (Vectorization tool), 'cropper' (Cropper tool), 'remover' (Background Remover)
+  const [currentView, setCurrentView] = useState<'editor' | 'blog' | 'svg' | 'cropper' | 'remover'>('editor');
 
   // Synchronize deep linking search parameters for indexing and sharing!
   useEffect(() => {
@@ -167,14 +168,14 @@ export default function App() {
       
       if (articleSlug) {
         setCurrentView('blog');
-      } else if (viewParam === 'blog' || viewParam === 'editor' || viewParam === 'svg' || viewParam === 'cropper') {
-        setCurrentView(viewParam as 'editor' | 'blog' | 'svg' | 'cropper');
+      } else if (viewParam === 'blog' || viewParam === 'editor' || viewParam === 'svg' || viewParam === 'cropper' || viewParam === 'remover') {
+        setCurrentView(viewParam as 'editor' | 'blog' | 'svg' | 'cropper' | 'remover');
       }
     }
   }, []);
 
   // Update query params when viewing different tabs
-  const handleSetCurrentView = (view: 'editor' | 'blog' | 'svg' | 'cropper') => {
+  const handleSetCurrentView = (view: 'editor' | 'blog' | 'svg' | 'cropper' | 'remover') => {
     setCurrentView(view);
     playSound(480, 0.08);
     
@@ -219,6 +220,9 @@ export default function App() {
     } else if (currentView === 'cropper') {
       pageTitle = locale === 'ar' ? "أداة dkora | قص وتعديل مقاسات وأبعاد الصور مجاناً وبأمان 100٪" : "dkora Tool | Free Online Browser-Based Image Cropper & Aspect Resizer";
       pageDesc = locale === 'ar' ? "أسرع أداة مجانية لقص الصور وتعديل أبعادها لمتجر سلة أو زد أو شوبيفاي مع الحفاظ على دقة الجودة محلياً وآمنة تماماً داخل متصفحك." : "The fastest free tool to crop and resize your images for Salla, Zid, or Shopify while maintaining crisp resolution, 100% locally and safely in your browser.";
+    } else if (currentView === 'remover') {
+      pageTitle = locale === 'ar' ? "أداة dkora | إزالة وتفريغ خلفية الصور مجاناً وبأمان 100٪ وبنقرة واحدة" : "dkora Tool | Free Online Browser-Based Background Remover & Transparency Masker";
+      pageDesc = locale === 'ar' ? "أسرع وأدق أداة مجانية بمكان واحد لتفريغ خلفية الصور وتغييرها لمتجرك في سلة أو زد أو شوبيفاي مجاناً وبأمان تام دون رفع صورك لأي خادم." : "The fastest free tool to isolate image backgrounds, crop, and erase elements with high resolution, 100% locally and safely in your browser.";
     } else {
       pageTitle = locale === 'ar' ? translations.ar.meta.titleAr : translations.en.meta.titleEn;
       pageDesc = locale === 'ar' ? translations.ar.meta.descAr : translations.en.meta.descEn;
@@ -1608,6 +1612,12 @@ export default function App() {
         </div>
       )}
 
+      {currentView === 'remover' && (
+        <div className="max-w-7xl w-full mx-auto px-4 py-8.5 animate-fade-in">
+          <BackgroundRemoverPage locale={locale} />
+        </div>
+      )}
+
       </main>
 
       {/* FOOTER NOTIFY AND METRICS ACCENTS */}
@@ -1630,6 +1640,13 @@ export default function App() {
             className={`transition bg-transparent border-0 cursor-pointer ${currentView === 'cropper' ? 'text-[#ff1a40]' : 'text-slate-700 hover:text-[#ff1a40] dark:text-slate-300'}`}
           >
             {locale === 'ar' ? '✂️ قص وتعديل مقاس الصور' : '✂️ Image Cropper'}
+          </button>
+          <span className="text-slate-300 dark:text-slate-800">|</span>
+          <button 
+            onClick={() => handleSetCurrentView('remover')}
+            className={`transition bg-transparent border-0 cursor-pointer ${currentView === 'remover' ? 'text-[#ff1a40]' : 'text-slate-700 hover:text-[#ff1a40] dark:text-slate-300'}`}
+          >
+            {locale === 'ar' ? '✨ إزالة وتفريغ الخلفية' : '✨ Background Remover'}
           </button>
           <span className="text-slate-300 dark:text-slate-800">|</span>
           <button 

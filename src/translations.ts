@@ -255,7 +255,7 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
     header: {
       logoSuffix: "v2.2",
       badge: "معالجة احترافية 📸",
-      subtitle: "أداة ضغط وتصغير حجم الصور مجاناً ومحلياً بأعلى جودة",
+      subtitle: "ضغط الصور مجاناً وبجودة ممتازة.",
       langButton: "English 🇸🇦/🇬🇧",
       muteTitle: "كتم المؤثرات الصوتية",
       unmuteTitle: "تفعيل المؤثرات الصوتية",
@@ -500,7 +500,7 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
     header: {
       logoSuffix: "v2.2",
       badge: "Professional Processing 📸",
-      subtitle: "Free tool for secure local image compression and resizing",
+      subtitle: "Free image compression with premium quality.",
       langButton: "العربية 🇸🇦/🇬🇧",
       muteTitle: "Mute Sound Effects",
       unmuteTitle: "Enable Sound Effects",

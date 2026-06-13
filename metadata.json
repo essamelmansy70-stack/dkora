@@ -1,6 +1,6 @@
 {
-  "name": "dkora",
-  "description": "أداة احترافية قوية وفائقة السرعة تعمل بالكامل في المتصفح لضغط الصور، تغيير المقاسات، وإزالة الخلفيات والمجسمات مع معاينة حية وجودة استثنائية.",
+  "name": "Football World Cup Player Quiz",
+  "description": "من يشبهك من لاعبي المونديال؟ - اختبار شخصية تفاعلي غني بالأسئلة الرياضية المتنوعة والتحليلات الدقيقة بدون تكاليف خادم.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

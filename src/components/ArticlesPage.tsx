@@ -35,16 +35,6 @@ interface Article {
     }[];
     faqs: { q: string; a: string }[];
   };
-  howToAr?: {
-    name: string;
-    description: string;
-    steps: { name: string; text: string }[];
-  };
-  howToEn?: {
-    name: string;
-    description: string;
-    steps: { name: string; text: string }[];
-  };
 }
 
 const ARTICLES_DATA: Article[] = [
@@ -1078,28 +1068,6 @@ const ARTICLES_DATA: Article[] = [
           a: "Fast-loading clips decrease page bounce rates and increase active browsing times, prompting search engines to rank your pages higher on indexing boards."
         }
       ]
-    },
-    howToAr: {
-      name: "كيفية توليد وتصميم الفيديوهات بالذكاء الاصطناعي مجاناً عبر Google Veo 3",
-      description: "دليلك الشروحي العملي لصناعة أول مقطع فيديو احترافي وخالٍ من العلامة المائية بمقاسات منصات سلة وزد وتيك توك باستخدام محظيات الذكاء الاصطناعي في dkora.",
-      steps: [
-        { name: "الدخول لقسم توليد وتحويل الفيديو", text: "افتح شريط التنقل بداخل منصة dkora وانقر على خيار 'توليد فيديو Veo 3 مجاناً' للذهاب إلى بيئة العمل المباشرة." },
-        { name: "كتابة وصف الفيديو باللغة الإنجليزية", text: "اكتب تفاصيل مشهدك بالتفصيل، وننصح بعبارات مثل 'cinematic lighting, photolistic, slow motion' لضمان التفاصيل الفائقة." },
-        { name: "تحديد المقاس الفني والنسبة البصرية", text: "اختر أبعاد الفيديو المتوافقة مع حملتك (مثلاً 9:16 لتيك توك وإنستجرام أو 16:9 لعقد اليوتيوب والمتاجر)." },
-        { name: "تشغيل المعالجة وبدء البث", text: "اضغط على زر التوليد (Generate) ليتم موازنة الكوادر وربط المشاهد تلقائياً عبر النواة الذكية بلمحات بصرية حية." },
-        { name: "تحميل الفيديو عالي الدقة HD هنيئاً لك", text: "اضغط على زر تنزيل وحفظ (Download) لحفظ ملفك السينمائي الخارق والآمن على جهازك مجاناً واستخدمه بمتجرك وبلا علامة مائية." }
-      ]
-    },
-    howToEn: {
-      name: "How to Generate High-Definition AI Videos for Free with Google Veo 3",
-      description: "A complete step-by-step practical guide to create professional watermark-free AI videos adapted for TikTok, YouTube, or e-commerce storefronts using the dkora framework.",
-      steps: [
-        { name: "Navigate to the Veo Video Panel", text: "Select the 'Create Veo 3 Video' path on our dkora dashboard navigation to access the generation console." },
-        { name: "Input Detailed Description", text: "Draft a rich descriptive prompt using keywords like 'cinematic lighting, slow motion, photorealistic' to maximize model accuracy." },
-        { name: "Select Desired Aspect Ratio", text: "Choose your video layout proportions—such as 9:16 for vertical reels, or 16:9 for landscape YouTube layouts." },
-        { name: "Execute video compilation", text: "Click the dynamic 'Generate' button to initialize the rendering pipeline and map the scene's physics." },
-        { name: "Download Your Matte Video Asset", text: "Click 'Download HD' to fetch and store your watermark-free AI video directly on your device." }
-      ]
     }
   },
   {
@@ -1280,28 +1248,6 @@ const ARTICLES_DATA: Article[] = [
           a: "No. dkora preserves color gamuts and dynamic range parameters using advanced chroma-retention methodologies to ensure the products match your customers' post-delivery expectations."
         }
       ]
-    },
-    howToAr: {
-      name: "كيفية ضغط صور المنتجات وتعديل مقاساتها مجاناً للتجارة الإلكترونية لعام ٢٠٢٦",
-      description: "الدليل التطبيقي المبسط لتخفيض أحجام صور متجرك الإلكتروني بأمان تام وتحويلها لصيغة WebP الخفيفة لزيادة المبيعات والسرعة.",
-      steps: [
-        { name: "فتح أداة ضغط الصور في dkora", text: "قم بالدخول إلى الواجهة الرئيسية لمنصة dkora وتأكد من تواجدك بداخل أداة ضغط وتعديل حجم الصور." },
-        { name: "رفع وسحب ملفات صور المنتجات", text: "قم بنقل صور منتجاتك الثقيلة ذات الحجم الكبير مباشرة إلى مربع السحب والإفلات بالموقع لتجهيزها للمعالجة التلقائية." },
-        { name: "تخصيص الخيارات واختيار دقة الجودة", text: "اضبط شريط دقة الجودة (Quality) ليتراوح بين ٧٥٪ إلى ٨٥٪ وقم بتحديد صيغة الإخراج المرغوبة كصيغة ويب الثورية WebP." },
-        { name: "تنفيذ ضغط الصور الآمن فوراً", text: "تتكفل الأداة محلياً في الرام الخاصة بالصفحة بضغط جزيئات البيكسل في أجزاء من الثانية آمنة ومفتوحة المصدر." },
-        { name: "تنزيل الصور ومضاعفة سرعة متجرك", text: "اضغط على زر تنزيل لحفظ الصورة الجديدة المهيأة بأقل وزن وبأعلى جودة، ثم ارفعها مجاناً بمتجرك على منصات سلة أو زد للتصدر السريع." }
-      ]
-    },
-    howToEn: {
-      name: "How to Compress and Optimize Product Photos for Online Marketplaces",
-      description: "Amplify store response rates and elevate SEO indexes with this straightforward browser guide to compress images down to kilobytes.",
-      steps: [
-        { name: "Access the dkora Optimization Deck", text: "Navigate onto the central dkora image compressor workspace inside your standard browser window." },
-        { name: "Import Product Visual Assets", text: "Drag your high-resolution product photography files into the designated local processing arena." },
-        { name: "Configure target quality parameters", text: "Adjust the slide to 80% and toggle the format selection onto the adaptive e-commerce champion format: WebP." },
-        { name: "Trigger safe on-device processing", text: "The compiler instantly processes all bytes securely inside the memory sandbox of your viewport." },
-        { name: "Download of the streamlined images", text: "Fetch the optimized product assets instantly. Upload directly to Shopify or Salla to boost customer engagement." }
-      ]
     }
   }
 ];
@@ -1473,21 +1419,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
             };
 
             // 4. HowTo Schema
-            const customHowTo = isRtl ? selectedArticle.howToAr : selectedArticle.howToEn;
-            const howToSchema = customHowTo ? {
-              "@context": "https://schema.org",
-              "@type": "HowTo",
-              "@id": `${articleUrl}#howto`,
-              "name": customHowTo.name,
-              "description": customHowTo.description,
-              "image": selectedArticle.image,
-              "step": customHowTo.steps.map((step) => ({
-                "@type": "HowToStep",
-                "name": step.name,
-                "text": step.text,
-                "url": window.location.origin
-              }))
-            } : {
+            const howToSchema = {
               "@context": "https://schema.org",
               "@type": "HowTo",
               "@id": `${articleUrl}#howto`,

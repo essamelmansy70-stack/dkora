@@ -275,6 +275,58 @@ export default function App() {
     }
   }, []);
 
+  // Synchronically update document title and metadata for SEO on tab or language change
+  useEffect(() => {
+    const isRtl = lang === "ar";
+    document.documentElement.lang = lang;
+    document.documentElement.dir = isRtl ? "rtl" : "ltr";
+
+    let title = "";
+    let desc = "";
+
+    if (activeTab === "quiz") {
+      if (isRtl) {
+        title = "من يشبهك من لاعبي المونديال؟ | اختبار شخصية كرة القدم التفاعلي";
+        desc = "اكتشف أي من أساطير كرة القدم العالمية يماثل شخصيتك وأسلوبك الرياضي في الملعب من خلال اختبار تفاعلي فائق وممتع متجدد باستمرار.";
+      } else {
+        title = "Which World Cup Player Are You? | Interactive Football Personality Quiz";
+        desc = "Discover your soccer match from world cup legends! A fun, highly-interactive football personality test analyzing your style and skill.";
+      }
+    } else if (activeTab === "sitemap") {
+      if (isRtl) {
+        title = "خريطة الموقع المونديالي التفاعلي | dkora";
+        desc = "تصفح خريطة الموقع الكاملة وجميع الصفحات والمقالات والتحليلات الخاصة بمنصة مونديال كأس العالم ٢٠٢٦.";
+      } else {
+        title = "Mondial Interactive Sitemap | dkora";
+        desc = "Explore with one click all pages, articles, and utilities of the Mondial platform. Fully optimized for instant crawling.";
+      }
+    }
+
+    if (title && activeTab !== "blog") { // Let blog (ArticlesPage) handle its own precise state
+      document.title = title;
+      
+      let metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', desc);
+      } else {
+        metaDesc = document.createElement('meta');
+        metaDesc.setAttribute('name', 'description');
+        metaDesc.setAttribute('content', desc);
+        document.head.appendChild(metaDesc);
+      }
+      
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.setAttribute('content', title);
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc) ogDesc.setAttribute('content', desc);
+
+      const twTitle = document.querySelector('meta[property="twitter:title"]');
+      if (twTitle) twTitle.setAttribute('content', title);
+      const twDesc = document.querySelector('meta[property="twitter:description"]');
+      if (twDesc) twDesc.setAttribute('content', desc);
+    }
+  }, [activeTab, lang]);
+
   // Update URL parameter and HTML document meta when language changes
   const handleLanguageChange = (newLang: "ar" | "en") => {
     setLang(newLang);

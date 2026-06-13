@@ -811,6 +811,56 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
     }
   }, [selectedArticle]);
 
+  // Synchronize client-side HTML structure & document metadata (Tab title, content description, search snippet settings)
+  useEffect(() => {
+    const isRtl = locale === 'ar';
+    document.documentElement.lang = locale;
+    document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
+
+    let title = "";
+    let desc = "";
+
+    if (selectedArticle) {
+      title = isRtl ? selectedArticle.titleAr : selectedArticle.titleEn;
+      desc = isRtl ? selectedArticle.descAr : selectedArticle.descEn;
+    } else {
+      if (isRtl) {
+        title = "المقالات الرياضية والتحليلات التكتيكية | مونديال ٢٠٢٦";
+        desc = "اقرأ أحدث المقالات الرياضية الترند والتحليلات الكروية وتوقعات الذكاء الاصطناعي لبطل مونديال ٢٠٢٦.";
+      } else {
+        title = "Sports Articles & Tactical Analytics | Mondial 2026";
+        desc = "Read the latest trending sports articles, tactical soccer analytics, and AI predictions for the 2026 World Cup.";
+      }
+    }
+
+    if (title) {
+      document.title = title;
+    }
+
+    // Dynamic updating of the meta desc element
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', desc);
+    } else {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      metaDesc.setAttribute('content', desc);
+      document.head.appendChild(metaDesc);
+    }
+
+    // Update Open Graph (Facebook/Social sharing card attributes)
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', title);
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', desc);
+
+    // Update Twitter Cards attributes
+    const twTitle = document.querySelector('meta[property="twitter:title"]');
+    if (twTitle) twTitle.setAttribute('content', title);
+    const twDesc = document.querySelector('meta[property="twitter:description"]');
+    if (twDesc) twDesc.setAttribute('content', desc);
+  }, [selectedArticle, locale]);
+
   const filteredArticles = ARTICLES_DATA.filter((art) => {
     const query = searchQuery.toLowerCase().trim();
     if (!query) return true;

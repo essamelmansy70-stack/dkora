@@ -728,13 +728,15 @@ export default function App() {
       </div>
 
       {/* Global Bilingual Header in pristine responsive white banner */}
-      <header className="w-full max-w-4xl px-4 py-5 flex flex-col sm:flex-row gap-4 items-center justify-between border-b border-slate-200 z-10 bg-white/80 backdrop-blur-md">
+      <header 
+        onClick={() => { handleTabChange("quiz"); playInteractionSound(); }}
+        className="w-full max-w-4xl px-4 py-5 flex flex-col sm:flex-row gap-4 items-center justify-between border-b border-slate-200 z-10 bg-white/80 backdrop-blur-md cursor-pointer hover:bg-slate-50/50 transition-colors duration-200 group/header"
+        title={lang === "ar" ? "اضغط للذهاب لالصفحة الرئيسية" : "Click to go to Home Page"}
+      >
         <div 
-          onClick={() => handleTabChange("quiz")}
-          className="flex items-center gap-3 cursor-pointer hover:opacity-90 select-none group transition-opacity"
-          title={lang === "ar" ? "الصفحة الرئيسية" : "Home Page"}
+          className="flex items-center gap-3 select-none group transition-opacity"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-650 via-red-500 to-white flex items-center justify-center shadow-md shadow-red-500/10 shrink-0 transition-transform group-hover:scale-105">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-650 via-red-500 to-white flex items-center justify-center shadow-md shadow-red-500/10 shrink-0 transition-transform group-hover:scale-105 group-hover/header:scale-105">
             <Trophy className="w-5.5 h-5.5 text-white animate-bounce" />
           </div>
           <div className="text-center sm:text-start rtl:sm:text-right ltr:sm:text-left">
@@ -748,10 +750,10 @@ export default function App() {
         </div>
 
         {/* Navigation Switchboard & Language toggle */}
-        <div className="flex flex-wrap items-center justify-center gap-2">
+        <div className="flex flex-wrap items-center justify-center gap-2" onClick={(e) => e.stopPropagation()}>
           {activeTab !== "quiz" && (
             <button
-              onClick={() => handleTabChange("quiz")}
+              onClick={() => { handleTabChange("quiz"); playInteractionSound(); }}
               className="px-3 py-1.5 rounded-xl text-xs font-black bg-red-650 text-white hover:bg-red-700 transition-all cursor-pointer shadow-sm shadow-red-600/20"
             >
               {lang === "ar" ? "العودة للاختبار" : "Back to Quiz"}

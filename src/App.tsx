@@ -343,8 +343,50 @@ export default function App() {
 
     triggerToast(t.toastImageLoading);
 
+    // Style backups to revert after html2canvas completes
+    const backups: any[] = [];
+
     try {
       resultCardRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      // Dynamic style sanitizer to prevent html2canvas oklab/oklch parser crashes in Tailwind v4
+      const styleElements = Array.from(document.querySelectorAll("style"));
+      for (const styleEl of styleElements) {
+        const originalText = styleEl.innerHTML;
+        if (originalText.includes("oklch") || originalText.includes("oklab")) {
+          const cleaned = originalText
+            .replace(/oklch\([^)]+\)/g, "rgb(120, 120, 120)")
+            .replace(/oklab\([^)]+\)/g, "rgb(120, 120, 120)");
+          styleEl.innerHTML = cleaned;
+          backups.push({ type: "style", element: styleEl, content: originalText });
+        }
+      }
+
+      const linkElements = Array.from(document.querySelectorAll("link[rel='stylesheet']")) as HTMLLinkElement[];
+      for (const linkEl of linkElements) {
+        try {
+          const response = await fetch(linkEl.href);
+          if (response.ok) {
+            const text = await response.text();
+            if (text.includes("oklch") || text.includes("oklab")) {
+              const cleanedText = text
+                .replace(/oklch\([^)]+\)/g, "rgb(120, 120, 120)")
+                .replace(/oklab\([^)]+\)/g, "rgb(120, 120, 120)");
+              
+              const tempStyle = document.createElement("style");
+              tempStyle.setAttribute("data-html2canvas-temp", "true");
+              tempStyle.innerHTML = cleanedText;
+              document.head.appendChild(tempStyle);
+
+              linkEl.disabled = true;
+              backups.push({ type: "link", element: linkEl, tempStyleElement: tempStyle });
+            }
+          }
+        } catch (err) {
+          console.warn("Failed to sanitize stylesheet for html2canvas:", linkEl.href, err);
+        }
+      }
+
       const options = {
         useCORS: true,
         backgroundColor: "#04081a", // slate dark card backdrop hex code to render download flawlessly
@@ -352,7 +394,7 @@ export default function App() {
         logging: false,
       };
 
-      await new Promise((resolve) => setTimeout(resolve, 350));
+      await new Promise((resolve) => setTimeout(resolve, 450)); // Ensure style rendering transitions complete
       const canvas = await html2canvas(resultCardRef.current, options);
       const dataUrl = canvas.toDataURL("image/png");
 
@@ -367,6 +409,18 @@ export default function App() {
     } catch (err: any) {
       console.error("html2canvas error: ", err);
       triggerToast(t.toastImageFail);
+    } finally {
+      // Revert style changes synchronously to guarantee UI is unaffected
+      for (const back of backups) {
+        if (back.type === "style") {
+          back.element.innerHTML = back.content;
+        } else if (back.type === "link") {
+          back.element.disabled = false;
+          if (back.tempStyleElement && back.tempStyleElement.parentNode) {
+            back.tempStyleElement.parentNode.removeChild(back.tempStyleElement);
+          }
+        }
+      }
     }
   };
 

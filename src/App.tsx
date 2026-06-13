@@ -729,12 +729,16 @@ export default function App() {
 
       {/* Global Bilingual Header in pristine responsive white banner */}
       <header className="w-full max-w-4xl px-4 py-5 flex flex-col sm:flex-row gap-4 items-center justify-between border-b border-slate-200 z-10 bg-white/80 backdrop-blur-md">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-650 via-red-500 to-white flex items-center justify-center shadow-md shadow-red-500/10 shrink-0">
+        <div 
+          onClick={() => handleTabChange("quiz")}
+          className="flex items-center gap-3 cursor-pointer hover:opacity-90 select-none group transition-opacity"
+          title={lang === "ar" ? "الصفحة الرئيسية" : "Home Page"}
+        >
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-650 via-red-500 to-white flex items-center justify-center shadow-md shadow-red-500/10 shrink-0 transition-transform group-hover:scale-105">
             <Trophy className="w-5.5 h-5.5 text-white animate-bounce" />
           </div>
           <div className="text-center sm:text-start rtl:sm:text-right ltr:sm:text-left">
-            <h1 className="text-sm sm:text-base font-black tracking-tight bg-gradient-to-r from-slate-950 via-red-600 to-slate-950 bg-clip-text text-transparent">
+            <h1 className="text-sm sm:text-base font-black tracking-tight bg-gradient-to-r from-slate-950 via-red-600 to-slate-950 bg-clip-text text-transparent group-hover:text-red-650 transition-colors">
               {t.title}
             </h1>
             <p className="text-[10px] text-slate-400 font-mono tracking-widest uppercase">
@@ -1114,24 +1118,15 @@ export default function App() {
                 </div>
 
                 {/* ACTION TRIGGERS */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="flex justify-center w-full">
                   
                   {/* Reset Quiz button */}
                   <button
                     onClick={handleResetQuiz}
-                    className="px-6 py-4 bg-white border border-slate-200 hover:border-red-500 active:bg-slate-50 text-slate-700 hover:text-slate-900 text-sm font-bold rounded-2xl transition-all cursor-pointer flex items-center justify-center gap-2.5 transform hover:-translate-y-0.5 shadow-sm"
+                    className="w-full max-w-md px-6 py-4 bg-white border border-slate-200 hover:border-red-500 active:bg-slate-50 text-slate-700 hover:text-slate-900 text-sm font-bold rounded-2xl transition-all cursor-pointer flex items-center justify-center gap-2.5 transform hover:-translate-y-0.5 shadow-sm"
                   >
                     <RotateCcw className="w-4.5 h-4.5 text-red-500 animate-spin" />
                     <span>{t.retakeBtn}</span>
-                  </button>
-
-                  {/* Download image button */}
-                  <button
-                    onClick={handleDownloadResultImage}
-                    className="px-6 py-4 bg-gradient-to-r from-red-600 to-red-500 hover:opacity-95 text-white text-sm font-black rounded-2xl transition-all shadow-md cursor-pointer flex items-center justify-center gap-2.5 transform hover:-translate-y-0.5"
-                  >
-                    <Download className="w-4.5 h-4.5 text-white" />
-                    <span>{t.downloadBtn}</span>
                   </button>
 
                 </div>
@@ -1714,8 +1709,29 @@ export default function App() {
       {/* Styled Footer with Legal and Sitemap navigators */}
       <footer className="w-full max-w-4xl px-4 py-6 border-t border-slate-205 text-center space-y-6 z-10 bg-white/50 backdrop-blur-sm mt-12">
         
-        {/* Footnotes links trigger */}
-        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-extrabold text-slate-500">
+        {/* SEO EXPLANATION PANEL - INJECTED FOR GOOGLE SEARCH INDEXING 2026 */}
+        <section className="bg-slate-50 border border-slate-205 p-5 rounded-2xl text-start space-y-3">
+          <h4 className="text-xs sm:text-sm font-black text-red-500 uppercase tracking-wider">
+            {lang === "ar" ? "حول اختبار شبيهك من لاعبي المونديال المتطور لعام ٢٠٢٦" : "About the Advanced 2026 World Cup Player Match Quiz"}
+          </h4>
+          <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed text-justify font-sans">
+            {lang === "ar" 
+              ? "يقوم هذا المحرك المتكامل بتحليل سماتك الفردية ونمط قيادتك وتكتيكك الخاص في كرة القدم لتحديد الأسطورة المونديالية المتطابقة معك تماماً (مثل ميسي، رونالدو، مبابي، هالاند، مودريتش، أو محمد صلاح). بفضل معايير اختبارات الشخصية الرياضية السيكومترية لعام ٢٠٢٦، نقوم بفرز وتحليل البيانات محلياً وبشكل مجاني بالكامل بدون الحاجة لأي اشتراك أو تخزين بيانات خارجية لضمان خصوصيتك الكلية وسرعة استجابة مذهلة."
+              : "This specialized engine assesses your personality, tactical sports logic, and on-pitch decision making to locate your precise legendary football matching profile (including Messi, Ronaldo, Mbappe, Haaland, Modric, or Salah). Operating completely client-side in 2026, it ensures absolute privacy with instant, offline evaluation and customizable downloadable cards without storing any personal user parameters."
+            }
+          </p>
+        </section>
+
+        <p className="text-[10px] sm:text-xs text-slate-450 font-semibold font-sans">
+          {t.footerRights}
+        </p>
+
+        <p className="text-[9px] text-slate-400 font-mono tracking-widest uppercase font-extrabold pb-2">
+          {t.footerMeta}
+        </p>
+
+        {/* Footnotes links trigger at the absolute bottom */}
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-black text-slate-500 border-t border-slate-100 pt-4">
           <button 
             onClick={() => { setActiveLegalModal("privacy"); playInteractionSound(); }}
             className="hover:text-red-500 transition-colors cursor-pointer"
@@ -1736,7 +1752,7 @@ export default function App() {
           >
             {lang === "ar" ? "من نحن" : "About Us"}
           </button>
-          <span className="text-slate-300 select-none">•</span>
+          <span className="text-slate-305 select-none">•</span>
           <button 
             onClick={() => { setActiveLegalModal("contact"); playInteractionSound(); }}
             className="hover:text-red-500 transition-colors cursor-pointer"
@@ -1753,31 +1769,18 @@ export default function App() {
           <span className="text-slate-300 select-none">•</span>
           <button 
             onClick={() => { setActiveTab("blog"); playInteractionSound(); }}
-            className="hover:text-red-500 transition-colors cursor-pointer text-red-500 animate-pulse font-extrabold"
+            className="hover:text-red-550 transition-colors cursor-pointer text-red-600 animate-pulse font-extrabold"
           >
             {lang === "ar" ? "المقالات" : "Articles"}
           </button>
+          <span className="text-slate-300 select-none">•</span>
+          <button 
+            onClick={() => { setActiveTab("sitemap"); playInteractionSound(); }}
+            className="hover:text-amber-500 transition-colors cursor-pointer text-amber-600 font-extrabold"
+          >
+            {lang === "ar" ? "خريطة الموقع" : "Sitemap"}
+          </button>
         </div>
-
-        {/* SEO EXPLANATION PANEL - INJECTED FOR GOOGLE SEARCH INDEXING 2026 */}
-        <section className="bg-slate-50 border border-slate-205 p-5 rounded-2xl text-start space-y-3">
-          <h4 className="text-xs sm:text-sm font-black text-red-500 uppercase tracking-wider">
-            {lang === "ar" ? "حول اختبار شبيهك من لاعبي المونديال المتطور لعام ٢٠٢٦" : "About the Advanced 2026 World Cup Player Match Quiz"}
-          </h4>
-          <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed text-justify font-sans">
-            {lang === "ar" 
-              ? "يقوم هذا المحرك المتكامل بتحليل سماتك الفردية ونمط قيادتك وتكتيكك الخاص في كرة القدم لتحديد الأسطورة المونديالية المتطابقة معك تماماً (مثل ميسي، رونالدو، مبابي، هالاند، مودريتش، أو محمد صلاح). بفضل معايير اختبارات الشخصية الرياضية السيكومترية لعام ٢٠٢٦، نقوم بفرز وتحليل البيانات محلياً وبشكل مجاني بالكامل بدون الحاجة لأي اشتراك أو تخزين بيانات خارجية لضمان خصوصيتك الكلية وسرعة استجابة مذهلة."
-              : "This specialized engine assesses your personality, tactical sports logic, and on-pitch decision making to locate your precise legendary football matching profile (including Messi, Ronaldo, Mbappe, Haaland, Modric, or Salah). Operating completely client-side in 2026, it ensures absolute privacy with instant, offline evaluation and customizable downloadable cards without storing any personal user parameters."
-            }
-          </p>
-        </section>
-
-        <p className="text-[10px] sm:text-xs text-slate-450 font-semibold font-sans">
-          {t.footerRights}
-        </p>
-        <p className="text-[9px] text-slate-400 font-mono tracking-widest uppercase font-extrabold">
-          {t.footerMeta}
-        </p>
       </footer>
 
       {/* RENDER DYNAMIC MOUNTABLE LEGAL MODALS (Fully Configured) */}

@@ -5,7 +5,7 @@
   <!-- 1. الرئيسية - الصفحة الرئيسية الافتراضية (Default Home) -->
   <url>
     <loc>https://dkora.online/</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar" />
@@ -16,7 +16,7 @@
   <!-- 2. الرئيسية باللغة العربية (Arabic Home) -->
   <url>
     <loc>https://dkora.online/?lang=ar</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar" />
@@ -26,177 +26,163 @@
   <!-- 3. الرئيسية باللغة الإنجليزية (English Home) -->
   <url>
     <loc>https://dkora.online/?lang=en</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en" />
   </url>
 
-  <!-- 4. واجهة أداة المعالجة والتحرير (Default Editor View) -->
-  <url>
-    <loc>https://dkora.online/?view=editor</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- 5. واجهة أداة المعالجة باللغة العربية (Arabic Editor View) -->
-  <url>
-    <loc>https://dkora.online/?view=editor&amp;lang=ar</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- 6. واجهة أداة المعالجة باللغة الإنجليزية (English Editor View) -->
-  <url>
-    <loc>https://dkora.online/?view=editor&amp;lang=en</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- 7. أرشيف المدونة ودليل السيّو (Default Blog Index) -->
+  <!-- 4. أرشيف المدونة ودليل السيّو (Default Blog Index) -->
   <url>
     <loc>https://dkora.online/?view=blog</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=blog&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=blog&amp;lang=en" />
   </url>
 
-  <!-- 8. أرشيف المدونة باللغة العربية (Arabic Blog Index) -->
+  <!-- 5. أرشيف المدونة باللغة العربية (Arabic Blog Index) -->
   <url>
     <loc>https://dkora.online/?view=blog&amp;lang=ar</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=blog&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=blog&amp;lang=en" />
   </url>
 
-  <!-- 9. أرشيف المدونة باللغة الإنجليزية (English Blog Index) -->
+  <!-- 6. أرشيف المدونة باللغة الإنجليزية (English Blog Index) -->
   <url>
     <loc>https://dkora.online/?view=blog&amp;lang=en</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=blog&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=blog&amp;lang=en" />
   </url>
 
-  <!-- 9.1. أداة تحويل الصور إلى فيكتور (Default SVG View) -->
+  <!-- 7. خريطة الموقع التفاعلية (Default Sitemap View) -->
   <url>
-    <loc>https://dkora.online/?view=svg</loc>
-    <lastmod>2026-06-09</lastmod>
+    <loc>https://dkora.online/?view=sitemap</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=svg&amp;lang=ar" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=svg&amp;lang=en" />
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=sitemap&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=sitemap&amp;lang=en" />
   </url>
 
-  <!-- 9.2. أداة تحويل الصور إلى فيكتور باللغة العربية (Arabic SVG View) -->
+  <!-- 8. خريطة الموقع التفاعلية باللغة العربية (Arabic Sitemap View) -->
   <url>
-    <loc>https://dkora.online/?view=svg&amp;lang=ar</loc>
-    <lastmod>2026-06-09</lastmod>
+    <loc>https://dkora.online/?view=sitemap&amp;lang=ar</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=svg&amp;lang=ar" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=svg&amp;lang=en" />
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=sitemap&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=sitemap&amp;lang=en" />
   </url>
 
-  <!-- 9.3. أداة تحويل الصور إلى فيكتور باللغة الإنجليزية (English SVG View) -->
+  <!-- 9. خريطة الموقع التفاعلية باللغة الإنجليزية (English Sitemap View) -->
   <url>
-    <loc>https://dkora.online/?view=svg&amp;lang=en</loc>
-    <lastmod>2026-06-09</lastmod>
+    <loc>https://dkora.online/?view=sitemap&amp;lang=en</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=svg&amp;lang=ar" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=svg&amp;lang=en" />
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=sitemap&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=sitemap&amp;lang=en" />
   </url>
 
   <!-- ==================== BLOG ARTICLES Section ==================== -->
 
-  <!-- Article 1: Speed Up WordPress (Arabic) -->
+  <!-- Article 1: How to find matched world cup player (Default) -->
   <url>
-    <loc>https://dkora.online/?lang=ar&amp;article=speed-up-wordpress-images</loc>
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://dkora.online/?article=how-to-find-world-cup-match-ai</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar&amp;article=speed-up-wordpress-images" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en&amp;article=speed-up-wordpress-images" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=en" />
   </url>
 
-  <!-- Article 1: Speed Up WordPress (English) -->
+  <!-- Article 1: How to find matched world cup player (Arabic) -->
   <url>
-    <loc>https://dkora.online/?lang=en&amp;article=speed-up-wordpress-images</loc>
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=ar</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar&amp;article=speed-up-wordpress-images" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en&amp;article=speed-up-wordpress-images" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=en" />
   </url>
 
-  <!-- Article 2: WebP vs AVIF comparison (Arabic) -->
+  <!-- Article 1: How to find matched world cup player (English) -->
   <url>
-    <loc>https://dkora.online/?lang=ar&amp;article=webp-vs-avif-modern-formats</loc>
-    <lastmod>2026-06-07</lastmod>
+    <loc>https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=en</loc>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar&amp;article=webp-vs-avif-modern-formats" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en&amp;article=webp-vs-avif-modern-formats" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=en" />
   </url>
 
-  <!-- Article 2: WebP vs AVIF comparison (English) -->
+  <!-- Article 2: Modern soccer tactics rating stars (Default) -->
   <url>
-    <loc>https://dkora.online/?lang=en&amp;article=webp-vs-avif-modern-formats</loc>
-    <lastmod>2026-06-07</lastmod>
+    <loc>https://dkora.online/?article=modern-soccer-tactics-rating-stars</loc>
+    <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar&amp;article=webp-vs-avif-modern-formats" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en&amp;article=webp-vs-avif-modern-formats" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=en" />
   </url>
 
-  <!-- Article 3: Local privacy & security (Arabic) -->
+  <!-- Article 2: Modern soccer tactics rating stars (Arabic) -->
   <url>
-    <loc>https://dkora.online/?lang=ar&amp;article=on-device-image-privacy</loc>
-    <lastmod>2026-06-06</lastmod>
+    <loc>https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=ar</loc>
+    <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar&amp;article=on-device-image-privacy" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en&amp;article=on-device-image-privacy" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=en" />
   </url>
 
-  <!-- Article 3: Local privacy & security (English) -->
+  <!-- Article 2: Modern soccer tactics rating stars (English) -->
   <url>
-    <loc>https://dkora.online/?lang=en&amp;article=on-device-image-privacy</loc>
-    <lastmod>2026-06-06</lastmod>
+    <loc>https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=en</loc>
+    <lastmod>2026-06-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar&amp;article=on-device-image-privacy" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en&amp;article=on-device-image-privacy" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=en" />
   </url>
 
-  <!-- Article 4: Product dimensions and Aspect Ratios (Arabic) -->
+  <!-- Article 3: How to blend face football jersey (Default) -->
   <url>
-    <loc>https://dkora.online/?lang=ar&amp;article=product-image-dimensions-ecommerce</loc>
-    <lastmod>2026-06-05</lastmod>
+    <loc>https://dkora.online/?article=how-to-blend-face-football-jersey</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar&amp;article=product-image-dimensions-ecommerce" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en&amp;article=product-image-dimensions-ecommerce" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=en" />
   </url>
 
-  <!-- Article 4: Product dimensions and Aspect Ratios (English) -->
+  <!-- Article 3: How to blend face football jersey (Arabic) -->
   <url>
-    <loc>https://dkora.online/?lang=en&amp;article=product-image-dimensions-ecommerce</loc>
-    <lastmod>2026-06-05</lastmod>
+    <loc>https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=ar</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar&amp;article=product-image-dimensions-ecommerce" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en&amp;article=product-image-dimensions-ecommerce" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=en" />
+  </url>
+
+  <!-- Article 3: How to blend face football jersey (English) -->
+  <url>
+    <loc>https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=en</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=en" />
   </url>
 
 </urlset>

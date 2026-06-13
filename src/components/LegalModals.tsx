@@ -126,7 +126,7 @@ export default function LegalModals({ isOpen, onClose, t }: LegalModalsProps) {
           {/* ABOUT US */}
           {isOpen === 'about' && (
             <>
-              <div className="flex gap-3 bg-indigo-505/10 bg-indigo-500/10 p-4 rounded-2xl border border-indigo-500/20 text-indigo-800 dark:text-indigo-400 text-left rtl:text-right">
+              <div className="flex gap-3 bg-indigo-500/10 p-4 rounded-2xl border border-indigo-500/20 text-indigo-800 dark:text-indigo-400 text-left rtl:text-right">
                 <Users className="w-10 h-10 shrink-0 text-indigo-500" />
                 <div className="text-[11px] sm:text-xs">
                   <span className="font-bold block text-sm mb-1">{t.legal.aboutHeaderBadge}</span>
@@ -135,19 +135,19 @@ export default function LegalModals({ isOpen, onClose, t }: LegalModalsProps) {
               </div>
 
               <div className="space-y-4 text-left rtl:text-right mt-4">
-                <div className="p-4 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-850 rounded-2xl space-y-2.5">
-                  <h4 className="font-black text-slate-950 dark:text-white text-sm">
-                    {isRtl ? "🌟 ما الذي يميّز أداة imgdkora وكيف نساعدك؟" : "🌟 What Makes imgdkora Distinctive?"}
+                <div className="p-4 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-2xl space-y-2.5">
+                  <h4 className="font-black text-slate-900 dark:text-white text-sm">
+                    {isRtl ? "🌟 ما الذي يميّز هذه البوابة الكروية الذكية؟" : "🌟 What Makes This Football Portal Unique?"}
                   </h4>
                   <ul className="space-y-2 text-[11px] sm:text-xs list-disc list-inside text-slate-600 dark:text-slate-400 font-bold">
                     <li>
-                      {isRtl ? "معالجة أمنية ١٠٠٪ دون تحصين باهت على الويب: تتم العمليات في المتصفح." : "100% In-browser secured sandbox execution: No server uploads."}
+                      {isRtl ? "تحليل مهارات دقيق: مبني على أكثر من ٩ جوانب تكتيكية تشمل دقة التسديد، اللياقة، الدفاع، والعمل الجماعي." : "Accurate skills analysis: Built across 9 tactical facets including accuracy, fitness, defense, and teamwork."}
                     </li>
                     <li>
-                      {isRtl ? "سرعة تفوق الضغط العادي: صامتة وممتازة لقواعد تسريع جوجل سرعة الصفحة." : "Super lightweight rendering models optimized for Google PageSpeed."}
+                      {isRtl ? "دمج فوري بالذكاء الاصطناعي: محرك توليدي متطور بالكامل لتركيب الوجه على اللاعب المناسب على الملعب." : "Instant Face Blending: Advanced generative AI to blend your face photo with your matched superstar on the green field."}
                     </li>
                     <li>
-                      {isRtl ? "رابط أرشفة معتمد (dkora.online) يحضر لك خيارات تصدر سكور عالي." : "SEO strategy integrated templates with custom formats like WebP."}
+                      {isRtl ? "بطاقة إحصائيات للمشاركة: بطاقات مصممة ومصدّرة بجودة فائقة لمشاركتها مع أصدقائك أو فخرك الرياضي." : "Exportable Stats Card: Highly polished custom-styled card outputs ready to download and share on social media."}
                     </li>
                   </ul>
                 </div>

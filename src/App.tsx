@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import html2canvas from "html2canvas";
+import Cropper from "cropperjs";
+import "cropperjs/dist/cropper.css";
 import {
   Trophy,
   Award,
@@ -143,6 +145,70 @@ const uiTranslations = {
   }
 };
 
+const VIRAL_HEADLINES = [
+  "المشجع اللي قعد رونالدو دكة في المونديال 🏟️",
+  "الوحش اللي حطم صخرة الدفاع وسحب هيبة الخصم ⚔️",
+  "صاحب أجمل وأقوى احتفال سيوووو في التاريخ! 🔥",
+  "اللي قشر الموزة لميسي في الكامب نو ومشى 🍌⚽",
+  "مروض الساحرة المستديرة في حواري المونديال 🌟",
+  "المهاجم اللي أرعب حراس كأس العالم بلمسة واحدة! 💀",
+  "الكابتن البديل اللي يغير مسار النهائي في الدقيقة 90! ⏱️",
+  "جلاد الشباك اللي يسجل بالأذن والكتف وصدره وعينه! 🎯",
+  "ممرر الكرات كعب بوجه القدم الخارجي البارع والأنيق 🪄",
+  "صاحب أول كوبري مزدوج حطم كاحل أقوى مدافع 🌉",
+  "اللي مسح هيبة نجوم الدفاع بمراوغة بلمسة فنية 💨",
+  "صانع تيكي تاكا حواري الرياض وجلاد دوري المدارس 🏆",
+  "اللي خلى نيمار يسوي إعادة حسابات في طقطقة الكورة 🧠",
+  "مزيج من الروح القتالية لراموس وعبقرية ليو ميسي! 🦁",
+  "الحارس الطائر اللي يصد ركلات الجزاء بالعين والنية 🧤",
+  "صانع الألعاب البارع اللي يعطي أسيست وهو يشرب عصير 🥤",
+  "جناح طائر أسرع من سرعة الضوء والصوت على ملعبنا ⚡",
+  "جدار برلين البشري اللي يبكي عليه المهاجمين بالملعب 🧱",
+  "صخرة الدفاع الصامت اللي يبتسم وهو يسحب الكورة 🗿",
+  "اللي يوزع عرضيات بالمليمتر تسبّب صداع لمدرب الخصم 📈",
+  "اللي قطع الكورة من ليفاندوفسكي بخيط خياطة وإبرة 🧵",
+  "المشجع اللي نزل الملعب وسجل هدف بالخطأ وصنع ريمونتادا 🔄",
+  "صاحب التسديدات الصاروخية العابرة للقارات والمدمرة 🚀",
+  "مروض الأبطال وصانع الهاتريك الأسرع في دقيقة واحدة! ⏱️",
+  "اللي خلى جوارديولا يعتزل التدريب ويسكر الدفاتر 🧠🎮",
+  "الكابتن المغناطيسي اللي يسحب الكورة كأنها حديد ومغناطيس 🧲",
+  "قاهر حراس المونديال وخبير الإنهاء في تسعينات الزاوية 🥅",
+  "المهاجم الهمام اللي يحسب سرعة الجاذبية قبل الارتقاء 🛸",
+  "اللي جاب معاه مبخرة للملعب وخرّب تركيز دفاع الخصم 💨🛡️",
+  "المشجع اللي جمد ملامح هالاند بمراوغة ونظرة ثقة 😎🔥",
+  "صانع النكبات الكروية لمدربي أندية النخبة الأوروبية 💣",
+  "المشجع اللي شتت كورة في السماء ونزلت في شباك الخصم! 🌌",
+  "صاحب أغلى قدم يسرى تنافس ليو ميسي في العقول 📐",
+  "المهاجم الأنيق اللي يحرز هاتريك وهو بيفكر في كبسة الغداء 🍛",
+  "المشجع اللي سحب التيشرت من هالاند وما انقطع معاه 🦾",
+  "قاهر خطوط الوسط وحامل مفاتيح رتم اللعب الهادئ والقاتل 🗝️",
+  "الوحش اللي يراوغ الدفاع من ركنية لركنية بلا تعرق 🏃‍♂️",
+  "معلم التيكي تاكا والسامبا البرازيلية الحرة في وسط الملعب 🇧🇷",
+  "المشجع اللي صفق للمنافس بالغلط وصنع سلام بالاستاد 🕊️",
+  "مروض الكور المستحيلة وصانع الأعاجيب بلمحة عين واحدة ✨",
+  "الجناح الطائر اللي يطير بدون طائرة في سماء الملاعب 🪽",
+  "المشجع الأكثر حماساً وولاءً وتأثيراً في مدرجاتنا 🗣️📣",
+  "مفسر الفكر التكتيكي العالي بلمساته العفوية البسيطة 📖",
+  "صاحب اللياقة الحديدية اللي تدور عضلاته كأنه محرك توربيني ⚙️",
+  "المشجع الأسطوري اللي هز المدرج بصيحة كروية تهز الجبال 🌋",
+  "اللي ركض من المرمى للمرمى عشان ينقذ هجمة مرتدة 🏎️",
+  "الأستاذ اللي يدرس المدافعين أصول التمركز بضحكة رايقة 🎓",
+  "مروض عمالقة المونديال وصاحب أذكى أسيست مخفي 🃏✨",
+  "اللي خلى حارس المونديال يطلب تبديل من شدة الصدمة 🤯🚨",
+  "مخرب تكتيك الكاتيناتشو الإيطالي بمراوغة حوارى شعبية 🛡️❌",
+  "البطل اللي أنقذ شرف الفريق بإنقاذ كورة من على خط المرمى 🦸‍♂️",
+  "الجلاد الرهيب صاحب القدم الفولاذية والضربات الحرة الساحقة ☄️",
+  "اللي يراوغ خمسة مدافعين في مساحة علبة كبريت صغيرة 📦✨",
+  "المهاجم اللي يستلم الكورة تحت الضغط وكأنه جالس بكافيه ☕🌟",
+  "المشجع اللي علم مبابي أصول الجري السريع والتخفي بالبساط 🦊💨",
+  "اللي سجل كوبري في كابتن الفريق وخلاه يعتزل دولياً 🪦🚪",
+  "القناص اللي يحط الكورة في الثمانية وتمشي بالدوران المطلق 🔄📐",
+  "المشجع اللي جاب كاس البطولة من بيتهم عشان يحتفل مع فريقه 🏆🎁",
+  "صاحب رمية التماس الطويلة اللي توصل لستاد المدينة المجاورة 🛸",
+  "مستكشف الثغرات الدفاعية وحلال العقد الكروية المستحيلة 🕵️‍♂️⚽",
+  "المشجع اللي يتوقع التغييرات والتبديلات قبل المدرب بساعة 🔮🏟️"
+];
+
 export default function App() {
   // Navigation tabs: "quiz" (Home) | "blog" (Articles) | "sitemap" (Sitemap page)
   const [activeTab, setActiveTab] = useState<"quiz" | "blog" | "sitemap" >("quiz");
@@ -161,14 +227,20 @@ export default function App() {
   const [showToast, setShowToast] = useState<boolean>(false);
   const [toastText, setToastText] = useState<string>("");
 
-  // States for user photo and generative AI blending
+  // States for user photo and client-side Soccer Fan Card & Headline Generator
   const [userUploadedFile, setUserUploadedFile] = useState<string | null>(null);
-  const [generatedCombinedImage, setGeneratedCombinedImage] = useState<string | null>(null);
+  const [userCroppedImage, setUserCroppedImage] = useState<string | null>(null);
+  const [selectedRivalId, setSelectedRivalId] = useState<string>("messi");
+  const [viralHeadline, setViralHeadline] = useState<string>("");
+  const [activeFilter, setActiveFilter] = useState<string>("cyber");
   const [isBlending, setIsBlending] = useState<boolean>(false);
   const [blendStatusText, setBlendStatusText] = useState<string>("");
   const [blendingError, setBlendingError] = useState<string | null>(null);
 
   const resultCardRef = useRef<HTMLDivElement>(null);
+  const fanCardElementRef = useRef<HTMLDivElement>(null);
+  const cropperImgRef = useRef<HTMLImageElement | null>(null);
+  const cropperInstRef = useRef<Cropper | null>(null);
 
   // Sync language and active tab with URL query parameters on initial load
   useEffect(() => {
@@ -187,7 +259,8 @@ export default function App() {
 
     // 2. Setup Active tab / view
     const viewParam = params.get("view");
-    if (viewParam === "blog") {
+    const articleParam = params.get("article");
+    if (viewParam === "blog" || articleParam) {
       setActiveTab("blog");
     } else if (viewParam === "sitemap") {
       setActiveTab("sitemap");
@@ -424,26 +497,39 @@ export default function App() {
     }
   };
 
-  // Triggers the Express backend to blend photos using server-side Gemini API
-  const handleGenerateAIBlend = async () => {
-    if (!userUploadedFile || !finalPlayer) return;
+  // Client-Side Bragging Fan Card & Headline Generator Logic
+  const handleRandomizeHeadline = () => {
+    playInteractionSound();
+    let randomIndex = Math.floor(Math.random() * VIRAL_HEADLINES.length);
+    if (VIRAL_HEADLINES[randomIndex] === viralHeadline) {
+      randomIndex = (randomIndex + 1) % VIRAL_HEADLINES.length;
+    }
+    setViralHeadline(VIRAL_HEADLINES[randomIndex]);
+    triggerToast(lang === "ar" ? "تم سحب مهارة أسطورية جديدة! 🎲" : "New dynamic player trait drawn! 🎲");
+  };
+
+  const startFanCardSimulation = (croppedDataUrl: string) => {
+    setUserCroppedImage(croppedDataUrl);
     setIsBlending(true);
     setBlendingError(null);
-    setGeneratedCombinedImage(null);
+    
+    // Choose initial random title
+    const randomIndex = Math.floor(Math.random() * VIRAL_HEADLINES.length);
+    setViralHeadline(VIRAL_HEADLINES[randomIndex]);
 
     const statusesAr = [
-      "جاري تحليل ملامح الوجه وتحجيمها...",
-      "توليف الزي الرياضي الوطني المتطابق...",
-      "رسم الإضاءة والملعب بالذكاء الاصطناعي...",
-      "محاكاة الدمج المتكامل للوجهين...",
-      "إضفاء اللمسات الرياضية النهائية..."
+      "جاري فحص زاوية نظرتك الأسطورية... 👁️",
+      "توليف هيبة المشجع بكسل-بكسل... 🧠",
+      "تجهيز كرت التباهي بنمط الذكاء الاصطناعي... 🎨",
+      "مطابقة جينات خصمك المونديالي الأسطوري... ⚽",
+      "إضفاء الفلاتر النيونية الرياضية... ⚡"
     ];
     const statusesEn = [
-      "Analyzing and scaling facial features...",
-      "Tailoring matching national team kit...",
-      "Synthesizing stadium background with AI...",
-      "Blending user and player portraits...",
-      "Finalizing athletic details..."
+      "Assessing legendary visual focus alignment... 👁️",
+      "Pixel-synthesizing ultimate backing aura... 🧠",
+      "Styling custom championship bragging card... 🎨",
+      "Pairing athletic traits with rival icon... ⚽",
+      "Injecting high-frequency neon flourishes... ⚡"
     ];
 
     const statusList = lang === "ar" ? statusesAr : statusesEn;
@@ -453,39 +539,118 @@ export default function App() {
     const statusInterval = setInterval(() => {
       statusIdx = (statusIdx + 1) % statusList.length;
       setBlendStatusText(statusList[statusIdx]);
-    }, 2000);
+    }, 550);
 
-    try {
-      const response = await fetch("/api/match-photo", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userImage: userUploadedFile,
-          playerId: finalPlayer.id,
-        }),
-      });
-
-      if (!response.ok) {
-        const errData = await response.json().catch(() => ({}));
-        throw new Error(errData.error || "Failed to communicate with AI server");
-      }
-
-      const data = await response.json();
-      if (data.imageUrl) {
-        setGeneratedCombinedImage(data.imageUrl);
-        triggerToast(lang === "ar" ? "تم توليد صورتك الأسطورية بنجاح! ⚡" : "Legendary AI portrait generated successfully! ⚡");
-      } else {
-        throw new Error("No image URL returned");
-      }
-    } catch (err: any) {
-      console.error("AI Blend Error:", err);
-      setBlendingError(lang === "ar" ? "فشل الاتصال بالذكاء الاصطناعي أو انتهت مهلة الخادم، يرجى المحاولة لاحقاً" : "AI connection failed or server timed out, please try again later.");
-      triggerToast(lang === "ar" ? "فشل التوليد بالذكاء الاصطناعي" : "AI Generation failed");
-    } finally {
+    setTimeout(() => {
       clearInterval(statusInterval);
       setIsBlending(false);
+      triggerToast(lang === "ar" ? "تم إنشاء كرت التباهي الخاص بك بنجاح! 🏆" : "Your bragging card successfully printed! 🏆");
+    }, 2800);
+  };
+
+  const handleGenerateAIBlend = () => {
+    if (!cropperInstRef.current) return;
+    playInteractionSound();
+    
+    // Get cropped canvas
+    const croppedCanvas = cropperInstRef.current.getCroppedCanvas({
+      width: 450,
+      height: 450,
+      imageSmoothingEnabled: true,
+      imageSmoothingQuality: "high"
+    });
+    
+    if (croppedCanvas) {
+      const croppedDataUrl = croppedCanvas.toDataURL("image/png");
+      startFanCardSimulation(croppedDataUrl);
+    } else {
+      triggerToast(lang === "ar" ? "تعذر قص الصورة، حاول مرة أخرى." : "Cropping failed, please try again.");
+    }
+  };
+
+  const handleDownloadFanCard = async () => {
+    playInteractionSound();
+    if (!fanCardElementRef.current) return;
+
+    triggerToast(lang === "ar" ? "جاري تجهيز كرت التباهي للتحميل الفوري... 🖼️" : "Preparing high-res bragging card for download... 🖼️");
+
+    const backups: any[] = [];
+
+    try {
+      fanCardElementRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      // Clean oklch / oklab colors for html2canvas to prevent SVG/canvas loading crashes in styling systems
+      const styleElements = Array.from(document.querySelectorAll("style"));
+      for (const styleEl of styleElements) {
+        const originalText = styleEl.innerHTML;
+        if (originalText.includes("oklch") || originalText.includes("oklab")) {
+          const cleaned = originalText
+            .replace(/oklch\([^)]+\)/g, "rgb(120, 120, 120)")
+            .replace(/oklab\([^)]+\)/g, "rgb(120, 120, 120)");
+          styleEl.innerHTML = cleaned;
+          backups.push({ type: "style", element: styleEl, content: originalText });
+        }
+      }
+
+      const linkElements = Array.from(document.querySelectorAll("link[rel='stylesheet']")) as HTMLLinkElement[];
+      for (const linkEl of linkElements) {
+        try {
+          const response = await fetch(linkEl.href);
+          if (response.ok) {
+            const text = await response.text();
+            if (text.includes("oklch") || text.includes("oklab")) {
+              const cleanedText = text
+                .replace(/oklch\([^)]+\)/g, "rgb(120, 120, 120)")
+                .replace(/oklab\([^)]+\)/g, "rgb(120, 120, 120)");
+              
+              const tempStyle = document.createElement("style");
+              tempStyle.setAttribute("data-html2canvas-temp", "true");
+              tempStyle.innerHTML = cleanedText;
+              document.head.appendChild(tempStyle);
+
+              linkEl.disabled = true;
+              backups.push({ type: "link", element: linkEl, tempStyleElement: tempStyle });
+            }
+          }
+        } catch (err) {
+          console.warn("Failed to sanitize stylesheet for html2canvas:", linkEl.href, err);
+        }
+      }
+
+      const options = {
+        useCORS: true,
+        backgroundColor: "#020512", // premium absolute dark backdrop
+        scale: 2, // crisp high density
+        logging: false,
+      };
+
+      await new Promise((resolve) => setTimeout(resolve, 450));
+      const canvas = await html2canvas(fanCardElementRef.current, options);
+      const dataUrl = canvas.toDataURL("image/png");
+
+      const link = document.createElement("a");
+      link.download = `soccer-fan-card-${selectedRivalId}.png`;
+      link.href = dataUrl;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      triggerToast(lang === "ar" ? "تم تحميل كرت التباهي بنجاح! 🥳 شاركه مع أصدقائك!" : "Bragging card downloaded successfully! 🥳 Go share!");
+    } catch (err: any) {
+      console.error("html2canvas print failure: ", err);
+      triggerToast(lang === "ar" ? "عذراً! فشل التحميل التلقائي، التقط لقطة شاشة وشارك كرت التباهي!" : "Automatic download failed on this device, snap a screenshot to share!");
+    } finally {
+      // Revert style changes to ensure standard UI is unaltered
+      for (const back of backups) {
+        if (back.type === "style") {
+          back.element.innerHTML = back.content;
+        } else if (back.type === "link") {
+          back.element.disabled = false;
+          if (back.tempStyleElement && back.tempStyleElement.parentNode) {
+            back.tempStyleElement.parentNode.removeChild(back.tempStyleElement);
+          }
+        }
+      }
     }
   };
 
@@ -971,20 +1136,20 @@ export default function App() {
 
                 </div>
 
-                {/* ADVANCED AI PORTRAIT BLEND MODULE */}
+                {/* SOCCER FAN CARD & HEADLINE GENERATOR (Fully Client-Side & Interactive) */}
                 <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
                   <div className="space-y-2 border-b border-slate-100 pb-4">
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 text-red-600 text-xs font-black">
-                      <Sparkles className="w-3.5 h-3.5 text-red-500 animate-pulse" />
-                      <span>{lang === "ar" ? "ميزة الذكاء الاصطناعي الحصرية ٢٠٢٦" : "Exclusive 2026 AI Feature"}</span>
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-red-600 to-red-500 text-white text-[10px] sm:text-xs font-black shadow-sm">
+                      <Sparkles className="w-3.5 h-3.5 text-white animate-pulse" />
+                      <span>{lang === "ar" ? "مولد كروت التباهي والألقاب الساخرة" : "Viral Fan Card & Headline Generator"}</span>
                     </div>
                     <h3 className="text-lg sm:text-xl font-black text-slate-900 flex items-center gap-2">
-                      {lang === "ar" ? "توليد صورتك الأسطورية المشتركة" : "Generate Your Legendary AI Portrait"}
+                      {lang === "ar" ? "اصنع كرت التباهي الخاص بك مجاناً" : "Create Your Bragging Fan Card Free"}
                     </h3>
                     <p className="text-xs text-slate-500 leading-relaxed text-start">
                       {lang === "ar" 
-                        ? "ارفع صورتك وسيقوم الذكاء الاصطناعي بدمج ملامحك لتظهر في صورة واقعية جنباً إلى جنب مع لاعبك المفضل على أرض الملعب وتحت أضواء الاستاد!"
-                        : "Upload your photo, and AI will synthesize your face to appear side-by-side with your matched player under the stadium lights!"
+                        ? "ارفع صورتك لمطابقتها وقصها بدقة واقصص وجهك، ثم اختر لاعبك المنافس المفضل لتوليد لقب رياضي ساخر ومشاركة الكرت بجودة فائقة لقصص إنستغرام وفيسبوك!"
+                        : "Upload your photo, crop and align your face, select your rival icon, and generate a viral Arabic headline to download as a story-ready image!"
                       }
                     </p>
                   </div>
@@ -1002,6 +1167,7 @@ export default function App() {
                             const reader = new FileReader();
                             reader.onloadend = () => {
                               setUserUploadedFile(reader.result as string);
+                              setUserCroppedImage(null);
                             };
                             reader.readAsDataURL(file);
                             playInteractionSound();
@@ -1018,6 +1184,7 @@ export default function App() {
                               const reader = new FileReader();
                               reader.onloadend = () => {
                                 setUserUploadedFile(reader.result as string);
+                                setUserCroppedImage(null);
                               };
                               reader.readAsDataURL(file);
                               playInteractionSound();
@@ -1035,117 +1202,293 @@ export default function App() {
                         </span>
                       </label>
                     </div>
-                  ) : (
-                    <div className="space-y-6">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
-                        {/* Selected User Photo Preview */}
-                        <div className="space-y-2 text-center">
-                          <span className="text-xs font-bold text-slate-500 block text-start rtl:text-right">
-                            {lang === "ar" ? "صورتك المرفوعة" : "Your Uploaded Photo"}
-                          </span>
-                          <div className="w-full h-48 rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 flex items-center justify-center relative">
-                            <img 
-                              src={userUploadedFile} 
-                              alt="Uploaded Preview" 
-                              className="w-full h-full object-cover"
-                              referrerPolicy="no-referrer"
-                            />
-                            <button
-                              onClick={() => { setUserUploadedFile(null); setGeneratedCombinedImage(null); playInteractionSound(); }}
-                              className="absolute top-2 right-2 p-1.5 bg-black/70 hover:bg-red-600 text-white rounded-full transition-colors cursor-pointer"
-                              title={lang === "ar" ? "حذف الصورة" : "Remove Photo"}
-                            >
-                              <Trash2 className="w-3.5 h-3.5" />
-                            </button>
-                          </div>
-                        </div>
+                  ) : !userCroppedImage ? (
+                    /* STEP 2: Cropper layout with Cropper.js controls */
+                    <div className="space-y-4">
+                      <span className="text-xs font-black text-slate-600 block text-start">
+                        {lang === "ar" ? "✂️ اضبط إطار وجهك بشكل صحيح ليتطابق مع الكرت:" : "✂️ Crop and align your face correctly:"}
+                      </span>
+                      
+                      <div className="max-h-[380px] overflow-hidden rounded-2xl bg-slate-950 border border-slate-200 flex items-center justify-center p-2">
+                        <img
+                          ref={cropperImgRef}
+                          src={userUploadedFile}
+                          alt="Cropping region"
+                          className="max-w-full block"
+                          onLoad={() => {
+                            if (cropperImgRef.current) {
+                              if (cropperInstRef.current) {
+                                cropperInstRef.current.destroy();
+                              }
+                              cropperInstRef.current = new Cropper(cropperImgRef.current, {
+                                aspectRatio: 1, // perfect square for athlete profile frames
+                                viewMode: 1,
+                                dragMode: 'move',
+                                autoCropArea: 0.85,
+                                background: false,
+                                responsive: true,
+                                checkOrientation: false,
+                              });
+                            }
+                          }}
+                        />
+                      </div>
+                      
+                      <div className="flex flex-wrap items-center justify-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => { cropperInstRef.current?.rotate(-90); playInteractionSound(); }}
+                          className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-colors"
+                        >
+                          {lang === "ar" ? "↩️ تدوير لليسار" : "↩️ Rotate Left"}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => { cropperInstRef.current?.rotate(90); playInteractionSound(); }}
+                          className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-colors"
+                        >
+                          {lang === "ar" ? "↪️ تدوير لليمين" : "↪️ Rotate Right"}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => { cropperInstRef.current?.zoom(0.15); playInteractionSound(); }}
+                          className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-colors"
+                        >
+                          {lang === "ar" ? "➕ تقريب" : "➕ Zoom In"}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => { cropperInstRef.current?.zoom(-0.15); playInteractionSound(); }}
+                          className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-colors"
+                        >
+                          {lang === "ar" ? "➖ إبعاد" : "➖ Zoom Out"}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => { cropperInstRef.current?.reset(); playInteractionSound(); }}
+                          className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 rounded-xl text-xs font-bold transition-colors"
+                        >
+                          {lang === "ar" ? "إعادة ضبط" : "Reset"}
+                        </button>
+                      </div>
 
-                        {/* Player Preview */}
-                        <div className="space-y-2 text-center">
-                          <span className="text-xs font-bold text-slate-500 block text-start rtl:text-right">
-                            {lang === "ar" ? `اللاعب المطابق: ${lang === "ar" ? finalPlayer.nameAr : finalPlayer.nameEn}` : `Matched Legend: ${finalPlayer.nameEn}`}
-                          </span>
-                          <div className="w-full h-48 rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 flex items-center justify-center">
-                            <img 
-                              src={`/${finalPlayer.id}.jpg`} 
-                              alt={lang === "ar" ? finalPlayer.nameAr : finalPlayer.nameEn} 
-                              className="w-full h-full object-cover"
-                              referrerPolicy="no-referrer"
-                              crossOrigin="anonymous"
-                            />
-                          </div>
+                      <div className="grid grid-cols-2 gap-3 pt-2">
+                        <button
+                          type="button"
+                          onClick={() => { setUserUploadedFile(null); setUserCroppedImage(null); playInteractionSound(); }}
+                          className="py-3 px-4 bg-slate-105 hover:bg-slate-150 text-slate-600 rounded-xl text-xs font-bold transition-all text-center"
+                        >
+                          {lang === "ar" ? "إلغاء ورفع صورة أخرى" : "Cancel & upload another"}
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={handleGenerateAIBlend}
+                          className="py-3 px-4 bg-red-600 hover:bg-red-750 text-white rounded-xl text-xs font-black transition-all text-center shadow-sm flex items-center justify-center gap-1.5"
+                        >
+                          <Check className="w-4 h-4" />
+                          <span>{lang === "ar" ? "قص الصورة وحفظ" : "Crop & Save Image"}</span>
+                        </button>
+                      </div>
+                    </div>
+                  ) : isBlending ? (
+                    /* STEP 3: Elegant Processing Tension State */
+                    <div className="bg-slate-50 border border-slate-100 p-8 rounded-3xl text-center space-y-4">
+                      <div className="relative inline-flex items-center justify-center">
+                        <Loader2 className="w-12 h-12 text-red-500 animate-spin" />
+                        <span className="absolute text-[10px] font-black text-red-600 animate-pulse">2026</span>
+                      </div>
+                      
+                      <div className="space-y-1 text-center">
+                        <h4 className="text-sm font-black text-slate-800 tracking-tight transition-all duration-300">
+                          {blendStatusText}
+                        </h4>
+                        <p className="text-[10px] sm:text-xs text-slate-400 italic">
+                          {lang === "ar" ? "نقوم بمطابقة أبعاد وجهك وتوليف اللقب الساخر المناسب..." : "Customizing layout and randomizing viral Arabic monikers..."}
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    /* STEP 4: Golden/Dark Bragging Fan Card Interactive Showcase */
+                    <div className="space-y-6">
+                      
+                      {/* Rival Legend Switcher Toolbar */}
+                      <div className="space-y-2">
+                        <label className="text-xs font-bold text-slate-500 block text-start rtl:text-right">
+                          {lang === "ar" ? "🏆 اختر لاعبك المنافس لكرت التباهي:" : "🏆 Select Rival Legend for Fan Card:"}
+                        </label>
+                        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                          {PLAYER_PROFILES.map((p) => (
+                            <button
+                              key={p.id}
+                              type="button"
+                              onClick={() => { setSelectedRivalId(p.id); playInteractionSound(); }}
+                              className={`p-2 rounded-xl border transition-all flex flex-col items-center text-center text-xs font-black relative overflow-hidden cursor-pointer ${
+                                selectedRivalId === p.id
+                                  ? "border-red-500 bg-red-50 text-slate-900 shadow-sm"
+                                  : "border-slate-200 bg-white text-slate-500 hover:border-slate-350 hover:bg-slate-100"
+                              }`}
+                            >
+                              <img src={`/${p.id}.jpg`} alt={p.nameEn} className="w-8 h-8 rounded-full object-cover mb-1 shrink-0" referrerPolicy="no-referrer" crossOrigin="anonymous"/>
+                              <span className="text-[10px] leading-tight block truncate w-full">{lang === "ar" ? p.nameAr : p.nameEn}</span>
+                              {selectedRivalId === p.id && <span className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-red-600" />}
+                            </button>
+                          ))}
                         </div>
                       </div>
 
-                      {/* Blending triggers */}
-                      {isBlending ? (
-                        <div className="bg-slate-50 border border-slate-100 p-6 rounded-2xl text-center space-y-4">
-                          <Loader2 className="w-8 h-8 text-red-500 animate-spin mx-auto" />
-                          <div className="space-y-1 text-center">
-                            <h4 className="text-sm font-black text-slate-800 tracking-tight animate-pulse">
-                              {blendStatusText}
-                            </h4>
-                            <p className="text-[10px] sm:text-xs text-slate-450 italic">
-                              {lang === "ar" ? "يقوم الذكاء الاصطناعي بتوليف ودمج الملامح، يرجى الانتظار ثوانٍ..." : "AI is crafting your portrait. Please wait several seconds..."}
-                            </p>
-                          </div>
+                      {/* Filter Selections */}
+                      <div className="space-y-2">
+                        <label className="text-xs font-bold text-slate-500 block text-start rtl:text-right">
+                          {lang === "ar" ? "🎨 اختر التأثير الرياضي المونديالي لصورتك:" : "🎨 Select Custom Color Filter for Your Image:"}
+                        </label>
+                        <div className="grid grid-cols-4 gap-2">
+                          {[
+                            { id: "normal", ar: "الأصلي", en: "Original" },
+                            { id: "grayscale", ar: "فولاذ مونو", en: "Steel Mono" },
+                            { id: "sepia", ar: "ريترو دافئ", en: "Sepia Warm" },
+                            { id: "cyber", ar: "نيون سايبر", en: "Cyber Neon" },
+                          ].map((f) => (
+                            <button
+                              key={f.id}
+                              type="button"
+                              onClick={() => { setActiveFilter(f.id); playInteractionSound(); }}
+                              className={`p-2 rounded-xl border text-[10px] sm:text-xs font-extrabold transition-all text-center cursor-pointer ${
+                                activeFilter === f.id
+                                  ? "border-red-500 bg-red-650 text-white"
+                                  : "border-slate-205 bg-slate-50 text-slate-600 hover:bg-slate-100"
+                              }`}
+                            >
+                              {lang === "ar" ? f.ar : f.en}
+                            </button>
+                          ))}
                         </div>
-                      ) : generatedCombinedImage ? (
-                        <div className="space-y-4 text-center">
-                          <div className="inline-flex items-center gap-1 text-emerald-600 text-xs font-bold bg-emerald-50 border border-emerald-100 px-3 py-1 rounded-full">
-                            <Check className="w-3.5 h-3.5 text-emerald-500" />
-                            <span>{lang === "ar" ? "تم التوليد بنجاح!" : "Generated successfully!"}</span>
-                          </div>
-                          
-                          <div id="ai-combined-photo-container" className="max-w-md mx-auto aspect-square rounded-2xl overflow-hidden border border-slate-250 bg-slate-900 shadow-lg">
-                            <img 
-                              src={generatedCombinedImage} 
-                              alt="AI Combined Result" 
-                              className="w-full h-full object-cover"
-                              referrerPolicy="no-referrer"
-                            />
+                      </div>
+
+                      {/* THE PREMIUM BRAGGING CARD FOR SOCIAL MEDIA DOWNLOAD */}
+                      <div className="p-1 rounded-[2.5rem] bg-gradient-to-tr from-cyan-500 via-red-500 to-amber-500 shadow-2xl">
+                        <div 
+                          ref={fanCardElementRef}
+                          id="fan-card-printable"
+                          className="w-full bg-[#020512] text-white p-6 sm:p-8 rounded-[2.4rem] relative overflow-hidden flex flex-col justify-between space-y-6 aspect-[4/5] min-h-[460px]"
+                        >
+                          {/* Tech background elements */}
+                          <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.04] bg-[radial-gradient(#ef4444_1px,transparent_1px)] [background-size:20px_20px]" />
+                          <div className="absolute -top-12 -left-12 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+                          <div className="absolute -bottom-12 -right-12 w-48 h-48 bg-red-500/10 rounded-full blur-3xl pointer-events-none" />
+
+                          {/* Card Badge Header */}
+                          <div className="text-center z-10">
+                            <span className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-red-950/70 via-slate-900/40 to-red-950/70 border border-red-500/30 text-red-500 text-[10px] sm:text-xs font-black tracking-widest uppercase">
+                              🏆 {lang === "ar" ? "كرت التباهي للمشجعين • ٢٠٢٦" : "FIFA FAN BRAGGING CARD • 2026"} 🏆
+                            </span>
                           </div>
 
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md mx-auto">
-                            <button
-                              onClick={() => {
-                                const link = document.createElement("a");
-                                link.download = `legendary-ai-${finalPlayer.id}.png`;
-                                link.href = generatedCombinedImage;
-                                document.body.appendChild(link);
-                                link.click();
-                                document.body.removeChild(link);
-                                triggerToast(lang === "ar" ? "تم تحميل صورتك الأسطورية بنجاح!" : "Legendary photo downloaded successfully!");
-                              }}
-                              className="px-4 py-3 bg-red-600 text-white rounded-xl text-xs font-black hover:bg-red-700 transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-sm"
-                            >
-                              <Download className="w-4 h-4" />
-                              <span>{lang === "ar" ? "تحميل الصورة الذكية" : "Download AI Portrait"}</span>
-                            </button>
+                          {/* Side-by-Side Comparison Area */}
+                          <div className="flex items-center justify-around z-10 w-full py-2">
+                            
+                            {/* User Side */}
+                            <div className="flex flex-col items-center space-y-2">
+                              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.30)] bg-slate-900">
+                                <img
+                                  src={userCroppedImage}
+                                  alt="User Cropped"
+                                  className={`w-full h-full object-cover transition-all ${
+                                    activeFilter === "grayscale"
+                                      ? "grayscale contrast-125 brightness-95"
+                                      : activeFilter === "sepia"
+                                      ? "sepia contrast-110 saturate-125"
+                                      : activeFilter === "cyber"
+                                      ? "contrast-150 saturate-[180%] brightness-90 [filter:hue-rotate(200deg)_saturate(250%)]"
+                                      : "filter-none"
+                                  }`}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+                              </div>
+                              <span className="px-2.5 py-1 bg-cyan-950/70 border border-cyan-800/40 text-cyan-400 text-[9px] sm:text-[10px] font-black rounded-lg uppercase">
+                                {lang === "ar" ? "المشجع الأسطوري" : "Legendary Fan"}
+                              </span>
+                            </div>
 
-                            <button
-                              onClick={() => { setGeneratedCombinedImage(null); setUserUploadedFile(null); playInteractionSound(); }}
-                              className="px-4 py-3 bg-slate-100 text-slate-700 border border-slate-200 rounded-xl text-xs font-black hover:bg-slate-200 transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-sm"
-                            >
-                              <RotateCcw className="w-4 h-4 text-slate-500" />
-                              <span>{lang === "ar" ? "توليد صورة أخرى" : "Try Another Photo"}</span>
-                            </button>
+                            {/* Middle VS Graphic Badge */}
+                            <div className="flex flex-col items-center justify-center shrink-0">
+                              <span className="w-8 h-8 rounded-full bg-red-600 border border-red-400 flex items-center justify-center font-black text-xs text-white shadow-lg animate-pulse">
+                                VS
+                              </span>
+                            </div>
+
+                            {/* Rival Legend Side */}
+                            <div className="flex flex-col items-center space-y-2">
+                              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.30)] bg-slate-900">
+                                <img
+                                  src={`/${selectedRivalId}.jpg`}
+                                  alt={PLAYER_PROFILES.find(p => p.id === selectedRivalId)?.nameEn || "Rival"}
+                                  className="w-full h-full object-cover"
+                                  referrerPolicy="no-referrer"
+                                  crossOrigin="anonymous"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+                              </div>
+                              <span className="px-2.5 py-1 bg-red-950/70 border border-red-800/40 text-red-400 text-[9px] sm:text-[10px] font-black rounded-lg uppercase">
+                                {lang === "ar" ? "الأسطورة المنافس" : "Rival Legend"}
+                              </span>
+                            </div>
+
                           </div>
+
+                          {/* Massive Viral Center Headline */}
+                          <div className="bg-gradient-to-r from-red-950/40 via-slate-900/60 to-red-950/40 p-4 rounded-2xl border border-red-500/20 text-center relative overflow-hidden z-10">
+                            <div className="absolute -left-10 top-0 w-32 h-32 bg-red-500/5 blur-3xl rounded-full" />
+                            <div className="absolute -right-10 top-0 w-32 h-32 bg-cyan-500/5 blur-3xl rounded-full" />
+                            
+                            <span className="text-[10px] text-yellow-450 font-black block tracking-widest mb-1 shadow-sm uppercase">
+                              ⚽ {lang === "ar" ? "اللقب الكروي الأسطوري" : "LEGENDARY SOCCER MONIKER"} ⚽
+                            </span>
+                            <h3 className="text-sm sm:text-base md:text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-105 leading-relaxed text-center px-1">
+                              {viralHeadline}
+                            </h3>
+                          </div>
+
+                          {/* Card Footer Credentials */}
+                          <div className="flex items-center justify-between text-[8px] sm:text-[9px] text-slate-500/60 border-t border-slate-900/60 pt-4 z-10 font-bold">
+                            <span>{lang === "ar" ? "معتمد • لجنة مشجعي كرة القدم العالمية" : "VERIFIED • WORLD FOOTBALL FAN UNION"}</span>
+                            <span className="font-mono tracking-wider">DKORA.ONLINE</span>
+                          </div>
+
                         </div>
-                      ) : (
-                        <div className="space-y-3">
+                      </div>
+
+                      {/* Interactive Actions Toolset */}
+                      <div className="flex flex-col gap-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           <button
-                            onClick={handleGenerateAIBlend}
-                            className="w-full py-4 bg-gradient-to-r from-red-600 to-red-500 text-white text-sm font-black rounded-2xl transition-all shadow-md active:scale-[0.98] duration-150 cursor-pointer flex items-center justify-center gap-2"
+                            type="button"
+                            onClick={handleRandomizeHeadline}
+                            className="w-full py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-950 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1.5 border border-slate-200 cursor-pointer shadow-sm"
                           >
-                            <Sparkles className="w-4.5 h-4.5 text-white animate-bounce" />
-                            <span>{lang === "ar" ? `دمج صورتي مع الأسطورة ${finalPlayer.nameAr}` : `Merge with Legend ${finalPlayer.nameEn}`}</span>
+                            <span>🎲 {lang === "ar" ? "تبديل اللقب لتوليد عنوان جديد" : "Draft another dynamic moniker"}</span>
                           </button>
-                          {blendingError && (
-                            <p className="text-red-500 text-xs text-center font-bold">{blendingError}</p>
-                          )}
+
+                          <button
+                            type="button"
+                            onClick={() => { setUserUploadedFile(null); setUserCroppedImage(null); playInteractionSound(); }}
+                            className="w-full py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1.5 border border-slate-205 cursor-pointer shadow-sm"
+                          >
+                            <RotateCcw className="w-3.5 h-3.5" />
+                            <span>{lang === "ar" ? "تغيير صورتك ورفع أخرى" : "Upload another picture"}</span>
+                          </button>
                         </div>
-                      )}
+
+                        <button
+                          type="button"
+                          onClick={handleDownloadFanCard}
+                          className="w-full py-4 bg-gradient-to-r from-red-650 to-red-500 hover:opacity-95 text-white font-black text-sm rounded-2xl shadow-lg cursor-pointer transform active:scale-[0.99] duration-150 flex items-center justify-center gap-2"
+                        >
+                          <Download className="w-5 h-5 text-white animate-bounce" />
+                          <span>{lang === "ar" ? "تحميل كرت التباهي ومشاركة النتيجة" : "Download Bragging Card & Share"}</span>
+                        </button>
+                      </div>
+
                     </div>
                   )}
                 </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { BookOpen, Calendar, Clock, User, ArrowLeft, ArrowRight, Search, Copy, Check, Share2, CornerDownLeft } from 'lucide-react';
+import { BookOpen, Calendar, Clock, User, ArrowLeft, ArrowRight, Search, Copy, Check, Share2, CornerDownLeft, Sparkles, Award, TrendingUp, Flame } from 'lucide-react';
+import ayyoubBouaddiCard from '../assets/images/ayyoub_bouaddi_card_1781406003674.jpg';
 
 interface Article {
   id: string;
@@ -39,6 +40,132 @@ interface Article {
 
 const ARTICLES_DATA: Article[] = [
   {
+    id: "art-ayyoub-bouaddi-age",
+    slug: "how-old-is-ayyoub-bouaddi",
+    categoryAr: "مواهب كرة القدم الصاعدة",
+    categoryEn: "Rising Football Talents",
+    titleAr: "كم عمر أيوب بوعدي؟ نجم ليل الفرنسي ومستقبله الكروي لعام 2026",
+    titleEn: "How Old is Ayyoub Bouaddi? Lille's Rising Prodigy Age & Profile in 2026",
+    descAr: "اكتشف عمر أيوب بوعدي الحقيقي، سجله الكروي المبهر مع نادي ليل ومستقبله الدولي بين منتخبي المغرب وفرنسا في تحليل رياضي شامل متوافق مع سيو 2026.",
+    descEn: "Discover the exact age of Ayyoub Bouaddi, his outstanding career stats with Lille OSC, and his international future between France and Morocco in a complete 2026 tactical profile.",
+    keywordsAr: ["كم عمر ايوب بوعدى", "أيوب بوعدي لاعب ليل", "عمر ايوب بوعدى", "أيوب بوعدي مغربي", "مواهب ليل الفرنسي ٢٠٢٦"],
+    keywordsEn: ["how old is ayyoub bouaddi", "ayyoub bouaddi age", "ayyoub bouaddi lille osc", "ayyoub bouaddi profile 2026", "ayyoub bouaddi morocco or france"],
+    image: ayyoubBouaddiCard,
+    date: "2026-06-13",
+    readTime: "5 min read",
+    contentAr: {
+      toc: [
+        "1. كم عمر أيوب بوعدي في عام 2026؟",
+        "2. من هو أيوب بوعدي؟ معلومات عامة وموقع اللعب",
+        "3. المسيرة الاحترافية الاستثنائية مع نادي ليل (Lille OSC)",
+        "4. الصراع الدولي المثير: هل يختار المغرب أم فرنسا؟"
+      ],
+      sections: [
+        {
+          title: "1. كم عمر أيوب بوعدي في عام 2026؟",
+          body: "ولد النجم الشاب أيوب بوعدي في 2 أكتوبر من عام 2007 في مدينة كريل بفرنسا. وبناءً على ذلك، فإن عمر أيوب بوعدي في عام 2026 هو 18 عاماً (حيث سيتم عامه التاسع عشر في أكتوبر من العام الجاري). يمثل هذا اللاعب الصغير ظاهرة كروية حقيقية، حيث استطاع وهو في هذا السن المبكر حجز مقعد أساسي في خط وسط أحد أعرق الأندية الفرنسية ومنافسة الكبار في دوري أبطال أوروبا والبطولات القارية.",
+          points: [
+            "تاريخ الولادة: 2 أكتوبر 2007 (Creil, France).",
+            "العمر الفعلي في يونيو 2026: 18 سنة وثمانية أشهر.",
+            "استحقاق دولي مبكر جداً ومعدلات بدنية خارقة تفوق سنه الحقيقي."
+          ]
+        },
+        {
+          title: "2. من هو أيوب بوعدي؟ معلومات عامة وموقع اللعب",
+          body: "ينشط أيوب بوعدي كلاعب وسط ملعب متكامل (Central Midfielder / Defensive Midfielder). يتميز اللاعب بطول فاره يبلغ 1.85 مترًا، مما يمنحه تفوقاً في الالتحامات الهوائية وافتكاك الكرات، إلى جانب رؤية فنية ثاقبة وقدرة استثنائية على الخروج بالكرة تحت الضغط العالي ومواجهة منظومات الوسط الصعبة.",
+          points: [
+            "الارتفاع الفني: 185 سم من القوة والصلابة البدنية.",
+            "موقع اللعب: لاعب وسط ارتكاز محوري (بين الرابط والمدمر البنيوي).",
+            "الذكاء المكاني والقدرة على التحكم في رتم المباراة بأناقة وهدوء تام."
+          ]
+        },
+        {
+          title: "3. المسيرة الاحترافية الاستثنائية مع نادي ليل (Lille OSC)",
+          body: "صعد أيوب بوعدي عبر الفئات السنية لنادي ليل الفرنسي وتألق بشكل لافت، حيث جذب انتباه كبار كشافي القارة الأوروبية. لقد شارك في مباريات حاسمة بالدوري الفرنسي ضد باريس سان جيرمان ومارسيليا، وقدم عروضاً تاريخية في دوري أبطال أوروبا والكونفرنس ليغ برهنت على تمتعه بمرونة ذهنية وشجاعة فنية غير تقليدية تصنع الفارق للكرة الحديثة.",
+          points: [
+            "أصغر لاعب يشارك في بطولة أوروبية رسمية بعمر 16 عاماً ويوم واحد.",
+            "معدل تمرير صحيح يتجاوز 90% تحت قيادة تكتيكية حازمة.",
+            "متابعة دورية ولصيقة من كبار أندية الدوري الإنجليزي والإسباني لضمه في عام 2026."
+          ]
+        },
+        {
+          title: "4. الصراع الدولي المثير: هل يختار المغرب أم فرنسا؟",
+          body: "يمتلك النجم الشاب أصولاً مغربية عريقة بجانب جنسيته الفرنسية وبلد المولد. وبينما مثل الفئات السنية للمنتخب الفرنسي (تحت 17 وتحت 20 عاماً)، إلا أن الاتحاد الملكي المغربي لكرة القدم يعمل بجد لإقناع الموهبة اليافعة بالانضمام إلى أسود الأطلس ومجاورة حكيمي ومزراوي في تشكيلة المونديال الأسطورية لعام 2026، مما يجعل اختياره القادم محط أنظار ملايين العشاق بالوطن العربي والشرق الأوسط.",
+          note: "الرأي الفني: أياً كان اختيار أيوب بوعدي الدولي، فإن الساحة الرياضية تشهد ولادة مايسترو عبقري سيسيطر على خطوط الوسط العالمية للعقد القادم بالتأكيد!"
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هو تاريخ ميلاد اللاعب أيوب بوعدي؟",
+          a: "ولد أيوب بوعدي في 2 أكتوبر 2007 في مدينة كريل الكائنة في فرنسا."
+        },
+        {
+          q: "ما هو الفريق الحالي للاعب أيوب بوعدي؟",
+          a: "يلعب أيوب بوعدي بشكل أساسي لصالح نادي ليل (Lille OSC) في الدوري الفرنسي الممتاز ويرتدي القميص رقم 20."
+        },
+        {
+          q: "هل قرر أيوب بوعدي تمثيل منتخب المغرب رسمياً؟",
+          a: "تمثيل أيوب بوعدي الدولي لا يزال معلقاً بين فرنسا والمغرب؛ حيث لعب لمنتخبات فرنسا للشباب، لكن المفاوضات مستمرة لتمثيل منتخب المغرب الأول في المحافل الدولية القادمة."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. How Old is Ayyoub Bouaddi in 2026?",
+        "2. Who is Ayyoub Bouaddi? Key Data & Position",
+        "3. Historic Rise & Performance with Lille OSC",
+        "4. International Tug-of-war: France or Morocco?"
+      ],
+      sections: [
+        {
+          title: "1. How Old is Ayyoub Bouaddi in 2026?",
+          body: "Born on October 2, 2007, in Creil, France, Ayyoub Bouaddi is officially 18 years old in June 2026. He will celebrate his 19th birthday in October of this year. Despite his exceptionally young age, Bouaddi has established himself as a critical asset in French professional soccer, commanding high-end composure that easily places him among Europe's finest next-generation midfield orchestrators.",
+          points: [
+            "Birthdate: October 2, 2007 (Creil, France).",
+            "Current age as of mid-2026: 18 years, 8 months.",
+            "Displays physically mature game-reading parameters far exceeding his actual age."
+          ]
+        },
+        {
+          title: "2. Who is Ayyoub Bouaddi? Key Data & Position",
+          body: "Standing tall at 1.85m (6 ft 1 in), Ayyoub Bouaddi is a dual-threat box-to-box midfielder who can seamlessly transition into a deep defensive anchor. Known for high spatial vision, ball recovery, and elegant tactical escapes, his athletic profile allows him to dominate high-intensity physical duels under pressure.",
+          points: [
+            "Height: 185 cm of strong physical balance and reach.",
+            "Position: Central / Defensive Midfielder (Regista / Box-to-Box archetype)."
+          ]
+        },
+        {
+          title: "3. Historic Rise & Performance with Lille OSC",
+          body: "Bouaddi holds the historic milestone of being the youngest player ever to feature in an official UEFA club competition, making his debut on October 5, 2023, at just 16 years and 1 day old. Since then, his progression under Lille’s technical development has been meteoric, proving fundamental against Ligue 1 heavyweights and attracting transfer inquiries from major Premier League and La Liga clubs in the 2026 summer window.",
+          points: [
+            "Youngest ever debutant in European cup history at 16 years old.",
+            "Consistently logs over 90% pass accuracy rates in high-stakes matches.",
+            "Closely watched by top European clubs for potential blockbuster transfers in mid-2026."
+          ]
+        },
+        {
+          title: "4. International Tug-of-war: France or Morocco?",
+          body: "Holding dual French and Moroccan citizenship, Bouaddi's international allegiance remains a thrilling topic. Having represented France up to Under-20 levels, the Royal Moroccan Football Federation is putting significant effort into securing his senior commitment for the national team's prestigious upcoming events, marking him as a future cornerstone for whichever side he chooses.",
+          note: "Tactical Prediction: Regardless of the jersey he wears, Ayyoub Bouaddi is primed to be a world-class midfielder dictating the tempo of global football for the next decade."
+        }
+      ],
+      faqs: [
+        {
+          q: "When was Ayyoub Bouaddi born?",
+          a: "Ayyoub Bouaddi was born on October 2, 2007, in Creil, France."
+        },
+        {
+          q: "What team does Ayyoub Bouaddi play for?",
+          a: "He plays as a central midfielder for French Ligue 1 side Lille OSC."
+        },
+        {
+          q: "Is Ayyoub Bouaddi going to play for Morocco?",
+          a: "While he has played for youth squads of France, Morocco is actively recruiting him for their senior project, and he is yet to make his final official senior debut announcement."
+        }
+      ]
+    }
+  },
+  {
     id: "art-football-ai-match",
     slug: "how-to-find-world-cup-match-ai",
     categoryAr: "تحليلات الذكاء الاصطناعي الرياضية",
@@ -49,7 +176,7 @@ const ARTICLES_DATA: Article[] = [
     descEn: "Your comprehensive guide to exploring soccer styles, mapping your athletic skills, and synthesizing a personalized player card using modern secure generative models.",
     keywordsAr: ["تحليل شبيهك المونديالي", "من يشبهك من لاعبي كرة القدم", "ذكاء اصطناعي كروي", "بطاقة لاعب المونديال ٢٠٢٦", "دمج الوجه بالذكاء الاصطناعي"],
     keywordsEn: ["world cup player matcher", "footballer lookalike ai", "sports personality test", "gemini soccer card builder", "secure facial blender"],
-    image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=600&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800&auto=format&fit=crop",
     date: "2026-06-12",
     readTime: "6 min read",
     contentAr: {
@@ -180,7 +307,7 @@ const ARTICLES_DATA: Article[] = [
     descEn: "A thorough analytical exploration of the False 9, modern box-to-box creators, and how our quiz metrics map your profile to top international champions.",
     keywordsAr: ["تحليل تكتيكات كرة القدم", "المهاجم الوهمي المفقود", "كيف تلعب صانع لعب", "تقييم لاعبي المونديال", "أفكار كروية ٢٠٢٦"],
     keywordsEn: ["soccer positioning formats", "false 9 tactical guide", "modern playmaker traits", "world cup statistics analysis", "football training tips"],
-    image: "https://images.unsplash.com/photo-1517747614396-d21a78b850e8?q=80&w=600&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1517747614396-d21a78b850e8?q=80&w=800&auto=format&fit=crop",
     date: "2026-06-11",
     readTime: "5 min read",
     contentAr: {
@@ -267,7 +394,7 @@ const ARTICLES_DATA: Article[] = [
     descEn: "Learn how to use our secure generative face-merging portal safely. Get premium player cards seamlessly blended with your face inside stadium backdrops.",
     keywordsAr: ["دمج الوجه بقميص لاعب", "تصميم كرت لاعب بالملامح واجوه", "الذكاء الاصطناعي المونديالي", "صانع بطاقات اللاعبين", "كيف اركب صورتي مع ميسي"],
     keywordsEn: ["face swap football jersey", "custom soccer card compiler", "avatar creator world cup", "footballer face blender tool", "free soccer generator"],
-    image: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=600&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=800&auto=format&fit=crop",
     date: "2026-06-10",
     readTime: "4 min read",
     contentAr: {
@@ -302,7 +429,7 @@ const ARTICLES_DATA: Article[] = [
         }
       ],
       faqs: [
-        { q: "ما هي الصيغ المدعومة لرفع صوري؟", a: "ندعم كافة صيغ الصور الشائعة مثل PNG, JPEG, JPG, WebP وحتى ملفات BMP بجودة ممتازة وسرعة عالية." },
+        { q: "ما هي الصيغ المدعومة لرفع صوري؟", a: "ندعم كافة صيغ الصور الشائعة مثل PNG, JPEG, JPG, WebP وحتى ملفات BMP بجودة ممتاز وسرعة عالية." },
         { q: "هل تحجيم وعمليات الدمج تتطلب وقتاً كبيراً؟", a: "في المعتاد تستغرق السحابة التوليدية الآمنة أقل من ٧ إلى ١٠ ثوانٍ كحد أقصى لإبراز وتقديم النتيجة النهائية لك بحجم ملائم تماماً." }
       ]
     },
@@ -354,7 +481,7 @@ const ARTICLES_DATA: Article[] = [
     descEn: "In-depth computer simulations tracking squad stats and historic dynamics to estimate the highest probability winner for the legendary 2026 World Cup.",
     keywordsAr: ["بطل كأس العالم 2026", "الذكاء الاصطناعي يتوقع بطل المونديال", "تنبؤات كروية 2026", "محاكاة البطولة الرياضية", "احتمالات الفوز بكأس العالم"],
     keywordsEn: ["world cup 2026 prediction", "ai winner simulations", "football champion projections", "computer model sport tracking", "stadium data analysis"],
-    image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=600&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=800&auto=format&fit=crop",
     date: "2026-06-13",
     readTime: "7 min read",
     contentAr: {
@@ -441,7 +568,7 @@ const ARTICLES_DATA: Article[] = [
     descEn: "A comprehensive tactical review of Arab national squad prospects, tracking their qualifying momentum, legendary fan bases, and rising youngsters.",
     keywordsAr: ["المغرب في كأس العالم 2026", "السعودية مونديال 2026", "المنتخبات العربية في أمريكا", "النجوم العرب لكرة القدم", "فرص العرب في المونديال"],
     keywordsEn: ["arab football teams 2026", "morocco national team", "saudi arabia squad tactics", "arab world cup qualifiers", "football stars arabia"],
-    image: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=600&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop",
     date: "2026-06-13",
     readTime: "5 min read",
     contentAr: {
@@ -528,253 +655,63 @@ const ARTICLES_DATA: Article[] = [
     descEn: "A precise statistics-driven evaluation of the fastest and most clinical attackers occupying the flank positions in the 2026 tournament, featuring Mbappe, Vinicius Jr, and more.",
     keywordsAr: ["أسرع لاعب في العالم 2026", "أجنحة كأس العالم السريعة", "فينيسيوس جونيور السرعة القصوى", "كليان مبابي اختراق هجومي", "سرعة كرة القدم"],
     keywordsEn: ["fastest football players 2026", "world cup wingers speed", "vinicius junior pace rating", "mbappe sprint speed", "soccer tactical sprints"],
-    image: "https://images.unsplash.com/photo-1518063319789-7217e6706b04?q=80&w=600&auto=format&fit=crop",
-    date: "2026-06-13",
+    image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop",
+    date: "2026-06-14",
     readTime: "6 min read",
     contentAr: {
       toc: [
-        "1. العصر الرقمي للسرعة الفائقة: التسارع من الصفر بأقل من ثانيتين",
-        "2. فينيسيوس جونيور ومبابي: صراع العروش على لقب ملك السرعات المونديالية",
-        "3. كيف تحمي كتائب الدفاع ظهرها أمام هذه النفاثات الرياضية؟"
+        "١. العصر الرقمي للسرعة الفائقة",
+        "٢. فينيسيوس جونيور ومبابي: صراع العروش",
+        "٣. الاستراتيجيات الدفاعية المضادة للسرعات"
       ],
       sections: [
         {
-          title: "1. العصر الرقمي للسرعة الفائقة: التسارع من الصفر بأقل من ثانيتين",
-          body: "في كرة القدم لعام 2026، أصبحت السرعة مقياساً إحصائياً دقيقاً. تخضع الأجنحة لتدريبات مكثفة تدمج بين تدريبات الركض السريع وتدذيبات العدائين في الأولمبياد، حيث يسجل بعض اللاعبين سرعات تفوق 37.5 كيلومتر في الساعة بالكرة وبدونها.",
+          title: "١. العصر الرقمي للسرعة الفائقة",
+          body: "في كرة القدم لعام 2026، أصبحت السرعة مقياساً إحصائياً دقيقاً مجهّزاً بأحدث مستشعرات تتبع الحركة التفاعلية، حيث يسجل بعض الأجنحة سرعات خارقة تتعدى ٣٨ كم/س.",
           points: [
-            "تثمين التسارع المفاجئ (Acceleration burst) لكسر مصايد التسلل الحديثة.",
-            "القدرة على كبح السرعة الفائقة بلحظة وتغيير الاتجاه لإطلاق تسديدات صاروخية.",
-            "اللياقة المتفجرة الممتدة طوال التسعين دقيقة دون انخفاض معدل الكفاءة البدنية."
+            "أهمية التسارع الحركي الخاطف لغزو الدفاعات المتراصة.",
+            "مساهمة زوايا الجري الذكية في تجنب السقوط بمصيدة التسلل الصارمة."
           ]
         },
         {
-          title: "2. فينيسيوس جونيور ومبابي: صراع العروش على لقب ملك السرعات المونديالية",
-          body: "يشكل هذا الثنائي الرعب الهجومي الأبرز عالمياً. يعتمد مبابي على خطواته الطويلة والمستقيمة لابتلاع المساحات في ثوانٍ، بينما يتميز فينيسيوس بالمراوغة اللاتينية فائقة السرعة في المساحات الضيقة والدوران المحوري السريع.",
+          title: "٢. فينيسيوس جونيور ومبابي: صراع العروش على لقب الأشرس هجومياً",
+          body: "يمثل كلاً من كيليان مبابي وفينيسيوس جونيور قمة السرعة الفائقة والمهارة العالية، مع تقارب هائل في الأداء الإحصائي الفعلي لموسم ٢٠٢٦.",
           points: [
-            "كليان مبابي: يسجل أعلى قراءة سرعة قصوى بالعدو المباشر بحدود 38 كم/س.",
-            "فينيسيوس جونيور: يتفوق بمعدل المراوغة الناجحة أثناء ذروة السرعة (Dribbling at speed).",
-            "أجنحة صاعدة جديدة تسجل حضوراً مفاجئاً بأرقام قياسية مذهلة في اختبارات اللياقة المحددة."
+            "تسجيل مبابي سرعة عدو قصوى توازي ٣٨ كم في الساعة بالكرة وبدونها.",
+            "امتلاك فينيسيوس دقة مخيفة لمعدلات المراوغة والتحرك من السكون بسرعات فائقة."
           ]
-        },
-        {
-          title: "3. كيف تحمي كتائب الدفاع ظهرها أمام هذه النفاثات الرياضية؟",
-          body: "لمواجهة هذه الخصائص المرعبة، تخلت الأجهزة الفنية عن طريقة الرقابة اللصيقة الفردية التقليدية لمصلحة تغطية جماعية دفاعية وعميقة تعتمد على غلق المساحات الخلفية بشكل مبكر وحرمان الجناح السريع من مساحة الركض والانطلاق.",
-          note: "حقيقة تكتيكية: السرعة بلا توجيه فني دقيق تعتبر طاقة مهدرة؛ النجم الحقيقي هو من يجمع بين السرعة الخارقة والقرار الكروي السليم والمحكم!"
         }
       ],
       faqs: [
-        { q: "ما هي سرعة إيرلينغ هالاند في المسافات الطويلة؟", a: "يسجل هالاند أرقاماً مذهلة باعتباره مهاجماً صريحاً، مستفيداً من قوة بنيته الجسدية وطول خطواته لتبلغ سرعته القصوى حوالي 36.8 كم/س." },
-        { q: "هل تؤدي الملاعب العشبية الرطبة لتقليص أرقام السرعات الفردية؟", a: "بالعكس، العشب الرطب المجهز يقلل من الاحتكاك المباشر ويزيد من سرعة تحرك الكرة وتتدفق هجمات اللاعبين السريعين." }
+        { q: "من هو أسرع جناح شاب مرصود لعام ٢٠٢٦؟", a: "تظهر البيانات تطلع المهاجمين الشباب ومسافري المونديال لتخطي حظوظ اللاعبين القدامى بحسابات علمية مميزة." }
       ]
     },
     contentEn: {
       toc: [
-        "1. The Digital Era of Sprints: Accelerating from zero in a split-second",
-        "2. Vinicius Jr vs Kylian Mbappe: The legendary speeds compared",
-        "3. How deep-lying defenders plan to block explosive counters"
+        "1. Real-time Digital Acceleration Tracker",
+        "2. Battle of Titans: Mbappe and Vinicius Jr",
+        "3. Anti-Pace Defensive Frameworks"
       ],
       sections: [
         {
-          title: "1. The Digital Era of Sprints: Accelerating from zero in a split-second",
-          body: "In the 2026 cycle, velocity is measured with absolute scientific precision. Wingers execute tailored athletic training routines alongside Olympic sprinters, charting peak burst speeds exceeding 37.5 km/h.",
+          title: "1. Real-time Digital Acceleration Tracker",
+          body: "Modern wingers integrate high-end physical tracks to benchmark exact metrics. In world competitions, speed dominates over heavy structural build.",
           points: [
-            "Value of explosive initial steps to destroy modern offside setups.",
-            "Rapid deceleration concepts allowing attackers to shift angle and shoot mid-stride.",
-            "High stamina recovery metrics allowing players to perform repeat sprints without lactic fatigue."
+            "Value of rapid vertical burst to open stubborn defenses.",
+            "Smart coordinate running to evade prompt offside systems."
           ]
         },
         {
-          title: "2. Vinicius Jr vs Kylian Mbappe: The legendary speeds compared",
-          body: "This duo represents the pinnacle of fast football. Mbappe dominates vertical open-field runs while Vinicius excels at rapid directional changes and samba-infused stepovers at full pace.",
+          title: "2. Battle of Titans: Mbappe and Vinicius Jr",
+          body: "Mbappe leverages direct linear strides to cover turf, while Vinicius deploys lateral agility at maximal speed to trigger confusion.",
           points: [
-            "Kylian Mbappe: Records maximum linear velocities reaching 38 km/h.",
-            "Vinicius Jr: Leads the world in dynamic ball-retention and turning speed under close marking.",
-            "New emerging starlets pushing physical envelopes in official fitness labs."
+            "Mbappe logs peak horizontal sprints near 38 km/h.",
+            "Vinicius holds higher metrics for successful dribbling under intense pressure."
           ]
-        },
-        {
-          title: "3. How deep-lying defenders plan to block explosive counters",
-          body: "To halt these machines, modern coaches avoid outdated man-marking schemes in favor of highly coordinated zone containment and deep-lying cover architectures designed to deny wingers the space required to accelerate.",
-          note: "Tactical Reality: Raw speed without football intelligence is wasted; the absolute legends combine rapid physical acceleration with cold, clinical decisions."
         }
       ],
       faqs: [
-        { q: "How fast is Erling Haaland in open play?", a: "Haaland logs exceptional sprint velocities, leveraging a long stride and raw structural force to hit up to 36.8 km/h." },
-        { q: "Do wet stadium pitches help or hurt fast attackers?", a: "A highly-manicured, moist pitch decreases resistance, resulting in faster ball movement and highly fluid counter-attacks." }
-      ]
-    }
-  },
-  {
-    id: "art-tech-evolution-2026",
-    slug: "tech-evolution-2026-world-cup-stadiums",
-    categoryAr: "التكنولوجيا والابتكار الرياضي",
-    categoryEn: "Sports Tech & Innovation",
-    titleAr: "تطور التكنولوجيا الرياضية في مونديال 2026: من التسلل الآلي إلى كرات الاستشعار",
-    titleEn: "Sports Tech Evolution in the 2026 World Cup: Automated Offsides and Smart Balls",
-    descAr: "ثورة تكنولوجية شاملة تشهدها ملاعب مونديال 2026، حيث تكشف رقاقات الاستشعار والذكاء الاصطناعي تفاصيل اللعبة بدقة الميكروثانية.",
-    descEn: "A massive technological leap defines the 2026 tournament, featuring embedded microchips, real-time heatmaps, and ultra-high-speed spatial computer vision.",
-    keywordsAr: ["تقنية التسلل نصف الآلي", "مستشعرات الكرة الذكية 2026", "حكام المونديال والذكاء الاصطناعي", "ملاعب كأس العالم الذكية", "التكنولوجيا الرياضية العصرية"],
-    keywordsEn: ["semi-automated offside 2026", "smart ball microchips", "ai referee world cup", "connected stadium tech", "sports analytics devices"],
-    image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=600&auto=format&fit=crop",
-    date: "2026-06-13",
-    readTime: "4 min read",
-    contentAr: {
-      toc: [
-        "1. الكرة المتصلة الذكية: رصد اللمسات والزخم الهوائي في الوقت الفعلي",
-        "2. تقنية كشف التسلل شبه الآلي: قرارات ملحمية بدقة بكسلات مجهرية",
-        "3. استشعار طاقة وتدفق اللاعبين لتجنب الإصابات الموقعية"
-      ],
-      sections: [
-        {
-          title: "1. الكرة المتصلة الذكية: رصد اللمسات والزخم الهوائي في الوقت الفعلي",
-          body: "تضم كرة المونديال الرسمية لعام 2026 نظام رقصة نبضات مستشعرة يرسل إشارات حيوية لغرفة الفيديو بمعدل 500 مرة في الثانية. تتيح هذه التكنولوجيا المتطورة رصد اللحظة الدقيقة لملامسة الكرة للقدم وحساب مسار حركتها بدقة متناهية.",
-          points: [
-            "كشف حالات لمس الكرة لليد بشكل جازم ونهائي دون شكوك بصرية.",
-            "قياس سرعة الدوران وقوة التسديدة فور انطلاقها في الهواء.",
-            "مزامنة أبعاد الكرة مع كاميرات التتبع المكاني لضبط لقطات اللعب."
-          ]
-        },
-        {
-          title: "2. تقنية كشف التسلل شبه الآلي: قرارات ملحمية بدقة بكسلات مجهرية",
-          body: "يتتبع نظام الكاميرات المعلق تحت سقف الإستاد 29 نقطة حركية بجسد كل لاعب لصناعة مجسمات ثلاثية الأبعاد فورية. يتيح هذا الدمج التنبيه الفوري لحكام الفار بوجود أي تسلل بكسلي متناهي الصغر لتسريع عملية اتخاذ القرار.",
-          points: [
-            "تقليص مدة مراجعة لقطات التسلل الشائكة من دقائق معدودة لثوانٍ تكتيكية خاطفة.",
-            "توليد مجسمات ترفيهية توضيحية فورية لشرح الحالات للجماهير في شاشات الإستاد.",
-            "إلغاء تمام الأخطاء البشرية القاتلة في التسللات المرئية الضيقة."
-          ]
-        },
-        {
-          title: "3. استشعار طاقة وتدفق اللاعبين لتجنب الإصابات الموقعية",
-          body: "لا تقتصر التكنولوجيا على الحكام فقط، بل تمتد لتشمل رقاقات مدمجة في قمصان اللاعبين تتبع نبضات القلب، الجفاف، ومعدلات الأكسجين بالدم لمساعدة الطاقم الفني الطبي في تبديل وتعديل جهد النجوم وتجنب المشاكل البدنية.",
-          note: "رأي تكتيبي: التكنولوجيا تزيد من عدالة ونقاء كرة القدم، لكن تذكر دائماً أن لمسة المهارة الإبداعية البشرية الحرة هي الروح الصادقة للعبة!"
-        }
-      ],
-      faqs: [
-        { q: "هل تؤثر الشريحة المدمجة داخل الكرة على ديناميكية حركتها الهوائية؟", a: "إطلاقاً، الشريحة تزن بضعة غرامات ومثبتة في مركز الكرة الهندسي لضمان توازن مثالي ومطابقة كاملة لمقاييس الفيفا العالمية." },
-        { q: "كيف تساهم التكنولوجيا في الحفاظ على وقت اللعب الفعلي؟", a: "عبر تسريع قرارات التسلل واللمسات المشكوك بها من خلال إشعارات فورية متصلة بساعة اليد الذكية للحكم الرئيسي." }
-      ]
-    },
-    contentEn: {
-      toc: [
-        "1. Connected Ball Technology: Real-time kinetic data flow",
-        "2. Semi-Automated Offsides: Particle resolution matches",
-        "3. Live biometric tracking: Maximizing player safety boundaries"
-      ],
-      sections: [
-        {
-          title: "1. Connected Ball Technology: Real-time kinetic data flow",
-          body: "The official match ball of the 2026 phase encapsulates a high-precision sensor that feeds 500 spatial data transmissions per second into VAR. This maps the exact microsecond contact points of visual plays.",
-          points: [
-            "Immediate deflection detection resolving tough penalty box disputes.",
-            "Precise calculations of ball acceleration, spin metrics, and flight velocity.",
-            "Real-time coordinate sync with high-altitude tracking camera grids."
-          ]
-        },
-        {
-          title: "2. Semi-Automated Offsides: Particle resolution matches",
-          body: "Dozens of high-speed tracking cameras trace 29 kinetic points on every player's physique. This compiles a virtual 3D rendering used to trigger instantaneous alerts to officials.",
-          points: [
-            "Reduces critical VAR delay intervals from full minutes to split-seconds.",
-            "Generates detailed 3D tactical animations broadcasted instantly to fans.",
-            "Completely eliminates major human sight margins on tight offside situations."
-          ]
-        },
-        {
-          title: "3. Live biometric tracking: Maximizing player safety boundaries",
-          body: "Beyond officiating, smart fabrics in jerseys transmit real-time telemetry—such as localized heart-rate variables and internal muscle exhaustion levels—enabling coaches to optimize substitutions.",
-          note: "Tech Note: Innovation safeguards pitch integrity, but spontaneous, unsimulated human skill remains the true beating heart of association football!"
-        }
-      ],
-      faqs: [
-        { q: "Does the microchip alter the ball's natural drift?", a: "No, the lightweight sensor is strictly suspended at the exact geometric center, satisfying rigorous FIFA weight specifications." },
-        { q: "How are fans engaged with this rich structural telemetry?", a: "Broadcasters display instant metrics regarding kick speed, shot curve, and passing sprint velocities to elevate television viewing." }
-      ]
-    }
-  },
-  {
-    id: "art-messi-ronaldo-2026",
-    slug: "messi-ronaldo-last-dance-2026-world-cup",
-    categoryAr: "الأساطير والقصص الكروية",
-    categoryEn: "Football Legends & Lore",
-    titleAr: "كيف يستعد ميسي ورونالدو لرقصتهما الأخيرة في مونديال 2026 العصري؟",
-    titleEn: "How Messi and Ronaldo Prepare for Their Last Dance in the 2026 World Cup",
-    descAr: "القصة الكاملة للرحلة التدريبية والذهنية للأسطورتين ليو ميسي وكريستيانو رونالدو لتقديم عرضهما التاريخي الأخير في الملاعب الأمريكية المونديالية.",
-    descEn: "Explore the physical conditioning, mental focus, and tactical adjustments guiding Leo Messi and Cristiano Ronaldo toward their final historic championship.",
-    keywordsAr: ["ميسي كأس العالم 2026", "رونالدو الرقصة الأخيرة", "أساطير كرة القدم العصريين", "مقارنة ميسي ورونالدو المونديالية", "كرة القدم التاريخية"],
-    keywordsEn: ["messi world cup 2026", "ronaldo last dance", "football legends conditioning", "leo messi current longevity", "cristiano ronaldo fitness"],
-    image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=600&auto=format&fit=crop",
-    date: "2026-06-13",
-    readTime: "5 min read",
-    contentAr: {
-      toc: [
-        "1. سر البقاء الرياضي: مرونة تكتيكية وتدريبات طول العمر المبتكرة",
-        "2. ليو ميسي: صياغة اللعب من الدوائر العميقة وصناعة التمريرة القاتلة",
-        "3. كريستيانو رونالدو: المهاجم الكلاسيكي ذو القدرة البدنية الصخرية"
-      ],
-      sections: [
-        {
-          title: "1. سر البقاء الرياضي: مرونة تكتيكية وتدريبات طول العمر المبتكرة",
-          body: "في مشهد عام 2026 الكروي العصري، نجح ميسي ورونالدو في دحر علامات السن بفضل تطور علوم التغذية الرياضية والعلاجات الحيوية وتعديل نوع التدريبات لتحسين الكفاءة الحركية وتقليل الجهد البدني الضائع.",
-          points: [
-            "التركيز على فترات كافية للاستشفاء العضلي العميق والنوم الرياضي المنظم.",
-            "تطوير قوة الألياف العضلية السريعة للحفاظ على رتم الانطلاقة القصيرة.",
-            "توجيه الطاقة بحسابات دقيقة لحسم اللحظات المصيرية داخل اللقاء."
-          ]
-        },
-        {
-          title: "2. ليو ميسي: صياغة اللعب من الدوائر العميقة وصناعة التمريرة القاتلة",
-          body: "انتقل البرغوث الأرجنتيني بسلاسة تامة لدور صانع الألعاب المتأخر (Deep-lying playmaker). لم يعد يركض المسافات الطويلة بالكرة، بل يدير إيقاع المنتخب ويمول المهاجمين الشبان بتمريرات كرتونية تجعل كرة القدم تبدو في غاية السهولة والجمال.",
-          points: [
-            "توزيع اللعب بلمسة واحدة لخلخلة حركية خط وسط الخصم.",
-            "تنفيذ ركلات حرة نموذجية تمثل رعباً دائماً لجميع حراس المرمى.",
-            "الهدوء المطلق والقدرة على التحكم بالزخم النفسي لرفاقه الصغار."
-          ]
-        },
-        {
-          title: "3. كريستيانو رونالدو: المهاجم الكلاسيكي ذو القدرة البدنية الصخرية",
-          body: "يحافظ صاروخ ماديرة على شراسته التهديفية داخل منطقة العمليات. بالانضباط الحديدي والتمارين الدائمة، يتحول رونالدو لمهاجم صندوق كلاسيكي يبرع في اقتناص الرأسيات مستغلاً ميزته التاريخية بالارتقاء الجوي المرتفع والتموضع التكتيكي الذكي.",
-          note: "وقفة أسطورية: متابعة هذين البطلين في ساحة المونديال هي شرف تاريخي لعصرنا؛ استمتع بكل لمسة يولدها سحر أقدامهما قبل إسدال الستار!"
-        }
-      ],
-      faqs: [
-        { q: "هل يستطيع أحدهما التتويج بجائزة الهداف في مونديال 2026؟", a: "فرصهما قائمة بفضل الخبرة التكتيكية والقدرة الهائلة على استغلال أدنى الثغرات داخل الصندوق، رغم منافسة الشباب الشرسة." },
-        { q: "كيف أثر الانتقال للمباريات في أمريكا على جاهزيتهما البدنية؟", a: "تلعب كفاءة الطائرات المخصصة والسياق الإعدادي الممتاز دوراً إيجابياً في الحفاظ على نشاطهما الكامل وتجنب إجهاد السفر الطويل." }
-      ]
-    },
-    contentEn: {
-      toc: [
-        "1. Secrets of Longevity: Bio-conditioning and clinical nutrition science",
-        "2. Leo Messi: Dictating the orbital flows from deep central midfields",
-        "3. Cristiano Ronaldo: The ultimate box-finisher with structural power"
-      ],
-      sections: [
-        {
-          title: "1. Secrets of Longevity: Bio-conditioning and clinical nutrition science",
-          body: "In the 2026 phase, both titans showcase remarkable physical preservation, utilizing advanced physical therapies and streamlined training regimes to optimize energy reserves.",
-          points: [
-            "Strict sleep synchronization cycles enabling optimal muscular recovery.",
-            "Dynamic resistance training tailored to maintain rapid accelerations over brief spaces.",
-            "Conserving stamina for critical tactical phases of play."
-          ]
-        },
-        {
-          title: "2. Leo Messi: Dictating the orbital flows from deep central midfields",
-          body: "The Argentinian icon has transitioned beautifully into a deep playmaker role. Leveraging flawless vision, he controls the team's momentum and delivers stunning passes to rapid wingers.",
-          points: [
-            "Flawless distribution of tempo across narrow structural areas.",
-            "Deadly set-piece mechanics representing continuous threats on target.",
-            "Calming presence guiding and elevating younger squad members."
-          ]
-        },
-        {
-          title: "3. Cristiano Ronaldo: The ultimate box-finisher with structural power",
-          body: "Portugal's leader preserves a lethal threat inside the penalty box. Leveraging impeccable physical focus, Ronaldo dominates defensive heights with unmatched high-elevation headers.",
-          note: "Legend Note: Witnessing these dual legends on the pristine turf of the 2026 arena is an absolute historical privilege; celebrate every second of their magic!"
-        }
-      ],
-      faqs: [
-        { q: "Is this officially the terminal international tournament for both?", a: "Yes, both have indicated 2026 is their definitive global swansong, making every kickoff historic." },
-        { q: "How has playing at this level influenced the younger squads?", a: "Their unmatched work ethic and experience offer irreplaceable mentorship to rising stars worldwide." }
+        { q: "Who is the fastest rising winger prospect?", a: "Extensive sports labs track various young stars scoring maximum acceleration times." }
       ]
     }
   }
@@ -788,6 +725,7 @@ interface ArticlesPageProps {
 export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [activeCategory, setActiveCategory] = useState<'all' | 'ai' | 'tactics' | 'legends'>('all');
   const [copiedLink, setCopiedLink] = useState(false);
 
   const isRtl = locale === 'ar';
@@ -861,7 +799,21 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
     if (twDesc) twDesc.setAttribute('content', desc);
   }, [selectedArticle, locale]);
 
+  // Categorization filter helper
   const filteredArticles = ARTICLES_DATA.filter((art) => {
+    // 1. Filter by category
+    if (activeCategory === 'ai') {
+      const isMatch = art.categoryEn.toLowerCase().includes('ai') || art.categoryEn.toLowerCase().includes('tech') || art.categoryEn.toLowerCase().includes('imagery');
+      if (!isMatch) return false;
+    } else if (activeCategory === 'tactics') {
+      const isMatch = art.categoryEn.toLowerCase().includes('tactical') || art.categoryEn.toLowerCase().includes('performance') || art.categoryEn.toLowerCase().includes('stats');
+      if (!isMatch) return false;
+    } else if (activeCategory === 'legends') {
+      const isMatch = art.categoryEn.toLowerCase().includes('prospects') || art.categoryEn.toLowerCase().includes('legends') || art.categoryEn.toLowerCase().includes('arab');
+      if (!isMatch) return false;
+    }
+
+    // 2. Filter by search query
     const query = searchQuery.toLowerCase().trim();
     if (!query) return true;
     const title = isRtl ? art.titleAr : art.titleEn;
@@ -875,6 +827,9 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
       kw.toLowerCase().includes(query)
     );
   });
+
+  const featuredArticle = searchQuery === '' && activeCategory === 'all' && filteredArticles.length > 0 ? filteredArticles[0] : null;
+  const gridArticles = featuredArticle ? filteredArticles.filter(art => art.id !== featuredArticle.id) : filteredArticles;
 
   const handleSelectArticle = (art: Article) => {
     setSelectedArticle(art);
@@ -898,203 +853,373 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
     setTimeout(() => setCopiedLink(false), 2000);
   };
 
+  // Safe related articles list
+  const getRelatedArticles = (currentId: string) => {
+    return ARTICLES_DATA.filter(art => art.id !== currentId).slice(0, 3);
+  };
+
   return (
-    <div className="space-y-8" dir={isRtl ? "rtl" : "ltr"}>
+    <div className="space-y-10" dir={isRtl ? "rtl" : "ltr"}>
       {selectedArticle ? (
-        // RENDER SINGLE ARTICLE DETAIL VIEW
-        <article className="bg-[#0b102c] border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 sm:space-y-8 animate-fade-in text-justify">
+        // ========================== RENDER SINGLE ARTICLE DETAIL VIEW ==========================
+        <div className="space-y-10 animate-fade-in font-sans">
           
-          {/* Back Action button */}
-          <button
-            onClick={handleBackToList}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 border border-slate-800 hover:border-slate-700 hover:bg-slate-850 text-slate-300 hover:text-white text-xs font-black rounded-xl transition-all cursor-pointer shadow-md shrink-0"
-            aria-label="Back to Articles list"
-          >
-            {isRtl ? <ArrowRight className="w-4 h-4" /> : <ArrowLeft className="w-4 h-4" />}
-            <span>{isRtl ? "العودة لقائمة المقالات الكروية" : "Back to Football Articles"}</span>
-          </button>
-
-          {/* Article Header */}
-          <div className="space-y-3">
-            <span className="text-[10px] sm:text-xs font-black text-[#ff1a40] uppercase tracking-widest block">
-              {isRtl ? selectedArticle.categoryAr : selectedArticle.categoryEn}
-            </span>
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-black text-white leading-tight">
-              {isRtl ? selectedArticle.titleAr : selectedArticle.titleEn}
-            </h1>
+          {/* Magazine Hero Layout */}
+          <article className="bg-[#0b1236]/90 border border-slate-800 rounded-[32px] overflow-hidden shadow-2xl relative">
+            <div className="absolute inset-0 bg-radial-at-t from-rose-500/5 via-transparent to-transparent pointer-events-none"></div>
             
-            {/* Meta Tags layout */}
-            <div className="flex flex-wrap items-center gap-4 text-xs text-slate-450 border-y border-slate-800/80 py-3 mt-4">
-              <span className="flex items-center gap-1">
-                <Calendar className="w-3.5 h-3.5 text-rose-500" />
-                <span>{selectedArticle.date}</span>
-              </span>
-              <span className="flex items-center gap-1">
-                <Clock className="w-3.5 h-3.5 text-rose-500" />
-                <span>{selectedArticle.readTime}</span>
-              </span>
-              <span className="flex items-center gap-1">
-                <User className="w-3.5 h-3.5 text-rose-500" />
-                <span>{isRtl ? "محلل كروي معتمد" : "Certified Football Editor"}</span>
-              </span>
+            {/* Top Toolbar Action Buttons */}
+            <div className="p-6 sm:p-8 flex items-center justify-between border-b border-slate-800/60 bg-[#090d29]/45 backdrop-blur-md">
+              <button
+                onClick={handleBackToList}
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0e163d] hover:bg-[#ff1a40] border border-slate-800 hover:border-transparent text-slate-300 hover:text-white text-xs font-black rounded-2xl transition-all duration-300 cursor-pointer shadow-lg shrink-0"
+                aria-label="Back to Articles list"
+              >
+                {isRtl ? <ArrowRight className="w-4 h-4" /> : <ArrowLeft className="w-4 h-4" />}
+                <span>{isRtl ? "العودة لقائمة المقالات" : "Back to Articles List"}</span>
+              </button>
+
+              <div className="hidden sm:flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span className="text-[11px] font-bold text-slate-400 font-mono">
+                  {isRtl ? "مقال معتمد وموثق للعام ٢٠٢٦" : "Verified 2026 Soccer Guide"}
+                </span>
+              </div>
             </div>
-          </div>
 
-          {/* Banner Hero photo with smooth borders */}
-          <div className="aspect-[2/1] w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-lg">
-            <img 
-              src={selectedArticle.image} 
-              alt={isRtl ? selectedArticle.titleAr : selectedArticle.titleEn}
-              className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
-            />
-          </div>
+            {/* Article Main Content Sheet */}
+            <div className="p-6 sm:p-10 max-w-4xl mx-auto space-y-8">
+              
+              {/* Back to List Link */}
+              <button
+                onClick={handleBackToList}
+                className="inline-flex items-center gap-1.5 text-xs text-rose-500 hover:text-rose-450 font-black tracking-wide uppercase transition-colors"
+              >
+                {isRtl ? "←" : "→"}
+                <span>{isRtl ? "العودة لتدوينات الكورة الرياضية" : "Back to Football Articles"}</span>
+              </button>
 
-          {/* Table of Content (TOC) Map */}
-          <div className="p-5 bg-slate-950 border border-slate-850 rounded-2xl space-y-3 text-right rtl:text-right ltr:text-left">
-            <span className="text-xs font-black text-[#ff1a40] uppercase tracking-wider block">
-              {isRtl ? "محتويات وعناوين الدليل:" : "Table of Contents:"}
-            </span>
-            <ul className="space-y-2 text-[11px] sm:text-xs font-bold text-slate-400">
-              {(isRtl ? selectedArticle.contentAr.toc : selectedArticle.contentEn.toc).map((item, idx) => (
-                <li key={idx} className="flex items-center gap-1.5 hover:text-white transition-colors">
-                  <CornerDownLeft className="w-3.5 h-3.5 shrink-0 text-[#ff1a40] rotate-180" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+              {/* Article Header */}
+              <div className="space-y-3 pb-6 border-b border-slate-800/60">
+                <span className="text-[10px] sm:text-xs font-black text-[#ff1a40] uppercase tracking-widest block font-sans">
+                  {isRtl ? selectedArticle.categoryAr : selectedArticle.categoryEn}
+                </span>
+                <h1 className="text-xl sm:text-2xl md:text-3.5xl font-black text-white leading-tight">
+                  {isRtl ? selectedArticle.titleAr : selectedArticle.titleEn}
+                </h1>
+                
+                {/* Meta Tags layout */}
+                <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 py-3 mt-4">
+                  <span className="flex items-center gap-1">
+                    <Calendar className="w-3.5 h-3.5 text-[#ff1a40]" />
+                    <span>{selectedArticle.date}</span>
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Clock className="w-3.5 h-3.5 text-[#ff1a40]" />
+                    <span>{selectedArticle.readTime}</span>
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <User className="w-3.5 h-3.5 text-[#ff1a40]" />
+                    <span>{isRtl ? "محلل كروي معتمد" : "Certified Football Editor"}</span>
+                  </span>
+                </div>
+              </div>
 
-          {/* Main Body Layout sections */}
-          <div className="space-y-8 text-neutral-200 text-sm leading-relaxed text-justify">
-            {(isRtl ? selectedArticle.contentAr.sections : selectedArticle.contentEn.sections).map((sec, sIdx) => (
-              <section key={sIdx} className="space-y-3.5">
-                <h2 className="text-md sm:text-lg font-black text-white border-b border-rose-500/15 pb-2 leading-snug">
-                  {sec.title}
-                </h2>
-                <p className="text-xs sm:text-sm text-slate-300 dark:text-slate-300 leading-relaxed text-justify font-sans">
-                  {sec.body}
-                </p>
+              {/* Banner Hero photo with smooth borders */}
+              <div className="aspect-[21/9] w-full rounded-2xl overflow-hidden bg-slate-900 border border-slate-850 shadow-lg">
+                <img 
+                  src={selectedArticle.image} 
+                  alt={isRtl ? selectedArticle.titleAr : selectedArticle.titleEn}
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
 
-                {/* Optional point system bullets */}
-                {sec.points && (
-                  <ul className="space-y-2 pl-2 sm:pl-3 rtl:pr-2 rtl:pr-3 text-[11px] sm:text-xs text-slate-350 dark:text-slate-350 list-disc list-inside leading-relaxed text-justify">
-                    {sec.points.map((pt, pIdx) => (
-                      <li key={pIdx} className="marker:text-rose-550 leading-relaxed hover:text-white transition-colors">
-                        {pt}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+              {/* Table of Content (TOC) Map */}
+              <div className="p-5 bg-[#070b24] border border-slate-800/80 rounded-2xl space-y-3 text-right rtl:text-right ltr:text-left">
+                <span className="text-xs font-black text-[#ff1a40] uppercase tracking-wider block font-sans">
+                  {isRtl ? "محتويات وعناوين الدليل:" : "Table of Contents:"}
+                </span>
+                <ul className="space-y-2 text-[11px] sm:text-xs font-bold text-slate-400">
+                  {(isRtl ? selectedArticle.contentAr.toc : selectedArticle.contentEn.toc).map((item, idx) => (
+                    <li key={idx} className="flex items-center gap-1.5 hover:text-white transition-colors">
+                      <CornerDownLeft className="w-3.5 h-3.5 shrink-0 text-[#ff1a40] rotate-180" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-                {/* Optional specialized alert/tip note */}
-                {sec.note && (
-                  <div className="p-4 bg-rose-500/10 border-l-4 rtl:border-l-0 rtl:border-r-4 border-rose-500 rounded-r-xl rtl:rounded-l-xl text-slate-300 text-[11px] sm:text-xs font-bold tracking-tight text-right rtl:text-right ltr:text-left bg-rose-500/5">
-                    {sec.note}
-                  </div>
-                )}
-              </section>
-            ))}
-          </div>
+              {/* Main Body Layout sections */}
+              <div className="space-y-8 text-slate-300 text-sm leading-relaxed text-justify">
+                {(isRtl ? selectedArticle.contentAr.sections : selectedArticle.contentEn.sections).map((sec, sIdx) => (
+                  <section key={sIdx} className="space-y-3.5">
+                    <h2 className="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2 leading-snug">
+                      {sec.title}
+                    </h2>
+                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                      {sec.body}
+                    </p>
 
-          {/* Dynamic Interactive FAQs block */}
-          <div className="space-y-4 pt-4 border-t border-slate-800">
-            <h3 className="text-md sm:text-lg font-black text-white flex items-center gap-2">
-              <span className="text-[#ff1a40] font-black">؟</span>
-              <span>{isRtl ? "الأسئلة الرياضية الشائعة متكررة الاستفسار:" : "Frequently Answered Sports Inquiries:"}</span>
-            </h3>
-            
-            <div className="grid grid-cols-1 gap-4 text-justify">
-              {(isRtl ? selectedArticle.contentAr.faqs : selectedArticle.contentEn.faqs).map((faq, fIdx) => (
-                <div key={fIdx} className="p-5 bg-slate-950/80 border border-slate-850 rounded-2xl space-y-2">
-                  <h4 className="text-xs sm:text-sm font-black text-neutral-100 flex items-start gap-1.5">
-                    <span className="text-emerald-500 font-extrabold text-sm shrink-0">Q.</span>
-                    <span>{faq.q}</span>
-                  </h4>
-                  <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed font-semibold">
-                    {faq.a}
+                    {/* Optional point system bullets */}
+                    {sec.points && (
+                      <ul className="space-y-2 pl-4 rtl:pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+                        {sec.points.map((pt, pIdx) => (
+                          <li key={pIdx} className="marker:text-[#ff1a40] leading-relaxed hover:text-white transition-colors">
+                            {pt}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {/* Optional specialized alert/tip note */}
+                    {sec.note && (
+                      <div className="p-4 bg-[#ff1a40]/5 border-l-4 rtl:border-l-0 rtl:border-r-4 border-[#ff1a40] rounded-r-xl rtl:rounded-l-xl text-slate-300 text-[11px] sm:text-xs font-bold leading-relaxed">
+                        {sec.note}
+                      </div>
+                    )}
+                  </section>
+                ))}
+              </div>
+
+              {/* Dynamic Interactive FAQs block */}
+              <div className="space-y-4 pt-6 border-t border-slate-800/80">
+                <h3 className="text-base sm:text-lg font-black text-white flex items-center gap-2">
+                  <span className="text-[#ff1a40] font-black font-sans">?</span>
+                  <span>{isRtl ? "الأسئلة الرياضية الشائعة متكررة الاستفسار" : "Frequently Answered Sports Inquiries"}</span>
+                </h3>
+                
+                <div className="grid grid-cols-1 gap-4 text-justify">
+                  {(isRtl ? selectedArticle.contentAr.faqs : selectedArticle.contentEn.faqs).map((faq, fIdx) => (
+                    <div key={fIdx} className="p-5 bg-[#070b24]/40 border border-slate-800/60 rounded-2xl space-y-2">
+                      <h4 className="text-xs sm:text-sm font-black text-neutral-100 flex items-start gap-1.5">
+                        <span className="text-emerald-500 font-extrabold text-sm shrink-0 font-mono">Q.</span>
+                        <span>{faq.q}</span>
+                      </h4>
+                      <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed font-semibold">
+                        {faq.a}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Social and SEO sharing action box */}
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 bg-[#070b24] border border-slate-800 rounded-2xl">
+                <div className="text-xs space-y-1 text-center sm:text-right rtl:sm:text-right ltr:sm:text-left">
+                  <span className="font-black block text-white">
+                    {isRtl ? "المقال متوافق ومحدث تماماً مع خوارزميات ومؤشرات كأس العالم ٢٠٢٦" : "This article is verified and updated for 2026 World Cup indexes"}
+                  </span>
+                  <p className="text-[10px] text-slate-400">
+                    {isRtl ? "انسخ رابط المقال وشاركه لتمكين أصدقائك وعشاق الكرة من تصفحه فورياً." : "Copy the optimized link to share this resource with fellow football fans."}
                   </p>
                 </div>
-              ))}
-            </div>
-          </div>
+                
+                <button
+                  onClick={() => handleCopyArticleLink(selectedArticle.slug)}
+                  className="px-4 py-2 bg-[#ff1a40] hover:bg-rose-600 text-white text-xs font-black rounded-xl transition-all cursor-pointer flex items-center gap-1.5 shadow-sm shrink-0 font-sans"
+                  aria-label="Copy article share link"
+                >
+                  {copiedLink ? (
+                    <>
+                      <Check className="w-4 h-4" />
+                      <span>{isRtl ? "تم نسخ الرابط!" : "Link Copied!"}</span>
+                    </>
+                  ) : (
+                    <>
+                      <Share2 className="w-4 h-4" />
+                      <span>{isRtl ? "نسخ رابط المقال ومشاركته" : "Copy Article Link"}</span>
+                    </>
+                  )}
+                </button>
+              </div>
 
-          {/* Social and SEO sharing action box */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 bg-slate-950 border border-slate-800 rounded-2xl">
-            <div className="text-xs space-y-1 text-center sm:text-right rtl:sm:text-right ltr:sm:text-left">
-              <span className="font-black block text-white">
-                {isRtl ? "المقال متوافق ومحدث تماماً مع خوارزميات ومؤشرات الفخر الرياضي ٢٠٢٦" : "This article is verified and updated for 2026 sports indexes"}
-              </span>
-              <p className="text-[10px] text-slate-450">
-                {isRtl ? "انسخ رابط المقال وشاركه في مدونتك أو موقعك لتمكين القراء من تصفحه ومطابقته فورياً." : "Copy the optimized link to reference this source on your blogs."}
-              </p>
-            </div>
-            
-            <button
-              onClick={() => handleCopyArticleLink(selectedArticle.slug)}
-              className="px-4 py-2 bg-[#ff1a40] hover:bg-rose-600 text-white text-xs font-black rounded-xl transition-all cursor-pointer flex items-center gap-1.5 shadow-sm shrink-0"
-              aria-label="Copy article share link"
-            >
-              {copiedLink ? (
-                <>
-                  <Check className="w-4 h-4" />
-                  <span>{isRtl ? "تم نسخ الرابط!" : "Link Copied!"}</span>
-                </>
-              ) : (
-                <>
-                  <Share2 className="w-4 h-4" />
-                  <span>{isRtl ? "نسخ رابط المقال ومشاركته" : "Copy Article Link"}</span>
-                </>
-              )}
-            </button>
-          </div>
+              {/* Related articles grid */}
+              <div className="space-y-4 pt-8 border-t border-slate-800/80">
+                <h3 className="text-sm font-black text-white uppercase tracking-wider font-sans">
+                  {isRtl ? "مقالات مقترحة قد تثير اهتمامك:" : "Recommended Articles For You:"}
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {getRelatedArticles(selectedArticle.id).map((art) => (
+                    <div 
+                      key={art.id}
+                      onClick={() => handleSelectArticle(art)}
+                      className="bg-[#050921]/60 border border-slate-800/80 hover:border-[#ff1a40] p-4 rounded-xl cursor-pointer group transition-all space-y-3 flex flex-col justify-between"
+                    >
+                      <div className="space-y-2">
+                        <span className="text-[9px] font-extrabold text-[#ff1a40] uppercase tracking-wider block font-sans">
+                          {isRtl ? art.categoryAr : art.categoryEn}
+                        </span>
+                        <h4 className="text-xs font-black text-white leading-snug group-hover:text-[#ff1a40] transition-colors line-clamp-2">
+                          {isRtl ? art.titleAr : art.titleEn}
+                        </h4>
+                      </div>
+                      <span className="text-[10px] text-[#ff1a40] font-black inline-flex items-center gap-1 font-sans">
+                        <span>{isRtl ? "اقرأ الآن" : "Read Now"}</span>
+                        <span>{isRtl ? "←" : "→"}</span>
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-        </article>
+            </div>
+
+          </article>
+        </div>
       ) : (
-        // RENDER ARTICLES LIST / GRID DOCK
-        <div className="space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="space-y-1.5 text-right rtl:text-right ltr:text-left">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-rose-500/10 text-rose-450 text-xs font-black rounded-lg">
-                <BookOpen className="w-3.5 h-3.5 animate-pulse text-rose-500" />
-                <span>{isRtl ? "المدونة الكروية وأسرار الذكاء الرياضي" : "Football Blog & Sports AI Secrets"}</span>
+        // ========================== RENDER ARTICLES LIST / GRID DOCK ==========================
+        <div className="space-y-8 font-sans">
+          
+          {/* Header Dashboard section */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-800/60 font-sans">
+            <div className="space-y-2.5 text-right rtl:text-right ltr:text-left">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-rose-500/10 text-[#ff1a40] text-xs font-black rounded-lg">
+                <BookOpen className="w-3.5 h-3.5 animate-pulse" />
+                <span>{isRtl ? "موسوعة التحليلات التكتيكية والكروية" : "Football Tactics & Sports Analytics Center"}</span>
               </span>
-              <h2 className="text-xl sm:text-2xl font-black text-white">
-                {isRtl ? "المدونة الكروية: تكتيكات كرة القدم وحقائق كأس العالم" : "Football Blog: Tactics & World Cup Facts"}
+              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                {isRtl ? "المدونة والتحليلات الفنية" : "Football Insights Portal"}
               </h2>
-              <p className="text-xs text-slate-400 max-w-xl">
+              <p className="text-xs text-slate-400 max-w-2xl leading-relaxed font-semibold">
                 {isRtl 
-                  ? "تعمق في زوايا التحليلات الرياضية، تكتيكات اللعب لنجوم المونديال، وكيفية استخدام الذكاء الاصطناعي لدمج الملامح الشخصية بقميص فريقك المفضل بدقة فائقة." 
-                  : "Deep dive into soccer analytics, tactical styles of major World Cup legends, and creative AI portrait face-blending tips."}
+                  ? "تعمق في زوايا الرياضة الأكثر دقة، أسرع أجنحة المونديال، وتوقعات الذكاء الاصطناعي المثبتة لبطولة كأس العالم ٢٠٢٦ بجانب إرشادات تجميع بطاقات اللاعبين." 
+                  : "Explore our collection of articles outlining tactical developments, world cup legends, sports performance, and custom player-jersey composite guidelines."}
               </p>
             </div>
 
-            {/* In-blog search bar input */}
-            <div className="relative w-full sm:max-w-xs shrink-0 bg-slate-900 border border-slate-850 rounded-2xl overflow-hidden">
+            {/* Premium custom in-blog search form bar */}
+            <div className="relative w-full md:max-w-xs shrink-0 bg-slate-950 border border-slate-850 rounded-2xl overflow-hidden font-sans">
               <input
                 id="blog_search_query"
                 type="text"
-                placeholder={isRtl ? "بحث في مقالات الكرة..." : "Search football guides..."}
+                placeholder={isRtl ? "ابحث بالكلمات الدلالية والتكتيكية..." : "Search key tactics & players..."}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2.5 bg-slate-900 text-xs font-bold text-white outline-none focus:border-[#ff1a40] transition-colors"
+                className="w-full pl-9 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-2xl text-xs font-bold text-white placeholder-slate-500 outline-none focus:border-[#ff1a40] focus:ring-1 focus:ring-[#ff1a40]/30 transition-all shadow-inner font-sans"
                 aria-label={isRtl ? 'بحث في مقالات الكرة' : 'Search in football guides'}
               />
               <Search className="w-4 h-4 absolute top-1/2 -translate-y-1/2 left-3 text-slate-400" />
             </div>
           </div>
 
-          {/* GRID OF CARDS */}
-          {filteredArticles.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 animate-fade-in">
-              {filteredArticles.map((art) => (
+          {/* Luxury Tab Categories Filters */}
+          <div className="flex flex-wrap items-center gap-2 pb-2 font-sans">
+            <button
+              onClick={() => { setActiveCategory('all'); }}
+              className={`px-4 py-2 rounded-xl text-xs font-black transition-all duration-200 cursor-pointer ${
+                activeCategory === 'all' 
+                  ? 'bg-[#ff1a40] text-white shadow-lg shadow-rose-500/20' 
+                  : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-850 border border-slate-800'
+              }`}
+            >
+              {isRtl ? "الكل" : "All Articles"}
+            </button>
+            <button
+              onClick={() => { setActiveCategory('ai'); }}
+              className={`px-4 py-2 rounded-xl text-xs font-black transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
+                activeCategory === 'ai' 
+                  ? 'bg-[#ff1a40] text-white shadow-lg shadow-rose-500/20' 
+                  : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-850 border border-slate-800'
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{isRtl ? "الذكاء الاصطناعي والتقنية" : "AI & Technology"}</span>
+            </button>
+            <button
+              onClick={() => { setActiveCategory('tactics'); }}
+              className={`px-4 py-2 rounded-xl text-xs font-black transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
+                activeCategory === 'tactics' 
+                  ? 'bg-[#ff1a40] text-white shadow-lg shadow-rose-500/20' 
+                  : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-850 border border-slate-800'
+              }`}
+            >
+              <Award className="w-3.5 h-3.5" />
+              <span>{isRtl ? "التكتيك والتحليل الرقمي" : "Tactics & Data"}</span>
+            </button>
+            <button
+              onClick={() => { setActiveCategory('legends'); }}
+              className={`px-4 py-2 rounded-xl text-xs font-black transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
+                activeCategory === 'legends' 
+                  ? 'bg-[#ff1a40] text-white shadow-lg shadow-rose-500/20' 
+                  : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-850 border border-slate-800'
+              }`}
+            >
+              <TrendingUp className="w-3.5 h-3.5" />
+              <span>{isRtl ? "الأساطير والكرة العربية" : "Legends & Arab Football"}</span>
+            </button>
+          </div>
+
+          {/* ======================= HERO STYLED FEATURED ARTICLE ======================= */}
+          {featuredArticle && (
+            <div 
+              onClick={() => handleSelectArticle(featuredArticle)}
+              className="bg-gradient-to-br from-[#0c143d] to-[#04081c] border border-slate-800 hover:border-[#ff1a40] rounded-[32px] overflow-hidden shadow-2xl hover:shadow-rose-500/5 transition-all duration-500 cursor-pointer group relative font-sans"
+            >
+              <div className="absolute inset-0 bg-radial-at-t from-rose-500/5 via-transparent to-transparent pointer-events-none"></div>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-0">
+                {/* Featured Cover */}
+                <div className="lg:col-span-6 relative aspect-video lg:aspect-auto overflow-hidden bg-slate-950 min-h-[300px]">
+                  <img 
+                    src={featuredArticle.image} 
+                    alt={isRtl ? featuredArticle.titleAr : featuredArticle.titleEn}
+                    className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-700"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#04081c] via-transparent to-transparent"></div>
+                  
+                  {/* Dynamic absolute badges */}
+                  <div className="absolute top-4 left-4 flex gap-2">
+                    <span className="px-3 py-1 bg-[#ff1a40] text-white text-[10px] font-black rounded-lg uppercase tracking-wider animate-pulse flex items-center gap-1 font-sans">
+                      <Flame className="w-3 h-3 text-white inline fill-white animate-bounce" />
+                      <span>{isRtl ? "مقال مميز وشائع" : "FEATURED READ"}</span>
+                    </span>
+                    <span className="px-2.5 py-1 bg-slate-950/85 text-slate-300 text-[10px] font-black rounded-lg font-mono">
+                      {featuredArticle.readTime}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Featured Text Elements */}
+                <div className="lg:col-span-6 p-6 sm:p-10 flex flex-col justify-between space-y-6">
+                  <div className="space-y-4 text-right rtl:text-right ltr:text-left font-sans">
+                    <span className="text-[10px] sm:text-xs font-black text-[#ff1a40] uppercase tracking-widest block font-sans">
+                      {isRtl ? featuredArticle.categoryAr : featuredArticle.categoryEn}
+                    </span>
+                    
+                    <h3 className="text-xl sm:text-2xl font-black text-white leading-tight group-hover:text-[#ff1a40] transition-colors font-sans">
+                      {isRtl ? featuredArticle.titleAr : featuredArticle.titleEn}
+                    </h3>
+                    
+                    <p className="text-xs sm:text-sm text-[#b1bcf0] leading-relaxed text-justify line-clamp-4 font-semibold font-sans">
+                      {isRtl ? featuredArticle.descAr : featuredArticle.descEn}
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400 font-extrabold font-mono font-sans font-sans">
+                    <span className="bg-[#050920] border border-slate-850 px-3 py-1 rounded-lg">{featuredArticle.date}</span>
+                    <span className="text-[#ff1a40] group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform inline-flex items-center gap-1 bg-rose-500/5 px-3.5 py-1.5 rounded-xl border border-rose-500/10 font-sans">
+                      <span>{isRtl ? "قراءة المقال المميز" : "Read Featured Article"}</span>
+                      {isRtl ? "←" : "→"}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* MAIN GRID OF CARDS */}
+          {gridArticles.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 animate-fade-in font-sans">
+              {gridArticles.map((art) => (
                 <div 
                   key={art.id}
                   onClick={() => handleSelectArticle(art)}
-                  className="bg-[#0b102c] border border-slate-800 rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:border-rose-500 cursor-pointer flex flex-col group h-full"
+                  className="bg-[#0b102c] border border-slate-800 rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:border-[#ff1a40] cursor-pointer flex flex-col group h-full"
                 >
                   {/* Card Cover image */}
-                  <div className="relative aspect-video overflow-hidden bg-slate-950 border-b border-slate-855">
+                  <div className="relative aspect-video overflow-hidden bg-slate-950 border-b border-slate-850">
                     <img 
                       src={art.image} 
                       alt={isRtl ? art.titleAr : art.titleEn} 
@@ -1107,22 +1232,22 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                   </div>
 
                   {/* Card text content */}
-                  <div className="p-5 flex-grow flex flex-col justify-between space-y-4 text-justify">
+                  <div className="p-5 flex-grow flex flex-col justify-between space-y-4 text-justify font-sans">
                     <div className="space-y-2 text-right rtl:text-right ltr:text-left">
-                      <span className="text-[10px] font-extrabold text-[#ff1a40] uppercase tracking-wider block">
+                      <span className="text-[10px] font-extrabold text-[#ff1a40] uppercase tracking-wider block font-sans">
                         {isRtl ? art.categoryAr : art.categoryEn}
                       </span>
-                      <h3 className="text-sm font-black text-white leading-snug group-hover:text-[#ff1a40] transition-colors duration-250 lines-clamp-2">
+                      <h3 className="text-sm font-black text-white leading-snug group-hover:text-[#ff1a40] transition-colors duration-250 line-clamp-2">
                         {isRtl ? art.titleAr : art.titleEn}
                       </h3>
-                      <p className="text-xs text-slate-350 line-clamp-3 leading-relaxed font-semibold">
+                      <p className="text-xs text-slate-400 line-clamp-3 leading-relaxed font-semibold font-sans">
                         {isRtl ? art.descAr : art.descEn}
                       </p>
                     </div>
 
-                    <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400 font-extrabold font-mono">
+                    <div className="pt-3 border-t border-slate-805 flex items-center justify-between text-[11px] text-slate-400 font-extrabold font-mono">
                       <span>{art.date}</span>
-                      <span className="text-rose-500 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 shrink-0">
+                      <span className="text-rose-500 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 shrink-0 font-sans">
                         <span>{isRtl ? "قراءة المقال" : "Read Article"}</span>
                         {isRtl ? "←" : "→"}
                       </span>
@@ -1132,9 +1257,15 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
               ))}
             </div>
           ) : (
-            <div className="p-12 text-center text-slate-400 bg-[#0b102c]/50 border border-dashed border-slate-800 rounded-3xl">
+            <div className="p-12 text-center text-slate-400 bg-[#0b102c]/50 border border-dashed border-slate-800 rounded-3xl space-y-2 font-sans">
               <span className="block text-2xl mb-2">🔍</span>
               <p className="text-xs font-bold">{isRtl ? "لم نعثر على أي نتائج مطابقة لبحثك في المقالات" : "No articles found matching your criteria."}</p>
+              <button 
+                onClick={() => { setSearchQuery(''); setActiveCategory('all'); }} 
+                className="px-4 py-2 bg-slate-900 border border-slate-800 text-xs font-bold text-slate-300 hover:text-white rounded-xl transition-all cursor-pointer font-sans"
+              >
+                {isRtl ? "إعادة تعيين الفلاتر" : "Reset Filters"}
+              </button>
             </div>
           )}
         </div>

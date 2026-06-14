@@ -4,6 +4,7 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
+import compression from "compression";
 
 // Load environment variables
 dotenv.config();
@@ -161,6 +162,9 @@ async function startServer() {
   const app = express();
   const PORT = 3000;
 
+  // Enable gzip compression to decrease download payloads and improve FCP
+  app.use(compression());
+
   // Increase body size limits for base64 image uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
@@ -298,8 +302,20 @@ The output must be a single beautifully synthesized natural photograph, aspect r
     console.log("Starting server in PRODUCTION mode.");
     const distPath = path.join(process.cwd(), "dist");
     
-    // Serve static files without automatically serving the raw index.html automatically
-    app.use(express.static(distPath, { index: false }));
+    // Serve static files with robust Cache-Control headers for high-fidelity caching and performance
+    app.use(express.static(distPath, {
+      index: false,
+      maxAge: "30d",
+      setHeaders: (res, filePath) => {
+        if (filePath.match(/\.(js|css|woff2?|eot|ttf|otf|json)$/)) {
+          // Vite-built hashed assets or web fonts: cache indefinitely (1 year)
+          res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+        } else if (filePath.match(/\.(jpg|jpeg|png|gif|svg|webp|ico)$/)) {
+          // Image assets: cache for 30 days
+          res.setHeader("Cache-Control", "public, max-age=2592000");
+        }
+      }
+    }));
     
     app.get("*", (req, res) => {
       try {

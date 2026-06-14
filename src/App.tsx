@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import html2canvas from "html2canvas";
 import Cropper from "cropperjs";
 import "cropperjs/dist/cropper.css";
@@ -31,8 +31,8 @@ import {
 
 import { Question, PlayerProfile } from "./types";
 import { QUESTION_BANK, PLAYER_PROFILES } from "./data";
-import ArticlesPage from "./components/ArticlesPage";
-import LegalModals from "./components/LegalModals";
+const ArticlesPage = lazy(() => import("./components/ArticlesPage"));
+const LegalModals = lazy(() => import("./components/LegalModals"));
 import { translations } from "./translations";
 
 // UI translation dictionary
@@ -1582,7 +1582,14 @@ export default function App() {
         {/* TAB 2: ARTICLES BLOG SECTION */}
         {activeTab === "blog" && (
           <div className="w-full animate-fade-in py-2 bg-white">
-            <ArticlesPage locale={lang} t={t} />
+            <Suspense fallback={
+              <div className="flex flex-col items-center justify-center p-12 text-slate-500 font-bold">
+                <Loader2 className="w-8 h-8 animate-spin text-red-600 mb-2" />
+                <span>{lang === 'ar' ? 'جاري التحميل...' : 'Loading...'}</span>
+              </div>
+            }>
+              <ArticlesPage locale={lang} t={t} />
+            </Suspense>
           </div>
         )}
 
@@ -1838,11 +1845,13 @@ export default function App() {
       </footer>
 
       {/* RENDER DYNAMIC MOUNTABLE LEGAL MODALS (Fully Configured) */}
-      <LegalModals 
-        isOpen={activeLegalModal} 
-        onClose={() => setActiveLegalModal(null)} 
-        t={t} 
-      />
+      <Suspense fallback={null}>
+        <LegalModals 
+          isOpen={activeLegalModal} 
+          onClose={() => setActiveLegalModal(null)} 
+          t={t} 
+        />
+      </Suspense>
 
     </div>
   );

@@ -27,7 +27,7 @@ export default function Header({
           {/* Logo container with brand title directly under it */}
           <div className="flex flex-col items-center shrink-0">
             <img 
-              src="/logo.png" 
+              src="/logo.jpg" 
               alt="dkora" 
               className="w-11 h-11 sm:w-12 sm:h-12 object-contain rounded-lg shadow-sm select-none animate-fade-in"
               referrerPolicy="no-referrer"

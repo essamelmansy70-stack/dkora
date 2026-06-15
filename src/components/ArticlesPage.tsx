@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BookOpen, Calendar, Clock, User, ArrowLeft, ArrowRight, Search, Copy, Check, Share2, CornerDownLeft, Sparkles, Award, TrendingUp, Flame } from 'lucide-react';
 import ayyoubBouaddiCard from '../assets/images/ayyoub_bouaddi_card_1781406003674.jpg';
+import belgiumEgyptMatchCover from '../assets/images/belgium_egypt_match_1781486889243.jpg';
 
 interface Article {
   id: string;
@@ -39,6 +40,147 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-egypt-belgium-match-2026",
+    slug: "egypt-vs-belgium-world-cup-match-details-2026",
+    categoryAr: "مباريات كأس العالم 2026",
+    categoryEn: "World Cup 2026 Matches",
+    titleAr: "موعد مباراة مصر وبلجيكا في كأس العالم 2026 والقنوات الناقلة | دليل تكتيكي شامل",
+    titleEn: "Egypt vs Belgium World Cup 2026 Match Date, Kickoff Time & Channels | Full Guide",
+    descAr: "اكتشف موعد مباراة مصر وبلجيكا المرتقبة في دور المجموعات لكأس العالم 2026، والتوقيت، والملعب المستضيف، مع تحليل شامل للقنوات الناقلة المفتوحة والدراسة التكتيكية للمواجهة.",
+    descEn: "Get ready for the legendary match between Egypt and Belgium in the 2026 World Cup. Discover the kickoff date, venue details, broadcasting channels, and tactical lineups for both teams.",
+    keywordsAr: ["موعد ماتش مصر وبلجيكا", "مباراة مصر ضد بلجيكا كأس العالم 2026", "القنوات الناقلة لماتش مصر وبلجيكا", "توقيت مباراة مصر وبلجيكا", "تشكيلة مصر ضد بلجيكا كأس العالم"],
+    keywordsEn: ["egypt vs belgium world cup 2026", "belgium vs egypt date", "egypt vs belgium kickoff time", "egypt vs belgium live broadcast channels", "egypt belgium match venue"],
+    image: belgiumEgyptMatchCover,
+    date: "2026-06-15",
+    readTime: "6 min read",
+    contentAr: {
+      toc: [
+        "1. جدول تفاصيل مباراة مصر وبلجيكا (الموعد، الساعة، والملعب)",
+        "2. القنوات الناقلة لمباراة مصر وبلجيكا في كأس العالم 2026",
+        "3. تاريخ المواجهات التاريخية بين مصر وبلجيكا (تفوق الفراعنة التاريخي)",
+        "4. التشكيلة المتوقعة لمنتخبي الفراعنة والشياطين الحمر ومفاتيح اللعب"
+      ],
+      sections: [
+        {
+          title: "1. جدول تفاصيل مباراة مصر وبلجيكا (الموعد، الساعة، والملعب)",
+          body: "يتأهب عشاق الساحرة المستديرة حول العالم لمشاهدة واحدة من أقوى مواجهات دور المجموعات في مونديال 2026، حيث تتصادم أحلام منتخب الفراعنة المصري مع كبرياء منتخب الشياطين الحمر البلجيكي في مواجهة تكتيكية نارية على الأراضي الأمريكية. تم إعلان تفاصيل المباراة رسمياً وفقاً لجدول الاتحاد الدولي لكرة القدم (فيفا) لتكون على النحو التالي:",
+          points: [
+            "تاريخ المباراة: الإثنين، 15 يونيو 2026 (15 June 2026).",
+            "توقيت المباراة: تمام الساعة 10:00 مساءً بتوقيت القاهرة ومكة المكرمة (22:00 CLT / KSA)، والساعة 8:00 مساءً بتوقيت وسط أوروبا (CET).",
+            "ملعب اللقاء: ملعب 'لومين فيلد' (Lumen Field) في سياتل بالولايات المتحدة الأمريكية، وهو أحد الملاعب المجهزة بأحدث التقنيات وأرضيات المعشب الطبيعي لتقديم تجربة بصرية ورياضية تليق بأبرز بطولة عالمية."
+          ]
+        },
+        {
+          title: "2. القنوات الناقلة لمباراة مصر وبلجيكا في كأس العالم 2026",
+          body: "تحظى مباريات كأس العالم 2026 باهتمام إعلامي وتلفزيوني غير مسبوق. وفي منطقة الشرق الأوسط وشمال إفريقيا، تمتلك شبكة قنوات 'بي إن سبورتس' (beIN Sports) القطرية الحقوق الحصرية للبث التلفزيوني الفضائي المباشر لجميع مباريات المونديال. تفاصيل البث المباشر والقنوات المفتوحة الناقلة تشمل:",
+          points: [
+            "beIN Sports HD Max 1 & 2: الناقل العربي الحصري للمباراة بصوت نخبة من كبار معلقي الوطن العربي.",
+            "قنوات الكأس القطرية (Al Kass Extra HD): ستقوم ببث اللقاء من خلال شبكة قنواتها الفضائية المخصصة لمشتركي باقات المونديال.",
+            "البث المباشر الرقمي: يتوفر لجميع المشتركين عبر تطبيق 'TOD' التابع للمجموعة، وكذلك بث شبكة beIN Connect لسهولة المتابعة عبر الهواتف والشاشات الذكية.",
+            "القنوات المفتوحة عبر الأقمار الأخرى: مثل قنوات ZDF الألمانية وقناة TF1 الفرنسية المتوفرة مجاناً على قمر 'أسترا'، بالإضافة إلى قنوات الرياضية المغربية الأرضية التي تبث بعض المباريات مجاناً."
+          ]
+        },
+        {
+          title: "3. تاريخ المواجهات التاريخية بين مصر وبلجيكا (تفوق الفراعنة التاريخي)",
+          body: "على عكس المتوقع للكثير من المتابعين العالميين، فإن لمنتخب مصر غلبة تاريخية مذهلة عند مواجهة منتخب بلجيكا. التقى الفريقان في 4 مباريات ودية قوية عبر التاريخ، ونجح الفراعنة في تحقيق الفوز في 3 منها، في حين فازت بلجيكا في لقاء وحيد. إليك مخلص اللقاءات:",
+          points: [
+            "عام 1999: فوز منتخب مصر بهدف نظيف (1-0) تحت قيادة الجنرال الراحل محمود الجوهري.",
+            "عام 2005: انتصار عريض لمنتخب مصر بأربعة أهداف مقابل لا شيء (4-0) في القاهرة استعداداً لكأس الأمم الإفريقية الأسطورية.",
+            "عام 2018: فوز منتخب بلجيكا بثلاثة أهداف نظيفة (3-0) قبيل انطلاق مونديال روسيا.",
+            "المواجهة الأخيرة (نوفمبر 2022 في الكويت): فوز تاريخي للمنتخب المصري بنتيجة 2-1، حيث سجل هدفي مصر مصطفى محمد ومحمود حسن تريزيجيه وصنع محمد صلاح تمريرة سحرية، بينما قدمت بلجيكا مباراة قوية بمشاركة دي بروين وإيدين هازارد."
+          ],
+          note: "حقيقة تاريخية: تفوق الفراعنة على الشياطين الحمر بنسبة فوز تبلغ 75% يدعم بقوة ثقة اللاعبين المصريين في تحقيق نتيجة إيجابية تاريخية أخرى!"
+        },
+        {
+          title: "4. التشكيلة المتوقعة لمنتخبي الفراعنة والشياطين الحمر ومفاتيح اللعب",
+          body: "يتوقع خبراء التحليل التكتيكي لعام 2026 أن يدخل المنتخبان اللقاء بأفضل قوة بشرية ممكنة، لحسم الصراع على بطاقة التأهل للدور المقبل. ستكون التشكيلة المتوقعة على النحو التالي لقائد المنتخب القومي محمد صلاح ورفاقه وضد كتيبة دي بروين ولوكاكو:",
+          points: [
+            "التشكيلة المتوقعة لمنتخب مصر (4-3-3): حراسة المرمى: محمد الشناوي | الدفاع: محمد هاني، محمد عبد المنعم، رامي ربيعة، محمد حمدي | الوسط: مروان عطية، إمام عاشور، حمدي فتحي | الهجوم: محمود تريزيجيه، عمر مرموش، والنجم العالمي محمد صلاح.",
+            "التشكيلة المتوقعة لمنتخب بلجيكا (4-2-3-1): حراسة المرمى: كوين كاستيلس | الدفاع: كاستاني، يان فيرتونخين، فايس، ثياتي | الوسط: أونانا، تليمانس، والعبقري كيفن دي بروين | الهجوم: جيريمي دوكو، تروسارد، والمهاجم اللدود روميلو لوكاكو."
+          ],
+          note: "المواجهة الأبرز: صراع المايسترو كيفن دي بروين في تحريك خط الوسط، في مواجهة السرعة الخارقة والإنهاء الحاسم لنجم ليفربول محمد صلاح، ستكون عنوان الإثارة الحقيقية للمباراة في سياتل!"
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هو تاريخ مباراة مصر وبلجيكا في كأس العالم 2026؟",
+          a: "ستقام المباراة يوم الإثنين، 15 يونيو 2026."
+        },
+        {
+          q: "في أي ساعة ينطلق ماتش مصر وبلجيكا؟",
+          a: "ينطلق اللقاء في تمام الساعة 10:00 مساءً بتوقيت القاهرة ومكة المكرمة، و8:00 مساءً بتوقيت وسط أوروبا الصيفي."
+        },
+        {
+          q: "أين يمكن مشاهدة بث مباشر للمباراة مجاناً؟",
+          a: "يمكن متابعة البث عبر قنوات ZDF الفتوحة وقنوات TF1 على قمر أسترا، أو الحصري المشفر بصوت عربي عبر شبكة بي إن سبورتس القطرية وتطبيق TOD."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Egypt vs Belgium Match Details (Date, Kickoff Time & Venue)",
+        "2. Broadcasting Channels & Free Live Streams for Egypt vs Belgium",
+        "3. Historical Head-to-Head Record: Egypt’s Historical Dominance",
+        "4. Predicted Lineups: Salah vs De Bruyne Showdown"
+      ],
+      sections: [
+        {
+          title: "1. Egypt vs Belgium Match Details (Date, Kickoff Time & Venue)",
+          body: "Football fans worldwide are eagerly anticipating the group stage clash in the FIFA World Cup 2026. The Egyptian Pharaohs will lock horns with the Belgian Red Devils in one of the most tactical games of the season. Fixture details have been officially confirmed as follows:",
+          points: [
+            "Match Date: Monday, June 15, 2026.",
+            "Kickoff Time: 10:00 PM Cairo / Mecca local time (22:00 CLT / KSA), which corresponds to 8:00 PM Central European Time (CET).",
+            "Match Venue: Lumen Field, Seattle, Washington, USA - known for its high-capacity acoustic fans, top-tier setup, and state-of-the-art layout."
+          ]
+        },
+        {
+          title: "2. Broadcasting Channels & Free Live Streams for Egypt vs Belgium",
+          body: "For the Middle East and North Africa (MENA) region, beIN Sports is the official exclusive broadcaster showing every 2026 World Cup match. Several viewing channels and platforms are fully prepared to cover this historic live soccer match:",
+          points: [
+            "beIN Sports HD Max 1 & 2: Main broadcasting channel with Arabic audio commentary, analysis studios, and extensive match day preview coverage.",
+            "Al Kass Extra HD: Secondary Arabic broadcast channel available for subscribers of premium World Cup packages.",
+            "TOD App & beIN Connect: Legal online digital streams to watch the match high-definition on mobile screens or smart TVs.",
+            "Unencrypted Free-to-Air Channels: Including ZDF (Germany) and TF1 (France) broadcasting freely on the Astra satellite."
+          ]
+        },
+        {
+          title: "3. Historical Head-to-Head Record: Egypt’s Historical Dominance",
+          body: "Egypt holds an incredibly dominant historical status against Belgium, winning 3 out of 4 friendly head-to-head matches. Here is a summary of the historical games:",
+          points: [
+            "In 1999: Egypt defeated Belgium 1-0 in a solid tactical performance.",
+            "In 2005: Egypt secured an emphatic 4-0 victory against Belgium in Cairo.",
+            "In 2018: Belgium emerged victorious with a 3-0 scoreline in Brussels ahead of the Russia World Cup.",
+            "In November 2022 (Kuwait Friendly): Egypt won 2-1 with goals from Mostafa Mohamed and Trezeguet, assisted masterfully by Mohamed Salah under De Bruyne's and Eden Hazard's presence."
+          ],
+          note: "A 75% winning record gives the Egyptian team massive physical and mental confidence going into this World Cup 2026 challenge!"
+        },
+        {
+          title: "4. Predicted Lineups: Salah vs De Bruyne Showdown",
+          body: "Both trainers are expected to release their main tactical assets to secure early qualifying points in search of the next round. Predicted squads are outlined below:",
+          points: [
+            "Egypt Expected Lineup (4-3-3): El-Shennawy | Hany, Abdelmonem, Rabia, Hamdy | Marwan Attia, Emam Ashour, Hamdy Fathy | Trezeguet, Marmoush, and Liverpool superstar Mohamed Salah.",
+            "Belgium Expected Lineup (4-2-3-1): Casteels | Castagne, Vertonghen, Faes, Theate | Onana, Tielemans, Kevin De Bruyne | Doku, Trossard, and Romelu Lukaku."
+          ],
+          note: "The primary spotlight focuses closely on the exciting mid-field creativity of maestro Kevin De Bruyne facing the rapid speeds and clinical precision of Mohamed Salah in Seattle!"
+        }
+      ],
+      faqs: [
+        {
+          q: "What is the date of the Egypt vs Belgium match in WC 2026?",
+          a: "The match is scheduled for Monday, June 15, 2026."
+        },
+        {
+          q: "Where is the match played?",
+          a: "At Lumen Field, Seattle, Washington, USA."
+        },
+        {
+          q: "Which channels show the match live and free?",
+          a: "beIN Sports and Al Kass hold pay-TV rights in Arabic. Free coverages are available on ZDF and TF1 via European satellites."
+        }
+      ]
+    }
+  },
   {
     id: "art-ayyoub-bouaddi-age",
     slug: "how-old-is-ayyoub-bouaddi",

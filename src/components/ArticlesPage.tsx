@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { BookOpen, Calendar, Clock, User, ArrowLeft, ArrowRight, Search, Copy, Check, Share2, CornerDownLeft, Sparkles, Award, TrendingUp, Flame } from 'lucide-react';
 import ayyoubBouaddiCard from '../assets/images/ayyoub_bouaddi_card_1781406003674.jpg';
 import belgiumEgyptMatchCover from '../assets/images/belgium_egypt_match_1781486889243.jpg';
+import worldCupTrendsCover from '../assets/images/world_cup_2026_trends_holder_1781571552830.jpg';
 
 interface Article {
   id: string;
@@ -40,6 +41,147 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-world-cup-2026-trends",
+    slug: "fifa-world-cup-2026-predictions-favorites-dark-horses",
+    categoryAr: "أخبار كأس العالم 2026",
+    categoryEn: "World Cup 2026 Trends",
+    titleAr: "توقعات بطل كأس العالم 2026 والمنتخبات المرشحة | تحليل سيو تكتيكي شامل",
+    titleEn: "FIFA World Cup 2026 Winner Predictions, Top Favorites & Dark Horses | Full Tactical Analysis",
+    descAr: "اكتشف توقعات بطل كأس العالم 2026 والمنتخبات المرشحة للتتويج باللقب التاريخي بأمريكا والمكسيك وكندا، بالإضافة إلى تحليل مفاجآت مونديال الـ48 فريقاً والحصان الأسود.",
+    descEn: "Explore the ultimate FIFA World Cup 2026 winner predictions. Discover the top favorites, tactical analysis of main contenders, dark horses, and Golden Boot run in the first 48-team tournament.",
+    keywordsAr: ["توقعات بطل كأس العالم 2026", "من يفوز بكأس العالم 2026", "المرشحون للفوز بكأس العالم 2026", "الحصان الأسود كأس العالم 2026", "أبرز نجوم مونديال 2026", "توقعات المونديال 2026"],
+    keywordsEn: ["world cup 2026 winner predictions", "who will win 2026 world cup", "world cup 2026 favorites", "dark horse world cup 2026", "world cup 2026 predictions", "lamine yamal world cup 2026"],
+    image: worldCupTrendsCover,
+    date: "2026-06-16",
+    readTime: "7 min read",
+    contentAr: {
+      toc: [
+        "1. المنتخبات الخمسة الأقوى المرشحة للفوز بكأس العالم 2026",
+        "2. الحصان الأسود المنتظر والمفاجآت في مونديال 48 منتخباً",
+        "3. صراع الحذاء الذهبي وجائزة الهداف (مبابي، هالاند، يامال)",
+        "4. توقعات كمبيوتر 'أوبتا' واستشراف حظوظ المنتخبات العربية"
+      ],
+      sections: [
+        {
+          title: "1. المنتخبات الخمسة الأقوى المرشحة للفوز بكأس العالم 2026",
+          body: "مع انطلاق منافسات بطولة كأس العالم 2026 المقامة بتنظيم مشترك وثوري بين الولايات المتحدة الأمريكية، والمكسيك، وكندا، يتزايد الشغف لمعرفة من سيتربع على عرش كرة القدم العالمية. يشير كبار المحللين والخبراء التكتيكيين مع بداية البطولة إلى خمسة منتخبات بارزة تمتلك الحظوظ الأوفر للتتويج باللقب الغالي تاريخياً:",
+          points: [
+            "فرنسا (ديوك اللقب): يدخل رفقاء كيليان مبابي البطولة بكتيبة مرعبة وخبرات تراكمية عميقة في النهائيات. يمتلك خط الوسط والعمق الدفاعي مزيجاً ممتازاً من القوة البدنية والسرعة.",
+            "الأرجنتين (حامل اللقب): بقيادة الأسطورة ليونيل ميسي الذي يطمح لإنهاء مسيرته بأعظم طريقة ممكنة، معتمداً على جيل شاب متعطش ومنظومة تكتيكية دفاعية شديدة الانضباط.",
+            "البرازيل (السامبا السادسة): تبحث البرازيل عن استعادة الهيبة العالمية بركائز هجومية مرعبة يقودها فينيسيوس جونيور ورودريغو، وتحت إدارة فنية تدرك تماماً قيمة المونديال.",
+            "إنجلترا (الأسود الثلاثة): يمتلك جود بيلينغهام، هاري كين، وفيل فودين نضجاً كروياً استثنائياً جعل الصحافة البريطانية تعتبر هذا الجيل هو الأكثر تكاملاً لإنهاء العقدة الطويلة.",
+            "إسبانيا (الماتادور الجديد): تعتمد على الحيوية والسرعة الفائقة للامين يامال ونيكو ويليامز، مدعومين بوسط ملعب أسطوري يسيطر على الاستحواذ ويتحكم برتم المباريات."
+          ]
+        },
+        {
+          title: "2. الحصان الأسود المنتظر والمفاجآت في مونديال 48 منتخباً",
+          body: "لأول مرة في تاريخ المونديال، يتنافس 48 منتخباً تم توزيعهم على مجموعات تضمن إثارة بالغة مع تأهل أفضل أصحاب المركز الثالث. هذا النظام الاستثنائي يفسح المجال أمام مفاجآت مدوية، ويمهد الطريق لبروز 'الحصان الأسود' للبطولة. أبرز الترشيحات تشمل:",
+          points: [
+            "منتخب المغرب (أسود الأطلس): بعد الإنجاز التاريخي بحصد رابع العالم في قطر، يدخل الأسود بكتيبة تجمع حيوية دياز وإتقان أشرف حكيمي وخبرة ياسين بونو لمواصلة كتابة التاريخ.",
+            "منتخب الولايات المتحدة الأمريكية: مستغلاً عاملي الأرض والجمهور المذهلين، وتواجد جيل شاب ينشط بالكامل في كبرى الدوريات الأوروبية لتقديم بطولة ملحمية.",
+            "منتخب البرتغال: بوجود تشكيلة متوازنة وفائقة القوة تضم نونو مينديز وبرونو فيرنانديز ورافائيل لياو، ما يمنحها قوة استثنائية لصعق الكبار."
+          ]
+        },
+        {
+          title: "3. صراع الحذاء الذهبي وجائزة الهداف (مبابي، هالاند، يامال)",
+          body: "إلى جانب لقب الكأس الذهبية، هناك سباق شرس على لقب هداف المونديال (Golden Boot) لعام 2026. تعد هذه البطولة مثالية للمهاجمين بفضل زيادة عدد المباريات في الأدوار الإقصائية الجديدة. قائمة المرشحين الأبرز:",
+          points: [
+            "إيرلينغ هالاند (النرويج): المتطلع لإثبات الذات في أول مونديال بمسيرته، مستغلاً قدرته التهديفية الخارقة في حسم الهجمات أمام الدفاعات المتكتلة.",
+            "كيليان مبابي (فرنسا): الذي يسعى لتكرار حذائه الذهبي التاريخي وتحطيم الرقم القياسي لعدد الأهداف الإجمالي في تاريخ كؤوس العالم.",
+            "هاري كين (إنجلترا): المهاجم القناص وصاحب التمريرات الدقيقة، الذي يستمر كركيزة لا غنى عنها في قيادة الهجوم الإنجليزي.",
+            "جمال موسيالا وفلوريان فيرتز (ألمانيا): ثنائي المهارة والأهداف الذكية القادر على فك شفرات الخصوم بمهارة فردية خيالية."
+          ]
+        },
+        {
+          title: "4. توقعات كمبيوتر 'أوبتا' واستشراف حظوظ المنتخبات العربية",
+          body: "كشفت محاكاة كمبيوتر 'أوبتا' العملاق للإحصائيات الرياضية عن تفوق فرنسا بنسبة تقارب 16.8% للفوز باللقب، تليها إنجلترا بنسبة 15.2% ثم البرازيل بنسبة 14.5%. أما على صعيد المنتخبات العربية المشاركة في المونديال الأكبر تاريخياً:",
+          points: [
+            "المنتخب المصري: يسعى لاستغلال قوة الثلاثي الهجومي صلاح ومرموش وتريزيجيه الذهبية، لتأمين صعود تاريخي لأدوار خروج المغلوب وإسعاد ملايين العشاق.",
+            "المنتخب السعودي: يدخل بروح عالية وخطة تكتيكية قوية تهدف لاستعادة أمجاد مونديال 1994 ومفاجآت مونديال 2022 الشهيرة أمام الأرجنتين."
+          ],
+          note: "نصيحة سيو للمتابعين: التحديث المستمر ومتابعة الأخبار والاصابات والتشكيلات التكتيكية هي مفتاح توقع بلاف كأس العالم 2026 بشكل دقيق!"
+        }
+      ],
+      faqs: [
+        {
+          q: "من هو المرشح الأول للفوز بكأس العالم 2026؟",
+          a: "تعتبر منتخبات فرنسا، البرازيل، وإنجلترا هي المرشحة الأولى في صدارة التوقعات والتحليلات الرياضية وحسابات الذكاء الاصطناعي."
+        },
+        {
+          q: "كم عدد المنتخبات المشاركة في كأس العالم 2026؟",
+          a: "يشارك في هذه النسخة التاريخية 48 منتخباً لأول مرة، عوضاً عن 32 منتخباً في الدورات السابقة."
+        },
+        {
+          q: "أين تقام مباريات كأس العالم 2026؟",
+          a: "تقام البطولة بتنظيم ثلاثي مشترك في 16 مدينة موزعة بين الولايات المتحدة الأمريكية، والمكسيك، وكندا."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Top 5 Favorites to Win FIFA World Cup 2026",
+        "2. The Ultimate Dark Horses of the 2026 Tournament",
+        "3. The Golden Boot Race (Mbappé, Haaland, Yamal, Kane)",
+        "4. Statistical Computations & Arabic Nations Potential"
+      ],
+      sections: [
+        {
+          title: "1. Top 5 Favorites to Win FIFA World Cup 2026",
+          body: "As the FIFA World Cup 2026 gets underway with an iconic co-hosting setup between USA, Mexico, and Canada, football experts have evaluated squads to predict the most likely winner of the historical trophy:",
+          points: [
+            "France: Supported by the lethal offensive powers of captain Kylian Mbappé and a vastly deep physical tactical line-up.",
+            "Argentina: Defending champions aiming to secure a fairytale retirement story for legend Lionel Messi with a well-drilled defense.",
+            "Brazil: Scouting for their historic 6th star with extraordinary wing capabilities from Vinicius Jr. and Rodrygo under strong tactical discipline.",
+            "England: Led by Jude Bellingham, Phil Foden, and Harry Kane at the peak of their professional careers, considered the strongest English generation.",
+            "Spain: Guided by high-speed wing dynamics of Lamine Yamal and Nico Williams controlling games via masterclass possession styles."
+          ]
+        },
+        {
+          title: "2. The Ultimate Dark Horses of the 2026 Tournament",
+          body: "The expansive 48-team tournament layout invites immense drama, as the round of 32 opens wide doors for non-traditional powerhouses to shine. Predominated candidates for dark horses include:",
+          points: [
+            "Morocco: Seeking to build upon their historic semi-final run in Qatar, reinforced by Brahim Diaz, Achraf Hakimi, and Bono.",
+            "USA: Benefiting from massive home support, modern stadiums, and an entire squad showing stellar maturity across European high-tiers.",
+            "Portugal: Bringing key clinical match-winners across all phases, from defensive depth up to Rafael Leão's attacking magic."
+          ]
+        },
+        {
+          title: "3. The Golden Boot Race (Mbappé, Haaland, Yamal, Kane)",
+          body: "With more matches scheduled across the brand new round of 32 knockout bracket, the race for the Golden Boot (World Cup Top Goalscorer) is expected to reach record-high goals:",
+          points: [
+            "Erling Haaland: Hungry to dominate in his very first career World Cup tournament for Norway.",
+            "Kylian Mbappé: Chasing another historic Golden Boot and climbing up the peak of all-time World Cup top scorers.",
+            "Harry Kane: The clinical finisher and playmaker remaining as a top-tier penalty taking weapon for England.",
+            "Jamal Musiala & Florian Wirtz: Young German maestros who can score beautiful and complex goals anywhere around the penalty area."
+          ]
+        },
+        {
+          title: "4. Statistical Computations & Arabic Nations Potential",
+          body: "Opta supercomputer's 10,000 tournament simulations have France placed first with 16.8% chances, followed by England at 15.2% and Brazil at 14.5%. Meanwhile, Arabic nations in the tournament have great promise:",
+          points: [
+            "Egypt: Capitalizing on the golden synergy of Mohamed Salah, Omar Marmoush, and Trezeguet to punch deep into the knockout phases.",
+            "Saudi Arabia: Leveraging tremendous passion and tactical organization to recreate historic wins like the 2022 triumph against Argentina."
+          ],
+          note: "SEO Tip for Fans: Stay updated with regular match preview dynamics, tactical injuries, and squad states to perfectly predict the World Cup winner!"
+        }
+      ],
+      faqs: [
+        {
+          q: "Who is predicted to win the FIFA World Cup 2026?",
+          a: "France, Brazil, and England remain the highest-ranking contenders across statistical models and tactical betting sports books."
+        },
+        {
+          q: "How many matches are played in World Cup 2026?",
+          a: "Due to the extension to 48 teams, a total of 104 matches will be played, up from 64 in previous world cups."
+        },
+        {
+          q: "Who is the main golden boot candidate?",
+          a: "Kylian Mbappé and Erling Haaland hold the strongest odds of winning the 2026 Golden Boot."
+        }
+      ]
+    }
+  },
   {
     id: "art-egypt-belgium-match-2026",
     slug: "egypt-vs-belgium-world-cup-match-details-2026",

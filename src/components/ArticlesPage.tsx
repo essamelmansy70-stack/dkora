@@ -3,6 +3,7 @@ import { BookOpen, Calendar, Clock, User, ArrowLeft, ArrowRight, Search, Copy, C
 import ayyoubBouaddiCard from '../assets/images/ayyoub_bouaddi_card_1781406003674.jpg';
 import belgiumEgyptMatchCover from '../assets/images/belgium_egypt_match_1781486889243.jpg';
 import worldCupTrendsCover from '../assets/images/world_cup_2026_trends_holder_1781571552830.jpg';
+import egyptBelgiumResult from '../assets/images/egypt_belgium_result_1781661151271.jpg';
 
 interface Article {
   id: string;
@@ -41,6 +42,145 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-stadiums-guide-world-cup-2026",
+    slug: "complete-stadiums-guide-fifa-world-cup-2026-capacity-cities",
+    categoryAr: "ملاعب ومونديال 2026",
+    categoryEn: "World Cup 2026 Venues",
+    titleAr: "دليل ملاعب كأس العالم 2026 الشامل | السعات الجماهيرية وتوزيع المدن الـ 16",
+    titleEn: "Complete World Cup 2026 Stadiums Guide | Capacity, Cities & Unique Designs",
+    descAr: "اكتشف الدليل الشامل لجميع الملاعب الـ 16 المستضيفة لبطولة كأس العالم 2026 التاريخية في أمريكا، المكسيك، وكندا. تعرف على السعات الجماهيرية، ميزات التصميم، وحقائق شيقة.",
+    descEn: "Explore the ultimate guide to the 16 iconic stadiums hosting the FIFA World Cup 2026 across USA, Mexico, and Canada. Detailed insights on capacity, design innovations, and matches.",
+    keywordsAr: ["ملاعب كأس العالم 2026", "دليل ملاعب مونديال 2026", "سعة الملاعب كأس العالم 2026", "ملعب نهائي كأس العالم 2026", "استاد أزتيكا 2026", "المدن المستضيفة لكأس العالم 2026"],
+    keywordsEn: ["world cup 2026 stadiums", "2026 world cup venues guide", "world cup 2026 stadium capacities", "metlife stadium world cup 2026", "estadio azteca world cup 2026", "fifa 2026 venues map"],
+    image: worldCupTrendsCover,
+    date: "2026-06-17",
+    readTime: "9 min read",
+    contentAr: {
+      toc: [
+        "1. المدن الـ 16 والبلدان الثلاثة المستضيفة لمونديال تاريخي",
+        "2. الملاعب الأكبر سعة والمحتضنة للأدوار الإقصائية والنهائي",
+        "3. مميزات وتاريخ الملاعب الأيقونية (أزتيكا، وميتلايف، أيروهيد)",
+        "4. التقنيات والاستدامة الصديقة للبيئة في ملاعب المونديال"
+      ],
+      sections: [
+        {
+          title: "1. المدن الـ 16 والبلدان الثلاثة المستضيفة لمونديال تاريخي",
+          body: "تتميز نسخة كأس العالم 2026 لكونها الأكبر حجماً في تاريخ اللعبة، حيث تضُم 48 منتخباً وتُقام بتنظيم مشترك بين ثلاث دول رائدة في قارة أمريكا الشمالية. تم اختيار 16 مدينة بدقة لتوفير أفضل تجربة كروية للجماهير واللاعبين على حد سواء. تتوزع هذه المدن بين الدول الثلاث جغرافياً على النحو التالي:",
+          points: [
+            "الولايات المتحدة الأمريكية (11 مدينة مستضيفة): أتلانتا، بوسطن، دالاس، هيوستن، كانساس سيتي، لوس أنجلوس، ميامي، نيويورك/نيوجيرسي، فيلادلفيا، سان فرانسيسكو، وسياتل.",
+            "المكسيك (3 مدن مستضيفة): مكسيكو سيتي، غوادالاخارا، ومونتيري، وهي البلاد التي تحظى بإرث كروي ومونديالي فريد واستثنائي.",
+            "كندا (مدينتان مستضيفان): فانكوفر وتورونتو، لتقديم تجربة حيوية في أقصى الشمال للقارة الأمريكية بلمسات عصرية مذهلة."
+          ]
+        },
+        {
+          title: "2. الملاعب الأكبر سعة والمحتضنة للأدوار الإقصائية والنهائي",
+          body: "مع زيادة عدد المنتخبات لـ 48 فريقاً وارتفاع عدد المباريات الإجمالي لـ 104 مباراة، تم تخصيص وتحديث أضخم وأعرق الاستادات الرياضية في القارة لاستيعاب التوافد الجماهيري المليوني الهائل. إليك قائمة بأكبر الاستادات التي ستلعب أدواراً ريادية وتاريخية في حسم ألقاب المونديال:",
+          points: [
+            "استاد ميتلايف (نيويورك/نيوجيرسي) - السعة التقريبية: 82,500 مقعد. الملعب الذي تم اختياره رسمياً لاحتضان المباراة النهائية التاريخية لمونديال 2026، متميزاً بموقعه الاستراتيجي وبنيته التحتية العملاقة.",
+            "استاد AT&T (دالاس) - السعة التقريبية: 80,000 مقعد (قابلة للتوسيع حتى 100,000). يتميز بالسقف المتحرك وأضخم شاشة عرض رقمية معلقة في الملاعب العالمية، ويستضيف مباريات هامة بأدوار خروج المغلوب.",
+            "استاد أزتيكا (مكسيكو سيتي) - السعة التقريبية: 87,500 مقعد. الاستاد الوحيد الذي يشهد افتتاح المونديال للمرة الثالثة في تاريخ اللعبة بعد نسختي 1970 و1986، حاملاً عبير ذكرى إرث مارادونا وبيليه.",
+            "استاد مرسيدس-بنز (أتلانتا) - السعة التقريبية: 71,000 مقعد. بتصميم هندسي مستقبلي ملهم على شكل بتلات قبة تغلق وتفتح، ويعتبر نموذجاً عالمياً رائداً في الكفاءة وتجربة المشجع المتكاملة."
+          ]
+        },
+        {
+          title: "3. مميزات وتاريخ الملاعب الأيقونية (أزتيكا، وميتلايف، أيروهيد)",
+          body: "تضم قائمة الملاعب الـ 16 تحفاً معمارية متكاملة تروي قصصاً فريدة في عوالم التصاميم الحديثة والرياضات الجماهيرية الأخرى مثل كرة القدم الأمريكية. نلقي الضوء هنا على تفاصيل أهم الملاعب وميزاتها البصرية والتقنية الخاصة:",
+          points: [
+            "ملعب لومين فيلد (سياتل): الملعب الشهير بأجوائه الصاخبة وهياكله الفريدة التي توفر الحماية من الأمطار بينما تترك المنتصف مفتوحاً، وتتميز بالجماهير الأكثر حماساً.",
+            "ملعب أيروهيد (كانساس سيتي): يحمل الرقم القياسي العالمي في موسوعة غينيس لأعلى مستوى صخب واهتزاز جماهيري سُجل في استاد رياضي مفتوح، مما يجعله جحيماً للخصوم.",
+            "ملعب بي سي بليس (فانكوفر): صرح كندي أيقوني خضع لتحديثات ثورية بالكامل ويتميز بسقف مدعوم بالكابلات وتصميم استثنائي يحتضن شواطئ ونسمات المحيط الهادي الخلابة."
+          ]
+        },
+        {
+          title: "4. التقنيات والاستدامة الصديقة للبيئة في ملاعب المونديال",
+          body: "تركز الفيفا رفقة اللجان التنظيمية بشكل عميق على تطبيق أعلى معايير الاستدامة والحماية البيئية في كافة ملاعب كأس العالم 2026. تسعى البطولة لتكون النسخة الأولى الخالية تماماً من الانبعاثات الكربونية الضارة من خلال:",
+          points: [
+            "الاعتماد الكامل على الطاقة المتجددة: كاستخدام تكنولوجيا الألواح الشمسية العملاقة لتوليد الكهرباء ذاتياً داخل المنشآت الرياضية الكبرى.",
+            "أنظمة ذكية لإعادة تدوير المياه والمخلفات: بما يضمن تقليص الهدر المائي وتدوير كافة المنتجات المستعملة داخل الاستادات وأماكن تجمع المشجعين.",
+            "تسهيلات المواصلات العامة الخضراء: عبر ربط الاستادات المونديالية بشبكات حافلات كهربائية وخطوط قطارات سريعة وصديقة للبيئة لتفادي الازدحام المروري الكربوني."
+          ],
+          note: "نصيحة سيو للقراء: الملاعب الجاهزة والمستدامة تقدم للمشجعين تجربة مثالية، ومتابعة تاريخ كل ملعب وسعة مقاعده تضفي متعة حقيقية لمشاهدة المونديال الأكبر تاريخياً!"
+        }
+      ],
+      faqs: [
+        {
+          q: "أين ستقام المباراة النهائية لكأس العالم 2026؟",
+          a: "تقرر رسمياً إقامة المباراة النهائية لبطولة كأس العالم 2026 على أرضية استاد ميتلايف (MetLife Stadium) الواقع في منطقة نيويورك/نيوجيرسي بالولايات المتحدة الأمريكية."
+        },
+        {
+          q: "ما هي سعة ملعب أزتيكا الأيقوني في مونديال 2026؟",
+          a: "تبلغ السعة الرسمية المخصصة للمشجعين في استاد أزتيكا التاريخي بمكسيكو سيتي ما يقارب 87,500 مقعد، وهو الأكبر بقائمة الملاعب المكسيكية المستضيفة."
+        },
+        {
+          q: "ما هو عدد الاستادات المخصصة لكل دولة مستضيفة؟",
+          a: "تم تخصيص 11 استاداً في الولايات المتحدة الأمريكية، و3 استادات في المكسيك، واستادين في كندا، لتكتمل قائمة الملاعب الـ 16 المعتمدة."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Host Countries & The 16 Selected Cities Map",
+        "2. Top Capacity Venues For Knockout Rounds",
+        "3. Iconic Historical Masterpieces (Azteca, MetLife, Arrowhead)",
+        "4. Technology, Eco-Friendliness & Clean Sustainability Goals"
+      ],
+      sections: [
+        {
+          title: "1. Host Countries & The 16 Selected Cities Map",
+          body: "The FIFA World Cup 2026 marks an unprecedented milestone in blockbusting sports tournaments. Expanding the roster to 48 national squads with 104 matches, the historic competition span is across three massive nations utilizing 16 top-tier metropolitan areas meticulously selected globally:",
+          points: [
+            "United States (11 host venues): Atlanta, Boston, Dallas, Houston, Kansas City, Los Angeles, Miami, New York/New Jersey, Philadelphia, San Francisco, and Seattle.",
+            "Mexico (3 host venues): Mexico City, Guadalajara, and Monterrey – offering deep, festive football heritage.",
+            "Canada (2 host venues): Vancouver and Toronto – delivering wonderful modern northern hospitality under world-class settings."
+          ]
+        },
+        {
+          title: "2. Top Capacity Venues For Knockout Rounds",
+          body: "With a high-volume fan presence estimated in the millions, mega-venues with colossal spectator capacities have been designated to host the final tournament rounds. The ultimate highlights of these high-capacity spaces are:",
+          points: [
+            "MetLife Stadium (New York/New Jersey) - Approx. Capacity: 82,500. Officially announced as the venue to host the prestigious FIFA World Cup 2026 Final match on July 19, 2026.",
+            "AT&T Stadium (Dallas) - Approx. Capacity: 80,000 (Expandable to 100,000). Famous for its massive high-definition hanging videoboard and retractable roof architecture.",
+            "Estadio Azteca (Mexico City) - Approx. Capacity: 87,500. The legendary cathedral of football, set to host the opening match of the World Cup for the third time in history (previously 1970 and 1986).",
+            "Mercedes-Benz Stadium (Atlanta) - Approx. Capacity: 71,000. Pioneering retractable design inspired by pinwheel shapes, optimized heavily for unparalleled user-comfort and high energy."
+          ]
+        },
+        {
+          title: "3. Iconic Historical Masterpieces (Azteca, MetLife, Arrowhead)",
+          body: "Several of the selected stadiums are famous architectural works outside soccer itself, harboring rich traditions across continuous American sporting history. Important facts about these venues include:",
+          points: [
+            "Lumen Field (Seattle): Well-known for its acoustic design sheltering spectators from local weather while amplifying crowd noise into deafening volumes.",
+            "Arrowhead Stadium (Kansas City): Holds the official Guinness World Record for the loudest crowd roar ever recorded in an open outdoor sports stadium.",
+            "BC Place (Vancouver): A Canadian landmark recently updated with a cable-supported retractable roof overlooking beautiful scenery."
+          ]
+        },
+        {
+          title: "4. Technology, Eco-Friendliness & Clean Sustainability Goals",
+          body: "FIFA and local organizing committees have established robust guidelines to ensure that the 2026 World Cup operates under sustainable, carbon-neutral mechanisms through several key avenues:",
+          points: [
+            "Renewable Energy Sourcing: Leveraging solar panels and wind energy collectors installed directly in and around the structural designs of the stadiums.",
+            "Zero Wastewater Systems: Deploying advanced recycling pipelines to filter wastewater efficiently for non-potable uses and landscape setups.",
+            "Integrated Electric Transit Networks: Connecting each match venue directly with carbon-efficient trains, high-capacity hybrid buses, and walkable transit roads."
+          ],
+          note: "SEO Tip for Readers: Knowing the specific capacities and structural designs of each stadium elevates the 2026 World Cup viewing experience to an extraordinary standard!"
+        }
+      ],
+      faqs: [
+        {
+          q: "Where is the final match of the 2026 World Cup scheduled to be played?",
+          a: "The final will be played on Sunday, July 19, 2026 at MetLife Stadium in East Rutherford, New York/New Jersey."
+        },
+        {
+          q: "Which stadium has the largest historical footprint?",
+          a: "Estadio Azteca in Mexico City holds the largest legacy, hosting the final matches of Pelé (1970) and Maradona (1986)."
+        },
+        {
+          q: "How many stadiums are distributed per country?",
+          a: "There are 11 venues in the United States, 3 venues in Mexico, and 2 venues in Canada, completing the 16 approved host spots."
+        }
+      ]
+    }
+  },
   {
     id: "art-world-cup-2026-trends",
     slug: "fifa-world-cup-2026-predictions-favorites-dark-horses",

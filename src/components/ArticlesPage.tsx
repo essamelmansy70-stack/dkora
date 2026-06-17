@@ -4,6 +4,7 @@ import ayyoubBouaddiCard from '../assets/images/ayyoub_bouaddi_card_178140600367
 import belgiumEgyptMatchCover from '../assets/images/belgium_egypt_match_1781486889243.jpg';
 import worldCupTrendsCover from '../assets/images/world_cup_2026_trends_holder_1781571552830.jpg';
 import egyptBelgiumResult from '../assets/images/egypt_belgium_result_1781661151271.jpg';
+import worldCupHistoryCover from '../assets/images/world_cup_champions_history_1781723892325.jpg';
 
 interface Article {
   id: string;
@@ -42,6 +43,143 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-successful-world-cup-nations",
+    slug: "most-successful-world-cup-nations-history-records",
+    categoryAr: "تاريخ كأس العالم",
+    categoryEn: "World Cup History",
+    titleAr: "أكثر المنتخبات فوزاً بكأس العالم عبر التاريخ | القائمة الكاملة والأرقام القياسية الأسطورية",
+    titleEn: "Most Successful World Cup Teams of All Time | Historic Champions & Legendary Records",
+    descAr: "تعرف على أكثر المنتخبات تتويجاً ببطولة كأس العالم عبر التاريخ، من سيادة البرازيل الخماسية والماكينات الألمانية إلى ثنائيات المجد والأرقام القياسية ببطولات الفيفا.",
+    descEn: "Explore the most successful national teams in FIFA World Cup history. Detailing Brazil's legendary 5 titles, Germany's dominance, historical champions list, and ultimate soccer records.",
+    keywordsAr: ["أكثر المنتخبات فوزاً بكأس العالم", "ترتيب منتخبات كأس العالم", "سجل أبطال كأس العالم عبر التاريخ", "المنتخبات الفائزة بكأس العالم", "تاريخ بطولة كأس العالم", "أكثر من حقق كأس العالم"],
+    keywordsEn: ["most successful world cup nations", "who won the most world cups", "fifa world cup winners list", "world cup history champions", "brazil world cup titles count", "germany world cup trophies"],
+    image: worldCupHistoryCover,
+    date: "2026-06-17",
+    readTime: "8 min read",
+    contentAr: {
+      toc: [
+        "1. السيادة المطلقة للسامبا البرازيلية بخمسة ألقاب تاريخية",
+        "2. العملاقان الأوروبيان: ألمانيا وإيطاليا برباعيات تاريخية",
+        "3. الأرجنتين، فرنسا، والأوروغواي: ثلاثيات وثنائيات المجد الكروي",
+        "4. أبرز الأرقام القياسية الفردية والجماعية في تاريخ المونديال"
+      ],
+      sections: [
+        {
+          title: "1. السيادة المطلقة للسامبا البرازيلية بخمسة ألقاب تاريخية",
+          body: "يتربع المنتخب البرازيلي (السيليساو) وحيداً على عرش الساحرة المستديرة كأكثر المنتخبات تتويجاً بلقب كأس العالم عبر التاريخ برصيد 5 ألقاب أسطورية. ولم يكتفِ راقصو السامبا بحصد الذهب فقط، بل اقترن اسم البرازيل بتقديم كرة القدم الهجومية والجميلة التي غيرت وجه اللعبة بشكل كامل في القرن العشرين. ملامح السيادة البرازيلية تشمل:",
+          points: [
+            "أعوام التتويج التاريخية: حصدت البرازيل اللقب في (1958، 1962، 1970، 1994، 2002).",
+            "أول دولة تحتفظ بكأس جول ريميه: بعد تحقيق اللقب الثالث في مونديال المكسيك 1970 بفضل الجيل الحالم بقيادة الملك بيليه، ريفيلينو، وتوستانو.",
+            "المشاركة القياسية المستمرة: البرازيل هي الدولة الوحيدة في العالم التي تأهلت وشاركت في جميع نسخ بطولة كأس العالم دون استثناء منذ انطلاقتها الأولى في الأوروغواي عام 1930."
+          ]
+        },
+        {
+          title: "2. العملاقان الأوروبيان: ألمانيا وإيطاليا برباعيات تاريخية",
+          body: "في قارة أوروبا، تتقاسم ألمانيا وإيطاليا الريادة برصيد 4 ألقاب مونديالية لكل منهما، حيث يمثل كل منتخب مدرسة كروية تكتيكية متميزة وصارمة صامت بوجه الزمن:",
+          points: [
+            "المنتخب الألماني (الماكينات): حقق اللقب في أعوام (1954، 1974، 1990، 2014). يتميز المانشافت بالاستمرارية الفائقة، حيث يعد أكثر بلد تأهل للمربع الذهبي في تاريخ كأس العالم (13 مرة).",
+            "المنتخب الإيطالي (الآزوري): ظفر باللقب في أعوام (1934، 1938، 1982، 2006). اشتهرت إيطاليا بالصلابة الدفاعية الأسطورية ومدرسة 'الكاتيناتشو' التكتيكية التي أحبطت أعتى هجوم في العالم."
+          ]
+        },
+        {
+          title: "3. الأرجنتين، فرنسا، والأوروغواي: ثلاثيات وثنائيات المجد الكروي",
+          body: "تحفل منصات التتويج ببلدان حفرت أسماءها بأحرف من ذهب في تاريخ كرة القدم عبر تحقيق ألقاب متتالية ومستحقة:",
+          points: [
+            "المنتخب الأرجنتيني (3 ألقاب): توج بلقب (1978، 1986، 2022). واكتملت السلسلة الذهبية بقيادة الساحر ليونيل ميسي في مونديال قطر 2022 الاستثنائي بعد مواجهة كلاسيكية ضد فرنسا.",
+            "المنتخب الفرنسي (لقبان): ظفر بالذهب عامي (1998) على أرضه بقيادة زين الدين زيدان و(2018) بروسيا بجيل تكتيكي خارق يقوده ديدييه ديشامب.",
+            "منتخب الأوروغواي (لقبان): حصد أول نسخة على الإطلاق عام (1930)، ثم فجر كبرى مفاجآت التاريخ بهزيمة البرازيل على أرضها في نهائي (1950) التاريخي المعروف بـ معجزة ماراكانازو."
+          ]
+        },
+        {
+          title: "4. أبرز الأرقام القياسية الفردية والجماعية في تاريخ المونديال",
+          body: "إليك مجموعة من الأرقام القياسية المذهلة التي ما زالت صامدة وتُروى للأجيال:",
+          points: [
+            "الهداف التاريخي لبطولات كأس العالم: يتربع النجم الألماني ميروسلاف كلوزه في الصدارة بـ 16 هدفاً، يليه الظاهرة البرازيلية رونالدو برصيد 15 هدفاً.",
+            "اللاعب الأكثر تتويجاً باللقب: الأسطورة والملك البرازيلي بيليه، هو اللاعب الوحيد الذي فاز بكأس العالم 3 مرات كلاعب (1958، 1962، 1970).",
+            "اللاعب الأكثر خوضاً للمباريات المونديالية: الأسطورة الأرجنتيني ليونيل ميسي برصيد 26 مباراة كاملة خاضها عبر خمس نسخ متتالية.",
+            "أكبر فوز في مباراة نهائية: فوز البرازيل على السويد 5-2 عام 1958، وفوزها كذلك على إيطاليا 4-1 عام 1970."
+          ],
+          note: "نصيحة سيو: تاريخ المنتخبات وحكايات الأبطال هي مادة ثرية ودائمة الشغف لعشاق كرة القدم حول العالم، ومطالعة هذه الأرقام تظهر حجم الصعوبة والمستوى المطلوب لكتابة المجد الكروي!"
+        }
+      ],
+      faqs: [
+        {
+          q: "من هو المنتخب الأكثر فوزاً بكأس العالم؟",
+          a: "المنتخب البرازيلي هو الأكثر فوزاً بكأس العالم برصيد خمسة ألقاب تاريخية."
+        },
+        {
+          q: "كم عدد ألقاب المنتخب الأرجنتيني في المونديال؟",
+          a: "تمتلك الأرجنتين ثلاثة ألقاب كبرى في كأس العالم وتوجت بآخرها في مونديال قطر 2022."
+        },
+        {
+          q: "من هو الهداف التاريخي لكأس العالم عبر العصور؟",
+          a: "المهاجم الألماني ميروسلاف كلوزه هو الهداف التاريخي برصيد 16 هدفاً سجلها في مبارياته المونديالية."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Absolute Dominance of Brazilian Samba with 5 Titles",
+        "2. European Powerhouses: Germany & Italy Sharing 8 Trophies",
+        "3. Argentina, France, and Uruguay: Legendary Global Standards",
+        "4. Indelible Individual & Team Records in World Cup History"
+      ],
+      sections: [
+        {
+          title: "1. Absolute Dominance of Brazilian Samba with 5 Titles",
+          body: "No other nation in the universe of football is as heavily matching the term success as the Brazilian National Team (Seleção), bringing 5 stellar stars to their crest. Brazil stands as the only country to participate in every single edition of the tournament without fail. The pillars of Brazilian soccer royalty include:",
+          points: [
+            "Championship Winning Years: Brazil achieved glory in (1958, 1962, 1970, 1994, 2002).",
+            "Joga Bonito Philosophy: Redefining how football is played through creative offensive art under the magical king Pelé and his generational teammates.",
+            "Permanent Jules Rimet Holder: Awarded permanently to Brazil after winning three titles in Mexico 1970."
+          ]
+        },
+        {
+          title: "2. European Powerhouses: Germany & Italy Sharing 8 Trophies",
+          body: "European football achievements are heavily anchored by Germany and Italy, carrying 4 historical World Cup trophies each through distinct tactical schools:",
+          points: [
+            "Germany (The Machines): Champions in (1954, 1974, 1990, 2014). Holding the global record of reaching the final four an incredible 13 times.",
+            "Italy (The Azzurri): Triumphing in (1934, 1938, 1982, 2006). Relied heavily on tactical masterpieces, world-class defense structures, and goalkeeper legends."
+          ]
+        },
+        {
+          title: "3. Argentina, France, and Uruguay: Legendary Global Standards",
+          body: "Each carrying a strong standard of football culture, these top nations have achieved historical multi-title statuses:",
+          points: [
+            "Argentina (3 Titles): Confirmed as iconic stars in (1978, 1986, 2022). Lionel Messi sealed a lifetime dream in a magical 2022 campaign in Qatar.",
+            "France (2 Titles): Winning in (1998) at home led by Zinedine Zidane, and (2018) in Russia with an incredibly deep professional squad.",
+            "Uruguay (2 Titles): Won the inaugural 1930 tournament and made history shockwaves by beating Brazil at Maracanã in 1950."
+          ]
+        },
+        {
+          title: "4. Indelible Individual & Team Records in World Cup History",
+          body: "The historical pages of FIFA World Cup are illuminated by grand records that remain firmly standing to this very day:",
+          points: [
+            "All-Time Top Scorer: Germany's Klose stands on top with 16 goals, closely followed by Brazil's Ronaldo on 15 goals.",
+            "Most Decorated Player: The King Pelé is the sole player to win three World Cups (1958, 1962, 1970).",
+            "Most Appearances: Lionel Messi holds the ultimate record of playing 26 World Cup matches across 5 dynamic campaigns.",
+            "Highest Scoring Final Match: Brazil's legendary 5-2 win over host Sweden back in 1958."
+          ],
+          note: "SEO Tip: Reading and analyzing historic benchmarks keeps fans rooted in the profound glory of football, serving as evergreen inspiration for future campaigns!"
+        }
+      ],
+      faqs: [
+        {
+          q: "Which nation has won the most FIFA World Cups?",
+          a: "Brazil holds the record with 5 legendary championship titles."
+        },
+        {
+          q: "Who is the legendary top goalscorer of World Cup?",
+          a: "Miroslav Klose of Germany is the all-time tournament top scorer with 16 goals."
+        },
+        {
+          q: "How many World Cup trophies does Argentina hold?",
+          a: "Argentina holds 3 trophies, with their latest victory secured in 2022 under captain Lionel Messi."
+        }
+      ]
+    }
+  },
   {
     id: "art-stadiums-guide-world-cup-2026",
     slug: "complete-stadiums-guide-fifa-world-cup-2026-capacity-cities",

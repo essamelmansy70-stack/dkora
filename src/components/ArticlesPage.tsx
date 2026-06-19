@@ -5,6 +5,7 @@ import belgiumEgyptMatchCover from '../assets/images/belgium_egypt_match_1781486
 import worldCupTrendsCover from '../assets/images/world_cup_2026_trends_holder_1781571552830.jpg';
 import egyptBelgiumResult from '../assets/images/egypt_belgium_result_1781661151271.jpg';
 import worldCupHistoryCover from '../assets/images/world_cup_champions_history_1781723892325.jpg';
+import worldCup2026EvergreenGuide from '../assets/images/world_cup_2026_evergreen_guide_1781875543787.jpg';
 
 interface Article {
   id: string;
@@ -43,6 +44,157 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-evergreen-trends-world-cup-2026",
+    slug: "ultimate-evergreen-guide-fifa-world-cup-2026-trends-insights",
+    categoryAr: "دليل كأس العالم 2026",
+    categoryEn: "World Cup 2026 Guide",
+    titleAr: "دليل كأس العالم 2026 التاريخي الشامل | الترندات الكبرى، المجموعات، وكيف تتابع المونديال الأكبر",
+    titleEn: "The Ultimate FIFA World Cup 2026 Fan Guide | Core Trends, Groups & How to Watch",
+    descAr: "تصفح دليلك الشامل لترندات كأس العالم 2026 التاريخية في أمريكا والمكسيك وكندا. تعرف على توزيع المجموعات، المدن، ومفاتيح نجاح المنتخبات في المونديال الأكبر على الإطلاق.",
+    descEn: "Explore the complete fans guide for FIFA World Cup 2026 in North America. Get insights on major trends, group formats, key matches, and how to watch the biggest World Cup in football history.",
+    keywordsAr: [
+      "كاس العالم ٢٠٢٦", 
+      "ترند كاس العالم 2026", 
+      "جدول مجوعات كاس العالم", 
+      "من يفوز بكاس العالم 2026", 
+      "مباريات كاس العالم ٢٠٢٦", 
+      "أبرز منتخبات كاس العلم"
+    ],
+    keywordsEn: [
+      "world cup 2026 trends", 
+      "world cup 2026 winer prediction", 
+      "fifa world cup 2026 gruops", 
+      "word cup 2026 schedule", 
+      "how to watch world cup 2016", 
+      "groups of worldcup 2026"
+    ],
+    image: worldCup2026EvergreenGuide,
+    date: "2026-06-19",
+    readTime: "10 min read",
+    contentAr: {
+      toc: [
+        "1. ثورة الـ 48 منتخباً: كيف غيّر نظام البطولة الجديد خريطة المنافسة المونديالية",
+        "2. ترندات الجماهير والمدن الـ 16: تجربة السفر الاستثنائية بقلب أمريكا الشمالية",
+        "3. التحولات التكتيكية الحديثة في مونديال 2026: الهجوم الخاطف والتنظيم الهجين",
+        "4. أين وكيف تتابع البث المباشر للمباريات والفعاليات الجماهيرية بجودة عالية"
+      ],
+      sections: [
+        {
+          title: "1. ثورة الـ 48 منتخباً: كيف غيّر نظام البطولة الجديد خريطة المنافسة المونديالية",
+          body: "تُسجل نسخة كأس العالم 2026 علامة فارقة في تاريخ كرة القدم من خلال تنظيم أول مونديال يضُم 48 منتخباً موزعين على 12 مجموعة متوازنة تضم كل مجموعة منها 4 منتخبات. يعبّر هذا التحول عن رغبة الفيفا في إشراك مجتمعات كروية أوسع وإعطاء فرص حقيقية للمنتخبات الصاعدة لكتابة التاريخ في المونديال الأكبر. إليك أبرز ما تُريد معرفته عن الصيغة التنظيمية للبطولة:",
+          points: [
+            "الصيغة الكلاسيكية المحسّنة: تلعب المجموعات الـ 12 بنظام الدوري من دور واحد، حيث يتأهل بطل المجموعة ووصيفه مباشرة لبداية الأدوار الإقصائية.",
+            "مفاجأة دور الـ 32 الجديد: يتأهل كذلك أفضل 8 منتخبات تحتل المركز الثالث في مجموعاتها لتكتمل قائمة الـ 32 فريقاً العابرين للأدوار الحاسمة مجسدين قمة الإثارة الكروية.",
+            "زيادة عدد المباريات لـ 104 مباراة: مما يمنح الجماهير حول العالم مساحة ترفيهية ويومية غنية بالماتشات الملحمية وصراع العمالقة المستمر على مدار أكثر من 40 يوماً متواصلة."
+          ]
+        },
+        {
+          title: "2. ترندات الجماهير والمدن الـ 16: تجربة السفر الاستثنائية بقلب أمريكا الشمالية",
+          body: "يُمثل الطابع الجغرافي الشاسع لثلاثي الاستضافة (الولايات المتحدة، المكسيك، وكندا) تحدياً ومتعة مذهلة في آن واحد للمشجعين والمنظمين. تم تحديد 16 مدينة متطورة لاستضافة الفعاليات الرياضية وتوفير مناطق مخصصة للمهرجانات الاحتفالية الخاصة بالفيفا (Fan Zones) لضمان تجارب تشجيع وتفاعل غير قابلة للنسيان:",
+          points: [
+            "شغف الجماهير والاحتفال المترامي الأطراف: من شواطئ ميامي الدافئة إلى عراقة مكسيكو سيتي ووصولاً لطبيعة فانكوفر الكندية الساحرة، تتلاقى الثقافات والجنسيات المتباينة.",
+            "خطط السفر الإقليمية المرنة: قسمت اللجان التنظيمية المدن المستضيفة إلى ثلاثة قطاعات جغرافية رئيسية (شرقي، مركزي، وغربي) لتسهيل التنقل وتقليل مسافات الطيران الشاقة للمنتخبات وجماهيرهم.",
+            "الملاعب فائقة التجهيز: تحظى هذه الملاعب بأعلى معايير الرفاهية والتفاعل الرقمي للجماهير مع بث إحصائيات بصرية حية على شاشات الملاعب الضخمة كستاد دالاس التكنولوجي."
+          ]
+        },
+        {
+          title: "3. التحولات التكتيكية الحديثة في مونديال 2026: الهجوم الخاطف والتنظيم الهجين",
+          body: "مع تزايد الكثافة والضغط البدني للاعبي الكرة الحديثة، تشير ترندات اللعب في مونديال 2026 إلى غلبة التكتيك الذكي والهجين الذي يعتمد على الكفاءة والسرعة أكثر من مجرد الاحتفاظ السلبي بالكرة. يقود مدربو المنتخبات فلسفة تدريبية ترتكز على القواعد الفنية التالية لضخ الأهداف وتحقيق الفوز:",
+          points: [
+            "الارتداد السريع ومصيدة الضغط الهجومي البديل: تراجع في استعمال اللعب الاستحواذي الطويل لصالح الهجمات المرتدة النموذجية الصاعقة التي تستغل المساحات الفارغة خلف المدافعين.",
+            "لاعبو الوسط متعددو الوظائف: تزايد الاعتماد على صانعي الألعاب القادرين على استخلاص الكرات والمساندة الدفاعية دون فقدان المهارة الابتكارية في الثلث الأخير الهجومي.",
+            "الاستفادة القصوى من قاعدة التبديلات الخمسة: تفعيل مرونة إضافية للمدربين من أجل تعديل الخطط وبث الدماء والسرعة في الشوط الثاني لمواجهة الإرهاق البدني للمدافعين."
+          ]
+        },
+        {
+          title: "4. أين وكيف تتابع البث المباشر للمباريات والفعاليات الجماهيرية بجودة عالية",
+          body: "بالتزامن مع التقنيات الرقمية المتقدمة لعام 2026، تتيح شبكات البث تجارب فريدة للمشاهدة عبر الهواتف، المنصات، والشاشات الذكية بدقة فائقة. تابع الخطوات المضمونة للحصول على التغطية اللحظية الشاملة للمونديال دون فواصل:",
+          points: [
+            "القنوات التلفزيونية الإقليمية الناقلة: تأكد من تفعيل اشتراكك لدى الوكلاء الرسميين لشبكات الشرق الأوسط الحاصلة على الحقوق الحصرية باللغة العربية.",
+            "تطبيقات المشاهدة عبر الإنترنت الرسمية: والتي تقدم تحليلات رقمية فريدة عبر تقنيات الواقع المعزز وكثافة بث ديناميكية تدعم الترددات الضعيفة أثناء التنقل السريع للفرد.",
+            "ساحات المشجعين الرسمية الكبرى (Fan Festivals): متواجدة بكبرى العواصم والمدن السياحية، موفرة شاشات عملاقة وخدمات طعام وترفيه تشعرك بروح البطولة الإستراتيجية."
+          ],
+          note: "نصيحة سيو: عند تصفح جداول المجموعات أو مواعيد الماتشات، تأكد دائماً من ضبط توقيت جهازك على التوقيت المحلي لمدينتك لضمان عدم تفويت الدقيقة الأولى من الإثارة الكروية الاستثنائية!"
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هو عدد المنتخبات المشاركة رسمياً في مونديال 2026؟",
+          a: "يشارك في هذه النسخة التاريخية والأضخم عبر العصور 48 منتخباً دولياً لأول مرة في تاريخ الفيفا."
+        },
+        {
+          q: "كيف تم تقسيم المنتخبات في نظام البطولة الجديد؟",
+          a: "قُسمت المنتخبات الـ 48 إلى 12 مجموعة متكافئة، حيث تضُم كل واحدة منها 4 منتخبات يتنافسون بنظام الدوري من دور واحد."
+        },
+        {
+          q: "هل تقع المدن المستضيفة بالمونديال في دولة واحدة؟",
+          a: "لا، تُقام البطولة بتنظيم مشترك رائد ومشترك بالكامل بين ثلاث دول عملاقة وهي الولايات المتحدة الأمريكية، والمكسيك، وكندا عبر 16 مدينة معتمدة."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. The 48-Team Revolution: How the New Format Changes the World Cup Landscape",
+        "2. Fan Culture & Host Cities: The Ultimate North American Travel Experience",
+        "3. Advanced Tactical Trends of 2026: Lethal Transitions & Hybrid Pressing",
+        "4. Where & How to Live Stream the Matches with Ultra-HD Quality"
+      ],
+      sections: [
+        {
+          title: "1. The 48-Team Revolution: How the New Format Changes the World Cup Landscape",
+          body: "The FIFA World Cup 2026 marks a ground-breaking milestone by introducing a massive 48-team framework, grouped carefully into 12 distinct groups of 4. This structural shift opens a gateway of global opportunities for rising nations, ensuring matches are highly fierce from day one. Here are the keys to the new tournament style:",
+          points: [
+            "Expanded Group Dynamics: The 12 groups play a single-round robin. The top two teams in each group automatically secure a spot in the next stage.",
+            "The New Round of 32 Extravaganza: To complete the bracket, the 8 best third-placed countries in their groups advance, fueling intense late-night drama.",
+            "Record 104 Matches Scheduled: Broadening the global soccer feast to over 40 action-loaded days filled with classic encounters and legendary goals."
+          ]
+        },
+        {
+          title: "2. Fan Culture & Host Cities: The Ultimate North American Travel Experience",
+          body: "Spanning three continental giants—USA, Mexico, and Canada—the scale of World Cup 2026 is unparalleled. Sixteen state-of-the-art host cities are fully optimized featuring immersive FIFA Fan Festivals, delivering unforgettable cultural synergies:",
+          points: [
+            "Championship Across Borders: From coastal vibes in Miami to the intense historical arenas of Mexico City and nature spots of Vancouver, global fans feel right at home.",
+            "Strategic Regional Clusters: To optimize performance and cut down on exhausting timezone shifts, venues are categorized into Eastern, Central, and Western clusters.",
+            "Next-Gen Digital Stadiums: The 16 stadiums prioritize real-time smart integration, displaying live match statistics and customized angles for stadium audiences."
+          ]
+        },
+        {
+          title: "3. Advanced Tactical Trends of 2026: Lethal Transitions & Hybrid Pressing",
+          body: "Football strategies in 2026 are heavily dominated by physical peak readiness and rapid counter-attacks rather than static possession. Modern managers align their game philosophies around specific core ideas:",
+          points: [
+            "Verticality Over Possession: Teams focus heavily on direct transitions, launching vertical runners immediately behind defensive blocks once ball possession is retrieved.",
+            "The Rise of Hybrid Midfielders: Midfielders are expected to seamlessly swap between playmaking creativity and high-pressure defense recovery roles.",
+            "Strategic Five-Substitution Impact: Enabling managers to deploy fresh legs on demand to exploit tired defensive backlines during the high-paced second halves of matches."
+          ]
+        },
+        {
+          title: "4. Where & How to Live Stream the Matches with Ultra-HD Quality",
+          body: "For fans watching from home, modern 2026 broadcasting technology has introduced seamless viewing patterns. Here is how to keep up with the real-time action effortlessly:",
+          points: [
+            "Official regional broadcasters: Subscribe and register your accounts on the licensed networks streaming the event with local-language match commentary.",
+            "Live streaming services: Stream high-density lag-free feeds via smartphones, smart TVs, or desktop screens optimized for low-bandwidth scenarios.",
+            "Local FIFA Fan Festivals: If you're near a host city or a major capital, visit the official Fan Zones to watch matches with thousands of passionate fans."
+          ],
+          note: "SEO Tip: Always check the match timezone offsets in correlation with your local system clocks to avoid missing a single moment of kickoff excitement!"
+        }
+      ],
+      faqs: [
+        {
+          q: "How many countries are competing in World Cup 2026?",
+          a: "For the first time in history, 48 national squads are competing in the expanded final tournament."
+        },
+        {
+          q: "How are the groups structured in the new soccer format?",
+          a: "The tournament consists of 12 balanced groups, with 4 teams structured under each group playing a single-round robin system."
+        },
+        {
+          q: "Are all matches played in a single host country?",
+          a: "No, the matches are co-hosted across three major North American nations: the United States, Mexico, and Canada with 16 total venues."
+        }
+      ]
+    }
+  },
   {
     id: "art-successful-world-cup-nations",
     slug: "most-successful-world-cup-nations-history-records",

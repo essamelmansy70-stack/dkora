@@ -6,6 +6,7 @@ import worldCupTrendsCover from '../assets/images/world_cup_2026_trends_holder_1
 import egyptBelgiumResult from '../assets/images/egypt_belgium_result_1781661151271.jpg';
 import worldCupHistoryCover from '../assets/images/world_cup_champions_history_1781723892325.jpg';
 import worldCup2026EvergreenGuide from '../assets/images/world_cup_2026_evergreen_guide_1781875543787.jpg';
+import worldCupVolunteerGuide from '../assets/images/world_cup_volunteer_guide_1781917946554.jpg';
 
 interface Article {
   id: string;
@@ -44,6 +45,162 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-volunteer-guide-world-cup-2026",
+    slug: "how-to-volunteer-world-cup-2026-portal-requirements-registration",
+    categoryAr: "تطوع ومجتمع 2026",
+    categoryEn: "World Cup 2026 Volunteers",
+    titleAr: "دليل التطوع في كأس العالم 2026 | شروط التقديم، خطوات التسجيل الرسمية، والمزايا الحصرية للمشتركين",
+    titleEn: "Step-by-Step Guide to FIFA World Cup 2026 Volunteering | Requirements, Application Form & Exclusive Rewards",
+    descAr: "انضم إلى صناع التاريخ الكروي! تعرف على دليل التطوع الشامل لكأس العالم 2026 في أمريكا، كندا والمكسيك. شروط القبول، خطوات التقديم عبر بوابة الفيفا الرسمية، والامتيازات الحصرية للمقبولين.",
+    descEn: "Be part of football history! Explore the ultimate volunteering guide for FIFA World Cup 2026 in USA, Canada and Mexico. Discover requirements, registration steps via FIFA Portal, and amazing benefits.",
+    keywordsAr: [
+      "تطوع كاس العالم ٢٠٢٦",
+      "شروط تطوع كاس اعالم",
+      "تقديم تطوع كاس علام",
+      "كيف اسجل في تطوع الكورة",
+      "تطوع الفيفا ٢٠٢٦",
+      "وظايف كاس العالم 2026",
+      "التطوع في كاس العالم 2026"
+    ],
+    keywordsEn: [
+      "fifa voulanteers 2026",
+      "world cup 2026 colunteer",
+      "how to volinteer world cup",
+      "word cup 2026 volunteer application",
+      "fifa volunter 2026 registration",
+      "sports volunteering 2026"
+    ],
+    image: worldCupVolunteerGuide,
+    date: "2026-06-20",
+    readTime: "9 min read",
+    contentAr: {
+      toc: [
+        "1. أهمية قطاع التطوع في مونديال 2026 الأكبر تاريخياً",
+        "2. شروط التطوع والمتطلبات الأساسية للقبول بنظام الفيفا",
+        "3. خطوات التقديم والتسجيل عبر بوابة متطوعي الفيفا الرسمية",
+        "4. أبرز المزايا الحصرية والامتيازات التي يحصل عليها متطوعو كأس العالم"
+      ],
+      sections: [
+        {
+          title: "1. أهمية قطاع التطوع في مونديال 2026 الأكبر تاريخياً",
+          body: "مع توسعة نظام بطولة كأس العالم 2026 لتضم 48 منتخباً وتستوعب قرابة 104 مباراة ملحمية في 16 مدينة بثلاث دول عملاقة (الولايات المتحدة، المكسيك، وكندا)، تصبح الاستعانة بفرق التطوع ركيزة أساسية لا غنى عنها لنجاح الحدث. يمثل المتطوعون الوجه الترحيبي الأول والقلب النابض للمونديال، حيث يساهمون في تنظيم حركة ملايين المشجعين والوفود والمنتخبات القادمة من كافة أرجاء الأرض لتقديم ملحمة كروية استثنائية.",
+          points: [
+            "تغطية 16 مدينة مستضيفة: يتم توزيع المتطوعين على الملاعب والممرات السياحية والمطارات وساحات المشجعين (Fanzones) لتقديم دعم لوجستي متكامل.",
+            "إثراء السيرة الذاتية واكتساب الخبرات: يُعد العمل التطوعي في حدث بحجم المونديال شهادة عالمية ممتازة ونقطة انطلاق قوية في مسارات الإدارة الرياضية والتسويق الدولي.",
+            "بناء شبكة علاقات دولية: يتشارك الآلاف من مختلف الأعراق والثقافات العمل في بيئة حماسية إيجابية تصنع صداقات تدوم مدى الحياة."
+          ]
+        },
+        {
+          title: "2. شروط التطوع والمتطلبات الأساسية للقبول بنظام الفيفا",
+          body: "تضع الفيفا معايير واضحة وعادلة لاختيار الدفعة النهائية من المتطوعين لضمان الكفاءة والقدرة على التعامل مع الضغوطات الجماهيرية المتوقعة. إليك التفاصيل ومجالات الشروط الأساسية التي يبحث عنها المقيّمون في طلبات التقديم:",
+          points: [
+            "الحد الأدنى للسن: يجب ألا يقل عمر المتقدم عن 18 عاماً عند موعد انطلاق البطولة الرسمي لضمان الأداء القانوني والتنظيمي المناسب.",
+            "إتقان اللغات: تُعد اللغة الإنجليزية متطلباً أساسياً للتواصل، ويعتبر التحدث باللغتين الإسبانية والفرنسية ميزة إضافية قوية ومفضلة نظراً للطبيعة متعددة اللغات للدول المضيفة.",
+            "الالتزام الزمني التام: القدرة على العمل لمدة تتراوح بين 10 أيام إلى فترة البطولة كاملة، والالتزام بحضور الحصص التدريبية والمحاضرات التعريفية المسبقة.",
+            "المرونة اللوجستية والمهارات الاجتماعية: القدرة على التكيف مع مختلف المواقع والعمل بروح الفريق وتأكيد الحماس لخدمة الجماهير الكروية المتنوعة."
+          ]
+        },
+        {
+          title: "3. خطوات التقديم والتسجيل عبر بوابة متطوعي الفيفا الرسمية",
+          body: "إذا كنت تطمح في أن تتواجد ضمن الممرات والمرافق التاريخية وبجوار نجوم الساحرة المستديرة العالمية، إليك المسار الرقمي الصحيح للتسجيل بذكاء دون الوقوع في الأخطاء الشائعة:",
+          points: [
+            "إنشاء حساب على بوابة الفيفا (FIFA Volunteer Portal): قم بتسجيل الدخول وملء بياناتك الشخصية الأساسية والمؤهلات الأكاديمية والمهنية بعناية.",
+            "اختيار المجالات المفضلة والمدينة: حدد أدوارك المفضلة (مثل: الدعم الإعلامي، الضيافة، العمليات اللوجستية، إدارة الملاعب) وقربك الجغرافي من المدن والملاعب الـ 16 المستضيفة للمباريات.",
+            "المقابلة الشخصية والتقييم النفسي الرقمي: بعد تصفية الطلبات المبدئية، يخضع المرشحون لمقابلة فيديو مسجلة أو تقييم مهارات ذكي لقياس ردود الأفعال واللباقة الترحيبية.",
+            "مرحلة التدريب المباشر: يحصل المقبولون على برنامج تدريب مكثف يشمل سيناريوهات عملية وإدارة الحشود ومعلومات أمنية متكاملة."
+          ]
+        },
+        {
+          title: "4. أبرز المزايا الحصرية والامتيازات التي يحصل عليها متطوعو كأس العالم",
+          body: "على الرغم من أن التطوع عمل غير مدفوع الأجر، إلا أن الفيفا واللجان المحلية تقدم باقة سخية ومتميزة من الميزات العينية المذهلة التي تجعل التجربة فائقة القيمة وتستحق العناء بالكامل:",
+          points: [
+            "الزي الرسمي الرسمي الحصري (Adidas Uniform): بدلة رياضية كاملة تحمل شعار كأس العالم 2026 الحصري وعلامات الشركاء، لتظل تذكاراً يعبر عن حضورك التاريخي.",
+            "الوجبات المجانية والتنقلات المحلية: تغطية شاملة لكافة الوجبات الغذائية أثناء فترات الخدمة والمناوبات، مع بطاقات تنقل مجانية عبر شبكات النقل العام لضمان سرعة الوصول للملاعب والعودة.",
+            "الشهادات المصدقة والاحتفال الختامي: الحصول على شهادة تقديرية رسمية موقعة من الفيفا بانتهاء المهمة، مع حضور الحفل الختامي الكبير المخصص لفرق المتطوعين لتتويج جهودهم الملحمية."
+          ],
+          note: "نصيحة سيو 2026: لرفع فرص قبولك، تأكد من إبراز تجاربك السابقة في تنظيم الفعاليات المحلية والأنشطة الشبابية وتوضيح شغفك الواضح بالرياضة والترحاب الثقافي!"
+        }
+      ],
+      faqs: [
+        {
+          q: "هل يتطلب التطوع في كأس العالم دفع رسوم تقديم؟",
+          a: "لا، عملية التقديم والتسجيل والمشاركة في برامج التطوع لكأس العالم مجانية تماماً بنسبة 100% عبر بوابة الفيفا الرسمية."
+        },
+        {
+          q: "هل تغطي الفيفا تكاليف السفر والإقامة الدولية للمتطوعين؟",
+          a: "لا، يتحمل المتطوع الدولي تكاليف تذاكر الطيران والإقامة في البلد المستضيف، بينما تضمن البطولة الوجبات والمواصلات المحلية المجانية داخل المدينة أثناء فترات العمل."
+        },
+        {
+          q: "ما هو الوقت المتوقع لبدء العمل الفعلي لفرق التطوع بمونديال 2026؟",
+          a: "يبدأ العمل اللوجستي الميداني لمتطوعي الملاعب والمناطق اللوجستية قبل قرابة أسبوعين من موعد حفل الافتتاح الرسمي للبطولة."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. The Crucial Economic & Social Impact of Volunteers in WC 2026",
+        "2. Eligibility Criteria & Essential Requirements Set by FIFA Portal",
+        "3. Step-by-Step Registration & Form Submission Process",
+        "4. Elite Benefits & Exclusive Gifts Managed for the Selected Team"
+      ],
+      sections: [
+        {
+          title: "1. The Crucial Economic & Social Impact of Volunteers in WC 2026",
+          body: "With FIFA expanding the tournament roster to 48 national squads with 104 matches across 16 dynamic cities in USA, Mexico and Canada, creating a strong volunteer squad is extremely critical for global operational success. Volunteers act as the beautiful greeting cards of the tournament, enabling fluent visitor routes and ensuring world-class execution:",
+          points: [
+            "Covering wide tourist hubs: Stationed dynamically across stadiums, transit pathways, major airports and fan festivals to provide high-quality support.",
+            "Elevating future portfolios: Participating in a global sports mega-event offers unprecedented reference tags and boosts international sports management careers.",
+            "Unifying global cultures: Creating lasting networks where players of diverse, passionate backgrounds work side-by-side to deliver soccer magic."
+          ]
+        },
+        {
+          title: "2. Eligibility Criteria & Essential Requirements Set by FIFA Portal",
+          body: "To secure a position in the final volunteer rosters, applicants must satisfy several standard requirements designed to test endurance and social warmth under stadium peak conditions:",
+          points: [
+            "Minimum Age Limit: All applicants must be at least 18 years old by the official kickoff event of FIFA World Cup 2026.",
+            "Multilingual Advantage: Conversational English is required. Fluency in Spanish, French, or minor group languages serves as a massive competitive advantage.",
+            "Timeline Commitments: Able to participate for a continuous period of at least 10 tournament days, alongside attending online preparation modules and tactical briefings.",
+            "Positive Adaptability: Welcoming attitude, physical stamina for outdoor shifts, and strong enthusiasm to assist worldwide sports enthusiasts."
+          ]
+        },
+        {
+          title: "3. Step-by-Step Registration & Form Submission Process",
+          body: "If your dream is to experience the championship action alongside world-star players, follow this optimized walkthrough to avoid application failures:",
+          points: [
+            "Register on the Official FIFA Volunteer Portal: Build a comprehensive digital candidate profile listing relevant experience, academics, and contact information.",
+            "Select Preferred Venues & Roles: Choose from diverse tracks (e.g. Media support, Accreditation, Ticketing, Fan experience) and select your target host cities.",
+            "Online Interviews & Psychological Profiling: Selected candidates are invited to recorded mock-scenarios or self-paced video responses to test social skills.",
+            "Official Onboard Training: Successful recruits are matched with specialized mentors, attending simulated drills to prepare for game days."
+          ]
+        },
+        {
+          title: "4. Elite Benefits & Exclusive Gifts Managed for the Selected Team",
+          body: "While world cup volunteering remains a strictly unpaid role, FIFA along with regional host committees reward selected candidates with premium benefits making the process highly rewarding:",
+          points: [
+            "Ultimate Adidas Uniform Package: Full official athletic uniform, including jacket, sneakers, and badges carrying exclusive World Cup 2026 designs.",
+            "Daily In-Shift Catering & Transit Passes: Fully-covered premium meals during service shifts and unlimited local transport cards to move effortlessly across stadiums.",
+            "Certified Global Credentials: Earn a validated graduation certificate signed by FIFA executives, celebrating your impact, topped with access to the exclusive volunteer gala."
+          ],
+          note: "SEO Tip 2026: Elevate your application by mentioning any historic experiences in sports clubs, student-lead campaigns, or active community initiatives!"
+        }
+      ],
+      faqs: [
+        {
+          q: "Is there an application fee for the World Cup volunteering program?",
+          a: "No, submitting your candidate profile, attending training, and participating in the selection process is completely free of charge."
+        },
+        {
+          q: "Does FIFA sponsor international flights or hotel room stays?",
+          a: "No, international volunteers must arrange and self-fund their own travel, visas and housing. Local transport and meals during active shift hours are provided."
+        },
+        {
+          q: "When will the field volunteer activities officially build up?",
+          a: "On-site mock operations and physical setups start rolling about two weeks before the grand opening match kicks off."
+        }
+      ]
+    }
+  },
   {
     id: "art-evergreen-trends-world-cup-2026",
     slug: "ultimate-evergreen-guide-fifa-world-cup-2026-trends-insights",

@@ -8,6 +8,7 @@ import worldCupHistoryCover from '../assets/images/world_cup_champions_history_1
 import worldCup2026EvergreenGuide from '../assets/images/world_cup_2026_evergreen_guide_1781875543787.jpg';
 import worldCupVolunteerGuide from '../assets/images/world_cup_volunteer_guide_1781917946554.jpg';
 import worldCupAccommodationGuide from '../assets/images/world_cup_accommodation_guide_1782005363196.jpg';
+import worldCupStadiumsCitiesGuide from '../assets/images/world_cup_stadiums_cities_guide_1782087462182.jpg';
 
 interface Article {
   id: string;
@@ -23,6 +24,7 @@ interface Article {
   image: string;
   date: string;
   readTime: string;
+  youtubeId?: string;
   contentAr: {
     toc: string[];
     sections: {
@@ -46,6 +48,157 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-stadiums-cities-world-cup-2026",
+    slug: "complete-guide-fifa-world-cup-2026-stadiums-host-cities-map",
+    categoryAr: "ملاعب ومدن 2026",
+    categoryEn: "World Cup 2026 Venues",
+    titleAr: "ملاعب كأس العالم 2026 | الدليل الشامل للاستادات الـ 16 والمدن المستضيفة في أمريكا والمكسيك وكندا",
+    titleEn: "FIFA World Cup 2026 Stadiums & Host Cities | Ultimate Guide to the 16 Legendary Venues",
+    descAr: "اكتشف ملاعب كأس العالم 2026 والمدن المستضيفة بالتفصيل. دليل متوافق مع السيو لعشاق كورة والمسافرين، يغطي المواقع، الطاقات الاستيعابية، والمميزات التكنولوجية والميزات الجغرافية للأماكن.",
+    descEn: "Explore the ultimate 2026 FIFA World Cup stadiums and host cities. Detailed breakdown of the 16 spectacular venues in USA, Canada, and Mexico with seating capacities, tech advancements, and fan info.",
+    keywordsAr: [
+      "ملاعب كاس العالم 2026",
+      "المدن المستضيفة لكاس العالم 2026",
+      "مدن امريكا كاس العالم 2026",
+      "استاد نهائي كاس العالم 2026",
+      "ملاعب المكسيك وكندا كاس العالم",
+      "السياحة في كاس العالم ٢٠٢٦"
+    ],
+    keywordsEn: [
+      "world cup 2026 stadiums map",
+      "fifa wc 2026 host cities",
+      "usa stadiums world cup 2026",
+      "mexico canada venues 2026",
+      "world cup final stadium 2026",
+      "2026 world cup tourist guide"
+    ],
+    image: worldCupStadiumsCitiesGuide,
+    date: "2026-06-22",
+    readTime: "11 min read",
+    contentAr: {
+      toc: [
+        "1. خريطة المدن الـ 16 المستضيفة لكأس العالم 2026: ثلاثة دول وعالم واحد من الحماس",
+        "2. أعظم ملاعب الولايات المتحدة: قلاع التكنولوجيا والاستثنائية الرياضية",
+        "3. تاريخ وعراقة ملاعب المكسيك والبراعة الحديثة لكندا في قلب المونديال",
+        "4. نصائح سيو للمسافرين والمشجعين: كيفية التنقل الذكي بين قارات وقطاعات ملاعب المونديال"
+      ],
+      sections: [
+        {
+          title: "1. خريطة المدن الـ 16 المستضيفة لكأس العالم 2026: ثلاثة دول وعالم واحد من الحماس",
+          body: "لأول مرة في تاريخ الاتحاد الدولي لكرة القدم (فيفا)، تشترك ثلاث دول كبرى في أمريكا الشمالية وهي الولايات المتحدة الأمريكية والمكسيك وكندا في استضافة الحدث الكروي الأكبر بمشاركة 48 منتخباً. تم اختيار 16 مدينة بدقة متناهية لتكون بمثابة قلاع حقيقية لاستقبل الملايين من مشجعي كرة القدم حول العالم، وتتوزع هذه المدن لتضمن تنوعاً جغرافياً وثقافياً مذهلاً يبهر كل زائر:",
+          points: [
+            "الولايات المتحدة الأمريكية (11 مدينة مستضيفة): أتلانتا، بوسطن، دالاس، هيوستن، كانساس سيتي، لوس أنجلوس، ميامي، نيويورك/نيوجيرسي، فيلادلفيا، سان فرانسيسكو، وسياتل.",
+            "المكسيك العريقة (3 مدن مستضيفة): مكسيكو سيتي، غوادالاخارا، ومونتيري.",
+            "كندا الواعدة (مدينتان مستضيفتان): تورونتو وفانكوفر."
+          ]
+        },
+        {
+          title: "2. أعظم ملاعب الولايات المتحدة: قلاع التكنولوجيا والاستثنائية الرياضية",
+          body: "تحتضن الولايات المتحدة الغالبية العظمى من اللقاءات المونديالية على ملاعب فائقة التطور والتصميم الهندسي، حيث تتميز هذه الاستادات بطاقات جماهيرية ضخمة وبنية رقمية ترحيبية لا مثيل لها:",
+          points: [
+            "ملعب هارد روك (ميامي): يتميز بسقف تكنولوجي لحماية الجماهير من أشعة الشمس، ومقر خروج الوفود السياحية.",
+            "ملعب ميتلايف (نيويورك / نيوجيرسي): مسرح المباراة النهائية الكبرى لعام 2026، ويتسع لأكثر من 82,500 مشجع لضمان تغطية هتافية تهز الأركان.",
+            "ملعب AT&T (دالاس): قلعة مغطاة بالكامل تتميز بأكبر حجم شاشة عرض معلقة في العالم، ما يوفر بث إحصائي مرئي متزامن لجميع اللقطات المثيرة بالملعب."
+          ]
+        },
+        {
+          title: "3. تاريخ وعراقة ملاعب المكسيك والبراعة الحديثة لكندا في قلب المونديال",
+          body: "بينما تروي جدران المكسيك القصص التاريخية للأسطورتين بيليه ومارادونا، تبرز كندا بقلاع عصرية صديقة للبيئة مجهة بكافة سبل الراحة:",
+          points: [
+            "استاد أزتيكا (مكسيكو سيتي): الملعب الأسطوري الذي شهد تتويج عمالقة الأمس، يصبح أول استاد يستضيف افتتاح كأس العالم لثلاث دورات تاريخية مختلفة.",
+            "ملعب بي سي بليس (فانكوفر الكندية): يقع في قلب الطبيعة الخضراء على ضفاف المياه، ويتميز بسقف سحاب تلسكوبي قابل للسحب بالكامل يوفر إطلالات خيالية للجماهير.",
+            "ملعب بي إم أو (تورونتو): يمثل المدخل الرئيسي للحفاوة الكندية بجماهير الساحرة المستديرة مع توسعة تضمن مقاعد ولقطات تقريبية غاية في الحماس والتفاعل."
+          ]
+        },
+        {
+          title: "4. نصائح سيو للمسافرين والمشجعين: كيفية التنقل الذكي بين قارات وقطاعات ملاعب المونديال",
+          body: "تخطيط رحلاتك بين القارات الثلاث يتطلب وعياً تاماً بالمحاور والقطاعات الجغرافية المعتمدة لتقليل تكلفة حركات الطيران المرهقة وضمان الاستقرار طوال فترة المونديال الأروع:",
+          points: [
+            "اختر قطاعاً جغرافياً موحداً للإقامة: تم تقسيم البطولة إلى قطاعات (شرقي وأوسط وغربي)، مما يسهل سكنك وتنفسك داخل قطاع واحد وتفادي مناطق التغير الزمني الكبيرة.",
+            "احجز من خلال بوابات النقل المشترك المعتمدة: استعمل خطوط المترو السريعة والحافلات المخصصة بدلاً من السيارات الخاصة نظراً للازدحامات الشاهقة في محيط ملاعب الـ 16 مدينة.",
+            "احرص على تنزيل التطبيقات اللحظية للخرائط والطقس: لمواكبة تباينات درجات الحرارة بين برودة فانكوفر الكندية وحرارة شواطئ ميامي أو تلال المكسيك العالية."
+          ],
+          note: "نصيحة سيو: حجز بطاقات قطاعك الجغرافي وحضور فعاليات منطقة فيفا فستيفال (FIFA Fan Festival) المتاحة بكل مدينة يضمن عيش أجواء الحماسة اللامتناهية بأسعار معقولة جداً!"
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هو الملعب الذي يستضيف المباراة النهائية لكأس العالم 2026؟",
+          a: "وقع الاختيار رسمياً على ملعب ميتلايف (MetLife Stadium) في نيويورك/نيوجيرسي لاستضافة المباراة الختامية الملحمية لكأس العالم 2026."
+        },
+        {
+          q: "كم عدد الملاعب المستضيفة لإجمالي مباريات البطولة؟",
+          a: "تُقام فعاليات البطولة بالكامل عبر 16 ملعباً تم اختيارها بعناية فائقة وتجهيزها بأفضل تقنيات الزراعة الطبيعية للمسطحات الخضراء واللوحات الإحصائية الرقمية."
+        },
+        {
+          q: "كيف تساعد التقسيمات الجغرافية للمدن المشجعين في السفر؟",
+          a: "قُسّمت المدن إلى ثلاثة قطاعات رئيسية متجاورة (المنطقة الشرقية، الوسطى، والغربية) لمنع رحلات الطيران الطويلة والمرهقة للمنتخبات والجماهير، وتوفير تجربة سياحة مريحة."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Mapping the 16 Iconic Host Cities: Three Historic Nations, One Beautiful Goal",
+        "2. Giants of the USA: Architectural Masterpieces Leading the Tournament",
+        "3. Sacred Grounds of Mexico & Canada's Modern Marvels in the Spotlight",
+        "4. Savvy Travel Protocols: Commuting Effortlessly Across World Cup Regional Hubs"
+      ],
+      sections: [
+        {
+          title: "1. Mapping the 16 Iconic Host Cities: Three Historic Nations, One Beautiful Goal",
+          body: "For the very first time in FIFA World Cup history, three giant North American countries—the USA, Mexico, and Canada—unite to host the biggest soccer tournament ever with 48 teams. 16 spectacular cities have been selected as absolute fortresses to welcome millions of soccer fans worldwide. These locations offer stunning geographical and cultural diversity that is sure to leave a lasting impression on every traveler:",
+          points: [
+            "Unites States of America (11 Host Cities): Atlanta, Boston, Dallas, Houston, Kansas City, Los Angeles, Miami, New York/New Jersey, Philadelphia, San Francisco, and Seattle.",
+            "Legendary Mexico (3 Host Cities): Mexico City, Guadalajara, and Monterrey.",
+            "Emerging Canada (2 Host Cities): Toronto and Vancouver."
+          ]
+        },
+        {
+          title: "2. Giants of the USA: Architectural Masterpieces Leading the Tournament",
+          body: "The USA hosts the vast majority of matches in spectacular, highly advanced stadiums that feature massive configurations, supreme security, and comfortable digital integration:",
+          points: [
+            "MetLife Stadium (New York/New Jersey): The grand stage chosen to host the FIFA World Cup 2026 Final, seating over 82,500 roaring fans.",
+            "AT&T Stadium (Dallas): Featuring an ultra-gigantic central hung LED screen system that displays real-time tactical overlays and instant close-ups.",
+            "Hard Rock Stadium (Miami): Engineered with a state-of-the-art canopy to protect fans from the sun and offer a dynamic fan fest atmosphere."
+          ]
+        },
+        {
+          title: "3. Sacred Grounds of Mexico & Canada's Modern Marvels in the Spotlight",
+          body: "While Mexico's arenas are decorated with the historical stories of Pelé and Maradona, Canada balances the tournament with spectacular eco-friendly facilities:",
+          points: [
+            "Estadio Azteca (Mexico City): The iconic cathedral that shaped previous legendary finals, becoming the first stadium to host 3 World Cup opening games.",
+            "BC Place (Vancouver): Nestled spectacularly among lush green views, featuring a state-of-the-art retractable roof system that keeps the fans close to natural light.",
+            "BMO Field (Toronto): Canada's premium soccer portal with customized expansions to pull spectators as close as possible to the intense pitch action."
+          ]
+        },
+        {
+          title: "4. Savvy Travel Protocols: Commuting Effortlessly Across World Cup Regional Hubs",
+          body: "Traveling across three nations demands proper planning based on official regional subdivisions to avoid severe timezone fatigue and reduce cost barriers:",
+          points: [
+            "Target a Single Geographical Hub for Stays: Choosing to base your housing inside one cluster (East, Central, or West) keeps your transit plans simple and fluid.",
+            "Leverage Dedicated High-Capacity Public Transits: Avoid rental cars and rely on high-speed rail lines or official match shuttles to escape stadium-area congestion.",
+            "Keep Reliable Local Map & Weather Applications Handy: To quickly adapt to temperature shifts between beautiful Vancouver and sunny coastal Miami."
+          ],
+          note: "SEO Tip: Attending FIFA Fan Festivals across major metropolitan plazas is a spectacular, friendly, and budget-safe way to share the pure sports thrill!"
+        }
+      ],
+      faqs: [
+        {
+          q: "Which stadium will host the 2026 FIFA World Cup final match?",
+          a: "The finale will be hosted at the spectacular MetLife Stadium located in New York/New Jersey on July 19, 2026."
+        },
+        {
+          q: "How many host stadium venues are officially confirmed?",
+          a: "A total of 16 world-class venues have been selected, boasting major tech updates, natural hybrid pitches, and rich visuals."
+        },
+        {
+          q: "What is the benefit of the tournament's regional grouping strategy?",
+          a: "Dividing the massive map into East, Central, and West zones reduces travel distances for players and ensures pleasant tourism."
+        }
+      ]
+    }
+  },
   {
     id: "art-accommodation-guide-world-cup-2026",
     slug: "ultimate-accommodation-lodging-guide-fifa-world-cup-2026",
@@ -1956,6 +2109,30 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                   referrerPolicy="no-referrer"
                 />
               </div>
+
+              {/* Optional embedded YouTube video with professional aspect-ratio matching Shorts or standard formatting */}
+              {selectedArticle.youtubeId && (
+                <div className="space-y-3.5 p-5 bg-[#070b24] border border-slate-800/80 rounded-2xl">
+                  <span className="text-xs font-black text-[#ff1a40] uppercase tracking-wider block font-sans">
+                    {isRtl ? "شاهد التحليل التكتيكي المرفق (فيديو):" : "Watch Attached Tactical Analysis (Video):"}
+                  </span>
+                  <div className="aspect-[9/16] max-w-[280px] mx-auto rounded-2xl overflow-hidden border border-slate-800 shadow-md">
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src={`https://www.youtube.com/embed/${selectedArticle.youtubeId}`}
+                      title={isRtl ? selectedArticle.titleAr : selectedArticle.titleEn}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                  <p className="text-[10px] sm:text-xs text-rose-400 text-center font-bold">
+                    {isRtl ? "عرض تحليلي من قناة كوره شراب ⚽ لشكل التشكيل" : "Video analysis from Kora Shrab ⚽ channel reviewing squad formations"}
+                  </p>
+                </div>
+              )}
 
               {/* Table of Content (TOC) Map */}
               <div className="p-5 bg-[#070b24] border border-slate-800/80 rounded-2xl space-y-3 text-right rtl:text-right ltr:text-left">

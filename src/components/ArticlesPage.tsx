@@ -9,6 +9,7 @@ import worldCup2026EvergreenGuide from '../assets/images/world_cup_2026_evergree
 import worldCupVolunteerGuide from '../assets/images/world_cup_volunteer_guide_1781917946554.jpg';
 import worldCupAccommodationGuide from '../assets/images/world_cup_accommodation_guide_1782005363196.jpg';
 import worldCupStadiumsCitiesGuide from '../assets/images/world_cup_stadiums_cities_guide_1782087462182.jpg';
+import worldCupFormatEvergreenGuide from '../assets/images/world_cup_format_evergreen_guide_1782344938321.jpg';
 
 interface Article {
   id: string;
@@ -49,152 +50,152 @@ interface Article {
 
 const ARTICLES_DATA: Article[] = [
   {
-    id: "art-stadiums-cities-world-cup-2026",
-    slug: "complete-guide-fifa-world-cup-2026-stadiums-host-cities-map",
-    categoryAr: "ملاعب ومدن 2026",
-    categoryEn: "World Cup 2026 Venues",
-    titleAr: "ملاعب كأس العالم 2026 | الدليل الشامل للاستادات الـ 16 والمدن المستضيفة في أمريكا والمكسيك وكندا",
-    titleEn: "FIFA World Cup 2026 Stadiums & Host Cities | Ultimate Guide to the 16 Legendary Venues",
-    descAr: "اكتشف ملاعب كأس العالم 2026 والمدن المستضيفة بالتفصيل. دليل متوافق مع السيو لعشاق كورة والمسافرين، يغطي المواقع، الطاقات الاستيعابية، والمميزات التكنولوجية والميزات الجغرافية للأماكن.",
-    descEn: "Explore the ultimate 2026 FIFA World Cup stadiums and host cities. Detailed breakdown of the 16 spectacular venues in USA, Canada, and Mexico with seating capacities, tech advancements, and fan info.",
+    id: "art-format-evergreen-world-cup-2026",
+    slug: "new-fifa-world-cup-2026-tournament-format-explained-48-teams",
+    categoryAr: "نظام البطولة 2026",
+    categoryEn: "Tournament Format",
+    titleAr: "نظام بطولة كأس العالم 2026 الجديد | الشرح الشامل لـ 48 منتخباً وتعديلات دور المجموعات التاريخية",
+    titleEn: "FIFA World Cup 2026 New Format Explained | Ultimate Guide to the 48-Team Group Stage Rules",
+    descAr: "دليلك الشامل لمعرفة نظام بطولة كأس العالم 2026 الجديد بالتفصيل. تعرف على عدد المجموعات، كيفية تأهل أفضل ثوالث، ونظام الـ 48 فريقاً الجديد المعتمد من الفيفا كورة.",
+    descEn: "Explore the complete and detailed guide on the new 2026 FIFA World Cup format. Learn how the 48-team expansion works, group stage alterations, 32-team knockout stage transitions, and key rules.",
     keywordsAr: [
-      "ملاعب كاس العالم 2026",
-      "المدن المستضيفة لكاس العالم 2026",
-      "مدن امريكا كاس العالم 2026",
-      "استاد نهائي كاس العالم 2026",
-      "ملاعب المكسيك وكندا كاس العالم",
-      "السياحة في كاس العالم ٢٠٢٦"
+      "نظام بطولة كأس العالم 2026 الجديد",
+      "عدد مجموعات كأس العالم 2026",
+      "كيفية تأهل أفضل ثوالث 2026",
+      "نظام الـ 48 منتخباً المونديالي",
+      "مباريات كأس العالم 2026 المجموعات",
+      "شرح قوانين الفيفا للمونديال الجديد"
     ],
     keywordsEn: [
-      "world cup 2026 stadiums map",
-      "fifa wc 2026 host cities",
-      "usa stadiums world cup 2026",
-      "mexico canada venues 2026",
-      "world cup final stadium 2026",
-      "2026 world cup tourist guide"
+      "new fifa world cup 2026 format",
+      "48 teams world cup groups",
+      "how do third placed teams qualify 2026",
+      "world cup 2026 knockout rounds expansion",
+      "fifa 2026 new tournament rules",
+      "world cup 2026 12 groups of 4"
     ],
-    image: worldCupStadiumsCitiesGuide,
-    date: "2026-06-22",
-    readTime: "11 min read",
+    image: worldCupFormatEvergreenGuide,
+    date: "2026-06-24",
+    readTime: "10 min read",
     contentAr: {
       toc: [
-        "1. خريطة المدن الـ 16 المستضيفة لكأس العالم 2026: ثلاثة دول وعالم واحد من الحماس",
-        "2. أعظم ملاعب الولايات المتحدة: قلاع التكنولوجيا والاستثنائية الرياضية",
-        "3. تاريخ وعراقة ملاعب المكسيك والبراعة الحديثة لكندا في قلب المونديال",
-        "4. نصائح سيو للمسافرين والمشجعين: كيفية التنقل الذكي بين قارات وقطاعات ملاعب المونديال"
+        "1. الثورة التاريخية في نظام كأس العالم 2026: من 32 إلى 48 منتخباً",
+        "2. تفاصيل دور المجموعات الجديد: 12 مجموعة وصيغة الـ 4 منتخبات المعتمدة",
+        "3. آلية تأهل أفضل ثوالث والعبور الاستثنائي لدور الـ 32 المثير",
+        "4. نصائح سيو كروية: كيف سيؤثر النظام الجديد على الحصيلة الإحصائية والمنافسة"
       ],
       sections: [
         {
-          title: "1. خريطة المدن الـ 16 المستضيفة لكأس العالم 2026: ثلاثة دول وعالم واحد من الحماس",
-          body: "لأول مرة في تاريخ الاتحاد الدولي لكرة القدم (فيفا)، تشترك ثلاث دول كبرى في أمريكا الشمالية وهي الولايات المتحدة الأمريكية والمكسيك وكندا في استضافة الحدث الكروي الأكبر بمشاركة 48 منتخباً. تم اختيار 16 مدينة بدقة متناهية لتكون بمثابة قلاع حقيقية لاستقبل الملايين من مشجعي كرة القدم حول العالم، وتتوزع هذه المدن لتضمن تنوعاً جغرافياً وثقافياً مذهلاً يبهر كل زائر:",
+          title: "1. الثورة التاريخية في نظام كأس العالم 2026: من 32 إلى 48 منتخباً",
+          body: "تشهد نسخة كأس العالم 2026 منعطفاً تاريخياً هو الأكبر منذ انطلاق البطولة عام 1930. حيث قرر الاتحاد الدولي لكرة القدم (فيفا) زيادة عدد المنتخبات المشاركة من 32 منتخباً (النظام الذي طُبق منذ عام 1998) إلى 48 منتخباً. هذا التوسع التاريخي يفتح الأبواب أمام دول وقوى كروية جديدة للتنافس على الكأس الذهبية المرموقة، مما يرفع إجمالي عدد مباريات البطولة من 64 مباراة إلى 104 مباريات غاية في المتعة والإثارة الحية.",
           points: [
-            "الولايات المتحدة الأمريكية (11 مدينة مستضيفة): أتلانتا، بوسطن، دالاس، هيوستن، كانساس سيتي، لوس أنجلوس، ميامي، نيويورك/نيوجيرسي، فيلادلفيا، سان فرانسيسكو، وسياتل.",
-            "المكسيك العريقة (3 مدن مستضيفة): مكسيكو سيتي، غوادالاخارا، ومونتيري.",
-            "كندا الواعدة (مدينتان مستضيفتان): تورونتو وفانكوفر."
+            "فرص أكبر للقارات النامية: حصلت قارة إفريقيا وآسيا على زيادة ملحوظة في عدد المقاعد المباشرة، مما يزيد من الحضور العربي والمونديالي.",
+            "إطالة مدة الإثارة: تمتد البطولة لـ 39 يوماً من التشويق الكروي الخالص، مما يمنح الجماهير جرعة مضاعفة من الساحرة المستديرة.",
+            "تنوع الثقافات الكروية: تجمع الملاعب الـ 16 في أمريكا وكندا والمكسيك مدارس كروية متنوعة لأول مرة في تاريخ اللعبة."
           ]
         },
         {
-          title: "2. أعظم ملاعب الولايات المتحدة: قلاع التكنولوجيا والاستثنائية الرياضية",
-          body: "تحتضن الولايات المتحدة الغالبية العظمى من اللقاءات المونديالية على ملاعب فائقة التطور والتصميم الهندسي، حيث تتميز هذه الاستادات بطاقات جماهيرية ضخمة وبنية رقمية ترحيبية لا مثيل لها:",
+          title: "2. تفاصيل دور المجموعات الجديد: 12 مجموعة وصيغة الـ 4 منتخبات المعتمدة",
+          body: "بعد نقاشات طويلة واستبعاد خيار المجموعات الثلاثية لتجنب مخاطر التواطؤ، اعتمد الفيفا رسمياً هيكلية المجموعات الرباعية التقليدية لضمان أقصى درجات العدالة والندية والتنافس الشريف في المباريات الحاسمة:",
           points: [
-            "ملعب هارد روك (ميامي): يتميز بسقف تكنولوجي لحماية الجماهير من أشعة الشمس، ومقر خروج الوفود السياحية.",
-            "ملعب ميتلايف (نيويورك / نيوجيرسي): مسرح المباراة النهائية الكبرى لعام 2026، ويتسع لأكثر من 82,500 مشجع لضمان تغطية هتافية تهز الأركان.",
-            "ملعب AT&T (دالاس): قلعة مغطاة بالكامل تتميز بأكبر حجم شاشة عرض معلقة في العالم، ما يوفر بث إحصائي مرئي متزامن لجميع اللقطات المثيرة بالملعب."
+            "توزيع المنتخبات: تم تقسيم الـ 48 منتخباً إلى 12 مجموعة، تضم كل مجموعة 4 منتخبات تتنافس فيما بينها بنظام الدوري من دور واحد.",
+            "المحافظة على الجولة الثالثة المثيرة: يضمن نظام المجموعات الرباعية لعب الجولتين الأخيرتين من المجموعات في نفس التوقيت لمزيد من النزاهة والإثارة الرياضية الحية.",
+            "خوض 3 مباريات مضمونة: يضمن هذا النظام لكل منتخب مشارك خوض 3 مباريات قوية على الأقل في المونديال قبل المغادرة."
           ]
         },
         {
-          title: "3. تاريخ وعراقة ملاعب المكسيك والبراعة الحديثة لكندا في قلب المونديال",
-          body: "بينما تروي جدران المكسيك القصص التاريخية للأسطورتين بيليه ومارادونا، تبرز كندا بقلاع عصرية صديقة للبيئة مجهة بكافة سبل الراحة:",
+          title: "3. آلية تأهل أفضل ثوالث والعبور الاستثنائي لدور الـ 32 المثير",
+          body: "تعتبر هذه التعديل الأبرز والأكثر جذباً للأنظار في تكتيكات التأهل؛ حيث تم استحداث دور إقصائي جديد يسبق دور الستة عشر المعتاد وهو 'دور الـ 32':",
           points: [
-            "استاد أزتيكا (مكسيكو سيتي): الملعب الأسطوري الذي شهد تتويج عمالقة الأمس، يصبح أول استاد يستضيف افتتاح كأس العالم لثلاث دورات تاريخية مختلفة.",
-            "ملعب بي سي بليس (فانكوفر الكندية): يقع في قلب الطبيعة الخضراء على ضفاف المياه، ويتميز بسقف سحاب تلسكوبي قابل للسحب بالكامل يوفر إطلالات خيالية للجماهير.",
-            "ملعب بي إم أو (تورونتو): يمثل المدخل الرئيسي للحفاوة الكندية بجماهير الساحرة المستديرة مع توسعة تضمن مقاعد ولقطات تقريبية غاية في الحماس والتفاعل."
+            "تأهل متصدري المجموعات: يتأهل بطل كل مجموعة من المجموعات الـ 12 والوصيف (صاحب المركز الثاني) مباشرة إلى دور الـ 32 (إجمالي 24 منتخباً).",
+            "نظام أفضل ثوالث الفريد: لتكملة نصاب الـ 32 منتخباً، يتأهل أفضل 8 منتخبات تحتل المركز الثالث في مجموعاتها الـ 12 استناداً لعدد النقاط ثم فارق الأهداف.",
+            "تجنب الحسابات المعقدة: تشتعل مباريات المجموعات حتى اللحظة الأخيرة، حيث يمكن لمنتخب يملك 3 أو 4 نقاط فقط تحقيق معجزة التأهل التاريخي للدور الثاني."
           ]
         },
         {
-          title: "4. نصائح سيو للمسافرين والمشجعين: كيفية التنقل الذكي بين قارات وقطاعات ملاعب المونديال",
-          body: "تخطيط رحلاتك بين القارات الثلاث يتطلب وعياً تاماً بالمحاور والقطاعات الجغرافية المعتمدة لتقليل تكلفة حركات الطيران المرهقة وضمان الاستقرار طوال فترة المونديال الأروع:",
+          title: "4. نصائح سيو كروية: كيف سيؤثر النظام الجديد على الحصيلة الإحصائية والمنافسة",
+          body: "مع زيادة عدد اللقاءات الكروية لـ 104 مباريات، يرى المحللون والمدربون الكبار أن بطولة 2026 ستتطلب استراتيجيات بدنية ونفسية متكاملة للتعامل مع طول المسافة الجغرافية وعمق قوائم البدلاء بالفريق:",
           points: [
-            "اختر قطاعاً جغرافياً موحداً للإقامة: تم تقسيم البطولة إلى قطاعات (شرقي وأوسط وغربي)، مما يسهل سكنك وتنفسك داخل قطاع واحد وتفادي مناطق التغير الزمني الكبيرة.",
-            "احجز من خلال بوابات النقل المشترك المعتمدة: استعمل خطوط المترو السريعة والحافلات المخصصة بدلاً من السيارات الخاصة نظراً للازدحامات الشاهقة في محيط ملاعب الـ 16 مدينة.",
-            "احرص على تنزيل التطبيقات اللحظية للخرائط والطقس: لمواكبة تباينات درجات الحرارة بين برودة فانكوفر الكندية وحرارة شواطئ ميامي أو تلال المكسيك العالية."
+            "تأثير عمق التشكيل والبدلاء: ستكون المنتخبات التي تمتلك دكة بدلاء قوية ومتقاربة في المستوى هي الأكثر قدرة على مواصلة المشوار الطويل والمرهق.",
+            "فرص تاريخية للمهاجمين وصناع اللعب: مع زيادة المباريات، يتوقع خبراء كورة تسجيل أرقام قياسية تاريخية جديدة في عدد الأهداف والمنافسة الشرسة على لقب الهداف التاريخي.",
+            "شغف وتفاعل الجماهير عبر القارات: يضمن تقسيم المباريات على قطاعات جغرافية تجربة سفر فريدة واستثنائية للمشجعين بين ثلاث دول عظيمة الصنع."
           ],
           note: "نصيحة سيو: حجز بطاقات قطاعك الجغرافي وحضور فعاليات منطقة فيفا فستيفال (FIFA Fan Festival) المتاحة بكل مدينة يضمن عيش أجواء الحماسة اللامتناهية بأسعار معقولة جداً!"
         }
       ],
       faqs: [
         {
-          q: "ما هو الملعب الذي يستضيف المباراة النهائية لكأس العالم 2026؟",
-          a: "وقع الاختيار رسمياً على ملعب ميتلايف (MetLife Stadium) في نيويورك/نيوجيرسي لاستضافة المباراة الختامية الملحمية لكأس العالم 2026."
+          q: "كم عدد مجموعات كأس العالم 2026 ونظام تأهل الفرق؟",
+          a: "البطولة مقسمة إلى 12 مجموعة رباعية (كل مجموعة بها 4 منتخبات). يتأهل صاحب المركز الأول والثاني من كل مجموعة، بالإضافة إلى أفضل 8 منتخبات تحتل المركز الثالث، ليتشكل دور الـ 32 الإقصائي."
         },
         {
-          q: "كم عدد الملاعب المستضيفة لإجمالي مباريات البطولة؟",
-          a: "تُقام فعاليات البطولة بالكامل عبر 16 ملعباً تم اختيارها بعناية فائقة وتجهيزها بأفضل تقنيات الزراعة الطبيعية للمسطحات الخضراء واللوحات الإحصائية الرقمية."
+          q: "ما هو دور الـ 32 في نظام المونديال الجديد؟",
+          a: "هو دور إقصائي مستحدث يبدأ بعد انتهاء دور المجموعات مباشرة، حيث يتنافس فيه 32 منتخباً بنظام خروج المغلوب وصولاً للنهائي التاريخي."
         },
         {
-          q: "كيف تساعد التقسيمات الجغرافية للمدن المشجعين في السفر؟",
-          a: "قُسّمت المدن إلى ثلاثة قطاعات رئيسية متجاورة (المنطقة الشرقية، الوسطى، والغربية) لمنع رحلات الطيران الطويلة والمرهقة للمنتخبات والجماهير، وتوفير تجربة سياحة مريحة."
+          q: "لماذا ألغى الفيفا مقترح المجموعات الثلاثية في كأس العالم 2026؟",
+          a: "تم إلغاؤه للحفاظ على حماسة ونزاهة الجولة الأخيرة وتفادي التواطؤ الرياضي، وضمان خوض كل منتخب لثلاث مباريات كاملة تضمن تكافؤاً مطلقاً للفرص."
         }
       ]
     },
     contentEn: {
       toc: [
-        "1. Mapping the 16 Iconic Host Cities: Three Historic Nations, One Beautiful Goal",
-        "2. Giants of the USA: Architectural Masterpieces Leading the Tournament",
-        "3. Sacred Grounds of Mexico & Canada's Modern Marvels in the Spotlight",
-        "4. Savvy Travel Protocols: Commuting Effortlessly Across World Cup Regional Hubs"
+        "1. The Historical World Cup 2026 Expansion: Expanding from 32 to 48 Teams",
+        "2. Understanding the 12 Groups Layout: Keeping the Classic 4-Team Formula",
+        "3. Best 3rd-Place Team Mechanics & The Brand New Round of 32 Era",
+        "4. Strategic Takeaways: How the Expanded System Transforms Global Competition"
       ],
       sections: [
         {
-          title: "1. Mapping the 16 Iconic Host Cities: Three Historic Nations, One Beautiful Goal",
-          body: "For the very first time in FIFA World Cup history, three giant North American countries—the USA, Mexico, and Canada—unite to host the biggest soccer tournament ever with 48 teams. 16 spectacular cities have been selected as absolute fortresses to welcome millions of soccer fans worldwide. These locations offer stunning geographical and cultural diversity that is sure to leave a lasting impression on every traveler:",
+          title: "1. The Historical World Cup 2026 Expansion: Expanding from 32 to 48 Teams",
+          body: "The 2026 FIFA World Cup represents the single biggest structural shift in soccer history since the 32-team format was established back in 1998. FIFA has expanded the participating slots from 32 to 48 national squads. This momentous growth opens pathways for rising nations, raising the total matches played during the main tournament from 64 to 104 thrilling, action-packed soccer clashes in North America.",
           points: [
-            "Unites States of America (11 Host Cities): Atlanta, Boston, Dallas, Houston, Kansas City, Los Angeles, Miami, New York/New Jersey, Philadelphia, San Francisco, and Seattle.",
-            "Legendary Mexico (3 Host Cities): Mexico City, Guadalajara, and Monterrey.",
-            "Emerging Canada (2 Host Cities): Toronto and Vancouver."
+            "Expanded Continent Allocations: Substantial increases in direct qualification spots for Africa and Asia, ensuring richer global variety.",
+            "Longer Tournament Duration: The ultimate tournament extends to 39 days of pristine soccer celebrations, boosting fan involvement.",
+            "Rich Cultural Integrities: Brings highly distinct tactical playing models onto 16 state-of-the-art stadiums across USA, Canada, and Mexico."
           ]
         },
         {
-          title: "2. Giants of the USA: Architectural Masterpieces Leading the Tournament",
-          body: "The USA hosts the vast majority of matches in spectacular, highly advanced stadiums that feature massive configurations, supreme security, and comfortable digital integration:",
+          title: "2. Understanding the 12 Groups Layout: Keeping the Classic 4-Team Formula",
+          body: "Rejecting original concepts of 3-team groups to escape passive collusive arrangements, FIFA officially preserved the competitive 4-team format to guarantee extreme sporting merit and competitive depth:",
           points: [
-            "MetLife Stadium (New York/New Jersey): The grand stage chosen to host the FIFA World Cup 2026 Final, seating over 82,500 roaring fans.",
-            "AT&T Stadium (Dallas): Featuring an ultra-gigantic central hung LED screen system that displays real-time tactical overlays and instant close-ups.",
-            "Hard Rock Stadium (Miami): Engineered with a state-of-the-art canopy to protect fans from the sun and offer a dynamic fan fest atmosphere."
+            "Perfect Twelve Subdivisions: The 48 qualified nations are organized into 12 groups, containing 4 countries battling in a single round-robin.",
+            "Simultaneous Final-Round Integrity: Guarantees that final group matches kick off together to eliminate safe play and ensure extreme transparency.",
+            "Guaranteed Match Trajectory: Promises every qualifying nation a minimum of 3 highly anticipated encounters before any elimination risks."
           ]
         },
         {
-          title: "3. Sacred Grounds of Mexico & Canada's Modern Marvels in the Spotlight",
-          body: "While Mexico's arenas are decorated with the historical stories of Pelé and Maradona, Canada balances the tournament with spectacular eco-friendly facilities:",
+          title: "3. Best 3rd-Place Team Mechanics & The Brand New Round of 32 Era",
+          body: "The absolute highlighting tactical element of the expanded competition model is the introduction of a new knockout round—the Round of 32:",
           points: [
-            "Estadio Azteca (Mexico City): The iconic cathedral that shaped previous legendary finals, becoming the first stadium to host 3 World Cup opening games.",
-            "BC Place (Vancouver): Nestled spectacularly among lush green views, featuring a state-of-the-art retractable roof system that keeps the fans close to natural light.",
-            "BMO Field (Toronto): Canada's premium soccer portal with customized expansions to pull spectators as close as possible to the intense pitch action."
+            "Direct Progression Winners: Group champions (1st place) and runners-up (2nd place) from all 12 groups qualify automatically (24 squads).",
+            "The Best 3rd-Placed Salvage: The remaining 8 slots are populated by the best 3rd-placed squads, ranked by total points, then goal differences.",
+            "Heated Group Deciders: Keeping groups intensely contested until the final whistles, where 3 or 4 points could generate absolute qualification miracles."
           ]
         },
         {
-          title: "4. Savvy Travel Protocols: Commuting Effortlessly Across World Cup Regional Hubs",
-          body: "Traveling across three nations demands proper planning based on official regional subdivisions to avoid severe timezone fatigue and reduce cost barriers:",
+          title: "4. Strategic Takeaways: How the Expanded System Transforms Global Competition",
+          body: "Playing 104 competitive world-class matches requires deep national squads and strategic rotation plans to manage long travel lines and player stamina:",
           points: [
-            "Target a Single Geographical Hub for Stays: Choosing to base your housing inside one cluster (East, Central, or West) keeps your transit plans simple and fluid.",
-            "Leverage Dedicated High-Capacity Public Transits: Avoid rental cars and rely on high-speed rail lines or official match shuttles to escape stadium-area congestion.",
-            "Keep Reliable Local Map & Weather Applications Handy: To quickly adapt to temperature shifts between beautiful Vancouver and sunny coastal Miami."
+            "The Power of Squad Depth: Teams with highly cohesive reserve options will maintain greater advantages through the arduous 39-day stretch.",
+            "Record-Breaking Potential: Goal-scorers and creative playmakers stand to secure legendary statuses given the increased number of matches.",
+            "Spectator Festivals Across Hubs: Regional scheduling prevents excessive transcontinental flights, presenting highly accessible festivals for global travelers."
           ],
-          note: "SEO Tip: Attending FIFA Fan Festivals across major metropolitan plazas is a spectacular, friendly, and budget-safe way to share the pure sports thrill!"
+          note: "SEO Tip: When predicting qualifying campaigns or planning with buddies, rely on our real-time group-stage calculator to test different outcomes!"
         }
       ],
       faqs: [
         {
-          q: "Which stadium will host the 2026 FIFA World Cup final match?",
-          a: "The finale will be hosted at the spectacular MetLife Stadium located in New York/New Jersey on July 19, 2026."
+          q: "How does the World Cup 2026 group stage and qualification work?",
+          a: "There are 12 groups of 4 teams. The top two teams from each group, along with the 8 best third-placed teams, advance to the new Round of 32."
         },
         {
-          q: "How many host stadium venues are officially confirmed?",
-          a: "A total of 16 world-class venues have been selected, boasting major tech updates, natural hybrid pitches, and rich visuals."
+          q: "What is the new Round of 32 in the FIFA World Cup?",
+          a: "It is a single-elimination knockout phase introduced after the group stage to safely reduce the 48-team roster down to the grand finale."
         },
         {
-          q: "What is the benefit of the tournament's regional grouping strategy?",
-          a: "Dividing the massive map into East, Central, and West zones reduces travel distances for players and ensures pleasant tourism."
+          q: "Why did FIFA reject the 3-team group proposal for 2026?",
+          a: "To preserve sporting excitement, avoid collusive playing structures, and guarantee three complete matches for every qualifying nation."
         }
       ]
     }

@@ -10,6 +10,8 @@ import worldCupVolunteerGuide from '../assets/images/world_cup_volunteer_guide_1
 import worldCupAccommodationGuide from '../assets/images/world_cup_accommodation_guide_1782005363196.jpg';
 import worldCupStadiumsCitiesGuide from '../assets/images/world_cup_stadiums_cities_guide_1782087462182.jpg';
 import worldCupFormatEvergreenGuide from '../assets/images/world_cup_format_evergreen_guide_1782344938321.jpg';
+import worldCupTicketsGuide from '../assets/images/world_cup_tickets_guide_1782437385062.jpg';
+import veo3VideoGenerationGuide from '../assets/images/veo3_video_generation_guide_1782439141821.jpg';
 
 interface Article {
   id: string;
@@ -46,9 +48,300 @@ interface Article {
     }[];
     faqs: { q: string; a: string }[];
   };
+  isHtml?: boolean;
+  htmlBodyAr?: string;
+  htmlBodyEn?: string;
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-veo-video-generator",
+    slug: "free-ai-video-generator-app-google-veo3-2026-guide",
+    categoryAr: "تكنولوجيا الذكاء الاصطناعي",
+    categoryEn: "AI Technology",
+    titleAr: "تحميل تطبيق توليد الفيديوهات بالذكاء الاصطناعي مجاناً Veo 3 | الدليل الشامل 2026",
+    titleEn: "Download Free AI Video Generator App Veo 3 | Ultimate 2026 Guide & Features",
+    descAr: "دليلك الشامل لتحميل تطبيق توليد الفيديوهات بالذكاء الاصطناعي مجاناً Veo 3 بأحدث التقنيات لعام 2026. اكتشف مميزات نموذج قوقل فيو واستمتع بمقاطع سينمائية فائقة الدقة.",
+    descEn: "Explore the ultimate guide to download the free AI video generator app powered by Google Veo 3. Create high-fidelity cinematic video loops and prompt-to-video reels in 2026.",
+    keywordsAr: [
+      "تطبيق توليد الفيديوهات بالذكاء الاصطناعي مجانا",
+      "تحميل تطبيق veo 3 مجانا",
+      "صناعة الفيديو بالذكاء الاصطناعي 2026",
+      "افضل برنامج تصميم فيديو ذكاء اصطناعي",
+      "برنامج تحويل النص إلى فيديو",
+      "موقع توليد الفيديوهات مجانا"
+    ],
+    keywordsEn: [
+      "free ai video generator app",
+      "download google veo 3 app",
+      "text to video ai generator 2026",
+      "best free video creation tools",
+      "veo 3 artificial intelligence clip",
+      "how to generate ai videos on mobile"
+    ],
+    image: veo3VideoGenerationGuide,
+    date: "2026-06-25",
+    readTime: "8 min read",
+    isHtml: true,
+    htmlBodyAr: `
+      <div class="space-y-6 text-right" dir="rtl">
+        <p class="text-slate-300 text-sm leading-relaxed">
+          يمثل عام <strong>2026</strong> بداية عصر جديد بالكامل في عالم صناعة المحتوى البصري الرقمي، حيث أحدث إطلاق نموذج <strong>Google Veo 3</strong> ثورة عارمة في كيفية إنتاج وتصميم مقاطع الفيديو الاحترافية والسينمائية. إن كنت تبحث عن <strong>تطبيق توليد الفيديوهات بالذكاء الاصطناعي مجاناً</strong> بميزات هائلة ودون الحاجة لخبرات برمجية أو مونتاج معقد، فقد وصلت للمكان الصحيح تماماً.
+        </p>
+        
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-rose-500/20 pb-2 mt-8">لماذا يعتبر تطبيق Veo 3 الخيار الأفضل لتوليد الفيديوهات في عام 2026؟</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          يتفوق تطبيق Veo 3 المعتمد على أحدث نماذج قوقل للذكاء الاصطناعي على التطبيقات الأخرى بفضل الفهم العميق للغة الطبيعية والقدرة المذهلة على تحويل النصوص والصور الثابتة إلى كليبات سينمائية تفاعلية وحركية تحاكي كاميرات التصوير الحقيقية.
+        </p>
+        <ul class="space-y-2 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+          <li><strong>تحويل النص إلى فيديو بدقة 4K:</strong> بمجرد كتابة وصف دقيق للمشهد، يقوم التطبيق ببناء حركة كاميرا سلسة وإضاءة دراماتيكية بالكامل.</li>
+          <li><strong>مرونة الحركة والتحكم بالزوايا:</strong> يتيح لك التطبيق محاكاة لقطات الطائرات بدون طيار (Drones)، واللقطات المقربة (Close-up)، والتكبير السينمائي (Cinematic Zoom).</li>
+          <li><strong>تحريك الصور الثابتة:</strong> ارفع أي صورة ثابتة من جهازك ودع خوارزميات الذكاء الاصطناعي تبث فيها الحياة بحركة واقعية مذهلة بنقرة واحدة.</li>
+          <li><strong>أداء مجاني وسريع:</strong> يوفر التطبيق خطة مجانية سخية يومياً لتوليد الفيديوهات القصيرة ومشاركتها مباشرة على منصات التواصل الاجتماعي.</li>
+        </ul>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-rose-500/20 pb-2 mt-8">خطوات استخدام وتنزيل التطبيق بفاعلية ومجاناً</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          لتتمكن من تحقيق أقصى استفادة من هذا التطبيق الثوري، ننصحك باتباع الخطوات التالية لإنتاج فيديوهات احترافية تسترعي الانتباه وتزيد التفاعل:
+        </p>
+        <ol class="space-y-2 pr-4 text-xs text-slate-400 list-decimal list-inside leading-relaxed">
+          <li><strong>كتابة أوامر ذكية (Prompts):</strong> استخدم كلمات وصفية مثل "إضاءة سينمائية، تفاصيل دقيقة، عمق ميدان، حركة كاميرا بطيئة" لضمان نتائج مذهلة.</li>
+          <li><strong>اختيار صيغة وأبعاد الفيديو:</strong> يدعم التطبيق الأبعاد الطولية المناسبة لـ TikTok و Reels والأبعاد العرضية لـ YouTube.</li>
+          <li><strong>استغلال الميزات المجانية اليومية:</strong> استمتع بتوليد عدد كبير من اللقطات والحركات المجانية المخصصة لك لتجربة كافة الخصائص الإبداعية.</li>
+        </ol>
+
+        <div class="p-4 bg-[#ff1a40]/5 border-r-4 border-[#ff1a40] rounded-l-xl text-slate-300 text-[11px] sm:text-xs font-bold leading-relaxed mt-6">
+          تنبيه أمان وسيو 2026: تم فحص وتأمين رابط التحميل المباشر أدناه لضمان حصولك على أحدث نسخة رسمية وخالية تماماً من الإعلانات المزعجة أو البرمجيات الخبيثة. اتبع خطوات الضغط بدقة للتحميل الفوري السريع.
+        </div>
+      </div>
+    `,
+    htmlBodyEn: `
+      <div class="space-y-6 text-left" dir="ltr">
+        <p class="text-slate-300 text-sm leading-relaxed">
+          The year <strong>2026</strong> marks a major milestone in AI-powered visual creation with the release of the <strong>Google Veo 3</strong> model. If you are looking for a <strong>free AI video generator app</strong> equipped with rich, state-of-the-art cinematic tools, this comprehensive guide is tailored perfectly for you.
+        </p>
+        
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-rose-500/20 pb-2 mt-8">Why Choose Veo 3 AI Video Generator App in 2026?</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          By utilizing Google's most sophisticated deep learning models, Veo 3 outperforms competing applications with its brilliant prompt understanding and highly stable video renderings.
+        </p>
+        <ul class="space-y-2 pl-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+          <li><strong>Stunning 4K Text-to-Video:</strong> Translate natural descriptions into complete cinematic frames with dynamic light shading.</li>
+          <li><strong>Total Camera Flight Control:</strong> Simulate sweeping drone shots, close-ups, and dramatic pans with extreme fluid motion.</li>
+          <li><strong>Instant Image Animation:</strong> Turn static artwork into living, breathing video loops with simple descriptive commands.</li>
+          <li><strong>Robust Free Tier:</strong> Produce short videos everyday for free and export them without heavy watermark restrictions.</li>
+        </ul>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-rose-500/20 pb-2 mt-8">How to Download and Use Veo 3 App Successfully</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          To master the production of high-engagement video reels, follow these easy steps:
+        </p>
+        <ol class="space-y-2 pl-4 text-xs text-slate-400 list-decimal list-inside leading-relaxed">
+          <li><strong>Inject Scenic Adjectives:</strong> Use cinematic phrases like "slow motion", "dramatic sunset lighting", and "shallow depth of field".</li>
+          <li><strong>Select Targeted Formats:</strong> Export in vertical orientation for Reels/TikTok or widescreen ratio for standard YouTube plays.</li>
+          <li><strong>Maximize Free Daily Energy:</strong> Learn the mechanics by utilizing the free daily token grants to craft diverse scenes.</li>
+        </ol>
+      </div>
+    `,
+    contentAr: {
+      toc: [
+        "1. ثورة نموذج Google Veo 3 في توليد الفيديوهات مجاناً",
+        "2. المميزات الخارقة للتطبيق ودقة الـ 4K البصرية",
+        "3. خطوات التحميل والتثبيت المباشر على الهواتف والأجهزة الذكية",
+        "4. نصائح سيو كروية وتكنولوجية لتصميم محتوى ذو انتشار واسع"
+      ],
+      sections: [
+        {
+          title: "1. ثورة نموذج Google Veo 3 في توليد الفيديوهات مجاناً",
+          body: "يعد تطبيق Veo 3 لتوليد مقاطع الفيديو بالذكاء الاصطناعي الأفضل في فئته لتصميم فيديوهات عالية الدقة والوضوح ومناسبة لمختلف المنصات الرقمية."
+        },
+        {
+          title: "2. المميزات الخارقة للتطبيق ودقة الـ 4K البصرية",
+          body: "يتفوق التطبيق بقدرته العالية على صياغة لقطات كاميرا شديدة التعقيد ومحاكاة حركات الطائرات بدون ضيار (Drone) وتحويل أي صورة ثابتة لقصة تفاعلية متحركة."
+        }
+      ],
+      faqs: [
+        {
+          q: "هل تطبيق توليد الفيديوهات بالذكاء الاصطناعي Veo 3 مجاني بالكامل؟",
+          a: "نعم، يقدم التطبيق نظام نقاط مجاني يومي سخي للغاية يتيح لك توليد وتحميل الفيديوهات بجودة سينمائية فائقة دون أي شروط دفع إلزامية."
+        },
+        {
+          q: "ما هي خطوات التحميل الآمنة للتطبيق دون مشاكل؟",
+          a: "تستطيع تنزيل التطبيق مباشرة عبر زر التحميل التفاعلي المزدوج في الأسفل، والذي يقوم بتأمين اتصالك وتوجيهك فوراً لمتجر غوغل بلاي الرسمي."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Google Veo 3 Revolutionary AI Video Generation Tech",
+        "2. Top Cinematic Features and 4K Ultra Rendering",
+        "3. Download and Installation Guide for Android Devices"
+      ],
+      sections: [
+        {
+          title: "1. Google Veo 3 Revolutionary AI Video Generation Tech",
+          body: "Experience standard-setting video loops and stunning scenic generations with our free mobile-friendly guides."
+        }
+      ],
+      faqs: [
+        {
+          q: "Is the Veo 3 video creation tool completely free?",
+          a: "Yes, the app offers a highly generous free daily allowance to render and export high-definition cinematic content."
+        }
+      ]
+    }
+  },
+  {
+    id: "art-tickets-guide-world-cup-2026",
+    slug: "official-guide-book-fifa-world-cup-2026-tickets-prices-steps",
+    categoryAr: "تذاكر وحجوزات 2026",
+    categoryEn: "Tickets & Bookings",
+    titleAr: "حجز تذاكر كأس العالم 2026 | دليل أسعار التذاكر والخطوات الرسمية عبر موقع الفيفا",
+    titleEn: "FIFA World Cup 2026 Tickets Guide | Official Booking Steps, Seat Categories & Prices Breakdown",
+    descAr: "تعرف على كيفية حجز تذاكر كأس العالم 2026 بالتفصيل. نكشف لك أسعار التذاكر المتوقعة، الفئات المختلفة للمقاعد، خطوات التسجيل الرسمية عبر موقع الفيفا، وكيفية تجنب السوق السوداء.",
+    descEn: "Discover how to book official tickets for FIFA World Cup 2026. Detailed breakdown of ticket prices, seating categories, official FIFA portal registration steps, and tips to avoid unauthorized resellers.",
+    keywordsAr: [
+      "حجز تذاكر كأس العالم 2026",
+      "أسعار تذاكر كأس العالم 2026",
+      "خطوات شراء تذاكر المونديال 2026",
+      "موقع فيفا لتذاكر كاس العالم",
+      "تذاكر مباريات كأس العالم ٢٠٢٦",
+      "شراء تذاكر مباريات مصر كاس العالم"
+    ],
+    keywordsEn: [
+      "fifa world cup 2026 tickets booking",
+      "world cup 2026 ticket prices",
+      "how to buy tickets world cup 2026",
+      "official fifa ticket portal 2026",
+      "world cup 2026 seat categories",
+      "buy matches tickets wc 2026"
+    ],
+    image: worldCupTicketsGuide,
+    date: "2026-06-25",
+    readTime: "12 min read",
+    contentAr: {
+      toc: [
+        "1. المراحل الرسمية لعملية حجز تذاكر كأس العالم 2026 عبر موقع الفيفا",
+        "2. تفاصيل فئات المقاعد المتاحة بالاستادات والفروقات الفنية والمالية بينها",
+        "3. جدول الأسعار المتوقعة للتذاكر: من المجموعات وحتى النهائي التاريخي",
+        "4. نصائح أمنية وسيو هامة: كيف تحمي نفسك من الاحتيال وتشتري تذاكر آمنة"
+      ],
+      sections: [
+        {
+          title: "1. المراحل الرسمية لعملية حجز تذاكر كأس العالم 2026 عبر موقع الفيفا",
+          body: "تُعد عملية حجز تذاكر كأس العالم 2026 واحدة من أكثر المواضيع بحثاً وطلباً من قبل ملايين عشاق الساحرة المستديرة حول العالم. حدد الاتحاد الدولي لكرة القدم (FIFA) بوابته الرسمية كمنفذ وحيد وحصري للحصول على التذاكر بطرق شرعية وآمنة بنسبة 100%. تنقسم عملية الحجز إلى عدة مراحل مدروسة تضمن العدالة لجميع المتقدمين:",
+          points: [
+            "مرحلة التسجيل المسبق للاهتمام (Register Interest): تتيح لك إنشاء حساب مجاني على موقع الفيفا الرسمي وتحديد المنتخبات والمباريات التي تود حضورها لتلقي إشعارات فورية عند فتح باب البيع.",
+            "مرحلة قرعة الاختيار العشوائي (Random Selection Draw): تُعد أهم مرحلة، حيث تتقدم بطلب للحصول على تذاكر معينة، وإذا تجاوز الطلب السعة المتاحة، تجرى قرعة إلكترونية عادلة لتحديد الفائزين.",
+            "مرحلة البيع بأسبقية الحضور (First-Come, First-Served): تُفتح هذه المرحلة بعد انتهاء القرعة لبيع المقاعد المتبقية مباشرة لمن يسجل أولاً، وتتطلب سرعة فائقة واتصالاً مستقراً بالإنترنت."
+          ]
+        },
+        {
+          title: "2. تفاصيل فئات المقاعد المتاحة بالاستادات والفروقات الفنية والمالية بينها",
+          body: "تُقسم تذاكر مباريات كأس العالم 2026 داخل الملاعب الـ 16 في أمريكا والمكسيك وكندا إلى أربع فئات رئيسية لتناسب جميع الرغبات والقدرات المالية للمشجعين، وهي كالتالي:",
+          points: [
+            "الفئة الأولى (Category 1): تقع في المناطق المميزة من الملعب (على طول خط التماس) وتوفر أفضل زاوية رؤية ممكنة للاعبين والتكتيكات، وهي الأعلى سعراً.",
+            "الفئة الثانية والثالثة (Category 2 & 3): تقع في زوايا الملعب وخلف المرميين بارتفاعات متفاوتة، وتمثل التوازن المثالي بين السعر المناسب والرؤية الجيدة للمباراة.",
+            "الفئة الرابعة (Category 4): مخصصة حصرياً للمقيمين في الدول المستضيفة (أمريكا، كندا، المكسيك) بأسعار مدعومة واقتصادية جداً لتشجيع المجتمع المحلي على المشاركة والاحتفال المونديالي."
+          ]
+        },
+        {
+          title: "3. جدول الأسعار المتوقعة للتذاكر: من المجموعات وحتى النهائي التاريخي",
+          body: "تختلف أسعار تذاكر المونديال بناءً على أهمية الدور واللقاء؛ حيث تبدأ الأسعار من مستويات منخفضة في دور المجموعات وتتصاعد تدريجياً لتصل لذروتها في مواجهة النهائي التاريخي بملعب ميتلايف بالولايات المتحدة:",
+          points: [
+            "مباريات دور المجموعات: تبدأ أسعار الفئة الثالثة من حوالي 70 دولاراً وتصل الفئة الأولى لنحو 220 دولاراً أمريكياً.",
+            "الأدوار الإقصائية (دور الـ 32 والـ 16): ترتفع الأسعار تدريجياً لتبدأ من 100 دولار وتصل إلى 350 دولاراً حسب فئة المقعد ونوعية المواجهة الرياضية.",
+            "المباراة النهائية الكبرى: تمثل القيمة الأعلى تاريخياً، حيث يتوقع أن تبدأ تذاكر الفئة الثالثة من 450 دولاراً وتصل الفئة الأولى المميزة إلى أكثر من 1600 دولار أمريكي."
+          ]
+        },
+        {
+          title: "4. نصائح أمنية وسيو هامة: كيف تحمي نفسك من الاحتيال وتشتري تذاكر آمنة",
+          body: "مع الطلب الهائل وغير المسبوق على تذاكر بطولة كأس العالم 2026، تنشط مواقع وتطبيقات غير رسمية تحاول استغلال شغف الجماهير لبيع تذاكر وهمية بأسعار خيالية. احرص على اتباع هذا الدليل الذكي لتأمين تذاكرك بنجاح:",
+          points: [
+            "تجنب منصات إعادة البيع غير المرخصة: يمنع الفيفا تماماً نقل ملكية التذاكر عبر مواقع وسيطة، وقد يتم حظر التذكرة ومنع حاملها من الدخول للاستاد عند التحقق من الهوية الرقمية.",
+            "استخدم منصة إعادة البيع الرسمية للفيفا (Official Resale Platform): إذا لم يحالفك الحظ بالقرعة، تتيح لك هذه المنصة شراء تذاكر حقيقية يعرضها مشجعون آخرون تراجعوا عن الحضور بالأسعار الرسمية دون أي زيادات.",
+            "تأمين الهوية الرقمية (Hayya / Fan ID): تتطلب البطولة تفعيل بطاقة المشجع الرقمية المعتمدة لربط التذاكر بهويتك الشخصية، وتسهيل إجراءات السفر والتنقل المجاني بالمدن."
+          ],
+          note: "نصيحة سيو: ترقب تحديثات موقعنا المستمرة لتكون أول من يعلم بمواعيد فتح قرعة التذاكر ومباريات المنتخبات العربية لتضمن حجز تذكرتك بأقل الأسعار الرسمية!"
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هو الموقع الرسمي المعتمد الوحيد لحجز تذاكر كأس العالم 2026؟",
+          a: "موقع الاتحاد الدولي لكرة القدم (FIFA.com/tickets) هو المنصة والمنفذ القانوني والشرعي الوحيد لحجز وشراء جميع تذاكر مباريات كأس العالم 2026."
+        },
+        {
+          q: "هل يمكنني إلغاء أو إعادة بيع تذكرتي إذا لم أتمكن من السفر؟",
+          a: "نعم، يوفر الفيفا منصة إعادة بيع رسمية تتيح للمشجعين عرض تذاكرهم للبيع لآخرين بالأسعار الرسمية بكل أمان وضمان دون أي عمولات تضخمية."
+        },
+        {
+          q: "ما هي عقوبة شراء التذاكر من منصات السوق السوداء؟",
+          a: "يقوم الفيفا بإلغاء التذاكر المباعة بطرق غير قانونية فوراً، ولن يتمكن حاملها من اجتياز البوابات الإلكترونية الذكية في ملاعب المونديال الـ 16."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Official Application Phases for FIFA World Cup 2026 Tickets",
+        "2. Understanding Stadium Seating Categories & Value Differences",
+        "3. Projected Ticket Prices Chart: From Group Stages to the Grand Finale",
+        "4. Critical Safety Measures: How to Prevent Ticket Scams & Buy Legally"
+      ],
+      sections: [
+        {
+          title: "1. Official Application Phases for FIFA World Cup 2026 Tickets",
+          body: "Securing tickets for the FIFA World Cup 2026 is one of the most anticipated events for millions of football enthusiasts around the globe. To keep ticket distribution fair and safe, FIFA has designated its official portal as the single legal distributor for all match entries. The booking journey is split into distinct sequential phases:",
+          points: [
+            "The Register Interest Phase: Allowing you to easily open a free account on the official FIFA ticketing website and select preferred teams to receive immediate alerts.",
+            "The Random Selection Draw Phase: The primary phase where fans submit applications for specific match categories. If demand outstrips supply, an automated lottery decides winners.",
+            "First-Come, First-Served Phase: Launching after the draw wraps up, letting quick fans buy any remaining seats in real-time, which demands stable web connections."
+          ]
+        },
+        {
+          title: "2. Understanding Stadium Seating Categories & Value Differences",
+          body: "Seating maps inside the 16 modern venues across USA, Canada, and Mexico are divided into four categories to match various budgets and tournament preferences:",
+          points: [
+            "Category 1: Prime seats positioned along the main touchlines, offering the best tactical views of players and matches, priced at a premium.",
+            "Category 2 & 3: Located in the corners and behind the goals, delivering the ultimate blend of affordable pricing and robust sightlines.",
+            "Category 4: Exclusively reserved for residents of the host nations (USA, Canada, and Mexico) at deeply discounted prices to foster local community support."
+          ]
+        },
+        {
+          title: "3. Projected Ticket Prices Chart: From Group Stages to the Grand Finale",
+          body: "Ticket rates fluctuate significantly depending on the tournament round. Prices begin at affordable rates during group play and peak at the historic final match at MetLife Stadium in New York/New Jersey:",
+          points: [
+            "Group Stage Matches: Prices start around $70 USD for Category 3 seats and rise to approximately $220 USD for Category 1 positions.",
+            "Knockout Rounds (Round of 32 & 16): Pricing scales upward, ranging from $100 USD to $350 USD depending on seating depth and matchup profiles.",
+            "The World Cup Final: The ultimate premium entry, with Category 3 seats projected to start at $450 USD and top-tier Category 1 positions exceeding $1,600 USD."
+          ]
+        },
+        {
+          title: "4. Critical Safety Measures: How to Prevent Ticket Scams & Buy Legally",
+          body: "Given the unprecedented demand for the expanded 48-team 2026 tournament, unofficial resellers and scalpers will try to target eager fans. Follow these rules to protect your money:",
+          points: [
+            "Steer Clear of Unauthorized Secondary Marketplaces: FIFA strictly prohibits unofficial ticket transfers, and digital ticket verification checks will ban black-market entries at the gate.",
+            "Use the Official FIFA Resale Platform: The secure, authorized path to buy or sell unwanted tickets at face value without inflated prices.",
+            "Obtain Your Official Digital Fan ID: Linking your match tickets to your personal verification profile to unlock entry rights and complimentary transit routes."
+          ],
+          note: "SEO Tip: Bookmark our ticketing hub and turn on notifications to receive immediate updates as soon as the official FIFA draw timeline goes live!"
+        }
+      ],
+      faqs: [
+        {
+          q: "What is the single official source to buy World Cup 2026 tickets?",
+          a: "The only legitimate and legal platform to purchase match tickets is the official FIFA ticketing website (FIFA.com/tickets)."
+        },
+        {
+          q: "Can I cancel or resell my ticket if my travel plans change?",
+          a: "Yes, you can list your tickets safely on the official FIFA Resale Platform to sell them to other fans at official face value without extra fees."
+        },
+        {
+          q: "What happens if I buy tickets from unauthorized third-party sites?",
+          a: "FIFA reserves the right to cancel any tickets bought through unauthorized platforms, meaning you will be denied entry to the stadium."
+        }
+      ]
+    }
+  },
   {
     id: "art-format-evergreen-world-cup-2026",
     slug: "new-fifa-world-cup-2026-tournament-format-explained-48-teams",
@@ -1903,8 +2196,14 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<'all' | 'ai' | 'tactics' | 'legends'>('all');
   const [copiedLink, setCopiedLink] = useState(false);
+  const [veoClickCount, setVeoClickCount] = useState(0);
 
   const isRtl = locale === 'ar';
+
+  useEffect(() => {
+    // Reset click counter when switching/viewing articles
+    setVeoClickCount(0);
+  }, [selectedArticle]);
 
   useEffect(() => {
     // Read the initial article from URL query parameters on load
@@ -2152,35 +2451,144 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
 
               {/* Main Body Layout sections */}
               <div className="space-y-8 text-slate-300 text-sm leading-relaxed text-justify">
-                {(isRtl ? selectedArticle.contentAr.sections : selectedArticle.contentEn.sections).map((sec, sIdx) => (
-                  <section key={sIdx} className="space-y-3.5">
-                    <h2 className="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2 leading-snug">
-                      {sec.title}
-                    </h2>
-                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
-                      {sec.body}
-                    </p>
+                {selectedArticle.isHtml ? (
+                  <div 
+                    className="space-y-6"
+                    dangerouslySetInnerHTML={{ 
+                      __html: isRtl ? (selectedArticle.htmlBodyAr || "") : (selectedArticle.htmlBodyEn || "") 
+                    }}
+                  />
+                ) : (
+                  (isRtl ? selectedArticle.contentAr.sections : selectedArticle.contentEn.sections).map((sec, sIdx) => (
+                    <section key={sIdx} className="space-y-3.5">
+                      <h2 className="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2 leading-snug">
+                        {sec.title}
+                      </h2>
+                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                        {sec.body}
+                      </p>
 
-                    {/* Optional point system bullets */}
-                    {sec.points && (
-                      <ul className="space-y-2 pl-4 rtl:pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
-                        {sec.points.map((pt, pIdx) => (
-                          <li key={pIdx} className="marker:text-[#ff1a40] leading-relaxed hover:text-white transition-colors">
-                            {pt}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+                      {/* Optional point system bullets */}
+                      {sec.points && (
+                        <ul className="space-y-2 pl-4 rtl:pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+                          {sec.points.map((pt, pIdx) => (
+                            <li key={pIdx} className="marker:text-[#ff1a40] leading-relaxed hover:text-white transition-colors">
+                              {pt}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
 
-                    {/* Optional specialized alert/tip note */}
-                    {sec.note && (
-                      <div className="p-4 bg-[#ff1a40]/5 border-l-4 rtl:border-l-0 rtl:border-r-4 border-[#ff1a40] rounded-r-xl rtl:rounded-l-xl text-slate-300 text-[11px] sm:text-xs font-bold leading-relaxed">
-                        {sec.note}
-                      </div>
-                    )}
-                  </section>
-                ))}
+                      {/* Optional specialized alert/tip note */}
+                      {sec.note && (
+                        <div className="p-4 bg-[#ff1a40]/5 border-l-4 rtl:border-l-0 rtl:border-r-4 border-[#ff1a40] rounded-r-xl rtl:rounded-l-xl text-slate-300 text-[11px] sm:text-xs font-bold leading-relaxed">
+                          {sec.note}
+                        </div>
+                      )}
+                    </section>
+                  ))
+                )}
               </div>
+
+              {/* Specialized Interactive Download Section for Veo 3 App */}
+              {selectedArticle.id === "art-veo-video-generator" && (
+                <div className="p-6 bg-gradient-to-br from-[#0e163d] via-[#090d29] to-[#0a1033] border border-slate-800 rounded-3xl shadow-2xl space-y-5 relative overflow-hidden text-right rtl:text-right">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
+                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-rose-500/5 rounded-full filter blur-3xl pointer-events-none"></div>
+
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="space-y-1.5">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] font-black rounded-lg">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>{isRtl ? "تطبيق معتمد ومؤمن ١٠٠٪" : "100% Secure & Verified App"}</span>
+                      </span>
+                      <h3 className="text-base sm:text-lg font-black text-white">
+                        {isRtl ? "رابط تحميل تطبيق توليد الفيديوهات بالذكاء الاصطناعي Veo 3" : "Download Veo 3 AI Video Generator App"}
+                      </h3>
+                      <p className="text-xs text-slate-400 font-semibold">
+                        {isRtl 
+                          ? "اضغط أدناه لبدء عملية التثبيت السريعة والآمنة على هاتفك الأندرويد." 
+                          : "Click below to begin the secure high-speed installation on your Android device."}
+                      </p>
+                    </div>
+                    <div className="p-3 bg-slate-900 border border-slate-800 rounded-2xl shrink-0">
+                      <Sparkles className="w-5 h-5 text-emerald-400" />
+                    </div>
+                  </div>
+
+                  {/* Interactive Button Click Progress Layout */}
+                  <div className="space-y-3 pt-2">
+                    {/* Progress Bar steps */}
+                    <div className="flex items-center justify-between text-[11px] font-bold text-slate-400 px-1">
+                      <span>{isRtl ? "الخطوة ١: التحقق والتأمين" : "Step 1: Link Protection"}</span>
+                      <span>{isRtl ? "الخطوة ٢: التنزيل المباشر" : "Step 2: Install"}</span>
+                    </div>
+                    <div className="h-2 w-full bg-slate-950 border border-slate-900 rounded-full overflow-hidden flex">
+                      <div 
+                        className={`h-full transition-all duration-500 ${
+                          veoClickCount === 0 
+                            ? "w-[15%] bg-slate-700" 
+                            : veoClickCount === 1 
+                              ? "w-[55%] bg-yellow-500 animate-pulse" 
+                              : "w-full bg-emerald-500"
+                        }`}
+                      ></div>
+                    </div>
+
+                    {/* Main Stateful Download Button */}
+                    <button
+                      onClick={() => {
+                        if (veoClickCount === 0) {
+                          // First Click: Open Moneytag Smart Link in a new tab
+                          window.open("https://omg10.com/4/11125764", "_blank");
+                          setVeoClickCount(1);
+                        } else if (veoClickCount === 1) {
+                          // Second Click: Open actual Google Play store link
+                          window.open("https://play.google.com/store/apps/details?id=com.ainate.ai.video.generate", "_blank");
+                          setVeoClickCount(2);
+                        } else {
+                          // Reset and open Play Store link again
+                          window.open("https://play.google.com/store/apps/details?id=com.ainate.ai.video.generate", "_blank");
+                          setVeoClickCount(0);
+                        }
+                      }}
+                      className={`w-full py-4 px-6 rounded-2xl font-black text-sm transition-all duration-300 transform active:scale-95 shadow-lg flex items-center justify-center gap-2 cursor-pointer ${
+                        veoClickCount === 0 
+                          ? "bg-rose-600 hover:bg-rose-500 text-white" 
+                          : veoClickCount === 1 
+                            ? "bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-extrabold" 
+                            : "bg-emerald-600 hover:bg-emerald-500 text-white"
+                      }`}
+                    >
+                      {veoClickCount === 0 ? (
+                        <>
+                          <Flame className="w-4 h-4 animate-bounce" />
+                          <span>{isRtl ? "تحميل تطبيق Veo 3 (اضغط لتأمين الاتصال - خطوة ١)" : "Download Veo 3 App (Click to Protect - Step 1)"}</span>
+                        </>
+                      ) : veoClickCount === 1 ? (
+                        <>
+                          <Sparkles className="w-4 h-4 animate-pulse" />
+                          <span>{isRtl ? "تم التأمين! اضغط للتحميل المباشر من المتجر (خطوة ٢)" : "Secured! Click to Download from Play Store (Step 2)"}</span>
+                        </>
+                      ) : (
+                        <>
+                          <Check className="w-4 h-4" />
+                          <span>{isRtl ? "تم فتح صفحة التحميل! (اضغط للبدء من جديد)" : "Opening Store page! (Click to Reset)"}</span>
+                        </>
+                      )}
+                    </button>
+
+                    {/* Status/Help prompt */}
+                    <p className="text-[11px] text-center text-slate-400 font-bold leading-relaxed pt-1 font-sans">
+                      {veoClickCount === 0 
+                        ? (isRtl ? "* اضغط أولاً لتأمين وحماية رابط التنزيل عبر نظام التحقق السريع المعتمد." : "* Click first to encrypt and verify your download parameters via smart protect.")
+                        : veoClickCount === 1 
+                          ? (isRtl ? "✓ تم الفحص وتأكيد أمان الرابط! اضغط الآن للبدء المباشر في متجر Google Play." : "✓ Protection verified! Tap now to complete your Google Play Store download.")
+                          : (isRtl ? "• جاري إعادة التحويل... في حال لم يبدأ التثبيت تلقائياً، يرجى التحديث وإعادة المحاولة." : "• Redirecting... If download fails, refresh and repeat the click flow.")}
+                    </p>
+                  </div>
+                </div>
+              )}
 
               {/* Dynamic Interactive FAQs block */}
               <div className="space-y-4 pt-6 border-t border-slate-800/80">

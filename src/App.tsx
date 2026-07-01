@@ -26,8 +26,13 @@ import {
   X,
   Upload,
   Trash2,
-  Loader2
+  Loader2,
+  BookOpen,
+  ArrowRight,
+  ArrowLeft
 } from "lucide-react";
+
+import veo3VideoGenerationGuide from "./assets/images/veo3_video_generation_guide_1782439141821.jpg";
 
 import { Question, PlayerProfile } from "./types";
 import { QUESTION_BANK, PLAYER_PROFILES } from "./data";
@@ -218,7 +223,8 @@ export default function App() {
 
   // Determine language based on query parameter (?lang=en or ?lang=ar), defaulting to Arabic ('ar')
   const [lang, setLang] = useState<"ar" | "en">("ar");
-  const [activeScreen, setActiveScreen] = useState<"start" | "quiz" | "analyzing" | "result">("start");
+  const [activeScreen, setActiveScreen] = useState<"start" | "quiz" | "analyzing" | "result" | "veo-article">("start");
+  const [veoClickCount, setVeoClickCount] = useState<number>(0);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [userAnswers, setUserAnswers] = useState<Record<number, string>>({});
@@ -880,6 +886,47 @@ export default function App() {
                   <p className="text-[10px] sm:text-xs text-slate-400 mt-4 max-w-sm mx-auto leading-relaxed">
                     {t.startNote}
                   </p>
+                </div>
+
+                {/* Veo 3 Promo Banner (Subpage trigger) */}
+                <div className="pt-4 max-w-lg mx-auto">
+                  <div className="bg-gradient-to-br from-[#0b0f24] via-[#050714] to-[#0c122b] border border-indigo-950 p-6 rounded-3xl text-right rtl:text-right ltr:text-left relative overflow-hidden shadow-xl shadow-indigo-950/20 group/veo-promo">
+                    {/* Glowing circular designs */}
+                    <div className="absolute top-0 right-0 w-36 h-36 bg-emerald-500/10 rounded-full filter blur-2xl pointer-events-none group-hover/veo-promo:bg-emerald-500/15 transition-all"></div>
+                    <div className="absolute bottom-0 left-0 w-36 h-36 bg-purple-500/5 rounded-full filter blur-2xl pointer-events-none group-hover/veo-promo:bg-purple-500/10 transition-all"></div>
+                    
+                    <div className="flex flex-col sm:flex-row gap-5 items-center justify-between relative z-10">
+                      <div className="space-y-2 shrink-0 w-full sm:w-2/3">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] font-black rounded-lg">
+                          <Sparkles className="w-3 h-3 text-emerald-400 animate-pulse" />
+                          <span>{lang === "ar" ? "تحديث مميز ٢٠٢٦ مجاناً" : "Special 2026 Free Release"}</span>
+                        </span>
+                        
+                        <h3 className="text-base font-black text-white group-hover/veo-promo:text-emerald-300 transition-colors">
+                          {lang === "ar" ? "توليد الفيديوهات بالذكاء الاصطناعي Veo 3" : "Free AI Video Generator App Veo 3"}
+                        </h3>
+                        
+                        <p className="text-[11px] sm:text-xs text-slate-400 font-semibold leading-relaxed">
+                          {lang === "ar" 
+                            ? "اكتشف الطريقة المجانية المبتكرة لصناعة مقاطع فيديو سينمائية احترافية بدقة فائقة بنقرة زر واحدة." 
+                            : "Discover the advanced free path to create epic, high-fidelity AI video loops from simple text descriptions."}
+                        </p>
+                      </div>
+
+                      <div className="w-full sm:w-auto text-center shrink-0">
+                        <button
+                          onClick={() => {
+                            setVeoClickCount(0);
+                            setActiveScreen("veo-article");
+                            playInteractionSound();
+                          }}
+                          className="w-full sm:w-auto px-5 py-3 bg-rose-600 hover:bg-rose-500 text-white text-xs font-black rounded-xl transition-all shadow-lg shadow-rose-600/15 group-hover/veo-promo:scale-105 transform cursor-pointer whitespace-nowrap"
+                        >
+                          {lang === "ar" ? "قراءة المقال والتحميل" : "Read Guide & Download"}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
               </div>
@@ -1570,6 +1617,222 @@ export default function App() {
                     >
                       {t.shareFacebook}
                     </button>
+                  </div>
+                </div>
+
+              </div>
+            )}
+
+            {activeScreen === "veo-article" && (
+              <div className="w-full text-right rtl:text-right ltr:text-left space-y-8 animate-fade-in py-4 max-w-2xl">
+                
+                {/* Back Button */}
+                <div className="flex justify-start">
+                  <button
+                    onClick={() => {
+                      setActiveScreen("start");
+                      playInteractionSound();
+                    }}
+                    className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-black text-slate-700 flex items-center gap-1.5 cursor-pointer shadow-sm transition-all"
+                  >
+                    {isRtl ? (
+                      <>
+                        <ArrowRight className="w-3.5 h-3.5 text-red-655" />
+                        <span>العودة للرئيسية</span>
+                      </>
+                    ) : (
+                      <>
+                        <ArrowLeft className="w-3.5 h-3.5 text-red-655" />
+                        <span>Back to Home</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                {/* Hero Header Article Card with generated image */}
+                <div className="bg-slate-50 border border-slate-200 rounded-3xl overflow-hidden shadow-md">
+                  <div className="relative h-48 sm:h-64 w-full bg-slate-900 overflow-hidden flex items-center justify-center">
+                    <img
+                      src={veo3VideoGenerationGuide}
+                      alt="Google Veo 3 Video Generator"
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover group-hover:scale-105 duration-500 transition-transform"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                    <span className="absolute top-4 right-4 px-3 py-1 bg-rose-600 text-white text-[10px] font-black rounded-lg shadow">
+                      {isRtl ? "دليل معتمد ٢٠٢٦" : "Certified 2026 Guide"}
+                    </span>
+                  </div>
+
+                  <div className="p-6 space-y-4">
+                    <h2 className="text-xl sm:text-2xl font-black text-slate-900 leading-tight">
+                      {isRtl 
+                        ? "تحميل تطبيق توليد الفيديوهات بالذكاء الاصطناعي مجاناً Veo 3 | الدليل الشامل 2026" 
+                        : "Download Free AI Video Generator App Veo 3 | Ultimate 2026 Guide & Features"}
+                    </h2>
+                    
+                    <p className="text-xs text-slate-500 font-bold flex items-center gap-2">
+                      <span>📅 {isRtl ? "تاريخ النشر: ٢٥ يونيو ٢٠٢٦" : "Published: June 25, 2026"}</span>
+                      <span>•</span>
+                      <span>⏱️ {isRtl ? "مدة القراءة: ٨ دقائق" : "Read time: 8 mins"}</span>
+                    </p>
+                  </div>
+                </div>
+
+                {/* Article Content Render */}
+                <div className="space-y-6 text-slate-700 text-xs sm:text-sm leading-relaxed text-justify bg-white border border-slate-200 p-6 sm:p-8 rounded-3xl shadow-sm">
+                  {isRtl ? (
+                    <div className="space-y-6 text-slate-700 text-xs sm:text-sm" dir="rtl">
+                      <p className="text-slate-700 text-sm leading-relaxed font-sans">
+                        يمثل عام <strong>2026</strong> بداية عصر جديد بالكامل في عالم صناعة المحتوى البصري الرقمي، حيث أحدث إطلاق نموذج <strong>Google Veo 3</strong> ثورة عارمة في كيفية إنتاج وتصميم مقاطع الفيديو الاحترافية والسينمائية. إن كنت تبحث عن <strong>تطبيق توليد الفيديوهات بالذكاء الاصطناعي مجاناً</strong> بميزات هائلة ودون الحاجة لخبرات برمجية أو مونتاج معقد، فقد وصلت للمكان الصحيح تماماً.
+                      </p>
+                      
+                      <h3 className="text-base font-black text-slate-900 border-b border-red-500/20 pb-2 mt-8">لماذا يعتبر تطبيق Veo 3 الخيار الأفضل لتوليد الفيديوهات في عام 2026؟</h3>
+                      <p className="text-slate-700 leading-relaxed font-sans mt-2">
+                        يتفوق تطبيق Veo 3 المعتمد على أحدث نماذج قوقل للذكاء الاصطناعي على التطبيقات الأخرى بفضل الفهم العميق للغة الطبيعية والقدرة المذهلة على تحويل النصوص والصور الثابتة إلى كليبات سينمائية تفاعلية وحركية تحاكي كاميرات التصوير الحقيقية.
+                      </p>
+                      <ul className="space-y-2 pr-4 text-xs text-slate-500 list-disc list-inside leading-relaxed font-semibold mt-3">
+                        <li><strong>تحويل النص إلى فيديو بدقة 4K:</strong> بمجرد كتابة وصف دقيق للمشهد، يقوم التطبيق ببناء حركة كاميرا سلسة وإضاءة دراماتيكية بالكامل.</li>
+                        <li><strong>مرونة الحركة والتحكم بالزوايا:</strong> يتيح لك التطبيق محاكاة لقطات الطائرات بدون طيار (Drones)، واللقطات المقربة (Close-up)، والتكبير السينمائي (Cinematic Zoom).</li>
+                        <li><strong>تحريك الصور الثابتة:</strong> ارفع أي صورة ثابتة من جهازك ودع خوارزميات الذكاء الاصطناعي تبث فيها الحياة بحركة واقعية مذهلة بنقرة واحدة.</li>
+                        <li><strong>أداء مجاني وسريع:</strong> يوفر التطبيق خطة مجانية سخية يومياً لتوليد الفيديوهات القصيرة ومشاركتها مباشرة على منصات التواصل الاجتماعي.</li>
+                      </ul>
+
+                      <h3 className="text-base font-black text-slate-900 border-b border-red-500/20 pb-2 mt-8">خطوات استخدام وتنزيل التطبيق بفاعلية ومجاناً</h3>
+                      <p className="text-slate-700 leading-relaxed font-sans mt-2">
+                        لتتمكن من تحقيق أقصى استفادة من هذا التطبيق الثوري، ننصحك باتباع الخطوات التالية لإنتاج فيديوهات احترافية تسترعي الانتباه وتزيد التفاعل:
+                      </p>
+                      <ol className="space-y-2 pr-4 text-xs text-slate-500 list-decimal list-inside leading-relaxed font-semibold mt-3">
+                        <li><strong>كتابة أوامر ذكية (Prompts):</strong> استخدم كلمات وصفية مثل "إضاءة سينمائية، تفاصيل دقيقة، عمق ميدان، حركة كاميرا بطيئة" لضمان نتائج مذهلة.</li>
+                        <li><strong>اختيار صيغة وأبعاد الفيديو:</strong> يدعم التطبيق الأبعاد الطولية المناسبة لـ TikTok و Reels والأبعاد العرضية لـ YouTube.</li>
+                        <li><strong>استغلال الميزات المجانية اليومية:</strong> استمتع بتوليد عدد كبير من اللقطات والحركات المجانية المخصصة لك لتجربة كافة الخصائص الإبداعية.</li>
+                      </ol>
+
+                      <div className="p-4 bg-red-500/5 border-r-4 border-red-650 rounded-l-xl text-slate-700 text-[11px] sm:text-xs font-bold leading-relaxed mt-6">
+                        تنبيه أمان وسيو 2026: تم فحص وتأمين رابط التحميل المباشر أدناه لضمان حصولك على أحدث نسخة رسمية وخالية تماماً من الإعلانات المزعجة أو البرمجيات الخبيثة. اتبع خطوات الضغط بدقة للتحميل الفوري السريع.
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-6 text-slate-700 text-xs sm:text-sm" dir="ltr">
+                      <p className="text-slate-700 text-sm leading-relaxed font-sans">
+                        The year <strong>2026</strong> marks a major milestone in AI-powered visual creation with the release of the <strong>Google Veo 3</strong> model. If you are looking for a <strong>free AI video generator app</strong> equipped with rich, state-of-the-art cinematic tools, this comprehensive guide is tailored perfectly for you.
+                      </p>
+                      
+                      <h3 className="text-base font-black text-slate-900 border-b border-red-500/20 pb-2 mt-8">Why Choose Veo 3 AI Video Generator App in 2026?</h3>
+                      <p className="text-slate-700 leading-relaxed font-sans mt-2">
+                        By utilizing Google's most sophisticated deep learning models, Veo 3 outperforms competing applications with its brilliant prompt understanding and highly stable video renderings.
+                      </p>
+                      <ul className="space-y-2 pl-4 text-xs text-slate-500 list-disc list-inside leading-relaxed font-semibold mt-3">
+                        <li><strong>Stunning 4K Text-to-Video:</strong> Translate natural descriptions into complete cinematic frames with dynamic light shading.</li>
+                        <li><strong>Total Camera Flight Control:</strong> Simulate sweeping drone shots, close-ups, and dramatic pans with extreme fluid motion.</li>
+                        <li><strong>Instant Image Animation:</strong> Turn static artwork into living, breathing video loops with simple descriptive commands.</li>
+                        <li><strong>Robust Free Tier:</strong> Produce short videos everyday for free and export them without heavy watermark restrictions.</li>
+                      </ul>
+
+                      <h3 className="text-base font-black text-slate-900 border-b border-red-500/20 pb-2 mt-8">How to Download and Use Veo 3 App Successfully</h3>
+                      <p className="text-slate-700 leading-relaxed font-sans mt-2">
+                        To master the production of high-engagement video reels, follow these easy steps:
+                      </p>
+                      <ol className="space-y-2 pl-4 text-xs text-slate-500 list-decimal list-inside leading-relaxed font-semibold mt-3">
+                        <li><strong>Inject Scenic Adjectives:</strong> Use cinematic phrases like "slow motion", "dramatic sunset lighting", and "shallow depth of field".</li>
+                        <li><strong>Select Targeted Formats:</strong> Export in vertical orientation for Reels/TikTok or widescreen ratio for standard YouTube plays.</li>
+                        <li><strong>Maximize Free Daily Energy:</strong> Learn the mechanics by utilizing the free daily token grants to craft diverse scenes.</li>
+                      </ol>
+                    </div>
+                  )}
+                </div>
+
+                {/* Download Protection Flow Component (Dual clicks) */}
+                <div className="p-6 bg-gradient-to-br from-[#0e163d] via-[#090d29] to-[#0a1033] border border-slate-850 rounded-3xl shadow-xl space-y-5 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full filter blur-2xl pointer-events-none"></div>
+                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-rose-500/5 rounded-full filter blur-2xl pointer-events-none"></div>
+
+                  <div className="flex items-start justify-between gap-4 relative z-10">
+                    <div className="space-y-1.5 text-right rtl:text-right ltr:text-left">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] font-black rounded-lg">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>{isRtl ? "تطبيق معتمد ومؤمن ١٠٠٪" : "100% Secure & Verified App"}</span>
+                      </span>
+                      <h3 className="text-base sm:text-lg font-black text-white">
+                        {isRtl ? "رابط تحميل تطبيق توليد الفيديوهات بالذكاء الاصطناعي Veo 3" : "Download Veo 3 AI Video Generator App"}
+                      </h3>
+                      <p className="text-xs text-slate-400 font-semibold">
+                        {isRtl 
+                          ? "اضغط أدناه لبدء عملية التثبيت السريعة والآمنة على هاتفك الأندرويد." 
+                          : "Click below to begin the secure high-speed installation on your Android device."}
+                      </p>
+                    </div>
+                    <div className="p-3 bg-slate-950 border border-slate-800 rounded-2xl shrink-0">
+                      <Sparkles className="w-5 h-5 text-emerald-400" />
+                    </div>
+                  </div>
+
+                  {/* Two Click Interaction Progress Flow */}
+                  <div className="space-y-4 pt-2 relative z-10 text-right rtl:text-right ltr:text-left">
+                    <div className="flex items-center justify-between text-[11px] font-bold text-slate-400 px-1">
+                      <span>{isRtl ? "الخطوة ١: التحقق والتأمين" : "Step 1: Link Protection"}</span>
+                      <span>{isRtl ? "الخطوة ٢: التنزيل المباشر" : "Step 2: Install"}</span>
+                    </div>
+                    
+                    <div className="h-2.5 w-full bg-slate-950 border border-slate-900 rounded-full overflow-hidden flex">
+                      <div 
+                        className={`h-full transition-all duration-500 ${
+                          veoClickCount === 0 
+                            ? "w-[15%] bg-slate-700" 
+                            : veoClickCount === 1 
+                              ? "w-[55%] bg-yellow-500 animate-pulse" 
+                              : "w-full bg-emerald-500"
+                        }`}
+                      ></div>
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        if (veoClickCount === 0) {
+                          window.open("https://omg10.com/4/11125764", "_blank");
+                          setVeoClickCount(1);
+                        } else if (veoClickCount === 1) {
+                          window.open("https://play.google.com/store/apps/details?id=com.ainate.ai.video.generate", "_blank");
+                          setVeoClickCount(2);
+                        } else {
+                          window.open("https://play.google.com/store/apps/details?id=com.ainate.ai.video.generate", "_blank");
+                          setVeoClickCount(0);
+                        }
+                        playInteractionSound();
+                      }}
+                      className={`w-full py-4 px-6 rounded-2xl font-black text-xs sm:text-sm transition-all duration-300 transform active:scale-95 shadow-lg flex items-center justify-center gap-2 cursor-pointer ${
+                        veoClickCount === 0 
+                          ? "bg-rose-600 hover:bg-rose-500 text-white" 
+                          : veoClickCount === 1 
+                            ? "bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-extrabold" 
+                            : "bg-emerald-600 hover:bg-emerald-500 text-white"
+                      }`}
+                    >
+                      {veoClickCount === 0 ? (
+                        <>
+                          <Flame className="w-4 h-4 animate-bounce text-white" />
+                          <span>{isRtl ? "تحميل تطبيق Veo 3 (اضغط لتأمين الاتصال - خطوة ١)" : "Download Veo 3 App (Click to Protect - Step 1)"}</span>
+                        </>
+                      ) : veoClickCount === 1 ? (
+                        <>
+                          <Sparkles className="w-4 h-4 animate-pulse text-slate-950" />
+                          <span>{isRtl ? "تم التأمين! اضغط للتحميل المباشر من المتجر (خطوة ٢)" : "Secured! Click to Download from Play Store (Step 2)"}</span>
+                        </>
+                      ) : (
+                        <>
+                          <Check className="w-4 h-4 text-white" />
+                          <span>{isRtl ? "تم فتح صفحة التحميل! (اضغط للبدء من جديد)" : "Opening Store page! (Click to Reset)"}</span>
+                        </>
+                      )}
+                    </button>
+
+                    <p className="text-[11px] text-center text-slate-400 font-bold leading-relaxed pt-1">
+                      {veoClickCount === 0 
+                        ? (isRtl ? "* اضغط أولاً لتأمين وحماية رابط التنزيل عبر نظام التحقق السريع المعتمد." : "* Click first to encrypt and verify your download parameters via smart protect.")
+                        : veoClickCount === 1 
+                          ? (isRtl ? "✓ تم الفحص وتأكيد أمان الرابط! اضغط الآن للبدء المباشر في متجر Google Play." : "✓ Protection verified! Tap now to complete your Google Play Store download.")
+                          : (isRtl ? "• جاري إعادة التحويل... في حال لم يبدأ التثبيت تلقائياً، يرجى التحديث وإعادة المحاولة." : "• Redirecting... If download fails, refresh and repeat the click flow.")}
+                    </p>
                   </div>
                 </div>
 

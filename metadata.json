@@ -1,6 +1,6 @@
 {
-  "name": "بوابة ألعاب أركيد ويب ٢٠٢٦ | Web Arcade Arena",
-  "description": "منصة ألعاب ذكاء ومحاكاة علمية تفاعلية ممتعة مثل مختبر الفيزياء الذكي، تحدي النحو، ألعاب الذاكرة والأفعى.",
+  "name": "Dkora Affiliate Store | متجر دي كورة الرياضي",
+  "description": "منصة دي كورة للتسويق بالعمولة لأفضل الأحذية والمعدات الرياضية على أمازون بأسعار مخفضة وتحديثات مستمرة لعام ٢٠٢٦.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

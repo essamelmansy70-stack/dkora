@@ -18,15 +18,21 @@ import {
   Heart,
   Sparkles,
   Zap,
-  Info
+  Info,
+  BookOpen,
+  CheckCircle2,
+  AlertTriangle,
+  HelpCircle,
+  Check
 } from "lucide-react";
 
 import snakeGameCover from "./assets/images/snake_game_cover_1783043783592.jpg";
 import tictactoeCover from "./assets/images/tictactoe_cover_1783043800396.jpg";
 import memoryGameCover from "./assets/images/memory_game_cover_1783043815120.jpg";
+import grammarGameCover from "./assets/images/grammar_game_cover_1783044752880.jpg";
 
 // Game types
-type GameType = "snake" | "tictactoe" | "memory";
+type GameType = "snake" | "tictactoe" | "memory" | "grammar";
 
 interface Game {
   id: GameType;
@@ -52,7 +58,8 @@ export default function App() {
   const [highScores, setHighScores] = useState({
     snake: 0,
     tictactoe: 0,
-    memory: 0
+    memory: 0,
+    grammar: 0
   });
 
   // Load high scores on mount
@@ -60,7 +67,8 @@ export default function App() {
     const sScore = localStorage.getItem("high_snake") ? parseInt(localStorage.getItem("high_snake")!) : 0;
     const tScore = localStorage.getItem("high_tictactoe") ? parseInt(localStorage.getItem("high_tictactoe")!) : 0;
     const mScore = localStorage.getItem("high_memory") ? parseInt(localStorage.getItem("high_memory")!) : 0;
-    setHighScores({ snake: sScore, tictactoe: tScore, memory: mScore });
+    const gScore = localStorage.getItem("high_grammar") ? parseInt(localStorage.getItem("high_grammar")!) : 0;
+    setHighScores({ snake: sScore, tictactoe: tScore, memory: mScore, grammar: gScore });
   }, []);
 
   const updateHighScore = (game: GameType, score: number) => {
@@ -142,6 +150,20 @@ export default function App() {
       difficultyEn: "Easy to Medium",
       highScoreKey: "high_memory",
       icon: <Brain className="w-5 h-5 text-indigo-400" />
+    },
+    {
+      id: "grammar",
+      titleAr: "مختبر النحو العربي الذكي",
+      titleEn: "Smart Arabic Grammar Lab",
+      descAr: "لعبة ذكاء واختبارات متخصصة لتعليم قواعد النحو العربي للطلاب بأسلوب شيق ومبسط، مع شرح تفصيلي فوري لكل قاعدة ومستويات تدرجية.",
+      descEn: "An interactive educational quiz game to learn and master Arabic grammar rules with instant detailed explanations and dynamic progression.",
+      categoryAr: "تعليم وذكاء",
+      categoryEn: "Education & Brain",
+      cover: grammarGameCover,
+      difficultyAr: "تفاعلي ومتدرج",
+      difficultyEn: "Adaptive",
+      highScoreKey: "high_grammar",
+      icon: <BookOpen className="w-5 h-5 text-amber-400" />
     }
   ];
 
@@ -260,6 +282,14 @@ export default function App() {
                     highScore={highScores.memory}
                   />
                 )}
+                {activeGame === "grammar" && (
+                  <GrammarGameEngine 
+                    lang={lang} 
+                    playSynthSound={playSynthSound} 
+                    updateHighScore={(score) => updateHighScore("grammar", score)}
+                    highScore={highScores.grammar}
+                  />
+                )}
               </div>
 
             </div>
@@ -287,7 +317,7 @@ export default function App() {
               </p>
 
               {/* High Scores summary board */}
-              <div className="pt-4 grid grid-cols-3 gap-3 max-w-md mx-auto">
+              <div className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-xl mx-auto">
                 <div className="bg-slate-950/60 border border-slate-900 p-3 rounded-2xl">
                   <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">{lang === "ar" ? "الأفعى" : "Snake"}</p>
                   <p className="text-base font-black text-emerald-400 mt-1">{highScores.snake} 🍎</p>
@@ -299,6 +329,10 @@ export default function App() {
                 <div className="bg-slate-950/60 border border-slate-900 p-3 rounded-2xl">
                   <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">{lang === "ar" ? "الذاكرة" : "Memory"}</p>
                   <p className="text-base font-black text-indigo-400 mt-1">{highScores.memory > 0 ? `${highScores.memory}s` : "0"}</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-900 p-3 rounded-2xl">
+                  <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">{lang === "ar" ? "تحدي النحو" : "Grammar"}</p>
+                  <p className="text-base font-black text-amber-400 mt-1">{highScores.grammar} ⭐</p>
                 </div>
               </div>
             </div>
@@ -1165,6 +1199,733 @@ function MemoryGameEngine({ lang, playSynthSound, updateHighScore, highScore }: 
         )}
       </div>
 
+    </div>
+  );
+}
+
+// =========================================================
+// SMART ARABIC GRAMMAR ENGINE (لعبة مختبر النحو العربي الذكي)
+// =========================================================
+interface GrammarQuestion {
+  categoryAr: string;
+  categoryEn: string;
+  questionAr: string;
+  questionEn: string;
+  optionsAr: string[];
+  optionsEn: string[];
+  answerIndex: number;
+  explanationAr: string;
+  explanationEn: string;
+  difficulty: "easy" | "medium" | "hard";
+}
+
+interface GrammarEngineProps {
+  lang: "ar" | "en";
+  playSynthSound: (frequency: number, type?: OscillatorType, duration?: number, delay?: number) => void;
+  updateHighScore: (score: number) => void;
+  highScore: number;
+}
+
+const MOTIVATIONAL_SUCCESS_AR = [
+  "أحسنت! قواعدك النحوية متينة كالذهب ✨",
+  "عبقري! إجابة سديدة وإعراب متقن 🌟",
+  "رائع! لغتك العربية فصيحة وممتازة! 👏",
+  "أصبت! فطن وذكي في لغة الضاد 💫"
+];
+
+const MOTIVATIONAL_SUCCESS_EN = [
+  "Excellent! Your grammar skills are solid as gold ✨",
+  "Genius! Accurate parsing and superb logic 🌟",
+  "Wonderful! Your Arabic language style is eloquent 👏",
+  "Spot on! Clever mastery of the Arabic tongue 💫"
+];
+
+const MOTIVATIONAL_FAIL_AR = [
+  "لا بأس، النحو يحتاج لتأمل وتركيز! 📚",
+  "قريباً ستتقنها، اقرأ الشرح النحوي بالأسفل 👇",
+  "خطأ بسيط، النحو يُبنى بالفهم والممارسة 💪",
+  "حاول مجدداً، التعلم من الخطأ هو سر الذكاء 🧠"
+];
+
+const MOTIVATIONAL_FAIL_EN = [
+  "No worries, grammar needs a bit of reflection! 📚",
+  "You'll master it soon! Read the detailed explanation below 👇",
+  "A small slip! Grammar is built on practice and logic 💪",
+  "Try again! Learning from mistakes is the secret to mastery 🧠"
+];
+
+const GRAMMAR_RULES = [
+  {
+    titleAr: "المرفوعات من الأسماء",
+    titleEn: "Nominative Case (Al-Marfoo'at)",
+    contentAr: "الأسماء المرفوعة تشمل: المبتدأ والخبر في الجملة الاسمية، والفاعل ونائب الفاعل في الجملة الفعلية، واسم كان وأخواتها، وخبر إن وأخواتها. وتكون علامة الرفع الأصلية هي الضمة الظاهرة أو المقدرة، والفرعية كالألف للمثنى والواو لجمع المذكر السالم والأسماء الخمسة.",
+    contentEn: "Nominative nouns include: Subject (Mubtada') & Predicate (Khabar) in nominal sentences, Subject (Fa'il) & Passive Subject (Na'ib Fa'il) in verbal sentences, Subject of Kana, and Predicate of Ina. The primary marker is Dammah, secondary markers are Alif (dual) and Waw (plural masculine / five nouns).",
+    exampleAr: "المعلمُ مخلصٌ - جاءَ الأخوانِ - كانَ الجوُّ بارداً.",
+    exampleEn: "The teacher is sincere - The two brothers came - The weather was cold."
+  },
+  {
+    titleAr: "المنصوبات من الأسماء",
+    titleEn: "Accusative Case (Al-Mansoobat)",
+    contentAr: "الأسماء المنصوبة تشمل: المفاعيل (مفعول به، مفعول مطلق، مفعول لأجله، مفعول فيه/ظرف)، والحال، والتمييز، واسم إن وأخواتها، وخبر كان وأخواتها. وعلامة النصب الأصلية هي الفتحة، والفرعية كالكسرة لجمع المؤنث السالم، والياء للمثنى وجمع المذكر السالم، والألف للأسماء الخمسة.",
+    contentEn: "Accusative nouns include: Objects (Direct, Absolute, Purpose, Adverbials), Hal (state/circumstance), Tamyiz (specification), Subject of Ina, and Predicate of Kana. Primary marker is Fathah, secondary markers are Kasrah (fem. plural), Yaa (dual/masc. plural), and Alif (five nouns).",
+    exampleAr: "رأيتُ أباكَ - كرمتُ الطالباتِ - انطلقَ القطارُ مسرعاً.",
+    exampleEn: "I saw your father - I honored the female students - The train launched quickly."
+  },
+  {
+    titleAr: "النواسخ (كان وإن وأخواتها)",
+    titleEn: "Sentence Changers (Nawasikh)",
+    contentAr: "أولاً: «كان وأخواتها» أفعال ناقصة ناسخة تدخل على الجملة الاسمية، فترفع المبتدأ ويسمى اسمها وتنصب الخبر ويسمى خبرها. ثانياً: «إن وأخواتها» حروف مشبهة بالفعل، تدخل على الجملة الاسمية فتنصب المبتدأ ويسمى اسمها وترفع الخبر ويسمى خبرها.",
+    contentEn: "1) Kana and its sisters are defective verbs that enter nominal sentences: they raise the subject (as its name) and set the predicate in accusative. 2) Ina and its sisters are particles that do the opposite: they set the subject in accusative and raise the predicate.",
+    exampleAr: "كان الامتحانُ سهلاً (سهلاً: خبر كان منصوب) | إنَّ المعلمينَ مخلصونَ (المعلمين: اسم إن منصوب بالياء).",
+    exampleEn: "The exam was easy (easy = Kana predicate) | Verily the teachers are sincere (teachers = Ina subject)."
+  },
+  {
+    titleAr: "الأفعال الخمسة وإعرابها",
+    titleEn: "The Five Verbs (Al-Af'aal Al-Khamsah)",
+    contentAr: "هي كل فعل مضارع اتصلت به ألف الاثنين، أو واو الجماعة، أو ياء المخاطبة. تُرفع الأفعال الخمسة بثبوت النون في آخرها، وتُنصب وتُجزم بحذف النون.",
+    contentEn: "These are present tense verbs connected with the dual Alif, plural Waw, or feminine second-person Yaa. They are raised by retaining the 'Noon' at the end, and are accusative/jussive by deleting the 'Noon'.",
+    exampleAr: "الطلابُ يكتبونَ واجبهم (مرفوع بثبوت النون) | لم يهملوا أعمالهم (مجزوم بحذف النون).",
+    exampleEn: "Students write their homework (raised with Noon) | They did not neglect their work (jussive by deleting Noon)."
+  }
+];
+
+const GRAMMAR_QUESTIONS: GrammarQuestion[] = [
+  {
+    categoryAr: "الجملة الاسمية",
+    categoryEn: "The Nominal Sentence",
+    questionAr: "«العِلْمُ نُورٌ» - إعراب كلمة «نُورٌ» هو:",
+    questionEn: "What is the parsing of 'نُورٌ' in the sentence 'العِلْمُ نُورٌ'?",
+    optionsAr: ["خبر مرفوع وعلامة رفعه الضمة", "مبتدأ مؤخر مرفوع بالضمة", "فاعل مرفوع وعلامة رفعه الضمة", "مفعول به منصوب وعلامة نصبه الفتحة"],
+    optionsEn: ["Predicate (Khabar) Nominative with Dammah", "Delayed Subject (Mubtada') Nominative", "Subject (Fa'il) Nominative with Dammah", "Direct Object Accusative with Fathah"],
+    answerIndex: 0,
+    explanationAr: "في الجملة الاسمية، المبتدأ هو الاسم المتحدّث عنه «العلمُ»، والخبر هو الجزء الذي يتمم معنى المبتدأ ويخبرنا بحاله «نورٌ»، لذا تعرب كلمة «نورٌ» خبراً مرفوعاً بالضمة الظاهرة.",
+    explanationEn: "In a nominal sentence (Jumla Ismiyya), the subject (Mubtada') is 'العلم', and the predicate (Khabar) is 'نور' because it completes the meaning of the subject. Thus, it is parsed as Predicate Nominative with a Dammah.",
+    difficulty: "easy"
+  },
+  {
+    categoryAr: "النواسخ (كان وأخواتها)",
+    categoryEn: "Kana and its Sisters",
+    questionAr: "«كانَ الامتحانُ سهلاً.» - ما هو عمل فعل «كانَ» في الجملة؟",
+    questionEn: "What does the verb 'كان' do in the sentence?",
+    optionsAr: ["يرفع المبتدأ وينصب الخبر", "ينصب المبتدأ ويرفع الخبر", "ينصب المبتدأ والخبر معاً", "يجزم الفعل المضارع بالسكون"],
+    optionsEn: ["Raises the subject and sets the predicate in accusative", "Sets the subject in accusative and raises the predicate", "Sets both subject and predicate in accusative", "Jussives the present tense verb with Sukoon"],
+    answerIndex: 0,
+    explanationAr: "«كانَ» وأخواتها هي أفعال ناسخة ناقصة تدخل على الجملة الاسمية، فترفع المبتدأ ويسمى اسمها (الامتحانُ) وتنصب الخبر ويسمى خبرها (سهلاً).",
+    explanationEn: "'كان' and its sisters are incomplete-nullifying verbs (Nawasikh) that enter nominal sentences; they raise the subject as its noun (Al-Imtihanu) and place the predicate in accusative (Sahlan).",
+    difficulty: "easy"
+  },
+  {
+    categoryAr: "النواسخ (إن وأخواتها)",
+    categoryEn: "Ina and its Sisters",
+    questionAr: "«إنَّ المعلمينَ مخلصونَ» - علامة نصب اسم «إنَّ» في هذه الجملة هي:",
+    questionEn: "What is the accusative marker of Ina's subject 'المعلمين'?",
+    optionsAr: ["الياء لأنه جمع مذكر سالم", "الفتحة الظاهرة على آخره", "الكسرة نيابة عن الفتحة", "الألف لأنه من الأسماء الخمسة"],
+    optionsEn: ["Yaa because it is a sound masculine plural", "Fathah visible on the end", "Kasrah instead of Fathah", "Alif because it is one of the five nouns"],
+    answerIndex: 0,
+    explanationAr: "«إنَّ» حرف ناسخ ينصب المبتدأ ويرفع الخبر. واسمها هنا هو «المعلمينَ» وهو جمع مذكر سالم، وجمع المذكر السالم يُنصب وعلامة نصبه الياء.",
+    explanationEn: "'إنَّ' is an accusative particle that nullifies. Its subject here is 'المعلمين', which is a sound masculine plural, and the accusative marker for sound masculine plurals is Yaa.",
+    difficulty: "medium"
+  },
+  {
+    categoryAr: "الأسماء الخمسة",
+    categoryEn: "The Five Nouns",
+    questionAr: "«رأيتُ أخاكَ يقرأُ كتاباً.» - كلمة «أخاكَ» منصوبة وعلامة نصبها:",
+    questionEn: "What is the accusative marker for the word 'أخاكَ'?",
+    optionsAr: ["الألف لأنه من الأسماء الخمسة", "الفتحة الظاهرة على آخره", "الياء لأنه مثنى مذكر", "الفتحة المقدرة منع من ظهورها الثقل"],
+    optionsEn: ["Alif because it is one of the Five Nouns", "Fathah visible on its end", "Yaa because it is dual masculine", "Estimated Fathah due to vocal weight"],
+    answerIndex: 0,
+    explanationAr: "«أخاكَ» مفعول به منصوب وعلامة نصبه الألف لأنه من الأسماء الخمسة وهو مضاف، والكاف ضمير متصل في محل جر مضاف إليه. الأسماء الخمسة تُرفع بالواو وتُنصب بالألف وتُجر بالياء.",
+    explanationEn: "'أخاكَ' is a direct object in accusative. Its marker is Alif because it belongs to the Five Nouns, which are raised by Waw, accused by Alif, and genitived by Yaa.",
+    difficulty: "medium"
+  },
+  {
+    categoryAr: "الأفعال المضارعة",
+    categoryEn: "Present Tense Verbs",
+    questionAr: "«لم يلدْ ولم يولدْ» - حالة جزم الفعل المضارع «يلدْ» هي وعلامتها:",
+    questionEn: "What is the jussive status and marker for 'يلدْ'?",
+    optionsAr: ["مجزوم وعلامة جزمه السكون الظاهر", "مرفوع وعلامة رفعه الضمة المقدرة", "مجزوم وعلامة جزمه حذف حرف العلة", "منصوب وعلامة نصبه الفتحة الظاهرة"],
+    optionsEn: ["Jussive with visible Sukoon marker", "Nominative with estimated Dammah", "Jussive by deleting the weak letter", "Accusative with visible Fathah"],
+    answerIndex: 0,
+    explanationAr: "حرف «لم» هو أداة جزم ونفي وقلب تدخل على الفعل المضارع وتجزمه. وحيث أن الفعل «يلد» صحيح الآخر، فإن علامة جزمه هي السكون الظاهر على آخره.",
+    explanationEn: "The particle 'لم' is a jussive/negating particle. Since the verb 'يلد' has a sound ending (not weak), its jussive marker is the visible Sukoon on its end.",
+    difficulty: "easy"
+  },
+  {
+    categoryAr: "الفعل المعتل الآخر",
+    categoryEn: "Defective/Weak Verbs",
+    questionAr: "«يسعى المؤمنُ في فعل الخيرِ» - علامة رفع الفعل «يسعى» هي:",
+    questionEn: "What is the nominative marker for the verb 'يسعى'?",
+    optionsAr: ["الضمة المقدرة للتعذر", "الضمة الظاهرة على آخره", "ثبوت النون في آخره", "الفتحة المقدرة للثقل"],
+    optionsEn: ["Estimated Dammah due to impossibility (Ta'azzur)", "Visible Dammah on the end", "Retention of the Noon at the end", "Estimated Fathah due to weight (Thiqal)"],
+    answerIndex: 0,
+    explanationAr: "الفعل المضارع «يسعى» معتل الآخر بالألف المفتوح ما قبلها. ويُرفع بالضمة المقدرة على الألف منع من ظهورها التعذر (أي استحالة نطق الحركة على الألف).",
+    explanationEn: "The present verb 'يسعى' ends with a weak Alif. It is raised with an estimated Dammah because it is impossible (Ta'azzur) to pronounce a vowel marker on an Alif.",
+    difficulty: "hard"
+  },
+  {
+    categoryAr: "جمع المؤنث السالم",
+    categoryEn: "Sound Feminine Plural",
+    questionAr: "«كرّمَتِ المديرةُ الطالباتِ المتفوقاتِ» - علامة نصب كلمة «الطالباتِ» هي:",
+    questionEn: "What is the accusative marker for the word 'الطالباتِ'?",
+    optionsAr: ["الكسرة نيابة عن الفتحة", "الفتحة الظاهرة على آخره", "الياء لأنه جمع مذكر", "السكون الظاهر على آخره"],
+    optionsEn: ["Kasrah instead of Fathah", "Visible Fathah on the end", "Yaa because it is masculine plural", "Visible Sukoon on the end"],
+    answerIndex: 0,
+    explanationAr: "كلمة «الطالباتِ» مفعول به منصوب. وحيث أنه جمع مؤنث سالم (ينتهي بألف وتاء زائدتين)، فإن علامة نصبه الفرعية هي الكسرة نيابة عن الفتحة.",
+    explanationEn: "'الطالباتِ' is a direct object. Since it is a sound feminine plural, its accusative marker is the sub-marker Kasrah instead of Fathah.",
+    difficulty: "medium"
+  },
+  {
+    categoryAr: "الأسماء الموصولة والمثنى",
+    categoryEn: "Relative Nouns & Duals",
+    questionAr: "«جاءَ اللذانِ نجحا في الاختبار» - كلمة «اللذانِ» فاعل مرفوع وعلامة رفعه:",
+    questionEn: "What is the nominative marker for the word 'اللذانِ'?",
+    optionsAr: ["الألف لأنه يعرب إعراب المثنى", "الضمة المقدرة على آخره", "ثبوت النون لأنه من الأفعال الخمسة", "مبني على الكسر في محل رفع فاعل"],
+    optionsEn: ["Alif because it is parsed as a dual", "Estimated Dammah on the end", "Retention of Noon because of five verbs", "Built on Kasrah in nominative state"],
+    answerIndex: 0,
+    explanationAr: "الأسماء الموصولة كلها مبنية عدا (اللذان واللتان) فإنهما يُعربان إعراب المثنى؛ يرفعان بالألف وينصبان ويجران بالياء. وهنا فاعل مرفوع وعلامة رفعه الألف.",
+    explanationEn: "All relative pronouns in Arabic are static (Mabni) except 'اللذان' and 'اللتان', which behave like duals. They are raised by Alif and accused/genitived by Yaa.",
+    difficulty: "hard"
+  },
+  {
+    categoryAr: "أدوات الجزم والنحو",
+    categoryEn: "Jussive Particles",
+    questionAr: "«لا تنهَ عن خلقٍ وتأتيَ مثله» - علامة جزم الفعل «تنهَ» في الجملة هي:",
+    questionEn: "What is the jussive marker for the verb 'تنهَ'?",
+    optionsAr: ["حذف حرف العلة من آخره", "السكون الظاهر على آخره", "حذف النون من آخره", "الفتحة الظاهرة على النون"],
+    optionsEn: ["Deleting the weak letter at the end", "Visible Sukoon on the end", "Deleting the Noon from the end", "Visible Fathah on the Noon"],
+    answerIndex: 0,
+    explanationAr: "الفعل المضارع «تنهَ» أصله «تنهى» (معتل الآخر بالألف)، ودخلت عليه «لا» الناهية الجازمة، فتم جزمه وعلامة الجزم هي حذف حرف العلة من آخره، والفتحة على الهاء هي دليل على الألف المحذوفة.",
+    explanationEn: "The verb 'تنهَ' is originally 'تنهى' (ending with weak Alif). Since it is preceded by the forbidding 'لا', it is jussived by deleting the weak ending letter.",
+    difficulty: "medium"
+  },
+  {
+    categoryAr: "المنادى وأحكامه",
+    categoryEn: "The Vocative (Munada)",
+    questionAr: "«يا طالبَ العلمِ اجتهدْ» - ما نوع المنادى وحكمه الإعرابي هنا؟",
+    questionEn: "What is the type and ruling of the vocative 'طالبَ العلمِ'?",
+    optionsAr: ["منادى مضاف حكمه النصب بالفتحة", "منادى شبيه بالمضاف حكمه الرفع", "نكرة مقصودة مبنية في محل نصب", "علم مفرد مبني على الضم"],
+    optionsEn: ["An Annexed Vocative (Mudaf) ruled as Accusative", "Similar to Annexed ruled as Nominative", "Intended Indefinite static in accusative position", "Single Proper noun static on Dammah"],
+    answerIndex: 0,
+    explanationAr: "المنادى هنا هو «طالبَ العلمِ»، وقد جاء مضافاً (طالب) ومضافاً إليه (العلم). والمنادى المضاف حكمه النصب دائماً، لذا «طالبَ» منادى منصوب وعلامة نصبه الفتحة.",
+    explanationEn: "The vocative here is 'طالبَ العلمِ', which is structured as Annexed (Mudaf). The annexed vocative is always in the accusative case (Mansoub), hence 'طالبَ' is accused with Fathah.",
+    difficulty: "medium"
+  },
+  {
+    categoryAr: "الممنوع من الصرف",
+    categoryEn: "Diptotes (Mamnood' min Al-Sarf)",
+    questionAr: "«صليتُ في مساجدَ أثريةٍ» - كلمة «مساجدَ» مجرورة بالفتحة لأنها:",
+    questionEn: "Why is the word 'مساجدَ' genitived with Fathah?",
+    optionsAr: ["ممنوعة من الصرف على صيغة منتهى الجموع", "اسم مجرور وعلامة جره الكسرة المقدرة", "جمع مؤنث سالم ينصب بالفتحة", "ملحقة بالمثنى المرفوع بالألف"],
+    optionsEn: ["Diptote because of Ultimate Plural Form (Muntaha Al-Jumoo')", "Genitived with estimated Kasrah", "Sound feminine plural accused with Fathah", "Dual adjunct raised with Alif"],
+    answerIndex: 0,
+    explanationAr: "كلمة «مساجدَ» على صيغة منتهى الجموع (مفاعل)، وهي ممنوعة من الصرف (التنوين). وتُجر الممنوعات من الصرف بالفتحة نيابة عن الكسرة بشرط ألا تُضاف أو تُعرف بأل.",
+    explanationEn: "'مساجدَ' is on the ultimate plural form 'Muntaha Al-Jumoo'' (Mafa'eel). Diptotes are genitived with a Fathah instead of Kasrah as long as they are not defined with 'Al' or annexed.",
+    difficulty: "hard"
+  },
+  {
+    categoryAr: "الحال والتمييز",
+    categoryEn: "Hal (State/Circumstance)",
+    questionAr: "«انطلقَ القطارُ مسرعاً» - إعراب كلمة «مسرعاً» في الجملة هو:",
+    questionEn: "What is the parsing of the word 'مسرعاً'?",
+    optionsAr: ["حال منصوبة وعلامة نصبها الفتحة", "تمييز منصوب وعلامة نصبه الفتحة", "مفعول به منصوب وعلامة نصبه الفتحة", "مفعول لأجله منصوب وعلامة نصبه الفتحة"],
+    optionsEn: ["Hal (State) Accusative with Fathah", "Tamyiz (Specification) Accusative with Fathah", "Direct Object Accusative with Fathah", "Object of Purpose Accusative with Fathah"],
+    answerIndex: 0,
+    explanationAr: "كلمة «مسرعاً» هي نكرة مشتقة منصوبة جاءت لتبين هيئة الفاعل (القطار) وقت حدوث الفعل، ويصح وقوعها جواباً لسؤال «كيف انطلق القطار؟»، لذا تُعرب حالاً منصوبة.",
+    explanationEn: "'مسرعاً' is an indefinite derivative noun in the accusative case that clarifies the state of the subject ('Al-Qitar') at the time of the action, hence parsed as Hal.",
+    difficulty: "easy"
+  }
+];
+
+export function GrammarGameEngine({ lang, playSynthSound, updateHighScore, highScore }: GrammarEngineProps) {
+  const [gameActive, setGameActive] = useState<boolean>(false);
+  const [currentIdx, setCurrentIdx] = useState<number>(0);
+  const [score, setScore] = useState<number>(0);
+  const [streak, setStreak] = useState<number>(0);
+  const [lives, setLives] = useState<number>(3);
+  const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
+  const [isAnswered, setIsAnswered] = useState<boolean>(false);
+  const [showExplanation, setShowExplanation] = useState<boolean>(false);
+  const [isCorrect, setIsCorrect] = useState<boolean>(false);
+  const [activeTab, setActiveTab] = useState<"quiz" | "rules">("quiz");
+  
+  // High score tracking for this session
+  const [sessionHighScore, setSessionHighScore] = useState<number>(highScore);
+
+  // Stats for review after game over
+  const [history, setHistory] = useState<{
+    questionText: string;
+    selectedText: string;
+    correctText: string;
+    wasCorrect: boolean;
+    explanationText: string;
+  }[]>([]);
+
+  const resetGame = () => {
+    setScore(0);
+    setStreak(0);
+    setLives(3);
+    setCurrentIdx(0);
+    setSelectedIdx(null);
+    setIsAnswered(false);
+    setShowExplanation(false);
+    setHistory([]);
+    setGameActive(true);
+    playSynthSound(523.25, "sine", 0.15); // C5
+  };
+
+  const handleOptionClick = (idx: number) => {
+    if (isAnswered || !gameActive) return;
+    
+    setSelectedIdx(idx);
+    setIsAnswered(true);
+    
+    const question = GRAMMAR_QUESTIONS[currentIdx];
+    const correct = idx === question.answerIndex;
+    setIsCorrect(correct);
+    setShowExplanation(true);
+
+    // Track response history
+    setHistory(prev => [...prev, {
+      questionText: lang === "ar" ? question.questionAr : question.questionEn,
+      selectedText: lang === "ar" ? question.optionsAr[idx] : question.optionsEn[idx],
+      correctText: lang === "ar" ? question.optionsAr[question.answerIndex] : question.optionsEn[question.answerIndex],
+      wasCorrect: correct,
+      explanationText: lang === "ar" ? question.explanationAr : question.explanationEn
+    }]);
+
+    if (correct) {
+      const newStreak = streak + 1;
+      setStreak(newStreak);
+      // Score calculation
+      const bonus = Math.min((newStreak - 1) * 2, 10);
+      const points = 10 + bonus;
+      const newScore = score + points;
+      setScore(newScore);
+
+      // Play success synth sound (uplifting major chord)
+      playSynthSound(523.25, "sine", 0.1); // C5
+      setTimeout(() => playSynthSound(659.25, "sine", 0.15), 80); // E5
+      setTimeout(() => playSynthSound(783.99, "sine", 0.25), 160); // G5
+    } else {
+      setStreak(0);
+      const newLives = lives - 1;
+      setLives(newLives);
+
+      // Play fail sound (descending dissonance)
+      playSynthSound(300, "sawtooth", 0.2);
+      setTimeout(() => playSynthSound(220, "sawtooth", 0.3), 100);
+    }
+  };
+
+  const handleNext = () => {
+    setSelectedIdx(null);
+    setIsAnswered(false);
+    setShowExplanation(false);
+
+    if (lives <= 0 || currentIdx >= GRAMMAR_QUESTIONS.length - 1) {
+      // End game
+      setGameActive(false);
+      // Save highscore
+      if (score > sessionHighScore) {
+        setSessionHighScore(score);
+        updateHighScore(score);
+      }
+    } else {
+      setCurrentIdx(prev => prev + 1);
+      playSynthSound(440, "sine", 0.1); // A4
+    }
+  };
+
+  const currentQuestion = GRAMMAR_QUESTIONS[currentIdx];
+  const totalQuestions = GRAMMAR_QUESTIONS.length;
+  const progressPercentage = ((currentIdx + (isAnswered ? 1 : 0)) / totalQuestions) * 100;
+
+  // Feedback strings
+  const getFeedbackMessage = () => {
+    if (isCorrect) {
+      const list = lang === "ar" ? MOTIVATIONAL_SUCCESS_AR : MOTIVATIONAL_SUCCESS_EN;
+      return list[currentIdx % list.length];
+    } else {
+      const list = lang === "ar" ? MOTIVATIONAL_FAIL_AR : MOTIVATIONAL_FAIL_EN;
+      return list[currentIdx % list.length];
+    }
+  };
+
+  return (
+    <div className="w-full max-w-2xl mx-auto space-y-6 flex flex-col">
+      
+      {/* Mode / Tabs Switcher */}
+      <div className="flex items-center justify-center gap-2 p-1.5 bg-[#070913] border border-slate-900 rounded-2xl max-w-sm mx-auto">
+        <button
+          onClick={() => {
+            setActiveTab("quiz");
+            playSynthSound(400, "sine", 0.05);
+          }}
+          className={`flex-1 py-2 px-4 rounded-xl font-black text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+            activeTab === "quiz" 
+              ? "bg-gradient-to-r from-rose-600 to-indigo-600 text-white shadow-md shadow-rose-600/10" 
+              : "text-slate-400 hover:text-white"
+          }`}
+        >
+          <Gamepad2 className="w-3.5 h-3.5" />
+          <span>{lang === "ar" ? "تحدي النحو" : "Grammar Quiz"}</span>
+        </button>
+        <button
+          onClick={() => {
+            setActiveTab("rules");
+            playSynthSound(400, "sine", 0.05);
+          }}
+          className={`flex-1 py-2 px-4 rounded-xl font-black text-xs transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+            activeTab === "rules" 
+              ? "bg-gradient-to-r from-rose-600 to-indigo-600 text-white shadow-md shadow-rose-600/10" 
+              : "text-slate-400 hover:text-white"
+          }`}
+        >
+          <BookOpen className="w-3.5 h-3.5" />
+          <span>{lang === "ar" ? "قواعد النحو الذهبية" : "Grammar Rules"}</span>
+        </button>
+      </div>
+
+      {activeTab === "rules" ? (
+        /* Rules Encyclopedia Screen */
+        <div className="bg-[#030408] border-2 border-slate-900 rounded-3xl p-6 sm:p-8 space-y-6 animate-fade-in w-full">
+          <div className="text-center space-y-2">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-amber-500/10 text-amber-400 text-[10px] font-black rounded-lg">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{lang === "ar" ? "موسوعة القواعد السريعة للطلاب" : "Student's Golden Rules Encyclopedia"}</span>
+            </span>
+            <h3 className="text-lg font-black text-white">
+              {lang === "ar" ? "مختبر دراسة قواعد النحو واللغة" : "Arabic Grammar Fast Handbook"}
+            </h3>
+            <p className="text-xs text-slate-400 max-w-md mx-auto">
+              {lang === "ar" 
+                ? "اقرأ وتأمل في القواعد الأساسية الأربعة لتسهيل حل التحدي وإحراز أعلى النقاط." 
+                : "Study these four cornerstone grammar concepts to boost your scores in the active quiz arena."}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {GRAMMAR_RULES.map((rule, idx) => (
+              <div 
+                key={idx}
+                className="bg-[#0b0c16] border border-slate-900 hover:border-slate-800 p-5 rounded-2xl space-y-3 transition-all text-right"
+                dir="rtl"
+              >
+                <div className="flex items-center gap-2 justify-start">
+                  <span className="w-6 h-6 rounded-lg bg-indigo-600/10 border border-indigo-500/20 text-indigo-400 text-xs font-black flex items-center justify-center">
+                    {idx + 1}
+                  </span>
+                  <h4 className="text-sm font-black text-white">
+                    {lang === "ar" ? rule.titleAr : rule.titleEn}
+                  </h4>
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed text-right">
+                  {lang === "ar" ? rule.contentAr : rule.contentEn}
+                </p>
+                <div className="p-3 bg-[#030408] border border-slate-900 rounded-xl space-y-1">
+                  <p className="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">{lang === "ar" ? "أمثلة شائعة:" : "Examples:"}</p>
+                  <p className="text-xs font-semibold text-emerald-400" dir="rtl">
+                    {lang === "ar" ? rule.exampleAr : rule.exampleEn}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center pt-2">
+            <button
+              onClick={() => {
+                setActiveTab("quiz");
+                playSynthSound(500, "sine", 0.1);
+              }}
+              className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs rounded-xl shadow-lg transition-all cursor-pointer"
+            >
+              {lang === "ar" ? "الانتقال إلى اختبار النحو" : "Go to Quiz Mode"}
+            </button>
+          </div>
+        </div>
+      ) : (
+        /* Active Grammar Quiz Arena */
+        <div className="space-y-6 w-full">
+          {gameActive ? (
+            <div className="space-y-6 animate-fade-in">
+              {/* Header metrics */}
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#030408]/40 border border-slate-900/60 p-4 rounded-2xl text-xs font-bold text-slate-300">
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-1.5">
+                    <Trophy className="w-4 h-4 text-amber-500" />
+                    <span>{lang === "ar" ? "النقاط" : "Score"}: <strong className="text-white text-sm font-black">{score}</strong></span>
+                  </div>
+                  {streak >= 2 && (
+                    <div className="flex items-center gap-1 px-2 py-0.5 bg-rose-500/10 text-rose-400 rounded-lg border border-rose-500/20 animate-pulse">
+                      <Flame className="w-3.5 h-3.5" />
+                      <span>{lang === "ar" ? `متتالي ${streak}` : `Streak ${streak}`}</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Progress display */}
+                <div className="flex items-center gap-2 w-full sm:w-auto">
+                  <span>{lang === "ar" ? "السؤال" : "Question"}: <strong className="text-white font-black">{currentIdx + 1}/{totalQuestions}</strong></span>
+                  <div className="w-24 h-1.5 bg-slate-900 rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-gradient-to-r from-rose-500 to-indigo-500 transition-all duration-300"
+                      style={{ width: `${progressPercentage}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* Hearts / Lives */}
+                <div className="flex items-center gap-1">
+                  {[...Array(3)].map((_, idx) => (
+                    <Heart 
+                      key={idx} 
+                      className={`w-4 h-4 transition-all ${
+                        idx < lives ? "text-rose-500 fill-rose-500 scale-100" : "text-slate-800 scale-90"
+                      }`} 
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Quiz Canvas Screen */}
+              <div className="bg-[#030408] border-2 border-slate-900 rounded-3xl p-6 sm:p-8 space-y-6 relative overflow-hidden w-full">
+                <div className="absolute top-0 right-0 px-3 py-1 bg-indigo-600/10 text-indigo-400 text-[10px] font-black rounded-bl-xl border-l border-b border-slate-900">
+                  {lang === "ar" ? currentQuestion.categoryAr : currentQuestion.categoryEn}
+                </div>
+
+                {/* Question panel */}
+                <div className="space-y-4 pt-2">
+                  <span className="px-2 py-0.5 bg-slate-900 text-slate-400 text-[10px] font-bold rounded">
+                    {lang === "ar" ? "سؤال إعرابي متقدم" : "Grammatical parsing task"}
+                  </span>
+                  
+                  {/* Large Stylized Arabic Sentence Box */}
+                  <div className="p-4 sm:p-6 bg-[#070913] border border-slate-900 rounded-2xl flex items-center justify-center text-center shadow-inner relative">
+                    <div className="absolute -top-3 left-4 px-2 py-0.5 bg-slate-950 text-[9px] font-black text-rose-500 border border-slate-900 rounded">
+                      {lang === "ar" ? "تأمل التشكيل والجملة" : "Focus on diacritics"}
+                    </div>
+                    <h4 className="text-base sm:text-xl font-extrabold text-white leading-relaxed font-sans tracking-wide">
+                      {lang === "ar" ? currentQuestion.questionAr : currentQuestion.questionEn}
+                    </h4>
+                  </div>
+                </div>
+
+                {/* Options Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3" dir={lang === "ar" ? "rtl" : "ltr"}>
+                  {(lang === "ar" ? currentQuestion.optionsAr : currentQuestion.optionsEn).map((option, idx) => {
+                    const isSelected = selectedIdx === idx;
+                    const isCorrectAnswer = idx === currentQuestion.answerIndex;
+                    
+                    let btnStyle = "bg-[#0b0c16] border-slate-900 text-slate-200 hover:border-slate-800 hover:bg-[#0f1020]";
+                    if (isAnswered) {
+                      if (isCorrectAnswer) {
+                        btnStyle = "bg-emerald-600/20 border-emerald-500 text-emerald-300";
+                      } else if (isSelected) {
+                        btnStyle = "bg-rose-600/20 border-rose-500 text-rose-300";
+                      } else {
+                        btnStyle = "bg-slate-950/30 border-slate-950 text-slate-500 opacity-60";
+                      }
+                    }
+
+                    return (
+                      <button
+                        key={idx}
+                        disabled={isAnswered}
+                        onClick={() => handleOptionClick(idx)}
+                        className={`p-4 text-xs sm:text-sm font-black rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-2 ${btnStyle} text-right`}
+                      >
+                        <span className="flex-grow">{option}</span>
+                        {isAnswered && isCorrectAnswer && <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />}
+                        {isAnswered && isSelected && !isCorrectAnswer && <X className="w-4 h-4 text-rose-400 shrink-0" />}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Instant Pedagogical Explanation Box */}
+                {showExplanation && (
+                  <div className="p-4 rounded-2xl bg-[#070913] border-l-4 border-indigo-500 space-y-3 animate-fade-in text-right" dir="rtl">
+                    <div className="flex items-center gap-2 justify-start">
+                      {isCorrect ? (
+                        <span className="w-5 h-5 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-[10px] font-black font-mono">✓</span>
+                      ) : (
+                        <span className="w-5 h-5 rounded-full bg-rose-500/10 text-rose-400 flex items-center justify-center text-[10px] font-black font-mono">✗</span>
+                      )}
+                      <h5 className={`text-xs sm:text-sm font-black ${isCorrect ? "text-emerald-400" : "text-rose-400"}`}>
+                        {getFeedbackMessage()}
+                      </h5>
+                    </div>
+
+                    <div className="text-xs text-slate-400 leading-relaxed space-y-1">
+                      <p className="font-bold text-slate-300">{lang === "ar" ? "💡 الشرح القاعدي المفصل:" : "💡 Grammatical Base Rule:"}</p>
+                      <p>{lang === "ar" ? currentQuestion.explanationAr : currentQuestion.explanationEn}</p>
+                    </div>
+
+                    <div className="flex justify-end pt-2">
+                      <button
+                        onClick={handleNext}
+                        className="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs rounded-xl shadow-md cursor-pointer flex items-center gap-1"
+                      >
+                        <span>{lang === "ar" ? "السؤال التالي" : "Next Question"}</span>
+                        <ChevronLeft className="w-4 h-4 rotate-180" />
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            /* Welcome / Game Over / Victory Overlay screens */
+            <div className="bg-[#030408] border-2 border-slate-900 rounded-3xl p-6 sm:p-8 text-center space-y-6 relative overflow-hidden w-full">
+              {history.length > 0 ? (
+                /* Game Over or completion state */
+                <div className="space-y-6 animate-fade-in">
+                  <div className="space-y-2">
+                    {lives > 0 ? (
+                      <div className="space-y-2">
+                        <Award className="w-16 h-16 text-amber-500 mx-auto animate-pulse" />
+                        <h3 className="text-lg sm:text-xl font-extrabold text-white">
+                          {lang === "ar" ? "تهانينا! فوز وإتقان لغوي تام" : "Superb! Arabic Grammar Mastered"}
+                        </h3>
+                        <p className="text-xs text-emerald-400 font-bold">
+                          {lang === "ar" ? "أنجزت جميع الاختبارات النحوية بنجاح!" : "You have completed all grammar challenges successfully!"}
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="space-y-2">
+                        <AlertTriangle className="w-16 h-16 text-rose-500 mx-auto animate-bounce" />
+                        <h3 className="text-lg sm:text-xl font-extrabold text-white">
+                          {lang === "ar" ? "انتهت المحاولات! لكن التعلم مستمر" : "Out of Lives! Learning Continues"}
+                        </h3>
+                        <p className="text-xs text-rose-400 font-bold">
+                          {lang === "ar" ? "لقد فقدت جميع قلوب المحاولات النحوية." : "You have exhausted all your active grammar lives."}
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Score summary panel */}
+                    <div className="py-4 grid grid-cols-2 gap-4 max-w-sm mx-auto">
+                      <div className="bg-[#0b0c16] border border-slate-900 p-3 rounded-xl">
+                        <p className="text-[10px] text-slate-500 uppercase tracking-wider">{lang === "ar" ? "مجموع نقاطك" : "Your Score"}</p>
+                        <p className="text-xl font-black text-rose-400 mt-0.5">{score} ⭐</p>
+                      </div>
+                      <div className="bg-[#0b0c16] border border-slate-900 p-3 rounded-xl">
+                        <p className="text-[10px] text-slate-500 uppercase tracking-wider">{lang === "ar" ? "الرقم القياسي" : "Best Score"}</p>
+                        <p className="text-xl font-black text-amber-400 mt-0.5">{sessionHighScore} ⭐</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Interactive review history sheet */}
+                  <div className="space-y-3 text-right animate-fade-in" dir="rtl">
+                    <h4 className="text-xs font-black text-white px-2 flex items-center gap-1.5 justify-start">
+                      <BookOpen className="w-4 h-4 text-indigo-400" />
+                      <span>{lang === "ar" ? "كشف مراجعة الأسئلة والإعراب للطلاب" : "Student's Quiz Parsing Review Sheet"}</span>
+                    </h4>
+
+                    <div className="max-h-[220px] overflow-y-auto space-y-2.5 p-3 bg-[#070913] border border-slate-900 rounded-2xl scrollbar-thin scrollbar-thumb-slate-800">
+                      {history.map((item, idx) => (
+                        <div 
+                          key={idx}
+                          className={`p-3 rounded-xl border text-xs space-y-2 text-right ${
+                            item.wasCorrect ? "bg-emerald-950/10 border-emerald-900/30" : "bg-rose-950/10 border-rose-900/30"
+                          }`}
+                        >
+                          <div className="flex items-start justify-between gap-2">
+                            <span className="font-black text-slate-200">س{idx + 1}: {item.questionText}</span>
+                            <span className={`px-2 py-0.5 rounded text-[9px] font-bold ${
+                              item.wasCorrect ? "bg-emerald-500/20 text-emerald-400" : "bg-rose-500/20 text-rose-400"
+                            }`}>
+                              {item.wasCorrect ? (lang === "ar" ? "صحيح" : "Correct") : (lang === "ar" ? "خطأ" : "Incorrect")}
+                            </span>
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-2 text-[11px] text-slate-400 text-right">
+                            <p>{lang === "ar" ? "إجابتك:" : "Your choice:"} <strong className={item.wasCorrect ? "text-emerald-400" : "text-rose-400"}>{item.selectedText}</strong></p>
+                            {!item.wasCorrect && (
+                              <p>{lang === "ar" ? "الإعراب الصحيح:" : "Correct parse:"} <strong className="text-emerald-400">{item.correctText}</strong></p>
+                            )}
+                          </div>
+
+                          <p className="text-[10px] text-slate-500 leading-relaxed border-t border-slate-900 pt-1.5 text-right">
+                            <strong>{lang === "ar" ? "القاعدة النحوية:" : "Grammar Base:"}</strong> {item.explanationText}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Play again button */}
+                  <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <button
+                      onClick={resetGame}
+                      className="w-full sm:w-auto px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs rounded-xl shadow-lg cursor-pointer flex items-center justify-center gap-1.5"
+                    >
+                      <RotateCcw className="w-4 h-4" />
+                      <span>{lang === "ar" ? "إعادة التحدي النحوي" : "Restart Grammar Quiz"}</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setActiveTab("rules");
+                        playSynthSound(400, "sine", 0.05);
+                      }}
+                      className="w-full sm:w-auto px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white font-bold text-xs rounded-xl border border-slate-800 hover:border-slate-700 cursor-pointer"
+                    >
+                      {lang === "ar" ? "دراسة القواعد الذهبية" : "Review Golden Rules"}
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                /* Initial state overlay */
+                <div className="text-center space-y-4 py-6">
+                  <div className="relative inline-block">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 to-amber-600 flex items-center justify-center text-white mx-auto shadow-lg shadow-amber-500/20">
+                      <BookOpen className="w-7 h-7" />
+                    </div>
+                    <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-indigo-500 rounded-full flex items-center justify-center text-[8px] font-black text-white animate-ping" />
+                  </div>
+
+                  <div className="space-y-1">
+                    <h3 className="text-base sm:text-lg font-black text-white uppercase tracking-wider">
+                      {lang === "ar" ? "مختبر النحو العربي الذكي للطلاب" : "Smart Arabic Grammar Lab"}
+                    </h3>
+                    <p className="text-xs text-slate-400 max-w-sm mx-auto leading-relaxed">
+                      {lang === "ar" 
+                        ? "مساحة ذكية تفاعلية لتعلم وإتقان قواعد النحو العربي الأساسية والمتقدمة. أجب بشكل صحيح لتجميع النقاط وحافظ على قلوب محاولاتك لتسجيل رقم قياسي." 
+                        : "A highly intuitive arena to practice and master basic and expert Arabic grammar parsing rules. Answer correctly to compound scores, stack streaks, and set highscores."}
+                    </p>
+                  </div>
+
+                  {/* Quick stats brief */}
+                  <div className="bg-[#0b0c16]/50 border border-slate-900 rounded-2xl px-4 py-3 max-w-xs mx-auto text-xs font-bold text-slate-400 flex items-center justify-between gap-2">
+                    <span>{lang === "ar" ? "أفضل مجموع نقاط:" : "Best Record score:"}</span>
+                    <span className="text-amber-400 font-black">{sessionHighScore} ⭐</span>
+                  </div>
+
+                  <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <button
+                      onClick={resetGame}
+                      className="w-full sm:w-auto px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs rounded-xl shadow-lg cursor-pointer"
+                    >
+                      {lang === "ar" ? "ابدأ التحدي النحوي" : "Begin Quiz Challenge"}
+                    </button>
+                    <button
+                      onClick={() => {
+                        setActiveTab("rules");
+                        playSynthSound(400, "sine", 0.05);
+                      }}
+                      className="w-full sm:w-auto px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white font-bold text-xs rounded-xl border border-slate-800 hover:border-slate-700 cursor-pointer"
+                    >
+                      {lang === "ar" ? "دراسة موسوعة القواعد" : "Study Rulebook"}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

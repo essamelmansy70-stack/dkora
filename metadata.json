@@ -1,6 +1,6 @@
 {
-  "name": "بوابة الألعاب | Web Arcade",
-  "description": "منصة ألعاب بسيطة وممتعة تحتوي على مساحة عرض تفاعلية للألعاب وبطاقات تصفح أنيقة.",
+  "name": "بوابة ألعاب أركيد ويب ٢٠٢٦ | Web Arcade Arena",
+  "description": "منصة ألعاب ذكاء ومحاكاة علمية تفاعلية ممتعة مثل مختبر الفيزياء الذكي، تحدي النحو، ألعاب الذاكرة والأفعى.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

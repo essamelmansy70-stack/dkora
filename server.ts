@@ -23,6 +23,55 @@ async function startServer() {
     res.json({ status: "ok", cleared: true });
   });
 
+  // Dynamic Sitemap XML generator
+  app.get("/sitemap.xml", (req, res) => {
+    const protocol = req.secure || req.headers["x-forwarded-proto"] === "https" ? "https" : "http";
+    const host = req.headers.host || "localhost:3000";
+    const baseUrl = `${protocol}://${host}`;
+    
+    const currentDate = new Date().toISOString().split("T")[0];
+    
+    const urls = [
+      { loc: `${baseUrl}/?lang=ar`, changefreq: "daily", priority: "1.0" },
+      { loc: `${baseUrl}/?lang=en`, changefreq: "daily", priority: "1.0" },
+      
+      { loc: `${baseUrl}/?page=terms&amp;lang=ar`, changefreq: "monthly", priority: "0.5" },
+      { loc: `${baseUrl}/?page=terms&amp;lang=en`, changefreq: "monthly", priority: "0.5" },
+      { loc: `${baseUrl}/?page=privacy&amp;lang=ar`, changefreq: "monthly", priority: "0.5" },
+      { loc: `${baseUrl}/?page=privacy&amp;lang=en`, changefreq: "monthly", priority: "0.5" },
+      
+      { loc: `${baseUrl}/?lang=ar&amp;game=snake`, changefreq: "weekly", priority: "0.8" },
+      { loc: `${baseUrl}/?lang=en&amp;game=snake`, changefreq: "weekly", priority: "0.8" },
+
+      { loc: `${baseUrl}/?lang=ar&amp;game=tictactoe`, changefreq: "weekly", priority: "0.8" },
+      { loc: `${baseUrl}/?lang=en&amp;game=tictactoe`, changefreq: "weekly", priority: "0.8" },
+
+      { loc: `${baseUrl}/?lang=ar&amp;game=memory`, changefreq: "weekly", priority: "0.8" },
+      { loc: `${baseUrl}/?lang=en&amp;game=memory`, changefreq: "weekly", priority: "0.8" },
+
+      { loc: `${baseUrl}/?lang=ar&amp;game=grammar`, changefreq: "weekly", priority: "0.8" },
+      { loc: `${baseUrl}/?lang=en&amp;game=grammar`, changefreq: "weekly", priority: "0.8" },
+
+      { loc: `${baseUrl}/?lang=ar&amp;game=physics`, changefreq: "weekly", priority: "0.8" },
+      { loc: `${baseUrl}/?lang=en&amp;game=physics`, changefreq: "weekly", priority: "0.8" }
+    ];
+
+    const xmlItems = urls.map(item => `  <url>
+    <loc>${item.loc}</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>${item.changefreq}</changefreq>
+    <priority>${item.priority}</priority>
+  </url>`).join("\n");
+
+    const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${xmlItems}
+</urlset>`;
+
+    res.header("Content-Type", "application/xml");
+    res.status(200).send(sitemapXml);
+  });
+
   // Serve static files / Vite bundle in Production or mount Vite in Development
   if (process.env.NODE_ENV !== "production") {
     console.log("Starting server in DEVELOPMENT mode with Vite Middleware.");

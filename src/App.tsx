@@ -23,16 +23,22 @@ import {
   CheckCircle2,
   AlertTriangle,
   HelpCircle,
-  Check
+  Check,
+  Atom,
+  Scale,
+  FileText,
+  ShieldAlert,
+  ExternalLink
 } from "lucide-react";
 
 import snakeGameCover from "./assets/images/snake_game_cover_1783043783592.jpg";
 import tictactoeCover from "./assets/images/tictactoe_cover_1783043800396.jpg";
 import memoryGameCover from "./assets/images/memory_game_cover_1783043815120.jpg";
 import grammarGameCover from "./assets/images/grammar_game_cover_1783044752880.jpg";
+import physicsGameCover from "./assets/images/physics_game_cover_1783045489508.jpg";
 
 // Game types
-type GameType = "snake" | "tictactoe" | "memory" | "grammar";
+type GameType = "snake" | "tictactoe" | "memory" | "grammar" | "physics";
 
 interface Game {
   id: GameType;
@@ -50,7 +56,8 @@ interface Game {
 }
 
 export default function App() {
-  const [lang, setLang] = useState<"ar" | "en">("ar");
+  const [lang, setLangState] = useState<"ar" | "en">("ar");
+  const [activeLegalPage, setActiveLegalPage] = useState<"terms" | "privacy" | null>(null);
   const [activeGame, setActiveGame] = useState<GameType | null>(null);
   const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
   
@@ -59,17 +66,60 @@ export default function App() {
     snake: 0,
     tictactoe: 0,
     memory: 0,
-    grammar: 0
+    grammar: 0,
+    physics: 0
   });
 
-  // Load high scores on mount
+  // Load high scores and URL params on mount
   useEffect(() => {
+    // URL routing synchronization
+    const params = new URLSearchParams(window.location.search);
+    const langParam = params.get("lang");
+    if (langParam === "ar" || langParam === "en") {
+      setLangState(langParam);
+    } else {
+      // Set default lang=ar in URL
+      const url = new URL(window.location.href);
+      url.searchParams.set("lang", "ar");
+      window.history.replaceState({}, "", url.toString());
+    }
+
+    const pageParam = params.get("page");
+    if (pageParam === "terms") {
+      setActiveLegalPage("terms");
+    } else if (pageParam === "privacy") {
+      setActiveLegalPage("privacy");
+    }
+
     const sScore = localStorage.getItem("high_snake") ? parseInt(localStorage.getItem("high_snake")!) : 0;
     const tScore = localStorage.getItem("high_tictactoe") ? parseInt(localStorage.getItem("high_tictactoe")!) : 0;
     const mScore = localStorage.getItem("high_memory") ? parseInt(localStorage.getItem("high_memory")!) : 0;
     const gScore = localStorage.getItem("high_grammar") ? parseInt(localStorage.getItem("high_grammar")!) : 0;
-    setHighScores({ snake: sScore, tictactoe: tScore, memory: mScore, grammar: gScore });
+    const pScore = localStorage.getItem("high_physics") ? parseInt(localStorage.getItem("high_physics")!) : 0;
+    setHighScores({ snake: sScore, tictactoe: tScore, memory: mScore, grammar: gScore, physics: pScore });
   }, []);
+
+  const setLang = (newLang: "ar" | "en") => {
+    setLangState(newLang);
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", newLang);
+    window.history.pushState({}, "", url.toString());
+  };
+
+  const navigateToPage = (page: "terms" | "privacy" | null) => {
+    setActiveLegalPage(page);
+    const url = new URL(window.location.href);
+    if (page) {
+      url.searchParams.set("page", page);
+      // Close active game when entering legal view
+      setActiveGame(null);
+    } else {
+      url.searchParams.delete("page");
+    }
+    window.history.pushState({}, "", url.toString());
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const updateHighScore = (game: GameType, score: number) => {
     const currentScores = { ...highScores };
@@ -164,6 +214,20 @@ export default function App() {
       difficultyEn: "Adaptive",
       highScoreKey: "high_grammar",
       icon: <BookOpen className="w-5 h-5 text-amber-400" />
+    },
+    {
+      id: "physics",
+      titleAr: "مختبر الفيزياء الذكي",
+      titleEn: "Smart Physics Lab",
+      descAr: "لعبة ذكاء فيزيائية تفاعلية شيقة تغطي الميكانيكا، الدوائر الكهربائية، والبصريات لجميع المراحل الدراسية مع تجارب عملية لحل الألغاز والمسائل.",
+      descEn: "An engaging physics simulation game covering mechanics, electrical circuits, and optics for all student levels with hands-on labs to solve puzzles.",
+      categoryAr: "تجارب وعلوم",
+      categoryEn: "Science & Lab",
+      cover: physicsGameCover,
+      difficultyAr: "سهل إلى متقدم",
+      difficultyEn: "Easy to Advanced",
+      highScoreKey: "high_physics",
+      icon: <Atom className="w-5 h-5 text-cyan-400" />
     }
   ];
 
@@ -219,9 +283,102 @@ export default function App() {
       </nav>
 
       <main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 space-y-12">
-        
-        {/* Dynamic Viewport (مساحة عرض الألعاب) - Shows when a game is active */}
-        {activeGame ? (
+        {activeLegalPage ? (
+          /* Legal Pages rendering */
+          <div className="bg-[#030408] border-2 border-slate-900 rounded-[32px] p-6 sm:p-10 space-y-8 animate-fade-in relative">
+            <button
+              onClick={() => navigateToPage(null)}
+              className="absolute top-6 right-6 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white text-xs font-black rounded-xl border border-slate-800 transition-all cursor-pointer flex items-center gap-1.5"
+            >
+              <X className="w-3.5 h-3.5" />
+              <span>{lang === "ar" ? "إغلاق والعودة للألعاب" : "Close & Back to Games"}</span>
+            </button>
+
+            {activeLegalPage === "terms" ? (
+              <div className="space-y-6 text-right" dir="rtl">
+                <div className="flex items-center gap-3 justify-start border-b border-slate-900 pb-4">
+                  <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center">
+                    <Scale className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-black text-white">
+                      {lang === "ar" ? "شروط الخدمة والاستخدام" : "Terms of Service"}
+                    </h2>
+                    <p className="text-xs text-slate-400 font-bold font-mono">
+                      {lang === "ar" ? "آخر تحديث: يوليو ٢٠٢٦" : "Last updated: July 2026"}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-6 text-xs sm:text-sm text-slate-300 leading-relaxed max-h-[500px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-slate-800">
+                  <section className="space-y-2">
+                    <h3 className="text-base font-extrabold text-indigo-400">١. قبول الشروط العامة</h3>
+                    <p>أهلاً بكم في بوابة ألعاب أركيد ويب. باستخدامكم لموقعنا وألعابنا التفاعلية، فإنكم توافقون بالكامل على الالتزام بشروط الخدمة هذه. المنصة مقدمة مجاناً للأغراض التعليمية والترفيهية للطلاب لجميع المراحل.</p>
+                  </section>
+                  <section className="space-y-2">
+                    <h3 className="text-base font-extrabold text-indigo-400">٢. الاستخدام المسموح به</h3>
+                    <p>يُسمح للطلاب والمعلمين والزوار بتشغيل الألعاب التفاعلية مجاناً. لا يجوز استخدام المنصة أو الأكواد البرمجية التابعة لها في أي هجمات سيبرانية أو محاولات تخريب أو إعادة بيع تجاري دون إذن كتابي مسبق.</p>
+                  </section>
+                  <section className="space-y-2">
+                    <h3 className="text-base font-extrabold text-indigo-400">٣. نظام النقاط والأرقام القياسية</h3>
+                    <p>يتم تخزين النقاط والأرقام القياسية محلياً على متصفح المستخدم باستخدام ملفات التخزين المحلية (localStorage). نحن لا نتحمل مسؤولية فقدان البيانات في حال تم مسح ذاكرة التخزين المؤقت للمتصفح.</p>
+                  </section>
+                  <section className="space-y-2">
+                    <h3 className="text-base font-extrabold text-indigo-400">٤. إخلاء المسؤولية</h3>
+                    <p>يتم توفير الألعاب والخدمات والنماذج الفيزيائية التفاعلية "كما هي" دون أي ضمانات صريحة أو ضمنية. لا نضمن دقة المحاكاة الفيزيائية بنسبة ١٠٠٪ في جميع الظروف المعملية، حيث أنها مصممة كألعاب تعليمية تبسيطية.</p>
+                  </section>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-6 text-right" dir="rtl">
+                <div className="flex items-center gap-3 justify-start border-b border-slate-900 pb-4">
+                  <div className="w-12 h-12 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center">
+                    <ShieldAlert className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-black text-white">
+                      {lang === "ar" ? "سياسة الخصوصية وحماية البيانات" : "Privacy Policy"}
+                    </h2>
+                    <p className="text-xs text-slate-400 font-bold font-mono">
+                      {lang === "ar" ? "آخر تحديث: يوليو ٢٠٢٦" : "Last updated: July 2026"}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="space-y-6 text-xs sm:text-sm text-slate-300 leading-relaxed max-h-[500px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-slate-800">
+                  <section className="space-y-2">
+                    <h3 className="text-base font-extrabold text-rose-400">١. حماية وجمع البيانات</h3>
+                    <p>منصة ألعاب أركيد ويب تلتزم تماماً بحماية خصوصية جميع الطلاب والمستخدمين. موقعنا لا يجمع، ولا يطلب، ولا يخزن أي بيانات شخصية، أو عناوين بريد إلكتروني، أو معلومات حساسة على الإطلاق.</p>
+                  </section>
+                  <section className="space-y-2">
+                    <h3 className="text-base font-extrabold text-rose-400">٢. ملفات تعريف الارتباط والتخزين المحلي</h3>
+                    <p>نحن نستخدم تقنية التخزين المحلي للمتصفح (localStorage) فقط لحفظ تفضيلاتك الشخصية مثل (مستوى الصوت، اللغة المختارة، والأرقام القياسية للألعاب). هذه البيانات تظل بالكامل على جهازك الشخصي ولا يتم نقلها لأي خادم خارجي.</p>
+                  </section>
+                  <section className="space-y-2">
+                    <h3 className="text-base font-extrabold text-rose-400">٣. خدمات الطرف الثالث</h3>
+                    <p>موقعنا لا يحتوي على إعلانات تجارية متطفلة، ولا يرتبط بأي شبكات تتبع تابعة لجهات خارجية للحفاظ على بيئة تصفح تعليمية آمنة ١٠٠٪ للأطفال والطلاب.</p>
+                  </section>
+                  <section className="space-y-2">
+                    <h3 className="text-base font-extrabold text-rose-400">٤. التواصل معنا</h3>
+                    <p>إذا كان لديكم أي استفسارات حول خصوصيتكم أثناء تصفح المنصة، يسعدنا تواصلكم المباشر معنا عبر قنواتنا الرسمية المتاحة.</p>
+                  </section>
+                </div>
+              </div>
+            )}
+
+            <div className="flex justify-end pt-4 border-t border-slate-900">
+              <button
+                onClick={() => navigateToPage(null)}
+                className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs rounded-xl shadow-lg transition-all cursor-pointer"
+              >
+                {lang === "ar" ? "العودة للرئيسية والبدء في اللعب" : "Back to Home & Start Playing"}
+              </button>
+            </div>
+          </div>
+        ) : (
+          <>
+            {/* Dynamic Viewport (مساحة عرض الألعاب) - Shows when a game is active */}
+            {activeGame ? (
           <div id="game-stage" className="scroll-mt-24 animate-fade-in">
             <div className="bg-gradient-to-b from-[#090b16] to-[#04050a] border-2 border-slate-900 rounded-[32px] overflow-hidden shadow-2xl shadow-rose-950/10 relative">
               
@@ -290,6 +447,14 @@ export default function App() {
                     highScore={highScores.grammar}
                   />
                 )}
+                {activeGame === "physics" && (
+                  <PhysicsGameEngine 
+                    lang={lang} 
+                    playSynthSound={playSynthSound} 
+                    updateHighScore={(score) => updateHighScore("physics", score)}
+                    highScore={highScores.physics}
+                  />
+                )}
               </div>
 
             </div>
@@ -317,22 +482,26 @@ export default function App() {
               </p>
 
               {/* High Scores summary board */}
-              <div className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-xl mx-auto">
+              <div className="pt-4 grid grid-cols-2 sm:grid-cols-5 gap-3 max-w-2xl mx-auto">
                 <div className="bg-slate-950/60 border border-slate-900 p-3 rounded-2xl">
                   <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">{lang === "ar" ? "الأفعى" : "Snake"}</p>
-                  <p className="text-base font-black text-emerald-400 mt-1">{highScores.snake} 🍎</p>
+                  <p className="text-sm font-black text-emerald-400 mt-1">{highScores.snake} 🍎</p>
                 </div>
                 <div className="bg-slate-950/60 border border-slate-900 p-3 rounded-2xl">
                   <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">{lang === "ar" ? "إكس أو" : "TicTacToe"}</p>
-                  <p className="text-base font-black text-rose-400 mt-1">{highScores.tictactoe} 🏆</p>
+                  <p className="text-sm font-black text-rose-400 mt-1">{highScores.tictactoe} 🏆</p>
                 </div>
                 <div className="bg-slate-950/60 border border-slate-900 p-3 rounded-2xl">
                   <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">{lang === "ar" ? "الذاكرة" : "Memory"}</p>
-                  <p className="text-base font-black text-indigo-400 mt-1">{highScores.memory > 0 ? `${highScores.memory}s` : "0"}</p>
+                  <p className="text-sm font-black text-indigo-400 mt-1">{highScores.memory > 0 ? `${highScores.memory}s` : "0"}</p>
                 </div>
                 <div className="bg-slate-950/60 border border-slate-900 p-3 rounded-2xl">
                   <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">{lang === "ar" ? "تحدي النحو" : "Grammar"}</p>
-                  <p className="text-base font-black text-amber-400 mt-1">{highScores.grammar} ⭐</p>
+                  <p className="text-sm font-black text-amber-400 mt-1">{highScores.grammar} ⭐</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-900 p-3 rounded-2xl">
+                  <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">{lang === "ar" ? "تحدي الفيزياء" : "Physics"}</p>
+                  <p className="text-sm font-black text-cyan-400 mt-1">{highScores.physics} ⚛️</p>
                 </div>
               </div>
             </div>
@@ -395,6 +564,8 @@ export default function App() {
                         {game.id === "snake" && `🍎 ${highScores.snake}`}
                         {game.id === "tictactoe" && `🏆 ${highScores.tictactoe} ${lang === "ar" ? "فوز" : "wins"}`}
                         {game.id === "memory" && `⏱️ ${highScores.memory > 0 ? `${highScores.memory}s` : "—"}`}
+                        {game.id === "grammar" && `⭐ ${highScores.grammar}`}
+                        {game.id === "physics" && `⚛️ ${highScores.physics}`}
                       </p>
                     </div>
 
@@ -466,11 +637,66 @@ export default function App() {
             </div>
           </div>
         </div>
+          </>
+        )}
 
       </main>
 
       {/* Footer Branding block */}
-      <footer className="border-t border-slate-900 py-8 px-4 text-center text-slate-500 text-xs font-semibold">
+      <footer className="border-t border-slate-900 py-10 px-4 text-center text-slate-500 text-xs font-semibold space-y-6">
+        {/* Dynamic Share Links Section */}
+        <div className="max-w-2xl mx-auto p-4 rounded-2xl bg-slate-900/40 border border-slate-900 space-y-3">
+          <p className="text-slate-300 font-extrabold flex items-center justify-center gap-1.5 text-xs">
+            <ExternalLink className="w-4 h-4 text-rose-500" />
+            <span>{lang === "ar" ? "روابط المشاركة المباشرة لكل لغة" : "Direct Shareable Language Links"}</span>
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px]">
+            <div className="bg-slate-950 p-2.5 rounded-xl border border-slate-900 flex items-center justify-between gap-2">
+              <span className="font-mono text-slate-400">?lang=ar (النسخة العربية)</span>
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(`${window.location.origin}${window.location.pathname}?lang=ar`);
+                  playSynthSound(800, "sine", 0.05);
+                }}
+                className="px-2 py-1 bg-rose-600 hover:bg-rose-500 text-white font-black rounded-lg text-[9px] transition-all cursor-pointer"
+              >
+                {lang === "ar" ? "نسخ الرابط" : "Copy Link"}
+              </button>
+            </div>
+            <div className="bg-slate-950 p-2.5 rounded-xl border border-slate-900 flex items-center justify-between gap-2">
+              <span className="font-mono text-slate-400">?lang=en (English Version)</span>
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(`${window.location.origin}${window.location.pathname}?lang=en`);
+                  playSynthSound(800, "sine", 0.05);
+                }}
+                className="px-2 py-1 bg-indigo-600 hover:bg-indigo-500 text-white font-black rounded-lg text-[9px] transition-all cursor-pointer"
+              >
+                {lang === "ar" ? "نسخ الرابط" : "Copy Link"}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Legal pages navigation links */}
+        <div className="flex items-center justify-center gap-6 text-xs text-slate-400 font-black pb-2 border-b border-slate-900/40 max-w-xs mx-auto">
+          <button 
+            onClick={() => navigateToPage("terms")}
+            className="hover:text-indigo-400 transition-colors cursor-pointer flex items-center gap-1"
+          >
+            <Scale className="w-3.5 h-3.5" />
+            <span>{lang === "ar" ? "شروط الخدمة" : "Terms of Service"}</span>
+          </button>
+          <span className="text-slate-800">|</span>
+          <button 
+            onClick={() => navigateToPage("privacy")}
+            className="hover:text-rose-400 transition-colors cursor-pointer flex items-center gap-1"
+          >
+            <ShieldAlert className="w-3.5 h-3.5" />
+            <span>{lang === "ar" ? "سياسة الخصوصية" : "Privacy Policy"}</span>
+          </button>
+        </div>
+
         <div className="max-w-7xl mx-auto space-y-2">
           <p>{lang === "ar" ? "© ٢٠٢٦ منصة بوابة ألعاب أركيد ويب. جميع الحقوق محفوظة." : "© 2026 Web Arcade Arena. All rights reserved."}</p>
           <p className="text-[10px] text-slate-600 font-mono">
@@ -1924,6 +2150,846 @@ export function GrammarGameEngine({ lang, playSynthSound, updateHighScore, highS
               )}
             </div>
           )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ==========================================
+   5. PHYSICS INTELLIGENCE GAME COMPONENT ENGINE
+   ========================================== */
+interface PhysicsEngineProps {
+  lang: "ar" | "en";
+  playSynthSound: (freq: number, type?: OscillatorType, duration?: number, delay?: number) => void;
+  updateHighScore: (score: number) => void;
+  highScore: number;
+}
+
+type PhysicsStage = "selection" | "mechanics" | "electricity" | "optics" | "gameover" | "victory";
+
+export function PhysicsGameEngine({ lang, playSynthSound, updateHighScore, highScore }: PhysicsEngineProps) {
+  const [stage, setStage] = useState<PhysicsStage>("selection");
+  const [score, setScore] = useState<number>(0);
+  const [lives, setLives] = useState<number>(3);
+  const [feedback, setFeedback] = useState<{ type: "success" | "error" | null; textAr: string; textEn: string }>({
+    type: null,
+    textAr: "",
+    textEn: ""
+  });
+
+  // Mechanics state (Lever Balance)
+  const [leverMass, setLeverMass] = useState<number>(20); // right side mass (kg)
+  const [leverDist, setLeverDist] = useState<number>(2);  // right side distance (m)
+  // Goal: Right Torque = 40 (10kg * 4m) -> e.g. mass=20, dist=2, or mass=10, dist=4, or mass=40, dist=1, or mass=8, dist=5
+  const leftMass = 10;
+  const leftDist = 4;
+  const targetTorque = leftMass * leftDist;
+
+  // Electricity state (Ohm's Law)
+  const [voltage, setVoltage] = useState<number>(12); // V
+  const [resistance, setResistance] = useState<number>(6); // Ohm
+  // Goal: current I = V / R = 2.0 Amperes (e.g. 12/6, 24/12, 10/5, 8/4, 6/3)
+  const targetCurrent = 2.0;
+
+  // Optics state (Laser Lens)
+  const [lensPos, setLensPos] = useState<number>(180); // position on x axis (100 to 250)
+  const [focalLength, setFocalLength] = useState<number>(120); // focal length px (40 to 200)
+  // Target sensor position is x=300
+  const targetX = 300;
+
+  const currentTorque = leverMass * leverDist;
+  const currentCurrent = parseFloat((voltage / resistance).toFixed(2));
+  const currentFocalPoint = lensPos + focalLength;
+
+  const resetAll = () => {
+    setStage("selection");
+    setScore(0);
+    setLives(3);
+    setLeverMass(20);
+    setLeverDist(2);
+    setVoltage(12);
+    setResistance(6);
+    setLensPos(180);
+    setFocalLength(120);
+    setFeedback({ type: null, textAr: "", textEn: "" });
+  };
+
+  const deductLife = (failMsgAr: string, failMsgEn: string) => {
+    const nextLives = lives - 1;
+    setLives(nextLives);
+    playSynthSound(180, "sawtooth", 0.3);
+    setFeedback({ type: "error", textAr: failMsgAr, textEn: failMsgEn });
+    if (nextLives <= 0) {
+      setTimeout(() => {
+        setStage("gameover");
+        playSynthSound(100, "triangle", 0.6);
+      }, 1500);
+    }
+  };
+
+  const handleStageSelect = (selected: PhysicsStage) => {
+    setStage(selected);
+    setFeedback({ type: null, textAr: "", textEn: "" });
+    playSynthSound(440, "sine", 0.08);
+  };
+
+  // Mechanics validation
+  const checkMechanics = () => {
+    if (currentTorque === targetTorque) {
+      playSynthSound(587, "sine", 0.15);
+      playSynthSound(659, "sine", 0.15, 0.1);
+      setFeedback({
+        type: "success",
+        textAr: "ممتاز! توازن مثالي! العزم الأيمن والأيسر متساويان تماماً (40 نيوتن.متر).",
+        textEn: "Superb! Perfect balance! The right and left torques are equal (40 N.m)."
+      });
+      const points = 30;
+      setScore(s => {
+        const next = s + points;
+        updateHighScore(next);
+        return next;
+      });
+      setTimeout(() => {
+        setStage("electricity");
+        setFeedback({ type: null, textAr: "", textEn: "" });
+        playSynthSound(520, "sine", 0.1);
+      }, 2500);
+    } else {
+      deductLife(
+        `لم يتوازن! العزم الأيسر (40 نيوتن.متر) بينما العزم الأيمن (${currentTorque} نيوتن.متر). أعد الحساب (العزم = القوة × المسافة)`,
+        `Unbalanced! Left torque is 40 N.m, right torque is ${currentTorque} N.m. Adjust so Force × Distance is exactly equal.`
+      );
+    }
+  };
+
+  // Electricity validation
+  const checkElectricity = () => {
+    if (Math.abs(currentCurrent - targetCurrent) < 0.01) {
+      playSynthSound(659, "sine", 0.1);
+      playSynthSound(784, "sine", 0.1, 0.08);
+      playSynthSound(987, "sine", 0.2, 0.16);
+      setFeedback({
+        type: "success",
+        textAr: "مذهل! لقد ضبطت الجهد والمقاومة لتحصل على تيار 2 أمبير بالضبط. توهج المصباح الذهبي!",
+        textEn: "Amazing! You adjusted V and R to get exactly 2.0A. The golden circuit bulb glows bright!"
+      });
+      const points = 35;
+      setScore(s => {
+        const next = s + points;
+        updateHighScore(next);
+        return next;
+      });
+      setTimeout(() => {
+        setStage("optics");
+        setFeedback({ type: null, textAr: "", textEn: "" });
+        playSynthSound(580, "sine", 0.1);
+      }, 2500);
+    } else {
+      deductLife(
+        `التيار الحالي هو ${currentCurrent} أمبير. هدفك هو 2.0 أمبير بالضبط لتفادي احتراق المصباح. استخدم قانون أوم (I = V / R).`,
+        `Current is ${currentCurrent}A. Your goal is exactly 2.0A to light the neon bulb safely. Apply Ohm's Law (I = V / R).`
+      );
+    }
+  };
+
+  // Optics validation
+  const checkOptics = () => {
+    // Perfect focus: focal point is exactly at targetX=300
+    if (Math.abs(currentFocalPoint - targetX) < 5) {
+      playSynthSound(880, "sine", 0.1);
+      playSynthSound(1046, "sine", 0.1, 0.08);
+      playSynthSound(1318, "sine", 0.25, 0.16);
+      setFeedback({
+        type: "success",
+        textAr: "عبقري! لقد قمت بتركيز شعاع الليزر المتوازي على نقطة الاستشعار البصرية بدقة متناهية!",
+        textEn: "Brilliant! You converged the parallel laser beam directly onto the optic sensor pinpoint!"
+      });
+      const points = 40;
+      setScore(s => {
+        const next = s + points;
+        updateHighScore(next);
+        return next;
+      });
+      setTimeout(() => {
+        setStage("victory");
+        playSynthSound(1000, "sine", 0.15);
+        playSynthSound(1200, "sine", 0.15, 0.1);
+        playSynthSound(1500, "sine", 0.3, 0.2);
+      }, 2500);
+    } else {
+      deductLife(
+        `نقطة تجمع الليزر حالياً هي عند ${currentFocalPoint}px بينما الحساس يقع عند 300px. قم بتعديل موقع العدسة أو البعد البؤري.`,
+        `The laser focal point is at ${currentFocalPoint}px, but the sensor is at 300px. Slide the lens or scale focal length.`
+      );
+    }
+  };
+
+  // SVG calculations for torque tilt
+  const leverTiltAngle = Math.min(Math.max((currentTorque - targetTorque) * 0.4, -20), 20);
+
+  return (
+    <div className="w-full max-w-3xl mx-auto space-y-6">
+      {/* Game Header Details */}
+      <div className="flex items-center justify-between bg-slate-900/40 p-4 border border-slate-900 rounded-2xl">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-cyan-600/10 text-cyan-400 border border-cyan-500/20 flex items-center justify-center">
+            <Atom className="w-5 h-5 animate-spin" style={{ animationDuration: "6s" }} />
+          </div>
+          <div>
+            <h4 className="text-sm font-black text-white">
+              {lang === "ar" ? "مختبر الفيزياء الذكي المتكامل" : "Smart Physics Lab Simulator"}
+            </h4>
+            <p className="text-[10px] text-slate-500 font-bold font-mono">
+              {lang === "ar" ? "تجارب تفاعلية لجميع المراحل الدراسية" : "Interactive physics mechanics for all levels"}
+            </p>
+          </div>
+        </div>
+
+        {stage !== "selection" && stage !== "gameover" && stage !== "victory" && (
+          <div className="flex items-center gap-4">
+            {/* Lives board */}
+            <div className="flex items-center gap-1">
+              {[...Array(3)].map((_, i) => (
+                <Heart 
+                  key={i} 
+                  className={`w-4 h-4 ${i < lives ? "text-rose-500 fill-rose-500" : "text-slate-800"}`} 
+                />
+              ))}
+            </div>
+            {/* Score box */}
+            <div className="bg-slate-950 px-3 py-1 rounded-lg border border-slate-900 text-xs font-bold text-cyan-400">
+              {lang === "ar" ? "النقاط" : "Points"}: {score}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Main Simulation Viewport Area */}
+      {stage === "selection" && (
+        <div className="bg-slate-950/60 border border-slate-900 rounded-3xl p-8 text-center space-y-8 animate-fade-in">
+          <div className="space-y-2">
+            <h3 className="text-lg sm:text-xl font-black text-white">
+              {lang === "ar" ? "اختر المستوى والمرحلة الدراسية لبدء المحاكاة" : "Choose Level & Stage to Start Simulation"}
+            </h3>
+            <p className="text-xs text-slate-400 max-w-md mx-auto leading-relaxed">
+              {lang === "ar" 
+                ? "لقد صممنا ثلاثة معامل تفاعلية ذكية لحل الألغاز وتطبيق القوانين الفيزيائية الأساسية في الميكانيكا، الكهرباء والعدسات البصرية."
+                : "Select any of our bespoke interactive simulation labs to experiment and solve physical torque, current, and focal challenges."}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* 1. Mechanics */}
+            <button
+              onClick={() => handleStageSelect("mechanics")}
+              className="p-5 rounded-2xl bg-[#0b0c16] border border-slate-900 hover:border-cyan-500/30 text-right group transition-all duration-300 flex flex-col justify-between h-44 cursor-pointer"
+            >
+              <div className="flex items-center justify-between w-full">
+                <div className="p-2 bg-emerald-500/10 rounded-xl text-emerald-400">
+                  <Scale className="w-5 h-5" />
+                </div>
+                <span className="text-[9px] font-black text-emerald-400 px-2 py-0.5 bg-emerald-950/50 rounded-md">
+                  {lang === "ar" ? "ابتدائي / متوسط" : "Primary / Mid"}
+                </span>
+              </div>
+              <div className="space-y-1">
+                <h5 className="text-xs sm:text-sm font-black text-white group-hover:text-cyan-400 transition-colors">
+                  {lang === "ar" ? "١. الميكانيكا وعزم الدوران" : "1. Mechanics & Torque"}
+                </h5>
+                <p className="text-[10px] text-slate-500 leading-normal font-medium">
+                  {lang === "ar" ? "وازن الرافعة بذكاء عن طريق ضبط المسافات والأوزان بدقة." : "Balance the interactive dual scale using force torque physics."}
+                </p>
+              </div>
+            </button>
+
+            {/* 2. Electricity */}
+            <button
+              onClick={() => handleStageSelect("electricity")}
+              className="p-5 rounded-2xl bg-[#0b0c16] border border-slate-900 hover:border-yellow-500/30 text-right group transition-all duration-300 flex flex-col justify-between h-44 cursor-pointer"
+            >
+              <div className="flex items-center justify-between w-full">
+                <div className="p-2 bg-yellow-500/10 rounded-xl text-yellow-400">
+                  <Zap className="w-5 h-5" />
+                </div>
+                <span className="text-[9px] font-black text-yellow-400 px-2 py-0.5 bg-yellow-950/50 rounded-md">
+                  {lang === "ar" ? "متوسط / ثانوي" : "Mid / High"}
+                </span>
+              </div>
+              <div className="space-y-1">
+                <h5 className="text-xs sm:text-sm font-black text-white group-hover:text-yellow-400 transition-colors">
+                  {lang === "ar" ? "٢. الدوائر وقانون أوم" : "2. Ohm's Law & Circuit"}
+                </h5>
+                <p className="text-[10px] text-slate-500 leading-normal font-medium">
+                  {lang === "ar" ? "اضبط الجهد والمقاومة لإضاءة المصباح بقوة تيار مستهدفة." : "Master electrical voltage and resistance to light up the neon bulb."}
+                </p>
+              </div>
+            </button>
+
+            {/* 3. Optics */}
+            <button
+              onClick={() => handleStageSelect("optics")}
+              className="p-5 rounded-2xl bg-[#0b0c16] border border-slate-900 hover:border-rose-500/30 text-right group transition-all duration-300 flex flex-col justify-between h-44 cursor-pointer"
+            >
+              <div className="flex items-center justify-between w-full">
+                <div className="p-2 bg-rose-500/10 rounded-xl text-rose-400">
+                  <Atom className="w-5 h-5 animate-pulse" />
+                </div>
+                <span className="text-[9px] font-black text-rose-400 px-2 py-0.5 bg-rose-950/50 rounded-md">
+                  {lang === "ar" ? "ثانوي / متقدم" : "High / Advanced"}
+                </span>
+              </div>
+              <div className="space-y-1">
+                <h5 className="text-xs sm:text-sm font-black text-white group-hover:text-rose-400 transition-colors">
+                  {lang === "ar" ? "٣. البصريات وبؤرة الليزر" : "3. Optics & Laser Focus"}
+                </h5>
+                <p className="text-[10px] text-slate-500 leading-normal font-medium">
+                  {lang === "ar" ? "حرك العدسة واضبط بؤرتها لتجميع شعاع الضوء على حساس الاستشعار." : "Direct focus elements to converge optical laser paths on the detector."}
+                </p>
+              </div>
+            </button>
+          </div>
+
+          <div className="p-4 rounded-xl bg-slate-900/40 border border-slate-900/80 max-w-md mx-auto text-[11px] text-slate-400 leading-relaxed">
+            <span className="font-extrabold text-cyan-400 block mb-1">🏆 {lang === "ar" ? "الرقم القياسي العام الحالي:" : "Current Global Highscore:"} {highScore} {lang === "ar" ? "نقطة" : "Points"}</span>
+            {lang === "ar" 
+              ? "يمكنك الانتقال من مستوى إلى آخر تلقائياً عند حل اللغز أو العودة إلى هنا لتجربة معمل آخر." 
+              : "Complete labs to compound score, or select any lab to practice hands-on physical interactions."}
+          </div>
+        </div>
+      )}
+
+      {/* STAGE 1: Mechanics & Lever Balance */}
+      {stage === "mechanics" && (
+        <div className="bg-slate-950/60 border border-slate-900 rounded-3xl p-6 sm:p-8 space-y-6 animate-fade-in">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-900 pb-3">
+            <div>
+              <h3 className="text-base font-black text-white flex items-center gap-1.5">
+                <Scale className="w-5 h-5 text-emerald-400" />
+                <span>{lang === "ar" ? "معمل الميكانيكا وعزم الدوران" : "Mechanics & Torque Equilibrium Lab"}</span>
+              </h3>
+              <p className="text-[11px] text-slate-400">
+                {lang === "ar" ? "وازن عزم القوة على اليمين واليسار (العزم = الكتلة × المسافة)." : "Ensure torque on the left balances torque on the right (Torque = Mass × Distance)."}
+              </p>
+            </div>
+            <button
+              onClick={() => setStage("selection")}
+              className="px-2.5 py-1 text-[10px] bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold rounded-lg border border-slate-800 cursor-pointer self-start sm:self-auto"
+            >
+              {lang === "ar" ? "العودة للرئيسية" : "Back to Selection"}
+            </button>
+          </div>
+
+          {/* Interactive SVG Scale Simulator */}
+          <div className="relative w-full h-44 bg-slate-950 rounded-2xl border border-slate-900 overflow-hidden flex flex-col justify-end p-4">
+            <div className="absolute top-4 left-4 space-y-0.5 text-[10px] font-bold text-slate-400 text-right" dir="rtl">
+              <p className="text-emerald-400">{lang === "ar" ? "الكتلة اليسرى الثابتة: ١٠ كجم" : "Left Fixed Weight: 10 kg"}</p>
+              <p className="text-emerald-400">{lang === "ar" ? "المسافة اليسرى الثابتة: ٤ متر" : "Left Fixed Distance: 4 m"}</p>
+              <p className="font-mono text-white text-[11px]">{lang === "ar" ? "العزم الأيسر: ٤٠ نيوتن.متر" : "Left Torque: 40 N.m"}</p>
+            </div>
+
+            <div className="absolute top-4 right-4 space-y-0.5 text-[10px] font-bold text-slate-400 text-right" dir="rtl">
+              <p className="text-cyan-400">{lang === "ar" ? `الكتلة اليمنى: ${leverMass} كجم` : `Right Weight: ${leverMass} kg`}</p>
+              <p className="text-cyan-400">{lang === "ar" ? `المسافة اليمنى: ${leverDist} متر` : `Right Distance: ${leverDist} m`}</p>
+              <p className="font-mono text-cyan-300 text-[11px]">
+                {lang === "ar" ? `العزم الأيمن الحالي: ${currentTorque} نيوتن.متر` : `Right Torque: ${currentTorque} N.m`}
+              </p>
+            </div>
+
+            {/* SVG Interactive Lever Scale */}
+            <svg viewBox="0 0 500 160" className="w-full h-full max-h-[140px] select-none">
+              {/* Fulcrum base */}
+              <polygon points="250,110 240,140 260,140" fill="#334155" stroke="#475569" strokeWidth="2" />
+              <circle cx="250" cy="110" r="4" fill="#64748b" />
+
+              {/* Lever plank bar rotating around (250, 110) */}
+              <g transform={`rotate(${leverTiltAngle} 250 110)`}>
+                {/* Horizontal main rod */}
+                <line x1="50" y1="110" x2="450" y2="110" stroke="#f43f5e" strokeWidth="4" strokeLinecap="round" />
+                
+                {/* Grid markings */}
+                {[...Array(9)].map((_, i) => {
+                  const x = 50 + i * 50;
+                  return (
+                    <line key={i} x1={x} y1="105" x2={x} y2="115" stroke="#f43f5e" strokeWidth="2" />
+                  );
+                })}
+
+                {/* Left side box weight (Fixed) */}
+                {/* Position on left is x = 50 + (leftDist = 4 * 50) = 50 + 200 = 250 - 200 = 50 */}
+                <rect x="40" y="85" width="20" height="20" rx="3" fill="#10b981" className="animate-pulse" />
+                <text x="50" y="78" textAnchor="middle" fill="#10b981" fontSize="9" fontWeight="black">10kg (4m)</text>
+
+                {/* Right side box weight (Variable based on leverMass & leverDist) */}
+                {/* Position on right is x = 250 + (leverDist * 50) */}
+                <rect 
+                  x={250 + leverDist * 40 - 15} 
+                  y={110 - 15 - Math.min(leverMass * 0.4, 15)} 
+                  width={30} 
+                  height={15 + Math.min(leverMass * 0.4, 15)} 
+                  rx="4" 
+                  fill="#06b6d4" 
+                  className="transition-all duration-100" 
+                />
+                <text 
+                  x={250 + leverDist * 40} 
+                  y={110 - 20 - Math.min(leverMass * 0.4, 15)} 
+                  textAnchor="middle" 
+                  fill="#22d3ee" 
+                  fontSize="9" 
+                  fontWeight="black"
+                  className="transition-all duration-100"
+                >
+                  {leverMass}kg ({leverDist}m)
+                </text>
+              </g>
+            </svg>
+          </div>
+
+          {/* Sliders Control Panel */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-slate-900/20 p-4 border border-slate-900 rounded-2xl text-right" dir="rtl">
+            <div className="space-y-2">
+              <label className="text-xs font-black text-cyan-400 flex items-center justify-between">
+                <span>{lang === "ar" ? "الكتلة اليمنى المستهدفة (كجم)" : "Right Side Mass (kg)"}</span>
+                <span className="font-mono text-white text-sm bg-slate-950 px-2 py-0.5 rounded-lg border border-slate-900">{leverMass} kg</span>
+              </label>
+              <input 
+                type="range" 
+                min="5" 
+                max="40" 
+                step="5"
+                value={leverMass}
+                onChange={(e) => {
+                  setLeverMass(parseInt(e.target.value));
+                  playSynthSound(300 + parseInt(e.target.value) * 5, "sine", 0.05);
+                }}
+                className="w-full accent-cyan-500 h-1.5 bg-slate-850 rounded-lg appearance-none cursor-pointer"
+              />
+              <span className="text-[10px] text-slate-500 block">
+                {lang === "ar" ? "اضبط وزن الكتلة لتأثير عزم أكبر أو أصغر." : "Increase or decrease mass to vary balance torque."}
+              </span>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-black text-cyan-400 flex items-center justify-between">
+                <span>{lang === "ar" ? "المسافة اليمنى من محور الدوران (متر)" : "Right Side Distance (meters)"}</span>
+                <span className="font-mono text-white text-sm bg-slate-950 px-2 py-0.5 rounded-lg border border-slate-900">{leverDist} m</span>
+              </label>
+              <input 
+                type="range" 
+                min="1" 
+                max="8" 
+                step="1"
+                value={leverDist}
+                onChange={(e) => {
+                  setLeverDist(parseInt(e.target.value));
+                  playSynthSound(400 + parseInt(e.target.value) * 30, "sine", 0.05);
+                }}
+                className="w-full accent-cyan-500 h-1.5 bg-slate-850 rounded-lg appearance-none cursor-pointer"
+              />
+              <span className="text-[10px] text-slate-500 block">
+                {lang === "ar" ? "كلما زادت المسافة عن مركز الدوران، زاد عزم القوة." : "The further from center, the greater the rotational leverage."}
+              </span>
+            </div>
+          </div>
+
+          {/* Validation Feedback Banner */}
+          {feedback.type && (
+            <div className={`p-4 rounded-xl text-xs font-black border leading-relaxed text-right animate-fade-in ${
+              feedback.type === "success" 
+                ? "bg-emerald-950/20 border-emerald-900 text-emerald-400" 
+                : "bg-rose-950/20 border-rose-900 text-rose-400"
+            }`} dir="rtl">
+              <p>{lang === "ar" ? feedback.textAr : feedback.textEn}</p>
+            </div>
+          )}
+
+          {/* Action Trigger button */}
+          <div className="flex justify-center">
+            <button
+              onClick={checkMechanics}
+              className="px-8 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white font-black text-xs sm:text-sm rounded-xl shadow-lg hover:shadow-emerald-950/30 active:scale-95 transition-all cursor-pointer flex items-center gap-2"
+            >
+              <Scale className="w-4 h-4" />
+              <span>{lang === "ar" ? "تحقق من التوازن والتعادل" : "Verify Equilibrium Balance"}</span>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* STAGE 2: Electricity & Ohm's Law */}
+      {stage === "electricity" && (
+        <div className="bg-slate-950/60 border border-slate-900 rounded-3xl p-6 sm:p-8 space-y-6 animate-fade-in">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-900 pb-3">
+            <div>
+              <h3 className="text-base font-black text-white flex items-center gap-1.5">
+                <Zap className="w-5 h-5 text-yellow-400" />
+                <span>{lang === "ar" ? "معمل الدوائر الكهربائية وقانون أوم" : "Ohm's Law & Circuits Lab"}</span>
+              </h3>
+              <p className="text-[11px] text-slate-400">
+                {lang === "ar" ? "اضبط الجهد والمقاومة للحصول على تيار مستهدف قدره 2 أمبير بالضبط (I = V / R)." : "Adjust Voltage and Resistance to get exactly 2.0 Amps (I = V / R)."}
+              </p>
+            </div>
+            <button
+              onClick={() => setStage("selection")}
+              className="px-2.5 py-1 text-[10px] bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold rounded-lg border border-slate-800 cursor-pointer self-start sm:self-auto"
+            >
+              {lang === "ar" ? "العودة للرئيسية" : "Back to Selection"}
+            </button>
+          </div>
+
+          {/* Interactive Circuit SVG Monitor */}
+          <div className="relative w-full h-44 bg-slate-950 rounded-2xl border border-slate-900 overflow-hidden flex flex-col justify-end p-4">
+            <div className="absolute top-4 left-4 space-y-0.5 text-[10px] font-bold text-slate-400 text-right" dir="rtl">
+              <p className="text-yellow-400">{lang === "ar" ? `الجهد المعدل: ${voltage} فولت` : `Voltage: ${voltage} V`}</p>
+              <p className="text-yellow-400">{lang === "ar" ? `المقاومة المعدلة: ${resistance} أوم` : `Resistance: ${resistance} Ω`}</p>
+              <p className="font-mono text-white text-[11px]">
+                {lang === "ar" ? "قانون أوم:" : "Ohm's formula:"} <strong className="text-cyan-400">I = V / R</strong>
+              </p>
+            </div>
+
+            <div className="absolute top-4 right-4 text-right space-y-0.5 font-bold" dir="rtl">
+              <p className="text-[10px] text-slate-500">{lang === "ar" ? "قيمة التيار المقاسة:" : "Measured Current:"}</p>
+              <p className={`text-xl font-black font-mono tracking-wider ${Math.abs(currentCurrent - targetCurrent) < 0.01 ? "text-emerald-400" : "text-yellow-500"}`}>
+                {currentCurrent} A
+              </p>
+              <span className="text-[9px] text-rose-400 block font-semibold">{lang === "ar" ? "الهدف: 2.0 أمبير" : "Goal: 2.0 A"}</span>
+            </div>
+
+            {/* Circuit Diagram SVG */}
+            <svg viewBox="0 0 500 160" className="w-full h-full max-h-[140px] select-none">
+              {/* Circuit loop wire */}
+              <rect 
+                x="80" 
+                y="30" 
+                width="340" 
+                height="100" 
+                fill="none" 
+                stroke={Math.abs(currentCurrent - targetCurrent) < 0.01 ? "#eab308" : "#334155"} 
+                strokeWidth={Math.abs(currentCurrent - targetCurrent) < 0.01 ? "4" : "2.5"} 
+                strokeDasharray={Math.abs(currentCurrent - targetCurrent) < 0.01 ? "10 5" : "none"}
+                className={Math.abs(currentCurrent - targetCurrent) < 0.01 ? "animate-pulse" : ""}
+                style={{ strokeDashoffset: 100 }}
+              />
+
+              {/* Battery Symbol Left */}
+              <g transform="translate(80, 80)">
+                <line x1="-15" y1="-15" x2="15" y2="-15" stroke="#10b981" strokeWidth="4" />
+                <line x1="-8" y1="-5" x2="8" y2="-5" stroke="#10b981" strokeWidth="2.5" />
+                <line x1="-15" y1="5" x2="15" y2="5" stroke="#10b981" strokeWidth="4" />
+                <line x1="-8" y1="15" x2="8" y2="15" stroke="#10b981" strokeWidth="2.5" />
+                <text x="-25" y="0" textAnchor="middle" fill="#10b981" fontSize="10" fontWeight="black">{voltage}V</text>
+              </g>
+
+              {/* Resistor Symbol Bottom */}
+              <g transform="translate(250, 130)">
+                <path d="M-30,0 L-15,0 L-10,-8 L0,8 L10,-8 L15,0 L30,0" fill="none" stroke="#22d3ee" strokeWidth="3" />
+                <text x="0" y="24" textAnchor="middle" fill="#22d3ee" fontSize="10" fontWeight="black">{resistance}Ω</text>
+              </g>
+
+              {/* Glowing Neon Lamp Bulb Top */}
+              <g transform="translate(250, 30)">
+                <circle cx="0" cy="0" r="16" fill="none" stroke="#64748b" strokeWidth="2" />
+                <path d="M-10,-10 L10,10 M-10,10 L10,-10" stroke="#64748b" strokeWidth="2" />
+                {/* Glow ring if target hit */}
+                {Math.abs(currentCurrent - targetCurrent) < 0.01 && (
+                  <>
+                    <circle cx="0" cy="0" r="16" fill="#eab308" fillOpacity="0.4" className="animate-ping" />
+                    <circle cx="0" cy="0" r="16" fill="#eab308" fillOpacity="0.3" />
+                    <text x="0" y="-22" textAnchor="middle" fill="#eab308" fontSize="10" fontWeight="black" className="animate-pulse">💡 OK</text>
+                  </>
+                )}
+              </g>
+            </svg>
+          </div>
+
+          {/* Sliders Circuit Control Panel */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-slate-900/20 p-4 border border-slate-900 rounded-2xl text-right" dir="rtl">
+            <div className="space-y-2">
+              <label className="text-xs font-black text-yellow-400 flex items-center justify-between">
+                <span>{lang === "ar" ? "جهد المصدر أو البطارية (فولت)" : "Source Battery Voltage (V)"}</span>
+                <span className="font-mono text-white text-sm bg-slate-950 px-2 py-0.5 rounded-lg border border-slate-900">{voltage} V</span>
+              </label>
+              <input 
+                type="range" 
+                min="2" 
+                max="24" 
+                step="2"
+                value={voltage}
+                onChange={(e) => {
+                  setVoltage(parseInt(e.target.value));
+                  playSynthSound(400 + parseInt(e.target.value) * 12, "sawtooth", 0.04);
+                }}
+                className="w-full accent-yellow-500 h-1.5 bg-slate-850 rounded-lg appearance-none cursor-pointer"
+              />
+              <span className="text-[10px] text-slate-500 block">
+                {lang === "ar" ? "زيادة الجهد تزيد من طاقة دفع الإلكترونات (التيار)." : "Increasing voltage pushes more current through the circuit."}
+              </span>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-black text-yellow-400 flex items-center justify-between">
+                <span>{lang === "ar" ? "مقاومة السلك أو الموصل (أوم)" : "Wire Conductor Resistance (Ω)"}</span>
+                <span className="font-mono text-white text-sm bg-slate-950 px-2 py-0.5 rounded-lg border border-slate-900">{resistance} Ω</span>
+              </label>
+              <input 
+                type="range" 
+                min="1" 
+                max="12" 
+                step="1"
+                value={resistance}
+                onChange={(e) => {
+                  setResistance(parseInt(e.target.value));
+                  playSynthSound(700 - parseInt(e.target.value) * 30, "sawtooth", 0.04);
+                }}
+                className="w-full accent-yellow-500 h-1.5 bg-slate-850 rounded-lg appearance-none cursor-pointer"
+              />
+              <span className="text-[10px] text-slate-500 block">
+                {lang === "ar" ? "المقاومة تعيق تدفق التيار وتمنع المصباح من الاحتراق." : "Resistance slows down flow to protect circuit components."}
+              </span>
+            </div>
+          </div>
+
+          {/* Validation Feedback Banner */}
+          {feedback.type && (
+            <div className={`p-4 rounded-xl text-xs font-black border leading-relaxed text-right animate-fade-in ${
+              feedback.type === "success" 
+                ? "bg-emerald-950/20 border-emerald-900 text-emerald-400" 
+                : "bg-rose-950/20 border-rose-900 text-rose-400"
+            }`} dir="rtl">
+              <p>{lang === "ar" ? feedback.textAr : feedback.textEn}</p>
+            </div>
+          )}
+
+          {/* Action Circuit Trigger button */}
+          <div className="flex justify-center">
+            <button
+              onClick={checkElectricity}
+              className="px-8 py-3 bg-gradient-to-r from-yellow-600 to-yellow-700 hover:from-yellow-500 hover:to-yellow-600 text-slate-950 font-black text-xs sm:text-sm rounded-xl shadow-lg hover:shadow-yellow-950/30 active:scale-95 transition-all cursor-pointer flex items-center gap-2"
+            >
+              <Zap className="w-4 h-4 fill-slate-950" />
+              <span>{lang === "ar" ? "تشغيل الدائرة وقياس التيار" : "Power On Circuit & Measure"}</span>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* STAGE 3: Optics & Lens Focus */}
+      {stage === "optics" && (
+        <div className="bg-slate-950/60 border border-slate-900 rounded-3xl p-6 sm:p-8 space-y-6 animate-fade-in">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-900 pb-3">
+            <div>
+              <h3 className="text-base font-black text-white flex items-center gap-1.5">
+                <Atom className="w-5 h-5 text-rose-400" />
+                <span>{lang === "ar" ? "معمل البصريات وبؤرة الليزر" : "Optics & Laser Convergence Lab"}</span>
+              </h3>
+              <p className="text-[11px] text-slate-400">
+                {lang === "ar" ? "حرك العدسة واضبط بؤرتها لتجتمع أشعة الليزر المتوازية بدقة عند الحساس (300px)." : "Position the lens and scale focal length so parallel laser converges on the sensor at 300px."}
+              </p>
+            </div>
+            <button
+              onClick={() => setStage("selection")}
+              className="px-2.5 py-1 text-[10px] bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold rounded-lg border border-slate-800 cursor-pointer self-start sm:self-auto"
+            >
+              {lang === "ar" ? "العودة للرئيسية" : "Back to Selection"}
+            </button>
+          </div>
+
+          {/* Optics Bench Simulator Screen */}
+          <div className="relative w-full h-44 bg-slate-950 rounded-2xl border border-slate-900 overflow-hidden flex flex-col justify-end p-4">
+            <div className="absolute top-4 left-4 space-y-0.5 text-[10px] font-bold text-slate-400 text-right" dir="rtl">
+              <p className="text-rose-400">{lang === "ar" ? `موقع العدسة: ${lensPos}px` : `Lens Pos: ${lensPos}px`}</p>
+              <p className="text-rose-400">{lang === "ar" ? `البعد البؤري: ${focalLength}px` : `Focal Length: ${focalLength}px`}</p>
+              <p className="font-mono text-white text-[10px]">
+                {lang === "ar" ? `نقطة التجميع المحسوبة: ${currentFocalPoint}px` : `Calculated focal point: ${currentFocalPoint}px`}
+              </p>
+            </div>
+
+            <div className="absolute top-4 right-4 text-right space-y-0.5 font-bold" dir="rtl">
+              <p className="text-[10px] text-slate-500">{lang === "ar" ? "موقع الحساس البصري:" : "Optical Target Sensor:"}</p>
+              <p className="text-base font-black font-mono text-emerald-400">
+                300 px
+              </p>
+              <span className="text-[9px] text-rose-400 block font-semibold">
+                {Math.abs(currentFocalPoint - targetX) < 5 
+                  ? (lang === "ar" ? "🎯 بؤرة ممتازة!" : "🎯 Focused!") 
+                  : (lang === "ar" ? "❌ غير مركز" : "❌ Out of Focus")}
+              </span>
+            </div>
+
+            {/* Optics SVG diagram */}
+            <svg viewBox="0 0 450 160" className="w-full h-full max-h-[140px] select-none">
+              {/* Bench baseline axis */}
+              <line x1="20" y1="80" x2="430" y2="80" stroke="#334155" strokeWidth="1.5" strokeDasharray="5 5" />
+
+              {/* Target sensor at x = 300 */}
+              <g transform="translate(300, 80)">
+                <line x1="0" y1="-25" x2="0" y2="25" stroke={Math.abs(currentFocalPoint - targetX) < 5 ? "#10b981" : "#ef4444"} strokeWidth="4" />
+                <circle cx="0" cy="0" r="6" fill={Math.abs(currentFocalPoint - targetX) < 5 ? "#10b981" : "#ef4444"} className={Math.abs(currentFocalPoint - targetX) < 5 ? "animate-pulse" : ""} />
+                {Math.abs(currentFocalPoint - targetX) < 5 && (
+                  <circle cx="0" cy="0" r="14" fill="#10b981" fillOpacity="0.3" className="animate-ping" />
+                )}
+              </g>
+
+              {/* Parallel light beams from source (x=20) to lens */}
+              <line x1="20" y1="50" x2={lensPos} y2="50" stroke="#f43f5e" strokeWidth="1.5" />
+              <line x1="20" y1="80" x2={lensPos} y2="80" stroke="#f43f5e" strokeWidth="2" />
+              <line x1="20" y1="110" x2={lensPos} y2="110" stroke="#f43f5e" strokeWidth="1.5" />
+
+              {/* Converging light beams from lens to focal point */}
+              <line x1={lensPos} y1="50" x2={currentFocalPoint} y2="80" stroke="#f43f5e" strokeWidth="1.5" />
+              <line x1={lensPos} y1="80" x2={currentFocalPoint} y2="80" stroke="#f43f5e" strokeWidth="2" />
+              <line x1={lensPos} y1="110" x2={currentFocalPoint} y2="80" stroke="#f43f5e" strokeWidth="1.5" />
+
+              {/* Continuing rays past focus */}
+              <line x1={currentFocalPoint} y1="80" x2="420" y2={80 + (80 - 110) * ((420 - currentFocalPoint) / (currentFocalPoint - lensPos))} stroke="#f43f5e" strokeWidth="1" strokeOpacity="0.4" />
+              <line x1={currentFocalPoint} y1="80" x2="420" y2="80" stroke="#f43f5e" strokeWidth="1.5" strokeOpacity="0.4" />
+              <line x1={currentFocalPoint} y1="80" x2="420" y2={80 + (80 - 50) * ((420 - currentFocalPoint) / (currentFocalPoint - lensPos))} stroke="#f43f5e" strokeWidth="1" strokeOpacity="0.4" />
+
+              {/* Lens (Convex Glass shape drawn at x = lensPos) */}
+              <g transform={`translate(${lensPos}, 80)`}>
+                <path d="M-10,-35 C10,-20 10,20 -10,35 C-20,20 -20,-20 -10,-35 Z" fill="#06b6d4" fillOpacity="0.25" stroke="#22d3ee" strokeWidth="2" />
+                {/* Focal node */}
+                <circle cx={focalLength} cy="0" r="3" fill="#f43f5e" />
+                <text x="0" y="-42" textAnchor="middle" fill="#22d3ee" fontSize="9" fontWeight="black">{lang === "ar" ? "عدسة محدبة" : "Convex Lens"}</text>
+              </g>
+            </svg>
+          </div>
+
+          {/* Sliders Optics Controls */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-slate-900/20 p-4 border border-slate-900 rounded-2xl text-right" dir="rtl">
+            <div className="space-y-2">
+              <label className="text-xs font-black text-rose-400 flex items-center justify-between">
+                <span>{lang === "ar" ? "موقع العدسة على الحامل البصري (px)" : "Lens Horizontal Position (px)"}</span>
+                <span className="font-mono text-white text-sm bg-slate-950 px-2 py-0.5 rounded-lg border border-slate-900">{lensPos} px</span>
+              </label>
+              <input 
+                type="range" 
+                min="100" 
+                max="250" 
+                step="5"
+                value={lensPos}
+                onChange={(e) => {
+                  setLensPos(parseInt(e.target.value));
+                  playSynthSound(400 + parseInt(e.target.value) * 2, "sine", 0.05);
+                }}
+                className="w-full accent-rose-500 h-1.5 bg-slate-850 rounded-lg appearance-none cursor-pointer"
+              />
+              <span className="text-[10px] text-slate-500 block">
+                {lang === "ar" ? "حرك العدسة أقرب أو أبعد لتغيير منطلق سقوط بؤرة الضوء." : "Slide the lens horizontally along the benchmark scale."}
+              </span>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-black text-rose-400 flex items-center justify-between">
+                <span>{lang === "ar" ? "البعد البؤري للعدسة المحدبة (Focal Length)" : "Lens Focal Length (px)"}</span>
+                <span className="font-mono text-white text-sm bg-slate-950 px-2 py-0.5 rounded-lg border border-slate-900">{focalLength} px</span>
+              </label>
+              <input 
+                type="range" 
+                min="40" 
+                max="200" 
+                step="5"
+                value={focalLength}
+                onChange={(e) => {
+                  setFocalLength(parseInt(e.target.value));
+                  playSynthSound(600 - parseInt(e.target.value) * 2, "sine", 0.05);
+                }}
+                className="w-full accent-rose-500 h-1.5 bg-slate-850 rounded-lg appearance-none cursor-pointer"
+              />
+              <span className="text-[10px] text-slate-500 block">
+                {lang === "ar" ? "البعد البؤري يحدد مدى قوة انحناء وكسر أشعة الضوء." : "Determines the converging curvature strength of the convex lens."}
+              </span>
+            </div>
+          </div>
+
+          {/* Validation Feedback Banner */}
+          {feedback.type && (
+            <div className={`p-4 rounded-xl text-xs font-black border leading-relaxed text-right animate-fade-in ${
+              feedback.type === "success" 
+                ? "bg-emerald-950/20 border-emerald-900 text-emerald-400" 
+                : "bg-rose-950/20 border-rose-900 text-rose-400"
+            }`} dir="rtl">
+              <p>{lang === "ar" ? feedback.textAr : feedback.textEn}</p>
+            </div>
+          )}
+
+          {/* Action Trigger button */}
+          <div className="flex justify-center">
+            <button
+              onClick={checkOptics}
+              className="px-8 py-3 bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white font-black text-xs sm:text-sm rounded-xl shadow-lg hover:shadow-rose-950/30 active:scale-95 transition-all cursor-pointer flex items-center gap-2"
+            >
+              <Atom className="w-4 h-4" />
+              <span>{lang === "ar" ? "إطلاق شعاع الليزر ومطابقة البؤرة" : "Fire Laser Beam & Verify"}</span>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* GAMEOVER STATE */}
+      {stage === "gameover" && (
+        <div className="bg-[#030408] border-2 border-slate-900 rounded-3xl p-8 text-center space-y-6 animate-fade-in">
+          <AlertTriangle className="w-16 h-16 text-rose-500 mx-auto animate-bounce" />
+          <div className="space-y-2">
+            <h3 className="text-lg sm:text-xl font-extrabold text-white">
+              {lang === "ar" ? "نفدت قلوب المحاولات الفيزيائية!" : "Out of Physics Hearts!"}
+            </h3>
+            <p className="text-xs text-rose-400 max-w-sm mx-auto leading-relaxed">
+              {lang === "ar" 
+                ? "انتهت الفرص المتاحة للتجربة الحالية. لكن كل تكرار يعلم العلماء الصغار المزيد!" 
+                : "Do not worry! Failure is just the path to learning. Try again to balance, light the bulb or focus lasers."}
+            </p>
+          </div>
+
+          <div className="py-4 bg-[#070913] rounded-2xl border border-slate-900 max-w-xs mx-auto text-xs font-bold text-slate-400 flex justify-between items-center px-4">
+            <span>{lang === "ar" ? "مجموع نقاطك:" : "Your Score:"}</span>
+            <span className="text-cyan-400 font-black text-sm">{score} ⭐</span>
+          </div>
+
+          <button
+            onClick={resetAll}
+            className="px-6 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-black text-xs rounded-xl shadow-lg transition-all cursor-pointer flex items-center gap-1.5 mx-auto"
+          >
+            <RotateCcw className="w-4 h-4" />
+            <span>{lang === "ar" ? "إعادة تشغيل معمل الفيزياء" : "Restart Physics Lab"}</span>
+          </button>
+        </div>
+      )}
+
+      {/* VICTORY STATE */}
+      {stage === "victory" && (
+        <div className="bg-[#030408] border-2 border-slate-900 rounded-3xl p-8 text-center space-y-6 animate-fade-in">
+          <Award className="w-16 h-16 text-amber-500 mx-auto animate-pulse" />
+          <div className="space-y-2">
+            <h3 className="text-lg sm:text-xl font-extrabold text-white">
+              {lang === "ar" ? "تهانينا! لقد تخرجت كعالم فيزياء متميز!" : "Congratulations! You are a Physics Graduate!"}
+            </h3>
+            <p className="text-xs text-emerald-400 max-w-md mx-auto leading-relaxed">
+              {lang === "ar" 
+                ? "لقد نجحت في اجتياز جميع المعامل بنجاح باهر: ميكانيكا عزم الدوران، الدوائر الكهربائية لـ قانون أوم، وبؤرة الليزر للعدسات المحدبة!" 
+                : "You completed all interactive labs successfully: balance levers, light Ohm current circuits, and pinpoint laser lenses!"}
+            </p>
+          </div>
+
+          <div className="py-4 grid grid-cols-2 gap-4 max-w-xs mx-auto">
+            <div className="bg-[#070913] rounded-2xl border border-slate-900 p-3 text-xs font-bold text-slate-400">
+              <p className="text-[10px] text-slate-500">{lang === "ar" ? "نقاطك" : "Score"}</p>
+              <p className="text-base font-black text-cyan-400 mt-1">{score} ⭐</p>
+            </div>
+            <div className="bg-[#070913] rounded-2xl border border-slate-900 p-3 text-xs font-bold text-slate-400">
+              <p className="text-[10px] text-slate-500">{lang === "ar" ? "أعلى رقم قياسي" : "Highscore"}</p>
+              <p className="text-base font-black text-amber-400 mt-1">{Math.max(highScore, score)} ⚛️</p>
+            </div>
+          </div>
+
+          <button
+            onClick={resetAll}
+            className="px-6 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-black text-xs rounded-xl shadow-lg transition-all cursor-pointer flex items-center gap-1.5 mx-auto"
+          >
+            <RotateCcw className="w-4 h-4" />
+            <span>{lang === "ar" ? "العب مجدداً لتسجيل رقم قياسي" : "Play Lab Again"}</span>
+          </button>
         </div>
       )}
     </div>

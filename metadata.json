@@ -1,6 +1,6 @@
 {
-  "name": "Football World Cup Player Quiz",
-  "description": "من يشبهك من لاعبي المونديال؟ - اختبار شخصية تفاعلي غني بالأسئلة الرياضية المتنوعة والتحليلات الدقيقة بدون تكاليف خادم.",
+  "name": "بوابة الألعاب | Web Arcade",
+  "description": "منصة ألعاب بسيطة وممتعة تحتوي على مساحة عرض تفاعلية للألعاب وبطاقات تصفح أنيقة.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

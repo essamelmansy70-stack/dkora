@@ -1,2120 +1,1169 @@
-import { useState, useEffect, useRef, lazy, Suspense } from "react";
-import html2canvas from "html2canvas";
-import Cropper from "cropperjs";
-import "cropperjs/dist/cropper.css";
-import {
-  Trophy,
-  Award,
-  Share2,
-  Download,
-  RotateCcw,
-  Flame,
-  Sparkles,
-  Target,
-  Shield,
-  Star,
-  Zap,
-  Activity,
+import React, { useState, useEffect, useRef } from "react";
+import { 
+  Gamepad2, 
+  Trophy, 
+  RotateCcw, 
+  X, 
+  ChevronLeft, 
+  ChevronRight, 
+  Play, 
+  Volume2, 
+  VolumeX, 
+  Flame, 
+  Award, 
+  Monitor, 
+  Grid, 
+  Brain, 
+  Timer, 
   Heart,
-  User,
-  Globe,
-  Mail,
-  Lock,
-  Copy,
-  Check,
-  Info,
-  X,
-  Upload,
-  Trash2,
-  Loader2,
-  BookOpen,
-  ArrowRight,
-  ArrowLeft
+  Sparkles,
+  Zap,
+  Info
 } from "lucide-react";
 
-import veo3VideoGenerationGuide from "./assets/images/veo3_video_generation_guide_1782439141821.jpg";
+import snakeGameCover from "./assets/images/snake_game_cover_1783043783592.jpg";
+import tictactoeCover from "./assets/images/tictactoe_cover_1783043800396.jpg";
+import memoryGameCover from "./assets/images/memory_game_cover_1783043815120.jpg";
 
-import { Question, PlayerProfile } from "./types";
-import { QUESTION_BANK, PLAYER_PROFILES } from "./data";
-const ArticlesPage = lazy(() => import("./components/ArticlesPage"));
-const LegalModals = lazy(() => import("./components/LegalModals"));
-import { translations } from "./translations";
+// Game types
+type GameType = "snake" | "tictactoe" | "memory";
 
-// UI translation dictionary
-const uiTranslations = {
-  ar: {
-    title: "من يشبهك من لاعبي المونديال؟",
-    badge: "مستكشف الشخصية الكروية الكبرى",
-    tagline: "تحديث ٢٠٢٦ • متجدد كلياً ومجاني للجميع",
-    subtitle: "WORLD CUP PLAYER MATCH",
-    heroBadge: "الاختبار الرياضي الأكثر شعبية وتحديثاً لعام ٢٠٢٦",
-    heroHeadline1: "اكتشف شبيهك من",
-    heroHeadline2: "أساطير كأس العالم!",
-    heroDesc: "هل أنت العبقري الموهوب الذي لا تتكرر لمساته، أم المحرك القوي ذو الإرادة الحديدية، أم الصاروخ الطموح؟ أجب عن أسئلتنا التكتيكية المبتكرة وحلل شخصيتك الرياضية الآن!",
-    card1Title: "متجدد كلياً وذكي",
-    card1Desc: "أسئلة عشوائية وسيناريوهات فنية ممتازة في كل محاولة",
-    card2Title: "مجاني للجميع دائماً",
-    card2Desc: "مفتوح بالكامل وبدون أي اشتراكات أو تكاليف خفية إطلاقاً",
-    startBtn: "ابدأ اختبار شخصية الأبطال",
-    startNote: "* يقوم محرك اللعبة باختيار ٧ أسئلة عشوائية ممتعة وتوليد النتيجة لضمان تجربة حيوية ومتجددة دائماً!",
-    questionLabel: "السؤال",
-    ofLabel: "من أصل",
-    progressLabel: "مستوى التقدم",
-    prevBtn: "السابق",
-    attemptLabel: "المحاولة رقم",
-    analyzingTitle: "جاري مطابقة بصمتك الرياضية الكروية...",
-    analyzingLine1: "توليد نموذج الفروقات والشخصية الرياضية...",
-    analyzingLine2: "استخلاص دقة الكفاءة والروح الميدانية...",
-    analyzingLine3: "مقارنة جينات الهدافين وصناع اللعب والمهاجمين...",
-    analyzingStatus1: "جاري العمل",
-    analyzingStatus2: "مكتمل ١٠٠٪",
-    analyzingStatus3: "مطابقة نهائية",
-    analyzingQuote: "\"قاريء جينات الأبطال يطرق الباب... يحضر نموذج الأسطورة الخاص بك.\"",
-    resultBanner: "تحليل الشخصية المونديالية كمل بنجاح! 🏆",
-    resultTitle: "اللاعب المونديالي الشبيه بك هو:",
-    resultProfileId: "رقم التعريف المونديالي الخاص بك:",
-    resultAnalysisTitle: "التحليل النفسي والشخصي لأسلوبك الكروي المعتمد:",
-    resultStrengthsTitle: "أبرز نقاط قوتك ومهاراتك الفنية المتطابقة:",
-    resultMottoTitle: "شعــارك الأبــدي في الملاعب والحياة:",
-    resultStatsTitle: "المؤشرات الرقمية الكبرى لبطاقة أسطورتك الخاصة:",
-    statSpeed: "السرعة والانطلاق",
-    statDribbble: "المراوغة والتحكم الفني",
-    statShooting: "الحس التهديفي والإنهاء",
-    statStamina: "اللياقة والتحمل الهيكلي",
-    statTeamwork: "اللعب الجماعي والتضحية",
-    retakeBtn: "خوض الاختبار مجدداً",
-    downloadBtn: "تحميل بطاقة الأسطورة كصورة",
-    shareTitle: "شارك نتيجتك الأسطورية وقارنها مع أصدقائك بجروب الكرة:",
-    shareWhatsapp: "🟢 شارك عبر واتساب",
-    shareX: "⚫ شارك على منصة X",
-    shareFacebook: "🔵 شارك على فيسبوك",
-    toastImageLoading: "جاري إعداد بطاقة الأسطورة الخاصة بك كصورة عالية الدقة... 📥",
-    toastImageSuccess: "تم تنزيل بطاقة أسطورتك بنجاح! 🏆 شاركها مع أصدقائك الآن!",
-    toastImageFail: "عذراً! لم نتمكن من تنزيل الصورة تلقائياً بجهازك، يمكنك أخذ لقطة شاشة رائعة ومشاركة نتيجتك!",
-    toastShareReady: "تم تجهيز رابط المشاركة بجهازك بنجاح!",
-    footerRights: "جميع حقوق اختبار \"من يشبهك من لاعبي المونديال\" محفوظة © لعام ٢٠٢٦ من خلال منصة المونديال.",
-    footerMeta: "محرك ألعاب ذكي وآمن بالكامل يعمل محلياً بالكامل بمتصفحك"
-  },
-  en: {
-    title: "Which World Cup Player Are You?",
-    badge: "National Soccer Personality Analyst",
-    tagline: "2026 Update • Completely Revamped & Free for Everyone",
-    subtitle: "WORLD CUP PLAYER MATCH",
-    heroBadge: "The Most Popular Football Personality Test of 2026",
-    heroHeadline1: "Discover Your Matching",
-    heroHeadline2: "World Cup Legends!",
-    heroDesc: "Are you the quiet genius whose magical touches redefine football history, the relentless machine of absolute steel will, or the supersonic rocket? Answer our smart tactical questions and explore your sports alter-ego now!",
-    card1Title: "Fully Revamped",
-    card1Desc: "Completely randomized questions and realistic scenarios on every attempt",
-    card2Title: "Free for Everyone",
-    card2Desc: "Accessible and open-source forever with zero subscriptions or fees",
-    startBtn: "Launch Champion Personality Quiz",
-    startNote: "* The game engine chooses 7 random questions dynamically to ensure completely customized and fun results every single time!",
-    questionLabel: "Question",
-    ofLabel: "of",
-    progressLabel: "Progress Level",
-    prevBtn: "Previous",
-    attemptLabel: "Attempt No.",
-    analyzingTitle: "Analyzing your tactical football attributes...",
-    analyzingLine1: "Generating customized athletic profile metrics...",
-    analyzingLine2: "Extracting psychological sports fidelity...",
-    analyzingLine3: "Comparing scoring genes and playmaker structures...",
-    analyzingStatus1: "Computing",
-    analyzingStatus2: "100% Completed",
-    analyzingStatus3: "Final Matching",
-    analyzingQuote: "\"The champion genetic analyzer is opening gates... creating your legend card.\"",
-    resultBanner: "Football Personality Analysis Successfully Complete! 🏆",
-    resultTitle: "Your Matching World Cup Legend is:",
-    resultProfileId: "Your Mondial Profile ID:",
-    resultAnalysisTitle: "Psychological & Tactical Football Analysis:",
-    resultStrengthsTitle: "Your Matching Strengths & Key Technical Traits:",
-    resultMottoTitle: "Your Eternal Motto in Field & Life:",
-    resultStatsTitle: "Primary Performance Stats on Your Legend Card:",
-    statSpeed: "Speed & Acceleration",
-    statDribbble: "Dribbling & Ball Handling",
-    statShooting: "Clinical Finishing & Goals",
-    statStamina: "Stamina & Endurance",
-    statTeamwork: "Selfless Group Contribution",
-    retakeBtn: "Restart the Personality Quiz",
-    downloadBtn: "Download Legend Card as Image",
-    shareTitle: "Share your legendary matching card on your football groups:",
-    shareWhatsapp: "🟢 Share via WhatsApp",
-    shareX: "⚫ Share on X Platform",
-    shareFacebook: "🔵 Share on Facebook",
-    toastImageLoading: "Preparing your fine-resolution Legend Card download... 📥",
-    toastImageSuccess: "Your legend card was downloaded successfully! 🏆 Share it now!",
-    toastImageFail: "Apologies, Champ! Automatic download failed on this device. Feel free to snap a screenshot to share with your friends!",
-    toastShareReady: "Sharing link successfully activated for your device!",
-    footerRights: "Which World Cup Player Are You? All rights reserved © 2026.",
-    footerMeta: "FULLY SECURE ON-DEVICE APPLET • FAST RESPONSE MATRIX"
-  }
-};
-
-const VIRAL_HEADLINES = [
-  "المشجع اللي قعد رونالدو دكة في المونديال 🏟️",
-  "الوحش اللي حطم صخرة الدفاع وسحب هيبة الخصم ⚔️",
-  "صاحب أجمل وأقوى احتفال سيوووو في التاريخ! 🔥",
-  "اللي قشر الموزة لميسي في الكامب نو ومشى 🍌⚽",
-  "مروض الساحرة المستديرة في حواري المونديال 🌟",
-  "المهاجم اللي أرعب حراس كأس العالم بلمسة واحدة! 💀",
-  "الكابتن البديل اللي يغير مسار النهائي في الدقيقة 90! ⏱️",
-  "جلاد الشباك اللي يسجل بالأذن والكتف وصدره وعينه! 🎯",
-  "ممرر الكرات كعب بوجه القدم الخارجي البارع والأنيق 🪄",
-  "صاحب أول كوبري مزدوج حطم كاحل أقوى مدافع 🌉",
-  "اللي مسح هيبة نجوم الدفاع بمراوغة بلمسة فنية 💨",
-  "صانع تيكي تاكا حواري الرياض وجلاد دوري المدارس 🏆",
-  "اللي خلى نيمار يسوي إعادة حسابات في طقطقة الكورة 🧠",
-  "مزيج من الروح القتالية لراموس وعبقرية ليو ميسي! 🦁",
-  "الحارس الطائر اللي يصد ركلات الجزاء بالعين والنية 🧤",
-  "صانع الألعاب البارع اللي يعطي أسيست وهو يشرب عصير 🥤",
-  "جناح طائر أسرع من سرعة الضوء والصوت على ملعبنا ⚡",
-  "جدار برلين البشري اللي يبكي عليه المهاجمين بالملعب 🧱",
-  "صخرة الدفاع الصامت اللي يبتسم وهو يسحب الكورة 🗿",
-  "اللي يوزع عرضيات بالمليمتر تسبّب صداع لمدرب الخصم 📈",
-  "اللي قطع الكورة من ليفاندوفسكي بخيط خياطة وإبرة 🧵",
-  "المشجع اللي نزل الملعب وسجل هدف بالخطأ وصنع ريمونتادا 🔄",
-  "صاحب التسديدات الصاروخية العابرة للقارات والمدمرة 🚀",
-  "مروض الأبطال وصانع الهاتريك الأسرع في دقيقة واحدة! ⏱️",
-  "اللي خلى جوارديولا يعتزل التدريب ويسكر الدفاتر 🧠🎮",
-  "الكابتن المغناطيسي اللي يسحب الكورة كأنها حديد ومغناطيس 🧲",
-  "قاهر حراس المونديال وخبير الإنهاء في تسعينات الزاوية 🥅",
-  "المهاجم الهمام اللي يحسب سرعة الجاذبية قبل الارتقاء 🛸",
-  "اللي جاب معاه مبخرة للملعب وخرّب تركيز دفاع الخصم 💨🛡️",
-  "المشجع اللي جمد ملامح هالاند بمراوغة ونظرة ثقة 😎🔥",
-  "صانع النكبات الكروية لمدربي أندية النخبة الأوروبية 💣",
-  "المشجع اللي شتت كورة في السماء ونزلت في شباك الخصم! 🌌",
-  "صاحب أغلى قدم يسرى تنافس ليو ميسي في العقول 📐",
-  "المهاجم الأنيق اللي يحرز هاتريك وهو بيفكر في كبسة الغداء 🍛",
-  "المشجع اللي سحب التيشرت من هالاند وما انقطع معاه 🦾",
-  "قاهر خطوط الوسط وحامل مفاتيح رتم اللعب الهادئ والقاتل 🗝️",
-  "الوحش اللي يراوغ الدفاع من ركنية لركنية بلا تعرق 🏃‍♂️",
-  "معلم التيكي تاكا والسامبا البرازيلية الحرة في وسط الملعب 🇧🇷",
-  "المشجع اللي صفق للمنافس بالغلط وصنع سلام بالاستاد 🕊️",
-  "مروض الكور المستحيلة وصانع الأعاجيب بلمحة عين واحدة ✨",
-  "الجناح الطائر اللي يطير بدون طائرة في سماء الملاعب 🪽",
-  "المشجع الأكثر حماساً وولاءً وتأثيراً في مدرجاتنا 🗣️📣",
-  "مفسر الفكر التكتيكي العالي بلمساته العفوية البسيطة 📖",
-  "صاحب اللياقة الحديدية اللي تدور عضلاته كأنه محرك توربيني ⚙️",
-  "المشجع الأسطوري اللي هز المدرج بصيحة كروية تهز الجبال 🌋",
-  "اللي ركض من المرمى للمرمى عشان ينقذ هجمة مرتدة 🏎️",
-  "الأستاذ اللي يدرس المدافعين أصول التمركز بضحكة رايقة 🎓",
-  "مروض عمالقة المونديال وصاحب أذكى أسيست مخفي 🃏✨",
-  "اللي خلى حارس المونديال يطلب تبديل من شدة الصدمة 🤯🚨",
-  "مخرب تكتيك الكاتيناتشو الإيطالي بمراوغة حوارى شعبية 🛡️❌",
-  "البطل اللي أنقذ شرف الفريق بإنقاذ كورة من على خط المرمى 🦸‍♂️",
-  "الجلاد الرهيب صاحب القدم الفولاذية والضربات الحرة الساحقة ☄️",
-  "اللي يراوغ خمسة مدافعين في مساحة علبة كبريت صغيرة 📦✨",
-  "المهاجم اللي يستلم الكورة تحت الضغط وكأنه جالس بكافيه ☕🌟",
-  "المشجع اللي علم مبابي أصول الجري السريع والتخفي بالبساط 🦊💨",
-  "اللي سجل كوبري في كابتن الفريق وخلاه يعتزل دولياً 🪦🚪",
-  "القناص اللي يحط الكورة في الثمانية وتمشي بالدوران المطلق 🔄📐",
-  "المشجع اللي جاب كاس البطولة من بيتهم عشان يحتفل مع فريقه 🏆🎁",
-  "صاحب رمية التماس الطويلة اللي توصل لستاد المدينة المجاورة 🛸",
-  "مستكشف الثغرات الدفاعية وحلال العقد الكروية المستحيلة 🕵️‍♂️⚽",
-  "المشجع اللي يتوقع التغييرات والتبديلات قبل المدرب بساعة 🔮🏟️"
-];
+interface Game {
+  id: GameType;
+  titleAr: string;
+  titleEn: string;
+  descAr: string;
+  descEn: string;
+  categoryAr: string;
+  categoryEn: string;
+  cover: string;
+  difficultyAr: string;
+  difficultyEn: string;
+  highScoreKey: string;
+  icon: React.ReactNode;
+}
 
 export default function App() {
-  // Navigation tabs: "quiz" (Home) | "blog" (Articles) | "sitemap" (Sitemap page)
-  const [activeTab, setActiveTab] = useState<"quiz" | "blog" | "sitemap" >("quiz");
-  
-  // Legal modal state
-  const [activeLegalModal, setActiveLegalModal] = useState<'privacy' | 'terms' | 'about' | 'contact' | 'disclaimer' | null>(null);
-
-  // Determine language based on query parameter (?lang=en or ?lang=ar), defaulting to Arabic ('ar')
   const [lang, setLang] = useState<"ar" | "en">("ar");
-  const [activeScreen, setActiveScreen] = useState<"start" | "quiz" | "analyzing" | "result" | "veo-article">("start");
-  const [veoClickCount, setVeoClickCount] = useState<number>(0);
-  const [questions, setQuestions] = useState<Question[]>([]);
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [userAnswers, setUserAnswers] = useState<Record<number, string>>({});
-  const [finalPlayer, setFinalPlayer] = useState<PlayerProfile | null>(null);
-  const [quizAttempts, setQuizAttempts] = useState<number>(1);
-  const [showToast, setShowToast] = useState<boolean>(false);
-  const [toastText, setToastText] = useState<string>("");
+  const [activeGame, setActiveGame] = useState<GameType | null>(null);
+  const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
+  
+  // Game highscores from localStorage
+  const [highScores, setHighScores] = useState({
+    snake: 0,
+    tictactoe: 0,
+    memory: 0
+  });
 
-  // States for user photo and client-side Soccer Fan Card & Headline Generator
-  const [userUploadedFile, setUserUploadedFile] = useState<string | null>(null);
-  const [userCroppedImage, setUserCroppedImage] = useState<string | null>(null);
-  const [selectedRivalId, setSelectedRivalId] = useState<string>("messi");
-  const [viralHeadline, setViralHeadline] = useState<string>("");
-  const [activeFilter, setActiveFilter] = useState<string>("cyber");
-  const [isBlending, setIsBlending] = useState<boolean>(false);
-  const [blendStatusText, setBlendStatusText] = useState<string>("");
-  const [blendingError, setBlendingError] = useState<string | null>(null);
-
-  const resultCardRef = useRef<HTMLDivElement>(null);
-  const fanCardElementRef = useRef<HTMLDivElement>(null);
-  const cropperImgRef = useRef<HTMLImageElement | null>(null);
-  const cropperInstRef = useRef<Cropper | null>(null);
-
-  // Sync language and active tab with URL query parameters on initial load
+  // Load high scores on mount
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    
-    // 1. Setup Language
-    const urlLang = params.get("lang");
-    if (urlLang === "en" || urlLang === "ar") {
-      setLang(urlLang);
-    } else {
-      // Default to Arabic but update the URL accordingly for neatness of link sharing
-      const url = new URL(window.location.href);
-      url.searchParams.set("lang", "ar");
-      window.history.replaceState({}, "", url.toString());
-    }
-
-    // 2. Setup Active tab / view
-    const viewParam = params.get("view");
-    const articleParam = params.get("article");
-    if (viewParam === "blog" || articleParam) {
-      setActiveTab("blog");
-    } else if (viewParam === "sitemap") {
-      setActiveTab("sitemap");
-    } else {
-      setActiveTab("quiz");
-    }
-
-    // 3. Setup active legal page parameter if present
-    const legalParam = params.get("legal");
-    if (legalParam === "privacy" || legalParam === "terms" || legalParam === "about" || legalParam === "contact" || legalParam === "disclaimer") {
-      setActiveLegalModal(legalParam as any);
-    }
+    const sScore = localStorage.getItem("high_snake") ? parseInt(localStorage.getItem("high_snake")!) : 0;
+    const tScore = localStorage.getItem("high_tictactoe") ? parseInt(localStorage.getItem("high_tictactoe")!) : 0;
+    const mScore = localStorage.getItem("high_memory") ? parseInt(localStorage.getItem("high_memory")!) : 0;
+    setHighScores({ snake: sScore, tictactoe: tScore, memory: mScore });
   }, []);
 
-  // Synchronically update document title and metadata for SEO on tab or language change
-  useEffect(() => {
-    const isRtl = lang === "ar";
-    document.documentElement.lang = lang;
-    document.documentElement.dir = isRtl ? "rtl" : "ltr";
-
-    let title = "";
-    let desc = "";
-
-    if (activeTab === "quiz") {
-      if (isRtl) {
-        title = "من يشبهك من لاعبي المونديال؟ | اختبار شخصية كرة القدم التفاعلي";
-        desc = "اكتشف أي من أساطير كرة القدم العالمية يماثل شخصيتك وأسلوبك الرياضي في الملعب من خلال اختبار تفاعلي فائق وممتع متجدد باستمرار.";
-      } else {
-        title = "Which World Cup Player Are You? | Interactive Football Personality Quiz";
-        desc = "Discover your soccer match from world cup legends! A fun, highly-interactive football personality test analyzing your style and skill.";
-      }
-    } else if (activeTab === "sitemap") {
-      if (isRtl) {
-        title = "خريطة الموقع المونديالي التفاعلي | dkora";
-        desc = "تصفح خريطة الموقع الكاملة وجميع الصفحات والمقالات والتحليلات الخاصة بمنصة مونديال كأس العالم ٢٠٢٦.";
-      } else {
-        title = "Mondial Interactive Sitemap | dkora";
-        desc = "Explore with one click all pages, articles, and utilities of the Mondial platform. Fully optimized for instant crawling.";
-      }
+  const updateHighScore = (game: GameType, score: number) => {
+    const currentScores = { ...highScores };
+    if (score > currentScores[game]) {
+      currentScores[game] = score;
+      localStorage.setItem(`high_${game}`, score.toString());
+      setHighScores(currentScores);
+      playSynthSound(600, "sawtooth", 0.3, 0.5); // victory ding
     }
+  };
 
-    if (title && activeTab !== "blog") { // Let blog (ArticlesPage) handle its own precise state
-      document.title = title;
+  // Synthesize game sound effects using Web Audio API
+  const playSynthSound = (frequency: number, type: OscillatorType = "sine", duration = 0.1, delay = 0) => {
+    if (!soundEnabled) return;
+    try {
+      const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
+      if (!AudioContext) return;
+      const ctx = new AudioContext();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
       
-      let metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        metaDesc.setAttribute('content', desc);
-      } else {
-        metaDesc = document.createElement('meta');
-        metaDesc.setAttribute('name', 'description');
-        metaDesc.setAttribute('content', desc);
-        document.head.appendChild(metaDesc);
-      }
+      osc.type = type;
+      osc.frequency.setValueAtTime(frequency, ctx.currentTime + delay);
       
-      const ogTitle = document.querySelector('meta[property="og:title"]');
-      if (ogTitle) ogTitle.setAttribute('content', title);
-      const ogDesc = document.querySelector('meta[property="og:description"]');
-      if (ogDesc) ogDesc.setAttribute('content', desc);
-
-      const twTitle = document.querySelector('meta[property="twitter:title"]');
-      if (twTitle) twTitle.setAttribute('content', title);
-      const twDesc = document.querySelector('meta[property="twitter:description"]');
-      if (twDesc) twDesc.setAttribute('content', desc);
-    }
-  }, [activeTab, lang]);
-
-  // Update URL parameter and HTML document meta when language changes
-  const handleLanguageChange = (newLang: "ar" | "en") => {
-    setLang(newLang);
-    const url = new URL(window.location.href);
-    url.searchParams.set("lang", newLang);
-    window.history.pushState({}, "", url.toString());
-    playInteractionSound();
-  };
-
-  // Switch tab and sync with browser address bar
-  const handleTabChange = (tab: "quiz" | "blog" | "sitemap") => {
-    setActiveTab(tab);
-    const url = new URL(window.location.href);
-    if (tab === "quiz") {
-      url.searchParams.delete("view");
-    } else {
-      url.searchParams.set("view", tab);
-    }
-    window.history.pushState({}, "", url.toString());
-    playInteractionSound();
-  };
-
-  // Device vibration simulation or safety bypass
-  const playInteractionSound = () => {
-    if (typeof window !== "undefined" && "vibrate" in navigator) {
-      try {
-        navigator.vibrate(20);
-      } catch (e) {
-        // Safe bypass for iframe constraints
-      }
-    }
-  };
-
-  // Initialize Quiz flow (Selecting exactly 7 random questions from the 40-question bank)
-  const initializeQuiz = () => {
-    playInteractionSound();
-    setCurrentIndex(0);
-    setUserAnswers({});
-
-    // Fisher-Yates shuffle algorithm on the 40-question bank
-    const shuffledPool = [...QUESTION_BANK];
-    for (let i = shuffledPool.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledPool[i], shuffledPool[j]] = [shuffledPool[j], shuffledPool[i]];
-    }
-
-    // Capture exactly 7 questions
-    const selectedQuestions = shuffledPool.slice(0, 7).map((q) => {
-      // Shuffle options lists inside each question too for extra volatility and replayability
-      const shuffledOptions = [...q.options];
-      for (let x = shuffledOptions.length - 1; x > 0; x--) {
-        const y = Math.floor(Math.random() * (x + 1));
-        [shuffledOptions[x], shuffledOptions[y]] = [shuffledOptions[y], shuffledOptions[x]];
-      }
-      return { ...q, options: shuffledOptions };
-    });
-
-    setQuestions(selectedQuestions);
-    setActiveScreen("quiz");
-  };
-
-  // Answer selection callback
-  const handleAnswerClick = (playerCode: string) => {
-    playInteractionSound();
-
-    const currentQuestion = questions[currentIndex];
-    setUserAnswers((prev) => ({
-      ...prev,
-      [currentQuestion.id]: playerCode,
-    }));
-
-    if (currentIndex < 6) {
-      setCurrentIndex((prev) => prev + 1);
-    } else {
-      // Completed all 7 questions, transition into analyzing gate
-      setActiveScreen("analyzing");
-      setTimeout(() => {
-        calculateFinalScoreAndDisplay();
-      }, 2200);
-    }
-  };
-
-  // Back button navigator within quiz
-  const handlePreviousQuestion = () => {
-    if (currentIndex > 0) {
-      playInteractionSound();
-      setCurrentIndex((prev) => prev - 1);
-    }
-  };
-
-  // Evaluate final matching profile
-  const calculateFinalScoreAndDisplay = () => {
-    const counts: Record<string, number> = {
-      messi: 0,
-      ronaldo: 0,
-      mbappe: 0,
-      haaland: 0,
-      modric: 0,
-      salah: 0,
-    };
-
-    Object.values(userAnswers).forEach((p) => {
-      const pStr = p as string;
-      if (pStr in counts) {
-        counts[pStr] += 1;
-      }
-    });
-
-    let majorityPlayerCode: keyof typeof counts = "messi";
-    let maxCount = -1;
-
-    Object.entries(counts).forEach(([code, count]) => {
-      if (count > maxCount) {
-        maxCount = count;
-        majorityPlayerCode = code as any;
-      } else if (count === maxCount) {
-        // Random tie breaker
-        if (Math.random() > 0.5) {
-          majorityPlayerCode = code as any;
-        }
-      }
-    });
-
-    const foundMatch = PLAYER_PROFILES.find((p) => p.id === majorityPlayerCode) || PLAYER_PROFILES[0];
-    setFinalPlayer(foundMatch);
-    setActiveScreen("result");
-  };
-
-  // Reset quiz state to re-evaluate personality traits
-  const handleResetQuiz = () => {
-    setQuizAttempts((prev) => prev + 1);
-    initializeQuiz();
-  };
-
-  // Render high-fidelity result card as image download via html2canvas
-  const handleDownloadResultImage = async () => {
-    playInteractionSound();
-    if (!resultCardRef.current || !finalPlayer) return;
-
-    triggerToast(t.toastImageLoading);
-
-    // Style backups to revert after html2canvas completes
-    const backups: any[] = [];
-
-    try {
-      resultCardRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
-
-      // Dynamic style sanitizer to prevent html2canvas oklab/oklch parser crashes in Tailwind v4
-      const styleElements = Array.from(document.querySelectorAll("style"));
-      for (const styleEl of styleElements) {
-        const originalText = styleEl.innerHTML;
-        if (originalText.includes("oklch") || originalText.includes("oklab")) {
-          const cleaned = originalText
-            .replace(/oklch\([^)]+\)/g, "rgb(120, 120, 120)")
-            .replace(/oklab\([^)]+\)/g, "rgb(120, 120, 120)");
-          styleEl.innerHTML = cleaned;
-          backups.push({ type: "style", element: styleEl, content: originalText });
-        }
-      }
-
-      const linkElements = Array.from(document.querySelectorAll("link[rel='stylesheet']")) as HTMLLinkElement[];
-      for (const linkEl of linkElements) {
-        try {
-          const response = await fetch(linkEl.href);
-          if (response.ok) {
-            const text = await response.text();
-            if (text.includes("oklch") || text.includes("oklab")) {
-              const cleanedText = text
-                .replace(/oklch\([^)]+\)/g, "rgb(120, 120, 120)")
-                .replace(/oklab\([^)]+\)/g, "rgb(120, 120, 120)");
-              
-              const tempStyle = document.createElement("style");
-              tempStyle.setAttribute("data-html2canvas-temp", "true");
-              tempStyle.innerHTML = cleanedText;
-              document.head.appendChild(tempStyle);
-
-              linkEl.disabled = true;
-              backups.push({ type: "link", element: linkEl, tempStyleElement: tempStyle });
-            }
-          }
-        } catch (err) {
-          console.warn("Failed to sanitize stylesheet for html2canvas:", linkEl.href, err);
-        }
-      }
-
-      const options = {
-        useCORS: true,
-        backgroundColor: "#04081a", // slate dark card backdrop hex code to render download flawlessly
-        scale: 2, // crisp scaling
-        logging: false,
-      };
-
-      await new Promise((resolve) => setTimeout(resolve, 450)); // Ensure style rendering transitions complete
-      const canvas = await html2canvas(resultCardRef.current, options);
-      const dataUrl = canvas.toDataURL("image/png");
-
-      const link = document.createElement("a");
-      link.download = `mondial-legend-card-${finalPlayer.id}.png`;
-      link.href = dataUrl;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      triggerToast(t.toastImageSuccess);
-    } catch (err: any) {
-      console.error("html2canvas error: ", err);
-      triggerToast(t.toastImageFail);
-    } finally {
-      // Revert style changes synchronously to guarantee UI is unaffected
-      for (const back of backups) {
-        if (back.type === "style") {
-          back.element.innerHTML = back.content;
-        } else if (back.type === "link") {
-          back.element.disabled = false;
-          if (back.tempStyleElement && back.tempStyleElement.parentNode) {
-            back.tempStyleElement.parentNode.removeChild(back.tempStyleElement);
-          }
-        }
-      }
-    }
-  };
-
-  // Client-Side Bragging Fan Card & Headline Generator Logic
-  const handleRandomizeHeadline = () => {
-    playInteractionSound();
-    let randomIndex = Math.floor(Math.random() * VIRAL_HEADLINES.length);
-    if (VIRAL_HEADLINES[randomIndex] === viralHeadline) {
-      randomIndex = (randomIndex + 1) % VIRAL_HEADLINES.length;
-    }
-    setViralHeadline(VIRAL_HEADLINES[randomIndex]);
-    triggerToast(lang === "ar" ? "تم سحب مهارة أسطورية جديدة! 🎲" : "New dynamic player trait drawn! 🎲");
-  };
-
-  const startFanCardSimulation = (croppedDataUrl: string) => {
-    setUserCroppedImage(croppedDataUrl);
-    setIsBlending(true);
-    setBlendingError(null);
-    
-    // Choose initial random title
-    const randomIndex = Math.floor(Math.random() * VIRAL_HEADLINES.length);
-    setViralHeadline(VIRAL_HEADLINES[randomIndex]);
-
-    const statusesAr = [
-      "جاري فحص زاوية نظرتك الأسطورية... 👁️",
-      "توليف هيبة المشجع بكسل-بكسل... 🧠",
-      "تجهيز كرت التباهي بنمط الذكاء الاصطناعي... 🎨",
-      "مطابقة جينات خصمك المونديالي الأسطوري... ⚽",
-      "إضفاء الفلاتر النيونية الرياضية... ⚡"
-    ];
-    const statusesEn = [
-      "Assessing legendary visual focus alignment... 👁️",
-      "Pixel-synthesizing ultimate backing aura... 🧠",
-      "Styling custom championship bragging card... 🎨",
-      "Pairing athletic traits with rival icon... ⚽",
-      "Injecting high-frequency neon flourishes... ⚡"
-    ];
-
-    const statusList = lang === "ar" ? statusesAr : statusesEn;
-    let statusIdx = 0;
-    setBlendStatusText(statusList[0]);
-
-    const statusInterval = setInterval(() => {
-      statusIdx = (statusIdx + 1) % statusList.length;
-      setBlendStatusText(statusList[statusIdx]);
-    }, 550);
-
-    setTimeout(() => {
-      clearInterval(statusInterval);
-      setIsBlending(false);
-      triggerToast(lang === "ar" ? "تم إنشاء كرت التباهي الخاص بك بنجاح! 🏆" : "Your bragging card successfully printed! 🏆");
-    }, 2800);
-  };
-
-  const handleGenerateAIBlend = () => {
-    if (!cropperInstRef.current) return;
-    playInteractionSound();
-    
-    // Get cropped canvas
-    const croppedCanvas = cropperInstRef.current.getCroppedCanvas({
-      width: 450,
-      height: 450,
-      imageSmoothingEnabled: true,
-      imageSmoothingQuality: "high"
-    });
-    
-    if (croppedCanvas) {
-      const croppedDataUrl = croppedCanvas.toDataURL("image/png");
-      startFanCardSimulation(croppedDataUrl);
-    } else {
-      triggerToast(lang === "ar" ? "تعذر قص الصورة، حاول مرة أخرى." : "Cropping failed, please try again.");
-    }
-  };
-
-  const handleDownloadFanCard = async () => {
-    playInteractionSound();
-    if (!fanCardElementRef.current) return;
-
-    triggerToast(lang === "ar" ? "جاري تجهيز كرت التباهي للتحميل الفوري... 🖼️" : "Preparing high-res bragging card for download... 🖼️");
-
-    const backups: any[] = [];
-
-    try {
-      fanCardElementRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
-
-      // Clean oklch / oklab colors for html2canvas to prevent SVG/canvas loading crashes in styling systems
-      const styleElements = Array.from(document.querySelectorAll("style"));
-      for (const styleEl of styleElements) {
-        const originalText = styleEl.innerHTML;
-        if (originalText.includes("oklch") || originalText.includes("oklab")) {
-          const cleaned = originalText
-            .replace(/oklch\([^)]+\)/g, "rgb(120, 120, 120)")
-            .replace(/oklab\([^)]+\)/g, "rgb(120, 120, 120)");
-          styleEl.innerHTML = cleaned;
-          backups.push({ type: "style", element: styleEl, content: originalText });
-        }
-      }
-
-      const linkElements = Array.from(document.querySelectorAll("link[rel='stylesheet']")) as HTMLLinkElement[];
-      for (const linkEl of linkElements) {
-        try {
-          const response = await fetch(linkEl.href);
-          if (response.ok) {
-            const text = await response.text();
-            if (text.includes("oklch") || text.includes("oklab")) {
-              const cleanedText = text
-                .replace(/oklch\([^)]+\)/g, "rgb(120, 120, 120)")
-                .replace(/oklab\([^)]+\)/g, "rgb(120, 120, 120)");
-              
-              const tempStyle = document.createElement("style");
-              tempStyle.setAttribute("data-html2canvas-temp", "true");
-              tempStyle.innerHTML = cleanedText;
-              document.head.appendChild(tempStyle);
-
-              linkEl.disabled = true;
-              backups.push({ type: "link", element: linkEl, tempStyleElement: tempStyle });
-            }
-          }
-        } catch (err) {
-          console.warn("Failed to sanitize stylesheet for html2canvas:", linkEl.href, err);
-        }
-      }
-
-      const options = {
-        useCORS: true,
-        backgroundColor: "#020512", // premium absolute dark backdrop
-        scale: 2, // crisp high density
-        logging: false,
-      };
-
-      await new Promise((resolve) => setTimeout(resolve, 450));
-      const canvas = await html2canvas(fanCardElementRef.current, options);
-      const dataUrl = canvas.toDataURL("image/png");
-
-      const link = document.createElement("a");
-      link.download = `soccer-fan-card-${selectedRivalId}.png`;
-      link.href = dataUrl;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      triggerToast(lang === "ar" ? "تم تحميل كرت التباهي بنجاح! 🥳 شاركه مع أصدقائك!" : "Bragging card downloaded successfully! 🥳 Go share!");
-    } catch (err: any) {
-      console.error("html2canvas print failure: ", err);
-      triggerToast(lang === "ar" ? "عذراً! فشل التحميل التلقائي، التقط لقطة شاشة وشارك كرت التباهي!" : "Automatic download failed on this device, snap a screenshot to share!");
-    } finally {
-      // Revert style changes to ensure standard UI is unaltered
-      for (const back of backups) {
-        if (back.type === "style") {
-          back.element.innerHTML = back.content;
-        } else if (back.type === "link") {
-          back.element.disabled = false;
-          if (back.tempStyleElement && back.tempStyleElement.parentNode) {
-            back.tempStyleElement.parentNode.removeChild(back.tempStyleElement);
-          }
-        }
-      }
-    }
-  };
-
-  // Trigger brief alert notifications
-  const triggerToast = (text: string) => {
-    setToastText(text);
-    setShowToast(true);
-    setTimeout(() => {
-      setShowToast(false);
-    }, 4500);
-  };
-
-  // Built-in social hub handlers
-  const handleSocialShare = (platform: "whatsapp" | "facebook" | "x") => {
-    playInteractionSound();
-    if (!finalPlayer) return;
-
-    const nameStr = lang === "ar" ? finalPlayer.nameAr : finalPlayer.nameEn;
-    const titleStr = lang === "ar" ? finalPlayer.titleAr : finalPlayer.titleEn;
-    const mottoStr = lang === "ar" ? finalPlayer.mottoAr : finalPlayer.mottoEn;
-
-    const shareTitle = lang === "ar"
-      ? `⚽ هائل! خضعت لاختبار عمالقة المونديال المتجدد ٢٠٢٦ واكتشفت أنني أشبه الأسطورة: **${nameStr}** (${titleStr})!\n\n🎯 شعاري الكروي المعتمد: "${mottoStr}" \n\n🔥 خض الاختبار أنت أيضاً مجاناً واكتشف شبيهك الكروي من أساطير كأس العالم!`
-      : `⚽ Outstanding! I took the 2026 World Cup Player Personality test and matched with the Legend: **${nameStr}** (${titleStr})!\n\n🎯 My Football Motto: "${mottoStr}" \n\n🔥 Take the quiz now for free and discover your legendary football soulmate!`;
-
-    const shareUrl = window.location.href;
-    const encodedText = encodeURIComponent(`${shareTitle}\n\n🔗 ${lang === "ar" ? "جرّب الاختبار من هنا:" : "Try the quiz here:"}\n${shareUrl}`);
-
-    let href = "";
-    if (platform === "whatsapp") {
-      href = `https://api.whatsapp.com/send?text=${encodedText}`;
-    } else if (platform === "x") {
-      href = `https://twitter.com/intent/tweet?text=${encodedText}`;
-    } else if (platform === "facebook") {
-      href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
-    }
-
-    try {
-      window.open(href, "_blank", "noopener,noreferrer");
+      gain.gain.setValueAtTime(0.15, ctx.currentTime + delay);
+      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + delay + duration);
+      
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      
+      osc.start(ctx.currentTime + delay);
+      osc.stop(ctx.currentTime + delay + duration);
     } catch (e) {
-      triggerToast(t.toastShareReady);
+      // Audio context error or blocked by autoplay
     }
   };
 
-  const isRtl = lang === "ar";
-  const progressPercent = questions.length > 0 ? (currentIndex / 7) * 100 : 0;
-
-  // Build full translations including legal block which is fetched from translations.ts
-  const appTranslations = {
-    ar: {
-      ...uiTranslations.ar,
-      legal: translations.ar.legal,
+  // Interactive Games Data
+  const games: Game[] = [
+    {
+      id: "snake",
+      titleAr: "الأفعى الكلاسيكية النيون",
+      titleEn: "Neon Classic Snake",
+      descAr: "تحكم في الأفعى المتوهجة، التهم التفاح الرقمي السريع وتفادى الاصطدام بالجدران أو بنفسك لكسر أرقام قياسية جديدة.",
+      descEn: "Steer the neon snake, devour fast digital apples, and avoid colliding with the walls or yourself to break new records.",
+      categoryAr: "تحدي وسرعة",
+      categoryEn: "Action & Skill",
+      cover: snakeGameCover,
+      difficultyAr: "متوسط",
+      difficultyEn: "Medium",
+      highScoreKey: "high_snake",
+      icon: <Flame className="w-5 h-5 text-emerald-400" />
     },
-    en: {
-      ...uiTranslations.en,
-      legal: translations.en.legal,
+    {
+      id: "tictactoe",
+      titleAr: "تحدي إكس أو الذكي",
+      titleEn: "Cyber Tic-Tac-Toe AI",
+      descAr: "العب اللعبة الكلاسيكية الشهيرة ضد ذكاء اصطناعي ذكي ومستجيب أو تحدى صديقك محلياً على نفس الشاشة.",
+      descEn: "Play the legendary classic game against a smart, adaptive AI opponent or challenge your friends locally on the same screen.",
+      categoryAr: "ذكاء وتفكير",
+      categoryEn: "Strategy & Brain",
+      cover: tictactoeCover,
+      difficultyAr: "قابل للتعديل",
+      difficultyEn: "Adjustable",
+      highScoreKey: "high_tictactoe",
+      icon: <Grid className="w-5 h-5 text-rose-400" />
+    },
+    {
+      id: "memory",
+      titleAr: "تطابق الذاكرة الكونى",
+      titleEn: "Cosmic Memory Match",
+      descAr: "درب ذاكرتك البصرية وقوة تركيزك عبر البحث عن الكروت المتطابقة في أقل وقت وبأقل عدد من الخطوات الممكنة.",
+      descEn: "Train your visual memory and cognitive focus by matching pairs of cosmic card symbols in the shortest time and moves.",
+      categoryAr: "ألعاب ذهنية",
+      categoryEn: "Memory & Mind",
+      cover: memoryGameCover,
+      difficultyAr: "سهل إلى متوسط",
+      difficultyEn: "Easy to Medium",
+      highScoreKey: "high_memory",
+      icon: <Brain className="w-5 h-5 text-indigo-400" />
     }
-  };
-  const t = appTranslations[lang];
+  ];
 
   return (
-    <div 
-      className="min-h-screen bg-white text-slate-900 flex flex-col items-center justify-between font-sans selection:bg-red-600 selection:text-white relative overflow-hidden"
-      dir={isRtl ? "rtl" : "ltr"}
-    >
-      
-      {/* Dynamic Background Stadium Field Lighting with soft Red, White, and Navy glow overlays */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 left-1/4 w-[450px] h-[450px] bg-gradient-to-br from-red-100/40 via-red-50/10 to-transparent rounded-full blur-[100px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-to-tl from-slate-100/55 via-indigo-50/20 to-transparent rounded-full blur-[120px]" />
-        
-        {/* Pitch grid textures in clean subtle overlay */}
-        <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#ef4444_1px,transparent_1px)] [background-size:20px_20px]" />
-        <div className="absolute top-0 right-0 left-0 h-1 bg-gradient-to-r from-transparent via-red-500/20 to-transparent" />
-      </div>
-
-      {/* Global Bilingual Header in pristine responsive white banner */}
-      <header 
-        onClick={() => { handleTabChange("quiz"); playInteractionSound(); }}
-        className="w-full max-w-4xl px-4 py-5 flex flex-col sm:flex-row gap-4 items-center justify-between border-b border-slate-200 z-10 bg-white/80 backdrop-blur-md cursor-pointer hover:bg-slate-50/50 transition-colors duration-200 group/header"
-        title={lang === "ar" ? "اضغط للذهاب لالصفحة الرئيسية" : "Click to go to Home Page"}
-      >
-        <div 
-          className="flex items-center gap-3 select-none group transition-opacity"
-        >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-650 via-red-500 to-white flex items-center justify-center shadow-md shadow-red-500/10 shrink-0 transition-transform group-hover:scale-105 group-hover/header:scale-105">
-            <Trophy className="w-5.5 h-5.5 text-white animate-bounce" />
-          </div>
-          <div className="text-center sm:text-start rtl:sm:text-right ltr:sm:text-left">
-            <h1 className="text-sm sm:text-base font-black tracking-tight bg-gradient-to-r from-slate-950 via-red-600 to-slate-950 bg-clip-text text-transparent group-hover:text-red-650 transition-colors">
-              {t.title}
-            </h1>
-            <p className="text-[10px] text-slate-400 font-mono tracking-widest uppercase">
-              {t.subtitle}
-            </p>
-          </div>
-        </div>
-
-        {/* Navigation Switchboard & Language toggle */}
-        <div className="flex flex-wrap items-center justify-center gap-2" onClick={(e) => e.stopPropagation()}>
-          {activeTab !== "quiz" && (
-            <button
-              onClick={() => { handleTabChange("quiz"); playInteractionSound(); }}
-              className="px-3 py-1.5 rounded-xl text-xs font-black bg-red-650 text-white hover:bg-red-700 transition-all cursor-pointer shadow-sm shadow-red-600/20"
-            >
-              {lang === "ar" ? "العودة للاختبار" : "Back to Quiz"}
-            </button>
-          )}
-
-          <button
-            id="lang-toggle-btn"
-            onClick={() => handleLanguageChange(lang === "ar" ? "en" : "ar")}
-            className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-red-500 hover:bg-slate-100 text-xs text-slate-700 hover:text-slate-950 transition-all font-bold flex items-center gap-1.5 cursor-pointer shadow-sm"
-          >
-            <Globe className="w-3.5 h-3.5 text-red-500" />
-            <span>{lang === "ar" ? "English 🇬🇧" : "العربية 🇸🇦"}</span>
-          </button>
-        </div>
-      </header>
-
-      {/* Primary Workspace */}
-      <main className="w-full max-w-4xl px-4 py-8 flex flex-col justify-center items-center flex-grow z-10">
-        
-        {/* TAB 1: FOOTBALL PERSONALITY QUIZ FLOW */}
-        {activeTab === "quiz" && (
-          <div className="w-full max-w-2xl mx-auto flex flex-col items-center">
-            
-            {/* SCREEN 1: SPLASH SCREEN (METADATA REVAMPED - NO '40+ QUESTIONS TABS') */}
-            {activeScreen === "start" && (
-              <div className="w-full text-center space-y-8 animate-fade-in py-4">
-                
-                <div className="space-y-4">
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 text-red-600 border border-red-100 text-xs font-bold shadow-sm">
-                    <Flame className="w-4 h-4 text-red-500 animate-pulse" />
-                    {t.heroBadge}
-                  </div>
-                  
-                  <h2 className="text-3xl sm:text-5xl font-black text-slate-900 leading-tight">
-                    {t.heroHeadline1} <br />
-                    <span className="bg-gradient-to-r from-[#03071c] via-red-600 to-red-700 bg-clip-text text-transparent relative drop-shadow-sm">
-                      {t.heroHeadline2}
-                    </span>
-                  </h2>
-                  
-                  <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed font-semibold">
-                    {t.heroDesc}
-                  </p>
-                </div>
-
-                {/* Info Badges */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto text-justify">
-                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-1.5">
-                    <h4 className="font-extrabold text-red-600 text-xs sm:text-sm">⚡ {t.card1Title}</h4>
-                    <p className="text-[11px] sm:text-xs text-slate-500 font-semibold">{t.card1Desc}</p>
-                  </div>
-                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-1.5">
-                    <h4 className="font-extrabold text-[#03071c] text-xs sm:text-sm">🛡️ {t.card2Title}</h4>
-                    <p className="text-[11px] sm:text-xs text-slate-500 font-semibold">{t.card2Desc}</p>
-                  </div>
-                </div>
-
-                {/* Primary Action Trigger */}
-                <div className="pt-6">
-                  <button
-                    id="btn-start-quiz-match"
-                    onClick={initializeQuiz}
-                    className="group relative px-8 py-4 w-full sm:w-auto bg-gradient-to-r from-red-600 to-red-700 outline-none hover:opacity-95 text-white text-base sm:text-lg font-black rounded-2xl shadow-[0_4px_20px_rgba(239,68,68,0.25)] transition-all duration-350 transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer flex items-center justify-center gap-3 mx-auto"
-                  >
-                    <span>{t.startBtn}</span>
-                    <Trophy className="w-5 h-5 text-white transition-transform group-hover:rotate-12" />
-                    
-                    <span className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-red-500 to-white opacity-20 blur-sm group-hover:opacity-30 transition-all pointer-events-none" />
-                  </button>
-                  
-                  <p className="text-[10px] sm:text-xs text-slate-400 mt-4 max-w-sm mx-auto leading-relaxed">
-                    {t.startNote}
-                  </p>
-                </div>
-
-                {/* Veo 3 Promo Banner (Subpage trigger) */}
-                <div className="pt-4 max-w-lg mx-auto">
-                  <div className="bg-gradient-to-br from-[#0b0f24] via-[#050714] to-[#0c122b] border border-indigo-950 p-6 rounded-3xl text-right rtl:text-right ltr:text-left relative overflow-hidden shadow-xl shadow-indigo-950/20 group/veo-promo">
-                    {/* Glowing circular designs */}
-                    <div className="absolute top-0 right-0 w-36 h-36 bg-emerald-500/10 rounded-full filter blur-2xl pointer-events-none group-hover/veo-promo:bg-emerald-500/15 transition-all"></div>
-                    <div className="absolute bottom-0 left-0 w-36 h-36 bg-purple-500/5 rounded-full filter blur-2xl pointer-events-none group-hover/veo-promo:bg-purple-500/10 transition-all"></div>
-                    
-                    <div className="flex flex-col sm:flex-row gap-5 items-center justify-between relative z-10">
-                      <div className="space-y-2 shrink-0 w-full sm:w-2/3">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] font-black rounded-lg">
-                          <Sparkles className="w-3 h-3 text-emerald-400 animate-pulse" />
-                          <span>{lang === "ar" ? "تحديث مميز ٢٠٢٦ مجاناً" : "Special 2026 Free Release"}</span>
-                        </span>
-                        
-                        <h3 className="text-base font-black text-white group-hover/veo-promo:text-emerald-300 transition-colors">
-                          {lang === "ar" ? "توليد الفيديوهات بالذكاء الاصطناعي Veo 3" : "Free AI Video Generator App Veo 3"}
-                        </h3>
-                        
-                        <p className="text-[11px] sm:text-xs text-slate-400 font-semibold leading-relaxed">
-                          {lang === "ar" 
-                            ? "اكتشف الطريقة المجانية المبتكرة لصناعة مقاطع فيديو سينمائية احترافية بدقة فائقة بنقرة زر واحدة." 
-                            : "Discover the advanced free path to create epic, high-fidelity AI video loops from simple text descriptions."}
-                        </p>
-                      </div>
-
-                      <div className="w-full sm:w-auto text-center shrink-0">
-                        <button
-                          onClick={() => {
-                            setVeoClickCount(0);
-                            setActiveScreen("veo-article");
-                            playInteractionSound();
-                          }}
-                          className="w-full sm:w-auto px-5 py-3 bg-rose-600 hover:bg-rose-500 text-white text-xs font-black rounded-xl transition-all shadow-lg shadow-rose-600/15 group-hover/veo-promo:scale-105 transform cursor-pointer whitespace-nowrap"
-                        >
-                          {lang === "ar" ? "قراءة المقال والتحميل" : "Read Guide & Download"}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            )}
-
-            {/* SCREEN 2: ACTIVE TRIVIA/QUIZ EVALUATION */}
-            {activeScreen === "quiz" && questions.length > 0 && (
-              <div className="w-full space-y-6 animate-fade-in self-center">
-                
-                {/* Top Stat tracker & dynamic progress slider */}
-                <div className="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-3 shadow-sm">
-                  <div className="flex items-center justify-between text-xs font-bold text-slate-650">
-                    <span>
-                      {t.questionLabel} <span className="text-slate-900 font-mono text-base">{currentIndex + 1}</span> {t.ofLabel} <span className="text-slate-800 font-mono">7</span>
-                    </span>
-                    <span className="px-2.5 py-1 rounded bg-red-50 border border-red-100 text-red-600 font-mono text-xs">
-                      {t.progressLabel} {Math.round(((currentIndex + 1) / 7) * 100)}%
-                    </span>
-                  </div>
-                  
-                  <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-gradient-to-r from-red-600 to-red-400 rounded-full transition-all duration-300 ease-out"
-                      style={{ width: `${progressPercent || 14}%` }}
-                    />
-                  </div>
-                </div>
-
-                {/* Tactical Question Presentation Panel */}
-                <div className="bg-slate-50 border border-slate-200 p-6 sm:p-8 rounded-3xl min-h-[140px] flex items-center justify-center text-center shadow-sm relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-red-500/10 rounded-tr-3xl" />
-                  <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-red-500/10 rounded-bl-3xl" />
-                  
-                  <h3 className="text-base sm:text-lg font-black text-slate-800 leading-relaxed select-none">
-                    {isRtl ? questions[currentIndex].textAr : questions[currentIndex].textEn}
-                  </h3>
-                </div>
-
-                {/* Render choices mapping list */}
-                <div className="space-y-3 pt-1">
-                  {questions[currentIndex].options.map((option, idx) => {
-                    const optionAlphabet = isRtl ? ["أ", "ب", "ج", "د"] : ["A", "B", "C", "D"];
-                    return (
-                      <button
-                        key={idx}
-                        id={`choice-action-${idx}`}
-                        onClick={() => handleAnswerClick(option.player)}
-                        className="w-full text-start p-4 bg-white border border-slate-200 hover:border-red-500 hover:bg-slate-50 active:bg-slate-100 rounded-2xl cursor-pointer transition-all duration-200 shadow-sm text-sm sm:text-base font-semibold text-slate-700 hover:text-slate-950 flex items-center justify-between group transform hover:-translate-y-0.5 active:translate-y-0"
-                      >
-                        <div className="flex items-center gap-3.5">
-                          <span className="w-8 h-8 flex-shrink-0 bg-slate-50 border border-slate-200 text-slate-550 group-hover:bg-red-600 group-hover:text-white group-hover:border-red-500 font-bold text-xs sm:text-sm rounded-xl flex items-center justify-center font-mono transition-colors">
-                            {optionAlphabet[idx]}
-                          </span>
-                          <span className="leading-normal">{isRtl ? option.textAr : option.textEn}</span>
-                        </div>
-                        
-                        <span className="w-2.5 h-2.5 rounded-full border border-slate-350 bg-transparent group-hover:bg-red-500 group-hover:border-red-400 transition-all shrink-0 ml-1" />
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {/* Inner back navigation controls */}
-                <div className="flex items-center justify-between pt-2">
-                  <button
-                    onClick={handlePreviousQuestion}
-                    disabled={currentIndex === 0}
-                    className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-                      currentIndex === 0
-                        ? "text-slate-400 border border-slate-100 cursor-not-allowed bg-slate-50/50"
-                        : "text-slate-600 border border-slate-200 hover:border-red-500 hover:bg-slate-50 bg-white cursor-pointer"
-                    }`}
-                  >
-                    <span>{t.prevBtn}</span>
-                  </button>
-
-                  <span className="text-[11px] text-slate-400 font-mono">
-                    {t.attemptLabel} #{quizAttempts}
-                  </span>
-                </div>
-
-              </div>
-            )}
-
-            {/* SCREEN 3: DYNAMIC ANALYZING SPIN TRANSITION */}
-            {activeScreen === "analyzing" && (
-              <div className="w-full text-center py-12 space-y-8 animate-fade-in self-center">
-                <div className="relative inline-flex items-center justify-center">
-                  <div className="w-24 h-24 rounded-full border-4 border-dashed border-red-500 animate-spin" />
-                  
-                  <div className="absolute w-16 h-16 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center shadow-lg">
-                    <Activity className="w-7 h-7 text-red-500 animate-pulse" />
-                  </div>
-
-                  <div className="absolute -inset-4 rounded-full bg-red-500/5 blur-xl animate-ping" />
-                </div>
-
-                <div className="space-y-4 max-w-sm mx-auto">
-                  <h3 className="text-lg sm:text-xl font-black text-slate-900">
-                    {t.analyzingTitle}
-                  </h3>
-                  
-                  <div className="space-y-2 text-xs text-slate-700 font-medium text-justify">
-                    <div className="flex items-center justify-between bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200">
-                      <span>{t.analyzingLine1}</span>
-                      <span className="text-red-500 text-[10px] font-mono font-bold animate-pulse">{t.analyzingStatus1}</span>
-                    </div>
-                    <div className="flex items-center justify-between bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200">
-                      <span>{t.analyzingLine2}</span>
-                      <span className="text-red-500 text-[10px] font-mono font-bold">{t.analyzingStatus2}</span>
-                    </div>
-                    <div className="flex items-center justify-between bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200">
-                      <span>{t.analyzingLine3}</span>
-                      <span className="text-slate-800 text-[10px] font-mono font-bold">{t.analyzingStatus3}</span>
-                    </div>
-                  </div>
-
-                  <p className="text-xs text-red-500 animate-pulse font-bold pt-2 italic">
-                    {t.analyzingQuote}
-                  </p>
-                </div>
-              </div>
-            )}
-
-            {/* SCREEN 4: HIGHEST FIDELITY RESULTS SECTION (DARK COLLECTIBLE CARD CONTRAST) */}
-            {activeScreen === "result" && finalPlayer && (
-              <div className="w-full space-y-8 animate-fade-in self-center">
-                
-                <div className="text-center space-y-1">
-                  <div className="inline-flex items-center justify-center p-2 px-3.5 bg-red-50 border border-red-100 text-red-600 text-xs font-black rounded-full gap-2 font-sans shadow-sm">
-                    <Award className="w-3.5 h-3.5 animate-spin text-red-500" />
-                    {t.resultBanner}
-                  </div>
-                  <h2 className="text-xl sm:text-2xl font-black text-slate-900">
-                    {t.resultTitle}
-                  </h2>
-                </div>
-
-                {/* PREMIUM TRADING/COLLECTIBLE ATHLETE CARD (Stays Dark/Golden for perfect download contrast) */}
-                <div 
-                  ref={resultCardRef}
-                  id="card-legend-container"
-                  className="w-full overflow-hidden rounded-3xl bg-[#04081a] border border-[#16275c] shadow-2xl relative p-6 sm:p-8 space-y-6 text-white"
-                  style={{
-                    boxShadow: `0 15px 45px -15px ${finalPlayer.glowColor || "#ef4444"}`,
-                  }}
-                >
-                  <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.04] bg-[radial-gradient(#ef4444_1px,transparent_1px)] [background-size:20px_20px]" />
-                  
-                  <div className="absolute top-5 left-5 opacity-20 pointer-events-none text-right font-mono text-[9px] text-slate-350 tracking-widest hidden sm:block">
-                    {t.resultProfileId} #{finalPlayer.id.toUpperCase()}-2026
-                  </div>
-
-                  {/* ATHLETE CARD DETAILS */}
-                  <div className="relative z-10 space-y-6">
-                    
-                    {/* Header Information panel */}
-                    <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 pb-6 border-b border-slate-800/80 text-center sm:text-start">
-                      
-                      {/* Glowing Athlete Graphic Avatar Badge with Real Photo */}
-                      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-slate-900 overflow-hidden shadow-lg relative flex-shrink-0 border border-slate-700">
-                        <img 
-                          src={`/${finalPlayer.id}.jpg`} 
-                          alt={lang === "ar" ? finalPlayer.nameAr : finalPlayer.nameEn}
-                          className="w-full h-full object-cover"
-                          referrerPolicy="no-referrer"
-                          crossOrigin="anonymous"
-                        />
-                        <div className="absolute -inset-1 rounded-2xl bg-white opacity-5 animate-pulse pointer-events-none" />
-                      </div>
-
-                      <div className="space-y-1.5">
-                        <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
-                          <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-                            {lang === "ar" ? finalPlayer.nameAr : finalPlayer.nameEn}
-                          </h3>
-                          {lang === "ar" && (
-                            <span className="text-xs font-mono font-bold text-slate-400 hidden sm:inline">
-                              ({finalPlayer.nameEn})
-                            </span>
-                          )}
-                        </div>
-
-                        <p className="text-xs sm:text-sm font-bold text-red-500 bg-red-500/5 px-2.5 py-0.5 rounded border border-red-500/10 inline-block font-sans">
-                          {lang === "ar" ? finalPlayer.titleAr : finalPlayer.titleEn}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Analytical Evaluation Narrative */}
-                    <div className="space-y-2 text-justify">
-                      <h4 className="text-xs font-black text-slate-300 tracking-wider flex items-center gap-1.5 uppercase">
-                        <User className="w-3.5 h-3.5 text-red-500" />
-                        {t.resultAnalysisTitle}
-                      </h4>
-                      <p className="text-slate-200 text-xs sm:text-sm leading-relaxed bg-[#0b132e]/40 p-4 rounded-2xl border border-[#16275c]/60 font-medium">
-                        {lang === "ar" ? finalPlayer.personalityAr : finalPlayer.personalityEn}
-                      </p>
-                    </div>
-
-                    {/* Athlete Strength Badges List */}
-                    <div className="space-y-2">
-                      <h4 className="text-xs font-black text-slate-300 tracking-wider flex items-center gap-1.5 uppercase">
-                        <Sparkles className="w-3.5 h-3.5 text-red-500" />
-                        {t.resultStrengthsTitle}
-                      </h4>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        {(lang === "ar" ? finalPlayer.strengthsAr : finalPlayer.strengthsEn).map((str, index) => (
-                          <div key={index} className="flex items-center gap-2 px-3 py-2 rounded-xl bg-[#0b132e] border border-[#16275c] text-xs text-slate-200 text-right rtl:text-right ltr:text-left">
-                            <span className="w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0" />
-                            <span className="font-semibold leading-snug">{str}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Golden Motto Quote Block */}
-                    <div className="p-4 bg-gradient-to-r from-red-950/25 to-[#0b132e]/40 border-l-4 border-red-500 rounded-r-xl space-y-1">
-                      <span className="text-[9px] text-red-400 font-extrabold uppercase tracking-wider block">
-                        {t.resultMottoTitle}
-                      </span>
-                      <p className="text-xs sm:text-sm italic font-extrabold text-white">
-                        "{lang === "ar" ? finalPlayer.mottoAr : finalPlayer.mottoEn}"
-                      </p>
-                    </div>
-
-                    {/* Stats Gauges Attributes Section */}
-                    <div className="space-y-3 pt-1">
-                      <h4 className="text-xs font-black text-slate-300 tracking-wider flex items-center gap-1.5 uppercase">
-                        <Target className="w-3.5 h-3.5 text-red-500" />
-                        {t.resultStatsTitle}
-                      </h4>
-                      
-                      <div className="space-y-3 bg-[#0b132e]/30 p-4 rounded-2xl border border-[#16275c]">
-                        {/* Speed attribute */}
-                        <div className="space-y-1">
-                          <div className="flex items-center justify-between text-xs">
-                            <span className="text-slate-300 font-bold">{t.statSpeed}</span>
-                            <span className="font-mono font-bold text-red-500 text-sm">{finalPlayer.stats.speed}%</span>
-                          </div>
-                          <div className="w-full h-1.5 bg-[#070b1e] rounded-full overflow-hidden">
-                            <div className="h-full bg-red-500 rounded-full" style={{ width: `${finalPlayer.stats.speed}%` }} />
-                          </div>
-                        </div>
-
-                        {/* Dribbling attribute */}
-                        <div className="space-y-1">
-                          <div className="flex items-center justify-between text-xs">
-                            <span className="text-slate-300 font-bold">{t.statDribbble}</span>
-                            <span className="font-mono font-bold text-white text-sm">{finalPlayer.stats.dribbling}%</span>
-                          </div>
-                          <div className="w-full h-1.5 bg-[#070b1e] rounded-full overflow-hidden">
-                            <div className="h-full bg-white rounded-full" style={{ width: `${finalPlayer.stats.dribbling}%` }} />
-                          </div>
-                        </div>
-
-                        {/* Shooting attribute */}
-                        <div className="space-y-1">
-                          <div className="flex items-center justify-between text-xs">
-                            <span className="text-slate-300 font-bold">{t.statShooting}</span>
-                            <span className="font-mono font-bold text-red-400 text-sm">{finalPlayer.stats.shooting}%</span>
-                          </div>
-                          <div className="w-full h-1.5 bg-[#070b1e] rounded-full overflow-hidden">
-                            <div className="h-full bg-red-650 rounded-full" style={{ width: `${finalPlayer.stats.shooting}%` }} />
-                          </div>
-                        </div>
-
-                        {/* Stamina & Teamwork Row */}
-                        <div className="grid grid-cols-2 gap-4 pt-1">
-                          <div>
-                            <div className="text-[10px] sm:text-xs text-slate-350 font-black mb-1 block uppercase">{t.statStamina}</div>
-                            <div className="flex items-center gap-1.5 text-white font-mono font-black text-xs sm:text-sm">
-                              <Activity className="w-3.5 h-3.5 text-red-500" />
-                              {finalPlayer.stats.stamina}%
-                            </div>
-                          </div>
-                          <div>
-                            <div className="text-[10px] sm:text-xs text-slate-350 font-black mb-1 block uppercase">{t.statTeamwork}</div>
-                            <div className="flex items-center gap-1.5 text-white font-mono font-black text-xs sm:text-sm">
-                              <Heart className="w-3.5 h-3.5 text-white" />
-                              {finalPlayer.stats.teamwork}%
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-
-                {/* ACTION TRIGGERS */}
-                <div className="flex justify-center w-full">
-                  
-                  {/* Reset Quiz button */}
-                  <button
-                    onClick={handleResetQuiz}
-                    className="w-full max-w-md px-6 py-4 bg-white border border-slate-200 hover:border-red-500 active:bg-slate-50 text-slate-700 hover:text-slate-900 text-sm font-bold rounded-2xl transition-all cursor-pointer flex items-center justify-center gap-2.5 transform hover:-translate-y-0.5 shadow-sm"
-                  >
-                    <RotateCcw className="w-4.5 h-4.5 text-red-500 animate-spin" />
-                    <span>{t.retakeBtn}</span>
-                  </button>
-
-                </div>
-
-                {/* SOCCER FAN CARD & HEADLINE GENERATOR (Fully Client-Side & Interactive) */}
-                <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
-                  <div className="space-y-2 border-b border-slate-100 pb-4">
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-red-600 to-red-500 text-white text-[10px] sm:text-xs font-black shadow-sm">
-                      <Sparkles className="w-3.5 h-3.5 text-white animate-pulse" />
-                      <span>{lang === "ar" ? "مولد كروت التباهي والألقاب الساخرة" : "Viral Fan Card & Headline Generator"}</span>
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-black text-slate-900 flex items-center gap-2">
-                      {lang === "ar" ? "اصنع كرت التباهي الخاص بك مجاناً" : "Create Your Bragging Fan Card Free"}
-                    </h3>
-                    <p className="text-xs text-slate-500 leading-relaxed text-start">
-                      {lang === "ar" 
-                        ? "ارفع صورتك لمطابقتها وقصها بدقة واقصص وجهك، ثم اختر لاعبك المنافس المفضل لتوليد لقب رياضي ساخر ومشاركة الكرت بجودة فائقة لقصص إنستغرام وفيسبوك!"
-                        : "Upload your photo, crop and align your face, select your rival icon, and generate a viral Arabic headline to download as a story-ready image!"
-                      }
-                    </p>
-                  </div>
-
-                  {!userUploadedFile ? (
-                    <div className="space-y-4">
-                      {/* Drag & Drop Upload field */}
-                      <label 
-                        className="flex flex-col items-center justify-center border-2 border-dashed border-slate-300 hover:border-red-500 bg-slate-50/50 hover:bg-slate-50/80 p-8 rounded-2xl cursor-pointer text-center group transition-all"
-                        onDragOver={(e) => { e.preventDefault(); }}
-                        onDrop={(e) => {
-                          e.preventDefault();
-                          const file = e.dataTransfer.files[0];
-                          if (file && file.type.startsWith("image/")) {
-                            const reader = new FileReader();
-                            reader.onloadend = () => {
-                              setUserUploadedFile(reader.result as string);
-                              setUserCroppedImage(null);
-                            };
-                            reader.readAsDataURL(file);
-                            playInteractionSound();
-                          }
-                        }}
-                      >
-                        <input 
-                          type="file" 
-                          accept="image/*" 
-                          className="hidden" 
-                          onChange={(e) => {
-                            const file = e.target.files?.[0];
-                            if (file) {
-                              const reader = new FileReader();
-                              reader.onloadend = () => {
-                                setUserUploadedFile(reader.result as string);
-                                setUserCroppedImage(null);
-                              };
-                              reader.readAsDataURL(file);
-                              playInteractionSound();
-                            }
-                          }}
-                        />
-                        <div className="p-4 bg-white rounded-full shadow-sm text-slate-400 group-hover:text-red-500 transition-colors mb-3">
-                          <Upload className="w-6 h-6" />
-                        </div>
-                        <span className="text-sm font-extrabold text-slate-700 block">
-                          {lang === "ar" ? "اضغط هنا لرفع صورتك الشخصية" : "Click here to upload your profile photo"}
-                        </span>
-                        <span className="text-xs text-slate-400 mt-1 block">
-                          {lang === "ar" ? "أو اسحب وأسقط الصورة هنا مباشرة (JPEG, PNG)" : "or drag and drop your photo here (JPEG, PNG)"}
-                        </span>
-                      </label>
-                    </div>
-                  ) : !userCroppedImage ? (
-                    /* STEP 2: Cropper layout with Cropper.js controls */
-                    <div className="space-y-4">
-                      <span className="text-xs font-black text-slate-600 block text-start">
-                        {lang === "ar" ? "✂️ اضبط إطار وجهك بشكل صحيح ليتطابق مع الكرت:" : "✂️ Crop and align your face correctly:"}
-                      </span>
-                      
-                      <div className="max-h-[380px] overflow-hidden rounded-2xl bg-slate-950 border border-slate-200 flex items-center justify-center p-2">
-                        <img
-                          ref={cropperImgRef}
-                          src={userUploadedFile}
-                          alt="Cropping region"
-                          className="max-w-full block"
-                          onLoad={() => {
-                            if (cropperImgRef.current) {
-                              if (cropperInstRef.current) {
-                                cropperInstRef.current.destroy();
-                              }
-                              cropperInstRef.current = new Cropper(cropperImgRef.current, {
-                                aspectRatio: 1, // perfect square for athlete profile frames
-                                viewMode: 1,
-                                dragMode: 'move',
-                                autoCropArea: 0.85,
-                                background: false,
-                                responsive: true,
-                                checkOrientation: false,
-                              });
-                            }
-                          }}
-                        />
-                      </div>
-                      
-                      <div className="flex flex-wrap items-center justify-center gap-2">
-                        <button
-                          type="button"
-                          onClick={() => { cropperInstRef.current?.rotate(-90); playInteractionSound(); }}
-                          className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-colors"
-                        >
-                          {lang === "ar" ? "↩️ تدوير لليسار" : "↩️ Rotate Left"}
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => { cropperInstRef.current?.rotate(90); playInteractionSound(); }}
-                          className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-colors"
-                        >
-                          {lang === "ar" ? "↪️ تدوير لليمين" : "↪️ Rotate Right"}
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => { cropperInstRef.current?.zoom(0.15); playInteractionSound(); }}
-                          className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-colors"
-                        >
-                          {lang === "ar" ? "➕ تقريب" : "➕ Zoom In"}
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => { cropperInstRef.current?.zoom(-0.15); playInteractionSound(); }}
-                          className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-colors"
-                        >
-                          {lang === "ar" ? "➖ إبعاد" : "➖ Zoom Out"}
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => { cropperInstRef.current?.reset(); playInteractionSound(); }}
-                          className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 rounded-xl text-xs font-bold transition-colors"
-                        >
-                          {lang === "ar" ? "إعادة ضبط" : "Reset"}
-                        </button>
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-3 pt-2">
-                        <button
-                          type="button"
-                          onClick={() => { setUserUploadedFile(null); setUserCroppedImage(null); playInteractionSound(); }}
-                          className="py-3 px-4 bg-slate-105 hover:bg-slate-150 text-slate-600 rounded-xl text-xs font-bold transition-all text-center"
-                        >
-                          {lang === "ar" ? "إلغاء ورفع صورة أخرى" : "Cancel & upload another"}
-                        </button>
-
-                        <button
-                          type="button"
-                          onClick={handleGenerateAIBlend}
-                          className="py-3 px-4 bg-red-600 hover:bg-red-750 text-white rounded-xl text-xs font-black transition-all text-center shadow-sm flex items-center justify-center gap-1.5"
-                        >
-                          <Check className="w-4 h-4" />
-                          <span>{lang === "ar" ? "قص الصورة وحفظ" : "Crop & Save Image"}</span>
-                        </button>
-                      </div>
-                    </div>
-                  ) : isBlending ? (
-                    /* STEP 3: Elegant Processing Tension State */
-                    <div className="bg-slate-50 border border-slate-100 p-8 rounded-3xl text-center space-y-4">
-                      <div className="relative inline-flex items-center justify-center">
-                        <Loader2 className="w-12 h-12 text-red-500 animate-spin" />
-                        <span className="absolute text-[10px] font-black text-red-600 animate-pulse">2026</span>
-                      </div>
-                      
-                      <div className="space-y-1 text-center">
-                        <h4 className="text-sm font-black text-slate-800 tracking-tight transition-all duration-300">
-                          {blendStatusText}
-                        </h4>
-                        <p className="text-[10px] sm:text-xs text-slate-400 italic">
-                          {lang === "ar" ? "نقوم بمطابقة أبعاد وجهك وتوليف اللقب الساخر المناسب..." : "Customizing layout and randomizing viral Arabic monikers..."}
-                        </p>
-                      </div>
-                    </div>
-                  ) : (
-                    /* STEP 4: Golden/Dark Bragging Fan Card Interactive Showcase */
-                    <div className="space-y-6">
-                      
-                      {/* Rival Legend Switcher Toolbar */}
-                      <div className="space-y-2">
-                        <label className="text-xs font-bold text-slate-500 block text-start rtl:text-right">
-                          {lang === "ar" ? "🏆 اختر لاعبك المنافس لكرت التباهي:" : "🏆 Select Rival Legend for Fan Card:"}
-                        </label>
-                        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-                          {PLAYER_PROFILES.map((p) => (
-                            <button
-                              key={p.id}
-                              type="button"
-                              onClick={() => { setSelectedRivalId(p.id); playInteractionSound(); }}
-                              className={`p-2 rounded-xl border transition-all flex flex-col items-center text-center text-xs font-black relative overflow-hidden cursor-pointer ${
-                                selectedRivalId === p.id
-                                  ? "border-red-500 bg-red-50 text-slate-900 shadow-sm"
-                                  : "border-slate-200 bg-white text-slate-500 hover:border-slate-350 hover:bg-slate-100"
-                              }`}
-                            >
-                              <img src={`/${p.id}.jpg`} alt={p.nameEn} className="w-8 h-8 rounded-full object-cover mb-1 shrink-0" referrerPolicy="no-referrer" crossOrigin="anonymous"/>
-                              <span className="text-[10px] leading-tight block truncate w-full">{lang === "ar" ? p.nameAr : p.nameEn}</span>
-                              {selectedRivalId === p.id && <span className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-red-600" />}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Filter Selections */}
-                      <div className="space-y-2">
-                        <label className="text-xs font-bold text-slate-500 block text-start rtl:text-right">
-                          {lang === "ar" ? "🎨 اختر التأثير الرياضي المونديالي لصورتك:" : "🎨 Select Custom Color Filter for Your Image:"}
-                        </label>
-                        <div className="grid grid-cols-4 gap-2">
-                          {[
-                            { id: "normal", ar: "الأصلي", en: "Original" },
-                            { id: "grayscale", ar: "فولاذ مونو", en: "Steel Mono" },
-                            { id: "sepia", ar: "ريترو دافئ", en: "Sepia Warm" },
-                            { id: "cyber", ar: "نيون سايبر", en: "Cyber Neon" },
-                          ].map((f) => (
-                            <button
-                              key={f.id}
-                              type="button"
-                              onClick={() => { setActiveFilter(f.id); playInteractionSound(); }}
-                              className={`p-2 rounded-xl border text-[10px] sm:text-xs font-extrabold transition-all text-center cursor-pointer ${
-                                activeFilter === f.id
-                                  ? "border-red-500 bg-red-650 text-white"
-                                  : "border-slate-205 bg-slate-50 text-slate-600 hover:bg-slate-100"
-                              }`}
-                            >
-                              {lang === "ar" ? f.ar : f.en}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* THE PREMIUM BRAGGING CARD FOR SOCIAL MEDIA DOWNLOAD */}
-                      <div className="p-1 rounded-[2.5rem] bg-gradient-to-tr from-cyan-500 via-red-500 to-amber-500 shadow-2xl">
-                        <div 
-                          ref={fanCardElementRef}
-                          id="fan-card-printable"
-                          className="w-full bg-[#020512] text-white p-6 sm:p-8 rounded-[2.4rem] relative overflow-hidden flex flex-col justify-between space-y-6 aspect-[4/5] min-h-[460px]"
-                        >
-                          {/* Tech background elements */}
-                          <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.04] bg-[radial-gradient(#ef4444_1px,transparent_1px)] [background-size:20px_20px]" />
-                          <div className="absolute -top-12 -left-12 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-                          <div className="absolute -bottom-12 -right-12 w-48 h-48 bg-red-500/10 rounded-full blur-3xl pointer-events-none" />
-
-                          {/* Card Badge Header */}
-                          <div className="text-center z-10">
-                            <span className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-red-950/70 via-slate-900/40 to-red-950/70 border border-red-500/30 text-red-500 text-[10px] sm:text-xs font-black tracking-widest uppercase">
-                              🏆 {lang === "ar" ? "كرت التباهي للمشجعين • ٢٠٢٦" : "FIFA FAN BRAGGING CARD • 2026"} 🏆
-                            </span>
-                          </div>
-
-                          {/* Side-by-Side Comparison Area */}
-                          <div className="flex items-center justify-around z-10 w-full py-2">
-                            
-                            {/* User Side */}
-                            <div className="flex flex-col items-center space-y-2">
-                              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.30)] bg-slate-900">
-                                <img
-                                  src={userCroppedImage}
-                                  alt="User Cropped"
-                                  className={`w-full h-full object-cover transition-all ${
-                                    activeFilter === "grayscale"
-                                      ? "grayscale contrast-125 brightness-95"
-                                      : activeFilter === "sepia"
-                                      ? "sepia contrast-110 saturate-125"
-                                      : activeFilter === "cyber"
-                                      ? "contrast-150 saturate-[180%] brightness-90 [filter:hue-rotate(200deg)_saturate(250%)]"
-                                      : "filter-none"
-                                  }`}
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
-                              </div>
-                              <span className="px-2.5 py-1 bg-cyan-950/70 border border-cyan-800/40 text-cyan-400 text-[9px] sm:text-[10px] font-black rounded-lg uppercase">
-                                {lang === "ar" ? "المشجع الأسطوري" : "Legendary Fan"}
-                              </span>
-                            </div>
-
-                            {/* Middle VS Graphic Badge */}
-                            <div className="flex flex-col items-center justify-center shrink-0">
-                              <span className="w-8 h-8 rounded-full bg-red-600 border border-red-400 flex items-center justify-center font-black text-xs text-white shadow-lg animate-pulse">
-                                VS
-                              </span>
-                            </div>
-
-                            {/* Rival Legend Side */}
-                            <div className="flex flex-col items-center space-y-2">
-                              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.30)] bg-slate-900">
-                                <img
-                                  src={`/${selectedRivalId}.jpg`}
-                                  alt={PLAYER_PROFILES.find(p => p.id === selectedRivalId)?.nameEn || "Rival"}
-                                  className="w-full h-full object-cover"
-                                  referrerPolicy="no-referrer"
-                                  crossOrigin="anonymous"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
-                              </div>
-                              <span className="px-2.5 py-1 bg-red-950/70 border border-red-800/40 text-red-400 text-[9px] sm:text-[10px] font-black rounded-lg uppercase">
-                                {lang === "ar" ? "الأسطورة المنافس" : "Rival Legend"}
-                              </span>
-                            </div>
-
-                          </div>
-
-                          {/* Massive Viral Center Headline */}
-                          <div className="bg-gradient-to-r from-red-950/40 via-slate-900/60 to-red-950/40 p-4 rounded-2xl border border-red-500/20 text-center relative overflow-hidden z-10">
-                            <div className="absolute -left-10 top-0 w-32 h-32 bg-red-500/5 blur-3xl rounded-full" />
-                            <div className="absolute -right-10 top-0 w-32 h-32 bg-cyan-500/5 blur-3xl rounded-full" />
-                            
-                            <span className="text-[10px] text-yellow-450 font-black block tracking-widest mb-1 shadow-sm uppercase">
-                              ⚽ {lang === "ar" ? "اللقب الكروي الأسطوري" : "LEGENDARY SOCCER MONIKER"} ⚽
-                            </span>
-                            <h3 className="text-sm sm:text-base md:text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-105 leading-relaxed text-center px-1">
-                              {viralHeadline}
-                            </h3>
-                          </div>
-
-                          {/* Card Footer Credentials */}
-                          <div className="flex items-center justify-between text-[8px] sm:text-[9px] text-slate-500/60 border-t border-slate-900/60 pt-4 z-10 font-bold">
-                            <span>{lang === "ar" ? "معتمد • لجنة مشجعي كرة القدم العالمية" : "VERIFIED • WORLD FOOTBALL FAN UNION"}</span>
-                            <span className="font-mono tracking-wider">DKORA.ONLINE</span>
-                          </div>
-
-                        </div>
-                      </div>
-
-                      {/* Interactive Actions Toolset */}
-                      <div className="flex flex-col gap-3">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                          <button
-                            type="button"
-                            onClick={handleRandomizeHeadline}
-                            className="w-full py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-950 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1.5 border border-slate-200 cursor-pointer shadow-sm"
-                          >
-                            <span>🎲 {lang === "ar" ? "تبديل اللقب لتوليد عنوان جديد" : "Draft another dynamic moniker"}</span>
-                          </button>
-
-                          <button
-                            type="button"
-                            onClick={() => { setUserUploadedFile(null); setUserCroppedImage(null); playInteractionSound(); }}
-                            className="w-full py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1.5 border border-slate-205 cursor-pointer shadow-sm"
-                          >
-                            <RotateCcw className="w-3.5 h-3.5" />
-                            <span>{lang === "ar" ? "تغيير صورتك ورفع أخرى" : "Upload another picture"}</span>
-                          </button>
-                        </div>
-
-                        <button
-                          type="button"
-                          onClick={handleDownloadFanCard}
-                          className="w-full py-4 bg-gradient-to-r from-red-650 to-red-500 hover:opacity-95 text-white font-black text-sm rounded-2xl shadow-lg cursor-pointer transform active:scale-[0.99] duration-150 flex items-center justify-center gap-2"
-                        >
-                          <Download className="w-5 h-5 text-white animate-bounce" />
-                          <span>{lang === "ar" ? "تحميل كرت التباهي ومشاركة النتيجة" : "Download Bragging Card & Share"}</span>
-                        </button>
-                      </div>
-
-                    </div>
-                  )}
-                </div>
-
-                {/* COMMUNITY SHARE HUB */}
-                <div className="bg-slate-50 border border-slate-200 p-5 rounded-3xl text-center space-y-4 shadow-inner">
-                  <span className="text-xs font-bold flex items-center justify-center gap-2 text-slate-700">
-                    <Share2 className="w-4 h-4 text-red-500" />
-                    {t.shareTitle}
-                  </span>
-
-                  <div className="flex flex-wrap items-center justify-center gap-2">
-                    <button
-                      onClick={() => handleSocialShare("whatsapp")}
-                      className="px-4 py-2.5 bg-[#25d366]/10 border border-[#25d366]/20 text-[#128c7e] hover:bg-[#25d366]/15 rounded-xl text-xs font-bold cursor-pointer transition-all flex items-center gap-2 shrink-0"
-                    >
-                      {t.shareWhatsapp}
-                    </button>
-
-                    <button
-                      onClick={() => handleSocialShare("x")}
-                      className="px-4 py-2.5 bg-slate-900 border border-slate-800 text-slate-100 hover:bg-slate-950 rounded-xl text-xs font-bold cursor-pointer transition-all flex items-center gap-2 shrink-0"
-                    >
-                      {t.shareX}
-                    </button>
-
-                    <button
-                      onClick={() => handleSocialShare("facebook")}
-                      className="px-4 py-2.5 bg-[#1877f2]/10 border border-[#1877f2]/20 text-[#0e5a9c] hover:bg-[#1877f2]/15 rounded-xl text-xs font-bold cursor-pointer transition-all flex items-center gap-2 shrink-0"
-                    >
-                      {t.shareFacebook}
-                    </button>
-                  </div>
-                </div>
-
-              </div>
-            )}
-
-            {activeScreen === "veo-article" && (
-              <div className="w-full text-right rtl:text-right ltr:text-left space-y-8 animate-fade-in py-4 max-w-2xl">
-                
-                {/* Back Button */}
-                <div className="flex justify-start">
-                  <button
-                    onClick={() => {
-                      setActiveScreen("start");
-                      playInteractionSound();
-                    }}
-                    className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-black text-slate-700 flex items-center gap-1.5 cursor-pointer shadow-sm transition-all"
-                  >
-                    {isRtl ? (
-                      <>
-                        <ArrowRight className="w-3.5 h-3.5 text-red-655" />
-                        <span>العودة للرئيسية</span>
-                      </>
-                    ) : (
-                      <>
-                        <ArrowLeft className="w-3.5 h-3.5 text-red-655" />
-                        <span>Back to Home</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-
-                {/* Hero Header Article Card with generated image */}
-                <div className="bg-slate-50 border border-slate-200 rounded-3xl overflow-hidden shadow-md">
-                  <div className="relative h-48 sm:h-64 w-full bg-slate-900 overflow-hidden flex items-center justify-center">
-                    <img
-                      src={veo3VideoGenerationGuide}
-                      alt="Google Veo 3 Video Generator"
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-105 duration-500 transition-transform"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-                    <span className="absolute top-4 right-4 px-3 py-1 bg-rose-600 text-white text-[10px] font-black rounded-lg shadow">
-                      {isRtl ? "دليل معتمد ٢٠٢٦" : "Certified 2026 Guide"}
-                    </span>
-                  </div>
-
-                  <div className="p-6 space-y-4">
-                    <h2 className="text-xl sm:text-2xl font-black text-slate-900 leading-tight">
-                      {isRtl 
-                        ? "تحميل تطبيق توليد الفيديوهات بالذكاء الاصطناعي مجاناً Veo 3 | الدليل الشامل 2026" 
-                        : "Download Free AI Video Generator App Veo 3 | Ultimate 2026 Guide & Features"}
-                    </h2>
-                    
-                    <p className="text-xs text-slate-500 font-bold flex items-center gap-2">
-                      <span>📅 {isRtl ? "تاريخ النشر: ٢٥ يونيو ٢٠٢٦" : "Published: June 25, 2026"}</span>
-                      <span>•</span>
-                      <span>⏱️ {isRtl ? "مدة القراءة: ٨ دقائق" : "Read time: 8 mins"}</span>
-                    </p>
-                  </div>
-                </div>
-
-                {/* Article Content Render */}
-                <div className="space-y-6 text-slate-700 text-xs sm:text-sm leading-relaxed text-justify bg-white border border-slate-200 p-6 sm:p-8 rounded-3xl shadow-sm">
-                  {isRtl ? (
-                    <div className="space-y-6 text-slate-700 text-xs sm:text-sm" dir="rtl">
-                      <p className="text-slate-700 text-sm leading-relaxed font-sans">
-                        يمثل عام <strong>2026</strong> بداية عصر جديد بالكامل في عالم صناعة المحتوى البصري الرقمي، حيث أحدث إطلاق نموذج <strong>Google Veo 3</strong> ثورة عارمة في كيفية إنتاج وتصميم مقاطع الفيديو الاحترافية والسينمائية. إن كنت تبحث عن <strong>تطبيق توليد الفيديوهات بالذكاء الاصطناعي مجاناً</strong> بميزات هائلة ودون الحاجة لخبرات برمجية أو مونتاج معقد، فقد وصلت للمكان الصحيح تماماً.
-                      </p>
-                      
-                      <h3 className="text-base font-black text-slate-900 border-b border-red-500/20 pb-2 mt-8">لماذا يعتبر تطبيق Veo 3 الخيار الأفضل لتوليد الفيديوهات في عام 2026؟</h3>
-                      <p className="text-slate-700 leading-relaxed font-sans mt-2">
-                        يتفوق تطبيق Veo 3 المعتمد على أحدث نماذج قوقل للذكاء الاصطناعي على التطبيقات الأخرى بفضل الفهم العميق للغة الطبيعية والقدرة المذهلة على تحويل النصوص والصور الثابتة إلى كليبات سينمائية تفاعلية وحركية تحاكي كاميرات التصوير الحقيقية.
-                      </p>
-                      <ul className="space-y-2 pr-4 text-xs text-slate-500 list-disc list-inside leading-relaxed font-semibold mt-3">
-                        <li><strong>تحويل النص إلى فيديو بدقة 4K:</strong> بمجرد كتابة وصف دقيق للمشهد، يقوم التطبيق ببناء حركة كاميرا سلسة وإضاءة دراماتيكية بالكامل.</li>
-                        <li><strong>مرونة الحركة والتحكم بالزوايا:</strong> يتيح لك التطبيق محاكاة لقطات الطائرات بدون طيار (Drones)، واللقطات المقربة (Close-up)، والتكبير السينمائي (Cinematic Zoom).</li>
-                        <li><strong>تحريك الصور الثابتة:</strong> ارفع أي صورة ثابتة من جهازك ودع خوارزميات الذكاء الاصطناعي تبث فيها الحياة بحركة واقعية مذهلة بنقرة واحدة.</li>
-                        <li><strong>أداء مجاني وسريع:</strong> يوفر التطبيق خطة مجانية سخية يومياً لتوليد الفيديوهات القصيرة ومشاركتها مباشرة على منصات التواصل الاجتماعي.</li>
-                      </ul>
-
-                      <h3 className="text-base font-black text-slate-900 border-b border-red-500/20 pb-2 mt-8">خطوات استخدام وتنزيل التطبيق بفاعلية ومجاناً</h3>
-                      <p className="text-slate-700 leading-relaxed font-sans mt-2">
-                        لتتمكن من تحقيق أقصى استفادة من هذا التطبيق الثوري، ننصحك باتباع الخطوات التالية لإنتاج فيديوهات احترافية تسترعي الانتباه وتزيد التفاعل:
-                      </p>
-                      <ol className="space-y-2 pr-4 text-xs text-slate-500 list-decimal list-inside leading-relaxed font-semibold mt-3">
-                        <li><strong>كتابة أوامر ذكية (Prompts):</strong> استخدم كلمات وصفية مثل "إضاءة سينمائية، تفاصيل دقيقة، عمق ميدان، حركة كاميرا بطيئة" لضمان نتائج مذهلة.</li>
-                        <li><strong>اختيار صيغة وأبعاد الفيديو:</strong> يدعم التطبيق الأبعاد الطولية المناسبة لـ TikTok و Reels والأبعاد العرضية لـ YouTube.</li>
-                        <li><strong>استغلال الميزات المجانية اليومية:</strong> استمتع بتوليد عدد كبير من اللقطات والحركات المجانية المخصصة لك لتجربة كافة الخصائص الإبداعية.</li>
-                      </ol>
-
-                      <div className="p-4 bg-red-500/5 border-r-4 border-red-650 rounded-l-xl text-slate-700 text-[11px] sm:text-xs font-bold leading-relaxed mt-6">
-                        تنبيه أمان وسيو 2026: تم فحص وتأمين رابط التحميل المباشر أدناه لضمان حصولك على أحدث نسخة رسمية وخالية تماماً من الإعلانات المزعجة أو البرمجيات الخبيثة. اتبع خطوات الضغط بدقة للتحميل الفوري السريع.
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="space-y-6 text-slate-700 text-xs sm:text-sm" dir="ltr">
-                      <p className="text-slate-700 text-sm leading-relaxed font-sans">
-                        The year <strong>2026</strong> marks a major milestone in AI-powered visual creation with the release of the <strong>Google Veo 3</strong> model. If you are looking for a <strong>free AI video generator app</strong> equipped with rich, state-of-the-art cinematic tools, this comprehensive guide is tailored perfectly for you.
-                      </p>
-                      
-                      <h3 className="text-base font-black text-slate-900 border-b border-red-500/20 pb-2 mt-8">Why Choose Veo 3 AI Video Generator App in 2026?</h3>
-                      <p className="text-slate-700 leading-relaxed font-sans mt-2">
-                        By utilizing Google's most sophisticated deep learning models, Veo 3 outperforms competing applications with its brilliant prompt understanding and highly stable video renderings.
-                      </p>
-                      <ul className="space-y-2 pl-4 text-xs text-slate-500 list-disc list-inside leading-relaxed font-semibold mt-3">
-                        <li><strong>Stunning 4K Text-to-Video:</strong> Translate natural descriptions into complete cinematic frames with dynamic light shading.</li>
-                        <li><strong>Total Camera Flight Control:</strong> Simulate sweeping drone shots, close-ups, and dramatic pans with extreme fluid motion.</li>
-                        <li><strong>Instant Image Animation:</strong> Turn static artwork into living, breathing video loops with simple descriptive commands.</li>
-                        <li><strong>Robust Free Tier:</strong> Produce short videos everyday for free and export them without heavy watermark restrictions.</li>
-                      </ul>
-
-                      <h3 className="text-base font-black text-slate-900 border-b border-red-500/20 pb-2 mt-8">How to Download and Use Veo 3 App Successfully</h3>
-                      <p className="text-slate-700 leading-relaxed font-sans mt-2">
-                        To master the production of high-engagement video reels, follow these easy steps:
-                      </p>
-                      <ol className="space-y-2 pl-4 text-xs text-slate-500 list-decimal list-inside leading-relaxed font-semibold mt-3">
-                        <li><strong>Inject Scenic Adjectives:</strong> Use cinematic phrases like "slow motion", "dramatic sunset lighting", and "shallow depth of field".</li>
-                        <li><strong>Select Targeted Formats:</strong> Export in vertical orientation for Reels/TikTok or widescreen ratio for standard YouTube plays.</li>
-                        <li><strong>Maximize Free Daily Energy:</strong> Learn the mechanics by utilizing the free daily token grants to craft diverse scenes.</li>
-                      </ol>
-                    </div>
-                  )}
-                </div>
-
-                {/* Download Protection Flow Component (Dual clicks) */}
-                <div className="p-6 bg-gradient-to-br from-[#0e163d] via-[#090d29] to-[#0a1033] border border-slate-850 rounded-3xl shadow-xl space-y-5 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full filter blur-2xl pointer-events-none"></div>
-                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-rose-500/5 rounded-full filter blur-2xl pointer-events-none"></div>
-
-                  <div className="flex items-start justify-between gap-4 relative z-10">
-                    <div className="space-y-1.5 text-right rtl:text-right ltr:text-left">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] font-black rounded-lg">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <span>{isRtl ? "تطبيق معتمد ومؤمن ١٠٠٪" : "100% Secure & Verified App"}</span>
-                      </span>
-                      <h3 className="text-base sm:text-lg font-black text-white">
-                        {isRtl ? "رابط تحميل تطبيق توليد الفيديوهات بالذكاء الاصطناعي Veo 3" : "Download Veo 3 AI Video Generator App"}
-                      </h3>
-                      <p className="text-xs text-slate-400 font-semibold">
-                        {isRtl 
-                          ? "اضغط أدناه لبدء عملية التثبيت السريعة والآمنة على هاتفك الأندرويد." 
-                          : "Click below to begin the secure high-speed installation on your Android device."}
-                      </p>
-                    </div>
-                    <div className="p-3 bg-slate-950 border border-slate-800 rounded-2xl shrink-0">
-                      <Sparkles className="w-5 h-5 text-emerald-400" />
-                    </div>
-                  </div>
-
-                  {/* Two Click Interaction Progress Flow */}
-                  <div className="space-y-4 pt-2 relative z-10 text-right rtl:text-right ltr:text-left">
-                    <div className="flex items-center justify-between text-[11px] font-bold text-slate-400 px-1">
-                      <span>{isRtl ? "الخطوة ١: التحقق والتأمين" : "Step 1: Link Protection"}</span>
-                      <span>{isRtl ? "الخطوة ٢: التنزيل المباشر" : "Step 2: Install"}</span>
-                    </div>
-                    
-                    <div className="h-2.5 w-full bg-slate-950 border border-slate-900 rounded-full overflow-hidden flex">
-                      <div 
-                        className={`h-full transition-all duration-500 ${
-                          veoClickCount === 0 
-                            ? "w-[15%] bg-slate-700" 
-                            : veoClickCount === 1 
-                              ? "w-[55%] bg-yellow-500 animate-pulse" 
-                              : "w-full bg-emerald-500"
-                        }`}
-                      ></div>
-                    </div>
-
-                    <button
-                      onClick={() => {
-                        if (veoClickCount === 0) {
-                          window.open("https://omg10.com/4/11125764", "_blank");
-                          setVeoClickCount(1);
-                        } else if (veoClickCount === 1) {
-                          window.open("https://play.google.com/store/apps/details?id=com.ainate.ai.video.generate", "_blank");
-                          setVeoClickCount(2);
-                        } else {
-                          window.open("https://play.google.com/store/apps/details?id=com.ainate.ai.video.generate", "_blank");
-                          setVeoClickCount(0);
-                        }
-                        playInteractionSound();
-                      }}
-                      className={`w-full py-4 px-6 rounded-2xl font-black text-xs sm:text-sm transition-all duration-300 transform active:scale-95 shadow-lg flex items-center justify-center gap-2 cursor-pointer ${
-                        veoClickCount === 0 
-                          ? "bg-rose-600 hover:bg-rose-500 text-white" 
-                          : veoClickCount === 1 
-                            ? "bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-extrabold" 
-                            : "bg-emerald-600 hover:bg-emerald-500 text-white"
-                      }`}
-                    >
-                      {veoClickCount === 0 ? (
-                        <>
-                          <Flame className="w-4 h-4 animate-bounce text-white" />
-                          <span>{isRtl ? "تحميل تطبيق Veo 3 (اضغط لتأمين الاتصال - خطوة ١)" : "Download Veo 3 App (Click to Protect - Step 1)"}</span>
-                        </>
-                      ) : veoClickCount === 1 ? (
-                        <>
-                          <Sparkles className="w-4 h-4 animate-pulse text-slate-950" />
-                          <span>{isRtl ? "تم التأمين! اضغط للتحميل المباشر من المتجر (خطوة ٢)" : "Secured! Click to Download from Play Store (Step 2)"}</span>
-                        </>
-                      ) : (
-                        <>
-                          <Check className="w-4 h-4 text-white" />
-                          <span>{isRtl ? "تم فتح صفحة التحميل! (اضغط للبدء من جديد)" : "Opening Store page! (Click to Reset)"}</span>
-                        </>
-                      )}
-                    </button>
-
-                    <p className="text-[11px] text-center text-slate-400 font-bold leading-relaxed pt-1">
-                      {veoClickCount === 0 
-                        ? (isRtl ? "* اضغط أولاً لتأمين وحماية رابط التنزيل عبر نظام التحقق السريع المعتمد." : "* Click first to encrypt and verify your download parameters via smart protect.")
-                        : veoClickCount === 1 
-                          ? (isRtl ? "✓ تم الفحص وتأكيد أمان الرابط! اضغط الآن للبدء المباشر في متجر Google Play." : "✓ Protection verified! Tap now to complete your Google Play Store download.")
-                          : (isRtl ? "• جاري إعادة التحويل... في حال لم يبدأ التثبيت تلقائياً، يرجى التحديث وإعادة المحاولة." : "• Redirecting... If download fails, refresh and repeat the click flow.")}
-                    </p>
-                  </div>
-                </div>
-
-              </div>
-            )}
-
-          </div>
-        )}
-
-        {/* TAB 2: ARTICLES BLOG SECTION */}
-        {activeTab === "blog" && (
-          <div className="w-full animate-fade-in py-2 bg-white">
-            <Suspense fallback={
-              <div className="flex flex-col items-center justify-center p-12 text-slate-500 font-bold">
-                <Loader2 className="w-8 h-8 animate-spin text-red-600 mb-2" />
-                <span>{lang === 'ar' ? 'جاري التحميل...' : 'Loading...'}</span>
-              </div>
-            }>
-              <ArticlesPage locale={lang} t={t} />
-            </Suspense>
-          </div>
-        )}
-
-        {/* TAB 3: VISUAL SITEMAP */}
-        {activeTab === "sitemap" && (
-          <div className="w-full max-w-3xl space-y-6 animate-fade-in py-4">
-            
-            <div className="text-center space-y-2 mb-6">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-red-50 text-red-600 border border-red-100 text-xs font-bold rounded-lg shadow-sm">
-                <Globe className="w-3.5 h-3.5 animate-pulse text-red-500" />
-                <span>{lang === "ar" ? "خريطة الموقع التفاعلية والمؤسسية" : "Interactive & Institutional Sitemap"}</span>
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
-                {lang === "ar" ? "خريطة موقع المونديال الشاملة ٢٠٢٦" : "Mondial Comprehensive Sitemap 2026"}
-              </h2>
-              <p className="text-xs text-slate-500 max-w-xl mx-auto">
-                {lang === "ar" 
-                  ? "تصفح بنقرة واحدة جميع صفحات، مقالات، وتطبيقات منصة المونديال. مهيأة ومحدثة بالكامل لسرعة الوصول والتوافق مع محركات البحث." 
-                  : "Explore with one click all pages, articles, and utilities of the Mondial platform. Fully optimized for instant crawling and SEO speed."}
+    <div className="min-h-screen bg-[#05060f] text-slate-100 selection:bg-rose-600/30 selection:text-white font-sans overflow-x-hidden relative">
+      {/* Dynamic Cyberpunk Lighting Effects */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-rose-500/5 rounded-full filter blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-10 right-1/4 w-[400px] h-[400px] bg-violet-600/5 rounded-full filter blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/2 left-10 w-[300px] h-[300px] bg-emerald-500/5 rounded-full filter blur-[80px] pointer-events-none" />
+
+      {/* Modern High-End Floating Navbar */}
+      <nav className="sticky top-0 z-50 backdrop-blur-md bg-[#05060f]/80 border-b border-slate-900 px-4 py-4 sm:px-6">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-rose-600/20">
+              <Gamepad2 className="w-5 h-5 text-white animate-pulse" />
+            </div>
+            <div>
+              <h1 className="text-sm sm:text-base font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
+                {lang === "ar" ? "بوابة ألعاب أركيد" : "ARCADE WEB HUB"}
+              </h1>
+              <p className="text-[9px] font-black tracking-widest text-rose-500">
+                {lang === "ar" ? "ألعاب جيل ٢٠٢٦ المجانية" : "2026 EDITION"}
               </p>
             </div>
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Primary Pages Group */}
-              <div className="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-4">
-                <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2 border-b border-slate-200 pb-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-650" />
-                  {lang === "ar" ? "الصفحات الرئيسية والأدوات" : "Main Core Pages & Tools"}
-                </h3>
-                
-                <ul className="space-y-3">
-                  <li>
-                    <button 
-                      onClick={() => { setActiveTab("quiz"); setActiveScreen("start"); playInteractionSound(); }}
-                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center justify-between rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
-                    >
-                      <span className="flex items-center gap-2">
-                        <span className="font-mono text-xs text-slate-400">01.</span>
-                        <span>{lang === "ar" ? "الصفحة الرئيسية (اختبار المونديال)" : "Mondial Personality Quiz (Home)"}</span>
-                      </span>
-                      <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-mono font-bold">dkora.online/</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button 
-                      onClick={() => { setActiveTab("blog"); playInteractionSound(); }}
-                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center justify-between rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
-                    >
-                      <span className="flex items-center gap-2">
-                        <span className="font-mono text-xs text-slate-400">02.</span>
-                        <span>{lang === "ar" ? "قسم مقالات السيو وأسرار الويب" : "SEO Articles & Indexation Guides"}</span>
-                      </span>
-                      <span className="text-[9px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-850 font-mono font-bold">?view=blog</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button 
-                      onClick={() => { setActiveTab("sitemap"); playInteractionSound(); }}
-                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center justify-between rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
-                    >
-                      <span className="flex items-center gap-2">
-                        <span className="font-mono text-xs text-slate-400">03.</span>
-                        <span>{lang === "ar" ? "خريطة الموقع التفاعلية (هذه الصفحة)" : "Interactive Visual Sitemap"}</span>
-                      </span>
-                      <span className="text-[9px] px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-805 font-mono font-bold">?view=sitemap</span>
-                    </button>
-                  </li>
-                </ul>
-              </div>
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Sound Toggle */}
+            <button 
+              onClick={() => {
+                setSoundEnabled(!soundEnabled);
+                playSynthSound(440, "sine", 0.05);
+              }}
+              className="p-2 sm:p-2.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-white transition-all cursor-pointer"
+              title={lang === "ar" ? "تشغيل/إيقاف الصوت" : "Mute/Unmute Sounds"}
+            >
+              {soundEnabled ? <Volume2 className="w-4 h-4 text-emerald-400" /> : <VolumeX className="w-4 h-4 text-slate-500" />}
+            </button>
 
-              {/* Legal Modals Group */}
-              <div className="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-4">
-                <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2 border-b border-slate-200 pb-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-slate-800" />
-                  {lang === "ar" ? "الصفحات القانونية والسياسات" : "Legal Standards & Policies"}
-                </h3>
-                
-                <ul className="space-y-3">
-                  <li>
-                    <button 
-                      onClick={() => { setActiveLegalModal("privacy"); playInteractionSound(); }}
-                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center gap-2 rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
-                    >
-                      <span className="font-mono text-xs text-slate-400">04.</span>
-                      <span>{lang === "ar" ? "سياسة الخصوصية وسرية البيانات (AdSense)" : "Privacy Policy & GDPR Compliance"}</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button 
-                      onClick={() => { setActiveLegalModal("terms"); playInteractionSound(); }}
-                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center gap-2 rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
-                    >
-                      <span className="font-mono text-xs text-slate-400">05.</span>
-                      <span>{lang === "ar" ? "شروط الخدمة واتفاقية بنود الاستخدام" : "Terms of Service Agreement"}</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button 
-                      onClick={() => { setActiveLegalModal("about"); playInteractionSound(); }}
-                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center gap-2 rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
-                    >
-                      <span className="font-mono text-xs text-slate-400">06.</span>
-                      <span>{lang === "ar" ? "من نحن (هويتنا ورسالة المنصة)" : "About Us & Vision Statement"}</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button 
-                      onClick={() => { setActiveLegalModal("contact"); playInteractionSound(); }}
-                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center gap-2 rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
-                    >
-                      <span className="font-mono text-xs text-slate-400">07.</span>
-                      <span>{lang === "ar" ? "اتصل بنا وإرسال الاستفسارات" : "Contact Us / Support Inbox"}</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button 
-                      onClick={() => { setActiveLegalModal("disclaimer"); playInteractionSound(); }}
-                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center gap-2 rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
-                    >
-                      <span className="font-mono text-xs text-slate-400">08.</span>
-                      <span>{lang === "ar" ? "إخلاء المسؤولية الفنية واللوجستية" : "Technical Liability Disclaimer"}</span>
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            {/* Language Switcher */}
+            <button
+              onClick={() => {
+                setLang(lang === "ar" ? "en" : "ar");
+                playSynthSound(350, "sine", 0.05);
+              }}
+              className="px-3 py-2 rounded-xl bg-gradient-to-r from-rose-600/10 to-indigo-600/10 hover:from-rose-600/20 hover:to-indigo-600/20 border border-rose-500/20 text-xs font-black text-rose-300 hover:text-rose-200 transition-all cursor-pointer"
+            >
+              {lang === "ar" ? "English" : "العربية"}
+            </button>
+          </div>
+        </div>
+      </nav>
 
-            {/* Sitemap SEO Metadata details */}
-            <div className="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-4">
-              <h3 className="font-extrabold text-slate-800 text-sm flex items-center gap-2">
-                📂 {lang === "ar" ? "ملفات الفهرسة المباشرة والبرمجية لعام ٢٠٢٦" : "Official Indexing Files & Robotic XML Maps"}
-              </h3>
+      <main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 space-y-12">
+        
+        {/* Dynamic Viewport (مساحة عرض الألعاب) - Shows when a game is active */}
+        {activeGame ? (
+          <div id="game-stage" className="scroll-mt-24 animate-fade-in">
+            <div className="bg-gradient-to-b from-[#090b16] to-[#04050a] border-2 border-slate-900 rounded-[32px] overflow-hidden shadow-2xl shadow-rose-950/10 relative">
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <a 
-                  href="/sitemap.xml" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center justify-between p-3.5 bg-white border border-slate-200 rounded-xl hover:border-red-500 transition-colors cursor-pointer"
-                >
-                  <div className="text-right rtl:text-right ltr:text-left">
-                    <span className="font-bold text-xs text-slate-800 block">sitemap.xml</span>
-                    <span className="text-[10px] text-slate-400 block">{lang === "ar" ? "خريطة الموقع الأساسية لمحرك جوجل" : "XML Index Directory for crawl logs"}</span>
-                  </div>
-                  <span className="text-red-500 text-xs font-bold leading-none shrink-0">🔗 {lang === "ar" ? "فتح الرابط" : "Open URl"}</span>
-                </a>
+              {/* Retro Monitor Glare Effect */}
+              <div className="absolute inset-0 bg-gradient-to-b from-white/[0.01] via-transparent to-black/20 pointer-events-none z-10" />
 
-                <a 
-                  href="/robots.txt" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center justify-between p-3.5 bg-white border border-slate-200 rounded-xl hover:border-red-500 transition-colors cursor-pointer"
-                >
-                  <div className="text-right rtl:text-right ltr:text-left">
-                    <span className="font-bold text-xs text-slate-800 block">robots.txt</span>
-                    <span className="text-[10px] text-slate-400 block">{lang === "ar" ? "ملف التوجيه وإرشاد عناكب البحث" : "Crawler Directive Guidelines"}</span>
+              {/* Game Viewport Header */}
+              <div className="bg-[#0b0e1b] border-b border-slate-900 px-6 py-4 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
+                  <div>
+                    <h2 className="text-sm sm:text-base font-black text-white">
+                      {lang === "ar" ? "مساحة اللعب النشطة" : "Active Play Center"}
+                    </h2>
+                    <p className="text-[10px] sm:text-xs text-rose-400 font-bold">
+                      {lang === "ar" ? "أنت تلعب الآن" : "You are playing"}: {lang === "ar" ? games.find(g => g.id === activeGame)?.titleAr : games.find(g => g.id === activeGame)?.titleEn}
+                    </p>
                   </div>
-                  <span className="text-red-500 text-xs font-bold leading-none shrink-0">🔗 {lang === "ar" ? "فتح الرابط" : "Open URL"}</span>
-                </a>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => {
+                      setActiveGame(null);
+                      playSynthSound(220, "sine", 0.15);
+                    }}
+                    className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-rose-600/10 hover:bg-rose-600 text-rose-400 hover:text-white text-xs font-black border border-rose-500/20 hover:border-transparent transition-all cursor-pointer flex items-center gap-1.5"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                    <span>{lang === "ar" ? "إنهاء اللعب" : "Exit Game"}</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Embedded Games Core Engine */}
+              <div className="p-4 sm:p-8 flex items-center justify-center min-h-[450px]">
+                {activeGame === "snake" && (
+                  <SnakeGameEngine 
+                    lang={lang} 
+                    playSynthSound={playSynthSound} 
+                    updateHighScore={(score) => updateHighScore("snake", score)}
+                    highScore={highScores.snake}
+                  />
+                )}
+                {activeGame === "tictactoe" && (
+                  <TicTacToeEngine 
+                    lang={lang} 
+                    playSynthSound={playSynthSound} 
+                    updateHighScore={(score) => updateHighScore("tictactoe", score)}
+                    highScore={highScores.tictactoe}
+                  />
+                )}
+                {activeGame === "memory" && (
+                  <MemoryGameEngine 
+                    lang={lang} 
+                    playSynthSound={playSynthSound} 
+                    updateHighScore={(score) => updateHighScore("memory", score)}
+                    highScore={highScores.memory}
+                  />
+                )}
+              </div>
+
+            </div>
+          </div>
+        ) : (
+          /* Game Center Welcome Screen & Stats if no game active */
+          <div className="bg-gradient-to-r from-slate-900/40 via-indigo-950/10 to-slate-900/40 border border-slate-900 p-8 rounded-[32px] text-center space-y-6 relative overflow-hidden shadow-xl">
+            <div className="absolute -top-10 -left-10 w-40 h-40 bg-rose-500/10 rounded-full filter blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-violet-500/10 rounded-full filter blur-3xl pointer-events-none" />
+            
+            <div className="relative z-10 max-w-2xl mx-auto space-y-4">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-rose-500/10 text-rose-400 text-xs font-black rounded-xl">
+                <Sparkles className="w-3.5 h-3.5 animate-bounce" />
+                <span>{lang === "ar" ? "ألعاب ويب مجانية فورية" : "Instant Web Games Arena"}</span>
+              </span>
+              
+              <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+                {lang === "ar" ? "أبرز مهاراتك وتحدّى أصدقائك الآن" : "Unleash Your Ultimate Gaming Skills"}
+              </h2>
+              
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-medium">
+                {lang === "ar" 
+                  ? "اختر أي لعبة من الأسفل للبدء الفوري. سيتم تحميل اللعبة تلقائياً في مساحة العرض العلوية المخصصة للألعاب مع حفظ أرقامك القياسية بشكل دائم."
+                  : "Pick any of our handcrafted games below to start instantly. The games load directly on the dynamic visual stage and auto-save your highscores locally."}
+              </p>
+
+              {/* High Scores summary board */}
+              <div className="pt-4 grid grid-cols-3 gap-3 max-w-md mx-auto">
+                <div className="bg-slate-950/60 border border-slate-900 p-3 rounded-2xl">
+                  <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">{lang === "ar" ? "الأفعى" : "Snake"}</p>
+                  <p className="text-base font-black text-emerald-400 mt-1">{highScores.snake} 🍎</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-900 p-3 rounded-2xl">
+                  <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">{lang === "ar" ? "إكس أو" : "TicTacToe"}</p>
+                  <p className="text-base font-black text-rose-400 mt-1">{highScores.tictactoe} 🏆</p>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-900 p-3 rounded-2xl">
+                  <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">{lang === "ar" ? "الذاكرة" : "Memory"}</p>
+                  <p className="text-base font-black text-indigo-400 mt-1">{highScores.memory > 0 ? `${highScores.memory}s` : "0"}</p>
+                </div>
               </div>
             </div>
-
           </div>
         )}
+
+        {/* Catalog of Games displayed as highly polished Grid Cards */}
+        <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
+                <Gamepad2 className="w-6 h-6 text-rose-500" />
+                <span>{lang === "ar" ? "كتالوج الألعاب المتاحة" : "Available Games Catalog"}</span>
+              </h2>
+              <p className="text-xs text-slate-400 font-medium">
+                {lang === "ar" ? "ألعاب تفاعلية مصنوعة بدقة عالية" : "High-fidelity handcrafted gaming widgets"}
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            {games.map((game) => (
+              <div 
+                key={game.id}
+                className="bg-[#0b0e1b] border border-slate-900 rounded-[28px] overflow-hidden group hover:border-rose-500/30 hover:shadow-xl hover:shadow-rose-950/5 transition-all duration-300 flex flex-col justify-between"
+              >
+                {/* Game Card Cover Frame */}
+                <div className="relative aspect-video w-full bg-slate-950 overflow-hidden">
+                  <img 
+                    src={game.cover} 
+                    alt={lang === "ar" ? game.titleAr : game.titleEn}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
+                  
+                  {/* Category Badge */}
+                  <span className="absolute top-4 right-4 px-2.5 py-1 bg-slate-950/95 text-[10px] font-black text-rose-400 border border-slate-800 rounded-lg flex items-center gap-1">
+                    {game.icon}
+                    <span>{lang === "ar" ? game.categoryAr : game.categoryEn}</span>
+                  </span>
+                </div>
+
+                {/* Game Card Content details */}
+                <div className="p-6 space-y-4 flex-grow flex flex-col justify-between">
+                  <div className="space-y-2">
+                    <h3 className="text-base sm:text-lg font-black text-white group-hover:text-rose-400 transition-colors">
+                      {lang === "ar" ? game.titleAr : game.titleEn}
+                    </h3>
+                    <p className="text-xs text-slate-400 font-medium leading-relaxed">
+                      {lang === "ar" ? game.descAr : game.descEn}
+                    </p>
+                  </div>
+
+                  {/* High Scores & Metadata inside the card */}
+                  <div className="pt-4 border-t border-slate-900/60 flex items-center justify-between text-[11px] font-bold text-slate-400">
+                    <div className="space-y-0.5">
+                      <p className="text-slate-500 font-semibold">{lang === "ar" ? "أعلى رقم" : "Highscore"}</p>
+                      <p className="text-white font-black text-xs">
+                        {game.id === "snake" && `🍎 ${highScores.snake}`}
+                        {game.id === "tictactoe" && `🏆 ${highScores.tictactoe} ${lang === "ar" ? "فوز" : "wins"}`}
+                        {game.id === "memory" && `⏱️ ${highScores.memory > 0 ? `${highScores.memory}s` : "—"}`}
+                      </p>
+                    </div>
+
+                    <div className="space-y-0.5 text-left rtl:text-left ltr:text-right">
+                      <p className="text-slate-500 font-semibold">{lang === "ar" ? "الصعوبة" : "Difficulty"}</p>
+                      <p className="text-rose-400 font-black text-xs">
+                        {lang === "ar" ? game.difficultyAr : game.difficultyEn}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Play Action Trigger */}
+                  <div className="pt-4">
+                    <button
+                      onClick={() => {
+                        setActiveGame(game.id);
+                        playSynthSound(440, "sine", 0.1);
+                        playSynthSound(554, "sine", 0.1, 0.08);
+                        playSynthSound(659, "sine", 0.15, 0.16);
+                        
+                        // Smooth scroll to viewport on click
+                        setTimeout(() => {
+                          const element = document.getElementById("game-stage");
+                          if (element) {
+                            element.scrollIntoView({ behavior: "smooth" });
+                          }
+                        }, 100);
+                      }}
+                      className="w-full py-3 bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 active:scale-95 text-white text-xs font-black rounded-xl transition-all shadow-md shadow-rose-950/20 flex items-center justify-center gap-2 cursor-pointer"
+                    >
+                      <Play className="w-3.5 h-3.5 fill-white" />
+                      <span>{lang === "ar" ? "العب الآن مجاناً" : "Play Now Free"}</span>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Helpful Tips & Platform Specs Accordion */}
+        <div className="bg-slate-900/30 border border-slate-900 rounded-[28px] p-6 sm:p-8 space-y-4">
+          <h3 className="text-sm sm:text-base font-black text-white flex items-center gap-2">
+            <Info className="w-4 h-4 text-indigo-400" />
+            <span>{lang === "ar" ? "ميزات منصة ألعاب الويب المتطورة" : "Advanced Web Gaming Specs"}</span>
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-400 font-medium leading-relaxed">
+            <div className="space-y-1">
+              <h4 className="font-bold text-white flex items-center gap-1.5">
+                <Zap className="w-3.5 h-3.5 text-yellow-500" />
+                <span>{lang === "ar" ? "أداء فوري فائق السرعة" : "Zero Download Play"}</span>
+              </h4>
+              <p>{lang === "ar" ? "تعتمد الألعاب على معايير HTML5 و React المباشرة لتوفر استجابة فورية ونقرة واحدة للبدء دون تضييع باقات الإنترنت." : "No installation needed. Native HTML5 canvas guarantees smooth 60fps play with lightweight assets."}</p>
+            </div>
+            <div className="space-y-1">
+              <h4 className="font-bold text-white flex items-center gap-1.5">
+                <Trophy className="w-3.5 h-3.5 text-amber-500" />
+                <span>{lang === "ar" ? "أرقام قياسية محلية" : "Local Records Save"}</span>
+              </h4>
+              <p>{lang === "ar" ? "تحتفظ اللعبة بأرقامك القياسية وإنجازاتك في التصفح المحلي لجهازك تلقائياً لكي تتمكن من العودة لتحديها لاحقاً." : "Your progress, high scores, and games history are saved dynamically on your browser's localStorage."}</p>
+            </div>
+            <div className="space-y-1">
+              <h4 className="font-bold text-white flex items-center gap-1.5">
+                <Monitor className="w-3.5 h-3.5 text-emerald-500" />
+                <span>{lang === "ar" ? "مؤثرات صوتية اصطناعية" : "Retro Synthesized Audio"}</span>
+              </h4>
+              <p>{lang === "ar" ? "بنينا نظام تشغيل نغمات رقمية كلاسيكية يحاكي أجهزة النينتندو والأركيد القديمة باستخدام مولد تذبذب الصوت الداخلي." : "Generates real-time retro arcade blips, dings, and crash signals using the modular Web Audio API."}</p>
+            </div>
+          </div>
+        </div>
 
       </main>
 
-      {/* Styled Notifications Toast */}
-      {showToast && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 animate-fade-in w-11/12 max-w-sm">
-          <div className="bg-white border border-slate-200 shadow-2xl px-4 py-3 rounded-2xl flex items-center gap-2 text-slate-800 text-xs sm:text-sm text-center justify-center">
-            <Sparkles className="w-4 h-4 text-red-550 animate-pulse" />
-            <p className="font-bold leading-normal">{toastText}</p>
-          </div>
-        </div>
-      )}
-
-      {/* Styled Footer with Legal and Sitemap navigators */}
-      <footer className="w-full max-w-4xl px-4 py-6 border-t border-slate-205 text-center space-y-6 z-10 bg-white/50 backdrop-blur-sm mt-12">
-        
-        {/* SEO EXPLANATION PANEL - INJECTED FOR GOOGLE SEARCH INDEXING 2026 */}
-        <section className="bg-slate-50 border border-slate-205 p-5 rounded-2xl text-start space-y-3">
-          <h4 className="text-xs sm:text-sm font-black text-red-500 uppercase tracking-wider">
-            {lang === "ar" ? "حول اختبار شبيهك من لاعبي المونديال المتطور لعام ٢٠٢٦" : "About the Advanced 2026 World Cup Player Match Quiz"}
-          </h4>
-          <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed text-justify font-sans">
+      {/* Footer Branding block */}
+      <footer className="border-t border-slate-900 py-8 px-4 text-center text-slate-500 text-xs font-semibold">
+        <div className="max-w-7xl mx-auto space-y-2">
+          <p>{lang === "ar" ? "© ٢٠٢٦ منصة بوابة ألعاب أركيد ويب. جميع الحقوق محفوظة." : "© 2026 Web Arcade Arena. All rights reserved."}</p>
+          <p className="text-[10px] text-slate-600 font-mono">
             {lang === "ar" 
-              ? "يقوم هذا المحرك المتكامل بتحليل سماتك الفردية ونمط قيادتك وتكتيكك الخاص في كرة القدم لتحديد الأسطورة المونديالية المتطابقة معك تماماً (مثل ميسي، رونالدو، مبابي، هالاند، مودريتش، أو محمد صلاح). بفضل معايير اختبارات الشخصية الرياضية السيكومترية لعام ٢٠٢٦، نقوم بفرز وتحليل البيانات محلياً وبشكل مجاني بالكامل بدون الحاجة لأي اشتراك أو تخزين بيانات خارجية لضمان خصوصيتك الكلية وسرعة استجابة مذهلة."
-              : "This specialized engine assesses your personality, tactical sports logic, and on-pitch decision making to locate your precise legendary football matching profile (including Messi, Ronaldo, Mbappe, Haaland, Modric, or Salah). Operating completely client-side in 2026, it ensures absolute privacy with instant, offline evaluation and customizable downloadable cards without storing any personal user parameters."
-            }
+              ? "مبني بدقة فائقة وتوافق كامل لجميع مقاسات الشاشات والهواتف الذكية."
+              : "Coded with absolute pixel precision, fully compatible with desktop, mobile, and touch pads."}
           </p>
-        </section>
-
-        <p className="text-[10px] sm:text-xs text-slate-450 font-semibold font-sans">
-          {t.footerRights}
-        </p>
-
-        <p className="text-[9px] text-slate-400 font-mono tracking-widest uppercase font-extrabold pb-2">
-          {t.footerMeta}
-        </p>
-
-        {/* Footnotes links trigger at the absolute bottom */}
-        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-black text-slate-500 border-t border-slate-100 pt-4">
-          <button 
-            onClick={() => { setActiveLegalModal("privacy"); playInteractionSound(); }}
-            className="hover:text-red-500 transition-colors cursor-pointer"
-          >
-            {lang === "ar" ? "سياسة الخصوصية" : "Privacy Policy"}
-          </button>
-          <span className="text-slate-300 select-none">•</span>
-          <button 
-            onClick={() => { setActiveLegalModal("terms"); playInteractionSound(); }}
-            className="hover:text-red-500 transition-colors cursor-pointer"
-          >
-            {lang === "ar" ? "شروط الخدمة" : "Terms of Service"}
-          </button>
-          <span className="text-slate-300 select-none">•</span>
-          <button 
-            onClick={() => { setActiveLegalModal("about"); playInteractionSound(); }}
-            className="hover:text-red-500 transition-colors cursor-pointer"
-          >
-            {lang === "ar" ? "من نحن" : "About Us"}
-          </button>
-          <span className="text-slate-305 select-none">•</span>
-          <button 
-            onClick={() => { setActiveLegalModal("contact"); playInteractionSound(); }}
-            className="hover:text-red-500 transition-colors cursor-pointer"
-          >
-            {lang === "ar" ? "اتصل بنا" : "Contact Us"}
-          </button>
-          <span className="text-slate-300 select-none">•</span>
-          <button 
-            onClick={() => { setActiveLegalModal("disclaimer"); playInteractionSound(); }}
-            className="hover:text-red-500 transition-colors cursor-pointer"
-          >
-            {lang === "ar" ? "إخلاء المسؤولية" : "Disclaimer"}
-          </button>
-          <span className="text-slate-300 select-none">•</span>
-          <button 
-            onClick={() => { setActiveTab("blog"); playInteractionSound(); }}
-            className="hover:text-red-550 transition-colors cursor-pointer text-red-600 animate-pulse font-extrabold"
-          >
-            {lang === "ar" ? "المقالات" : "Articles"}
-          </button>
-          <span className="text-slate-300 select-none">•</span>
-          <button 
-            onClick={() => { setActiveTab("sitemap"); playInteractionSound(); }}
-            className="hover:text-amber-500 transition-colors cursor-pointer text-amber-600 font-extrabold"
-          >
-            {lang === "ar" ? "خريطة الموقع" : "Sitemap"}
-          </button>
         </div>
       </footer>
+    </div>
+  );
+}
 
-      {/* RENDER DYNAMIC MOUNTABLE LEGAL MODALS (Fully Configured) */}
-      <Suspense fallback={null}>
-        <LegalModals 
-          isOpen={activeLegalModal} 
-          onClose={() => setActiveLegalModal(null)} 
-          t={t} 
-        />
-      </Suspense>
+/* ==========================================
+   1. SNAKE GAME INTERACTIVE COMPONENT ENGINE
+   ========================================== */
+interface SnakeGameProps {
+  lang: "ar" | "en";
+  playSynthSound: (freq: number, type?: OscillatorType, duration?: number, delay?: number) => void;
+  updateHighScore: (score: number) => void;
+  highScore: number;
+}
+
+function SnakeGameEngine({ lang, playSynthSound, updateHighScore, highScore }: SnakeGameProps) {
+  const GRID_SIZE = 15;
+  const INITIAL_SPEED = 140;
+
+  const [snake, setSnake] = useState<[number, number][]>([[7, 7]]);
+  const [food, setFood] = useState<[number, number]>([3, 3]);
+  const [direction, setDirection] = useState<"UP" | "DOWN" | "LEFT" | "RIGHT">("RIGHT");
+  const [gameOver, setGameOver] = useState<boolean>(false);
+  const [score, setScore] = useState<number>(0);
+  const [gameStarted, setGameStarted] = useState<boolean>(false);
+  const [speed, setSpeed] = useState<number>(INITIAL_SPEED);
+
+  const directionRef = useRef(direction);
+  directionRef.current = direction;
+
+  // Listen to keyboard arrow and WASD movements
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!gameStarted || gameOver) return;
+      const key = e.key;
+      e.preventDefault(); // Stop window scrolling
+
+      if ((key === "ArrowUp" || key === "w" || key === "W") && directionRef.current !== "DOWN") {
+        setDirection("UP");
+        playSynthSound(300, "sine", 0.05);
+      } else if ((key === "ArrowDown" || key === "s" || key === "S") && directionRef.current !== "UP") {
+        setDirection("DOWN");
+        playSynthSound(300, "sine", 0.05);
+      } else if ((key === "ArrowLeft" || key === "a" || key === "A") && directionRef.current !== "RIGHT") {
+        setDirection("LEFT");
+        playSynthSound(300, "sine", 0.05);
+      } else if ((key === "ArrowRight" || key === "d" || key === "D") && directionRef.current !== "LEFT") {
+        setDirection("RIGHT");
+        playSynthSound(300, "sine", 0.05);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [gameStarted, gameOver, playSynthSound]);
+
+  // Main game loop
+  useEffect(() => {
+    if (!gameStarted || gameOver) return;
+
+    const moveSnake = () => {
+      setSnake((prevSnake) => {
+        const head = prevSnake[0];
+        let newHead: [number, number] = [head[0], head[1]];
+
+        switch (direction) {
+          case "UP":
+            newHead[1] -= 1;
+            break;
+          case "DOWN":
+            newHead[1] += 1;
+            break;
+          case "LEFT":
+            newHead[0] -= 1;
+            break;
+          case "RIGHT":
+            newHead[0] += 1;
+            break;
+        }
+
+        // Boundary wall collision checking
+        if (
+          newHead[0] < 0 ||
+          newHead[0] >= GRID_SIZE ||
+          newHead[1] < 0 ||
+          newHead[1] >= GRID_SIZE
+        ) {
+          handleGameOver();
+          return prevSnake;
+        }
+
+        // Self bite/collision checking
+        for (const segment of prevSnake) {
+          if (segment[0] === newHead[0] && segment[1] === newHead[1]) {
+            handleGameOver();
+            return prevSnake;
+          }
+        }
+
+        const newSnake = [newHead, ...prevSnake];
+
+        // Checking if food eaten
+        if (newHead[0] === food[0] && newHead[1] === food[1]) {
+          playSynthSound(523.25, "triangle", 0.15); // yummy apple sound
+          setScore((s) => {
+            const nextScore = s + 10;
+            updateHighScore(nextScore);
+            return nextScore;
+          });
+          generateFood(newSnake);
+          // Gently increase speed
+          setSpeed((sp) => Math.max(70, sp - 3));
+        } else {
+          newSnake.pop(); // Standard move forward
+        }
+
+        return newSnake;
+      });
+    };
+
+    const interval = setInterval(moveSnake, speed);
+    return () => clearInterval(interval);
+  }, [gameStarted, gameOver, direction, food, speed]);
+
+  const generateFood = (currentSnake: [number, number][]) => {
+    let newFood: [number, number];
+    let attempts = 0;
+    while (attempts < 100) {
+      const x = Math.floor(Math.random() * GRID_SIZE);
+      const y = Math.floor(Math.random() * GRID_SIZE);
+      const onSnake = currentSnake.some(s => s[0] === x && s[1] === y);
+      if (!onSnake) {
+        newFood = [x, y];
+        setFood(newFood);
+        break;
+      }
+      attempts++;
+    }
+  };
+
+  const handleGameOver = () => {
+    setGameOver(true);
+    playSynthSound(130.81, "sawtooth", 0.4); // game over crash blip
+  };
+
+  const restartGame = () => {
+    setSnake([[7, 7]]);
+    setDirection("RIGHT");
+    setGameOver(false);
+    setScore(0);
+    setSpeed(INITIAL_SPEED);
+    setGameStarted(true);
+    generateFood([[7, 7]]);
+    playSynthSound(440, "sine", 0.1);
+  };
+
+  return (
+    <div className="w-full max-w-md mx-auto space-y-6 flex flex-col items-center">
+      
+      {/* Game Dashboard Stats */}
+      <div className="w-full flex items-center justify-between px-2 text-xs font-bold text-slate-300">
+        <div className="flex items-center gap-1">
+          <Flame className="w-4 h-4 text-emerald-400 animate-pulse" />
+          <span>{lang === "ar" ? "النقاط" : "Score"}: <strong className="text-white text-sm font-black">{score}</strong></span>
+        </div>
+        <div className="flex items-center gap-1">
+          <Trophy className="w-4 h-4 text-amber-500" />
+          <span>{lang === "ar" ? "الأعلى" : "Record"}: <strong className="text-white text-sm font-black">{highScore}</strong></span>
+        </div>
+      </div>
+
+      {/* Snake Interactive Grid Screen */}
+      <div className="relative w-full aspect-square max-w-[340px] bg-[#030408] border-2 border-slate-900 rounded-3xl overflow-hidden shadow-inner">
+        
+        {/* Playable Grid boxes */}
+        <div className="grid grid-cols-15 grid-rows-15 h-full w-full p-1 gap-[1px]">
+          {Array.from({ length: GRID_SIZE * GRID_SIZE }).map((_, index) => {
+            const x = index % GRID_SIZE;
+            const y = Math.floor(index / GRID_SIZE);
+            const isSnakeSegment = snake.some((seg) => seg[0] === x && seg[1] === y);
+            const isHead = snake[0][0] === x && snake[0][1] === y;
+            const isFoodItem = food[0] === x && food[1] === y;
+
+            return (
+              <div 
+                key={index}
+                className={`rounded-[3px] transition-all duration-75 ${
+                  isHead 
+                    ? "bg-gradient-to-tr from-emerald-400 to-emerald-300 ring-2 ring-emerald-500 shadow-lg shadow-emerald-400/20" 
+                    : isSnakeSegment 
+                      ? "bg-emerald-500/80" 
+                      : isFoodItem 
+                        ? "bg-rose-500 animate-pulse ring-2 ring-rose-400 shadow-md shadow-rose-500/30" 
+                        : "bg-[#0b0c16]/30"
+                }`}
+              />
+            );
+          })}
+        </div>
+
+        {/* Overlay Overlays for game lifecycle states */}
+        {!gameStarted && (
+          <div className="absolute inset-0 bg-black/90 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center space-y-4">
+            <h3 className="text-sm sm:text-base font-black text-emerald-400 uppercase tracking-widest">{lang === "ar" ? "جاهز للانطلاق؟" : "Ready to Slither?"}</h3>
+            <p className="text-[11px] text-slate-400 max-w-[200px] leading-relaxed">
+              {lang === "ar" 
+                ? "استخدم أزرار الأسهم على شاشتك أو لوحة المفاتيح لتوجيه الأفعى واستهداف الفواكه." 
+                : "Use arrows on screen or your keyboard Arrow/WASD keys to steer and munch apples."}
+            </p>
+            <button
+              onClick={restartGame}
+              className="px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs rounded-xl shadow-lg shadow-emerald-500/20 transition-all cursor-pointer"
+            >
+              {lang === "ar" ? "ابدأ اللعب الآن" : "Start Game"}
+            </button>
+          </div>
+        )}
+
+        {gameOver && (
+          <div className="absolute inset-0 bg-black/90 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center space-y-4">
+            <h3 className="text-base font-black text-rose-500 uppercase tracking-widest">{lang === "ar" ? "انتهت اللعبة!" : "Game Over"}</h3>
+            <div className="space-y-1">
+              <p className="text-[11px] text-slate-400">{lang === "ar" ? "مجموع نقاطك المحقق" : "Your final score achieved"}</p>
+              <p className="text-2xl font-black text-white">{score} 🍎</p>
+            </div>
+            <button
+              onClick={restartGame}
+              className="px-6 py-2.5 bg-rose-600 hover:bg-rose-500 text-white font-black text-xs rounded-xl shadow-lg shadow-rose-600/20 transition-all cursor-pointer flex items-center gap-1.5"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>{lang === "ar" ? "إعادة المحاولة" : "Try Again"}</span>
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* On-Screen Arrow D-Pad controls for Mobile and touch screen convenience */}
+      <div className="w-full max-w-[180px] space-y-2 pb-2">
+        <div className="flex justify-center">
+          <button
+            onClick={() => {
+              if (direction !== "DOWN" && gameStarted && !gameOver) {
+                setDirection("UP");
+                playSynthSound(300, "sine", 0.05);
+              }
+            }}
+            className="w-12 h-12 bg-slate-900 border border-slate-800 rounded-xl hover:bg-slate-800 active:scale-90 text-white flex items-center justify-center text-lg font-black transition-all cursor-pointer shadow"
+          >
+            ▲
+          </button>
+        </div>
+        <div className="flex justify-between gap-2">
+          <button
+            onClick={() => {
+              if (direction !== "RIGHT" && gameStarted && !gameOver) {
+                setDirection("LEFT");
+                playSynthSound(300, "sine", 0.05);
+              }
+            }}
+            className="w-12 h-12 bg-slate-900 border border-slate-800 rounded-xl hover:bg-slate-800 active:scale-90 text-white flex items-center justify-center text-lg font-black transition-all cursor-pointer shadow"
+          >
+            ◀
+          </button>
+          <div className="w-12 h-12 bg-slate-950/40 rounded-xl flex items-center justify-center text-[10px] font-bold text-slate-500">
+            PAD
+          </div>
+          <button
+            onClick={() => {
+              if (direction !== "LEFT" && gameStarted && !gameOver) {
+                setDirection("RIGHT");
+                playSynthSound(300, "sine", 0.05);
+              }
+            }}
+            className="w-12 h-12 bg-slate-900 border border-slate-800 rounded-xl hover:bg-slate-800 active:scale-90 text-white flex items-center justify-center text-lg font-black transition-all cursor-pointer shadow"
+          >
+            ▶
+          </button>
+        </div>
+        <div className="flex justify-center">
+          <button
+            onClick={() => {
+              if (direction !== "UP" && gameStarted && !gameOver) {
+                setDirection("DOWN");
+                playSynthSound(300, "sine", 0.05);
+              }
+            }}
+            className="w-12 h-12 bg-slate-900 border border-slate-800 rounded-xl hover:bg-slate-800 active:scale-90 text-white flex items-center justify-center text-lg font-black transition-all cursor-pointer shadow"
+          >
+            ▼
+          </button>
+        </div>
+      </div>
+
+    </div>
+  );
+}
+
+/* ==========================================
+   2. TIC-TAC-TOE INTERACTIVE COMPONENT ENGINE
+   ========================================== */
+interface TicTacToeProps {
+  lang: "ar" | "en";
+  playSynthSound: (freq: number, type?: OscillatorType, duration?: number, delay?: number) => void;
+  updateHighScore: (score: number) => void;
+  highScore: number;
+}
+
+function TicTacToeEngine({ lang, playSynthSound, updateHighScore, highScore }: TicTacToeProps) {
+  const [board, setBoard] = useState<(string | null)[]>(Array(9).fill(null));
+  const [isXNext, setIsXNext] = useState<boolean>(true);
+  const [vsAI, setVsAI] = useState<boolean>(true);
+  const [winner, setWinner] = useState<string | null>(null); // "X", "O", "Draw"
+  const [winsCount, setWinsCount] = useState<number>(0);
+
+  const winningCombinations = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+    [0, 4, 8], [2, 4, 6]             // Diagonals
+  ];
+
+  const checkWinner = (squares: (string | null)[]) => {
+    for (const combo of winningCombinations) {
+      const [a, b, c] = combo;
+      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+        return squares[a];
+      }
+    }
+    if (squares.every(s => s !== null)) {
+      return "Draw";
+    }
+    return null;
+  };
+
+  const handleCellClick = (index: number) => {
+    if (board[index] || winner) return;
+
+    const newBoard = [...board];
+    newBoard[index] = isXNext ? "X" : "O";
+    setBoard(newBoard);
+    playSynthSound(400, "sine", 0.08);
+
+    const gameWinner = checkWinner(newBoard);
+    if (gameWinner) {
+      handleGameEnd(gameWinner);
+    } else {
+      setIsXNext(!isXNext);
+    }
+  };
+
+  // AI Logic to automatically make a step
+  useEffect(() => {
+    if (vsAI && !isXNext && !winner) {
+      const timer = setTimeout(() => {
+        makeAIMove();
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [isXNext, vsAI, winner]);
+
+  const makeAIMove = () => {
+    // 1. Try to win
+    let move = findBestIndexFor("O");
+    // 2. Try to block player
+    if (move === -1) move = findBestIndexFor("X");
+    // 3. Take center if free
+    if (move === -1 && board[4] === null) move = 4;
+    // 4. Random move
+    if (move === -1) {
+      const available = board.map((val, idx) => val === null ? idx : null).filter(val => val !== null) as number[];
+      if (available.length > 0) {
+        move = available[Math.floor(Math.random() * available.length)];
+      }
+    }
+
+    if (move !== -1) {
+      const newBoard = [...board];
+      newBoard[move] = "O";
+      setBoard(newBoard);
+      playSynthSound(480, "sine", 0.08);
+
+      const gameWinner = checkWinner(newBoard);
+      if (gameWinner) {
+        handleGameEnd(gameWinner);
+      } else {
+        setIsXNext(true);
+      }
+    }
+  };
+
+  const findBestIndexFor = (player: string) => {
+    for (const combo of winningCombinations) {
+      const [a, b, c] = combo;
+      const vals = [board[a], board[b], board[c]];
+      const playerCount = vals.filter(v => v === player).length;
+      const nullCount = vals.filter(v => v === null).length;
+      if (playerCount === 2 && nullCount === 1) {
+        if (board[a] === null) return a;
+        if (board[b] === null) return b;
+        if (board[c] === null) return c;
+      }
+    }
+    return -1;
+  };
+
+  const handleGameEnd = (gameWinner: string) => {
+    setWinner(gameWinner);
+    if (gameWinner === "X") {
+      playSynthSound(587.33, "sine", 0.15);
+      playSynthSound(783.99, "sine", 0.3, 0.12);
+      setWinsCount(w => {
+        const nextWins = w + 1;
+        updateHighScore(nextWins);
+        return nextWins;
+      });
+    } else if (gameWinner === "O") {
+      playSynthSound(150, "sawtooth", 0.35);
+    } else {
+      playSynthSound(250, "triangle", 0.25);
+    }
+  };
+
+  const resetGame = () => {
+    setBoard(Array(9).fill(null));
+    setWinner(null);
+    setIsXNext(true);
+    playSynthSound(440, "sine", 0.1);
+  };
+
+  return (
+    <div className="w-full max-w-sm mx-auto space-y-6 flex flex-col items-center">
+      
+      {/* Game Mode Selector */}
+      <div className="flex bg-slate-950/80 border border-slate-900 rounded-2xl p-1 w-full max-w-[280px]">
+        <button
+          onClick={() => {
+            setVsAI(true);
+            setWinsCount(0);
+            resetGame();
+          }}
+          className={`flex-1 py-1.5 text-[10px] font-black rounded-xl transition-all cursor-pointer ${
+            vsAI 
+              ? "bg-rose-600 text-white" 
+              : "text-slate-400 hover:text-white"
+          }`}
+        >
+          {lang === "ar" ? "ضد الذكاء الاصطناعي" : "VS Intelligent AI"}
+        </button>
+        <button
+          onClick={() => {
+            setVsAI(false);
+            setWinsCount(0);
+            resetGame();
+          }}
+          className={`flex-1 py-1.5 text-[10px] font-black rounded-xl transition-all cursor-pointer ${
+            !vsAI 
+              ? "bg-rose-600 text-white" 
+              : "text-slate-400 hover:text-white"
+          }`}
+        >
+          {lang === "ar" ? "لاعبين محلي" : "Local 2 Player"}
+        </button>
+      </div>
+
+      {/* Game Stats */}
+      <div className="w-full flex items-center justify-between px-2 text-xs font-bold text-slate-300">
+        <div className="flex items-center gap-1">
+          <Award className="w-4 h-4 text-rose-400" />
+          <span>{lang === "ar" ? "مرات الفوز" : "Total Wins"}: <strong className="text-white text-sm font-black">{winsCount}</strong></span>
+        </div>
+        <div className="flex items-center gap-1">
+          <Trophy className="w-4 h-4 text-amber-500" />
+          <span>{lang === "ar" ? "أعلى رقم" : "Record"}: <strong className="text-white text-sm font-black">{highScore}</strong></span>
+        </div>
+      </div>
+
+      {/* Interactive Tic-Tac-Toe Grid Screen */}
+      <div className="w-full aspect-square max-w-[280px] bg-[#030408] border-2 border-slate-900 rounded-3xl p-3 grid grid-cols-3 grid-rows-3 gap-3 relative overflow-hidden shadow-inner">
+        {board.map((cell, idx) => (
+          <button
+            key={idx}
+            onClick={() => handleCellClick(idx)}
+            disabled={cell !== null || !!winner || (vsAI && !isXNext)}
+            className={`rounded-2xl border flex items-center justify-center transition-all duration-200 cursor-pointer text-2xl sm:text-3xl font-black ${
+              cell === "X" 
+                ? "bg-rose-600/10 border-rose-500/30 text-rose-500 shadow-inner" 
+                : cell === "O" 
+                  ? "bg-indigo-600/10 border-indigo-500/30 text-indigo-400 shadow-inner" 
+                  : "bg-[#0b0c16]/30 border-slate-900/60 hover:bg-[#0b0c16]/60 hover:border-slate-800"
+            }`}
+          >
+            {cell}
+          </button>
+        ))}
+
+        {/* Dynamic Game End Announcement Overlay */}
+        {winner && (
+          <div className="absolute inset-0 bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center space-y-4 animate-fade-in">
+            <h3 className="text-sm font-black text-rose-400 uppercase tracking-wider">
+              {winner === "Draw" 
+                ? (lang === "ar" ? "تعادل مذهل!" : "It's a Draw!") 
+                : (lang === "ar" ? `اللاعب (${winner}) انتصر!` : `Winner: Player (${winner})!`)}
+            </h3>
+            
+            <p className="text-[10px] text-slate-400 max-w-[180px] leading-relaxed">
+              {winner === "X" && vsAI && (lang === "ar" ? "رائع! لقد تغلبت على خوارزمية الذكاء الاصطناعي." : "Brilliant! You defeated our core AI engine.")}
+              {winner === "O" && vsAI && (lang === "ar" ? "أوه، لا تقلق! الخوارزمية ذكية جداً، حاول مجدداً." : "Oh! The AI outsmarted you, try blocking its vectors.")}
+            </p>
+
+            <button
+              onClick={resetGame}
+              className="px-5 py-2 bg-rose-600 hover:bg-rose-500 text-white font-black text-xs rounded-xl shadow-lg shadow-rose-600/20 transition-all cursor-pointer flex items-center gap-1.5"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>{lang === "ar" ? "جولة جديدة" : "Next Round"}</span>
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Current Turn display */}
+      {!winner && (
+        <p className="text-[11px] text-slate-400 font-bold">
+          {lang === "ar" ? "الدور الآن على" : "Current Turn"}: <strong className="text-white">{isXNext ? (lang === "ar" ? "اللاعب X (أنت)" : "Player X (You)") : (vsAI ? (lang === "ar" ? "الذكاء الاصطناعي" : "AI Controller") : (lang === "ar" ? "اللاعب O" : "Player O"))}</strong>
+        </p>
+      )}
+
+    </div>
+  );
+}
+
+/* ==========================================
+   3. COSMIC MEMORY MATCH COMPONENT ENGINE
+   ========================================== */
+interface MemoryGameProps {
+  lang: "ar" | "en";
+  playSynthSound: (freq: number, type?: OscillatorType, duration?: number, delay?: number) => void;
+  updateHighScore: (score: number) => void;
+  highScore: number;
+}
+
+interface CardItem {
+  id: number;
+  symbol: string;
+  isFlipped: boolean;
+  isMatched: boolean;
+}
+
+function MemoryGameEngine({ lang, playSynthSound, updateHighScore, highScore }: MemoryGameProps) {
+  const symbols = ["🎮", "🚀", "👾", "👑", "💎", "⚡"];
+  
+  const [cards, setCards] = useState<CardItem[]>([]);
+  const [selectedIndices, setSelectedIndices] = useState<number[]>([]);
+  const [moves, setMoves] = useState<number>(0);
+  const [seconds, setSeconds] = useState<number>(0);
+  const [gameActive, setGameActive] = useState<boolean>(false);
+  const [victory, setVictory] = useState<boolean>(false);
+
+  // Initialize and shuffle deck
+  const initializeDeck = () => {
+    const deck = [...symbols, ...symbols]
+      .map((sym, idx) => ({
+        id: idx,
+        symbol: sym,
+        isFlipped: false,
+        isMatched: false
+      }))
+      .sort(() => Math.random() - 0.5);
+
+    setCards(deck);
+    setSelectedIndices([]);
+    setMoves(0);
+    setSeconds(0);
+    setVictory(false);
+    setGameActive(true);
+    playSynthSound(440, "sine", 0.1);
+  };
+
+  // Stopwatch timer
+  useEffect(() => {
+    if (!gameActive || victory) return;
+    const interval = setInterval(() => {
+      setSeconds(s => s + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [gameActive, victory]);
+
+  const handleCardClick = (index: number) => {
+    if (!gameActive || cards[index].isFlipped || cards[index].isMatched || selectedIndices.length >= 2) return;
+
+    playSynthSound(350, "sine", 0.05);
+    const newCards = [...cards];
+    newCards[index].isFlipped = true;
+    setCards(newCards);
+
+    const newSelections = [...selectedIndices, index];
+    setSelectedIndices(newSelections);
+
+    if (newSelections.length === 2) {
+      setMoves(m => m + 1);
+      const [firstIdx, secondIdx] = newSelections;
+      
+      if (cards[firstIdx].symbol === cards[secondIdx].symbol) {
+        // Matched!
+        setTimeout(() => {
+          playSynthSound(600, "sine", 0.15);
+          newCards[firstIdx].isMatched = true;
+          newCards[secondIdx].isMatched = true;
+          setCards(newCards);
+          setSelectedIndices([]);
+
+          // Check if all matched
+          if (newCards.every(c => c.isMatched)) {
+            handleVictory();
+          }
+        }, 300);
+      } else {
+        // Mismatch - Flip back over
+        setTimeout(() => {
+          playSynthSound(200, "sine", 0.15);
+          newCards[firstIdx].isFlipped = false;
+          newCards[secondIdx].isFlipped = false;
+          setCards(newCards);
+          setSelectedIndices([]);
+        }, 800);
+      }
+    }
+  };
+
+  const handleVictory = () => {
+    setVictory(true);
+    playSynthSound(523.25, "sine", 0.15);
+    playSynthSound(659.25, "sine", 0.15, 0.12);
+    playSynthSound(783.99, "sine", 0.3, 0.24);
+    
+    // Save fastest completion time
+    updateHighScore(seconds);
+  };
+
+  return (
+    <div className="w-full max-w-sm mx-auto space-y-6 flex flex-col items-center">
+      
+      {/* Game Header Metrics */}
+      <div className="w-full flex items-center justify-between px-2 text-xs font-bold text-slate-300">
+        <div className="flex items-center gap-1.5">
+          <Timer className="w-4 h-4 text-indigo-400" />
+          <span>{lang === "ar" ? "الوقت" : "Time"}: <strong className="text-white text-sm font-black">{seconds}s</strong></span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <RotateCcw className="w-4 h-4 text-amber-500" />
+          <span>{lang === "ar" ? "المحاولات" : "Moves"}: <strong className="text-white text-sm font-black">{moves}</strong></span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <Trophy className="w-4 h-4 text-rose-500" />
+          <span>{lang === "ar" ? "أسرع وقت" : "Record"}: <strong className="text-white text-sm font-black">{highScore > 0 ? `${highScore}s` : "—"}</strong></span>
+        </div>
+      </div>
+
+      {/* Grid Canvas Screen */}
+      <div className="w-full relative min-h-[280px] bg-[#030408] border-2 border-slate-900 rounded-3xl p-4 flex items-center justify-center">
+        {gameActive ? (
+          <div className="grid grid-cols-4 gap-3 w-full h-full">
+            {cards.map((card, idx) => {
+              const showSymbol = card.isFlipped || card.isMatched;
+              return (
+                <button
+                  key={card.id}
+                  onClick={() => handleCardClick(idx)}
+                  className={`aspect-square rounded-2xl flex items-center justify-center font-bold text-2xl transition-all duration-300 cursor-pointer ${
+                    showSymbol 
+                      ? "bg-indigo-600/20 border border-indigo-500/40 text-white rotate-0" 
+                      : "bg-[#0b0c16] border border-slate-900 hover:border-indigo-500/20 text-indigo-400 -rotate-3 hover:scale-105"
+                  }`}
+                >
+                  {showSymbol ? card.symbol : "❓"}
+                </button>
+              );
+            })}
+          </div>
+        ) : (
+          /* Start Overlay state */
+          <div className="text-center space-y-4 py-6">
+            <Brain className="w-12 h-12 text-indigo-400 mx-auto animate-bounce" />
+            <div className="space-y-1">
+              <h3 className="text-sm font-black text-white">{lang === "ar" ? "تحدي الذاكرة الفائقة" : "Cosmic Memory Challenge"}</h3>
+              <p className="text-[10px] text-slate-500 max-w-[200px] mx-auto leading-relaxed">
+                {lang === "ar" ? "ابحث عن الكروت الثنائية المتطابقة بأسرع وقت وأقل خطوات ممكنة لتسجيل رقم قياسي." : "Find all matching card emoji pairs in the shortest time and click moves."}
+              </p>
+            </div>
+            <button
+              onClick={initializeDeck}
+              className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs rounded-xl shadow-lg shadow-indigo-600/20 transition-all cursor-pointer"
+            >
+              {lang === "ar" ? "ابدأ التحدي" : "Start Match"}
+            </button>
+          </div>
+        )}
+
+        {/* Victory Screen */}
+        {victory && (
+          <div className="absolute inset-0 bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center space-y-4 animate-fade-in">
+            <Trophy className="w-12 h-12 text-amber-500 animate-pulse" />
+            <div className="space-y-1">
+              <h3 className="text-sm font-black text-emerald-400 uppercase tracking-widest">{lang === "ar" ? "تهانينا! فوز مذهل" : "Outstanding Victory!"}</h3>
+              <p className="text-xs text-slate-400">
+                {lang === "ar" 
+                  ? `أنهيت اللعبة في ${seconds} ثانية بـ ${moves} محاولة.` 
+                  : `Matched all cards in ${seconds}s with just ${moves} moves.`}
+              </p>
+            </div>
+            <button
+              onClick={initializeDeck}
+              className="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs rounded-xl shadow-lg shadow-indigo-600/20 transition-all cursor-pointer flex items-center gap-1.5"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span>{lang === "ar" ? "تحدي جديد" : "Play Again"}</span>
+            </button>
+          </div>
+        )}
+      </div>
 
     </div>
   );

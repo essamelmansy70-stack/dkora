@@ -1,6 +1,6 @@
 {
-  "name": "Dkora Affiliate Store | متجر دي كورة الرياضي",
-  "description": "منصة دي كورة للتسويق بالعمولة لأفضل الأحذية والمعدات الرياضية على أمازون بأسعار مخفضة وتحديثات مستمرة لعام ٢٠٢٦.",
+  "name": "Football World Cup Player Quiz",
+  "description": "من يشبهك من لاعبي المونديال؟ - اختبار شخصية تفاعلي غني بالأسئلة الرياضية المتنوعة والتحليلات الدقيقة بدون تكاليف خادم.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

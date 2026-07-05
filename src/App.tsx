@@ -1,400 +1,2120 @@
-import React, { useState, useRef, useEffect } from "react";
-import { 
-  Trophy, 
-  Sparkles, 
-  Award, 
-  ShieldCheck, 
-  HelpCircle, 
-  ChevronRight, 
-  Flame, 
-  Info,
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
+import html2canvas from "html2canvas";
+import Cropper from "cropperjs";
+import "cropperjs/dist/cropper.css";
+import {
+  Trophy,
+  Award,
+  Share2,
+  Download,
   RotateCcw,
-  ShoppingBag
+  Flame,
+  Sparkles,
+  Target,
+  Shield,
+  Star,
+  Zap,
+  Activity,
+  Heart,
+  User,
+  Globe,
+  Mail,
+  Lock,
+  Copy,
+  Check,
+  Info,
+  X,
+  Upload,
+  Trash2,
+  Loader2,
+  BookOpen,
+  ArrowRight,
+  ArrowLeft
 } from "lucide-react";
-import { Product, Category, Language, Tab } from "./types";
-import { PRODUCTS } from "./data";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import ProductCard from "./components/ProductCard";
-import ProductDetailModal from "./components/ProductDetailModal";
-import AffiliateRedirectModal from "./components/AffiliateRedirectModal";
-import CouponSection from "./components/CouponSection";
-import LegalPageModal from "./components/LegalPageModal";
+
+import veo3VideoGenerationGuide from "./assets/images/veo3_video_generation_guide_1782439141821.jpg";
+
+import { Question, PlayerProfile } from "./types";
+import { QUESTION_BANK, PLAYER_PROFILES } from "./data";
+const ArticlesPage = lazy(() => import("./components/ArticlesPage"));
+const LegalModals = lazy(() => import("./components/LegalModals"));
+import { translations } from "./translations";
+
+// UI translation dictionary
+const uiTranslations = {
+  ar: {
+    title: "من يشبهك من لاعبي المونديال؟",
+    badge: "مستكشف الشخصية الكروية الكبرى",
+    tagline: "تحديث ٢٠٢٦ • متجدد كلياً ومجاني للجميع",
+    subtitle: "WORLD CUP PLAYER MATCH",
+    heroBadge: "الاختبار الرياضي الأكثر شعبية وتحديثاً لعام ٢٠٢٦",
+    heroHeadline1: "اكتشف شبيهك من",
+    heroHeadline2: "أساطير كأس العالم!",
+    heroDesc: "هل أنت العبقري الموهوب الذي لا تتكرر لمساته، أم المحرك القوي ذو الإرادة الحديدية، أم الصاروخ الطموح؟ أجب عن أسئلتنا التكتيكية المبتكرة وحلل شخصيتك الرياضية الآن!",
+    card1Title: "متجدد كلياً وذكي",
+    card1Desc: "أسئلة عشوائية وسيناريوهات فنية ممتازة في كل محاولة",
+    card2Title: "مجاني للجميع دائماً",
+    card2Desc: "مفتوح بالكامل وبدون أي اشتراكات أو تكاليف خفية إطلاقاً",
+    startBtn: "ابدأ اختبار شخصية الأبطال",
+    startNote: "* يقوم محرك اللعبة باختيار ٧ أسئلة عشوائية ممتعة وتوليد النتيجة لضمان تجربة حيوية ومتجددة دائماً!",
+    questionLabel: "السؤال",
+    ofLabel: "من أصل",
+    progressLabel: "مستوى التقدم",
+    prevBtn: "السابق",
+    attemptLabel: "المحاولة رقم",
+    analyzingTitle: "جاري مطابقة بصمتك الرياضية الكروية...",
+    analyzingLine1: "توليد نموذج الفروقات والشخصية الرياضية...",
+    analyzingLine2: "استخلاص دقة الكفاءة والروح الميدانية...",
+    analyzingLine3: "مقارنة جينات الهدافين وصناع اللعب والمهاجمين...",
+    analyzingStatus1: "جاري العمل",
+    analyzingStatus2: "مكتمل ١٠٠٪",
+    analyzingStatus3: "مطابقة نهائية",
+    analyzingQuote: "\"قاريء جينات الأبطال يطرق الباب... يحضر نموذج الأسطورة الخاص بك.\"",
+    resultBanner: "تحليل الشخصية المونديالية كمل بنجاح! 🏆",
+    resultTitle: "اللاعب المونديالي الشبيه بك هو:",
+    resultProfileId: "رقم التعريف المونديالي الخاص بك:",
+    resultAnalysisTitle: "التحليل النفسي والشخصي لأسلوبك الكروي المعتمد:",
+    resultStrengthsTitle: "أبرز نقاط قوتك ومهاراتك الفنية المتطابقة:",
+    resultMottoTitle: "شعــارك الأبــدي في الملاعب والحياة:",
+    resultStatsTitle: "المؤشرات الرقمية الكبرى لبطاقة أسطورتك الخاصة:",
+    statSpeed: "السرعة والانطلاق",
+    statDribbble: "المراوغة والتحكم الفني",
+    statShooting: "الحس التهديفي والإنهاء",
+    statStamina: "اللياقة والتحمل الهيكلي",
+    statTeamwork: "اللعب الجماعي والتضحية",
+    retakeBtn: "خوض الاختبار مجدداً",
+    downloadBtn: "تحميل بطاقة الأسطورة كصورة",
+    shareTitle: "شارك نتيجتك الأسطورية وقارنها مع أصدقائك بجروب الكرة:",
+    shareWhatsapp: "🟢 شارك عبر واتساب",
+    shareX: "⚫ شارك على منصة X",
+    shareFacebook: "🔵 شارك على فيسبوك",
+    toastImageLoading: "جاري إعداد بطاقة الأسطورة الخاصة بك كصورة عالية الدقة... 📥",
+    toastImageSuccess: "تم تنزيل بطاقة أسطورتك بنجاح! 🏆 شاركها مع أصدقائك الآن!",
+    toastImageFail: "عذراً! لم نتمكن من تنزيل الصورة تلقائياً بجهازك، يمكنك أخذ لقطة شاشة رائعة ومشاركة نتيجتك!",
+    toastShareReady: "تم تجهيز رابط المشاركة بجهازك بنجاح!",
+    footerRights: "جميع حقوق اختبار \"من يشبهك من لاعبي المونديال\" محفوظة © لعام ٢٠٢٦ من خلال منصة المونديال.",
+    footerMeta: "محرك ألعاب ذكي وآمن بالكامل يعمل محلياً بالكامل بمتصفحك"
+  },
+  en: {
+    title: "Which World Cup Player Are You?",
+    badge: "National Soccer Personality Analyst",
+    tagline: "2026 Update • Completely Revamped & Free for Everyone",
+    subtitle: "WORLD CUP PLAYER MATCH",
+    heroBadge: "The Most Popular Football Personality Test of 2026",
+    heroHeadline1: "Discover Your Matching",
+    heroHeadline2: "World Cup Legends!",
+    heroDesc: "Are you the quiet genius whose magical touches redefine football history, the relentless machine of absolute steel will, or the supersonic rocket? Answer our smart tactical questions and explore your sports alter-ego now!",
+    card1Title: "Fully Revamped",
+    card1Desc: "Completely randomized questions and realistic scenarios on every attempt",
+    card2Title: "Free for Everyone",
+    card2Desc: "Accessible and open-source forever with zero subscriptions or fees",
+    startBtn: "Launch Champion Personality Quiz",
+    startNote: "* The game engine chooses 7 random questions dynamically to ensure completely customized and fun results every single time!",
+    questionLabel: "Question",
+    ofLabel: "of",
+    progressLabel: "Progress Level",
+    prevBtn: "Previous",
+    attemptLabel: "Attempt No.",
+    analyzingTitle: "Analyzing your tactical football attributes...",
+    analyzingLine1: "Generating customized athletic profile metrics...",
+    analyzingLine2: "Extracting psychological sports fidelity...",
+    analyzingLine3: "Comparing scoring genes and playmaker structures...",
+    analyzingStatus1: "Computing",
+    analyzingStatus2: "100% Completed",
+    analyzingStatus3: "Final Matching",
+    analyzingQuote: "\"The champion genetic analyzer is opening gates... creating your legend card.\"",
+    resultBanner: "Football Personality Analysis Successfully Complete! 🏆",
+    resultTitle: "Your Matching World Cup Legend is:",
+    resultProfileId: "Your Mondial Profile ID:",
+    resultAnalysisTitle: "Psychological & Tactical Football Analysis:",
+    resultStrengthsTitle: "Your Matching Strengths & Key Technical Traits:",
+    resultMottoTitle: "Your Eternal Motto in Field & Life:",
+    resultStatsTitle: "Primary Performance Stats on Your Legend Card:",
+    statSpeed: "Speed & Acceleration",
+    statDribbble: "Dribbling & Ball Handling",
+    statShooting: "Clinical Finishing & Goals",
+    statStamina: "Stamina & Endurance",
+    statTeamwork: "Selfless Group Contribution",
+    retakeBtn: "Restart the Personality Quiz",
+    downloadBtn: "Download Legend Card as Image",
+    shareTitle: "Share your legendary matching card on your football groups:",
+    shareWhatsapp: "🟢 Share via WhatsApp",
+    shareX: "⚫ Share on X Platform",
+    shareFacebook: "🔵 Share on Facebook",
+    toastImageLoading: "Preparing your fine-resolution Legend Card download... 📥",
+    toastImageSuccess: "Your legend card was downloaded successfully! 🏆 Share it now!",
+    toastImageFail: "Apologies, Champ! Automatic download failed on this device. Feel free to snap a screenshot to share with your friends!",
+    toastShareReady: "Sharing link successfully activated for your device!",
+    footerRights: "Which World Cup Player Are You? All rights reserved © 2026.",
+    footerMeta: "FULLY SECURE ON-DEVICE APPLET • FAST RESPONSE MATRIX"
+  }
+};
+
+const VIRAL_HEADLINES = [
+  "المشجع اللي قعد رونالدو دكة في المونديال 🏟️",
+  "الوحش اللي حطم صخرة الدفاع وسحب هيبة الخصم ⚔️",
+  "صاحب أجمل وأقوى احتفال سيوووو في التاريخ! 🔥",
+  "اللي قشر الموزة لميسي في الكامب نو ومشى 🍌⚽",
+  "مروض الساحرة المستديرة في حواري المونديال 🌟",
+  "المهاجم اللي أرعب حراس كأس العالم بلمسة واحدة! 💀",
+  "الكابتن البديل اللي يغير مسار النهائي في الدقيقة 90! ⏱️",
+  "جلاد الشباك اللي يسجل بالأذن والكتف وصدره وعينه! 🎯",
+  "ممرر الكرات كعب بوجه القدم الخارجي البارع والأنيق 🪄",
+  "صاحب أول كوبري مزدوج حطم كاحل أقوى مدافع 🌉",
+  "اللي مسح هيبة نجوم الدفاع بمراوغة بلمسة فنية 💨",
+  "صانع تيكي تاكا حواري الرياض وجلاد دوري المدارس 🏆",
+  "اللي خلى نيمار يسوي إعادة حسابات في طقطقة الكورة 🧠",
+  "مزيج من الروح القتالية لراموس وعبقرية ليو ميسي! 🦁",
+  "الحارس الطائر اللي يصد ركلات الجزاء بالعين والنية 🧤",
+  "صانع الألعاب البارع اللي يعطي أسيست وهو يشرب عصير 🥤",
+  "جناح طائر أسرع من سرعة الضوء والصوت على ملعبنا ⚡",
+  "جدار برلين البشري اللي يبكي عليه المهاجمين بالملعب 🧱",
+  "صخرة الدفاع الصامت اللي يبتسم وهو يسحب الكورة 🗿",
+  "اللي يوزع عرضيات بالمليمتر تسبّب صداع لمدرب الخصم 📈",
+  "اللي قطع الكورة من ليفاندوفسكي بخيط خياطة وإبرة 🧵",
+  "المشجع اللي نزل الملعب وسجل هدف بالخطأ وصنع ريمونتادا 🔄",
+  "صاحب التسديدات الصاروخية العابرة للقارات والمدمرة 🚀",
+  "مروض الأبطال وصانع الهاتريك الأسرع في دقيقة واحدة! ⏱️",
+  "اللي خلى جوارديولا يعتزل التدريب ويسكر الدفاتر 🧠🎮",
+  "الكابتن المغناطيسي اللي يسحب الكورة كأنها حديد ومغناطيس 🧲",
+  "قاهر حراس المونديال وخبير الإنهاء في تسعينات الزاوية 🥅",
+  "المهاجم الهمام اللي يحسب سرعة الجاذبية قبل الارتقاء 🛸",
+  "اللي جاب معاه مبخرة للملعب وخرّب تركيز دفاع الخصم 💨🛡️",
+  "المشجع اللي جمد ملامح هالاند بمراوغة ونظرة ثقة 😎🔥",
+  "صانع النكبات الكروية لمدربي أندية النخبة الأوروبية 💣",
+  "المشجع اللي شتت كورة في السماء ونزلت في شباك الخصم! 🌌",
+  "صاحب أغلى قدم يسرى تنافس ليو ميسي في العقول 📐",
+  "المهاجم الأنيق اللي يحرز هاتريك وهو بيفكر في كبسة الغداء 🍛",
+  "المشجع اللي سحب التيشرت من هالاند وما انقطع معاه 🦾",
+  "قاهر خطوط الوسط وحامل مفاتيح رتم اللعب الهادئ والقاتل 🗝️",
+  "الوحش اللي يراوغ الدفاع من ركنية لركنية بلا تعرق 🏃‍♂️",
+  "معلم التيكي تاكا والسامبا البرازيلية الحرة في وسط الملعب 🇧🇷",
+  "المشجع اللي صفق للمنافس بالغلط وصنع سلام بالاستاد 🕊️",
+  "مروض الكور المستحيلة وصانع الأعاجيب بلمحة عين واحدة ✨",
+  "الجناح الطائر اللي يطير بدون طائرة في سماء الملاعب 🪽",
+  "المشجع الأكثر حماساً وولاءً وتأثيراً في مدرجاتنا 🗣️📣",
+  "مفسر الفكر التكتيكي العالي بلمساته العفوية البسيطة 📖",
+  "صاحب اللياقة الحديدية اللي تدور عضلاته كأنه محرك توربيني ⚙️",
+  "المشجع الأسطوري اللي هز المدرج بصيحة كروية تهز الجبال 🌋",
+  "اللي ركض من المرمى للمرمى عشان ينقذ هجمة مرتدة 🏎️",
+  "الأستاذ اللي يدرس المدافعين أصول التمركز بضحكة رايقة 🎓",
+  "مروض عمالقة المونديال وصاحب أذكى أسيست مخفي 🃏✨",
+  "اللي خلى حارس المونديال يطلب تبديل من شدة الصدمة 🤯🚨",
+  "مخرب تكتيك الكاتيناتشو الإيطالي بمراوغة حوارى شعبية 🛡️❌",
+  "البطل اللي أنقذ شرف الفريق بإنقاذ كورة من على خط المرمى 🦸‍♂️",
+  "الجلاد الرهيب صاحب القدم الفولاذية والضربات الحرة الساحقة ☄️",
+  "اللي يراوغ خمسة مدافعين في مساحة علبة كبريت صغيرة 📦✨",
+  "المهاجم اللي يستلم الكورة تحت الضغط وكأنه جالس بكافيه ☕🌟",
+  "المشجع اللي علم مبابي أصول الجري السريع والتخفي بالبساط 🦊💨",
+  "اللي سجل كوبري في كابتن الفريق وخلاه يعتزل دولياً 🪦🚪",
+  "القناص اللي يحط الكورة في الثمانية وتمشي بالدوران المطلق 🔄📐",
+  "المشجع اللي جاب كاس البطولة من بيتهم عشان يحتفل مع فريقه 🏆🎁",
+  "صاحب رمية التماس الطويلة اللي توصل لستاد المدينة المجاورة 🛸",
+  "مستكشف الثغرات الدفاعية وحلال العقد الكروية المستحيلة 🕵️‍♂️⚽",
+  "المشجع اللي يتوقع التغييرات والتبديلات قبل المدرب بساعة 🔮🏟️"
+];
 
 export default function App() {
-  const [lang, setLang] = useState<Language>(() => {
-    const saved = localStorage.getItem("dkora_lang");
-    return (saved as Language) || "ar";
-  });
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [activeCategory, setActiveCategory] = useState<Category>("all");
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [redirectProduct, setRedirectProduct] = useState<Product | null>(null);
-  const [legalTab, setLegalTab] = useState<Tab | null>(null);
-  const [isMuted, setIsMuted] = useState<boolean>(() => {
-    const saved = localStorage.getItem("dkora_muted");
-    return saved ? saved === "true" : true;
-  });
+  // Navigation tabs: "quiz" (Home) | "blog" (Articles) | "sitemap" (Sitemap page)
+  const [activeTab, setActiveTab] = useState<"quiz" | "blog" | "sitemap" >("quiz");
+  
+  // Legal modal state
+  const [activeLegalModal, setActiveLegalModal] = useState<'privacy' | 'terms' | 'about' | 'contact' | 'disclaimer' | null>(null);
 
-  const productsRef = useRef<HTMLDivElement>(null);
-  const isAr = lang === "ar";
+  // Determine language based on query parameter (?lang=en or ?lang=ar), defaulting to Arabic ('ar')
+  const [lang, setLang] = useState<"ar" | "en">("ar");
+  const [activeScreen, setActiveScreen] = useState<"start" | "quiz" | "analyzing" | "result" | "veo-article">("start");
+  const [veoClickCount, setVeoClickCount] = useState<number>(0);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [userAnswers, setUserAnswers] = useState<Record<number, string>>({});
+  const [finalPlayer, setFinalPlayer] = useState<PlayerProfile | null>(null);
+  const [quizAttempts, setQuizAttempts] = useState<number>(1);
+  const [showToast, setShowToast] = useState<boolean>(false);
+  const [toastText, setToastText] = useState<string>("");
 
+  // States for user photo and client-side Soccer Fan Card & Headline Generator
+  const [userUploadedFile, setUserUploadedFile] = useState<string | null>(null);
+  const [userCroppedImage, setUserCroppedImage] = useState<string | null>(null);
+  const [selectedRivalId, setSelectedRivalId] = useState<string>("messi");
+  const [viralHeadline, setViralHeadline] = useState<string>("");
+  const [activeFilter, setActiveFilter] = useState<string>("cyber");
+  const [isBlending, setIsBlending] = useState<boolean>(false);
+  const [blendStatusText, setBlendStatusText] = useState<string>("");
+  const [blendingError, setBlendingError] = useState<string | null>(null);
+
+  const resultCardRef = useRef<HTMLDivElement>(null);
+  const fanCardElementRef = useRef<HTMLDivElement>(null);
+  const cropperImgRef = useRef<HTMLImageElement | null>(null);
+  const cropperInstRef = useRef<Cropper | null>(null);
+
+  // Sync language and active tab with URL query parameters on initial load
   useEffect(() => {
-    localStorage.setItem("dkora_lang", lang);
-  }, [lang]);
+    const params = new URLSearchParams(window.location.search);
+    
+    // 1. Setup Language
+    const urlLang = params.get("lang");
+    if (urlLang === "en" || urlLang === "ar") {
+      setLang(urlLang);
+    } else {
+      // Default to Arabic but update the URL accordingly for neatness of link sharing
+      const url = new URL(window.location.href);
+      url.searchParams.set("lang", "ar");
+      window.history.replaceState({}, "", url.toString());
+    }
 
+    // 2. Setup Active tab / view
+    const viewParam = params.get("view");
+    const articleParam = params.get("article");
+    if (viewParam === "blog" || articleParam) {
+      setActiveTab("blog");
+    } else if (viewParam === "sitemap") {
+      setActiveTab("sitemap");
+    } else {
+      setActiveTab("quiz");
+    }
+
+    // 3. Setup active legal page parameter if present
+    const legalParam = params.get("legal");
+    if (legalParam === "privacy" || legalParam === "terms" || legalParam === "about" || legalParam === "contact" || legalParam === "disclaimer") {
+      setActiveLegalModal(legalParam as any);
+    }
+  }, []);
+
+  // Synchronically update document title and metadata for SEO on tab or language change
   useEffect(() => {
-    localStorage.setItem("dkora_muted", String(isMuted));
-  }, [isMuted]);
+    const isRtl = lang === "ar";
+    document.documentElement.lang = lang;
+    document.documentElement.dir = isRtl ? "rtl" : "ltr";
 
-  // Dynamic sound generator using web audio synthesis API
-  const playSynthSound = (freq: number, type: OscillatorType = "sine", duration: number = 0.1, delay: number = 0) => {
-    if (isMuted) return;
-    try {
-      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = type;
-      osc.frequency.setValueAtTime(freq, ctx.currentTime + delay);
-      gain.gain.setValueAtTime(0.04, ctx.currentTime + delay); // Soft comfortable volume
-      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + delay + duration);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start(ctx.currentTime + delay);
-      osc.stop(ctx.currentTime + delay + duration);
-    } catch (e) {
-      // Safe catch for browser autoplay restrictions or iframe context issues
+    let title = "";
+    let desc = "";
+
+    if (activeTab === "quiz") {
+      if (isRtl) {
+        title = "من يشبهك من لاعبي المونديال؟ | اختبار شخصية كرة القدم التفاعلي";
+        desc = "اكتشف أي من أساطير كرة القدم العالمية يماثل شخصيتك وأسلوبك الرياضي في الملعب من خلال اختبار تفاعلي فائق وممتع متجدد باستمرار.";
+      } else {
+        title = "Which World Cup Player Are You? | Interactive Football Personality Quiz";
+        desc = "Discover your soccer match from world cup legends! A fun, highly-interactive football personality test analyzing your style and skill.";
+      }
+    } else if (activeTab === "sitemap") {
+      if (isRtl) {
+        title = "خريطة الموقع المونديالي التفاعلي | dkora";
+        desc = "تصفح خريطة الموقع الكاملة وجميع الصفحات والمقالات والتحليلات الخاصة بمنصة مونديال كأس العالم ٢٠٢٦.";
+      } else {
+        title = "Mondial Interactive Sitemap | dkora";
+        desc = "Explore with one click all pages, articles, and utilities of the Mondial platform. Fully optimized for instant crawling.";
+      }
+    }
+
+    if (title && activeTab !== "blog") { // Let blog (ArticlesPage) handle its own precise state
+      document.title = title;
+      
+      let metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute('content', desc);
+      } else {
+        metaDesc = document.createElement('meta');
+        metaDesc.setAttribute('name', 'description');
+        metaDesc.setAttribute('content', desc);
+        document.head.appendChild(metaDesc);
+      }
+      
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.setAttribute('content', title);
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc) ogDesc.setAttribute('content', desc);
+
+      const twTitle = document.querySelector('meta[property="twitter:title"]');
+      if (twTitle) twTitle.setAttribute('content', title);
+      const twDesc = document.querySelector('meta[property="twitter:description"]');
+      if (twDesc) twDesc.setAttribute('content', desc);
+    }
+  }, [activeTab, lang]);
+
+  // Update URL parameter and HTML document meta when language changes
+  const handleLanguageChange = (newLang: "ar" | "en") => {
+    setLang(newLang);
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", newLang);
+    window.history.pushState({}, "", url.toString());
+    playInteractionSound();
+  };
+
+  // Switch tab and sync with browser address bar
+  const handleTabChange = (tab: "quiz" | "blog" | "sitemap") => {
+    setActiveTab(tab);
+    const url = new URL(window.location.href);
+    if (tab === "quiz") {
+      url.searchParams.delete("view");
+    } else {
+      url.searchParams.set("view", tab);
+    }
+    window.history.pushState({}, "", url.toString());
+    playInteractionSound();
+  };
+
+  // Device vibration simulation or safety bypass
+  const playInteractionSound = () => {
+    if (typeof window !== "undefined" && "vibrate" in navigator) {
+      try {
+        navigator.vibrate(20);
+      } catch (e) {
+        // Safe bypass for iframe constraints
+      }
     }
   };
 
-  const scrollToProducts = () => {
-    productsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  // Initialize Quiz flow (Selecting exactly 7 random questions from the 40-question bank)
+  const initializeQuiz = () => {
+    playInteractionSound();
+    setCurrentIndex(0);
+    setUserAnswers({});
+
+    // Fisher-Yates shuffle algorithm on the 40-question bank
+    const shuffledPool = [...QUESTION_BANK];
+    for (let i = shuffledPool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledPool[i], shuffledPool[j]] = [shuffledPool[j], shuffledPool[i]];
+    }
+
+    // Capture exactly 7 questions
+    const selectedQuestions = shuffledPool.slice(0, 7).map((q) => {
+      // Shuffle options lists inside each question too for extra volatility and replayability
+      const shuffledOptions = [...q.options];
+      for (let x = shuffledOptions.length - 1; x > 0; x--) {
+        const y = Math.floor(Math.random() * (x + 1));
+        [shuffledOptions[x], shuffledOptions[y]] = [shuffledOptions[y], shuffledOptions[x]];
+      }
+      return { ...q, options: shuffledOptions };
+    });
+
+    setQuestions(selectedQuestions);
+    setActiveScreen("quiz");
   };
 
-  const handleResetFilters = () => {
-    setSearchQuery("");
-    setActiveCategory("all");
-    playSynthSound(300, "triangle", 0.1);
+  // Answer selection callback
+  const handleAnswerClick = (playerCode: string) => {
+    playInteractionSound();
+
+    const currentQuestion = questions[currentIndex];
+    setUserAnswers((prev) => ({
+      ...prev,
+      [currentQuestion.id]: playerCode,
+    }));
+
+    if (currentIndex < 6) {
+      setCurrentIndex((prev) => prev + 1);
+    } else {
+      // Completed all 7 questions, transition into analyzing gate
+      setActiveScreen("analyzing");
+      setTimeout(() => {
+        calculateFinalScoreAndDisplay();
+      }, 2200);
+    }
   };
 
-  // Live filtering of products depending on search keywords and active categories
-  const filteredProducts = PRODUCTS.filter((product) => {
-    const matchesCategory = activeCategory === "all" || product.category === activeCategory;
+  // Back button navigator within quiz
+  const handlePreviousQuestion = () => {
+    if (currentIndex > 0) {
+      playInteractionSound();
+      setCurrentIndex((prev) => prev - 1);
+    }
+  };
+
+  // Evaluate final matching profile
+  const calculateFinalScoreAndDisplay = () => {
+    const counts: Record<string, number> = {
+      messi: 0,
+      ronaldo: 0,
+      mbappe: 0,
+      haaland: 0,
+      modric: 0,
+      salah: 0,
+    };
+
+    Object.values(userAnswers).forEach((p) => {
+      const pStr = p as string;
+      if (pStr in counts) {
+        counts[pStr] += 1;
+      }
+    });
+
+    let majorityPlayerCode: keyof typeof counts = "messi";
+    let maxCount = -1;
+
+    Object.entries(counts).forEach(([code, count]) => {
+      if (count > maxCount) {
+        maxCount = count;
+        majorityPlayerCode = code as any;
+      } else if (count === maxCount) {
+        // Random tie breaker
+        if (Math.random() > 0.5) {
+          majorityPlayerCode = code as any;
+        }
+      }
+    });
+
+    const foundMatch = PLAYER_PROFILES.find((p) => p.id === majorityPlayerCode) || PLAYER_PROFILES[0];
+    setFinalPlayer(foundMatch);
+    setActiveScreen("result");
+  };
+
+  // Reset quiz state to re-evaluate personality traits
+  const handleResetQuiz = () => {
+    setQuizAttempts((prev) => prev + 1);
+    initializeQuiz();
+  };
+
+  // Render high-fidelity result card as image download via html2canvas
+  const handleDownloadResultImage = async () => {
+    playInteractionSound();
+    if (!resultCardRef.current || !finalPlayer) return;
+
+    triggerToast(t.toastImageLoading);
+
+    // Style backups to revert after html2canvas completes
+    const backups: any[] = [];
+
+    try {
+      resultCardRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      // Dynamic style sanitizer to prevent html2canvas oklab/oklch parser crashes in Tailwind v4
+      const styleElements = Array.from(document.querySelectorAll("style"));
+      for (const styleEl of styleElements) {
+        const originalText = styleEl.innerHTML;
+        if (originalText.includes("oklch") || originalText.includes("oklab")) {
+          const cleaned = originalText
+            .replace(/oklch\([^)]+\)/g, "rgb(120, 120, 120)")
+            .replace(/oklab\([^)]+\)/g, "rgb(120, 120, 120)");
+          styleEl.innerHTML = cleaned;
+          backups.push({ type: "style", element: styleEl, content: originalText });
+        }
+      }
+
+      const linkElements = Array.from(document.querySelectorAll("link[rel='stylesheet']")) as HTMLLinkElement[];
+      for (const linkEl of linkElements) {
+        try {
+          const response = await fetch(linkEl.href);
+          if (response.ok) {
+            const text = await response.text();
+            if (text.includes("oklch") || text.includes("oklab")) {
+              const cleanedText = text
+                .replace(/oklch\([^)]+\)/g, "rgb(120, 120, 120)")
+                .replace(/oklab\([^)]+\)/g, "rgb(120, 120, 120)");
+              
+              const tempStyle = document.createElement("style");
+              tempStyle.setAttribute("data-html2canvas-temp", "true");
+              tempStyle.innerHTML = cleanedText;
+              document.head.appendChild(tempStyle);
+
+              linkEl.disabled = true;
+              backups.push({ type: "link", element: linkEl, tempStyleElement: tempStyle });
+            }
+          }
+        } catch (err) {
+          console.warn("Failed to sanitize stylesheet for html2canvas:", linkEl.href, err);
+        }
+      }
+
+      const options = {
+        useCORS: true,
+        backgroundColor: "#04081a", // slate dark card backdrop hex code to render download flawlessly
+        scale: 2, // crisp scaling
+        logging: false,
+      };
+
+      await new Promise((resolve) => setTimeout(resolve, 450)); // Ensure style rendering transitions complete
+      const canvas = await html2canvas(resultCardRef.current, options);
+      const dataUrl = canvas.toDataURL("image/png");
+
+      const link = document.createElement("a");
+      link.download = `mondial-legend-card-${finalPlayer.id}.png`;
+      link.href = dataUrl;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      triggerToast(t.toastImageSuccess);
+    } catch (err: any) {
+      console.error("html2canvas error: ", err);
+      triggerToast(t.toastImageFail);
+    } finally {
+      // Revert style changes synchronously to guarantee UI is unaffected
+      for (const back of backups) {
+        if (back.type === "style") {
+          back.element.innerHTML = back.content;
+        } else if (back.type === "link") {
+          back.element.disabled = false;
+          if (back.tempStyleElement && back.tempStyleElement.parentNode) {
+            back.tempStyleElement.parentNode.removeChild(back.tempStyleElement);
+          }
+        }
+      }
+    }
+  };
+
+  // Client-Side Bragging Fan Card & Headline Generator Logic
+  const handleRandomizeHeadline = () => {
+    playInteractionSound();
+    let randomIndex = Math.floor(Math.random() * VIRAL_HEADLINES.length);
+    if (VIRAL_HEADLINES[randomIndex] === viralHeadline) {
+      randomIndex = (randomIndex + 1) % VIRAL_HEADLINES.length;
+    }
+    setViralHeadline(VIRAL_HEADLINES[randomIndex]);
+    triggerToast(lang === "ar" ? "تم سحب مهارة أسطورية جديدة! 🎲" : "New dynamic player trait drawn! 🎲");
+  };
+
+  const startFanCardSimulation = (croppedDataUrl: string) => {
+    setUserCroppedImage(croppedDataUrl);
+    setIsBlending(true);
+    setBlendingError(null);
     
-    const query = searchQuery.trim().toLowerCase();
-    if (!query) return matchesCategory;
+    // Choose initial random title
+    const randomIndex = Math.floor(Math.random() * VIRAL_HEADLINES.length);
+    setViralHeadline(VIRAL_HEADLINES[randomIndex]);
 
-    const matchesTitle = 
-      product.titleAr.toLowerCase().includes(query) || 
-      product.titleEn.toLowerCase().includes(query);
-    const matchesDesc = 
-      product.descriptionAr.toLowerCase().includes(query) || 
-      product.descriptionEn.toLowerCase().includes(query);
-    const matchesSpecs = 
-      Object.entries(product.specsAr).some(([k, v]) => k.toLowerCase().includes(query) || v.toLowerCase().includes(query)) ||
-      Object.entries(product.specsEn).some(([k, v]) => k.toLowerCase().includes(query) || v.toLowerCase().includes(query));
+    const statusesAr = [
+      "جاري فحص زاوية نظرتك الأسطورية... 👁️",
+      "توليف هيبة المشجع بكسل-بكسل... 🧠",
+      "تجهيز كرت التباهي بنمط الذكاء الاصطناعي... 🎨",
+      "مطابقة جينات خصمك المونديالي الأسطوري... ⚽",
+      "إضفاء الفلاتر النيونية الرياضية... ⚡"
+    ];
+    const statusesEn = [
+      "Assessing legendary visual focus alignment... 👁️",
+      "Pixel-synthesizing ultimate backing aura... 🧠",
+      "Styling custom championship bragging card... 🎨",
+      "Pairing athletic traits with rival icon... ⚽",
+      "Injecting high-frequency neon flourishes... ⚡"
+    ];
 
-    return matchesCategory && (matchesTitle || matchesDesc || matchesSpecs);
-  });
+    const statusList = lang === "ar" ? statusesAr : statusesEn;
+    let statusIdx = 0;
+    setBlendStatusText(statusList[0]);
+
+    const statusInterval = setInterval(() => {
+      statusIdx = (statusIdx + 1) % statusList.length;
+      setBlendStatusText(statusList[statusIdx]);
+    }, 550);
+
+    setTimeout(() => {
+      clearInterval(statusInterval);
+      setIsBlending(false);
+      triggerToast(lang === "ar" ? "تم إنشاء كرت التباهي الخاص بك بنجاح! 🏆" : "Your bragging card successfully printed! 🏆");
+    }, 2800);
+  };
+
+  const handleGenerateAIBlend = () => {
+    if (!cropperInstRef.current) return;
+    playInteractionSound();
+    
+    // Get cropped canvas
+    const croppedCanvas = cropperInstRef.current.getCroppedCanvas({
+      width: 450,
+      height: 450,
+      imageSmoothingEnabled: true,
+      imageSmoothingQuality: "high"
+    });
+    
+    if (croppedCanvas) {
+      const croppedDataUrl = croppedCanvas.toDataURL("image/png");
+      startFanCardSimulation(croppedDataUrl);
+    } else {
+      triggerToast(lang === "ar" ? "تعذر قص الصورة، حاول مرة أخرى." : "Cropping failed, please try again.");
+    }
+  };
+
+  const handleDownloadFanCard = async () => {
+    playInteractionSound();
+    if (!fanCardElementRef.current) return;
+
+    triggerToast(lang === "ar" ? "جاري تجهيز كرت التباهي للتحميل الفوري... 🖼️" : "Preparing high-res bragging card for download... 🖼️");
+
+    const backups: any[] = [];
+
+    try {
+      fanCardElementRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      // Clean oklch / oklab colors for html2canvas to prevent SVG/canvas loading crashes in styling systems
+      const styleElements = Array.from(document.querySelectorAll("style"));
+      for (const styleEl of styleElements) {
+        const originalText = styleEl.innerHTML;
+        if (originalText.includes("oklch") || originalText.includes("oklab")) {
+          const cleaned = originalText
+            .replace(/oklch\([^)]+\)/g, "rgb(120, 120, 120)")
+            .replace(/oklab\([^)]+\)/g, "rgb(120, 120, 120)");
+          styleEl.innerHTML = cleaned;
+          backups.push({ type: "style", element: styleEl, content: originalText });
+        }
+      }
+
+      const linkElements = Array.from(document.querySelectorAll("link[rel='stylesheet']")) as HTMLLinkElement[];
+      for (const linkEl of linkElements) {
+        try {
+          const response = await fetch(linkEl.href);
+          if (response.ok) {
+            const text = await response.text();
+            if (text.includes("oklch") || text.includes("oklab")) {
+              const cleanedText = text
+                .replace(/oklch\([^)]+\)/g, "rgb(120, 120, 120)")
+                .replace(/oklab\([^)]+\)/g, "rgb(120, 120, 120)");
+              
+              const tempStyle = document.createElement("style");
+              tempStyle.setAttribute("data-html2canvas-temp", "true");
+              tempStyle.innerHTML = cleanedText;
+              document.head.appendChild(tempStyle);
+
+              linkEl.disabled = true;
+              backups.push({ type: "link", element: linkEl, tempStyleElement: tempStyle });
+            }
+          }
+        } catch (err) {
+          console.warn("Failed to sanitize stylesheet for html2canvas:", linkEl.href, err);
+        }
+      }
+
+      const options = {
+        useCORS: true,
+        backgroundColor: "#020512", // premium absolute dark backdrop
+        scale: 2, // crisp high density
+        logging: false,
+      };
+
+      await new Promise((resolve) => setTimeout(resolve, 450));
+      const canvas = await html2canvas(fanCardElementRef.current, options);
+      const dataUrl = canvas.toDataURL("image/png");
+
+      const link = document.createElement("a");
+      link.download = `soccer-fan-card-${selectedRivalId}.png`;
+      link.href = dataUrl;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      triggerToast(lang === "ar" ? "تم تحميل كرت التباهي بنجاح! 🥳 شاركه مع أصدقائك!" : "Bragging card downloaded successfully! 🥳 Go share!");
+    } catch (err: any) {
+      console.error("html2canvas print failure: ", err);
+      triggerToast(lang === "ar" ? "عذراً! فشل التحميل التلقائي، التقط لقطة شاشة وشارك كرت التباهي!" : "Automatic download failed on this device, snap a screenshot to share!");
+    } finally {
+      // Revert style changes to ensure standard UI is unaltered
+      for (const back of backups) {
+        if (back.type === "style") {
+          back.element.innerHTML = back.content;
+        } else if (back.type === "link") {
+          back.element.disabled = false;
+          if (back.tempStyleElement && back.tempStyleElement.parentNode) {
+            back.tempStyleElement.parentNode.removeChild(back.tempStyleElement);
+          }
+        }
+      }
+    }
+  };
+
+  // Trigger brief alert notifications
+  const triggerToast = (text: string) => {
+    setToastText(text);
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 4500);
+  };
+
+  // Built-in social hub handlers
+  const handleSocialShare = (platform: "whatsapp" | "facebook" | "x") => {
+    playInteractionSound();
+    if (!finalPlayer) return;
+
+    const nameStr = lang === "ar" ? finalPlayer.nameAr : finalPlayer.nameEn;
+    const titleStr = lang === "ar" ? finalPlayer.titleAr : finalPlayer.titleEn;
+    const mottoStr = lang === "ar" ? finalPlayer.mottoAr : finalPlayer.mottoEn;
+
+    const shareTitle = lang === "ar"
+      ? `⚽ هائل! خضعت لاختبار عمالقة المونديال المتجدد ٢٠٢٦ واكتشفت أنني أشبه الأسطورة: **${nameStr}** (${titleStr})!\n\n🎯 شعاري الكروي المعتمد: "${mottoStr}" \n\n🔥 خض الاختبار أنت أيضاً مجاناً واكتشف شبيهك الكروي من أساطير كأس العالم!`
+      : `⚽ Outstanding! I took the 2026 World Cup Player Personality test and matched with the Legend: **${nameStr}** (${titleStr})!\n\n🎯 My Football Motto: "${mottoStr}" \n\n🔥 Take the quiz now for free and discover your legendary football soulmate!`;
+
+    const shareUrl = window.location.href;
+    const encodedText = encodeURIComponent(`${shareTitle}\n\n🔗 ${lang === "ar" ? "جرّب الاختبار من هنا:" : "Try the quiz here:"}\n${shareUrl}`);
+
+    let href = "";
+    if (platform === "whatsapp") {
+      href = `https://api.whatsapp.com/send?text=${encodedText}`;
+    } else if (platform === "x") {
+      href = `https://twitter.com/intent/tweet?text=${encodedText}`;
+    } else if (platform === "facebook") {
+      href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+    }
+
+    try {
+      window.open(href, "_blank", "noopener,noreferrer");
+    } catch (e) {
+      triggerToast(t.toastShareReady);
+    }
+  };
+
+  const isRtl = lang === "ar";
+  const progressPercent = questions.length > 0 ? (currentIndex / 7) * 100 : 0;
+
+  // Build full translations including legal block which is fetched from translations.ts
+  const appTranslations = {
+    ar: {
+      ...uiTranslations.ar,
+      legal: translations.ar.legal,
+    },
+    en: {
+      ...uiTranslations.en,
+      legal: translations.en.legal,
+    }
+  };
+  const t = appTranslations[lang];
 
   return (
     <div 
-      className="min-h-screen bg-[#040705] text-slate-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-slate-950 transition-all duration-300"
-      dir={isAr ? "rtl" : "ltr"}
-      id="dkora-store-root"
+      className="min-h-screen bg-white text-slate-900 flex flex-col items-center justify-between font-sans selection:bg-red-600 selection:text-white relative overflow-hidden"
+      dir={isRtl ? "rtl" : "ltr"}
     >
       
-      {/* Header component */}
-      <Header
-        lang={lang}
-        setLang={setLang}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
-        playSynthSound={playSynthSound}
-        isMuted={isMuted}
-        setIsMuted={setIsMuted}
-      />
-
-      {/* Hero section */}
-      <Hero
-        lang={lang}
-        scrollToProducts={scrollToProducts}
-        playSynthSound={playSynthSound}
-      />
-
-      {/* Interactive Coupon Board */}
-      <CouponSection
-        lang={lang}
-        playSynthSound={playSynthSound}
-      />
-
-      {/* Main Grid Section */}
-      <main 
-        ref={productsRef} 
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-1 w-full space-y-10"
-      >
+      {/* Dynamic Background Stadium Field Lighting with soft Red, White, and Navy glow overlays */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-0 left-1/4 w-[450px] h-[450px] bg-gradient-to-br from-red-100/40 via-red-50/10 to-transparent rounded-full blur-[100px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-to-tl from-slate-100/55 via-indigo-50/20 to-transparent rounded-full blur-[120px]" />
         
-        {/* Section Headline */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-emerald-950/40 pb-6">
-          <div className="space-y-1.5 text-center md:text-right" dir={isAr ? "rtl" : "ltr"}>
-            <div className="flex items-center gap-1.5 text-emerald-400 text-xs font-black justify-center md:justify-start">
-              <Award className="w-4 h-4 text-emerald-400" />
-              <span>{isAr ? "توصيات ومراجعات الخبراء" : "Expert Handpicked Recommendations"}</span>
-            </div>
-            <h2 className="text-xl sm:text-2xl font-black text-white">
-              {isAr ? "أقوى عروض المعدات الرياضية المخفضة" : "Top Discounted Athletic Gear Deals"}
-            </h2>
-            <p className="text-xs text-slate-400 font-medium">
-              {isAr 
-                ? "انقر على أي منتج لاستعراض مراجعة فنية مفصلة، المميزات والعيوب، وخصومات الكوبونات قبل التوجيه."
-                : "Click on any product to inspect a full technical analysis, pros/cons list, and copy extra coupons."}
-            </p>
-          </div>
+        {/* Pitch grid textures in clean subtle overlay */}
+        <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#ef4444_1px,transparent_1px)] [background-size:20px_20px]" />
+        <div className="absolute top-0 right-0 left-0 h-1 bg-gradient-to-r from-transparent via-red-500/20 to-transparent" />
+      </div>
 
-          {/* Active stats */}
-          <div className="flex items-center justify-center gap-3 text-xs font-black text-slate-400 bg-emerald-950/20 px-3 py-1.5 rounded-xl border border-emerald-950/40">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>
-              {isAr 
-                ? `يعرض حالياً: ${filteredProducts.length} من المنتجات` 
-                : `Showing: ${filteredProducts.length} premium products`}
-            </span>
+      {/* Global Bilingual Header in pristine responsive white banner */}
+      <header 
+        onClick={() => { handleTabChange("quiz"); playInteractionSound(); }}
+        className="w-full max-w-4xl px-4 py-5 flex flex-col sm:flex-row gap-4 items-center justify-between border-b border-slate-200 z-10 bg-white/80 backdrop-blur-md cursor-pointer hover:bg-slate-50/50 transition-colors duration-200 group/header"
+        title={lang === "ar" ? "اضغط للذهاب لالصفحة الرئيسية" : "Click to go to Home Page"}
+      >
+        <div 
+          className="flex items-center gap-3 select-none group transition-opacity"
+        >
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-650 via-red-500 to-white flex items-center justify-center shadow-md shadow-red-500/10 shrink-0 transition-transform group-hover:scale-105 group-hover/header:scale-105">
+            <Trophy className="w-5.5 h-5.5 text-white animate-bounce" />
+          </div>
+          <div className="text-center sm:text-start rtl:sm:text-right ltr:sm:text-left">
+            <h1 className="text-sm sm:text-base font-black tracking-tight bg-gradient-to-r from-slate-950 via-red-600 to-slate-950 bg-clip-text text-transparent group-hover:text-red-650 transition-colors">
+              {t.title}
+            </h1>
+            <p className="text-[10px] text-slate-400 font-mono tracking-widest uppercase">
+              {t.subtitle}
+            </p>
           </div>
         </div>
 
-        {/* Empty Search/Filter State */}
-        {filteredProducts.length === 0 ? (
-          <div className="py-20 flex flex-col items-center justify-center text-center max-w-md mx-auto space-y-6">
-            <div className="w-16 h-16 rounded-2xl bg-rose-950/20 border border-rose-950 flex items-center justify-center text-rose-500">
-              <Info className="w-8 h-8" />
-            </div>
-            <div className="space-y-2">
-              <h4 className="text-base font-black text-white">
-                {isAr ? "عذراً، لم نجد أي تطابق!" : "No Matching Products Found"}
-              </h4>
-              <p className="text-xs text-slate-400 leading-relaxed font-medium">
-                {isAr 
-                  ? "جرب البحث بكلمات أبسط أو اضغط على زر إعادة التعيين أدناه لعرض جميع المنتجات المتاحة مجدداً."
-                  : "Try checking your spelling, clear search terms, or reset the active filter to show all products."}
+        {/* Navigation Switchboard & Language toggle */}
+        <div className="flex flex-wrap items-center justify-center gap-2" onClick={(e) => e.stopPropagation()}>
+          {activeTab !== "quiz" && (
+            <button
+              onClick={() => { handleTabChange("quiz"); playInteractionSound(); }}
+              className="px-3 py-1.5 rounded-xl text-xs font-black bg-red-650 text-white hover:bg-red-700 transition-all cursor-pointer shadow-sm shadow-red-600/20"
+            >
+              {lang === "ar" ? "العودة للاختبار" : "Back to Quiz"}
+            </button>
+          )}
+
+          <button
+            id="lang-toggle-btn"
+            onClick={() => handleLanguageChange(lang === "ar" ? "en" : "ar")}
+            className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-red-500 hover:bg-slate-100 text-xs text-slate-700 hover:text-slate-950 transition-all font-bold flex items-center gap-1.5 cursor-pointer shadow-sm"
+          >
+            <Globe className="w-3.5 h-3.5 text-red-500" />
+            <span>{lang === "ar" ? "English 🇬🇧" : "العربية 🇸🇦"}</span>
+          </button>
+        </div>
+      </header>
+
+      {/* Primary Workspace */}
+      <main className="w-full max-w-4xl px-4 py-8 flex flex-col justify-center items-center flex-grow z-10">
+        
+        {/* TAB 1: FOOTBALL PERSONALITY QUIZ FLOW */}
+        {activeTab === "quiz" && (
+          <div className="w-full max-w-2xl mx-auto flex flex-col items-center">
+            
+            {/* SCREEN 1: SPLASH SCREEN (METADATA REVAMPED - NO '40+ QUESTIONS TABS') */}
+            {activeScreen === "start" && (
+              <div className="w-full text-center space-y-8 animate-fade-in py-4">
+                
+                <div className="space-y-4">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 text-red-600 border border-red-100 text-xs font-bold shadow-sm">
+                    <Flame className="w-4 h-4 text-red-500 animate-pulse" />
+                    {t.heroBadge}
+                  </div>
+                  
+                  <h2 className="text-3xl sm:text-5xl font-black text-slate-900 leading-tight">
+                    {t.heroHeadline1} <br />
+                    <span className="bg-gradient-to-r from-[#03071c] via-red-600 to-red-700 bg-clip-text text-transparent relative drop-shadow-sm">
+                      {t.heroHeadline2}
+                    </span>
+                  </h2>
+                  
+                  <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed font-semibold">
+                    {t.heroDesc}
+                  </p>
+                </div>
+
+                {/* Info Badges */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto text-justify">
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-1.5">
+                    <h4 className="font-extrabold text-red-600 text-xs sm:text-sm">⚡ {t.card1Title}</h4>
+                    <p className="text-[11px] sm:text-xs text-slate-500 font-semibold">{t.card1Desc}</p>
+                  </div>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-1.5">
+                    <h4 className="font-extrabold text-[#03071c] text-xs sm:text-sm">🛡️ {t.card2Title}</h4>
+                    <p className="text-[11px] sm:text-xs text-slate-500 font-semibold">{t.card2Desc}</p>
+                  </div>
+                </div>
+
+                {/* Primary Action Trigger */}
+                <div className="pt-6">
+                  <button
+                    id="btn-start-quiz-match"
+                    onClick={initializeQuiz}
+                    className="group relative px-8 py-4 w-full sm:w-auto bg-gradient-to-r from-red-600 to-red-700 outline-none hover:opacity-95 text-white text-base sm:text-lg font-black rounded-2xl shadow-[0_4px_20px_rgba(239,68,68,0.25)] transition-all duration-350 transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer flex items-center justify-center gap-3 mx-auto"
+                  >
+                    <span>{t.startBtn}</span>
+                    <Trophy className="w-5 h-5 text-white transition-transform group-hover:rotate-12" />
+                    
+                    <span className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-red-500 to-white opacity-20 blur-sm group-hover:opacity-30 transition-all pointer-events-none" />
+                  </button>
+                  
+                  <p className="text-[10px] sm:text-xs text-slate-400 mt-4 max-w-sm mx-auto leading-relaxed">
+                    {t.startNote}
+                  </p>
+                </div>
+
+                {/* Veo 3 Promo Banner (Subpage trigger) */}
+                <div className="pt-4 max-w-lg mx-auto">
+                  <div className="bg-gradient-to-br from-[#0b0f24] via-[#050714] to-[#0c122b] border border-indigo-950 p-6 rounded-3xl text-right rtl:text-right ltr:text-left relative overflow-hidden shadow-xl shadow-indigo-950/20 group/veo-promo">
+                    {/* Glowing circular designs */}
+                    <div className="absolute top-0 right-0 w-36 h-36 bg-emerald-500/10 rounded-full filter blur-2xl pointer-events-none group-hover/veo-promo:bg-emerald-500/15 transition-all"></div>
+                    <div className="absolute bottom-0 left-0 w-36 h-36 bg-purple-500/5 rounded-full filter blur-2xl pointer-events-none group-hover/veo-promo:bg-purple-500/10 transition-all"></div>
+                    
+                    <div className="flex flex-col sm:flex-row gap-5 items-center justify-between relative z-10">
+                      <div className="space-y-2 shrink-0 w-full sm:w-2/3">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] font-black rounded-lg">
+                          <Sparkles className="w-3 h-3 text-emerald-400 animate-pulse" />
+                          <span>{lang === "ar" ? "تحديث مميز ٢٠٢٦ مجاناً" : "Special 2026 Free Release"}</span>
+                        </span>
+                        
+                        <h3 className="text-base font-black text-white group-hover/veo-promo:text-emerald-300 transition-colors">
+                          {lang === "ar" ? "توليد الفيديوهات بالذكاء الاصطناعي Veo 3" : "Free AI Video Generator App Veo 3"}
+                        </h3>
+                        
+                        <p className="text-[11px] sm:text-xs text-slate-400 font-semibold leading-relaxed">
+                          {lang === "ar" 
+                            ? "اكتشف الطريقة المجانية المبتكرة لصناعة مقاطع فيديو سينمائية احترافية بدقة فائقة بنقرة زر واحدة." 
+                            : "Discover the advanced free path to create epic, high-fidelity AI video loops from simple text descriptions."}
+                        </p>
+                      </div>
+
+                      <div className="w-full sm:w-auto text-center shrink-0">
+                        <button
+                          onClick={() => {
+                            setVeoClickCount(0);
+                            setActiveScreen("veo-article");
+                            playInteractionSound();
+                          }}
+                          className="w-full sm:w-auto px-5 py-3 bg-rose-600 hover:bg-rose-500 text-white text-xs font-black rounded-xl transition-all shadow-lg shadow-rose-600/15 group-hover/veo-promo:scale-105 transform cursor-pointer whitespace-nowrap"
+                        >
+                          {lang === "ar" ? "قراءة المقال والتحميل" : "Read Guide & Download"}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            )}
+
+            {/* SCREEN 2: ACTIVE TRIVIA/QUIZ EVALUATION */}
+            {activeScreen === "quiz" && questions.length > 0 && (
+              <div className="w-full space-y-6 animate-fade-in self-center">
+                
+                {/* Top Stat tracker & dynamic progress slider */}
+                <div className="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-3 shadow-sm">
+                  <div className="flex items-center justify-between text-xs font-bold text-slate-650">
+                    <span>
+                      {t.questionLabel} <span className="text-slate-900 font-mono text-base">{currentIndex + 1}</span> {t.ofLabel} <span className="text-slate-800 font-mono">7</span>
+                    </span>
+                    <span className="px-2.5 py-1 rounded bg-red-50 border border-red-100 text-red-600 font-mono text-xs">
+                      {t.progressLabel} {Math.round(((currentIndex + 1) / 7) * 100)}%
+                    </span>
+                  </div>
+                  
+                  <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-gradient-to-r from-red-600 to-red-400 rounded-full transition-all duration-300 ease-out"
+                      style={{ width: `${progressPercent || 14}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* Tactical Question Presentation Panel */}
+                <div className="bg-slate-50 border border-slate-200 p-6 sm:p-8 rounded-3xl min-h-[140px] flex items-center justify-center text-center shadow-sm relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-red-500/10 rounded-tr-3xl" />
+                  <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-red-500/10 rounded-bl-3xl" />
+                  
+                  <h3 className="text-base sm:text-lg font-black text-slate-800 leading-relaxed select-none">
+                    {isRtl ? questions[currentIndex].textAr : questions[currentIndex].textEn}
+                  </h3>
+                </div>
+
+                {/* Render choices mapping list */}
+                <div className="space-y-3 pt-1">
+                  {questions[currentIndex].options.map((option, idx) => {
+                    const optionAlphabet = isRtl ? ["أ", "ب", "ج", "د"] : ["A", "B", "C", "D"];
+                    return (
+                      <button
+                        key={idx}
+                        id={`choice-action-${idx}`}
+                        onClick={() => handleAnswerClick(option.player)}
+                        className="w-full text-start p-4 bg-white border border-slate-200 hover:border-red-500 hover:bg-slate-50 active:bg-slate-100 rounded-2xl cursor-pointer transition-all duration-200 shadow-sm text-sm sm:text-base font-semibold text-slate-700 hover:text-slate-950 flex items-center justify-between group transform hover:-translate-y-0.5 active:translate-y-0"
+                      >
+                        <div className="flex items-center gap-3.5">
+                          <span className="w-8 h-8 flex-shrink-0 bg-slate-50 border border-slate-200 text-slate-550 group-hover:bg-red-600 group-hover:text-white group-hover:border-red-500 font-bold text-xs sm:text-sm rounded-xl flex items-center justify-center font-mono transition-colors">
+                            {optionAlphabet[idx]}
+                          </span>
+                          <span className="leading-normal">{isRtl ? option.textAr : option.textEn}</span>
+                        </div>
+                        
+                        <span className="w-2.5 h-2.5 rounded-full border border-slate-350 bg-transparent group-hover:bg-red-500 group-hover:border-red-400 transition-all shrink-0 ml-1" />
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Inner back navigation controls */}
+                <div className="flex items-center justify-between pt-2">
+                  <button
+                    onClick={handlePreviousQuestion}
+                    disabled={currentIndex === 0}
+                    className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                      currentIndex === 0
+                        ? "text-slate-400 border border-slate-100 cursor-not-allowed bg-slate-50/50"
+                        : "text-slate-600 border border-slate-200 hover:border-red-500 hover:bg-slate-50 bg-white cursor-pointer"
+                    }`}
+                  >
+                    <span>{t.prevBtn}</span>
+                  </button>
+
+                  <span className="text-[11px] text-slate-400 font-mono">
+                    {t.attemptLabel} #{quizAttempts}
+                  </span>
+                </div>
+
+              </div>
+            )}
+
+            {/* SCREEN 3: DYNAMIC ANALYZING SPIN TRANSITION */}
+            {activeScreen === "analyzing" && (
+              <div className="w-full text-center py-12 space-y-8 animate-fade-in self-center">
+                <div className="relative inline-flex items-center justify-center">
+                  <div className="w-24 h-24 rounded-full border-4 border-dashed border-red-500 animate-spin" />
+                  
+                  <div className="absolute w-16 h-16 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center shadow-lg">
+                    <Activity className="w-7 h-7 text-red-500 animate-pulse" />
+                  </div>
+
+                  <div className="absolute -inset-4 rounded-full bg-red-500/5 blur-xl animate-ping" />
+                </div>
+
+                <div className="space-y-4 max-w-sm mx-auto">
+                  <h3 className="text-lg sm:text-xl font-black text-slate-900">
+                    {t.analyzingTitle}
+                  </h3>
+                  
+                  <div className="space-y-2 text-xs text-slate-700 font-medium text-justify">
+                    <div className="flex items-center justify-between bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200">
+                      <span>{t.analyzingLine1}</span>
+                      <span className="text-red-500 text-[10px] font-mono font-bold animate-pulse">{t.analyzingStatus1}</span>
+                    </div>
+                    <div className="flex items-center justify-between bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200">
+                      <span>{t.analyzingLine2}</span>
+                      <span className="text-red-500 text-[10px] font-mono font-bold">{t.analyzingStatus2}</span>
+                    </div>
+                    <div className="flex items-center justify-between bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200">
+                      <span>{t.analyzingLine3}</span>
+                      <span className="text-slate-800 text-[10px] font-mono font-bold">{t.analyzingStatus3}</span>
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-red-500 animate-pulse font-bold pt-2 italic">
+                    {t.analyzingQuote}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* SCREEN 4: HIGHEST FIDELITY RESULTS SECTION (DARK COLLECTIBLE CARD CONTRAST) */}
+            {activeScreen === "result" && finalPlayer && (
+              <div className="w-full space-y-8 animate-fade-in self-center">
+                
+                <div className="text-center space-y-1">
+                  <div className="inline-flex items-center justify-center p-2 px-3.5 bg-red-50 border border-red-100 text-red-600 text-xs font-black rounded-full gap-2 font-sans shadow-sm">
+                    <Award className="w-3.5 h-3.5 animate-spin text-red-500" />
+                    {t.resultBanner}
+                  </div>
+                  <h2 className="text-xl sm:text-2xl font-black text-slate-900">
+                    {t.resultTitle}
+                  </h2>
+                </div>
+
+                {/* PREMIUM TRADING/COLLECTIBLE ATHLETE CARD (Stays Dark/Golden for perfect download contrast) */}
+                <div 
+                  ref={resultCardRef}
+                  id="card-legend-container"
+                  className="w-full overflow-hidden rounded-3xl bg-[#04081a] border border-[#16275c] shadow-2xl relative p-6 sm:p-8 space-y-6 text-white"
+                  style={{
+                    boxShadow: `0 15px 45px -15px ${finalPlayer.glowColor || "#ef4444"}`,
+                  }}
+                >
+                  <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.04] bg-[radial-gradient(#ef4444_1px,transparent_1px)] [background-size:20px_20px]" />
+                  
+                  <div className="absolute top-5 left-5 opacity-20 pointer-events-none text-right font-mono text-[9px] text-slate-350 tracking-widest hidden sm:block">
+                    {t.resultProfileId} #{finalPlayer.id.toUpperCase()}-2026
+                  </div>
+
+                  {/* ATHLETE CARD DETAILS */}
+                  <div className="relative z-10 space-y-6">
+                    
+                    {/* Header Information panel */}
+                    <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 pb-6 border-b border-slate-800/80 text-center sm:text-start">
+                      
+                      {/* Glowing Athlete Graphic Avatar Badge with Real Photo */}
+                      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-slate-900 overflow-hidden shadow-lg relative flex-shrink-0 border border-slate-700">
+                        <img 
+                          src={`/${finalPlayer.id}.jpg`} 
+                          alt={lang === "ar" ? finalPlayer.nameAr : finalPlayer.nameEn}
+                          className="w-full h-full object-cover"
+                          referrerPolicy="no-referrer"
+                          crossOrigin="anonymous"
+                        />
+                        <div className="absolute -inset-1 rounded-2xl bg-white opacity-5 animate-pulse pointer-events-none" />
+                      </div>
+
+                      <div className="space-y-1.5">
+                        <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+                          <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                            {lang === "ar" ? finalPlayer.nameAr : finalPlayer.nameEn}
+                          </h3>
+                          {lang === "ar" && (
+                            <span className="text-xs font-mono font-bold text-slate-400 hidden sm:inline">
+                              ({finalPlayer.nameEn})
+                            </span>
+                          )}
+                        </div>
+
+                        <p className="text-xs sm:text-sm font-bold text-red-500 bg-red-500/5 px-2.5 py-0.5 rounded border border-red-500/10 inline-block font-sans">
+                          {lang === "ar" ? finalPlayer.titleAr : finalPlayer.titleEn}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Analytical Evaluation Narrative */}
+                    <div className="space-y-2 text-justify">
+                      <h4 className="text-xs font-black text-slate-300 tracking-wider flex items-center gap-1.5 uppercase">
+                        <User className="w-3.5 h-3.5 text-red-500" />
+                        {t.resultAnalysisTitle}
+                      </h4>
+                      <p className="text-slate-200 text-xs sm:text-sm leading-relaxed bg-[#0b132e]/40 p-4 rounded-2xl border border-[#16275c]/60 font-medium">
+                        {lang === "ar" ? finalPlayer.personalityAr : finalPlayer.personalityEn}
+                      </p>
+                    </div>
+
+                    {/* Athlete Strength Badges List */}
+                    <div className="space-y-2">
+                      <h4 className="text-xs font-black text-slate-300 tracking-wider flex items-center gap-1.5 uppercase">
+                        <Sparkles className="w-3.5 h-3.5 text-red-500" />
+                        {t.resultStrengthsTitle}
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {(lang === "ar" ? finalPlayer.strengthsAr : finalPlayer.strengthsEn).map((str, index) => (
+                          <div key={index} className="flex items-center gap-2 px-3 py-2 rounded-xl bg-[#0b132e] border border-[#16275c] text-xs text-slate-200 text-right rtl:text-right ltr:text-left">
+                            <span className="w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0" />
+                            <span className="font-semibold leading-snug">{str}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Golden Motto Quote Block */}
+                    <div className="p-4 bg-gradient-to-r from-red-950/25 to-[#0b132e]/40 border-l-4 border-red-500 rounded-r-xl space-y-1">
+                      <span className="text-[9px] text-red-400 font-extrabold uppercase tracking-wider block">
+                        {t.resultMottoTitle}
+                      </span>
+                      <p className="text-xs sm:text-sm italic font-extrabold text-white">
+                        "{lang === "ar" ? finalPlayer.mottoAr : finalPlayer.mottoEn}"
+                      </p>
+                    </div>
+
+                    {/* Stats Gauges Attributes Section */}
+                    <div className="space-y-3 pt-1">
+                      <h4 className="text-xs font-black text-slate-300 tracking-wider flex items-center gap-1.5 uppercase">
+                        <Target className="w-3.5 h-3.5 text-red-500" />
+                        {t.resultStatsTitle}
+                      </h4>
+                      
+                      <div className="space-y-3 bg-[#0b132e]/30 p-4 rounded-2xl border border-[#16275c]">
+                        {/* Speed attribute */}
+                        <div className="space-y-1">
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="text-slate-300 font-bold">{t.statSpeed}</span>
+                            <span className="font-mono font-bold text-red-500 text-sm">{finalPlayer.stats.speed}%</span>
+                          </div>
+                          <div className="w-full h-1.5 bg-[#070b1e] rounded-full overflow-hidden">
+                            <div className="h-full bg-red-500 rounded-full" style={{ width: `${finalPlayer.stats.speed}%` }} />
+                          </div>
+                        </div>
+
+                        {/* Dribbling attribute */}
+                        <div className="space-y-1">
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="text-slate-300 font-bold">{t.statDribbble}</span>
+                            <span className="font-mono font-bold text-white text-sm">{finalPlayer.stats.dribbling}%</span>
+                          </div>
+                          <div className="w-full h-1.5 bg-[#070b1e] rounded-full overflow-hidden">
+                            <div className="h-full bg-white rounded-full" style={{ width: `${finalPlayer.stats.dribbling}%` }} />
+                          </div>
+                        </div>
+
+                        {/* Shooting attribute */}
+                        <div className="space-y-1">
+                          <div className="flex items-center justify-between text-xs">
+                            <span className="text-slate-300 font-bold">{t.statShooting}</span>
+                            <span className="font-mono font-bold text-red-400 text-sm">{finalPlayer.stats.shooting}%</span>
+                          </div>
+                          <div className="w-full h-1.5 bg-[#070b1e] rounded-full overflow-hidden">
+                            <div className="h-full bg-red-650 rounded-full" style={{ width: `${finalPlayer.stats.shooting}%` }} />
+                          </div>
+                        </div>
+
+                        {/* Stamina & Teamwork Row */}
+                        <div className="grid grid-cols-2 gap-4 pt-1">
+                          <div>
+                            <div className="text-[10px] sm:text-xs text-slate-350 font-black mb-1 block uppercase">{t.statStamina}</div>
+                            <div className="flex items-center gap-1.5 text-white font-mono font-black text-xs sm:text-sm">
+                              <Activity className="w-3.5 h-3.5 text-red-500" />
+                              {finalPlayer.stats.stamina}%
+                            </div>
+                          </div>
+                          <div>
+                            <div className="text-[10px] sm:text-xs text-slate-350 font-black mb-1 block uppercase">{t.statTeamwork}</div>
+                            <div className="flex items-center gap-1.5 text-white font-mono font-black text-xs sm:text-sm">
+                              <Heart className="w-3.5 h-3.5 text-white" />
+                              {finalPlayer.stats.teamwork}%
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                {/* ACTION TRIGGERS */}
+                <div className="flex justify-center w-full">
+                  
+                  {/* Reset Quiz button */}
+                  <button
+                    onClick={handleResetQuiz}
+                    className="w-full max-w-md px-6 py-4 bg-white border border-slate-200 hover:border-red-500 active:bg-slate-50 text-slate-700 hover:text-slate-900 text-sm font-bold rounded-2xl transition-all cursor-pointer flex items-center justify-center gap-2.5 transform hover:-translate-y-0.5 shadow-sm"
+                  >
+                    <RotateCcw className="w-4.5 h-4.5 text-red-500 animate-spin" />
+                    <span>{t.retakeBtn}</span>
+                  </button>
+
+                </div>
+
+                {/* SOCCER FAN CARD & HEADLINE GENERATOR (Fully Client-Side & Interactive) */}
+                <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-6 shadow-sm">
+                  <div className="space-y-2 border-b border-slate-100 pb-4">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-red-600 to-red-500 text-white text-[10px] sm:text-xs font-black shadow-sm">
+                      <Sparkles className="w-3.5 h-3.5 text-white animate-pulse" />
+                      <span>{lang === "ar" ? "مولد كروت التباهي والألقاب الساخرة" : "Viral Fan Card & Headline Generator"}</span>
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-black text-slate-900 flex items-center gap-2">
+                      {lang === "ar" ? "اصنع كرت التباهي الخاص بك مجاناً" : "Create Your Bragging Fan Card Free"}
+                    </h3>
+                    <p className="text-xs text-slate-500 leading-relaxed text-start">
+                      {lang === "ar" 
+                        ? "ارفع صورتك لمطابقتها وقصها بدقة واقصص وجهك، ثم اختر لاعبك المنافس المفضل لتوليد لقب رياضي ساخر ومشاركة الكرت بجودة فائقة لقصص إنستغرام وفيسبوك!"
+                        : "Upload your photo, crop and align your face, select your rival icon, and generate a viral Arabic headline to download as a story-ready image!"
+                      }
+                    </p>
+                  </div>
+
+                  {!userUploadedFile ? (
+                    <div className="space-y-4">
+                      {/* Drag & Drop Upload field */}
+                      <label 
+                        className="flex flex-col items-center justify-center border-2 border-dashed border-slate-300 hover:border-red-500 bg-slate-50/50 hover:bg-slate-50/80 p-8 rounded-2xl cursor-pointer text-center group transition-all"
+                        onDragOver={(e) => { e.preventDefault(); }}
+                        onDrop={(e) => {
+                          e.preventDefault();
+                          const file = e.dataTransfer.files[0];
+                          if (file && file.type.startsWith("image/")) {
+                            const reader = new FileReader();
+                            reader.onloadend = () => {
+                              setUserUploadedFile(reader.result as string);
+                              setUserCroppedImage(null);
+                            };
+                            reader.readAsDataURL(file);
+                            playInteractionSound();
+                          }
+                        }}
+                      >
+                        <input 
+                          type="file" 
+                          accept="image/*" 
+                          className="hidden" 
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              const reader = new FileReader();
+                              reader.onloadend = () => {
+                                setUserUploadedFile(reader.result as string);
+                                setUserCroppedImage(null);
+                              };
+                              reader.readAsDataURL(file);
+                              playInteractionSound();
+                            }
+                          }}
+                        />
+                        <div className="p-4 bg-white rounded-full shadow-sm text-slate-400 group-hover:text-red-500 transition-colors mb-3">
+                          <Upload className="w-6 h-6" />
+                        </div>
+                        <span className="text-sm font-extrabold text-slate-700 block">
+                          {lang === "ar" ? "اضغط هنا لرفع صورتك الشخصية" : "Click here to upload your profile photo"}
+                        </span>
+                        <span className="text-xs text-slate-400 mt-1 block">
+                          {lang === "ar" ? "أو اسحب وأسقط الصورة هنا مباشرة (JPEG, PNG)" : "or drag and drop your photo here (JPEG, PNG)"}
+                        </span>
+                      </label>
+                    </div>
+                  ) : !userCroppedImage ? (
+                    /* STEP 2: Cropper layout with Cropper.js controls */
+                    <div className="space-y-4">
+                      <span className="text-xs font-black text-slate-600 block text-start">
+                        {lang === "ar" ? "✂️ اضبط إطار وجهك بشكل صحيح ليتطابق مع الكرت:" : "✂️ Crop and align your face correctly:"}
+                      </span>
+                      
+                      <div className="max-h-[380px] overflow-hidden rounded-2xl bg-slate-950 border border-slate-200 flex items-center justify-center p-2">
+                        <img
+                          ref={cropperImgRef}
+                          src={userUploadedFile}
+                          alt="Cropping region"
+                          className="max-w-full block"
+                          onLoad={() => {
+                            if (cropperImgRef.current) {
+                              if (cropperInstRef.current) {
+                                cropperInstRef.current.destroy();
+                              }
+                              cropperInstRef.current = new Cropper(cropperImgRef.current, {
+                                aspectRatio: 1, // perfect square for athlete profile frames
+                                viewMode: 1,
+                                dragMode: 'move',
+                                autoCropArea: 0.85,
+                                background: false,
+                                responsive: true,
+                                checkOrientation: false,
+                              });
+                            }
+                          }}
+                        />
+                      </div>
+                      
+                      <div className="flex flex-wrap items-center justify-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => { cropperInstRef.current?.rotate(-90); playInteractionSound(); }}
+                          className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-colors"
+                        >
+                          {lang === "ar" ? "↩️ تدوير لليسار" : "↩️ Rotate Left"}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => { cropperInstRef.current?.rotate(90); playInteractionSound(); }}
+                          className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-colors"
+                        >
+                          {lang === "ar" ? "↪️ تدوير لليمين" : "↪️ Rotate Right"}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => { cropperInstRef.current?.zoom(0.15); playInteractionSound(); }}
+                          className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-colors"
+                        >
+                          {lang === "ar" ? "➕ تقريب" : "➕ Zoom In"}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => { cropperInstRef.current?.zoom(-0.15); playInteractionSound(); }}
+                          className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-colors"
+                        >
+                          {lang === "ar" ? "➖ إبعاد" : "➖ Zoom Out"}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => { cropperInstRef.current?.reset(); playInteractionSound(); }}
+                          className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 rounded-xl text-xs font-bold transition-colors"
+                        >
+                          {lang === "ar" ? "إعادة ضبط" : "Reset"}
+                        </button>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3 pt-2">
+                        <button
+                          type="button"
+                          onClick={() => { setUserUploadedFile(null); setUserCroppedImage(null); playInteractionSound(); }}
+                          className="py-3 px-4 bg-slate-105 hover:bg-slate-150 text-slate-600 rounded-xl text-xs font-bold transition-all text-center"
+                        >
+                          {lang === "ar" ? "إلغاء ورفع صورة أخرى" : "Cancel & upload another"}
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={handleGenerateAIBlend}
+                          className="py-3 px-4 bg-red-600 hover:bg-red-750 text-white rounded-xl text-xs font-black transition-all text-center shadow-sm flex items-center justify-center gap-1.5"
+                        >
+                          <Check className="w-4 h-4" />
+                          <span>{lang === "ar" ? "قص الصورة وحفظ" : "Crop & Save Image"}</span>
+                        </button>
+                      </div>
+                    </div>
+                  ) : isBlending ? (
+                    /* STEP 3: Elegant Processing Tension State */
+                    <div className="bg-slate-50 border border-slate-100 p-8 rounded-3xl text-center space-y-4">
+                      <div className="relative inline-flex items-center justify-center">
+                        <Loader2 className="w-12 h-12 text-red-500 animate-spin" />
+                        <span className="absolute text-[10px] font-black text-red-600 animate-pulse">2026</span>
+                      </div>
+                      
+                      <div className="space-y-1 text-center">
+                        <h4 className="text-sm font-black text-slate-800 tracking-tight transition-all duration-300">
+                          {blendStatusText}
+                        </h4>
+                        <p className="text-[10px] sm:text-xs text-slate-400 italic">
+                          {lang === "ar" ? "نقوم بمطابقة أبعاد وجهك وتوليف اللقب الساخر المناسب..." : "Customizing layout and randomizing viral Arabic monikers..."}
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    /* STEP 4: Golden/Dark Bragging Fan Card Interactive Showcase */
+                    <div className="space-y-6">
+                      
+                      {/* Rival Legend Switcher Toolbar */}
+                      <div className="space-y-2">
+                        <label className="text-xs font-bold text-slate-500 block text-start rtl:text-right">
+                          {lang === "ar" ? "🏆 اختر لاعبك المنافس لكرت التباهي:" : "🏆 Select Rival Legend for Fan Card:"}
+                        </label>
+                        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                          {PLAYER_PROFILES.map((p) => (
+                            <button
+                              key={p.id}
+                              type="button"
+                              onClick={() => { setSelectedRivalId(p.id); playInteractionSound(); }}
+                              className={`p-2 rounded-xl border transition-all flex flex-col items-center text-center text-xs font-black relative overflow-hidden cursor-pointer ${
+                                selectedRivalId === p.id
+                                  ? "border-red-500 bg-red-50 text-slate-900 shadow-sm"
+                                  : "border-slate-200 bg-white text-slate-500 hover:border-slate-350 hover:bg-slate-100"
+                              }`}
+                            >
+                              <img src={`/${p.id}.jpg`} alt={p.nameEn} className="w-8 h-8 rounded-full object-cover mb-1 shrink-0" referrerPolicy="no-referrer" crossOrigin="anonymous"/>
+                              <span className="text-[10px] leading-tight block truncate w-full">{lang === "ar" ? p.nameAr : p.nameEn}</span>
+                              {selectedRivalId === p.id && <span className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-red-600" />}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Filter Selections */}
+                      <div className="space-y-2">
+                        <label className="text-xs font-bold text-slate-500 block text-start rtl:text-right">
+                          {lang === "ar" ? "🎨 اختر التأثير الرياضي المونديالي لصورتك:" : "🎨 Select Custom Color Filter for Your Image:"}
+                        </label>
+                        <div className="grid grid-cols-4 gap-2">
+                          {[
+                            { id: "normal", ar: "الأصلي", en: "Original" },
+                            { id: "grayscale", ar: "فولاذ مونو", en: "Steel Mono" },
+                            { id: "sepia", ar: "ريترو دافئ", en: "Sepia Warm" },
+                            { id: "cyber", ar: "نيون سايبر", en: "Cyber Neon" },
+                          ].map((f) => (
+                            <button
+                              key={f.id}
+                              type="button"
+                              onClick={() => { setActiveFilter(f.id); playInteractionSound(); }}
+                              className={`p-2 rounded-xl border text-[10px] sm:text-xs font-extrabold transition-all text-center cursor-pointer ${
+                                activeFilter === f.id
+                                  ? "border-red-500 bg-red-650 text-white"
+                                  : "border-slate-205 bg-slate-50 text-slate-600 hover:bg-slate-100"
+                              }`}
+                            >
+                              {lang === "ar" ? f.ar : f.en}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* THE PREMIUM BRAGGING CARD FOR SOCIAL MEDIA DOWNLOAD */}
+                      <div className="p-1 rounded-[2.5rem] bg-gradient-to-tr from-cyan-500 via-red-500 to-amber-500 shadow-2xl">
+                        <div 
+                          ref={fanCardElementRef}
+                          id="fan-card-printable"
+                          className="w-full bg-[#020512] text-white p-6 sm:p-8 rounded-[2.4rem] relative overflow-hidden flex flex-col justify-between space-y-6 aspect-[4/5] min-h-[460px]"
+                        >
+                          {/* Tech background elements */}
+                          <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.04] bg-[radial-gradient(#ef4444_1px,transparent_1px)] [background-size:20px_20px]" />
+                          <div className="absolute -top-12 -left-12 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+                          <div className="absolute -bottom-12 -right-12 w-48 h-48 bg-red-500/10 rounded-full blur-3xl pointer-events-none" />
+
+                          {/* Card Badge Header */}
+                          <div className="text-center z-10">
+                            <span className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-red-950/70 via-slate-900/40 to-red-950/70 border border-red-500/30 text-red-500 text-[10px] sm:text-xs font-black tracking-widest uppercase">
+                              🏆 {lang === "ar" ? "كرت التباهي للمشجعين • ٢٠٢٦" : "FIFA FAN BRAGGING CARD • 2026"} 🏆
+                            </span>
+                          </div>
+
+                          {/* Side-by-Side Comparison Area */}
+                          <div className="flex items-center justify-around z-10 w-full py-2">
+                            
+                            {/* User Side */}
+                            <div className="flex flex-col items-center space-y-2">
+                              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.30)] bg-slate-900">
+                                <img
+                                  src={userCroppedImage}
+                                  alt="User Cropped"
+                                  className={`w-full h-full object-cover transition-all ${
+                                    activeFilter === "grayscale"
+                                      ? "grayscale contrast-125 brightness-95"
+                                      : activeFilter === "sepia"
+                                      ? "sepia contrast-110 saturate-125"
+                                      : activeFilter === "cyber"
+                                      ? "contrast-150 saturate-[180%] brightness-90 [filter:hue-rotate(200deg)_saturate(250%)]"
+                                      : "filter-none"
+                                  }`}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+                              </div>
+                              <span className="px-2.5 py-1 bg-cyan-950/70 border border-cyan-800/40 text-cyan-400 text-[9px] sm:text-[10px] font-black rounded-lg uppercase">
+                                {lang === "ar" ? "المشجع الأسطوري" : "Legendary Fan"}
+                              </span>
+                            </div>
+
+                            {/* Middle VS Graphic Badge */}
+                            <div className="flex flex-col items-center justify-center shrink-0">
+                              <span className="w-8 h-8 rounded-full bg-red-600 border border-red-400 flex items-center justify-center font-black text-xs text-white shadow-lg animate-pulse">
+                                VS
+                              </span>
+                            </div>
+
+                            {/* Rival Legend Side */}
+                            <div className="flex flex-col items-center space-y-2">
+                              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.30)] bg-slate-900">
+                                <img
+                                  src={`/${selectedRivalId}.jpg`}
+                                  alt={PLAYER_PROFILES.find(p => p.id === selectedRivalId)?.nameEn || "Rival"}
+                                  className="w-full h-full object-cover"
+                                  referrerPolicy="no-referrer"
+                                  crossOrigin="anonymous"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+                              </div>
+                              <span className="px-2.5 py-1 bg-red-950/70 border border-red-800/40 text-red-400 text-[9px] sm:text-[10px] font-black rounded-lg uppercase">
+                                {lang === "ar" ? "الأسطورة المنافس" : "Rival Legend"}
+                              </span>
+                            </div>
+
+                          </div>
+
+                          {/* Massive Viral Center Headline */}
+                          <div className="bg-gradient-to-r from-red-950/40 via-slate-900/60 to-red-950/40 p-4 rounded-2xl border border-red-500/20 text-center relative overflow-hidden z-10">
+                            <div className="absolute -left-10 top-0 w-32 h-32 bg-red-500/5 blur-3xl rounded-full" />
+                            <div className="absolute -right-10 top-0 w-32 h-32 bg-cyan-500/5 blur-3xl rounded-full" />
+                            
+                            <span className="text-[10px] text-yellow-450 font-black block tracking-widest mb-1 shadow-sm uppercase">
+                              ⚽ {lang === "ar" ? "اللقب الكروي الأسطوري" : "LEGENDARY SOCCER MONIKER"} ⚽
+                            </span>
+                            <h3 className="text-sm sm:text-base md:text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-105 leading-relaxed text-center px-1">
+                              {viralHeadline}
+                            </h3>
+                          </div>
+
+                          {/* Card Footer Credentials */}
+                          <div className="flex items-center justify-between text-[8px] sm:text-[9px] text-slate-500/60 border-t border-slate-900/60 pt-4 z-10 font-bold">
+                            <span>{lang === "ar" ? "معتمد • لجنة مشجعي كرة القدم العالمية" : "VERIFIED • WORLD FOOTBALL FAN UNION"}</span>
+                            <span className="font-mono tracking-wider">DKORA.ONLINE</span>
+                          </div>
+
+                        </div>
+                      </div>
+
+                      {/* Interactive Actions Toolset */}
+                      <div className="flex flex-col gap-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          <button
+                            type="button"
+                            onClick={handleRandomizeHeadline}
+                            className="w-full py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-950 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1.5 border border-slate-200 cursor-pointer shadow-sm"
+                          >
+                            <span>🎲 {lang === "ar" ? "تبديل اللقب لتوليد عنوان جديد" : "Draft another dynamic moniker"}</span>
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => { setUserUploadedFile(null); setUserCroppedImage(null); playInteractionSound(); }}
+                            className="w-full py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1.5 border border-slate-205 cursor-pointer shadow-sm"
+                          >
+                            <RotateCcw className="w-3.5 h-3.5" />
+                            <span>{lang === "ar" ? "تغيير صورتك ورفع أخرى" : "Upload another picture"}</span>
+                          </button>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={handleDownloadFanCard}
+                          className="w-full py-4 bg-gradient-to-r from-red-650 to-red-500 hover:opacity-95 text-white font-black text-sm rounded-2xl shadow-lg cursor-pointer transform active:scale-[0.99] duration-150 flex items-center justify-center gap-2"
+                        >
+                          <Download className="w-5 h-5 text-white animate-bounce" />
+                          <span>{lang === "ar" ? "تحميل كرت التباهي ومشاركة النتيجة" : "Download Bragging Card & Share"}</span>
+                        </button>
+                      </div>
+
+                    </div>
+                  )}
+                </div>
+
+                {/* COMMUNITY SHARE HUB */}
+                <div className="bg-slate-50 border border-slate-200 p-5 rounded-3xl text-center space-y-4 shadow-inner">
+                  <span className="text-xs font-bold flex items-center justify-center gap-2 text-slate-700">
+                    <Share2 className="w-4 h-4 text-red-500" />
+                    {t.shareTitle}
+                  </span>
+
+                  <div className="flex flex-wrap items-center justify-center gap-2">
+                    <button
+                      onClick={() => handleSocialShare("whatsapp")}
+                      className="px-4 py-2.5 bg-[#25d366]/10 border border-[#25d366]/20 text-[#128c7e] hover:bg-[#25d366]/15 rounded-xl text-xs font-bold cursor-pointer transition-all flex items-center gap-2 shrink-0"
+                    >
+                      {t.shareWhatsapp}
+                    </button>
+
+                    <button
+                      onClick={() => handleSocialShare("x")}
+                      className="px-4 py-2.5 bg-slate-900 border border-slate-800 text-slate-100 hover:bg-slate-950 rounded-xl text-xs font-bold cursor-pointer transition-all flex items-center gap-2 shrink-0"
+                    >
+                      {t.shareX}
+                    </button>
+
+                    <button
+                      onClick={() => handleSocialShare("facebook")}
+                      className="px-4 py-2.5 bg-[#1877f2]/10 border border-[#1877f2]/20 text-[#0e5a9c] hover:bg-[#1877f2]/15 rounded-xl text-xs font-bold cursor-pointer transition-all flex items-center gap-2 shrink-0"
+                    >
+                      {t.shareFacebook}
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            )}
+
+            {activeScreen === "veo-article" && (
+              <div className="w-full text-right rtl:text-right ltr:text-left space-y-8 animate-fade-in py-4 max-w-2xl">
+                
+                {/* Back Button */}
+                <div className="flex justify-start">
+                  <button
+                    onClick={() => {
+                      setActiveScreen("start");
+                      playInteractionSound();
+                    }}
+                    className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-black text-slate-700 flex items-center gap-1.5 cursor-pointer shadow-sm transition-all"
+                  >
+                    {isRtl ? (
+                      <>
+                        <ArrowRight className="w-3.5 h-3.5 text-red-655" />
+                        <span>العودة للرئيسية</span>
+                      </>
+                    ) : (
+                      <>
+                        <ArrowLeft className="w-3.5 h-3.5 text-red-655" />
+                        <span>Back to Home</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                {/* Hero Header Article Card with generated image */}
+                <div className="bg-slate-50 border border-slate-200 rounded-3xl overflow-hidden shadow-md">
+                  <div className="relative h-48 sm:h-64 w-full bg-slate-900 overflow-hidden flex items-center justify-center">
+                    <img
+                      src={veo3VideoGenerationGuide}
+                      alt="Google Veo 3 Video Generator"
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover group-hover:scale-105 duration-500 transition-transform"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                    <span className="absolute top-4 right-4 px-3 py-1 bg-rose-600 text-white text-[10px] font-black rounded-lg shadow">
+                      {isRtl ? "دليل معتمد ٢٠٢٦" : "Certified 2026 Guide"}
+                    </span>
+                  </div>
+
+                  <div className="p-6 space-y-4">
+                    <h2 className="text-xl sm:text-2xl font-black text-slate-900 leading-tight">
+                      {isRtl 
+                        ? "تحميل تطبيق توليد الفيديوهات بالذكاء الاصطناعي مجاناً Veo 3 | الدليل الشامل 2026" 
+                        : "Download Free AI Video Generator App Veo 3 | Ultimate 2026 Guide & Features"}
+                    </h2>
+                    
+                    <p className="text-xs text-slate-500 font-bold flex items-center gap-2">
+                      <span>📅 {isRtl ? "تاريخ النشر: ٢٥ يونيو ٢٠٢٦" : "Published: June 25, 2026"}</span>
+                      <span>•</span>
+                      <span>⏱️ {isRtl ? "مدة القراءة: ٨ دقائق" : "Read time: 8 mins"}</span>
+                    </p>
+                  </div>
+                </div>
+
+                {/* Article Content Render */}
+                <div className="space-y-6 text-slate-700 text-xs sm:text-sm leading-relaxed text-justify bg-white border border-slate-200 p-6 sm:p-8 rounded-3xl shadow-sm">
+                  {isRtl ? (
+                    <div className="space-y-6 text-slate-700 text-xs sm:text-sm" dir="rtl">
+                      <p className="text-slate-700 text-sm leading-relaxed font-sans">
+                        يمثل عام <strong>2026</strong> بداية عصر جديد بالكامل في عالم صناعة المحتوى البصري الرقمي، حيث أحدث إطلاق نموذج <strong>Google Veo 3</strong> ثورة عارمة في كيفية إنتاج وتصميم مقاطع الفيديو الاحترافية والسينمائية. إن كنت تبحث عن <strong>تطبيق توليد الفيديوهات بالذكاء الاصطناعي مجاناً</strong> بميزات هائلة ودون الحاجة لخبرات برمجية أو مونتاج معقد، فقد وصلت للمكان الصحيح تماماً.
+                      </p>
+                      
+                      <h3 className="text-base font-black text-slate-900 border-b border-red-500/20 pb-2 mt-8">لماذا يعتبر تطبيق Veo 3 الخيار الأفضل لتوليد الفيديوهات في عام 2026؟</h3>
+                      <p className="text-slate-700 leading-relaxed font-sans mt-2">
+                        يتفوق تطبيق Veo 3 المعتمد على أحدث نماذج قوقل للذكاء الاصطناعي على التطبيقات الأخرى بفضل الفهم العميق للغة الطبيعية والقدرة المذهلة على تحويل النصوص والصور الثابتة إلى كليبات سينمائية تفاعلية وحركية تحاكي كاميرات التصوير الحقيقية.
+                      </p>
+                      <ul className="space-y-2 pr-4 text-xs text-slate-500 list-disc list-inside leading-relaxed font-semibold mt-3">
+                        <li><strong>تحويل النص إلى فيديو بدقة 4K:</strong> بمجرد كتابة وصف دقيق للمشهد، يقوم التطبيق ببناء حركة كاميرا سلسة وإضاءة دراماتيكية بالكامل.</li>
+                        <li><strong>مرونة الحركة والتحكم بالزوايا:</strong> يتيح لك التطبيق محاكاة لقطات الطائرات بدون طيار (Drones)، واللقطات المقربة (Close-up)، والتكبير السينمائي (Cinematic Zoom).</li>
+                        <li><strong>تحريك الصور الثابتة:</strong> ارفع أي صورة ثابتة من جهازك ودع خوارزميات الذكاء الاصطناعي تبث فيها الحياة بحركة واقعية مذهلة بنقرة واحدة.</li>
+                        <li><strong>أداء مجاني وسريع:</strong> يوفر التطبيق خطة مجانية سخية يومياً لتوليد الفيديوهات القصيرة ومشاركتها مباشرة على منصات التواصل الاجتماعي.</li>
+                      </ul>
+
+                      <h3 className="text-base font-black text-slate-900 border-b border-red-500/20 pb-2 mt-8">خطوات استخدام وتنزيل التطبيق بفاعلية ومجاناً</h3>
+                      <p className="text-slate-700 leading-relaxed font-sans mt-2">
+                        لتتمكن من تحقيق أقصى استفادة من هذا التطبيق الثوري، ننصحك باتباع الخطوات التالية لإنتاج فيديوهات احترافية تسترعي الانتباه وتزيد التفاعل:
+                      </p>
+                      <ol className="space-y-2 pr-4 text-xs text-slate-500 list-decimal list-inside leading-relaxed font-semibold mt-3">
+                        <li><strong>كتابة أوامر ذكية (Prompts):</strong> استخدم كلمات وصفية مثل "إضاءة سينمائية، تفاصيل دقيقة، عمق ميدان، حركة كاميرا بطيئة" لضمان نتائج مذهلة.</li>
+                        <li><strong>اختيار صيغة وأبعاد الفيديو:</strong> يدعم التطبيق الأبعاد الطولية المناسبة لـ TikTok و Reels والأبعاد العرضية لـ YouTube.</li>
+                        <li><strong>استغلال الميزات المجانية اليومية:</strong> استمتع بتوليد عدد كبير من اللقطات والحركات المجانية المخصصة لك لتجربة كافة الخصائص الإبداعية.</li>
+                      </ol>
+
+                      <div className="p-4 bg-red-500/5 border-r-4 border-red-650 rounded-l-xl text-slate-700 text-[11px] sm:text-xs font-bold leading-relaxed mt-6">
+                        تنبيه أمان وسيو 2026: تم فحص وتأمين رابط التحميل المباشر أدناه لضمان حصولك على أحدث نسخة رسمية وخالية تماماً من الإعلانات المزعجة أو البرمجيات الخبيثة. اتبع خطوات الضغط بدقة للتحميل الفوري السريع.
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-6 text-slate-700 text-xs sm:text-sm" dir="ltr">
+                      <p className="text-slate-700 text-sm leading-relaxed font-sans">
+                        The year <strong>2026</strong> marks a major milestone in AI-powered visual creation with the release of the <strong>Google Veo 3</strong> model. If you are looking for a <strong>free AI video generator app</strong> equipped with rich, state-of-the-art cinematic tools, this comprehensive guide is tailored perfectly for you.
+                      </p>
+                      
+                      <h3 className="text-base font-black text-slate-900 border-b border-red-500/20 pb-2 mt-8">Why Choose Veo 3 AI Video Generator App in 2026?</h3>
+                      <p className="text-slate-700 leading-relaxed font-sans mt-2">
+                        By utilizing Google's most sophisticated deep learning models, Veo 3 outperforms competing applications with its brilliant prompt understanding and highly stable video renderings.
+                      </p>
+                      <ul className="space-y-2 pl-4 text-xs text-slate-500 list-disc list-inside leading-relaxed font-semibold mt-3">
+                        <li><strong>Stunning 4K Text-to-Video:</strong> Translate natural descriptions into complete cinematic frames with dynamic light shading.</li>
+                        <li><strong>Total Camera Flight Control:</strong> Simulate sweeping drone shots, close-ups, and dramatic pans with extreme fluid motion.</li>
+                        <li><strong>Instant Image Animation:</strong> Turn static artwork into living, breathing video loops with simple descriptive commands.</li>
+                        <li><strong>Robust Free Tier:</strong> Produce short videos everyday for free and export them without heavy watermark restrictions.</li>
+                      </ul>
+
+                      <h3 className="text-base font-black text-slate-900 border-b border-red-500/20 pb-2 mt-8">How to Download and Use Veo 3 App Successfully</h3>
+                      <p className="text-slate-700 leading-relaxed font-sans mt-2">
+                        To master the production of high-engagement video reels, follow these easy steps:
+                      </p>
+                      <ol className="space-y-2 pl-4 text-xs text-slate-500 list-decimal list-inside leading-relaxed font-semibold mt-3">
+                        <li><strong>Inject Scenic Adjectives:</strong> Use cinematic phrases like "slow motion", "dramatic sunset lighting", and "shallow depth of field".</li>
+                        <li><strong>Select Targeted Formats:</strong> Export in vertical orientation for Reels/TikTok or widescreen ratio for standard YouTube plays.</li>
+                        <li><strong>Maximize Free Daily Energy:</strong> Learn the mechanics by utilizing the free daily token grants to craft diverse scenes.</li>
+                      </ol>
+                    </div>
+                  )}
+                </div>
+
+                {/* Download Protection Flow Component (Dual clicks) */}
+                <div className="p-6 bg-gradient-to-br from-[#0e163d] via-[#090d29] to-[#0a1033] border border-slate-850 rounded-3xl shadow-xl space-y-5 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full filter blur-2xl pointer-events-none"></div>
+                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-rose-500/5 rounded-full filter blur-2xl pointer-events-none"></div>
+
+                  <div className="flex items-start justify-between gap-4 relative z-10">
+                    <div className="space-y-1.5 text-right rtl:text-right ltr:text-left">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] font-black rounded-lg">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>{isRtl ? "تطبيق معتمد ومؤمن ١٠٠٪" : "100% Secure & Verified App"}</span>
+                      </span>
+                      <h3 className="text-base sm:text-lg font-black text-white">
+                        {isRtl ? "رابط تحميل تطبيق توليد الفيديوهات بالذكاء الاصطناعي Veo 3" : "Download Veo 3 AI Video Generator App"}
+                      </h3>
+                      <p className="text-xs text-slate-400 font-semibold">
+                        {isRtl 
+                          ? "اضغط أدناه لبدء عملية التثبيت السريعة والآمنة على هاتفك الأندرويد." 
+                          : "Click below to begin the secure high-speed installation on your Android device."}
+                      </p>
+                    </div>
+                    <div className="p-3 bg-slate-950 border border-slate-800 rounded-2xl shrink-0">
+                      <Sparkles className="w-5 h-5 text-emerald-400" />
+                    </div>
+                  </div>
+
+                  {/* Two Click Interaction Progress Flow */}
+                  <div className="space-y-4 pt-2 relative z-10 text-right rtl:text-right ltr:text-left">
+                    <div className="flex items-center justify-between text-[11px] font-bold text-slate-400 px-1">
+                      <span>{isRtl ? "الخطوة ١: التحقق والتأمين" : "Step 1: Link Protection"}</span>
+                      <span>{isRtl ? "الخطوة ٢: التنزيل المباشر" : "Step 2: Install"}</span>
+                    </div>
+                    
+                    <div className="h-2.5 w-full bg-slate-950 border border-slate-900 rounded-full overflow-hidden flex">
+                      <div 
+                        className={`h-full transition-all duration-500 ${
+                          veoClickCount === 0 
+                            ? "w-[15%] bg-slate-700" 
+                            : veoClickCount === 1 
+                              ? "w-[55%] bg-yellow-500 animate-pulse" 
+                              : "w-full bg-emerald-500"
+                        }`}
+                      ></div>
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        if (veoClickCount === 0) {
+                          window.open("https://omg10.com/4/11125764", "_blank");
+                          setVeoClickCount(1);
+                        } else if (veoClickCount === 1) {
+                          window.open("https://play.google.com/store/apps/details?id=com.ainate.ai.video.generate", "_blank");
+                          setVeoClickCount(2);
+                        } else {
+                          window.open("https://play.google.com/store/apps/details?id=com.ainate.ai.video.generate", "_blank");
+                          setVeoClickCount(0);
+                        }
+                        playInteractionSound();
+                      }}
+                      className={`w-full py-4 px-6 rounded-2xl font-black text-xs sm:text-sm transition-all duration-300 transform active:scale-95 shadow-lg flex items-center justify-center gap-2 cursor-pointer ${
+                        veoClickCount === 0 
+                          ? "bg-rose-600 hover:bg-rose-500 text-white" 
+                          : veoClickCount === 1 
+                            ? "bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-extrabold" 
+                            : "bg-emerald-600 hover:bg-emerald-500 text-white"
+                      }`}
+                    >
+                      {veoClickCount === 0 ? (
+                        <>
+                          <Flame className="w-4 h-4 animate-bounce text-white" />
+                          <span>{isRtl ? "تحميل تطبيق Veo 3 (اضغط لتأمين الاتصال - خطوة ١)" : "Download Veo 3 App (Click to Protect - Step 1)"}</span>
+                        </>
+                      ) : veoClickCount === 1 ? (
+                        <>
+                          <Sparkles className="w-4 h-4 animate-pulse text-slate-950" />
+                          <span>{isRtl ? "تم التأمين! اضغط للتحميل المباشر من المتجر (خطوة ٢)" : "Secured! Click to Download from Play Store (Step 2)"}</span>
+                        </>
+                      ) : (
+                        <>
+                          <Check className="w-4 h-4 text-white" />
+                          <span>{isRtl ? "تم فتح صفحة التحميل! (اضغط للبدء من جديد)" : "Opening Store page! (Click to Reset)"}</span>
+                        </>
+                      )}
+                    </button>
+
+                    <p className="text-[11px] text-center text-slate-400 font-bold leading-relaxed pt-1">
+                      {veoClickCount === 0 
+                        ? (isRtl ? "* اضغط أولاً لتأمين وحماية رابط التنزيل عبر نظام التحقق السريع المعتمد." : "* Click first to encrypt and verify your download parameters via smart protect.")
+                        : veoClickCount === 1 
+                          ? (isRtl ? "✓ تم الفحص وتأكيد أمان الرابط! اضغط الآن للبدء المباشر في متجر Google Play." : "✓ Protection verified! Tap now to complete your Google Play Store download.")
+                          : (isRtl ? "• جاري إعادة التحويل... في حال لم يبدأ التثبيت تلقائياً، يرجى التحديث وإعادة المحاولة." : "• Redirecting... If download fails, refresh and repeat the click flow.")}
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            )}
+
+          </div>
+        )}
+
+        {/* TAB 2: ARTICLES BLOG SECTION */}
+        {activeTab === "blog" && (
+          <div className="w-full animate-fade-in py-2 bg-white">
+            <Suspense fallback={
+              <div className="flex flex-col items-center justify-center p-12 text-slate-500 font-bold">
+                <Loader2 className="w-8 h-8 animate-spin text-red-600 mb-2" />
+                <span>{lang === 'ar' ? 'جاري التحميل...' : 'Loading...'}</span>
+              </div>
+            }>
+              <ArticlesPage locale={lang} t={t} />
+            </Suspense>
+          </div>
+        )}
+
+        {/* TAB 3: VISUAL SITEMAP */}
+        {activeTab === "sitemap" && (
+          <div className="w-full max-w-3xl space-y-6 animate-fade-in py-4">
+            
+            <div className="text-center space-y-2 mb-6">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-red-50 text-red-600 border border-red-100 text-xs font-bold rounded-lg shadow-sm">
+                <Globe className="w-3.5 h-3.5 animate-pulse text-red-500" />
+                <span>{lang === "ar" ? "خريطة الموقع التفاعلية والمؤسسية" : "Interactive & Institutional Sitemap"}</span>
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
+                {lang === "ar" ? "خريطة موقع المونديال الشاملة ٢٠٢٦" : "Mondial Comprehensive Sitemap 2026"}
+              </h2>
+              <p className="text-xs text-slate-500 max-w-xl mx-auto">
+                {lang === "ar" 
+                  ? "تصفح بنقرة واحدة جميع صفحات، مقالات، وتطبيقات منصة المونديال. مهيأة ومحدثة بالكامل لسرعة الوصول والتوافق مع محركات البحث." 
+                  : "Explore with one click all pages, articles, and utilities of the Mondial platform. Fully optimized for instant crawling and SEO speed."}
               </p>
             </div>
-            <button
-              onClick={handleResetFilters}
-              className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-black text-xs rounded-xl transition-all cursor-pointer flex items-center gap-1.5"
-            >
-              <RotateCcw className="w-4 h-4" />
-              <span>{isAr ? "إعادة تعيين البحث والتصنيف" : "Reset Filter & Search"}</span>
-            </button>
-          </div>
-        ) : (
-          /* Products Grid Layout */
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {filteredProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                lang={lang}
-                onOpenDetails={(p) => setSelectedProduct(p)}
-                onTriggerAffiliate={(p) => setRedirectProduct(p)}
-                playSynthSound={playSynthSound}
-              />
-            ))}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Primary Pages Group */}
+              <div className="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-4">
+                <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2 border-b border-slate-200 pb-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-650" />
+                  {lang === "ar" ? "الصفحات الرئيسية والأدوات" : "Main Core Pages & Tools"}
+                </h3>
+                
+                <ul className="space-y-3">
+                  <li>
+                    <button 
+                      onClick={() => { setActiveTab("quiz"); setActiveScreen("start"); playInteractionSound(); }}
+                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center justify-between rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
+                    >
+                      <span className="flex items-center gap-2">
+                        <span className="font-mono text-xs text-slate-400">01.</span>
+                        <span>{lang === "ar" ? "الصفحة الرئيسية (اختبار المونديال)" : "Mondial Personality Quiz (Home)"}</span>
+                      </span>
+                      <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-mono font-bold">dkora.online/</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => { setActiveTab("blog"); playInteractionSound(); }}
+                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center justify-between rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
+                    >
+                      <span className="flex items-center gap-2">
+                        <span className="font-mono text-xs text-slate-400">02.</span>
+                        <span>{lang === "ar" ? "قسم مقالات السيو وأسرار الويب" : "SEO Articles & Indexation Guides"}</span>
+                      </span>
+                      <span className="text-[9px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-850 font-mono font-bold">?view=blog</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => { setActiveTab("sitemap"); playInteractionSound(); }}
+                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center justify-between rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
+                    >
+                      <span className="flex items-center gap-2">
+                        <span className="font-mono text-xs text-slate-400">03.</span>
+                        <span>{lang === "ar" ? "خريطة الموقع التفاعلية (هذه الصفحة)" : "Interactive Visual Sitemap"}</span>
+                      </span>
+                      <span className="text-[9px] px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-805 font-mono font-bold">?view=sitemap</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Legal Modals Group */}
+              <div className="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-4">
+                <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2 border-b border-slate-200 pb-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-slate-800" />
+                  {lang === "ar" ? "الصفحات القانونية والسياسات" : "Legal Standards & Policies"}
+                </h3>
+                
+                <ul className="space-y-3">
+                  <li>
+                    <button 
+                      onClick={() => { setActiveLegalModal("privacy"); playInteractionSound(); }}
+                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center gap-2 rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
+                    >
+                      <span className="font-mono text-xs text-slate-400">04.</span>
+                      <span>{lang === "ar" ? "سياسة الخصوصية وسرية البيانات (AdSense)" : "Privacy Policy & GDPR Compliance"}</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => { setActiveLegalModal("terms"); playInteractionSound(); }}
+                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center gap-2 rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
+                    >
+                      <span className="font-mono text-xs text-slate-400">05.</span>
+                      <span>{lang === "ar" ? "شروط الخدمة واتفاقية بنود الاستخدام" : "Terms of Service Agreement"}</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => { setActiveLegalModal("about"); playInteractionSound(); }}
+                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center gap-2 rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
+                    >
+                      <span className="font-mono text-xs text-slate-400">06.</span>
+                      <span>{lang === "ar" ? "من نحن (هويتنا ورسالة المنصة)" : "About Us & Vision Statement"}</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => { setActiveLegalModal("contact"); playInteractionSound(); }}
+                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center gap-2 rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
+                    >
+                      <span className="font-mono text-xs text-slate-400">07.</span>
+                      <span>{lang === "ar" ? "اتصل بنا وإرسال الاستفسارات" : "Contact Us / Support Inbox"}</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => { setActiveLegalModal("disclaimer"); playInteractionSound(); }}
+                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center gap-2 rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
+                    >
+                      <span className="font-mono text-xs text-slate-400">08.</span>
+                      <span>{lang === "ar" ? "إخلاء المسؤولية الفنية واللوجستية" : "Technical Liability Disclaimer"}</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Sitemap SEO Metadata details */}
+            <div className="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-4">
+              <h3 className="font-extrabold text-slate-800 text-sm flex items-center gap-2">
+                📂 {lang === "ar" ? "ملفات الفهرسة المباشرة والبرمجية لعام ٢٠٢٦" : "Official Indexing Files & Robotic XML Maps"}
+              </h3>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <a 
+                  href="/sitemap.xml" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center justify-between p-3.5 bg-white border border-slate-200 rounded-xl hover:border-red-500 transition-colors cursor-pointer"
+                >
+                  <div className="text-right rtl:text-right ltr:text-left">
+                    <span className="font-bold text-xs text-slate-800 block">sitemap.xml</span>
+                    <span className="text-[10px] text-slate-400 block">{lang === "ar" ? "خريطة الموقع الأساسية لمحرك جوجل" : "XML Index Directory for crawl logs"}</span>
+                  </div>
+                  <span className="text-red-500 text-xs font-bold leading-none shrink-0">🔗 {lang === "ar" ? "فتح الرابط" : "Open URl"}</span>
+                </a>
+
+                <a 
+                  href="/robots.txt" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center justify-between p-3.5 bg-white border border-slate-200 rounded-xl hover:border-red-500 transition-colors cursor-pointer"
+                >
+                  <div className="text-right rtl:text-right ltr:text-left">
+                    <span className="font-bold text-xs text-slate-800 block">robots.txt</span>
+                    <span className="text-[10px] text-slate-400 block">{lang === "ar" ? "ملف التوجيه وإرشاد عناكب البحث" : "Crawler Directive Guidelines"}</span>
+                  </div>
+                  <span className="text-red-500 text-xs font-bold leading-none shrink-0">🔗 {lang === "ar" ? "فتح الرابط" : "Open URL"}</span>
+                </a>
+              </div>
+            </div>
+
           </div>
         )}
 
       </main>
 
-      {/* Informative Why Choose Dkora Grid Banner */}
-      <section className="bg-slate-950/30 border-t border-emerald-950/20 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center" dir={isAr ? "rtl" : "ltr"}>
-            
-            <div className="space-y-2 max-w-xs mx-auto">
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto text-lg font-black">
-                🛡️
-              </div>
-              <h4 className="text-sm font-black text-white">{isAr ? "روابط شراكة آمنة" : "Secure Referrals"}</h4>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                {isAr 
-                  ? "جميع الروابط مشفرة وتوجهك مباشرة لأمازون لإتمام مشترياتك بأمان وموثوقية كاملة."
-                  : "All generated links are secure and direct you securely to official Amazon stores for transactions."}
-              </p>
-            </div>
-
-            <div className="space-y-2 max-w-xs mx-auto">
-              <div className="w-12 h-12 rounded-xl bg-lime-500/10 text-lime-400 flex items-center justify-center mx-auto text-lg font-black">
-                ⚽
-              </div>
-              <h4 className="text-sm font-black text-white">{isAr ? "اختيارات رياضية دقيقة" : "Expert Sport Selection"}</h4>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                {isAr 
-                  ? "نقوم بتحليل تقييمات المشترين وعيوب السلع لمطابقتها مع أعلى معايير الجودة للاعبي كرة القدم والجري."
-                  : "We filter through real buyer feedback and analyze defects to pick elite products for football athletes."}
-              </p>
-            </div>
-
-            <div className="space-y-2 max-w-xs mx-auto">
-              <div className="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mx-auto text-lg font-black">
-                💰
-              </div>
-              <h4 className="text-sm font-black text-white">{isAr ? "بدون تكاليف مخفية" : "No Extra Cost"}</h4>
-              <p className="text-xs text-slate-400 leading-relaxed">
-                {isAr 
-                  ? "موقعنا مجاني تماماً. العمولة الإعلانية يتم احتسابها وتغطيتها بالكامل من أمازون دون إضافة قرش واحد لسعرك."
-                  : "Our portal is completely free to browse. Commissions are paid entirely by Amazon, with zero extra fees."}
-              </p>
-            </div>
-
+      {/* Styled Notifications Toast */}
+      {showToast && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 animate-fade-in w-11/12 max-w-sm">
+          <div className="bg-white border border-slate-200 shadow-2xl px-4 py-3 rounded-2xl flex items-center gap-2 text-slate-800 text-xs sm:text-sm text-center justify-center">
+            <Sparkles className="w-4 h-4 text-red-550 animate-pulse" />
+            <p className="font-bold leading-normal">{toastText}</p>
           </div>
         </div>
-      </section>
+      )}
 
-      {/* Footer view */}
-      <footer className="bg-[#050806] border-t border-emerald-950/60 text-slate-400 text-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10" dir={isAr ? "rtl" : "ltr"}>
-          
-          {/* Main Footer Row */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            
-            {/* Column 1: Brand Info */}
-            <div className="space-y-3.5 md:col-span-2">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-slate-950 font-black">
-                  ⚽
-                </div>
-                <span className="text-base font-extrabold text-white">Dkora</span>
-              </div>
-              <p className="text-slate-400 text-[11px] leading-relaxed max-w-md">
-                {isAr 
-                  ? "بوابتك العربية الرياضية الرائدة لعام ٢٠٢٦ للحصول على أرقى مستلزمات اللياقة، الأحذية الاحترافية والكرات المطابقة لمعايير الفيفا على أمازون بأسعار مخفضة وتوصيات حقيقية من مدربين معتمدين."
-                  : "Your premier Arabic sports portal for 2026, curating elite fitness wear, pro cleats, and soccer balls on Amazon with real discounts and verified buyer reviews."}
-              </p>
-            </div>
+      {/* Styled Footer with Legal and Sitemap navigators */}
+      <footer className="w-full max-w-4xl px-4 py-6 border-t border-slate-205 text-center space-y-6 z-10 bg-white/50 backdrop-blur-sm mt-12">
+        
+        {/* SEO EXPLANATION PANEL - INJECTED FOR GOOGLE SEARCH INDEXING 2026 */}
+        <section className="bg-slate-50 border border-slate-205 p-5 rounded-2xl text-start space-y-3">
+          <h4 className="text-xs sm:text-sm font-black text-red-500 uppercase tracking-wider">
+            {lang === "ar" ? "حول اختبار شبيهك من لاعبي المونديال المتطور لعام ٢٠٢٦" : "About the Advanced 2026 World Cup Player Match Quiz"}
+          </h4>
+          <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed text-justify font-sans">
+            {lang === "ar" 
+              ? "يقوم هذا المحرك المتكامل بتحليل سماتك الفردية ونمط قيادتك وتكتيكك الخاص في كرة القدم لتحديد الأسطورة المونديالية المتطابقة معك تماماً (مثل ميسي، رونالدو، مبابي، هالاند، مودريتش، أو محمد صلاح). بفضل معايير اختبارات الشخصية الرياضية السيكومترية لعام ٢٠٢٦، نقوم بفرز وتحليل البيانات محلياً وبشكل مجاني بالكامل بدون الحاجة لأي اشتراك أو تخزين بيانات خارجية لضمان خصوصيتك الكلية وسرعة استجابة مذهلة."
+              : "This specialized engine assesses your personality, tactical sports logic, and on-pitch decision making to locate your precise legendary football matching profile (including Messi, Ronaldo, Mbappe, Haaland, Modric, or Salah). Operating completely client-side in 2026, it ensures absolute privacy with instant, offline evaluation and customizable downloadable cards without storing any personal user parameters."
+            }
+          </p>
+        </section>
 
-            {/* Column 2: Quick Links */}
-            <div className="space-y-3">
-              <h4 className="text-sm font-black text-white">{isAr ? "التنقل السريع" : "Quick Navigate"}</h4>
-              <ul className="space-y-2 text-[11px] font-bold">
-                <li>
-                  <button 
-                    onClick={() => { setActiveCategory("shoes"); scrollToProducts(); playSynthSound(440, "sine", 0.05); }}
-                    className="hover:text-emerald-400 cursor-pointer"
-                  >
-                    {isAr ? "أحذية كرة القدم والجري" : "Cleats & Sneakers"}
-                  </button>
-                </li>
-                <li>
-                  <button 
-                    onClick={() => { setActiveCategory("apparel"); scrollToProducts(); playSynthSound(440, "sine", 0.05); }}
-                    className="hover:text-emerald-400 cursor-pointer"
-                  >
-                    {isAr ? "أطقم وتيشيرتات الأندية" : "Jerseys & Active Apparel"}
-                  </button>
-                </li>
-                <li>
-                  <button 
-                    onClick={() => { setActiveCategory("equipment"); scrollToProducts(); playSynthSound(440, "sine", 0.05); }}
-                    className="hover:text-emerald-400 cursor-pointer"
-                  >
-                    {isAr ? "المعدات والساعات الرياضية" : "Gadgets & Training Gear"}
-                  </button>
-                </li>
-              </ul>
-            </div>
+        <p className="text-[10px] sm:text-xs text-slate-450 font-semibold font-sans">
+          {t.footerRights}
+        </p>
 
-            {/* Column 3: Legal Policy Links */}
-            <div className="space-y-3">
-              <h4 className="text-sm font-black text-white">{isAr ? "الأحكام والسياسات" : "Legal Policy"}</h4>
-              <ul className="space-y-2 text-[11px] font-bold">
-                <li>
-                  <button
-                    onClick={() => { setLegalTab("disclosure"); playSynthSound(500, "sine", 0.08); }}
-                    className="hover:text-emerald-400 text-left cursor-pointer text-xs"
-                  >
-                    {isAr ? "إفصاح برنامج التسويق بالعمولة (Amazon)" : "Amazon Associates Disclosure"}
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => { setLegalTab("privacy"); playSynthSound(500, "sine", 0.08); }}
-                    className="hover:text-emerald-400 text-left cursor-pointer text-xs"
-                  >
-                    {isAr ? "سياسة الخصوصية وملفات الكوكيز" : "Privacy & Cookie Policy"}
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => { setLegalTab("terms"); playSynthSound(500, "sine", 0.08); }}
-                    className="hover:text-emerald-400 text-left cursor-pointer text-xs"
-                  >
-                    {isAr ? "شروط الخدمة وحدود المسؤولية" : "Terms of Service"}
-                  </button>
-                </li>
-              </ul>
-            </div>
+        <p className="text-[9px] text-slate-400 font-mono tracking-widest uppercase font-extrabold pb-2">
+          {t.footerMeta}
+        </p>
 
-          </div>
-
-          {/* Mandatory Amazon Affiliate Disclosure Paragraph */}
-          <div className="pt-6 border-t border-emerald-950/40 text-[10px] text-slate-500 leading-relaxed text-center space-y-2">
-            <p>
-              {isAr 
-                ? "إفصاح إلزامي: موقع دي كورة (dkora.online) هو موقع مشارك في برنامج التسويق بالعمولة لأمازون (Amazon Services LLC Associates Program). عند نقرك على زر شراء أي منتج من منصتنا والذهاب لشرائه من متجر أمازون، فإننا نكسب عمولة تسويقية صغيرة ورمزية من قيمة مشترياتك المؤهلة. لا يؤثر ذلك إطلاقاً على سعر المنتج النهائي بالنسبة لك، بل تقتطع العمولة من أرباح أمازون."
-                : "Amazon Associates Disclosure: Dkora (dkora.online) is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com and global locales. As an Amazon Associate, we earn from qualifying purchases at no extra cost to you."}
-            </p>
-            <p className="font-mono text-emerald-600 font-bold">
-              {isAr ? "دومين معتمد: dkora.online" : "Verified Domain: dkora.online"}
-            </p>
-          </div>
-
-          {/* Bottom Copyright Row */}
-          <div className="pt-4 border-t border-emerald-950/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-600">
-            <span>
-              &copy; {new Date().getFullYear()} Dkora Affiliate Store. {isAr ? "جميع الحقوق محفوظة." : "All rights reserved."}
-            </span>
-            <span>
-              {isAr ? "بوابة التسويق بالعمولة الاحترافية لكرة القدم والرياضة لعام ٢٠٢٦" : "Professional Soccer & Athletic Affiliate Portal - 2026"}
-            </span>
-          </div>
-
+        {/* Footnotes links trigger at the absolute bottom */}
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-black text-slate-500 border-t border-slate-100 pt-4">
+          <button 
+            onClick={() => { setActiveLegalModal("privacy"); playInteractionSound(); }}
+            className="hover:text-red-500 transition-colors cursor-pointer"
+          >
+            {lang === "ar" ? "سياسة الخصوصية" : "Privacy Policy"}
+          </button>
+          <span className="text-slate-300 select-none">•</span>
+          <button 
+            onClick={() => { setActiveLegalModal("terms"); playInteractionSound(); }}
+            className="hover:text-red-500 transition-colors cursor-pointer"
+          >
+            {lang === "ar" ? "شروط الخدمة" : "Terms of Service"}
+          </button>
+          <span className="text-slate-300 select-none">•</span>
+          <button 
+            onClick={() => { setActiveLegalModal("about"); playInteractionSound(); }}
+            className="hover:text-red-500 transition-colors cursor-pointer"
+          >
+            {lang === "ar" ? "من نحن" : "About Us"}
+          </button>
+          <span className="text-slate-305 select-none">•</span>
+          <button 
+            onClick={() => { setActiveLegalModal("contact"); playInteractionSound(); }}
+            className="hover:text-red-500 transition-colors cursor-pointer"
+          >
+            {lang === "ar" ? "اتصل بنا" : "Contact Us"}
+          </button>
+          <span className="text-slate-300 select-none">•</span>
+          <button 
+            onClick={() => { setActiveLegalModal("disclaimer"); playInteractionSound(); }}
+            className="hover:text-red-500 transition-colors cursor-pointer"
+          >
+            {lang === "ar" ? "إخلاء المسؤولية" : "Disclaimer"}
+          </button>
+          <span className="text-slate-300 select-none">•</span>
+          <button 
+            onClick={() => { setActiveTab("blog"); playInteractionSound(); }}
+            className="hover:text-red-550 transition-colors cursor-pointer text-red-600 animate-pulse font-extrabold"
+          >
+            {lang === "ar" ? "المقالات" : "Articles"}
+          </button>
+          <span className="text-slate-300 select-none">•</span>
+          <button 
+            onClick={() => { setActiveTab("sitemap"); playInteractionSound(); }}
+            className="hover:text-amber-500 transition-colors cursor-pointer text-amber-600 font-extrabold"
+          >
+            {lang === "ar" ? "خريطة الموقع" : "Sitemap"}
+          </button>
         </div>
       </footer>
 
-      {/* Render modals conditionally */}
-      {selectedProduct && (
-        <ProductDetailModal
-          product={selectedProduct}
-          lang={lang}
-          onClose={() => setSelectedProduct(null)}
-          onTriggerAffiliate={(prod) => {
-            setSelectedProduct(null);
-            setRedirectProduct(prod);
-          }}
-          playSynthSound={playSynthSound}
+      {/* RENDER DYNAMIC MOUNTABLE LEGAL MODALS (Fully Configured) */}
+      <Suspense fallback={null}>
+        <LegalModals 
+          isOpen={activeLegalModal} 
+          onClose={() => setActiveLegalModal(null)} 
+          t={t} 
         />
-      )}
-
-      {redirectProduct && (
-        <AffiliateRedirectModal
-          product={redirectProduct}
-          lang={lang}
-          onCancel={() => setRedirectProduct(null)}
-          playSynthSound={playSynthSound}
-        />
-      )}
-
-      {legalTab && (
-        <LegalPageModal
-          page={legalTab}
-          lang={lang}
-          onClose={() => setLegalTab(null)}
-          playSynthSound={playSynthSound}
-        />
-      )}
+      </Suspense>
 
     </div>
   );

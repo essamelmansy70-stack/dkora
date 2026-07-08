@@ -13,6 +13,7 @@ import worldCupFormatEvergreenGuide from '../assets/images/world_cup_format_ever
 import worldCupTicketsGuide from '../assets/images/world_cup_tickets_guide_1782437385062.jpg';
 import veo3VideoGenerationGuide from '../assets/images/veo3_video_generation_guide_1782439141821.jpg';
 import aiVideoGeneration2026 from '../assets/images/ai_video_generation_2026_1782873542199.jpg';
+import footballNutritionGuide from '../assets/images/football_nutrition_guide_1783473133659.jpg';
 
 interface Article {
   id: string;
@@ -55,6 +56,187 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-football-nutrition-evergreen",
+    slug: "perfect-diet-program-football-players-stamina-speed",
+    categoryAr: "التغذية واللياقة البدنية",
+    categoryEn: "Nutrition & Fitness",
+    titleAr: "البرنامج الغذائي المثالي للاعبي كرة القدم لزيادة اللياقة والسرعة 2026",
+    titleEn: "The Ultimate Diet Program for Football Players to Boost Stamina & Speed 2026",
+    descAr: "اكتشف أفضل برنامج غذائي للاعب كرة القدم بالتفصيل. تعرف على تغذية لاعبي كرة القدم قبل وبعد المباريات والتمارين لزيادة اللياقة والسرعة وتجنب الإرهاق العضلي في السيو الحديث لعام 2026.",
+    descEn: "Discover the ultimate diet program for football players. Learn what to eat before and after soccer matches to maximize stamina, speed, and prevent muscle fatigue in this 2026 expert guide.",
+    keywordsAr: [
+      "برنامج غذائي للاعب كرة القدم",
+      "تغذية لاعبي كرة القدم",
+      "ماذا يأكل لاعب كرة القدم قبل المباراة",
+      "اكل لاعبي كرة القدم لزيادة السرعة",
+      "وجبات لاعبي كرة القدم المحترفين",
+      "نظام غذائي لزيادة اللياقة البدنية"
+    ],
+    keywordsEn: [
+      "football player diet program",
+      "soccer player nutrition guide",
+      "what to eat before a football match",
+      "stamina and speed diet for athletes",
+      "best pre-match meals for soccer players"
+    ],
+    image: footballNutritionGuide,
+    date: "2026-07-07",
+    readTime: "9 min read",
+    isHtml: true,
+    htmlBodyAr: `
+      <div class="space-y-6 text-right font-sans" dir="rtl">
+        <p class="text-slate-300 text-sm leading-relaxed">
+          في كرة القدم الحديثة لعام <strong>2026</strong>، لم يعد الأداء الخارق داخل المستطيل الأخضر يعتمد فقط على المهارة الفردية والتمارين الشاقة، بل أصبحت <strong>تغذية لاعبي كرة القدم</strong> هي الوقود الحقيقي ومفتاح التفوق العضلي والذهني. إن البحث المستمر عن <strong>برنامج غذائي للاعب كرة القدم</strong> يوضح مدى وعي الرياضيين بأن ما يدخل أجسامهم ينعكس مباشرة على مستويات السرعة، التحمل، وسرعة الاستشفاء بعد الماتشات النارية. في هذا الدليل الاحترافي المتكامل، سنكشف أسرار التغذية الرياضية المعتمدة لدى نجوم المونديال لزيادة رصيدك من الطاقة وتفادي الإصابات العضلية المزعجة.
+        </p>
+
+        <div class="p-5 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border-r-4 border-emerald-500 rounded-l-2xl my-6">
+          <h4 class="text-white font-black text-sm mb-1">🥦 وجبة ما قبل المباراة (Pre-Match Meal):</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            يجب تناولها قبل 3 إلى 4 ساعات من صافرة البداية. ركز على الكربوهيدرات المعقدة سهلة الهضم والبروتينات الخالية من الدهون لتعبئة مخازن الجليكوجين دون التسبب في ثقل المعدة.
+          </p>
+        </div>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-emerald-500/20 pb-2 mt-8">أركان النظام الغذائي لعام 2026 لرفع مستوى اللياقة والسرعة</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          يتكون الهرم الغذائي المتوازن للاعبي النخبة من ثلاثة مغذيات أساسية مدمجة بنسب مدروسة بعناية لتجنب تذبذب مستويات السكر في الدم أثناء اللعب العنيف:
+        </p>
+        <ul class="space-y-2 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+          <li><strong>الكربوهيدرات المعقدة (المصدر الأساسي للطاقة):</strong> كالأرز البني، الشوفان، والبطاطا الحلوة التي تمد العضلات بطاقة مستديمة على مدار 90 دقيقة كاملة.</li>
+          <li><strong>البروتينات عالية الكفاءة (البناء والاستشفاء):</strong> مثل صدور الدجاج المشوية، السلمون الغني بالأوميجا 3، والبيض لترميم الألياف العضلية الممزقة بعد الالتحامات.</li>
+          <li><strong>الدهون الصحية (الهرمونات والصحة العامة):</strong> كالأفوكادو، المكسرات النيئة، وزيت الزيتون البكر لتعزيز مفاصل اللاعب وحماية جهازه العصبي.</li>
+        </ul>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-emerald-500/20 pb-2 mt-8">جدول أوقات التغذية المثالي للاعب كرة القدم المحترف</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          التوقيت (Timing) هو كل شيء في التغذية الرياضية الحديثة. إليك كيفية تقسيم وجباتك اليومية:
+        </p>
+        <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+          <table class="w-full text-xs text-slate-300 text-right">
+            <thead class="bg-slate-900 text-white font-bold">
+              <tr>
+                <th class="p-3">الوجبة</th>
+                <th class="p-3">التوقيت المفضل</th>
+                <th class="p-3">المكونات المقترحة</th>
+                <th class="p-3">الهدف الأساسي</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800">
+              <tr>
+                <td class="p-3 font-bold text-emerald-400">الفطور</td>
+                <td class="p-3">7:30 صباحاً</td>
+                <td class="p-3">شوفان بالحليب، بياض البيض، موز ومكسرات</td>
+                <td class="p-3 text-slate-400">شحن طاقة الصباح وتنشيط الذهن</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-emerald-400">وجبة ما قبل المباراة</td>
+                <td class="p-3">قبل اللقاء بـ 3.5 ساعات</td>
+                <td class="p-3">صدر دجاج مشوي، أرز أبيض، بروكلي مسلوق</td>
+                <td class="p-3 text-slate-400">تعبئة مخازن الجليكوجين العضلي بامتياز</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-emerald-400">وجبة الاستشفاء الاستراتيجي</td>
+                <td class="p-3">خلال 45 دقيقة بعد اللقاء</td>
+                <td class="p-3">سمك سلمون مشوي، بطاطا حلوة مهروسة، سلطة خضراء</td>
+                <td class="p-3 text-slate-400">تعويض الفيتامينات وإصلاح الأنسجة العضلية</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-emerald-500/20 pb-2 mt-8">الهيدرات (ترطيب الجسم) والحد من الشد العضلي لعام 2026</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          يمثل الجفاف العدو الأول لسرعة وانطلاق اللاعب. فقدان 2% فقط من سوائل الجسم يقلل من كفاءتك الهجومية والدفاعية بنسبة تتجاوز 20%. للتغلب على هذه المشكلة الشائعة:
+        </p>
+        <ol class="space-y-3 pr-4 text-xs text-slate-400 list-decimal list-inside leading-relaxed font-semibold">
+          <li>
+            <strong>شرب السوائل بانتظام:</strong> استهلاك 3-4 لترات من الماء النقي يومياً، مع تزويدها بمشروبات الإلكتروليت والأملاح المعدنية لتعويض الصوديوم المفقود بالتعرق.
+          </li>
+          <li>
+            <strong>مشروب الموز والتمر المانع للتقلصات:</strong> تناول موزة واحدة وتمرتين قبل الإحماء يضمن تدفق البوتاسيوم والمغنيسيوم لعضلات الكاحل والفخذ لتجنب التشنجات المفاجئة في الدقائق التسعين.
+          </li>
+          <li>
+            <strong>تجنب الكافيين المفرط والسكريات السريعة:</strong> شرب كميات كبيرة من مشروبات الطاقة التجارية يتسبب في هبوط مفاجئ في مستويات النشاط خلال الشوط الثاني. استعاض عنها بعصير الشمندر الطبيعي المليء بالنترات لزيادة تدفق الأكسجين للعضلات.
+          </li>
+        </ol>
+
+        <div class="bg-emerald-500/5 p-4 rounded-2xl border border-emerald-500/20 space-y-2 mt-8">
+          <h3 class="text-sm font-black text-white">💡 أسرار التغذية المونديالية لعام 2026</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            الاستمرارية والانضباط في برنامجك الغذائي هي التي تفرق بين اللاعب الهاوي واللاعب المحترف ذي العمر الكروي الطويل. اجعل وجباتك صحية وابتعد عن الأطعمة المصنعة والزيوت المهدرجة التي تسبب التهابات المفاصل وتثاقل الحركة، وتذكر دائماً أن عضلاتك تُبنى وتتغذى في المطبخ لتسطع وتتألق على المستطيل الأخضر المونديالي!
+          </p>
+        </div>
+      </div>
+    `,
+    htmlBodyEn: `
+      <div class="space-y-6 text-left font-sans" dir="ltr">
+        <p class="text-slate-300 text-sm leading-relaxed first-letter:text-3xl first-letter:font-bold first-letter:text-emerald-500">
+          In modern football for <strong>2026</strong>, elite performance is no longer just about technical skills and endless cardio drills. <strong>Soccer player nutrition</strong> has officially become the definitive metric separating professional champions from amateurs. A customized, highly balanced <strong>football player diet program</strong> guarantees that your muscles are fully loaded with sustained energy to sustain high-speed sprints, explosive leaps, and quick decision-making under grueling physical pressure. In this 2026 ultimate guide, we unpack the exact diet protocols designed to keep you performing at peak capacity while preventing injury.
+        </p>
+
+        <div class="p-5 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border-l-4 border-emerald-500 rounded-r-2xl my-6">
+          <h4 class="text-white font-black text-sm mb-1">🥦 The Golden Pre-Match Rule:</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Eat your primary pre-match meal 3 to 4 hours before kickoff. Prioritize high-quality complex carbohydrates and clean lean proteins to maximize glycogen storage without bloating your digestive tract.
+          </p>
+        </div>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-emerald-500/20 pb-2 mt-8">The Core Pillars of Modern Soccer Nutrition</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          To sustain the intense physical demands of a 90-minute match, a player's diet must be carefully balanced around three macronutrients:
+        </p>
+        <ul class="space-y-2 pl-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+          <li><strong>Complex Carbs (Main Power Fuel):</strong> Sweet potatoes, brown rice, and oatmeal provide a steady, slow release of glucose into the bloodstream.</li>
+          <li><strong>Clean Proteins (Muscle Recovery):</strong> Grilled chicken, eggs, and salmon rich in Omega-3 fatty acids rebuild torn micro-fibers after physical duels.</li>
+          <li><strong>Healthy Fats (Joints & Hormones):</strong> Avocados, raw nuts, and organic olive oil protect joints, promote muscle elasticity, and support focus.</li>
+        </ul>
+      </div>
+    `,
+    contentAr: {
+      toc: [
+        "1. أهمية تغذية لاعبي كرة القدم في العصر الحديث 2026",
+        "2. أركان البرنامج الغذائي المتكامل لزيادة اللياقة والسرعة",
+        "3. جدول أوقات الوجبات المثالي للاعب كرة القدم المحترف",
+        "4. إرشادات الترطيب الرياضي الفعال وتفادي الشد العضلي"
+      ],
+      sections: [
+        {
+          title: "1. أهمية تغذية لاعبي كرة القدم في العصر الحديث 2026",
+          body: "يتطلب اللعب العنيف والمستمر في ملاعب اليوم طاقة استثنائية لا تتوفر إلا باتباع نظام غذائي متكامل مخصص لتعزيز كفاءة عضلات الجسم وحماية المفاصل من التهدم المستمر."
+        }
+      ],
+      faqs: [
+        {
+          q: "ماذا يأكل لاعب كرة القدم قبل المباراة بساعة واحدة؟",
+          a: "يُفضل عدم تناول وجبة ثقيلة قبل المباراة بساعة، بل يُكتفى بوجبة خفيفة سريعة الامتصاص مثل حبة موز أو حبتين من التمر مع كوب ماء لرفع مستويات البوتاسيوم والطاقة الفورية."
+        },
+        {
+          q: "هل يجب تناول مكملات البروتين للاعبي كرة القدم؟",
+          a: "يمكن استخدام مكملات البروتين (مثل الواي بروتين) كمساعد للاستشفاء السريع بعد التمرين مباشرة، ولكن الأولوية دائماً لمصادر البروتين الطبيعية والنظيفة كالدجاج والأسماك."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Why Football Nutrition Dictates On-Field Success",
+        "2. The Three Macronutrient Pillars of Stamina & Speed",
+        "3. Perfect Daily Meal Schedule for Soccer Athletes",
+        "4. Hydration Protocols & Preventing Late-Game Cramping"
+      ],
+      sections: [
+        {
+          title: "1. Why Football Nutrition Dictates On-Field Success",
+          body: "Modern soccer demands rapid accelerations and sustained endurance. A tailored diet is the most powerful tool to fuel your sprints and ensure safe muscle rebuilding."
+        }
+      ],
+      faqs: [
+        {
+          q: "What should a soccer player eat 1 hour before a match?",
+          a: "Avoid complex meals. Consume a simple, easily absorbable snack like a banana or some dates with water to secure quick glycogen and potassium levels."
+        }
+      ]
+    }
+  },
   {
     id: "art-master-ai-video-2026",
     slug: "ultimate-guide-free-ai-video-generation-2026-seo-masterclass",
@@ -2414,8 +2596,20 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
   const [activeCategory, setActiveCategory] = useState<'all' | 'ai' | 'tactics' | 'legends'>('all');
   const [copiedLink, setCopiedLink] = useState(false);
   const [veoClickCount, setVeoClickCount] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   const isRtl = locale === 'ar';
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll > 0) {
+        setScrollProgress((window.scrollY / totalScroll) * 100);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     // Reset click counter when switching/viewing articles
@@ -2551,78 +2745,87 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
   };
 
   return (
-    <div className="space-y-10" dir={isRtl ? "rtl" : "ltr"}>
+    <div className="space-y-12 pb-16" dir={isRtl ? "rtl" : "ltr"}>
       {selectedArticle ? (
-        // ========================== RENDER SINGLE ARTICLE DETAIL VIEW ==========================
-        <div className="space-y-10 animate-fade-in font-sans">
+        // ========================== REDESIGNED RENDER SINGLE ARTICLE DETAIL VIEW ==========================
+        <div className="space-y-8 animate-fade-in font-sans relative">
           
-          {/* Magazine Hero Layout */}
-          <article className="bg-[#0b1236]/90 border border-slate-800 rounded-[32px] overflow-hidden shadow-2xl relative">
+          {/* Top Reading Progress Bar */}
+          <div className="fixed top-0 left-0 right-0 h-[3px] bg-slate-900/80 z-50">
+            <div 
+              className="h-full bg-gradient-to-r from-[#ff1a40] to-rose-500 shadow-[0_0_8px_#ff1a40] transition-all duration-75"
+              style={{ width: `${scrollProgress}%` }}
+            ></div>
+          </div>
+
+          {/* Magazine Luxury Layout Container */}
+          <article className="bg-[#080d2c]/85 backdrop-blur-xl border border-slate-800/80 rounded-[32px] overflow-hidden shadow-2xl relative">
             <div className="absolute inset-0 bg-radial-at-t from-rose-500/5 via-transparent to-transparent pointer-events-none"></div>
             
-            {/* Top Toolbar Action Buttons */}
-            <div className="p-6 sm:p-8 flex items-center justify-between border-b border-slate-800/60 bg-[#090d29]/45 backdrop-blur-md">
+            {/* Elegant Header Toolbar */}
+            <div className="p-5 sm:p-6 flex items-center justify-between border-b border-slate-800/80 bg-slate-950/60 backdrop-blur-md">
               <button
                 onClick={handleBackToList}
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0e163d] hover:bg-[#ff1a40] border border-slate-800 hover:border-transparent text-slate-300 hover:text-white text-xs font-black rounded-2xl transition-all duration-300 cursor-pointer shadow-lg shrink-0"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900/90 hover:bg-[#ff1a40] border border-slate-800 hover:border-transparent text-slate-300 hover:text-white text-xs font-black rounded-xl transition-all duration-350 cursor-pointer shadow-md group shrink-0"
                 aria-label="Back to Articles list"
               >
-                {isRtl ? <ArrowRight className="w-4 h-4" /> : <ArrowLeft className="w-4 h-4" />}
+                {isRtl ? (
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                ) : (
+                  <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                )}
                 <span>{isRtl ? "العودة لقائمة المقالات" : "Back to Articles List"}</span>
               </button>
 
-              <div className="hidden sm:flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span className="text-[11px] font-bold text-slate-400 font-mono">
-                  {isRtl ? "مقال معتمد وموثق للعام ٢٠٢٦" : "Verified 2026 Soccer Guide"}
+              <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span className="text-[10px] font-black text-emerald-400 uppercase tracking-wider font-mono">
+                  {isRtl ? "مقال معتمد ٢٠٢٦" : "Verified 2026 Guide"}
                 </span>
               </div>
             </div>
 
-            {/* Article Main Content Sheet */}
+            {/* Article Content Area */}
             <div className="p-6 sm:p-10 max-w-4xl mx-auto space-y-8">
               
-              {/* Back to List Link */}
-              <button
-                onClick={handleBackToList}
-                className="inline-flex items-center gap-1.5 text-xs text-rose-500 hover:text-rose-450 font-black tracking-wide uppercase transition-colors"
-              >
-                {isRtl ? "←" : "→"}
-                <span>{isRtl ? "العودة لتدوينات الكورة الرياضية" : "Back to Football Articles"}</span>
-              </button>
-
-              {/* Article Header */}
-              <div className="space-y-3 pb-6 border-b border-slate-800/60">
-                <span className="text-[10px] sm:text-xs font-black text-[#ff1a40] uppercase tracking-widest block font-sans">
+              {/* Category Breadcrumb */}
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#ff1a40]"></span>
+                <span className="text-xs font-black text-[#ff1a40] uppercase tracking-widest block font-sans">
                   {isRtl ? selectedArticle.categoryAr : selectedArticle.categoryEn}
                 </span>
-                <h1 className="text-xl sm:text-2xl md:text-3.5xl font-black text-white leading-tight">
+              </div>
+
+              {/* Title & Author Meta */}
+              <div className="space-y-4 pb-6 border-b border-slate-800/60">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight tracking-tight">
                   {isRtl ? selectedArticle.titleAr : selectedArticle.titleEn}
                 </h1>
                 
-                {/* Meta Tags layout */}
-                <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 py-3 mt-4">
-                  <span className="flex items-center gap-1">
+                {/* Meta details */}
+                <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 pt-2">
+                  <span className="flex items-center gap-1.5 px-3 py-1 bg-slate-900/80 rounded-lg border border-slate-850">
                     <Calendar className="w-3.5 h-3.5 text-[#ff1a40]" />
-                    <span>{selectedArticle.date}</span>
+                    <span className="font-mono">{selectedArticle.date}</span>
                   </span>
-                  <span className="flex items-center gap-1">
+                  <span className="flex items-center gap-1.5 px-3 py-1 bg-slate-900/80 rounded-lg border border-slate-850">
                     <Clock className="w-3.5 h-3.5 text-[#ff1a40]" />
-                    <span>{selectedArticle.readTime}</span>
+                    <span className="font-mono">{selectedArticle.readTime}</span>
                   </span>
-                  <span className="flex items-center gap-1">
+                  <span className="flex items-center gap-1.5 px-3 py-1 bg-slate-900/80 rounded-lg border border-slate-850">
                     <User className="w-3.5 h-3.5 text-[#ff1a40]" />
-                    <span>{isRtl ? "محلل كروي معتمد" : "Certified Football Editor"}</span>
+                    <span>{isRtl ? "محلل رياضي معتمد" : "Verified Analyst"}</span>
                   </span>
                 </div>
               </div>
 
-              {/* Banner Hero photo with smooth borders */}
-              <div className="aspect-[21/9] w-full rounded-2xl overflow-hidden bg-slate-900 border border-slate-850 shadow-lg">
+              {/* Big Featured Image Banner with subtle shadow and border */}
+              <div className="aspect-[21/9] w-full rounded-2xl overflow-hidden bg-slate-950 border border-slate-800/80 shadow-2xl relative group">
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent z-10"></div>
                 <img 
                   src={selectedArticle.image} 
                   alt={isRtl ? selectedArticle.titleAr : selectedArticle.titleEn}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -2816,7 +3019,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                 
                 <div className="grid grid-cols-1 gap-4 text-justify">
                   {(isRtl ? selectedArticle.contentAr.faqs : selectedArticle.contentEn.faqs).map((faq, fIdx) => (
-                    <div key={fIdx} className="p-5 bg-[#070b24]/40 border border-slate-800/60 rounded-2xl space-y-2">
+                    <div key={fIdx} className="p-5 bg-slate-950/40 border border-slate-850 rounded-2xl space-y-2">
                       <h4 className="text-xs sm:text-sm font-black text-neutral-100 flex items-start gap-1.5">
                         <span className="text-emerald-500 font-extrabold text-sm shrink-0 font-mono">Q.</span>
                         <span>{faq.q}</span>
@@ -2830,19 +3033,19 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
               </div>
 
               {/* Social and SEO sharing action box */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 bg-[#070b24] border border-slate-800 rounded-2xl">
-                <div className="text-xs space-y-1 text-center sm:text-right rtl:sm:text-right ltr:sm:text-left">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 bg-slate-950/60 border border-slate-850 rounded-2xl">
+                <div className="text-xs space-y-1 text-center sm:text-right rtl:sm:text-right ltr:sm:text-left font-sans">
                   <span className="font-black block text-white">
                     {isRtl ? "المقال متوافق ومحدث تماماً مع خوارزميات ومؤشرات كأس العالم ٢٠٢٦" : "This article is verified and updated for 2026 World Cup indexes"}
                   </span>
-                  <p className="text-[10px] text-slate-400">
+                  <p className="text-[10px] text-slate-400 font-semibold">
                     {isRtl ? "انسخ رابط المقال وشاركه لتمكين أصدقائك وعشاق الكرة من تصفحه فورياً." : "Copy the optimized link to share this resource with fellow football fans."}
                   </p>
                 </div>
                 
                 <button
                   onClick={() => handleCopyArticleLink(selectedArticle.slug)}
-                  className="px-4 py-2 bg-[#ff1a40] hover:bg-rose-600 text-white text-xs font-black rounded-xl transition-all cursor-pointer flex items-center gap-1.5 shadow-sm shrink-0 font-sans"
+                  className="px-5 py-2.5 bg-[#ff1a40] hover:bg-rose-600 text-white text-xs font-black rounded-xl transition-all cursor-pointer flex items-center gap-1.5 shadow-md shrink-0 font-sans"
                   aria-label="Copy article share link"
                 >
                   {copiedLink ? (
@@ -2869,7 +3072,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                     <div 
                       key={art.id}
                       onClick={() => handleSelectArticle(art)}
-                      className="bg-[#050921]/60 border border-slate-800/80 hover:border-[#ff1a40] p-4 rounded-xl cursor-pointer group transition-all space-y-3 flex flex-col justify-between"
+                      className="bg-slate-950/40 border border-slate-850 hover:border-[#ff1a40] p-4 rounded-xl cursor-pointer group transition-all space-y-3 flex flex-col justify-between hover:-translate-y-0.5 duration-300"
                     >
                       <div className="space-y-2">
                         <span className="text-[9px] font-extrabold text-[#ff1a40] uppercase tracking-wider block font-sans">
@@ -2893,38 +3096,38 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
           </article>
         </div>
       ) : (
-        // ========================== RENDER ARTICLES LIST / GRID DOCK ==========================
+        // ========================== REDESIGNED RENDER ARTICLES LIST / GRID DOCK ==========================
         <div className="space-y-8 font-sans">
           
-          {/* Header Dashboard section */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-800/60 font-sans">
-            <div className="space-y-2.5 text-right rtl:text-right ltr:text-left">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-rose-500/10 text-[#ff1a40] text-xs font-black rounded-lg">
+          {/* Header Dashboard section - Glassmorphic and modern */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-800/60 font-sans relative">
+            <div className="space-y-3 text-right rtl:text-right ltr:text-left">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#ff1a40]/10 border border-[#ff1a40]/20 text-[#ff1a40] text-xs font-black rounded-lg">
                 <BookOpen className="w-3.5 h-3.5 animate-pulse" />
                 <span>{isRtl ? "موسوعة التحليلات التكتيكية والكروية" : "Football Tactics & Sports Analytics Center"}</span>
               </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight font-sans">
                 {isRtl ? "المدونة والتحليلات الفنية" : "Football Insights Portal"}
               </h2>
               <p className="text-xs text-slate-400 max-w-2xl leading-relaxed font-semibold">
                 {isRtl 
-                  ? "تعمق في زوايا الرياضة الأكثر دقة، أسرع أجنحة المونديال، وتوقعات الذكاء الاصطناعي المثبتة لبطولة كأس العالم ٢٠٢٦ بجانب إرشادات تجميع بطاقات اللاعبين." 
-                  : "Explore our collection of articles outlining tactical developments, world cup legends, sports performance, and custom player-jersey composite guidelines."}
+                  ? "تعمق في زوايا الرياضة الأكثر دقة، أسرع أجنحة المونديال، نظام التغذية المثالي لنجوم الكرة، وتوقعات الذكاء الاصطناعي لبطولة كأس العالم ٢٠٢٦ بجانب إرشادات اللاعبين." 
+                  : "Explore our premium collection of evergreen tactical breakdowns, athletic nutrition guides, and advanced AI predictions for the 2026 World Cup."}
               </p>
             </div>
 
             {/* Premium custom in-blog search form bar */}
-            <div className="relative w-full md:max-w-xs shrink-0 bg-slate-950 border border-slate-850 rounded-2xl overflow-hidden font-sans">
+            <div className="relative w-full md:max-w-xs shrink-0 bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden font-sans shadow-xl">
               <input
                 id="blog_search_query"
                 type="text"
                 placeholder={isRtl ? "ابحث بالكلمات الدلالية والتكتيكية..." : "Search key tactics & players..."}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-2xl text-xs font-bold text-white placeholder-slate-500 outline-none focus:border-[#ff1a40] focus:ring-1 focus:ring-[#ff1a40]/30 transition-all shadow-inner font-sans"
+                className="w-full pl-9 pr-4 py-3 bg-slate-950 border border-slate-850 rounded-2xl text-xs font-bold text-white placeholder-slate-500 outline-none focus:border-[#ff1a40] focus:ring-1 focus:ring-[#ff1a40]/30 transition-all shadow-inner font-sans"
                 aria-label={isRtl ? 'بحث في مقالات الكرة' : 'Search in football guides'}
               />
-              <Search className="w-4 h-4 absolute top-1/2 -translate-y-1/2 left-3 text-slate-400" />
+              <Search className="w-4 h-4 absolute top-1/2 -translate-y-1/2 left-3 text-slate-400 pointer-events-none" />
             </div>
           </div>
 
@@ -2932,20 +3135,20 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
           <div className="flex flex-wrap items-center gap-2 pb-2 font-sans">
             <button
               onClick={() => { setActiveCategory('all'); }}
-              className={`px-4 py-2 rounded-xl text-xs font-black transition-all duration-200 cursor-pointer ${
+              className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all duration-300 cursor-pointer border ${
                 activeCategory === 'all' 
-                  ? 'bg-[#ff1a40] text-white shadow-lg shadow-rose-500/20' 
-                  : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-850 border border-slate-800'
+                  ? 'bg-gradient-to-r from-[#ff1a40] to-rose-600 text-white shadow-lg shadow-rose-500/20 border-transparent scale-102' 
+                  : 'bg-slate-950/60 text-slate-400 hover:text-white hover:bg-slate-900 border-slate-850 hover:border-[#ff1a40]/20'
               }`}
             >
               {isRtl ? "الكل" : "All Articles"}
             </button>
             <button
               onClick={() => { setActiveCategory('ai'); }}
-              className={`px-4 py-2 rounded-xl text-xs font-black transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
+              className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all duration-300 cursor-pointer border flex items-center gap-1.5 ${
                 activeCategory === 'ai' 
-                  ? 'bg-[#ff1a40] text-white shadow-lg shadow-rose-500/20' 
-                  : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-850 border border-slate-800'
+                  ? 'bg-gradient-to-r from-[#ff1a40] to-rose-600 text-white shadow-lg shadow-rose-500/20 border-transparent scale-102' 
+                  : 'bg-slate-950/60 text-slate-400 hover:text-white hover:bg-slate-900 border-slate-850 hover:border-[#ff1a40]/20'
               }`}
             >
               <Sparkles className="w-3.5 h-3.5" />
@@ -2953,10 +3156,10 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
             </button>
             <button
               onClick={() => { setActiveCategory('tactics'); }}
-              className={`px-4 py-2 rounded-xl text-xs font-black transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
+              className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all duration-300 cursor-pointer border flex items-center gap-1.5 ${
                 activeCategory === 'tactics' 
-                  ? 'bg-[#ff1a40] text-white shadow-lg shadow-rose-500/20' 
-                  : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-850 border border-slate-800'
+                  ? 'bg-gradient-to-r from-[#ff1a40] to-rose-600 text-white shadow-lg shadow-rose-500/20 border-transparent scale-102' 
+                  : 'bg-slate-950/60 text-slate-400 hover:text-white hover:bg-slate-900 border-slate-850 hover:border-[#ff1a40]/20'
               }`}
             >
               <Award className="w-3.5 h-3.5" />
@@ -2964,10 +3167,10 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
             </button>
             <button
               onClick={() => { setActiveCategory('legends'); }}
-              className={`px-4 py-2 rounded-xl text-xs font-black transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
+              className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all duration-300 cursor-pointer border flex items-center gap-1.5 ${
                 activeCategory === 'legends' 
-                  ? 'bg-[#ff1a40] text-white shadow-lg shadow-rose-500/20' 
-                  : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-850 border border-slate-800'
+                  ? 'bg-gradient-to-r from-[#ff1a40] to-rose-600 text-white shadow-lg shadow-rose-500/20 border-transparent scale-102' 
+                  : 'bg-slate-950/60 text-slate-400 hover:text-white hover:bg-slate-900 border-slate-850 hover:border-[#ff1a40]/20'
               }`}
             >
               <TrendingUp className="w-3.5 h-3.5" />
@@ -2979,28 +3182,28 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
           {featuredArticle && (
             <div 
               onClick={() => handleSelectArticle(featuredArticle)}
-              className="bg-gradient-to-br from-[#0c143d] to-[#04081c] border border-slate-800 hover:border-[#ff1a40] rounded-[32px] overflow-hidden shadow-2xl hover:shadow-rose-500/5 transition-all duration-500 cursor-pointer group relative font-sans"
+              className="bg-gradient-to-br from-[#0c143d]/90 to-[#04081c]/95 border border-slate-800 hover:border-[#ff1a40]/80 rounded-[32px] overflow-hidden shadow-2xl hover:shadow-[0_0_30px_rgba(255,26,64,0.08)] transition-all duration-500 cursor-pointer group relative font-sans"
             >
               <div className="absolute inset-0 bg-radial-at-t from-rose-500/5 via-transparent to-transparent pointer-events-none"></div>
               
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-0">
-                {/* Featured Cover */}
-                <div className="lg:col-span-6 relative aspect-video lg:aspect-auto overflow-hidden bg-slate-950 min-h-[300px]">
+                {/* Featured Cover Image */}
+                <div className="lg:col-span-6 relative aspect-video lg:aspect-auto overflow-hidden bg-slate-950 min-h-[320px]">
                   <img 
                     src={featuredArticle.image} 
                     alt={isRtl ? featuredArticle.titleAr : featuredArticle.titleEn}
-                    className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#04081c] via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#04081c] via-[#04081c]/25 to-transparent"></div>
                   
                   {/* Dynamic absolute badges */}
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    <span className="px-3 py-1 bg-[#ff1a40] text-white text-[10px] font-black rounded-lg uppercase tracking-wider animate-pulse flex items-center gap-1 font-sans">
+                  <div className="absolute top-4 left-4 flex gap-2 z-20">
+                    <span className="px-3 py-1 bg-gradient-to-r from-[#ff1a40] to-rose-600 text-white text-[10px] font-black rounded-lg uppercase tracking-wider animate-pulse flex items-center gap-1.5 font-sans shadow-lg">
                       <Flame className="w-3 h-3 text-white inline fill-white animate-bounce" />
                       <span>{isRtl ? "مقال مميز وشائع" : "FEATURED READ"}</span>
                     </span>
-                    <span className="px-2.5 py-1 bg-slate-950/85 text-slate-300 text-[10px] font-black rounded-lg font-mono">
+                    <span className="px-2.5 py-1 bg-slate-950/90 border border-slate-800 text-slate-300 text-[10px] font-black rounded-lg font-mono">
                       {featuredArticle.readTime}
                     </span>
                   </div>
@@ -3022,9 +3225,9 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400 font-extrabold font-mono font-sans font-sans">
-                    <span className="bg-[#050920] border border-slate-850 px-3 py-1 rounded-lg">{featuredArticle.date}</span>
-                    <span className="text-[#ff1a40] group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform inline-flex items-center gap-1 bg-rose-500/5 px-3.5 py-1.5 rounded-xl border border-rose-500/10 font-sans">
+                  <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400 font-extrabold font-mono">
+                    <span className="bg-[#050920] border border-slate-850 px-3 py-1.5 rounded-lg text-[10px]">{featuredArticle.date}</span>
+                    <span className="text-white group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform inline-flex items-center gap-1.5 bg-[#ff1a40] px-4 py-2 rounded-xl border border-rose-500/20 font-black shadow-md font-sans">
                       <span>{isRtl ? "قراءة المقال المميز" : "Read Featured Article"}</span>
                       {isRtl ? "←" : "→"}
                     </span>
@@ -3034,24 +3237,24 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
             </div>
           )}
 
-          {/* MAIN GRID OF CARDS */}
+          {/* MAIN GRID OF CARDS - Redesigned as dynamic cards */}
           {gridArticles.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 animate-fade-in font-sans">
               {gridArticles.map((art) => (
                 <div 
                   key={art.id}
                   onClick={() => handleSelectArticle(art)}
-                  className="bg-[#0b102c] border border-slate-800 rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:border-[#ff1a40] cursor-pointer flex flex-col group h-full"
+                  className="bg-slate-900/40 backdrop-blur-md border border-slate-800/85 hover:border-[#ff1a40]/60 rounded-3xl overflow-hidden hover:shadow-[0_10px_35px_rgba(255,26,64,0.05)] transition-all duration-300 cursor-pointer flex flex-col group h-full relative"
                 >
                   {/* Card Cover image */}
-                  <div className="relative aspect-video overflow-hidden bg-slate-950 border-b border-slate-850">
+                  <div className="relative aspect-video overflow-hidden bg-slate-950 border-b border-slate-850/80">
                     <img 
                       src={art.image} 
                       alt={isRtl ? art.titleAr : art.titleEn} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="absolute top-3 left-3 px-2 py-1 bg-slate-950/70 text-white text-[10px] font-black rounded-md font-mono backdrop-blur-xs">
+                    <div className="absolute top-3 left-3 px-2 py-1 bg-slate-950/80 border border-slate-800 text-white text-[9px] font-black rounded-md font-mono backdrop-blur-xs">
                       {art.readTime}
                     </div>
                   </div>
@@ -3059,9 +3262,12 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                   {/* Card text content */}
                   <div className="p-5 flex-grow flex flex-col justify-between space-y-4 text-justify font-sans">
                     <div className="space-y-2 text-right rtl:text-right ltr:text-left">
-                      <span className="text-[10px] font-extrabold text-[#ff1a40] uppercase tracking-wider block font-sans">
-                        {isRtl ? art.categoryAr : art.categoryEn}
-                      </span>
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#ff1a40]"></span>
+                        <span className="text-[10px] font-extrabold text-[#ff1a40] uppercase tracking-wider block font-sans">
+                          {isRtl ? art.categoryAr : art.categoryEn}
+                        </span>
+                      </div>
                       <h3 className="text-sm font-black text-white leading-snug group-hover:text-[#ff1a40] transition-colors duration-250 line-clamp-2">
                         {isRtl ? art.titleAr : art.titleEn}
                       </h3>
@@ -3070,10 +3276,10 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                       </p>
                     </div>
 
-                    <div className="pt-3 border-t border-slate-805 flex items-center justify-between text-[11px] text-slate-400 font-extrabold font-mono">
+                    <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400 font-extrabold font-mono">
                       <span>{art.date}</span>
-                      <span className="text-rose-500 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 shrink-0 font-sans">
-                        <span>{isRtl ? "قراءة المقال" : "Read Article"}</span>
+                      <span className="text-[#ff1a40] group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform inline-flex items-center gap-1.5 shrink-0 font-black font-sans bg-[#ff1a40]/5 px-2.5 py-1 rounded-lg border border-[#ff1a40]/10">
+                        <span>{isRtl ? "قراءة" : "Read"}</span>
                         {isRtl ? "←" : "→"}
                       </span>
                     </div>
@@ -3082,7 +3288,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
               ))}
             </div>
           ) : (
-            <div className="p-12 text-center text-slate-400 bg-[#0b102c]/50 border border-dashed border-slate-800 rounded-3xl space-y-2 font-sans">
+            <div className="p-12 text-center text-slate-400 bg-slate-900/20 border border-dashed border-slate-800 rounded-3xl space-y-2 font-sans">
               <span className="block text-2xl mb-2">🔍</span>
               <p className="text-xs font-bold">{isRtl ? "لم نعثر على أي نتائج مطابقة لبحثك في المقالات" : "No articles found matching your criteria."}</p>
               <button 

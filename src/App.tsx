@@ -809,14 +809,38 @@ export default function App() {
 
         {/* Navigation Switchboard & Language toggle */}
         <div className="flex flex-wrap items-center justify-center gap-2" onClick={(e) => e.stopPropagation()}>
-          {activeTab !== "quiz" && (
-            <button
-              onClick={() => { handleTabChange("quiz"); playInteractionSound(); }}
-              className="px-3 py-1.5 rounded-xl text-xs font-black bg-red-650 text-white hover:bg-red-700 transition-all cursor-pointer shadow-sm shadow-red-600/20"
-            >
-              {lang === "ar" ? "العودة للاختبار" : "Back to Quiz"}
-            </button>
-          )}
+          <button
+            onClick={() => { handleTabChange("quiz"); playInteractionSound(); }}
+            className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer shadow-sm ${
+              activeTab === "quiz"
+                ? "bg-red-650 text-white shadow-red-600/20"
+                : "bg-slate-50 border border-slate-200 text-slate-700 hover:text-red-550 hover:bg-slate-100"
+            }`}
+          >
+            {lang === "ar" ? "الرئيسية والاختبار" : "Home & Quiz"}
+          </button>
+
+          <button
+            onClick={() => { handleTabChange("blog"); playInteractionSound(); }}
+            className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer shadow-sm ${
+              activeTab === "blog"
+                ? "bg-red-650 text-white shadow-red-600/20"
+                : "bg-slate-50 border border-slate-200 text-slate-700 hover:text-red-550 hover:bg-slate-100"
+            }`}
+          >
+            {lang === "ar" ? "المقالات" : "Articles"}
+          </button>
+
+          <button
+            onClick={() => { handleTabChange("sitemap"); playInteractionSound(); }}
+            className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer shadow-sm ${
+              activeTab === "sitemap"
+                ? "bg-red-650 text-white shadow-red-600/20"
+                : "bg-slate-50 border border-slate-200 text-slate-700 hover:text-red-550 hover:bg-slate-100"
+            }`}
+          >
+            {lang === "ar" ? "خريطة الموقع" : "Sitemap"}
+          </button>
 
           <button
             id="lang-toggle-btn"

@@ -14,6 +14,7 @@ import worldCupTicketsGuide from '../assets/images/world_cup_tickets_guide_17824
 import veo3VideoGenerationGuide from '../assets/images/veo3_video_generation_guide_1782439141821.jpg';
 import aiVideoGeneration2026 from '../assets/images/ai_video_generation_2026_1782873542199.jpg';
 import footballNutritionGuide from '../assets/images/football_nutrition_guide_1783473133659.jpg';
+import messiAgeGuide from '../assets/images/messi_age_guide_1783572873773.jpg';
 
 interface Article {
   id: string;
@@ -56,6 +57,291 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-how-old-is-messi-2026",
+    slug: "how-old-is-lionel-messi-age-records-2026",
+    categoryAr: "سير النجوم واللاعبين",
+    categoryEn: "Legends & Biographies",
+    titleAr: "كم عمر ميسي في عام 2026؟ السيرة الذاتية وأرقام الأسطورة القياسية",
+    titleEn: "How Old is Lionel Messi in 2026? Official Age, Records & Longevity Secrets",
+    descAr: "اكتشف كم عمر ميسي الآن بالتفصيل في عام 2026. دليل سيو متكامل عن تاريخ ميلاد الأسطورة ليونيل ميسي، أرقامه القياسية، وأسرار لياقته البدنية في سن الـ 39.",
+    descEn: "Find out exactly how old Lionel Messi is in 2026. Discover his date of birth, complete list of records, biography, and secrets behind his physical longevity at age 39.",
+    keywordsAr: [
+      "كم عمر ميسي",
+      "كم عمر ميسي الآن",
+      "عمر ليونيل ميسي في 2026",
+      "تاريخ ميلاد ميسي",
+      "بطولات ميسي",
+      "متى ولد ميسي",
+      "انتر ميامي"
+    ],
+    keywordsEn: [
+      "how old is messi",
+      "messi age 2026",
+      "lionel messi date of birth",
+      "messi records",
+      "messi longevity",
+      "messi career achievements"
+    ],
+    image: messiAgeGuide,
+    date: "2026-07-08",
+    readTime: "11 min read",
+    isHtml: true,
+    htmlBodyAr: `
+      <div class="space-y-6 text-right font-sans" dir="rtl">
+        <p class="text-slate-300 text-sm leading-relaxed">
+          يتساءل الملايين من عشاق المستديرة الخضراء حول العالم يومياً: <strong>كم عمر ميسي الآن؟</strong> أو <strong>كم عمر ليونيل ميسي في عام 2026؟</strong>. يُعتبر الأسطورة الأرجنتينية ليونيل ميسي واحدًا من أعظم من لمس كرة القدم عبر التاريخ، إن لم يكن أعظمهم على الإطلاق. مع حلول صيف عام 2026 المثير، والذي يشهد إقامة بطولة كأس العالم التاريخية في الولايات المتحدة وكندا والمكسيك، تزداد عمليات البحث بشكل جنوني عن تفاصيل سيرة البرغوث الأرجنتيني الذاتية، ومستواه البدني، وكيف تمكن من الحفاظ على بريقه الاستثنائي وتأثيره الحاسم رغم تقدمه في السن وتخطيه عتبة منتصف الثلاثينيات بكثير.
+        </p>
+
+        <div class="p-5 bg-gradient-to-r from-rose-500/10 to-indigo-500/10 border-r-4 border-rose-500 rounded-l-2xl my-6">
+          <h4 class="text-white font-black text-sm mb-1 font-sans">📌 الإجابة المباشرة والسريعة:</h4>
+          <p class="text-xs text-slate-300 leading-relaxed font-sans">
+            وُلد ليونيل أندريس ميسي في <strong>24 يونيو 1987</strong> في مدينة روزاريو الأرجنتينية. وبذلك، فإن عمر ميسي في عام 2026 هو <strong>39 عامًا</strong> (أتم عامه التاسع والثلاثين في الرابع والعشرين من يونيو لعام 2026).
+          </p>
+        </div>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-rose-500/20 pb-2 mt-8">سيرة ميسي الذاتية والبيانات الأساسية</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          لفهم قصة هذا الإعجاز البشري، يجب علينا مراجعة الهوية الشخصية والبيانات الاحترافية الموثقة للأسطورة الأرجنتينية:
+        </p>
+        <ul class="space-y-2 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+          <li><strong>الاسم الكامل:</strong> ليونيل أندريس ميسي كوتشيتيني (Lionel Andrés Messi Cuccittini).</li>
+          <li><strong>تاريخ الميلاد:</strong> 24 يونيو 1987.</li>
+          <li><strong>مكان الولادة:</strong> روزاريو، مقاطعة سانتا في، الأرجنتين.</li>
+          <li><strong>الجنسية:</strong> أرجنتيني، مع جنسية إسبانية مزدوجة حصل عليها عام 2005.</li>
+          <li><strong>الطول:</strong> 1.70 متر (5 أقدام و 7 بوصات).</li>
+          <li><strong>المركز الحالي:</strong> صانع ألعاب / مهاجم جنيح (في نادي إنتر ميامي الأمريكي ومنتخب الأرجنتين).</li>
+        </ul>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-rose-500/20 pb-2 mt-8">ميسي في سن الـ 39: كيف يتحدى الأسطورة البيولوجيا الرياضية في 2026؟</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          في الماضي، كان من النادر جدًا رؤية لاعب كرة قدم يشغل مركزًا هجوميًا يستمر في الملاعب الأوروبية أو الدولية الكبرى حتى سن التاسعة والثلاثين بنفس التميز والتأثير. عادةً ما تبدأ مستويات السرعة والتحمل في الانهيار بعد سن الـ 32، لكن ميسي يمثل حالة فيزيولوجية استثنائية. 
+          <br /><br />
+          يعود هذا النجاح المستمر لعدة عوامل رئيسية طبقها البرغوث على مدار مسيرته الاحترافية الممتدة لأكثر من عقدين:
+        </p>
+        <ol class="space-y-3 pr-4 text-xs text-slate-400 list-decimal list-inside leading-relaxed font-semibold">
+          <li>
+            <strong>تعديل التمركز التكتيكي الذكي:</strong> مع تقدمه في العمر، لم يعد ميسي يعتمد على الركض السريع لمسافات طويلة عبر الأجنحة كما كان يفعل في بداياته مع برشلونة. بدلاً من ذلك، تحول إلى صانع ألعاب كلاسيكي حر (Playmaker)، يوزع اللعب بدقة متناهية، ويتحكم في ريتم وتدفق الهجمات من عمق الملعب، مما يقلل من المجهود البدني والركض غير الضروري.
+          </li>
+          <li>
+            <strong>المشي الفعال داخل الملعب (Active Walking):</strong> تشير الدراسات التحليلية الحديثة الصادرة في 2026 إلى أن ميسي يقطع ما يقرب من 65% من وقت المباراة وهو يمشي. هذا ليس كسلاً، بل هو مسح مستمر للمساحات وقراءة متقدمة لثغرات مدافعي الخصم، لينفجر فجأة بسرعة خارقة في اللحظة والزاوية المناسبتين لصنع التمريرة الحاسمة أو التسديد المباشر.
+          </li>
+          <li>
+            <strong>النظام الغذائي الصارم (Kinesiologist Diet):</strong> يعتمد ميسي منذ عام 2014 على نظام غذائي متكامل صممه أخصائي التغذية الإيطالي جوليانو بوسير. يرتكز النظام على الماء النقي، زيت الزيتون البكر، الحبوب الكاملة، الفواكه الطازجة، الخضروات العضوية، مع تقليل استهلاك اللحوم الحمراء والسكريات الصناعية بشكل شبه نهائي. هذا ساهم في تقليص إصاباته العضلية واستمرار استشفائه السريع.
+          </li>
+        </ol>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-rose-500/20 pb-2 mt-8">جدول زمني لأعمار ميسي وأبرز المحطات والإنجازات الكروية</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          توضح هذه اللوحة التاريخية مسيرة ليونيل ميسي الخارقة مقسمة حسب الفئات العمرية التي تألق فيها وصنع خلالها المجد:
+        </p>
+        <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+          <table class="w-full text-xs text-slate-300 text-right">
+            <thead class="bg-slate-900 text-white font-bold">
+              <tr>
+                <th class="p-3">العمر</th>
+                <th class="p-3">الفترة الزمنية</th>
+                <th class="p-3">أبرز المحطات والإنجازات التاريخية</th>
+                <th class="p-3">العنوان التكتيكي الكروي</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800">
+              <tr>
+                <td class="p-3 font-bold text-rose-400">13 - 17 سنة</td>
+                <td class="p-3">2000 - 2004</td>
+                <td class="p-3">الانتقال التاريخي إلى أكاديمية لا ماسيا ببرشلونة وتلقي العلاج المخصص لهرمون النمو.</td>
+                <td class="p-3 text-slate-400">الجوهرة الخام الموعودة</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-rose-400">18 - 24 سنة</td>
+                <td class="p-3">2005 - 2011</td>
+                <td class="p-3">الفوز بدوري أبطال أوروبا 3 مرات، حصد أول كرة ذهبية (2009)، وتسجيل 73 هدفاً في موسم واحد كأعلى رقم قياسي عبر العصور.</td>
+                <td class="p-3 text-slate-400">الظاهرة المدمرة والبرغوث الطائر</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-rose-400">25 - 33 سنة</td>
+                <td class="p-3">2012 - 2020</td>
+                <td class="p-3">الهيمنة على الدوري الإسباني، تحقيق الكرات الذهبية المتتالية، وتجاوز حاجز 700 هدف بقميص البلاوغرانا.</td>
+                <td class="p-3 text-slate-400">الملك المتوج وقائد برشلونة الأول</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-rose-400">34 - 36 سنة</td>
+                <td class="p-3">2021 - 2023</td>
+                <td class="p-3">تحقيق اللقب الأغلى في مسيرته: كأس العالم في قطر 2022، كوبا أمريكا، الكرة الذهبية الثامنة، الانتقال لباريس سان جيرمان ثم إنتر ميامي.</td>
+                <td class="p-3 text-slate-400">سيد كرة القدم ومحقق النبوءة التاريخية</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-rose-400">37 - 39 سنة</td>
+                <td class="p-3">2024 - 2026</td>
+                <td class="p-3">قيادة إنتر ميامي للبطولات، الاستعداد والمشاركة في مونديال 2026 بالولايات المتحدة، وتقديم نموذج يحتذى به في الحفاظ على العطاء الرياضي الخارق.</td>
+                <td class="p-3 text-slate-400">الأسطورة الخالدة ومعلم الأجيال</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-rose-500/20 pb-2 mt-8">أهم أرقام وإحصائيات ليونيل ميسي القياسية التي لا تصدق</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          طوال مسيرته الذهبية التي امتدت من روزاريو إلى ميامي مروراً ببرشلونة وباريس، حطم ميسي كل الأرقام القياسية الممكنة في تاريخ اللعبة. إليك أبرز هذه الإنجازات المذهلة:
+        </p>
+        <ul class="space-y-2 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+          <li><strong>الكرات الذهبية (Ballon d'Or):</strong> حقق الأسطورة 8 كرات ذهبية كأكثر لاعب تتويجاً بالجائزة بفارق كبير عن أقرب ملاحقيه.</li>
+          <li><strong>الأحذية الذهبية الأوروبية:</strong> 6 أحذية ذهبية بفضل تصدره لهدافي الدوريات الأوروبية الكبرى في مواسم مختلفة.</li>
+          <li><strong>الأهداف الرسمية:</strong> تجاوز حاجز 830 هدفاً رسمياً في مسيرته مع الأندية ومنتخب الأرجنتين، مما يجعله أحد أعظم الهدافين في التاريخ.</li>
+          <li><strong>التمريرات الحاسمة (Assists):</strong> يمتلك الرقم القياسي كأكثر صانع ألعاب ومقدم تمريرات حاسمة في تاريخ كرة القدم بما يتجاوز 360 تمريرة حاسمة رسمية.</li>
+          <li><strong>إجمالي البطولات الجماعية:</strong> تخطى حاجز 44 بطولة رسمية جماعية مع الأندية والمنتخب، ليصبح اللاعب الأكثر تتويجاً بالألقاب الجماعية في تاريخ الساحرة المستديرة.</li>
+        </ul>
+
+        <div class="bg-rose-500/5 p-4 rounded-2xl border border-rose-500/20 space-y-2 mt-8">
+          <h3 class="text-sm font-black text-white font-sans">🔮 الخلاصة والتوقعات المستقبلية للأسطورة</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-sans">
+            في سن التاسعة والثلاثين، لم يعد ليونيل ميسي مطالباً بإثبات أي شيء لعالم كرة القدم؛ فقد حصد كل كأس، وفاز بكل جائزة، ورسم لوحات كروية ستظل خالدة في ذاكرة البشرية لأجيال متعاقبة. إن تواجده على الملاعب في عام 2026 هو بمثابة متعة بصرية نقية نعيشها كشاهدين عيان على العصر الذهبي للأسطورة الحية. وسواء اختار الاعتزال الدولي بعد مونديال 2026 أو استمر لفترة أطول مع نادي إنتر ميامي، فإن ميسي قد تجاوز حدود اللعبة ليصبح رمزاً عالمياً للإرادة، الموهبة، والانضباط الاستثنائي.
+          </p>
+        </div>
+      </div>
+    `,
+    htmlBodyEn: `
+      <div class="space-y-6 text-left font-sans" dir="ltr">
+        <p class="text-slate-300 text-sm leading-relaxed first-letter:text-3xl first-letter:font-bold first-letter:text-rose-500">
+          Every day, millions of football enthusiasts search the internet for one recurring question: <strong>How old is Messi now?</strong> or <strong>What is Lionel Messi's age in 2026?</strong>. The Argentine legend, universally regarded as the greatest football player of all time, continues to dominate global search trends. As the historic 2026 FIFA World Cup takes center stage across the USA, Canada, and Mexico, fans are eager to know how this football maestro maintains his elite, game-changing form despite entering the late stages of his legendary career.
+        </p>
+
+        <div class="p-5 bg-gradient-to-r from-rose-500/10 to-indigo-500/10 border-l-4 border-rose-500 rounded-r-2xl my-6">
+          <h4 class="text-white font-black text-sm mb-1">📌 Quick Direct Answer:</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Lionel Andrés Messi was born on <strong>June 24, 1987</strong>, in Rosario, Argentina. Therefore, as of today in 2026, Lionel Messi is exactly <strong>39 years old</strong>.
+          </p>
+        </div>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-rose-500/20 pb-2 mt-8">Lionel Messi's Official Biography & Essential Profile</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          To truly appreciate the longevity of Lionel Messi, let's look at his official verified profile details:
+        </p>
+        <ul class="space-y-2 pl-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+          <li><strong>Full Name:</strong> Lionel Andrés Messi Cuccittini</li>
+          <li><strong>Date of Birth:</strong> June 24, 1987</li>
+          <li><strong>Place of Birth:</strong> Rosario, Santa Fe, Argentina</li>
+          <li><strong>Height:</strong> 1.70 m (5 ft 7 in)</li>
+          <li><strong>Current Club:</strong> Inter Miami CF (MLS)</li>
+          <li><strong>National Team:</strong> Argentina</li>
+          <li><strong>Main Positions:</strong> Playmaker / Attacking Midfielder / Winger</li>
+        </ul>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-rose-500/20 pb-2 mt-8">Messi at 39: How He Defies Athletic Aging in 2026</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          Historically, forward players rarely maintain peak international performance by age 39. Most players transition to retirement or lower leagues around 34. However, Messi's physical preservation is a masterclass in modern sports science:
+        </p>
+        <ol class="space-y-3 pl-4 text-xs text-slate-400 list-decimal list-inside leading-relaxed font-semibold">
+          <li><strong>Tactical Metamorphosis:</strong> Messi has adapted his playstyle, shifting from explosive wing sprints to central playmaking. He conserves energy, waiting for key moments to execute world-class assists.</li>
+          <li><strong>Active Walking Tactics:</strong> Studies show that Messi walks for about 65% of a match. This allows him to scan spaces, study the opponent's defensive gaps, and launch explosive moves with pinpoint accuracy when needed.</li>
+          <li><strong>The 'Buser' Nutrition Diet:</strong> Under Italian nutritionist Giuliano Poser, Messi maintains a strict diet centered on organic vegetables, whole grains, extra virgin olive oil, and fresh fruits, completely avoiding industrial sugars and excessive red meat.</li>
+        </ol>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-rose-500/20 pb-2 mt-8">Messi's Age Milestones & Legendary Achievements</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          A breakdown of Messi's incredible career milestones across different age phases:
+        </p>
+        <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+          <table class="w-full text-xs text-slate-300 text-left">
+            <thead class="bg-slate-900 text-white font-bold">
+              <tr>
+                <th class="p-3">Age Phase</th>
+                <th class="p-3">Years</th>
+                <th class="p-3">Core Milestones & Achievements</th>
+                <th class="p-3">Tactical Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800">
+              <tr>
+                <td class="p-3 font-bold text-rose-400">13 - 17 years</td>
+                <td class="p-3">2000 - 2004</td>
+                <td class="p-3">Moved to FC Barcelona's La Masia; underwent specialized growth hormone treatment.</td>
+                <td class="p-3 text-slate-400">Rising Gem</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-rose-400">18 - 24 years</td>
+                <td class="p-3">2005 - 2011</td>
+                <td class="p-3">Won 3 UEFA Champions Leagues, first Ballon d'Or (2009), and registered a record 73-goal season.</td>
+                <td class="p-3 text-slate-400">The Unstoppable Winger</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-rose-400">25 - 33 years</td>
+                <td class="p-3">2012 - 2020</td>
+                <td class="p-3">Dominating La Liga, accumulating multiple Ballons d'Or, and crossing the 700-goal mark for Barcelona.</td>
+                <td class="p-3 text-slate-400">Culer King & Maestro</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-rose-400">34 - 36 years</td>
+                <td class="p-3">2021 - 2023</td>
+                <td class="p-3">Won the 2021 Copa América, 2022 FIFA World Cup in Qatar, 8th Ballon d'Or, and signed with Inter Miami CF.</td>
+                <td class="p-3 text-slate-400">The Undisputed GOAT</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-rose-400">37 - 39 years</td>
+                <td class="p-3">2024 - 2026</td>
+                <td class="p-3">Leading Inter Miami to titles, competing in the 2026 FIFA World Cup, and setting the gold standard for longevity.</td>
+                <td class="p-3 text-slate-400">The Living Legend</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `,
+    contentAr: {
+      toc: [
+        "1. كم عمر ميسي الآن؟ الإجابة الرسمية المباشرة",
+        "2. السيرة الذاتية والبيانات الاحترافية للبرغوث الأرجنتيني",
+        "3. كيف يحافظ ميسي على لياقته البدنية في سن الـ 39؟",
+        "4. الجدول الزمني لمسيرة ميسي وأبرز محطاته الذهبية",
+        "5. الأرقام القياسية والبطولات الجماعية التي حققها ميسي"
+      ],
+      sections: [
+        {
+          title: "1. كم عمر ميسي الآن؟ الإجابة الرسمية المباشرة",
+          body: "وُولد ليونيل ميسي في الرابع والعشرين من يونيو لعام 1987، مما يجعله يبلغ من العمر تماماً 39 عاماً في عام 2026، حيث يواصل إبهار الجماهير بقميص إنتر ميامي والمنتخب الأرجنتيني في البطولة العالمية."
+        }
+      ],
+      faqs: [
+        {
+          q: "كم عمر ميسي في عام 2026؟",
+          a: "يبلغ ليونيل ميسي من العمر تماماً 39 عاماً، حيث ولد في 24 يونيو 1987."
+        },
+        {
+          q: "في أي نادٍ يلعب ميسي في عام 2026؟",
+          a: "يلعب ميسي حالياً كقائد لنادي إنتر ميامي الأمريكي في الدوري الأمريكي لكرة القدم (MLS)، كما يمثل المنتخب الوطني الأرجنتيني."
+        },
+        {
+          q: "هل يشارك ميسي في كأس العالم 2026؟",
+          a: "نعم، يشارك الأسطورة ليونيل ميسي مع منتخب الأرجنتين في مونديال 2026 المقام في الولايات المتحدة وكندا والمكسيك."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. How Old is Lionel Messi? The Quick Answer",
+        "2. Official Biography & Profile of the Argentine GOAT",
+        "3. How Does Messi Defy Aging at 39?",
+        "4. Timeline of Messi's Incredible Milestones",
+        "5. Key Records and Trophies Won by Lionel Messi"
+      ],
+      sections: [
+        {
+          title: "1. How Old is Lionel Messi? The Quick Answer",
+          body: "Lionel Messi was born on June 24, 1987. In 2026, he is officially 39 years old, showcasing high-level tactical performances for both Inter Miami and the Argentina national team."
+        }
+      ],
+      faqs: [
+        {
+          q: "What is Lionel Messi's age in 2026?",
+          a: "Lionel Messi is exactly 39 years old. He celebrates his birthday on June 24."
+        },
+        {
+          q: "Which club does Messi play for in 2026?",
+          a: "He is currently the captain of Inter Miami CF in Major League Soccer (MLS) and continues to lead the Argentina national squad."
+        }
+      ]
+    }
+  },
   {
     id: "art-football-nutrition-evergreen",
     slug: "perfect-diet-program-football-players-stamina-speed",

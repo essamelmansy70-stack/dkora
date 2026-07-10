@@ -4,169 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Favicon and App Icons -->
-    <link rel="icon" type="image/jpeg" sizes="32x32" href="/logo.jpg" />
-    <link rel="icon" type="image/jpeg" sizes="16x16" href="/logo.jpg" />
-    <link rel="shortcut icon" type="image/jpeg" href="/logo.jpg" />
-    <link rel="apple-touch-icon" href="/logo.jpg" />
-    <link rel="preload" href="/logo.jpg" as="image" type="image/jpeg" fetchpriority="high" />
-    
-    <!-- Google Analytics (gtag.js) - Delayed/Lazy-Loaded on User Interaction/Scroll -->
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
-    <script>
-      (function() {
-        let loaded = false;
-        function loadGA() {
-          if (loaded) return;
-          loaded = true;
-          
-          // Remove event listeners to prevent duplicate executions
-          window.removeEventListener('scroll', loadGA, { passive: true });
-          window.removeEventListener('mousemove', loadGA, { passive: true });
-          window.removeEventListener('touchstart', loadGA, { passive: true });
-          window.removeEventListener('keydown', loadGA, { passive: true });
-          
-          // Dynamically inject Google Analytics script
-          const script = document.createElement('script');
-          script.async = true;
-          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-1X9DTB7PL5';
-          document.head.appendChild(script);
-          
-          // Initialize gtag
-          window.dataLayer = window.dataLayer || [];
-          window.gtag = function() { window.dataLayer.push(arguments); };
-          gtag('js', new Date());
-          gtag('config', 'G-1X9DTB7PL5');
-        }
-        
-        // Bind to multiple user interaction gestures for instant response
-        window.addEventListener('scroll', loadGA, { passive: true });
-        window.addEventListener('mousemove', loadGA, { passive: true });
-        window.addEventListener('touchstart', loadGA, { passive: true });
-        window.addEventListener('keydown', loadGA, { passive: true });
-        
-        // Fallback load on page load when browser is idle to ensure tracking isn't lost
-        if (window.requestIdleCallback) {
-          window.requestIdleCallback(function() {
-            setTimeout(loadGA, 4000);
-          });
-        } else {
-          setTimeout(loadGA, 5000);
-        }
-      })();
-    </script>
-    
-    <!-- Monetag Vignette Ad Integration - Lazy Loaded to prevent Render-Blocking & boost FCP/LCP -->
-    <script>
-      (function() {
-        let loaded = false;
-        function loadMonetag() {
-          if (loaded) return;
-          loaded = true;
-          
-          // Remove event listeners
-          window.removeEventListener('scroll', loadMonetag, { passive: true });
-          window.removeEventListener('mousemove', loadMonetag, { passive: true });
-          window.removeEventListener('touchstart', loadMonetag, { passive: true });
-          window.removeEventListener('keydown', loadMonetag, { passive: true });
-          
-          // Inject Monetag
-          (function(s){
-            s.dataset.zone='10693192';
-            s.src='https://n6wxm.com/vignette.min.js';
-          })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
-        }
-        
-        // Listen to interaction gestures
-        window.addEventListener('scroll', loadMonetag, { passive: true });
-        window.addEventListener('mousemove', loadMonetag, { passive: true });
-        window.addEventListener('touchstart', loadMonetag, { passive: true });
-        window.addEventListener('keydown', loadMonetag, { passive: true });
-        
-        // Fallback delay
-        if (window.requestIdleCallback) {
-          window.requestIdleCallback(function() {
-            setTimeout(loadMonetag, 4000);
-          });
-        } else {
-          setTimeout(loadMonetag, 5000);
-        }
-      })();
-    </script>
-    
-    <!-- On-Page SEO Primary Metadata -->
-    <title>من يشبهك من لاعبي المونديال؟ | اختبار شخصية كرة القدم التفاعلي</title>
-    <meta name="description" content="اكتشف أي من أساطير كرة القدم العالمية يماثل شخصيتك وأسلوبك الرياضي في الملعب من خلال اختبار تفاعلي فائق وممتع متجدد باستمرار." />
-    <meta name="keywords" content="من يشبهك من لاعبي كرة القدم, أي لاعب كرة قدم أنت, ميسي, رونالدو, مبابي, صلاح, هالاند, مودريتش, اختبار كرة قدم" />
-    <meta name="author" content="World Cup Quiz" />
+    <!-- Primary SEO Metadata -->
+    <title>سبورت زون | متجر المعدات والملابس الرياضية بأفضل الأسعار على أمازون</title>
+    <meta name="description" content="تسوق أفضل الأحذية الرياضية، الملابس الأنيقة، ومعدات التدريب واللياقة البدنية عالية الجودة. منتجات موثوقة ومختارة بعناية بروابط مباشرة إلى أمازون." />
+    <meta name="keywords" content="متجر رياضي، ملابس رياضية، أحذية جري، معدات جيم، أفيليت أمازون، نايكي، أديداس، أدوات تدريب منزلية" />
+    <meta name="author" content="SportZone Affiliate Store" />
     <meta name="robots" content="index, follow" />
-    <meta name="application-name" content="World Cup Quiz" />
-    <meta name="apple-mobile-web-app-title" content="World Cup Quiz" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ais-dev-midkp5hm63tkis7b4wleb2-625047059824.europe-west2.run.app" />
-    <meta property="og:site_name" content="World Cup Quiz" />
-    <meta property="og:title" content="من يشبهك من لاعبي المونديال؟ | اختبار شخصية كرة القدم التفاعلي" />
-    <meta property="og:description" content="اكتشف توأمك الكروي من أساطير كأس العالم! اختبار تفاعلي سريع وممتع يخمن شخصيتك الرياضية." />
-    <meta property="og:image" content="https://dkora.online/logo.jpg" />
+    <meta property="og:site_name" content="سبورت زون" />
+    <meta property="og:title" content="سبورت زون | متجر المعدات والملابس الرياضية بأفضل الأسعار على أمازون" />
+    <meta property="og:description" content="تسوق أفضل الأحذية الرياضية، الملابس الأنيقة، ومعدات التدريب واللياقة البدنية عالية الجودة. منتجات موثوقة ومختارة بعناية بروابط مباشرة إلى أمازون." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1460353581641-37baddff0bc2?auto=format&fit=crop&w=1200&q=80" />
 
     <!-- Twitter Cards -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://ais-dev-midkp5hm63tkis7b4wleb2-625047059824.europe-west2.run.app" />
-    <meta property="twitter:title" content="من يشبهك من لاعبي المونديال؟ | اختبار شخصية كرة القدم" />
-    <meta property="twitter:description" content="اكتشف توأمك الكروي من أساطير كأس العالم! اختبار تفاعلي سريع وممتع يخمن شخصيتك الرياضية." />
+    <meta property="twitter:title" content="سبورت زون | متجر المعدات والملابس الرياضية بأفضل الأسعار على أمازون" />
+    <meta property="twitter:description" content="تسوق أفضل الأحذية الرياضية، الملابس الأنيقة، ومعدات التدريب واللياقة البدنية عالية الجودة." />
     
-    <!-- Structured Data JSON-LD (WebSite & GameApplication Schema Optimized for Google 2026) -->
-    <script type="application/ld+json">
-    [
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "من يشبهك من لاعبي المونديال؟",
-        "alternateName": ["Which World Cup Player Are You", "اختبار لاعب المونديال", "أداة كرة القدم", "dkora"],
-        "url": "https://dkora.online/"
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "World Cup Player Personality Match Quiz",
-        "operatingSystem": "All",
-        "applicationCategory": "GameApplication",
-        "browserRequirements": "Requires modern HTML5 web browser and JS",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
-        "description": "أداة ويب تفاعلية مجانية متجددة كلياً لمعرفة أي من لاعبي وأساطير المونديال يشبه شخصيتك وأسلوبك الرياضي بدقة لعام ٢٠٢٦.",
-        "author": {
-          "@type": "Organization",
-          "name": "World Cup Quiz Team",
-          "url": "https://dkora.online"
-        }
-      }
-    ]
-    </script>
-    
-    <!-- Cairo Font for beautiful modern Arabic Typography -->
+    <!-- Cairo & Tajawal Fonts for beautiful modern Arabic Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" />
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-    </noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;750;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
     
     <style>
       html {
-        font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+        font-family: 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
         scroll-behavior: smooth;
       }
     </style>
   </head>
-  <body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen transition-colors duration-300">
+  <body class="bg-slate-50 text-slate-900 min-h-screen transition-colors duration-300">
     <div id="app"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

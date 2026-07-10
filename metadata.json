@@ -1,6 +1,6 @@
 {
   "name": "Football World Cup Player Quiz",
-  "description": "من يشبهك من لاعبي المونديال؟ - اختبار شخصية تفاعلي غني بالأسئلة الرياضية المتنوعة والتحليلات الدقيقة بدون تكاليف خادم.",
+  "description": "متجر رياضي ذكي لروابط أفيليت أمازون - تسوق أفضل الأحذية، الملابس، والمعدات الرياضية بأعلى جودة وثقة بروابط مباشرة وتوجيهات شراء ذكية.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

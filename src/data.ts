@@ -1,549 +1,413 @@
-import { Question, PlayerProfile } from "./types";
+import { Product, GuideItem } from "./types";
 
-export const QUESTION_BANK: Question[] = [
+export const PRODUCTS_DATA: Product[] = [
   {
-    id: 1,
-    textAr: "خطتك المفضلة لإنهاء الهجمة الحاسمة للفريق هي:",
-    textEn: "What is your favorite strategy to finish a decisive attack for the team?",
-    options: [
-      { textAr: "تخطي الدفاع بمهارة فردية وسحر خالص ممتع", textEn: "Bypass defenses with brilliant individual skills and pure football magic", player: "messi" },
-      { textAr: "الارتقاء عالياً وضرب كرة رأسية قوية لا تُصد", textEn: "Leaping high to strike a powerful, unstoppable header", player: "ronaldo" },
-      { textAr: "الانطلاق بأقصى سرعة واستغلال المساحات الخاوية", textEn: "Sprinting at full speed to exploit open counter-attacking spaces", player: "mbappe" },
-      { textAr: "التمركز الذكي في الصندوق ومتابعة الكرة بقوة بدنية", textEn: "Positioning smartly in the box to finish with high physical force", player: "haaland" }
-    ]
+    id: "prod-nike-pegasus",
+    titleAr: "حذاء الجري نايكي إير زوم بيجاسوس الاحترافي",
+    titleEn: "Nike Air Zoom Pegasus Professional Running Shoes",
+    category: "shoes",
+    subCategoryAr: "أحذية جري وماراثون",
+    subCategoryEn: "Running & Marathon Shoes",
+    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80",
+    descriptionAr: "انطلق بأقصى طاقتك مع حذاء الجري الأسطوري من نايكي. يتميز بنظام توجيه ديناميكي للقدم ووسادة غازية متطورة لتأمين هبوط ناعم وارتداد فائق القوة مع كل خطوة على مضمار الجري أو الإسفلت.",
+    descriptionEn: "Experience ultimate responsive speed with Nike's legendary runner. Featuring a dynamic midfoot lockdown system and React foam paired with dual Zoom Air units for a springy, cushioned ride.",
+    rating: 4.8,
+    reviewsCount: 1240,
+    featuresAr: [
+      "وسائد Zoom Air مزدوجة لامتصاص الصدمات وارتداد مرن للغاية",
+      "نسيج شبكي علوي مطور بنظام التهوية الذكية لمنع تعرق القدمين",
+      "نعل سفلي مطاطي بتصميم وافل لمنع الانزلاق وتأمين ثبات تام",
+      "هيكل خفيف الوزن يقلل الإجهاد أثناء المسافات الطويلة والماراثونات"
+    ],
+    featuresEn: [
+      "Dual Zoom Air units deliver maximum cushioning and energetic response",
+      "Engineered mesh upper offers strategic breathability and snug support",
+      "Waffle-inspired rubber outsole provides outstanding multi-surface traction",
+      "Lightweight build designed to reduce fatigue over long-distance runs"
+    ],
+    amazonUrl: "https://www.amazon.com/s?k=Nike+Air+Zoom+Pegasus+Running+Shoes&tag=sportzoneaff-20",
+    badgeAr: "الأكثر مبيعاً",
+    badgeEn: "Best Seller",
+    tagsAr: ["نايكي", "حذاء جري", "وسادة هوائية", "خفيف الوزن"],
+    tagsEn: ["Nike", "Running", "Air Cushion", "Lightweight"],
+    bestUseAr: "مثالي للجري اليومي والمسافات الطويلة والماراثونات الاحترافية.",
+    bestUseEn: "Best for daily road running, long-distance training, and professional marathons."
   },
   {
-    id: 2,
-    textAr: "كيف تفضل قضاء ليلة ما قبل المباراة النهائية الكبرى؟",
-    textEn: "How do you prefer to spend the night before a major final?",
-    options: [
-      { textAr: "بهدوء تام مع عائلتي وأطفالي في المنزل لتصفية ذهني", textEn: "In complete peace with my family at home to clear my mind", player: "messi" },
-      { textAr: "تدريبات إضافية شاقة، نوم مبكر ونظام غذائي دقيق", textEn: "Extra training workout, early sleep, and a strict diet", player: "ronaldo" },
-      { textAr: "القضاء الحصري في الألعاب الرقمية ومراجعة الأوراق التكتيكية", textEn: "Relaxing with gaming and reviewing tactical blueprints", player: "modric" },
-      { textAr: "الاسترخاء التام وتناول وجبة لذيذة ثم النوم بعمق شديد", textEn: "Total relaxation, enjoying a solid meal, and sleeping deeply", player: "haaland" }
-    ]
+    id: "prod-adidas-ultraboost",
+    titleAr: "حذاء أديداس ألترا بوست الرياضي فائق المرونة",
+    titleEn: "Adidas Ultraboost Light Premium Athletic Shoes",
+    category: "shoes",
+    subCategoryAr: "أحذية تدريب ولياقة بدنية",
+    subCategoryEn: "Training & Fitness Footwear",
+    image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=600&q=80",
+    descriptionAr: "الحذاء الرياضي الأكثر راحة على كوكب الأرض. يتميز بتقنية كبسولات الطاقة الارتدادية الأيقونية من أديداس، مما يمنحك شعوراً فريداً بالطيران والراحة المطلقة طوال اليوم، سواء في الجيم أو أثناء المشي والوقوف الطويل.",
+    descriptionEn: "Unleash epic energy with the lightest Ultraboost ever made. Built with revolutionary Light BOOST foam cushioning that return massive energy while providing glove-like snug fit for active daily use.",
+    rating: 4.9,
+    reviewsCount: 2180,
+    featuresAr: [
+      "نعل أوسط بتقنية BOOST يضم مئات كبسولات الطاقة لامتصاص كامل للضغط",
+      "جزء علوي مرن للغاية من نسيج Primeknit المصنوع من مواد مستدامة",
+      "نظام ثبات Linear Energy Push مدمج لمنع التواء الكاحل",
+      "نعل سفلي مطاطي من شركة Continental الألمانية لثبات خرافي في الأجواء الرطبة والملساء"
+    ],
+    featuresEn: [
+      "Signature full-length BOOST midsole for peerless shock absorption",
+      "Continental™ Rubber outsole provides extraordinary grip in wet and dry conditions",
+      "Adaptive Primeknit upper wraps the foot in supportive, seam-free comfort",
+      "LEP (Linear Energy Push) system enhances stability and midfoot forefoot responsiveness"
+    ],
+    amazonUrl: "https://www.amazon.com/s?k=Adidas+Ultraboost+Shoes&tag=sportzoneaff-20",
+    badgeAr: "الأعلى تقييماً",
+    badgeEn: "Top Rated",
+    tagsAr: ["أديداس", "مريح جداً", "كبسولات الطاقة", "تدريب يومي"],
+    tagsEn: ["Adidas", "Max Comfort", "Boost Energy", "Gym Training"],
+    bestUseAr: "الخيار الأول للوقوف الطويل، تدريبات الصالة الرياضية، والمشي اليومي المريح.",
+    bestUseEn: "Excellent for prolonged standing, gym fitness, and high-impact daily walks."
   },
   {
-    id: 3,
-    textAr: "عند خسارة فريقك في اللحظات الأخيرة، أول رد فعل لك هو:",
-    textEn: "When your team concedes a loss in the final seconds, your first reaction is:",
-    options: [
-      { textAr: "الحزن الهادئ ومحاولة صنع فرصة أخيرة عبقرية بدقة", textEn: "Silent sadness while trying to engineer one final genius pass", player: "messi" },
-      { textAr: "الغضب المشتعل وحث زملائي بصوت عالٍ على مواصلة القتال", textEn: "Fiery anger, loudly urging my teammates to keep on fighting", player: "ronaldo" },
-      { textAr: "محاولة استغلال مهارتي لجر الفريق بأكمله نحو الهجوم", textEn: "Using my pace to pull the entire team forward to attack", player: "mbappe" },
-      { textAr: "ملازمة الابتسامة ومصافحة الخصم للتجهيز للمواجهة القادمة بذكاء", textEn: "Keeping a polite smile, shaking hands, and preparing for the next match", player: "salah" }
-    ]
+    id: "prod-puma-future",
+    titleAr: "حذاء كرة القدم بوما فيوتشر الاحترافي للملاعب العشبية",
+    titleEn: "Puma Future Match FG/AG Soccer Cleats",
+    category: "shoes",
+    subCategoryAr: "أحذية كرة قدم",
+    subCategoryEn: "Soccer Cleats",
+    image: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=600&q=80",
+    descriptionAr: "أطلق العنان لمهاراتك الفنية ومراوغاتك السريعة على خطى كبار نجوم اللعبة. حذاء بوما فيوتشر مصمم بهيكل ذكي يدعم الكاحل بمرونة تامة ويأتي بنقوش ناتئة تمنحك تحكماً خارقاً بالكرة في جميع الظروف الجوية.",
+    descriptionEn: "Re-engineered for game-changers, inspired by Neymar Jr. The adaptive FUZIONFIT360 upper combines engineered dual mesh and stretchy knit to support dynamic playmaking with or without laces.",
+    rating: 4.7,
+    reviewsCount: 840,
+    featuresAr: [
+      "تقنية شريط الضغط FUZIONFIT+ الذكية التي تتكيف مع شكل قدمك الفردي",
+      "بروزات ثلاثية الأبعاد بارزة ومحسنة في مناطق الاتصال الرئيسية للتحكم بالكرة",
+      "نظام نعل سفلي تفاعلي خفيف الوزن ومزود ببروزات مصممة للتسارعات والمناورات الحادة",
+      "مناسب للعب على الملاعب العشبية الطبيعية والصناعية بدقة متناهية"
+    ],
+    featuresEn: [
+      "FUZIONFIT+ compression band adapts to your foot for a personalized snug lock",
+      "Engineered 3D textures in key contact zones optimize ball grip and control",
+      "Dynamic Motion System dual-density outsole improves agility, speed and traction",
+      "Versatile FG/AG stud configuration perfect for both firm natural grass and artificial turf"
+    ],
+    amazonUrl: "https://www.amazon.com/s?k=Puma+Future+Soccer+Cleats&tag=sportzoneaff-20",
+    badgeAr: "موصى به للمحترفين",
+    badgeEn: "Pro Choice",
+    tagsAr: ["بوما", "كرة قدم", "ملاعب عشبية", "تحكم بالكرة"],
+    tagsEn: ["Puma", "Football", "Soccer Cleats", "Aura Control"],
+    bestUseAr: "مصمم لصناع اللعب والمهاجمين الباحثين عن سرعة تغيير الاتجاه والتحكم بالكرة.",
+    bestUseEn: "Engineered specifically for playmakers and strikers demanding fast agility."
   },
   {
-    id: 4,
-    textAr: "لو لم تكن لاعب كرة قدم محترف، ماذا كنت ستختار كمسار بديل؟",
-    textEn: "If you weren't a professional footballer, what would be your path?",
-    options: [
-      { textAr: "مهندس ديكور هادئ أو رسام مبدع تفصيلي", textEn: "A quiet interior designer or a detailed, creative artist", player: "messi" },
-      { textAr: "رجل أعمال جاد يمتلك علامات تجارية عالمية فائقة", textEn: "A serious businessman owning premium global luxury brands", player: "ronaldo" },
-      { textAr: "قائد تنفيذي أو رائد أعمال في مجالات التقنية المعاصرة", textEn: "A visionary corporate CEO or tech venture entrepreneur", player: "mbappe" },
-      { textAr: "مزارع جاد يعيش وسط الطبيعة الجبلية الهادئة", textEn: "A peaceful farmer living in quiet mountainous nature", player: "haaland" }
-    ]
+    id: "prod-ua-charged",
+    titleAr: "حذاء التدريب أندير آرمور تشارجد ممتص الصدمات",
+    titleEn: "Under Armour Charged Assert Training Sneakers",
+    category: "shoes",
+    subCategoryAr: "أحذية تدريب وجيم",
+    subCategoryEn: "Gym & Crossfit Sneakers",
+    image: "https://images.unsplash.com/photo-1460353581641-37baddff0bc2?auto=format&fit=crop&w=600&q=80",
+    descriptionAr: "الصلابة تلتقي بالمرونة. يوفر حذاء أندير آرمور حماية ممتازة للكاحل والركبتين أثناء تمارين رفع الأثقال وتدريبات الكارديو عالية الشدة بفضل رغوة Charged المصبوبة حرارياً.",
+    descriptionEn: "This shoe is built to help anyone run and train faster. Lightweight mesh delivers complete breathability, while Charged Cushioning® foam helps guard your joints against heavy impacts.",
+    rating: 4.6,
+    reviewsCount: 1530,
+    featuresAr: [
+      "نعل أوسط بتقنية Charged Cushioning يمتص صدمات الارتطام ويحولها لقوة دافعة",
+      "نسيج شبكي خفيف الوزن وثلاثي الألوان يوفر تنفساً فائقاً وحماية ضد الاحتكاك",
+      "فرش داخلي فاخر من إسفنج EVA ميموري فوم يتشكل حسب باطن القدم",
+      "نعل خارجي من المطاط الصلب يغطي مناطق الارتطام العالي لزيادة المتانة والوقاية"
+    ],
+    featuresEn: [
+      "Charged Cushioning® midsole utilizes compression molded foam for ultimate responsiveness",
+      "Lightweight mesh upper with 3-color digital print delivers complete dry breathability",
+      "Full-length EVA sockliner molds directly to the foot, eliminating slippage",
+      "Solid rubber outsole covers high impact zones for greater durability with less weight"
+    ],
+    amazonUrl: "https://www.amazon.com/s?k=Under+Armour+Charged+Assert+Shoes&tag=sportzoneaff-20",
+    badgeAr: "الأفضل لتمارين الجيم",
+    badgeEn: "Gym Special",
+    tagsAr: ["أندير آرمور", "تمارين الجيم", "امتصاص الصدمات", "رفع أثقال"],
+    tagsEn: ["Under Armour", "Crossfit", "Charged Cushion", "Gym Workout"],
+    bestUseAr: "الخيار الأمثل لتمارين المقاومة، الجري على السير الكهربائي، وحصص الكارديو والكروس فت.",
+    bestUseEn: "Best for indoor treadmill work, resistance lifting, HIIT, and functional training classes."
   },
   {
-    id: 5,
-    textAr: "طريقتك المفضلة لتجاوز مدافع صلب في مواجهة 1 ضد 1 هي:",
-    textEn: "Your favorite way to bypass a tough defender in a 1v1 duel is:",
-    options: [
-      { textAr: "تمويه سريع بالجسد وتغيير الاتجاه بلمح البصر", textEn: "A quick body feint and changing direction in a blink of an eye", player: "messi" },
-      { textAr: "سلسلة من حركات الدحرجة والمراوغة السريعة المحترفة", textEn: "A series of swift, dazzling stepovers and step-dribbling", player: "ronaldo" },
-      { textAr: "دفعة سرعة هائلة تفاجئه وتتركه خلفي متأخراً بأمتار", textEn: "An explosive burst of raw speed, leaving them far behind", player: "mbappe" },
-      { textAr: "استخدام قوتي البدنية وكتفي لتجاوزه بقوة ودفع مميز", textEn: "Using physical strength and shoulder-shielding to brush past them", player: "haaland" }
-    ]
+    id: "prod-ua-dryfit-shirt",
+    titleAr: "قميص رياضي ضاغط دراي فيت مضاد للتعرق",
+    titleEn: "Dry-Fit Performance Compression Sports Shirt",
+    category: "apparel",
+    subCategoryAr: "ملابس رياضية علوية",
+    subCategoryEn: "Athletic Tops",
+    image: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=600&q=80",
+    descriptionAr: "حافظ على جفاف جسدك وحرارته المثالية أثناء أصعب التدريبات. قميص رياضي مصنع من خيوط تكنولوجية تمتص العرق وتنقله إلى الطبقة الخارجية ليتبخر بسرعة قصوى، مع نسيج مرن يبرز الكتلة العضلية ويحميها.",
+    descriptionEn: "Elevate your training session with high-wicking technical fabric. This compression shirt pulls sweat away from your skin to the outer fabric layer for lightning-fast evaporation, keeping your muscles warm and dry.",
+    rating: 4.7,
+    reviewsCount: 3410,
+    featuresAr: [
+      "تقنية دراي فيت المتقدمة لسحب الرطوبة والتعرق بكفاءة مضاعفة",
+      "نسيج رباعي الاتجاهات يمنحك حرية الحركة الكاملة دون أي قيود",
+      "خياطة مسطحة ملساء تمنع تهيج الجلد أو احتكاك الأكتاف أثناء التمارين المتكررة",
+      "تقنية مقاومة الميكروبات تمنع نمو البكتيريا المسببة لروائح العرق الكريهة"
+    ],
+    featuresEn: [
+      "Advanced Dry-Fit tech wicks moisture away rapidly, keeping you fresh",
+      "4-way stretch fabrication allows absolute mobility in any athletic direction",
+      "Ergonomic flatlock seams minimize chafing and skin irritation during repetitive motions",
+      "Anti-odor technology prevents the growth of odor-causing microbes inside active fibers"
+    ],
+    amazonUrl: "https://www.amazon.com/s?k=Dry-Fit+Men+Compression+Shirt&tag=sportzoneaff-20",
+    badgeAr: "مقاوم للتعرق",
+    badgeEn: "Sweat Resistant",
+    tagsAr: ["دراي فيت", "تيشيرت رياضي", "مضاد للتعرق", "ملابس ضغط"],
+    tagsEn: ["Dry-Fit", "Athletic Shirt", "Wicking Fabric", "Compression"],
+    bestUseAr: "مثالي للجيم، تدريبات كمال الأجسام، الجري المفتوح، وكرة القدم كطبقة أساسية.",
+    bestUseEn: "Perfect for weightlifting, intensive cardios, outdoor cycling, and as a football base layer."
   },
   {
-    id: 6,
-    textAr: "كيف تصف علاقتك بالصحافة ووسائل الإعلام العالمية؟",
-    textEn: "How do you view your relationship with global sports media?",
-    options: [
-      { textAr: "خجول ومتحفظ للغاية، أتجنب اللقاءات الطويلة دائماً", textEn: "Shy and reserved, avoiding long conferences and spotlight", player: "messi" },
-      { textAr: "واثق للغاية، أعشق التحدي وأرد بقوة على المنتقدين", textEn: "Extremely confident, loving the challenge and answering critics with fire", player: "ronaldo" },
-      { textAr: "ذكي ودبلوماسي، أعرف متى أتكلم ومتى ألتزم الصمت التام", textEn: "Very smart and diplomatic, knowing exactly when to speak or keep quiet", player: "mbappe" },
-      { textAr: "طريف ومباشر للغاية، إجاباتي قصيرة وعفوية ومضحكة", textEn: "Direct and funny, giving short, spontaneous and humorous replies", player: "haaland" }
-    ]
+    id: "prod-adidas-tiro-pants",
+    titleAr: "بنطال التدريب أديداس تيرو الرياضي الأيقوني",
+    titleEn: "Adidas Tiro Training Pants & Joggers",
+    category: "apparel",
+    subCategoryAr: "بناطيل وبنطلونات رياضية",
+    subCategoryEn: "Athletic Pants & Joggers",
+    image: "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=600&q=80",
+    descriptionAr: "البنطال الرياضي الأكثر شهرة في ملاعب كرة القدم والصالات الرياضية. يتميز بتصميم مدبب يمنحك مظهراً عصرياً جذاباً، مع سحابات عند الكاحل تتيح لك خلعه وارتداءه بسرعة دون الحاجة لخلع حذائك الرياضي.",
+    descriptionEn: "Born on the football pitch, now a streetwear staple. These iconic Tiro pants are made with moisture-absorbing AEROREADY technology to keep you dry, featuring classic tapered fit with convenient ankle zips.",
+    rating: 4.8,
+    reviewsCount: 4120,
+    featuresAr: [
+      "تكنولوجيا AEROREADY لامتصاص العرق بكفاءة ممتازة والحفاظ على جفاف البدن",
+      "جيوب جانبية مدمجة مزودة بسحابات متينة لحفظ الهاتف والبطاقات بأمان أثناء الحركة",
+      "تصميم مدبب عصري يلتف بأناقة حول ربلة الساق دون مضايقة الحركة",
+      "مصنع بالكامل من بوليستر معاد تدويره عالي الجودة لحماية البيئة وتقليل الانبعاثات"
+    ],
+    featuresEn: [
+      "Adidas AEROREADY fabric absorbs sweat to keep you feeling cool, dry, and collected",
+      "Secure side zipper pockets store your phone, keys, and gym cards during rigorous runs",
+      "Sleek tapered leg design hugs calves closely without restricting speed or movement",
+      "Made with Primegreen high-performance recycled materials to support global sustainability"
+    ],
+    amazonUrl: "https://www.amazon.com/s?k=Adidas+Tiro+Training+Pants&tag=sportzoneaff-20",
+    badgeAr: "الخيار الأيقوني",
+    badgeEn: "Iconic Style",
+    tagsAr: ["أديداس", "بنطال تدريب", "تيرو", "جيوب بسحاب"],
+    tagsEn: ["Adidas", "Tiro", "Track Pants", "Zip Pockets"],
+    bestUseAr: "ممتاز لتدريبات الإحماء، رياضة كرة القدم، الجري، والاستخدام اليومي المريح.",
+    bestUseEn: "Best for soccer drills, gym warm-ups, outdoor jogging, and sleek athletic leisurewear."
   },
   {
-    id: 7,
-    textAr: "ما هي الصفة الأبرز التي تظن أنك تمتاز بها في حياتك؟",
-    textEn: "What is the defining attribute that guides your lifestyle?",
-    options: [
-      { textAr: "السحر الفطري والنظرة الشاملة العميقة لكافة الأمور", textEn: "Natural magic and a deep, comprehensive overview of aspects", player: "messi" },
-      { textAr: "الإرادة الفولاذية والعمل الشاق الذي لا يتوقف نهائياً", textEn: "Absolute iron will and daily hard work that never halts", player: "ronaldo" },
-      { textAr: "الطموح الجارف وعشق تحقيق الريادة والقمم السريعة", textEn: "Towering ambition and a constant drive to occupy the fast lane to glory", player: "mbappe" },
-      { textAr: "التواضع اللامتناهي والوفاء الدائم لجذوري وأهلي", textEn: "Unending humility and a profound loyalty to my roots and community", player: "salah" }
-    ]
+    id: "prod-nike-pro-shorts",
+    titleAr: "شورت ضغط نايكي برو الرياضي الداعم للعضلات",
+    titleEn: "Nike Pro Combat Men's Compression Shorts",
+    category: "apparel",
+    subCategoryAr: "شورتات رياضية وضغط",
+    subCategoryEn: "Athletic Shorts & Underwear",
+    image: "https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=600&q=80",
+    descriptionAr: "امض قدماً بثقة مطلقة. يوفر شورت الضغط نايكي برو الدعم اللازم لعضلات الفخذ والمؤخرة، مما يقلل الاهتزاز العضلي والإجهاد، ويحميك من الاصابات والاحتكاك أثناء التدريبات الطويلة وعالية الشدة.",
+    descriptionEn: "Locked-in comfort and ultimate performance layer. The Nike Pro Shorts are made with stretchy, durable fabric with Dri-FIT sweat-wicking technology to keep you dry and supported from gym to game day.",
+    rating: 4.8,
+    reviewsCount: 1980,
+    featuresAr: [
+      "حزام خصر مرن ومسطح وعريض لتثبيت الشورت بقوة دون ضغط مؤلم على البطن",
+      "نسيج داعم وضيق يمنح العضلات شعوراً بالتماسك والنشاط ويقلل الاهتزاز",
+      "تهوية مستهدفة مدمجة في المناطق الساخنة لزيادة تدفق الهواء وتبريد الجسم",
+      "مادة مقاومة للتآكل وخياطة معززة لضمان استمرارية الاستخدام لسنوات"
+    ],
+    featuresEn: [
+      "Stretchy, high-durability fabric with sweat-wicking technology offers supreme supportive feel",
+      "Thick, secure elastic waistband holds shorts firmly in place during explosive squats",
+      "Mesh lining insert provides optimized airflow in high-heat zones during cardio sessions",
+      "Ergonomic flat seam structure protects thigh skin from painful chafing and rashes"
+    ],
+    amazonUrl: "https://www.amazon.com/s?k=Nike+Pro+Compression+Shorts&tag=sportzoneaff-20",
+    badgeAr: "الأكثر طلباً",
+    badgeEn: "Highly Wanted",
+    tagsAr: ["نايكي برو", "شورت ضغط", "دعم العضلات", "حماية الجلد"],
+    tagsEn: ["Nike Pro", "Compression Shorts", "Muscle Support", "Anti-Chafing"],
+    bestUseAr: "يرتدى كطبقة أساسية تحت شورت التدريب لتمارين القرفصاء (السكوات)، الجري، والدراجات الهوائية.",
+    bestUseEn: "Essential base layer under workout shorts for deep squats, cycling, running, and heavy leg days."
   },
   {
-    id: 8,
-    textAr: "تسجيل هدف حاسم في الدقيقة 90 يعني لك بالشعور الواضح:",
-    textEn: "Conversions of a match-winning goal in the 90th minute brings:",
-    options: [
-      { textAr: "انتصار للفريق بأكمله وصنع لحظة من السعادة الشاملة", textEn: "Total victory for the whole team and creating collective bliss", player: "messi" },
-      { textAr: "برهان متجدد على أنني البطل المنقذ وصاحب الكلمة الكبرى", textEn: "Another solid proof that I am the savior and the supreme hero", player: "ronaldo" },
-      { textAr: "بداية لكتابة اسمي عريناً بحروف من الذهب التاريخي", textEn: "A beginning for carving my name in gold across global history books", player: "mbappe" },
-      { textAr: "تعبير عن جهود وتكتيك صامت قمت ببلورته بجدارة وهدوء", textEn: "A perfect translation of tactical, selfless efforts designed in quietness", player: "modric" }
-    ]
+    id: "prod-leather-football",
+    titleAr: "كرة قدم جلدية احترافية معتمدة ومقاومة للماء",
+    titleEn: "Professional Thermally Bonded Match Football",
+    category: "equipment",
+    subCategoryAr: "كرات ومعدات الملاعب",
+    subCategoryEn: "Match Soccer Balls",
+    image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=600&q=80",
+    descriptionAr: "اختبر دقة التسديد والاستجابة المثالية كما في ملاعب المونديال. كرة قدم مصنوعة من جلد صناعي متميز وبتقنية اللحام الحراري الخالي من الخياطة، مما يضمن طيراناً مستقراً ومقاوماً للرياح والمياه.",
+    descriptionEn: "Play with FIFA-quality performance. This premium match ball is constructed with thermally bonded seamless panels to deliver a predictable flight path, better touch, and near-zero water absorption.",
+    rating: 4.8,
+    reviewsCount: 620,
+    featuresAr: [
+      "هيكل خارجي ملحوم حرارياً يلغي الفواصل ويمنع امتصاص مياه الأمطار كلياً",
+      "نقوش دقيقة ناتئة على السطح الخارجي تمنح الحراس والمهاجمين ملمساً وتحكماً خرافياً",
+      "كيس داخلي من مطاط البوتيل عالي الجودة يحفظ الهواء والضغط لأطول فترة ممكنة",
+      "مطابقة تماماً للمواصفات الدولية والقياسات الرسمية لكرة القدم (مقاس 5)"
+    ],
+    featuresEn: [
+      "Thermally bonded seamless surface provides a more predictable trajectory and lower water uptake",
+      "Engineered micro-textured casing offers superior grip for clinical passing and accurate shooting",
+      "High-grade butyl bladder delivers optimal air retention, keeping the ball pumped longer",
+      "Meets professional match specifications, regulation weight, size 5 standard"
+    ],
+    amazonUrl: "https://www.amazon.com/s?k=Professional+Match+Soccer+Ball+Size+5&tag=sportzoneaff-20",
+    badgeAr: "مواصفات عالمية",
+    badgeEn: "Match Grade",
+    tagsAr: ["كرة قدم", "جلد فاخر", "مقاس 5", "ملحومة حرارياً"],
+    tagsEn: ["Football", "Match Ball", "Size 5", "Thermal Bonded"],
+    bestUseAr: "مثالية للمباريات الاحترافية، تدريبات الأكاديميات، واللعب على العشب الطبيعي والصناعي.",
+    bestUseEn: "Best for league match play, professional club drills, and high-level training pitches."
   },
   {
-    id: 9,
-    textAr: "وجبتك المفضلة لشحن طاقتك قبل الاستحقاقات الرياضية:",
-    textEn: "Your preferred meal to power up before sports showdowns:",
-    options: [
-      { textAr: "بروتين كلاسيكي خفيف ومشروب محلي دافئ", textEn: "Classic light protein and a warm organic beverage", player: "messi" },
-      { textAr: "صدر دجاج نقي، أرز أبيض وخضروات مسلوقة بلا أي قطرة دهن", textEn: "Clean chicken breast, white rice, and steamed veggies with zero fat", player: "ronaldo" },
-      { textAr: "أكلة تقليدية من موطني تحرك مشاعري وطاقتي بحماس", textEn: "A traditional home country recipe that energizes my absolute heart", player: "salah" },
-      { textAr: "شريحة لحم ضخمة غنية بالبروتينات والحديد الطبيعي", textEn: "A massive steak packed with premium proteins and natural power", player: "haaland" }
-    ]
+    id: "prod-sports-water-bottle",
+    titleAr: "زجاجة مياه رياضية صحية مع مؤشر شرب زمني",
+    titleEn: "Leaking-Proof Sports Water Bottle with Time Marker",
+    category: "equipment",
+    subCategoryAr: "ملحقات رياضية وإكسسوارات",
+    subCategoryEn: "Active Hydration & Shakers",
+    image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80",
+    descriptionAr: "لا تنس شرب المياه بعد الآن. زجاجة رياضية مبتكرة ومصنوعة من بلاستيك تريتان الصحي الآمن والخالي من مادة BPA، تتميز بمؤشر زمني يشجعك على استهلاك الكمية الكافية من السوائل طوال ساعات تمرينك وجيوب قفل مانعة للتسريب.",
+    descriptionEn: "Stay perfectly hydrated and hit your daily water goals. Crafted with premium eco-friendly BPA-free Tritan copolyester, this smart sports bottle features motivational time markers to track your active water intake.",
+    rating: 4.7,
+    reviewsCount: 2890,
+    featuresAr: [
+      "مصنوعة بنسبة 100% من مادة Tritan الصديقة للبيئة والآمنة والخالية من السموم وبقايا البلاستيك",
+      "غطاء غبار محكم الإغلاق بنقرة زر واحدة مع قفل أمان يمنع أي تسريب للمياه في حقيبتك",
+      "مؤشر زمني وعبارات تشجيعية مطبوعة لمراقبة شرب المياه من الصباح حتى المساء",
+      "مزودة بمصفاة مدمجة للفواكه ومكعبات الثلج، وحبل يد مريح للحمل السهل"
+    ],
+    featuresEn: [
+      "Made of 100% BPA-free, toxic-free Tritan plastic to ensure completely clean, odorless taste",
+      "One-click pop-up lid with secure lock latch guarantees 100% leakproof sealing in bags",
+      "Motivational quotes and clear hourly time markers keep you sipping water all day",
+      "Features a removable strainer filter for fruit infuser or ice, and a tough carry strap"
+    ],
+    amazonUrl: "https://www.amazon.com/s?k=Sports+Water+Bottle+BPA+Free+Tritan&tag=sportzoneaff-20",
+    badgeAr: "رفيق التمرين الذكي",
+    badgeEn: "Hydration Hero",
+    tagsAr: ["زجاجة مياه", "خالي من BPA", "مؤشر شرب", "مانع للتسريب"],
+    tagsEn: ["Water Bottle", "BPA-Free", "Tritan", "Leak-Proof"],
+    bestUseAr: "مناسبة للجيم، رياضة الجري، ركوب الدراجات، التخييم، والمكتب اليومي.",
+    bestUseEn: "Best for gym cup holders, outdoor cycling, hiking trips, and office desk hydration."
   },
   {
-    id: 10,
-    textAr: "كيف تتعامل مع قرارات التحكيم المثيرة للجدل أو الخاطئة؟",
-    textEn: "How do you handle controversial or erroneous referee decisions?",
-    options: [
-      { textAr: "أتجاهلها تماماً وأركز على تقديم اللعب الساحر الردود", textEn: "Ignore it completely and focus on showcasing clean beautiful magic", player: "messi" },
-      { textAr: "أعترض بملامح غاضبة لفرض هيبتي وقوتي في رقعة الملعب", textEn: "Chide visibly to impose structural authority and dominance on the pitch", player: "ronaldo" },
-      { textAr: "أبتسم بذكاء وأتحدث بثقة مع حكم الساحة لإيصال فكرتي", textEn: "Smile cleverly and speak confidently with the ref to explain my view", player: "mbappe" },
-      { textAr: "أركز على الكرة التالية بلا تضييع ربع ثانية في نقاش عقيم", textEn: "Focus immediately on the next ball without wasting a single second on debates", player: "haaland" }
-    ]
+    id: "prod-gym-gloves",
+    titleAr: "قفازات الجيم ورفع الأثقال مبطنة ومقاومة للانزلاق",
+    titleEn: "Breathable Gym Workout Gloves with Wrist Support",
+    category: "equipment",
+    subCategoryAr: "إكسسوارات صالة الجيم",
+    subCategoryEn: "Gym Accessories & Straps",
+    image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80",
+    descriptionAr: "احم كفيك من الجلد الميت والتصلب أثناء التدريبات الثقيلة. قفازات رفع الأثقال الفاخرة تتميز ببطانة إسفنجية وكسوة مطاطية تمنحك قبضة فولاذية مانعة للانزلاق على البار، مع شريط معصم عريض يحمي المفصل من الالتواء.",
+    descriptionEn: "Say goodbye to calluses and wrist injuries. These full-palm protection workout gloves feature dense foam padding and premium silicone grip to secure your hold on dumbbells and barbells, integrated with adjustable elastic wrist wraps.",
+    rating: 4.6,
+    reviewsCount: 1470,
+    featuresAr: [
+      "حماية كاملة لراحة الكف مبطنة بطبقات من السيليكون لزيادة قوة الاحتكاك ومنع الانزلاق",
+      "دعامة معصم طويلة مدمجة وقابلة للتعديل بإحكام لحماية مفصل اليد أثناء الدفع الثقيل",
+      "مصنعة من قماش شبكي خفيف وسريع التهوية يمنع حرارة كف اليد وتراكم العرق",
+      "حلقات سحب ذكية على أطراف الأصابع تتيح لك خلع القفاز بسهولة فائقة بعد التمرين"
+    ],
+    featuresEn: [
+      "Full palm protection with thick foam padding and non-slip silicone pattern",
+      "Integrated 18-inch adjustable elastic wrist wrap supports joints during heavy bench presses",
+      "Back of the hand is made of high-grade breathable mesh fabric to prevent sweat buildup",
+      "Smart pull-tabs on the middle and ring fingers allow effortless glove removal"
+    ],
+    amazonUrl: "https://www.amazon.com/s?k=Gym+Workout+Gloves+Wrist+Support&tag=sportzoneaff-20",
+    badgeAr: "حماية كاملة للكفين",
+    badgeEn: "Heavy Grip",
+    tagsAr: ["قفازات جيم", "دعم المعصم", "رفع أثقال", "مقاوم للانزلاق"],
+    tagsEn: ["Gym Gloves", "Wrist Wrap", "Weightlifting", "Silicone Grip"],
+    bestUseAr: "الخيار الذهبي لتمارين العقلة، رفع الأثقال الباربل والدامبل، وتمارين الكاليسثينكس.",
+    bestUseEn: "Excellent for pull-ups, barbell deadlifts, heavy dumbell curls, and calisthenics training."
   },
   {
-    id: 11,
-    textAr: "ما هو أسلوبك في قيادة زملائك داخل غرف تبديل الملابس؟",
-    textEn: "What is your main style of leading teammates in the dressing room?",
-    options: [
-      { textAr: "التوجيه الصامت بالقدوة وأخذ زمام المبادرة الميدانية", textEn: "Silent guidance by setting examples and taking match-level charge", player: "messi" },
-      { textAr: "الخطابات الحماسية الحارة وتحفيز الجميع بلهب الشغف", textEn: "Delivering hot, fiery motivational speeches to ignite pure passion", player: "ronaldo" },
-      { textAr: "الترابط الأخوي الصادق ورسم البسمة لامتصاص التوتر", textEn: "Fostering brotherly bonds and sharing smiles to alleviate pressure", player: "salah" },
-      { textAr: "النصائح الفنية الهادئة والحديث المنبثق من عين الخبرة العميقة", textEn: "Distributing calm tactical suggestions emerging from absolute veteran wisdom", player: "modric" }
-    ]
+    id: "prod-jump-rope",
+    titleAr: "حبل قفز سريع لتمارين الكارديو واللياقة البدنية",
+    titleEn: "Speed Jump Rope with Ball Bearings for Cardio Workout",
+    category: "equipment",
+    subCategoryAr: "أدوات كارديو منزلية",
+    subCategoryEn: "Home Cardio Tools",
+    image: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=600&q=80",
+    descriptionAr: "احرق السعرات الحرارية بأقصى سرعة وطور رشاقتك المنزلية. حبل قفز عالي السرعة مزود برولمان بلي معدني ذكي يمنع تشابك السلك والتفافه، ومصمم بمقبض مريح مانع للتعرق وقابل لتعديل الطول ليناسب جميع الأطوال.",
+    descriptionEn: "Incinerate calories and boost foot speed anywhere. This high-speed jump rope features an advanced 360-degree ball bearing system to guarantee a smooth, tangle-free rotation, complete with adjustable steel cable.",
+    rating: 4.7,
+    reviewsCount: 3200,
+    featuresAr: [
+      "رولمان بلي فولاذي مدمج يضمن دوراناً سريعاً وسلساً بزاوية 360 درجة دون تشابك",
+      "سلك فولاذي مغلف بمادة PVC المقاومة للتآكل والقطع ليدوم على جميع أنواع الأراضي الصعبة",
+      "سهولة التعديل الذاتي للطول من خلال صامولة قفل يدوية لتناسب الكبار والصغار",
+      "مقابض إسفنجية خفيفة ومريحة ممتصة لتعرق اليد لمنع الانزلاق والتحكم المريح"
+    ],
+    featuresEn: [
+      "Advanced double ball-bearing system ensures rapid, whisper-quiet 360-degree spin",
+      "Tough braided steel wire cable is coated with wear-resistant PVC for longevity on concrete",
+      "Fast, tool-free cable adjustments let you resize the length to your height in seconds",
+      "Lightweight, anti-slip memory foam handles absorb sweat and reduce palm tension"
+    ],
+    amazonUrl: "https://www.amazon.com/s?k=Speed+Jump+Rope+with+Ball+Bearings&tag=sportzoneaff-20",
+    badgeAr: "مكافح الوزن الزائد",
+    badgeEn: "Fat Burner",
+    tagsAr: ["حبل قفز", "رولمان بلي", "كارديو منزلي", "حرق دهون"],
+    tagsEn: ["Jump Rope", "Ball Bearings", "Cardio Work", "Speed Rope"],
+    bestUseAr: "الخيار المثالي لتسخين الملاكمين، تمرين الكروس فت، وحرق السعرات من المنزل.",
+    bestUseEn: "Best for boxing warm-ups, CrossFit double-unders, and rapid calorie-burning routines at home."
   },
   {
-    id: 12,
-    textAr: "ما هو المكان الذي تفضله وتقصده لقضاء عطلتك السنوية؟",
-    textEn: "Where do you prefer to go for your annual holiday?",
-    options: [
-      { textAr: "شاطئ هادئ ومنعزل برفقة عائلتي المقرّبة فقط", textEn: "A quiet, secluded beach accompanied by my close family members", player: "messi" },
-      { textAr: "منتجع خاص فخم مجهز بصالات تدريب لمواصلة الاستعداد", textEn: "A grand private luxury resort loaded with custom gyms to stay fit", player: "ronaldo" },
-      { textAr: "عواصم الموضة والترفيه العالمية والأماكن الصاخبة والممتعة", textEn: "Elite fast-paced global fashion capitals and vibrant locations", player: "mbappe" },
-      { textAr: "الغابات الجبلية المليئة بالثلوج أو صيد الأسماك بنقاء", textEn: "Mountainous forests with heavy snow or fishing in ultimate clarity", player: "haaland" }
-    ]
-  },
-  {
-    id: 13,
-    textAr: "حين يطلق الخصوم عبارات مستفزة ضدك في الملعب، كيف تتصرف؟",
-    textEn: "When opponents throw verbal provocations at you on the field, what is your stance?",
-    options: [
-      { textAr: "أحافظ على برودي الكلي وأعاقبهم بمراوغة قاتلة تخرسهم", textEn: "Maintain absolute composure and punish them with a deadly, silencing dribble", player: "messi" },
-      { textAr: "تشتعل رغبتي وأرد عليهم بهدف صاروخي واحتفال حماسي بوجههم", textEn: "Passion ignites and I answer with a rocket goal followed by a proud celebration in their face", player: "ronaldo" },
-      { textAr: "استخدم سرعتي القصوى لتجاوزهم كالأشباح وأتركهم يعانون خلفي", textEn: "Unleash extreme speed to ghost past them and leave them suffering in the dust", player: "mbappe" },
-      { textAr: "أبتسم بوداعة ولا ألقي بالاً، فهدفي أكبر من مجرد مهاترات", textEn: "Offer a polite smile and stay focused, as my targets are far bigger than talk", player: "salah" }
-    ]
-  },
-  {
-    id: 14,
-    textAr: "ما نوع الحذاء الرياضي الذي تفضل ارتداءه وتمثيله؟",
-    textEn: "What kind of football boots do you prefer to wear and showcase?",
-    options: [
-      { textAr: "حذاء خفيف ومريح يعزز اللمسة والتحكم المطلق بالكرة", textEn: "A super light and comfortable boot enhancing ultimate ball feel and control", player: "messi" },
-      { textAr: "حذاء قوي ومندمج بأحدث تقنيات زيادة السرعة والارتقاء الجوي", textEn: "A robust boot integrated with speed-enhancing and high jump tech", player: "ronaldo" },
-      { textAr: "حذاء عصري خاطف للأنظار بألوان فسفورية ذكية وحيوية", textEn: "A flashy modern boot styled in vibrant glowing neon colorways", player: "mbappe" },
-      { textAr: "حذاء متين ثقيل البنية لضمان تسديدات مدمرة في الشباك", textEn: "A durable piece structured heavily to deliver thundering shots into the net", player: "haaland" }
-    ]
-  },
-  {
-    id: 15,
-    textAr: "ما هي طريقة احتفالك المفضلة بعد إحراز هدف ساحر؟",
-    textEn: "What is your signature celebration after scoring a magical goal?",
-    options: [
-      { textAr: "الابتسامة الفطرية والإشارة بإصبعي للسماء شكراً وعرفاناً", textEn: "A warm natural smile while pointing fingers skyward in gratitude", player: "messi" },
-      { textAr: "القفز عالياً مع الدوران الأسطوري وإطلاق الصرخة الشهيرة SIU", textEn: "Leaping in style with a massive mid-air turn and launching the SIU cry", player: "ronaldo" },
-      { textAr: "الوقوف بثقة وشموخ مع ضم الذراعين لمراقبة الجماهير المنتشية", textEn: "Standing tall and proud with crossed arms while watching delighted crowds", player: "mbappe" },
-      { textAr: "جلسة اليوغا والتأمل بسلام وسط هتافات المدرجات النارية", textEn: "Taking a yoga pose to reflect in ultimate peace amidst roaring fans", player: "haaland" }
-    ]
-  },
-  {
-    id: 16,
-    textAr: "ما هي أفضل ميزة تعجبك في صانع ألعاب فريقك لتنسيق الهجمات؟",
-    textEn: "What is your favorite trait of a playmaker who assists you?",
-    options: [
-      { textAr: "التفاهم السريع والتلقائي معي من لمحة عين واحدة وبدون كلام", textEn: "Instantly developing chemistry merely with a glance and zero words", player: "messi" },
-      { textAr: "إرسال كرات عرضية دقيقة ومتقنة بالمليمتر في زاوية ارتقائي الأقصى", textEn: "Sending millimeter-perfect crosses straight to my peak jumping zone", player: "ronaldo" },
-      { textAr: "تمرير الكرة في المساحات الخالية السحيقة لأجري خلفها بأقصى عزم", textEn: "Slipping passes deep into wide spaces for me to sprint after with full stride", player: "mbappe" },
-      { textAr: "إرسال تمريرات ذكية ومخفية تكسر وتدمر جدران دفاع الخصم", textEn: "Carving smart, hidden line-breaking passes that completely dissect defensive layouts", player: "modric" }
-    ]
-  },
-  {
-    id: 17,
-    textAr: "عندما تشعر بآلام طفيفة أو إجهاد في مواجهة مفصلية حاسمة:",
-    textEn: "When feeling minor pain or fatigue during a highly crucial fixture:",
-    options: [
-      { textAr: "أوازن بين جهدي بالملعب بذكاء وأعتمد على حركتي السحرية", textEn: "Balance my stamina intelligently and rely on flawless movement", player: "messi" },
-      { textAr: "أرفض الخروج كلياً وأضغط على نفسي بعزيمة فولاذية لا تهتز", textEn: "Refuse to be substituted, working through it with unbreakable resolve", player: "ronaldo" },
-      { textAr: "أستغل كراتي المتبقية بحذر لصنع الفارق وأطلب دعم زملائي", textEn: "Carefully conserve energy for rare bursts and lean on teammates", player: "mbappe" },
-      { textAr: "أستمر بالقتال رغبة في صناعة التاريخ متسلحاً بروح صلبة صبورة", textEn: "Keep grinding out of absolute loyalty to my team with patience and courage", player: "modric" }
-    ]
-  },
-  {
-    id: 18,
-    textAr: "لو تم اختيارك لتنفيذ ركلة جزاء حاسمة بنهائي المونديال بالدقيقة 90:",
-    textEn: "If you are selected to take a decisive 90th-minute penalty in a World Cup Final:",
-    options: [
-      { textAr: "سأتقدم بنبض هادئ، وأسددها بلمسة عبقرية ناعمة تفاجئ الحارس", textEn: "Step up with a calm heart and chip/place it past the goalie elegantly", player: "messi" },
-      { textAr: "سأطلب الكره بجرأة فولاذية، وأسددها بصاروخ مدمر في سقف الشبكة", textEn: "Decline fear, demand the ball, and blast a thunderous rocket into the top corner", player: "ronaldo" },
-      { textAr: "سأنظر لعين الحارس مباشرة بتحدٍ وأسكنها بثقة بالغة في الشباك", textEn: "Stare directly into the keeper's eyes and slot it with cold-blooded confidence", player: "mbappe" },
-      { textAr: "سأضعها بثبات وعقلانية في أقصى الزاوية التي تصعب حيازتها", textEn: "Settle it neatly and strike it safely into the absolute furthest margins of the net", player: "salah" }
-    ]
-  },
-  {
-    id: 19,
-    textAr: "ما هي الرياضة الأخرى التي تسترعي انتباهك خارج نطاق كرة القدم؟",
-    textEn: "What other sport catches your interest outside of football?",
-    options: [
-      { textAr: "كرة السلة والتحركات المهارية السريعة والتمرير المتقن", textEn: "Basketball with tactical swift steps and brilliant playmaking", player: "messi" },
-      { textAr: "الفنون القتالية، السباحة وتدريبات القوة لتعزيز اللياقة المرعبة", textEn: "Martial arts, swimming and heavy weight training to strengthen the body", player: "ronaldo" },
-      { textAr: "سباقات الجري والعدو للمسافات القصيرة لقياس حدود السرعة", textEn: "Track athletics and sprinting to explore absolute limits of speed", player: "mbappe" },
-      { textAr: "رياضات الدفاع والتحمل الجبلي وسط الطبيعة الاسكندنافية الصعبة", textEn: "Endurance climbing and outdoor survival in Nordic nature setups", player: "haaland" }
-    ]
-  },
-  {
-    id: 20,
-    textAr: "كيف تفسر نجاحك المستمر وعطائك الممتد أمام ملايين الجماهير؟",
-    textEn: "How do you explain your prolonged success in front of millions of fans?",
-    options: [
-      { textAr: "توفيق من الله عز وجل، وصنع الفرحة لكل محب للكرة الحقيقية", textEn: "Blessings and destiny, while aiming to paint happiness on football fans' faces", player: "messi" },
-      { textAr: "التزامي اليومي المهووس، حتى عندما كان الجميع نائماً أو مستسلماً", textEn: "An intense daily obsession and work ethic, especially when others slept", player: "ronaldo" },
-      { textAr: "كفاحي الذي لا ينتهي وصبري الصادق لتحدي كافة صعاب البدايات", textEn: "My endless grit and sincere patience in overcoming tough childhood starting blocks", player: "modric" },
-      { textAr: "تطوير تفاصيلي باستمرار والسعي لإلهام ومساندة أبناء بلدي وجذوري", textEn: "Constantly refining the details while seeking to inspire and aid kids from my hometown", player: "salah" }
-    ]
-  },
-  {
-    id: 21,
-    textAr: "كيف تتعامل مع اللعب تحت وطأة الأمطار الغزيرة والأجواء الطينية؟",
-    textEn: "How do you approach playing under heavy rain and muddy pitches?",
-    options: [
-      { textAr: "أطوع مهارتي ومركز جاذبيتي المنخفض للسيطرة التامة على انزلاق الكرة", textEn: "Harness low center of gravity and ball touch to nullify slippy terrains", player: "messi" },
-      { textAr: "أراها بيئة مثالية لإبراز قوتي البدنية ونسقي الرياضي الصلب", textEn: "See it as the ultimate playground to flex superior resilience and body armor", player: "ronaldo" },
-      { textAr: "استحوذ على الكرات العرضية بقوة بدنية فائقة بلا خوف من الاصطدام", textEn: "Wreck chaos on long balls using physical dominance with zero fear of impact", player: "haaland" },
-      { textAr: "أحافظ على هدوء عقلي وتوزيع تمريراتي بدقة وأناقة ملموسة", textEn: "Keep a razor-sharp focus and distribute neat, classy passes with ease", player: "modric" }
-    ]
-  },
-  {
-    id: 22,
-    textAr: "ما هي الصفة الجوهرية التي تطلبها في لاعب خط الوسط المثالي لدعمك؟",
-    textEn: "What key characteristic do you seek in an ideal midfielder supporting you?",
-    options: [
-      { textAr: "الرؤية العميقة والتحكم الكامل في ريتم وتدفق اللعب دون تسرع", textEn: "Deep vision and total control over match tempo without rushing", player: "modric" },
-      { textAr: "السرعة العالية لتسهيل المرتدات السريعة وتحويل الملعب هجوماً", textEn: "Blazing fast speed to facilitate rapid transitions and launch runs", player: "salah" },
-      { textAr: "صنع لمحات فنية وتمريرات قصيرة ممتازة تضعني وجهاً لوجه مع الحارس", textEn: "Delivering magical one-touch plays putting me head-to-head with the keeper", player: "messi" },
-      { textAr: "العرضيات البعيدة الموجهة برأس حربة حاد يتلقاها بكفاءة مميزة", textEn: "Perfect aerial distributions that match a lethal header with power", player: "ronaldo" }
-    ]
-  },
-  {
-    id: 23,
-    textAr: "كيف تصف تواضعك عندما تحوز جائزة فردية عظمى كالكرة الذهبية؟",
-    textEn: "How do you express humility when receiving a stellar individual trophy like the Ballon d'Or?",
-    options: [
-      { textAr: "أهديها على الفور لعائلتي وزملائي، فالإنجاز الحقيقي جماعي دائماً", textEn: "Dedicate it instantly to teammates and family; real triumphs are collective", player: "messi" },
-      { textAr: "سأسعد بها كثيراً وأبدأ تدريباً فورياً غداً للفوز بالكرة التالية!", textEn: "Rejoice in style, but start training intensely tomorrow to capture the next one", player: "ronaldo" },
-      { textAr: "أراها دليلاً على كفاح السنوات الصعبة القاسية الملهمة لصغار السن", textEn: "A testament to years of struggle and resilience that inspire children worldwide", player: "modric" },
-      { textAr: "أعتبرها خطوة هامة في مسيرتي لكن فوز فريقي بالدوري هو غايتي القصوى", textEn: "An honorable milestone, but team accomplishments remain my supreme passion", player: "salah" }
-    ]
-  },
-  {
-    id: 24,
-    textAr: "ما هو دورك المفضّل عند العمل بداخل مجموعة لحل أزمة صعبة؟",
-    textEn: "What is your favorite role when collaborating inside a group during a crisis?",
-    options: [
-      { textAr: "العقل المدبر الصامت الذي يبتكر الحل السحري من ثغرة لا تُرى", textEn: "The silent mastermind engineering the killer solution out of thin air", player: "messi" },
-      { textAr: "الملهم القوي الذي يحمس الجميع ويقود المسيرة بحضور مهيب", textEn: "The thunderous motivator driving the group forward with roaring confidence", player: "ronaldo" },
-      { textAr: "المكافح الصبور الذي يربط الخيوط ويرتب الأمور بحكمة ونضج تامين", textEn: "The patient puzzle-solver coordinating aspects with stellar maturity", player: "modric" },
-      { textAr: "العضو الودود المبادر بابتسامة دافئة لتخفيف حدة الأزمة بحب وإيجابية", textEn: "The friendly element initiating peace with positive vibes to soften tension", player: "salah" }
-    ]
-  },
-  {
-    id: 25,
-    textAr: "كيف تتغلب على الضغوط النفسية المصاحبة للمباريات الجماهيرية الملتهبة؟",
-    textEn: "How do you conquer the heavy pressure of highly heated stadium atmospheres?",
-    options: [
-      { textAr: "بالهدوء التام والتركيز الداخلي، فالضغط يثير فيّ المتعة الكروية", textEn: "In complete inner stillness, letting intense situations fuel pure focus", player: "messi" },
-      { textAr: "أترجم الصياحات لوقود خارق يشعل عضلاتي ويزيد من إصراري وصلابتي", textEn: "Translate the hostile crowd noise into supercharged fuel for my muscles", player: "ronaldo" },
-      { textAr: "التفكير العقلاني العميق والهدوء البالغ المستمد من صبري وخبرتي", textEn: "Deploying logical calculations and absolute silence stemming from veteran experience", player: "modric" },
-      { textAr: "بالتوكل والأمل والتفكير في إسعاد ملايين المتابعين المنتظرين للفرحة", textEn: "Relying on hope and dreaming of bringing ultimate joy to millions of awaiting fans", player: "salah" }
-    ]
-  },
-  {
-    id: 26,
-    textAr: "أي الحركات الفنية والألعاب تثير حماسك وشغفك في رقعة العشب؟",
-    textEn: "Which football trick or physical movement gives you the most thrill?",
-    options: [
-      { textAr: "ترويض ساحر للكرة بالصدر يجمد المدافع بذهول تام مكانه", textEn: "A magical chest trap that leaves defenders absolutely frozen in awe", player: "messi" },
-      { textAr: "ارتقاء خرافي يتحدى الجاذبية لضرب الكرة من نقطة عالية لا تُطال", textEn: "A mind-blowing, high-altitude header that completely defies gravity", player: "ronaldo" },
-      { textAr: "تسديدة يسارية لولبية مقوسة تسكن الزاوية المستحيلة بدقة ماهرة", textEn: "A curved, curling left-footed shot that neatly kisses the top postage corner", player: "salah" },
-      { textAr: "تمريرة ساحرة بوجه القدم الخارجي (تريفيلا) الأنيق تخلخل الدفاع", textEn: "A beautiful outside-of-the-boot pass (Trivela) that unlocks layouts", player: "modric" }
-    ]
-  },
-  {
-    id: 27,
-    textAr: "كيف تصف طبيعة علاقتك بزملائك الجدد في الفريق؟",
-    textEn: "How do you build initial chemistry with new squad signings?",
-    options: [
-      { textAr: "أرحب بهم بلطف وهدوء تام دون فرض نفسي، وأساندهم ميدانياً", textEn: "Welcome them calmly without showing off, supporting them heavily on pasture", player: "messi" },
-      { textAr: "أكون لهم بمثابة القائد الموجه العارم بالحماس لإدخال روح البطولة لقلوبهم", textEn: "Serve as an inspiring general, infusing champion instincts straight into their hearts", player: "ronaldo" },
-      { textAr: "أتبادل معهم المزاح وأفتح قلبي لهم لنبني جدار وفاء وتفاهم عظيم", textEn: "Joke warmly with them, breaking the ice to launch true friendly bonds of loyalty", player: "salah" },
-      { textAr: "أتبادل معهم النصائح التكتيكية العميقة من منطلق الأخ الأكبر الخبير", textEn: "Provide calm, profound tactical guidance as an elder brother in the family", player: "modric" }
-    ]
-  },
-  {
-    id: 28,
-    textAr: "ما هو حلمك الأكبر الذي يشعل همتك ويدفعك للاستيقاظ بحيوية كل صباح?",
-    textEn: "What is the ultimate dream that keeps you motivated to wake up every morning?",
-    options: [
-      { textAr: "الحفاظ على رونق وسحر الأداء وصناعة متعة كروية فريدة وصادقة", textEn: "Sustaining the sheer joy and magic of football to give authentic pleasure to fans", player: "messi" },
-      { textAr: "أن أكون دائماً وأبداً الرقم واحد المنفرد في طليعة تاريخ اللعبة", textEn: "To undeniably remain the ultimate Number One in the historical books of football", player: "ronaldo" },
-      { textAr: "تصدير الأمل لبلادي وإثبات أن الطموح والتواضع يصنعان المعجزات", textEn: "Transmitting hope to my country, proving that ambition and modesty rewrite destiny", player: "salah" },
-      { textAr: "الاستمتاع بكل تمريرة كروية راقية على العشب ومداعبة المستديرة بنضج", textEn: "Enjoying every clean pass on the grass and treating the ball with elegance", player: "modric" }
-    ]
-  },
-  {
-    id: 29,
-    textAr: "ما هي طريقتك المثلى لصناعة الرهبة والارتباك في نفوس المدافعين؟",
-    textEn: "What is your best weapon to strike fear and panic into opposing defenders?",
-    options: [
-      { textAr: "الجري الخفيف الماكر ملتصقاً بالكرة كأنها جزء من جسدي الفطري", textEn: "Sneaky gliding with the ball literally glued to my feet as an extension of my body", player: "messi" },
-      { textAr: "نظرة حاسمة قوية وجسد رياضي حديدي واثق يفرض السطوة الكافية", textEn: "A sharp, focused stare, paired with exceptional athletic posture imposing authority", player: "ronaldo" },
-      { textAr: "انطلاقة مباغتة سريعة وعريضة تجعل المدافع يفقد توازنه بسهولة", textEn: "A rapid, explosive burst down the wing causing defenders to lose self-balance", player: "salah" },
-      { textAr: "توقع حركاتهم وقراءة أفكارهم بالذكاء الكروي الفذ قبل التقدم خطوة", textEn: "Anticipating their movements and reading their thoughts ahead with pure football IQ", player: "modric" }
-    ]
-  },
-  {
-    id: 30,
-    textAr: "حين يواجه فريقك تكتلاً دفاعياً خانقاً بعشرة لاعبين في الصندوق:",
-    textEn: "When your team encounters an intense defensive park-the-bus with 10 players in the box:",
-    options: [
-      { textAr: "الاعتماد على تبادل الكرات الفائق السريع والمراوغة الجسدية الضيقة", textEn: "Relying on hyper-fast tiki-taka and narrow body-shifting dribbling", player: "messi" },
-      { textAr: "التوجيه بضرورة العقد الهوائي المتكرر أو إرسال مدافع قذائف بعيد", textEn: "Commanding constant high crosses to make use of dynamic headers or long-range test-fires", player: "ronaldo" },
-      { textAr: "استغلال قدرتي على الانفجار الفردي لشق ثغرة أو كسب جزائية بذكاء", textEn: "Harnessing rapid speed transitions to split the wall or win a smart penalty", player: "mbappe" },
-      { textAr: "إرسال تمريرات ساقطة قصيرة أو كرات بوجه القدم في نقاط عمياء مفاجئة", textEn: "Slipping precise outside-of-the-foot chips into the defenders' blind spots", player: "modric" }
-    ]
-  },
-  {
-    id: 31,
-    textAr: "في المواجهات التاريخية الهامة الكلاسيكو أو الديربي الصاخب:",
-    textEn: "During grand historical rivalries such as El Clásico or roaring local derbies:",
-    options: [
-      { textAr: "أحافظ على صمتي وتركيزي الكامل وأدع حذائي يرسم الإجابة الصادمة", textEn: "Keep strict silence and focus, letting my football perform the loud response", player: "messi" },
-      { textAr: "أحفز المدرجات بحركات يدي وأطالب مشجعي فريقنا بإطلاق الصافرات الضاغطة", textEn: "Pump up the crowd with hand gestures, demanding our fans roar and pressure", player: "ronaldo" },
-      { textAr: "أستغل الأضواء الباهرة الموجهة لي لاستعراض مهاراتي الممتعة وحسم النقاط", textEn: "Leverage the heavy cameras to showcase top moves and decisively conquer the clash", player: "mbappe" },
-      { textAr: "أركض في كل تفاصيل الملعب دفاعاً وهجوماً لمساندة رفاقي بلا كلل", textEn: "Sprint across every inch of the pitch, defending and attacking to relieve teammates", player: "modric" }
-    ]
-  },
-  {
-    id: 32,
-    textAr: "كيف تصف طبيعة استعدادك الفني والذهني للموسم الرياضي الطويل الحارق؟",
-    textEn: "How do you prepare mentally and physically for a grueling, long season?",
-    options: [
-      { textAr: "بالراحة المنزلية الكافية وتغذية المودة مع العائلة واللعب ببساطة فطرية", textEn: "Ample domestic rest, bonding with loved ones, and treating football as basic fun", player: "messi" },
-      { textAr: "بروتوكول تدريبي فولاذي دقيق بمنتجعات خاصة مخصصة على مدار 24 ساعة", textEn: "Strict conditioning blueprints in customized elite centers operating 24/7", player: "ronaldo" },
-      { textAr: "باتباع برمجيات مدربي الأحمال المختارين بعناية وبمرونة بدنية متقدمة", textEn: "Following physical loads mapped by personal experts to maximize muscle protection", player: "mbappe" },
-      { textAr: "بالابتعاد عن السوشيال ميديا وقراءة القرآن الكريم والاسترخاء لصفاء الروح والذهن", textEn: "Staying away from social media, reflecting in spiritual peace, and relaxing", player: "salah" }
-    ]
-  },
-  {
-    id: 33,
-    textAr: "عندما تقع في الملعب نتيجة احتكاك خشن مباغت وغير مبرر من الخصم:",
-    textEn: "When you are brought down by a sudden, harsh and unjustified foul by a rival:",
-    options: [
-      { textAr: "أقف فوراً بهدوء بليغ، وأنفض الغبار عن ملابسي مستعداً للمضي قدماً", textEn: "Stand up instantly, brush off the dust, and prepare to play without complaining", player: "messi" },
-      { textAr: "أطالب الحكم ببطاقة ملونة بهيبة واثقة وأبرهن على صرامة حقي", textEn: "Demand a warning card with intense authority to prove my status is respected", player: "ronaldo" },
-      { textAr: "أبتسم بسخرية خفيفة وأتحرك بسرعة مضاعفة في الهجمة التالية لأفضح مدافعهم", textEn: "Smile slightly and trigger double-speed on the next run to shred their defense", player: "mbappe" },
-      { textAr: "أتقبل عذر المدافع بروح رياضية وأربت على كتفه بابتسامة متسامحة ملهمة", textEn: "Accept their apology with high sportsmanship, tapping their shoulder with a friendly smile", player: "salah" }
-    ]
-  },
-  {
-    id: 34,
-    textAr: "كيف تصف أسلوب حياتك وذوقك العام في اختيار مظهرك الخارجي وملابسك؟",
-    textEn: "How would you describe your personal lifestyle, fashion, and general taste?",
-    options: [
-      { textAr: "بسيط للغاية وتلقائي، تيشيرت كلاسيكي أسود وجينز مريح بلا تكلف", textEn: "Very basic and spontaneous; classic black t-shirt and comfortable denim", player: "messi" },
-      { textAr: "متأنق للغاية، بذلات مصممة يدوياً وساعات نادرة وطلة رياضية خارقة", textEn: "Extremely sharp; custom handmade suits, rare watches, and superb athletic looks", player: "ronaldo" },
-      { textAr: "عصري وجريء، مواكب لأحدث صيحات الموضة الباريسية والألوان المثيرة", textEn: "Bold and trendsetting; matching current Parisian haute-couture and intense colorways", player: "mbappe" },
-      { textAr: "مريح وريفي بسيط، تفضيل السراويل الهادئة والملابس العملية الصديقة", textEn: "Quiet, comfortable and humble; preferring friendly, casual and nature-ready outfits", player: "haaland" }
-    ]
-  },
-  {
-    id: 35,
-    textAr: "عندما تقوم بواجبك الوطني والدفاع عن ألوان منتخب بلادك في كأس العالم:",
-    textEn: "When defending your national colors at the grand World Cup tournament:",
-    options: [
-      { textAr: "أشعر بحمل ثقيل وجميل يحرك في وجداني السحر لإسعاد شعب عانى طويلاً", textEn: "Feel a heavy, beautiful pride driving my pure magic to make historical fans happy", player: "messi" },
-      { textAr: "أبث الروح الحماسية القتالية في زملائي لنقاتل للرمق الأخير لرفع العلم عالياً", textEn: "Inject raw fighting spirits into teammates, battling to the final breath for our flag", player: "ronaldo" },
-      { textAr: "أسعى لكتابة فصول جديدة من المجد للبلاد وإثبات أن جيلنا هو الأفضل بلا منازع", textEn: "Strive to carve absolute historical glory for my country, proving our generation reigns supreme", player: "mbappe" },
-      { textAr: "أشعر بشرف عظيم وأريد تقديم نموذج ملهم للشباب العربي بأن لا شيء مستحيل", textEn: "Feel a supreme honor, aiming to showcase an inspiring path of hope stating nothing is impossible", player: "salah" }
-    ]
-  },
-  {
-    id: 36,
-    textAr: "ما هو الجانب الذي تركز على تحسينه دوماً في تدريباتك الفردية؟",
-    textEn: "What aspect do you constantly seek to improve in your personal training?",
-    options: [
-      { textAr: "توسيع زوايا الرؤية الميدانية بالبساط واستشعار أماكن الرفاق مسبقاً", textEn: "Expanding spatial awareness on the grass and anticipating teammates' coordinates", player: "messi" },
-      { textAr: "تطوير قوة القفزة والارتقاء وسرعة التسديد بكلتا القدمين بلا تفاوت", textEn: "Refining jump altitude, leg explosive metrics, and sharp shooting with either foot", player: "ronaldo" },
-      { textAr: "مرونة الانطلاق السريع والقدرة على التحكم في تغيير السرعات المفاجئ", textEn: "Accelerative flexibility and masterful control when gear-shifting my running speeds", player: "mbappe" },
-      { textAr: "زيادة الصلابة ومعدل افتكاك الكرات والتحمل البدني الشاق بلا كلل", textEn: "Incurring top shielding, interception efficiency, and grueling physical tolerance limits", player: "modric" }
-    ]
-  },
-  {
-    id: 37,
-    textAr: "كيف تصف احتكاكك الأول بخصم يتميز بالخشونة والاندفاع الجسدي العنيف؟",
-    textEn: "How do you handle a rival defender relying on rough blocks and violent tackles?",
-    options: [
-      { textAr: "أراوغه بنعومة وخفة لتفادي لمسه الكاحل، وأتركه أرضاً يندمج في الفراغ", textEn: "Outsmart them with elegant touch evasion, leaving them sliding into thin empty air", player: "messi" },
-      { textAr: "أواجهه بكتلتي العضلية وأفرض احترامي عليه ليدرك جيداً أنني جدار صلب", textEn: "Brace with clean physical armor, forcing them to notice I am a brick wall", player: "ronaldo" },
-      { textAr: "أنطلق بسرعتي الخارقة في المساحة المتروكة خلفه قبل أن يفكر في لمسي", textEn: "Accelerate forward beyond their sector before they can even plan a physical block", player: "mbappe" },
-      { textAr: "أحتفظ بهدوء تام وأحافظ على دوران الكرة المتقن وأتركه يرتكب الأخطاء", textEn: "Preserve deep stillness, shield the ball cleanly, and let them pile up referee cautions", player: "modric" }
-    ]
-  },
-  {
-    id: 38,
-    textAr: "لو عُرض عليك عقد بمبلغ فلكي خيالي للانتقال إلى دوري مغمور وبعيد:",
-    textEn: "If offered an astronomical salary to join an obscure, faraway foreign league:",
-    options: [
-      { textAr: "أفرغ اهتمامي للأجواء الهادئة لتأمين راحة عائلتي ولا مانع من تجربة ممتعة هادئة", textEn: "Prioritize family comfort, enjoying a peaceful soccer experience with zero stressful noise", player: "messi" },
-      { textAr: "أعشق خوض التحديات الجديدة وتصدّر عناوين الأنباء وصناعة تاريخ جديد", textEn: "Adore conquering new maps, capturing main headings, and establishing brand new rules", player: "ronaldo" },
-      { textAr: "أركز على بناء إرث تاريخي حقيقي في النادي الذي جعل مني نجماً متوجاً", textEn: "Focus on constructing a monumental legacy at the elite club that built my stature", player: "salah" },
-      { textAr: "أقيم مشروعي التنافسي أولاً وحساباتي الكروية ومدى تحقيق طموحي الأكبر", textEn: "Evaluate the sports competitive architecture first alongside my personal dream trophies", player: "mbappe" }
-    ]
-  },
-  {
-    id: 39,
-    textAr: "ما هو العنصر الأكثر إزعاجاً لك بداخل رقعة الملاعب الكروية المعاصرة؟",
-    textEn: "What is the most annoying element in modern football today?",
-    options: [
-      { textAr: "كثرة الصراخ والصراعات الجانبية التي تفسد عفوية اللعب وجمالية الأداء", textEn: "Excessive screaming and side dramas that poison spontaneous play and beautiful football", player: "messi" },
-      { textAr: "تراجع مستويات الالتزام والشغف والجهد الصارم لدى جيل اللاعبين الصاعد", textEn: "Declining devotion, work ethics, and rigid self-discipline among younger players", player: "ronaldo" },
-      { textAr: "انتشار الشائعات ومحاولات التقليل المستمرة من النجوم الساطعة الكفاحية", textEn: "Spreading synthetic rumors and constant media attempts to play down hardworking stars", player: "salah" },
-      { textAr: "المبالغة في الحسابات والأرقام الباردة وإهمال اللمسة الجمالية العبقرية", textEn: "Over-analyzing cold computational figures while neglecting the magical creative touch", player: "modric" }
-    ]
-  },
-  {
-    id: 40,
-    textAr: "لو تم إنتاج عمل وثائقي سينمائي عظيم يلخص مسيرتك الكروية، فما هو عنوانك الأمثل؟",
-    textEn: "If a cinematic documentary is produced summarizing your soccer path, what is the best title?",
-    options: [
-      { textAr: "الساحر البسيط: كيف صنعت الموهبة النقية والتواضع مسار التاريخ الكروي", textEn: "The Humble Magician: How pure natural talent and modesty rewrote football history", player: "messi" },
-      { textAr: "العزيمة الشامخة: قصة البطل الخارق الذي تحدى المستحيل بعرق الجبين والانضباط", textEn: "Unyielding Will: The story of an athlete who conquered limits with sweat and discipline", player: "ronaldo" },
-      { textAr: "تاج الشرق الأبي: مسيرة الإصرار والتواضع الملهَم لملايين الصدور الطموحة", textEn: "Crown of the East: A chronicle of resilience and warm inspiration to millions", player: "salah" },
-      { textAr: "السمفونية الخالدة: قصة النبض التكتيكي والمايسترو الأنيق الذي قهر الزمن", textEn: "The Eternal Symphony: The tactical heartbeat of a classy maestro who conquered time", player: "modric" }
-    ]
+    id: "prod-resistance-bands",
+    titleAr: "مجموعة حبال المقاومة الاحترافية للجيم المنزلي المتكامل",
+    titleEn: "Professional 11-Piece Resistance Bands Set for Home Gym",
+    category: "equipment",
+    subCategoryAr: "أدوات تمرين منزلية",
+    subCategoryEn: "Home Resistance Equipment",
+    image: "https://images.unsplash.com/photo-1598289431512-b97b0917affc?auto=format&fit=crop&w=600&q=80",
+    descriptionAr: "اصنع صالة الألعاب الرياضية الخاصة بك في أي مكان. حقيبة تمرين متكاملة تحتوي على 5 أحبال مقاومة من اللاتكس الطبيعي وبألوان مختلفة تمنحك مستويات وزن متفاوتة، كاملة مع مقابض مريحة، وأربطة كاحل، ومرساة للباب.",
+    descriptionEn: "Create your own absolute portable home gym. This versatile 11-piece set contains 5 color-coded latex tube resistance bands with progressive tension levels, allowing you to customize resistance and target every muscle group.",
+    rating: 4.8,
+    reviewsCount: 1850,
+    featuresAr: [
+      "5 أحبال مقاومة ملونة تمنحك أوزاناً من 10 أرطال إلى 50 رطلاً، بوزن إجمالي 150 رطلاً عند الدمج",
+      "مصنوعة من اللاتكس الطبيعي فائق القوة والمقاوم للتمزق والقطع والانكماش",
+      "مرساة باب سميكة ومبطنة تتيح لك التثبيت بالباب الآمن دون إحداث أي خدوش بالطلاء",
+      "تأتي مع حقيبة تخزين مخملية تسهل حملها معك أثناء السفر والرحلات لتمرين لا ينقطع"
+    ],
+    featuresEn: [
+      "Includes 5 progressive colored tubes offering up to 150 lbs of resistance when combined",
+      "Crafted from premium eco-friendly natural latex that is snap-resistant and retains elasticity",
+      "Thickly padded door anchor allows secure locking under doors without scratching surfaces",
+      "Complete set with cushioned foam handles, neoprene ankle straps, and travel carry bag"
+    ],
+    amazonUrl: "https://www.amazon.com/s?k=Resistance+Bands+Set+with+Handles+and+Door+Anchor&tag=sportzoneaff-20",
+    badgeAr: "جيم منزلي متكامل",
+    badgeEn: "Home Gym Special",
+    tagsAr: ["أحبال مقاومة", "جيم منزلي", "تمارين منزلية", "لاتكس طبيعي"],
+    tagsEn: ["Resistance Bands", "Home Gym", "Full Body Workout", "Natural Latex"],
+    bestUseAr: "الحل الذهبي لبناء العضلات، تمرين تمدد اليوجا، العلاج الطبيعي، وشد ترهلات الجسم.",
+    bestUseEn: "Best for whole-body muscle toning, physical rehab sessions, pilates stretches, and travel workouts."
   }
 ];
 
-export const PLAYER_PROFILES: PlayerProfile[] = [
+export const GUIDES_DATA: GuideItem[] = [
   {
-    id: "messi",
-    nameAr: "ليونيل ميسي",
-    nameEn: "Lionel Messi",
-    titleAr: "الساحر العبقري ورمز الموهبة الفطرية الشاملة",
-    titleEn: "The Genius Magician & Symbol of Ultimate Natural Talent",
-    mottoAr: "دع قدميك تتكلمان، واترك السحر يصنع الواقع.",
-    mottoEn: "Let your feet do the talking, and let the magic write reality.",
-    avatarColor: "from-sky-500 via-blue-600 to-indigo-800",
-    glowColor: "rgba(14, 165, 233, 0.4)",
-    icon: "⚽",
-    personalityAr: "أنت تجسد الموهبة الفطرية الفذة والهدوء المطلق والعبقرية الهادئة. تماماً مثل ليو ميسي، تفضل دائماً التواضع والابتعاد عن صخب الأضواء المزيفة، تاركاً أفعالك الساحرة وسيرتك العطرة تتحدث بالنيابة عنك في الملعب وخارجه. تمتاز بلمح البصر، وقدرة استثنائية على تذليل أصعب العقبات المعقدة بلمسات بسيطة، ورؤية تفوق الخيال لكل محيطك بحكمة وروية.",
-    personalityEn: "You embody natural talent, absolute calm, and quiet genius. Just like Leo Messi, you always prefer humility and steer clear of superficial hype, letting your magic on the field speak for itself. You possess exceptional spatial vision and a unique ability to dissect complex challenges with effortless, simple touches under intense situations.",
-    strengthsAr: ["التحكم بالكرة ملتصقة بقدماك", "مركز الجاذبية المنخفض والمرونة", "صناعة اللعب والتمرير الإعجازي", "التواضع والهدوء تحت أصعب الضغوط"],
-    strengthsEn: ["Exceptional close control (ball glued to feet)", "Low center of gravity & extreme agility", "Visionary playmaking and line-bending passes", "Humble nature and absolute composure under pressure"],
-    stats: { speed: 92, dribbling: 99, shooting: 96, stamina: 85, teamwork: 98 }
+    id: "guide-shoes-size",
+    titleAr: "كيف تختار مقاس حذائك الرياضي بدقة تمنع آلام المفاصل؟",
+    titleEn: "How to Pick the Perfect Sports Shoes Size to Save Your Joints?",
+    excerptAr: "دليلك العلمي البسيط لقياس باطن القدم بدقة قبل الشراء عبر الإنترنت واختيار المقاس المناسب لكل نوع رياضة.",
+    excerptEn: "Your practical guide to measuring foot dimensions accurately before buying sneakers online for different sports.",
+    contentAr: "عند الشراء عبر الإنترنت، تختلف مقاسات العلامات التجارية للأحذية الرياضية بشكل لافت. لا تكتف بالاعتماد على مقاسك المعتاد. لقياس قدمك بدقة:\n\n1. **قم بالقياس مساءً**: تتمدد القدمان طبيعياً بعد الحركة طوال اليوم.\n2. **ارتد جواربك الرياضية**: قم بالقياس وأنت ترتدي الجوارب التي تعتاد اللعب بها.\n3. **اترك مسافة أمان**: يجب أن يكون هناك فراغ يقدر بـ 0.5 سم إلى 1 سم تقريباً بين أطول أصابعك ومقدمة الحذاء للسماح بالتنفس وتجنب الصدمات.\n\nتأكد دائماً من مراجعة جدول مقاسات أمازون المرفق بصفحة الحذاء الرياضي ومطابقته بقياسك بالسنتيمتر لضمان راحة مثالية لمفاصلك وكاحليك.",
+    contentEn: "When buying athletic shoes online, fit varies significantly across brands. Never rely blindly on your casual dress shoe size:\n\n1. **Measure in the afternoon**: Your feet expand naturally throughout active day wear.\n2. **Wear your training socks**: Take measurements with active socks on to get real fit dimensions.\n3. **Leave safe toe room**: Always allow roughly 0.5cm to 1cm space between your longest toe and the shoe front to protect your toenails during abrupt stops.\n\nAlways cross-check Amazon's brand sizing charts with your exact centimeter foot length to ensure perfect support and zero blisters.",
+    icon: "shoes",
+    amazonQueryUrl: "https://www.amazon.com/s?k=Sports+Shoes+Fitting+Accessories&tag=sportzoneaff-20"
   },
   {
-    id: "ronaldo",
-    nameAr: "كريستيانو رونالدو",
-    nameEn: "Cristiano Ronaldo",
-    titleAr: "صاروخ ماديرا والوحش البشري ذو الإرادة الحديدية",
-    titleEn: "The Madeira Rocket & Human Machine of Steel Will",
-    mottoAr: "الوصول للقمة لا يأتي صدفة، بل هو ثمن السعي اليومي دون راحة.",
-    mottoEn: "Reaching the top is no accident; it is the prize of restless daily striving.",
-    avatarColor: "from-red-650 via-red-800 to-slate-900",
-    glowColor: "rgba(220, 38, 38, 0.4)",
-    icon: "🔥",
-    personalityAr: "أنت الرمز والرمزية للشغف اللامتناهي، والعزيمة المقاتلة التي تلتهم ثلج الصعوبات، والعمل الشاق اليومي الدقيق. تماماً مثل الدون كريستيانو رونالدو، لست مستعداً على الإطلاق للقبول بغير الصدارة والمركز الأول، وثقتك المطلقة بقدراتك وتفانيك تصنع المعجزات وتكسر الأرقام المستحيلة وتثبت دائماً أن التفوق هو قرار تصنعه بعرق الجبين والانضباط الصارم.",
-    personalityEn: "You are the ultimate symbol of relentless passion, absolute work ethic, and iron determination. Just like Cristiano Ronaldo, you never accept anything below the absolute first rank. Your unbreakable confidence and supreme self-discipline rewrite limits, breaking impossible records and proving that greatness is earned through daily sweat and loyalty.",
-    strengthsAr: ["العقلية الأقوى في تاريخ الرياضة", "الارتقاء الجوي الخرافي والضربات الرأسية", "القوة العضلية والسرعة الانفجارية", "حسم المباريات التاريخية في الثواني الأخيرة"],
-    strengthsEn: ["The strongest champion mindset in sports history", "Unbelievable gravity-defying aerial leap and headers", "Elite athletic condition with thundering shooting statistics", "Lethal clutch ability in the dying seconds of big finals"],
-    stats: { speed: 94, dribbling: 88, shooting: 98, stamina: 96, teamwork: 82 }
-  },
-  {
-    id: "mbappe",
-    nameAr: "كيليان مبابي",
-    nameEn: "Kylian Mbappé",
-    titleAr: "الصاروخ الطموح وحاصد العروش الكروية العالمية",
-    titleEn: "The Explosive Speed Rocket & Crown Collector of Football",
-    mottoAr: "الشباب ليس عذراً، الطموح والسرعة قادران على هزيمة العالم.",
-    mottoEn: "Youth is no excuse; burning ambition and blazing speed can conquer the world.",
-    avatarColor: "from-blue-700 via-indigo-950 to-slate-900",
-    glowColor: "rgba(43, 75, 233, 0.4)",
-    icon: "⚡",
-    personalityAr: "أنت سريع، حاسم، وطموحك الكاسح لا تقف في وجهه أي حدود! تماماً مثل الغزال الفرنسي كيليان مبابي، تعشق الأضواء المسلطة والتحديات القيادية الكبرى في المواعيد المصيرية. تملك ثقة بالذات تخولك حرق المسافات والتلاعب بأكبر المدافعين كالأشباح بفضل تركيزك العالي وسرعتك المدمرة وقدرتك على الحسم وتولي المسؤولية دون تردد.",
-    personalityEn: "You are swift, decisive, and guided by a towering ambition that respects zero boundaries! Just like Kylian Mbappé, you thrive under spotlight and love executing leadership roles in high-stakes fixtures. You possess exceptional self-belief, letting you ghost past defenders with explosive velocity and instant finishing prowess.",
-    strengthsAr: ["السرعة الفائقة والتحول المدمر", "المرونة التكتيكية داخل البساط", "برودة الأعصاب والجرأة أمام المرمى", "الطموح العالي والتحدي وعشق النهائيات"],
-    strengthsEn: ["Supersonic sprints and devastating counter-attack gear", "Stellar technical elasticity down either wing", "Extreme cold-blooded composure when facing the goalkeeper", "High competitive ambition and hunger for historic final accolades"],
-    stats: { speed: 99, dribbling: 94, shooting: 92, stamina: 89, teamwork: 84 }
-  },
-  {
-    id: "haaland",
-    nameAr: "إيرلينغ هالاند",
-    nameEn: "Erling Haaland",
-    titleAr: "المدمر النرويجي والآلة التهديفية الكاسحة",
-    titleEn: "The Norwegian Destroyer & Unstoppable Goal Machine",
-    mottoAr: "بدون تفكير معقد: تمركز جيد، ركز على المرمى، ودمر الشباك.",
-    mottoEn: "No overthinking: find position, focus on goal, and destroy the net.",
-    avatarColor: "from-amber-400 via-yellow-550 to-blue-900",
-    glowColor: "rgba(245, 158, 11, 0.4)",
-    icon: "🤖",
-    personalityAr: "أنت الآلة الذكية المركزة على تحقيق الأهداف بكفاءة بالغة وقوية ومباشرة. كالإعصار النرويجي المقاتل هالاند، لا تعترف بالفلسفة الزائدة أو التعقيدات، فالحل لديك دائماً مباشر وعملي وصارم. تصب كامل طاقتك في القوة والتحرك الذكي داخل الصندوق وصيد أنصاف الفرص بإبادة تامة لآمال المدافعين، مع الاحتفاظ بروح مرحة عفوية تبهج قلوب رفاقك بصدق.",
-    personalityEn: "You are a smart, target-focused machine executing tasks directly, powerfully, and with supreme efficiency. Just like Erling Haaland, you reject unnecessary philosophy—your strategies are direct, physical, and result-oriented. You invest everything in smart placement and converting half-chances, while maintaining a humorous, joyful spirit that bonds deeply with your crew.",
-    strengthsAr: ["القوة الجسدية الجبارة والاندفاع الرهيب", "التواجد والتمركز الماكر بداخل الصندوق", "سرعة إنهاء لا ترحم وقذائف يسارية مدمرة", "الروح الطريفة العفوية في الحياة اليومية"],
-    strengthsEn: ["Immense physical strength and explosive target drives", "Superb spatial mechanics inside the penalty compound", "Lethal clinical finishing and fierce left-foot strikes", "Spontaneous, lighthearted humor and loyal charisma with friends"],
-    stats: { speed: 90, dribbling: 80, shooting: 99, stamina: 91, teamwork: 80 }
-  },
-  {
-    id: "modric",
-    nameAr: "لوكا مودريتش",
-    nameEn: "Luka Modrić",
-    titleAr: "المايسترو الأنيق وعازف السمفونيات الكروية الخالدة",
-    titleEn: "The Elegant Maestro & Composer of Eternal football Orchestras",
-    mottoAr: "العمر مجرد رقم عابر، بينما النضج الكروي والأناقة خالدين في الوجدان.",
-    mottoEn: "Age is merely a passing number; vintage intelligence and aesthetic class are immortal.",
-    avatarColor: "from-slate-700 via-emerald-800 to-indigo-950",
-    glowColor: "rgba(16, 185, 129, 0.4)",
-    icon: "🪄",
-    personalityAr: "أنت قائد الاوركسترا الأنيق الهادئ الصبور المحرك لكامل خيوط المجموعة دون جلبة أو استعراض زائف. تماماً مثل لوكا كرواتيا، نشأت وكافحت في ظروف وتحديات شاقة تكللت بنضج أسطوري عظيم. تمتاز بقلب واثق صلب لا يعرف اليأس، وأخلاق رياضية رفيعة المستوى جعلت خصومك ومحبيك يقفون احتراماً لسمو أناقتك وعبقرية لمساتك وجهدك المستديم.",
-    personalityEn: "You are the elegant, silent, and highly patient general orchestrating operations with modesty and class. Just like Luka Modrić, you navigated major early-life struggles to blossom into absolute premium wisdom. You possess an unbreakable spirit, fine integrity, and a gorgeous aesthetic style of play that commands respect from rivals and partners alike.",
-    strengthsAr: ["رؤية تكتيكية فائقة تمسح كامل العشب", "لمسة بوجه القدم الخارجي (Trivela) سحرية", "المرونة والقدرة العظيمة على حيازة الكرة والتحكم بالنسق", "الصبر التام والمكافحة لتجاوز عقبات الحياة بكبرياء"],
-    strengthsEn: ["Supremely scan-ready tactical vision reading landscapes", "The signature magical outside-of-foot pass (Trivela)", "Stellar balance, press-resistance and possession-retention", "Inspiring patience and humble work ethic in life’s uphill battles"],
-    stats: { speed: 83, dribbling: 94, shooting: 84, stamina: 96, teamwork: 99 }
-  },
-  {
-    id: "salah",
-    nameAr: "محمد صلاح",
-    nameEn: "Mohamed Salah",
-    titleAr: "الملك المصري وفخر الشرق صاحب الابتسامة الملهمة",
-    titleEn: "The Egyptian King & Eastern Pride with the Inspiring Smile",
-    mottoAr: "بالثقة اللامتناهية والصبر والوفاء لقيمك، تُخلق القصة الملهمة للأجيال.",
-    mottoEn: "With endless self-belief, patience, and staying true to your values, you write icons for generations.",
-    avatarColor: "from-emerald-600 via-teal-800 to-slate-950",
-    glowColor: "rgba(20, 184, 166, 0.4)",
-    icon: "👑",
-    personalityAr: "أنت مزيج خارق من التواضع الصادق والسرعة الخاطفة والكفاح الأسطوري الصبور المستمر للارتقاء وتغيير المصير. تماماً مثل فخر العرب والشرق محمد صلاح، تعشق بلادك وفخور بجذورك وعائلتك ومكافح دؤوب لأجل إسعادهم وإشعال الأمل في صدور الصغار. تمتاز بالرغبة والابتسامة الدافئة التي تذيب الصخور والروح النبيلة والمهارة والرشاقة المتجددة في حسم أصعب المواقف المعقدة ببراعة.",
-    personalityEn: "You are a stellar blend of sincere humility, lightning-fast transitions, and a gorgeous journey of persistent struggle to elevate your destiny. Just like Mohamed Salah, you are deeply proud of your roots, values, and family, serving as a soaring beacon of hope to millions. Your warm, solid smile melts barriers, and your tactical agility solves the tightest challenges elegantly.",
-    strengthsAr: ["الانطلاق السريع الخاطف على الأجنحة بكفاءة", "الإنهاء المتقن المقوس في الزوايا الـ 90 العالية", "الابتسامة والروح الإيجابية الملهمة التي تبعث الأمل", "الوفاء اللامتناهي للبلاد والجذور وخدمة المجتمع بصدق"],
-    strengthsEn: ["Fierce accelerative wingspan sprints and drift-ins", "Exquisite curved finessed shots into top postage stamps", "A beautiful positive attitude that spreads inspiration to everyone", "Deep cultural loyalty, charity, and active support for local communities"],
-    stats: { speed: 96, dribbling: 93, shooting: 94, stamina: 90, teamwork: 90 }
+    id: "guide-gym-home",
+    titleAr: "دليل تجهيز صالة ألعاب رياضية (جيم منزلي) بأقل التكاليف وبأعلى فاعلية",
+    titleEn: "How to Build a Budget Home Gym with Maximum Active Efficiency",
+    excerptAr: "لا تحتاج لإنفاق آلاف الدولارات لشراء أجهزة ضخمة. اكتشف الأدوات الأساسية التي تصنع بها ناديك الرياضي بالمنزل.",
+    excerptEn: "You don't need expensive equipment to build muscle. Discover the key home workout gear to trigger great gains.",
+    contentAr: "بناء جيم منزلي بسيط وصحي لا يتطلب مساحات واسعة أو ميزانيات ضخمة. يمكنك محاكاة تمرين كامل للجسم بالاعتماد على الأدوات الذكية التالية:\n\n1. **أحبال المقاومة المطاطية**: توفر مقاومة مستمرة تنافس أوزان الكابلات بالجيم وتصلح لتمرين كافة العضلات.\n2. **حبل القفز السريع**: أفضل أداة لحرق الدهون وتنشيط الدورة الدموية وتوفير تمرين كارديو مكثف بأقل مساحة.\n3. **سجادة يوغا (مات تمرين)**: لتأمين مفاصل الركبتين والظهر أثناء تمارين البطن والضغط وتفادي الآلام الناتجة عن ملامسة الأرض الصلبة.\n\nالاستمرارية والالتزام هما سر النتائج الباهرة، والبدء بأدوات بسيطة يعطيك دافعاً أكبر دون تحمل ديون مالية.",
+    contentEn: "Designing a rewarding fitness space at home doesn't require complex commercial gear or deep pockets. You can target all major muscle groups with simple, versatile equipment:\n\n1. **Adjustable Resistance Bands**: Provide progressive tension on eccentric contractions, taking the place of bulky cable machines.\n2. **Speed Cardio Jump Rope**: Inexpensive, high-density calorie burner that elevates cardiovascular health within small indoor layouts.\n3. **Premium Exercise Mat**: Shields your elbows and spine during core work and floor presses from uncomfortable hard tile impacts.\n\nConsistency is the ultimate driver. Starting with space-saving, smart equipment is the safest way to maintain workouts.",
+    icon: "equipment",
+    amazonQueryUrl: "https://www.amazon.com/s?k=Home+Gym+Fitness+Equipment&tag=sportzoneaff-20"
   }
 ];

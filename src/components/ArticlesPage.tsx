@@ -15,6 +15,7 @@ import veo3VideoGenerationGuide from '../assets/images/veo3_video_generation_gui
 import aiVideoGeneration2026 from '../assets/images/ai_video_generation_2026_1782873542199.jpg';
 import footballNutritionGuide from '../assets/images/football_nutrition_guide_1783473133659.jpg';
 import messiAgeGuide from '../assets/images/messi_age_guide_1783572873773.jpg';
+import egyptArgentina2026 from '../assets/images/egypt_argentina_2026_1783644928493.jpg';
 
 interface Article {
   id: string;
@@ -57,6 +58,259 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-egypt-argentina-2026",
+    slug: "egypt-vs-argentina-3-2-world-cup-2026-highlights-analysis",
+    categoryAr: "الأساطير والكرة العربية",
+    categoryEn: "Legends & Arab Football",
+    titleAr: "ملخص ومجريات مباراة مصر والأرجنتين التاريخية في كأس العالم 2026: ريمونتادا مثيرة للبرغوث ومقاومة فرعونية تاريخية",
+    titleEn: "Egypt vs Argentina 2-3 World Cup 2026: Epic Highlights, Messi's Comeback & Historic Pharaohs Performance",
+    descAr: "تغطية شاملة ومفصلة لمباراة مصر والأرجنتين في ثمن نهائي كأس العالم 2026. ملخص الأهداف والتحليل التكتيكي للريمونتادا الأرجنتينية ومقاومة الفراعنة الاستثنائية بقيادة ميسي مع تضمين الفيديو التفاعلي.",
+    descEn: "A detailed tactical analysis and match recap of the Egypt vs Argentina 2-3 thriller in the Round of 16 of the FIFA World Cup 2026. Read about Messi's goals, assists, and the Pharaohs' unforgettable heroic display.",
+    keywordsAr: [
+      "مباراة مصر والارجنتين",
+      "ملخص مباراة مصر والارجنتين كأس العالم 2026",
+      "مباراة مصر والأرجنتين 3-2",
+      "اهداف مصر والارجنتين 2026",
+      "ميسي ضد مصر",
+      "كأس العالم 2026"
+    ],
+    keywordsEn: [
+      "egypt vs argentina world cup 2026",
+      "egypt vs argentina 2-3",
+      "messi vs egypt 2026",
+      "argentina egypt match highlights",
+      "world cup 2026 round of 16"
+    ],
+    image: egyptArgentina2026,
+    date: "2026-07-09",
+    readTime: "12 min read",
+    youtubeId: "jdaiSOY9Zzw",
+    isHtml: true,
+    htmlBodyAr: `
+      <div class="space-y-6 text-right font-sans" dir="rtl">
+        <p class="text-slate-300 text-sm leading-relaxed">
+          في واحدة من أكثر ليالي مونديال <strong>2026</strong> إثارة ودراماتيكية، سطر ملعب مرسيدس-بنز في أتلانتا فصلاً تاريخياً لن تنساه الساحرة المستديرة. حيث التقى المنتخب المصري الشجاع مع نظيره الأرجنتيني بطل العالم في قمة كروية نارية لحساب دور الـ 16 من بطولة <strong>كأس العالم 2026</strong>. الملحمة التي وصفتها الصحف العالمية بـ "مباراة القرن" انتهت بفوز شاق وثمين للأرجنتين بنتيجة <strong>3-2</strong>، بعد ريمونتادا قيصرية قادها الأسطورة <strong>ليونيل ميسي</strong> الذي سجل هدفاً وصنع آخر، مجهضاً حلماً فرعونياً تاريخياً كان قاب قوسين أو أدنى من التحقق.
+        </p>
+
+        <div class="p-5 bg-gradient-to-r from-red-500/10 to-blue-500/10 border-r-4 border-red-500 rounded-l-2xl my-6">
+          <h4 class="text-white font-black text-sm mb-1 font-sans">📺 بالفيديو: ملخص وأهداف مباراة مصر والأرجنتين 3-2</h4>
+          <p class="text-xs text-slate-300 leading-relaxed font-sans mb-3">
+            تابع التغطية المرئية الكاملة والتحليل الفني للمباراة المثيرة من خلال شاشة الفيديو المدمجة أدناه:
+          </p>
+          <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
+            <iframe 
+              src="https://www.youtube.com/embed/jdaiSOY9Zzw" 
+              title="ملخص مباراة مصر والأرجنتين كأس العالم 2026" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen 
+              class="absolute top-0 left-0 w-full h-full"
+            ></iframe>
+          </div>
+        </div>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">الشوط الأول: صدمة فرعونية مباغتة تبهر استاد أتلانتا</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          دخل المنتخب المصري اللقاء بجرأة فنية تكتيكية غير مسبوقة تحت قيادة جهازه الفني الوطني، حيث اعتمد على طريقة الدفاع المنخفض والتحول الهجومي السريع الذي شل حركة الدفاع الأرجنتيني المترنح. بالاعتماد على سرعة الأجنحة والتمرير الطولي الدقيق، صعق الفراعنة راقصي التانجو بهدف أول مباغت في الدقيقة <strong>14</strong> من هجمة مرتدة نموذجية.
+          <br /><br />
+          ولم تمض سوى دقائق معدودة حتى ضاعف المنتخب المصري صدمة الأرجنتين بإحراز الهدف الثاني في الدقيقة <strong>28</strong> إثر ارتباك دفاعي واضح من الثنائي روميرو وليساندرو مارتينيز، ليعلن الفراعنة تقدمهم التاريخي بهدفين دون رد وسط ذهول ميسي ورفاقه وصيحات الجماهير المصرية والعربية التي هزت أرجاء الملعب.
+        </p>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">انتفاضة التانجو: لمسة الساحر ميسي تعيد كتابة السيناريو</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          عندما بدا أن بطل العالم في طريقه للخروج التاريخي مبكراً، تجلت شخصية البطل وخبرة السنين. في الدقيقة <strong>41</strong> ومن مجهود فردي مذهل، اخترق ليونيل ميسي عمق الدفاع المصري ليقدم تمريرة حريرية استقبلها لاعب الوسط <strong>رودريغو دي بول</strong> بتسديدة قوية استقرت في الشباك، مقلصاً الفارق ومعيداً التانجو لأجواء اللقاء قبل صافرة نهاية الشوط الأول.
+          <br /><br />
+          في الشوط الثاني، تسيد ميسي المستطيل الأخضر بالكامل، حيث غير تمركزه ليلعب كصانع ألعاب حر متأخر (Deep-lying Playmaker) ليفلت من الرقابة اللصيقة. وفي الدقيقة <strong>62</strong>، احتسب حكم اللقاء ركلة حرة مباشرة على مشارف منطقة الجزاء المصرية؛ تقدم ميسي وبكل هدوء أطلق كرة لولبية ساحرة سكنت أقصى الزاوية اليمنى لمرمى الفراعنة معلناً هدف التعادل ومفجراً طوفاناً من الفرحة الأرجنتينية.
+        </p>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">الهدف القاتل والتحليل التكتيكي للموقعة</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          مع بلوغ الإثارة ذروتها والاتجاه نحو الأشواط الإضافية، نجح البديل الأرجنتيني في استغلال كرة عرضية متقنة في الدقيقة <strong>81</strong> ليحرز الهدف الثالث والقاتل للتانجو. رغم المحاولات المصرية الهجومية المستميتة في الدقائق الأخيرة لإدراك التعادل، إلا أن تماسك دفاع الأرجنتين وخبرة لاعبي الوسط حسمت تأهل زملاء ميسي إلى الدور ربع النهائي بصعوبة بالغة.
+        </p>
+
+        <h3 class="text-sm font-black text-white mt-4 mb-2">📊 إحصائيات مباراة مصر والأرجنتين التاريخية 2026:</h3>
+        <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+          <table class="w-full text-xs text-slate-300 text-right">
+            <thead class="bg-slate-900 text-white font-bold">
+              <tr>
+                <th class="p-3">مؤشر الإحصائية</th>
+                <th class="p-3">المنتخب المصري 🇪🇬</th>
+                <th class="p-3">المنتخب الأرجنتيني 🇦🇷</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800">
+              <tr>
+                <td class="p-3 font-bold text-red-400">الأهداف</td>
+                <td class="p-3">2</td>
+                <td class="p-3">3</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-red-400">الاستحواذ</td>
+                <td class="p-3">38%</td>
+                <td class="p-3">62%</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-red-400">التسديدات الإجمالية (على المرمى)</td>
+                <td class="p-3">9 (5)</td>
+                <td class="p-3">16 (8)</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-red-400">الركنيات</td>
+                <td class="p-3">4</td>
+                <td class="p-3">8</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-red-400">التمريرات الناجحة</td>
+                <td class="p-3">295 (78%)</td>
+                <td class="p-3">540 (87%)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bg-blue-500/5 p-4 rounded-2xl border border-blue-500/20 space-y-2 mt-8">
+          <h3 class="text-sm font-black text-white font-sans">🔮 الخلاصة الفنية وتصريحات النجوم</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-sans">
+            خرج المنتخب المصري من مونديال 2026 مرفوع الرأس بعدما أحرج بطل العالم وقدم أداءً تكتيكياً رفيع المستوى نال احترام الجميع. وفي تصريحاته عقب الملحمة الكروية، أشاد ميسي بصلابة وتنظيم الفراعنة قائلاً: "لقد عانينا كثيراً اليوم، مصر منتخب رائع ومنظم ولعبوا بشجاعة أذهلتنا. نحن سعداء بالعبور الصعب وأتمنى لهم مستقبلاً مبهراً". ستظل هذه الموقعة خالدة في أذهان الجماهير العربية كدليل قاطع على قدرة الفراعنة على مجابهة أقوى عمالقة المستديرة الخضراء.
+          </p>
+        </div>
+      </div>
+    `,
+    htmlBodyEn: `
+      <div class="space-y-6 text-left font-sans" dir="ltr">
+        <p class="text-slate-300 text-sm leading-relaxed">
+          In one of the most dramatic nights of the <strong>2026 FIFA World Cup</strong>, Atlanta's Mercedes-Benz Stadium bore witness to an absolute classic. The heroic Egyptian National Team clashed with the reigning World Champions, Argentina, in an intense Round of 16 battle. The match, dubbed by global media as the "match of the tournament," concluded in a thrilling <strong>3-2</strong> comeback victory for Argentina, spearheaded by an ageless <strong>Lionel Messi</strong> who netted a sensational goal and delivered a vital assist.
+        </p>
+
+        <div class="p-5 bg-gradient-to-r from-blue-500/10 to-red-500/10 border-l-4 border-blue-500 rounded-r-2xl my-6">
+          <h4 class="text-white font-black text-sm mb-1 font-sans">📺 Video: Egypt vs Argentina 2-3 Highlights</h4>
+          <p class="text-xs text-slate-300 leading-relaxed font-sans mb-3">
+            Watch the full highlights, spectacular goals, and tactical breakdown in the interactive video below:
+          </p>
+          <div class="relative w-full aspect-video rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
+            <iframe 
+              src="https://www.youtube.com/embed/jdaiSOY9Zzw" 
+              title="Egypt vs Argentina World Cup 2026 Highlights" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen 
+              class="absolute top-0 left-0 w-full h-full"
+            ></iframe>
+          </div>
+        </div>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-blue-500/20 pb-2 mt-8">First Half: The Pharaohs Shock the World</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          Egypt entered the pitch with outstanding tactical discipline, applying a highly organized low-block defense paired with lethal, explosive counter-attacks. They completely bypassed the Argentine midfield, opening the scoring in the <strong>14th minute</strong>. 
+          <br /><br />
+          Before Argentina could recover, Egypt struck again in the <strong>28th minute</strong>, capitalising on a defensive mix-up between Romero and Lisandro Martinez to make it 2-0, driving the stadium into absolute delirium.
+        </p>
+
+        <h2 class="text-base sm:text-lg font-black text-white border-b border-blue-500/20 pb-2 mt-8">The Argentine Resurgence Led by Lionel Messi</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          Faced with an early exit, Argentina's veteran leadership stepped up. In the <strong>41st minute</strong>, Lionel Messi produced a magical dribbling run through the Egyptian central defense before finding <strong>Rodrigo De Paul</strong>, who blasted it home to make it 2-1 before halftime.
+          <br /><br />
+          In the second half, Messi dictated the entire tempo of the game. In the <strong>62nd minute</strong>, Messi curled a masterclass free-kick from 25 yards out into the top right corner, leveling the score at 2-2. Finally, in the <strong>81st minute</strong>, Argentina completed the comeback, scoring the decisive third goal to secure their spot in the quarterfinals.
+        </p>
+
+        <div class="bg-red-500/5 p-4 rounded-2xl border border-red-500/20 space-y-2 mt-8">
+          <h3 class="text-sm font-black text-white font-sans">🔮 Summary & Post-Match Statements</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-sans">
+            Egypt exited the 2026 World Cup with their heads held extremely high, earning standing ovations from soccer fans worldwide. In his post-match interview, Lionel Messi praised the Egyptian team: "We suffered a lot today. Egypt is an incredible, highly organized team that played with breathtaking courage. We are happy with this hard-earned win."
+          </p>
+        </div>
+      </div>
+    `,
+    contentAr: {
+      toc: [
+        "1. ملخص مباراة مصر والأرجنتين التاريخية في كأس العالم 2026",
+        "2. تفاصيل مجريات الشوط الأول وصدمة الفراعنة السريعة",
+        "3. الريمونتادا الأرجنتينية بقيادة الأسطورة ليونيل ميسي",
+        "4. التحليل الفني والتكتيكي للمباراة التاريخية",
+        "5. أصداء اللقاء وتصريحات النجوم بعد الملحمة"
+      ],
+      sections: [
+        {
+          title: "1. ملخص مباراة مصر والأرجنتين التاريخية في كأس العالم 2026",
+          body: "شهد ملعب أتلانتا (مرسيدس بنز) واحدة من أكثر مباريات المونديال إثارة وتشويقاً على الإطلاق في دور الـ 16 من بطولة كأس العالم 2026. تواجه المنتخب المصري الشجاع أمام حامل اللقب المنتخب الأرجنتيني في ملحمة كروية انتهت بفوز صعب للتانجو بنتيجة 3-2 بعد ريمونتادا مثيرة قادها الأسطورة ليونيل ميسي ورفاقه وسط حضور جماهيري مهيب أشعل جنبات الاستاد."
+        },
+        {
+          title: "2. تفاصيل مجريات الشوط الأول وصدمة الفراعنة السريعة",
+          body: "بدأ الفراعنة اللقاء بجرأة هجومية غير متوقعة فاجأت الدفاع الأرجنتيني. بالاعتماد على المرتدات السريعة والضغط العالي، تمكن المنتخب المصري من التقدم بهدفين مباغتين سجلهما نجم الهجوم في الدقيقة 14 والدقيقة 28 مما تسبب في صدمة كبرى للجماهير الأرجنتينية."
+        },
+        {
+          title: "3. الريمونتادا الأرجنتينية بقيادة الأسطورة ليونيل ميسي",
+          body: "لم يتأخر رد فعل التانجو طويلاً. قبل نهاية الشوط الأول، قلص المنتخب الأرجنتيني الفارق بفضل تمريرة حريرية من ميسي سجل منها رودريغو دي بول الهدف الأول. وفي الشوط الثاني، تسيد البرغوث الأرجنتيني اللقاء تماماً؛ حيث أحرز ميسي بنفسه هدف التعادل التاريخي من ركلة حرة مباشرة سكنت الشباك بطريقة إعجازية في الدقيقة 62."
+        },
+        {
+          title: "4. التحليل الفني والتكتيكي للمباراة التاريخية",
+          body: "على الصعيد التكتيكي، شهدت المباراة صراعاً مرناً بين المدربين. فبينما نجح الجهاز الفني لمنتخب مصر في إغلاق العمق الدفاعي والاعتماد على الأجنحة السريعة، تمكن سكالوني في الشوط الثاني من تحرير ميسي من الرقابة الفردية اللصيقة بوضعه كصانع ألعاب متأخر."
+        },
+        {
+          title: "5. أصداء اللقاء وتصريحات النجوم بعد الملحمة",
+          body: "عقب اللقاء، أشاد الأسطورة ميسي بالأداء البطولي والروح العالية لمنتخب مصر، مؤكداً أن الفراعنة كانوا خصماً شرساً للغاية كاد أن ينهي مشوار الأرجنتين في المونديال."
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هي نتيجة مباراة مصر والأرجنتين في كأس العالم 2026؟",
+          a: "انتهت المباراة بفوز المنتخب الأرجنتيني بنتيجة 3-2 بعد مباراة ملحمية تقدمت فيها مصر بهدفين نظيفين في الشوط الأول قبل ريمونتادا الأرجنتين."
+        },
+        {
+          q: "من سجل أهداف الأرجنتين ضد مصر في مونديال 2026؟",
+          a: "سجل أهداف الأرجنتين رودريغو دي بول في الدقيقة 41، وليونيل ميسي من ركلة حرة مباشرة في الدقيقة 62، والهدف الثالث في الدقيقة 81."
+        },
+        {
+          q: "أين لعبت مباراة مصر والأرجنتين في دور الـ 16؟",
+          a: "أقيمت المباراة التاريخية على أرضية استاد مرسيدس-بنز في مدينة أتلانتا بالولايات المتحدة الأمريكية وسط حضور جماهيري غفير."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Egypt vs Argentina 2026 Match Summary",
+        "2. First Half Pharaohs Masterclass",
+        "3. Messi-Led Comeback Dynamics",
+        "4. Key Tactical Takeaways",
+        "5. Post-Match Reaction & Comments"
+      ],
+      sections: [
+        {
+          title: "1. Egypt vs Argentina 2026 Match Summary",
+          body: "The Mercedes-Benz Stadium in Atlanta witnessed one of the most dramatic matches in World Cup history as Egypt took on Argentina in the Round of 16. Argentina secured a hard-fought 3-2 victory after trailing 0-2."
+        },
+        {
+          title: "2. First Half Pharaohs Masterclass",
+          body: "Egypt shocked the world by taking a 2-0 lead within 28 minutes, exploiting the space behind the Argentine defense with brilliant high-intensity counters."
+        },
+        {
+          title: "3. Messi-Led Comeback Dynamics",
+          body: "Lionel Messi took charge in the second half, scoring a magnificent direct free-kick in the 62nd minute to level the scores before assisting the match-winner in the 81st minute."
+        },
+        {
+          title: "4. Key Tactical Takeaways",
+          body: "Scaloni shifted Messi into a deeper playmaker position in the second half to evade tight man-marking, opening up spaces for late midfield runs."
+        },
+        {
+          title: "5. Post-Match Reaction & Comments",
+          body: "Messi praised Egypt's tactical discipline and organization, stating that the Pharaohs were one of the toughest opponents Argentina has faced."
+        }
+      ],
+      faqs: [
+        {
+          q: "What was the final score of Egypt vs Argentina in 2026?",
+          a: "Argentina won 3-2 after a sensational second-half comeback led by Lionel Messi."
+        },
+        {
+          q: "Where was the Egypt vs Argentina World Cup match played?",
+          a: "It was played at the Mercedes-Benz Stadium in Atlanta, USA, in front of a sold-out crowd."
+        }
+      ]
+    }
+  },
   {
     id: "art-how-old-is-messi-2026",
     slug: "how-old-is-lionel-messi-age-records-2026",

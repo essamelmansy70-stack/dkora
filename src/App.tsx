@@ -293,9 +293,6 @@ export default function App() {
                 <h1 className="text-xl font-black tracking-tight text-slate-900 font-sans">
                   {isRtl ? "سبورت زون" : "SportZone"}
                 </h1>
-                <span className="text-[10px] bg-emerald-50 text-emerald-750 border border-emerald-200 px-1.5 py-0.5 rounded-md font-bold uppercase tracking-wider">
-                  {isRtl ? "أمازون أفيليت" : "Amazon Affiliate"}
-                </span>
               </div>
               <p className="text-[10px] text-slate-500 font-medium tracking-wide">
                 {isRtl ? "دليلك لأفضل التجهيزات الرياضية بذكاء" : "Your Smart Guide to Premium Sports Gear"}
@@ -349,21 +346,6 @@ export default function App() {
 
         </div>
       </header>
-
-      {/* Amazon Program Affiliation Disclosure Notice */}
-      <div className="w-full bg-slate-900 text-slate-300 py-2.5 px-4 text-center text-xxs sm:text-xs z-10 relative border-b border-slate-800">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2">
-          <span className="inline-flex items-center gap-1 text-emerald-400 font-extrabold uppercase">
-            <ShieldCheck className="w-3.5 h-3.5" />
-            {isRtl ? "إفصاح رسمي:" : "Official Disclosure:"}
-          </span>
-          <span>
-            {isRtl 
-              ? "بصفتنا شركاء ومروجين لموقع أمازون، قد نحصل على عمولة تسويقية بسيطة عند الشراء الفعلي من خلال الروابط المنشورة لدينا، وذلك دون أي تكلفة مادية إضافية عليك نهائياً." 
-              : "As an Amazon Associate, we earn a small referral commission from qualifying purchases made through our direct product links, at absolute zero extra cost to you."}
-          </span>
-        </div>
-      </div>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full z-10 flex-grow">
         {activeProduct ? (
@@ -1123,6 +1105,21 @@ export default function App() {
             </ul>
           </div>
 
+        </div>
+
+        {/* Amazon Program Affiliation Disclosure Notice */}
+        <div className="w-full bg-slate-950/40 text-slate-400 py-3.5 px-4 text-center text-xxs sm:text-xs border-t border-slate-800/60">
+          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2">
+            <span className="inline-flex items-center gap-1 text-emerald-400 font-extrabold uppercase">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              {isRtl ? "إفصاح رسمي:" : "Official Disclosure:"}
+            </span>
+            <span>
+              {isRtl 
+                ? "بصفتنا شركاء ومروجين لموقع أمازون، قد نحصل على عمولة تسويقية بسيطة عند الشراء الفعلي من خلال الروابط المنشورة لدينا، وذلك دون أي تكلفة مادية إضافية عليك نهائياً." 
+                : "As an Amazon Associate, we earn a small referral commission from qualifying purchases made through our direct product links, at absolute zero extra cost to you."}
+            </span>
+          </div>
         </div>
 
         <div className="w-full border-t border-slate-800 py-4 px-4 text-center text-[10px] text-slate-500 font-medium">

@@ -9,115 +9,44 @@ import compression from "compression";
 // Load environment variables
 dotenv.config();
 
-const ARTICLES_SEO = [
-  {
-    slug: "how-to-find-world-cup-match-ai",
-    titleAr: "كيف تكتشف شبيهك الكروي من لاعبي المونديال بدقة بالذكاء الاصطناعي؟ | dkora",
-    titleEn: "How to Find Your Exact World Cup Player Match Using Gemini AI | dkora",
-    descAr: "دليلك الميداني الشامل المحدث لعام ٢٠٢٦ لاستغراق ذكاء الاستكشاف، ومطابقة السمات التكتيكية مع نجوم المونديال، وتوليد بطاقة مدمجة بالذكاء الاصطناعي بصفة ترويحية آمنة.",
-    descEn: "Your comprehensive guide to exploring soccer styles, mapping your athletic skills, and synthesizing a personalized player card using modern secure generative models."
-  },
-  {
-    slug: "modern-soccer-tactics-rating-stars",
-    titleAr: "تحليل السمات التكتيكية لمهاجمي وصناع لعب كأس العالم ٢٠٢٦ | dkora",
-    titleEn: "Analyzing Modern Tactical Archetypes in the 2026 Soccer Era | dkora",
-    descAr: "دراسة معقمة وممتعة حول تطور مراكز المهاجم الوهمي، وصانع اللعب العصري، وكيف نقيم هذه الأرقام رياضياً لمطابقة من يشبهك بدقة بالغة.",
-    descEn: "A thorough analytical exploration of the False 9, modern box-to-box creators, and how our quiz metrics map your profile to top international champions."
-  },
-  {
-    slug: "how-to-blend-face-football-jersey",
-    titleAr: "دليلك الكامل لدمج ملامح وجهك بقميص منتخبك المفضل بالذكاء الاصطناعي | dkora",
-    titleEn: "Step-by-Step Tutorial: Blending Your Face into Your Favorite Jersey | dkora",
-    descAr: "كيف تستخدم الأداة بشكل صحيح لالتقاط صور السيلفي وتركيب الملامح على نجوم كأس العالم في خطوة واحدة والحصول على بطاقات جاهزة للنشر الفوري.",
-    descEn: "Learn how to use our secure generative face-merging portal safely. Get premium player cards seamlessly blended with your face inside stadium backdrops."
-  },
-  {
-    slug: "ai-predictions-2026-world-cup-champion",
-    titleAr: "توقعات الذكاء الاصطناعي لبطل كأس العالم 2026: من يرفع الكأس التاريخية؟ | dkora",
-    titleEn: "AI Predictions for the 2026 World Cup Champion: Who Will Lift the Cup? | dkora",
-    descAr: "تحليل معمق قائم على محاكاة الحاسوب المتقدمة لأداء المنتخبات وسجلات اللاعبين لتحديد المرشح الأوفر حظاً للفوز بمونديال 2026 التفاعلي.",
-    descEn: "In-depth computer simulations tracking squad stats and historic dynamics to estimate the highest probability winner for the legendary 2026 World Cup."
-  },
-  {
-    slug: "arab-teams-2026-world-cup-prospects",
-    titleAr: "المنتخبات العربية في مونديال 2026: فرص التأهل والنجوم الصاعدة | dkora",
-    titleEn: "Arab National Teams in the 2026 World Cup: Prospects and Rising Stars | dkora",
-    descAr: "رؤية فنية وتحليل شامل لفرص المنتخبات العربية المشاركة في نهائيات كأس العالم 2026 وتأثير الحضور الجماهيري والمواهب الشابة الصاعدة.",
-    descEn: "A comprehensive tactical review of Arab national squad prospects, tracking their qualifying momentum, legendary fan bases, and rising youngsters."
-  },
-  {
-    slug: "fastest-wingers-2026-world-cup",
-    titleAr: "أسرع وأخطر أجنحة مونديال 2026: سرعة خارقة وتكتيك هجومي مرعب | dkora",
-    titleEn: "The Fastest and Most Dangerous Wingers of the 2026 World Cup | dkora",
-    descAr: "تحليل تكتيكي لأسرع النفاثات الهجومية على أجنحة ملاعب مونديال 2026، من كليان مبابي إلى فينيسيوس جونيور وطريقتهم في اختراق الدفاعات.",
-    descEn: "A precise statistics-driven evaluation of the fastest and most clinical attackers occupying the flank positions in the 2026 tournament, featuring Mbappe, Vinicius Jr, and more."
-  },
-  {
-    slug: "tech-evolution-2026-world-cup-stadiums",
-    titleAr: "تطور التكنولوجيا الرياضية في مونديال 2026: من التسلل الآلي إلى كرات الاستشعار | dkora",
-    titleEn: "Sports Tech Evolution in the 2026 World Cup: Automated Offsides and Smart Balls | dkora",
-    descAr: "ثورة تكنولوجية شاملة تشهدها ملاعب مونديال 2026، حيث تكشف رقاقات الاستشعار والذكاء الاصطناعي تفاصيل اللعبة بدقة الميكروثانية.",
-    descEn: "A massive technological leap defines the 2026 tournament, featuring embedded microchips, real-time heatmaps, and ultra-high-speed spatial computer vision."
-  },
-  {
-    slug: "messi-ronaldo-last-dance-2026-world-cup",
-    titleAr: "كيف يستعد ميسي ورونالدو لرقصتهما الأخيرة في مونديال 2026 العصري؟ | dkora",
-    titleEn: "How Messi and Ronaldo Prepare for Their Last Dance in the 2026 World Cup | dkora",
-    descAr: "القصة الكاملة للرحلة التدريبية والذهنية للأسطورتين ليو ميسي وكريستيانو رونالدو لتقديم عرضهما التاريخي الأخير في الملاعب الأمريكية المونديالية.",
-    descEn: "Explore the physical conditioning, mental focus, and tactical adjustments guiding Leo Messi and Cristiano Ronaldo toward their final historic championship."
-  }
-];
+import { PRODUCTS_DATA, GUIDES_DATA } from "./src/data";
 
 function getSeoMetaData(req: express.Request) {
-  let lang = req.query.lang as string;
-  const articleSlug = req.query.article as string;
-  const view = req.query.view as string;
+  const productParam = req.query.product as string;
+  const guideParam = req.query.guide as string;
+  const categoryParam = req.query.category as string;
 
-  if (lang !== "en" && lang !== "ar") {
-    lang = "ar";
-  }
+  let title = "سبورت زون | متجر المعدات والملابس الرياضية بأفضل الأسعار على أمازون";
+  let description = "تسوق أفضل الأحذية الرياضية، الملابس الأنيقة، ومعدات التدريب واللياقة البدنية عالية الجودة. منتجات موثوقة ومختارة بعناية بروابط مباشرة إلى أمازون.";
 
-  let title = "من يشبهك من لاعبي المونديال؟ | اختبار شخصية كرة القدم التفاعلي";
-  let description = "اكتشف أي من أساطير كرة القدم العالمية يماثل شخصيتك وأسلوبك الرياضي في الملعب من خلال اختبار تفاعلي فائق وممتع متجدد باستمرار.";
-
-  if (lang === "en") {
-    title = "Which World Cup Player Are You? | Interactive Football Personality Quiz";
-    description = "Discover your soccer match from world cup legends! A fun, highly-interactive football personality test analyzing your style and skill.";
-  }
-
-  if (view === "sitemap") {
-    if (lang === "ar") {
-      title = "خريطة الموقع المونديالي التفاعلي | dkora";
-      description = "تصفح خريطة الموقع الكاملة وجميع الصفحات والمقالات والتحليلات الخاصة بمنصة مونديال كأس العالم ٢٠٢٦.";
-    } else {
-      title = "Mondial Interactive Sitemap | dkora";
-      description = "Explore with one click all pages, articles, and utilities of the Mondial platform. Fully optimized for instant crawling.";
-    }
-  } else if (view === "blog") {
-    if (lang === "ar") {
-      title = "المقالات الرياضية والتحليلات التكتيكية | مونديال ٢٠٢٦";
-      description = "اقرأ أحدث المقالات الرياضية الترند والتحليلات الكروية وتوقعات الذكاء الاصطناعي لبطل مونديال ٢٠٢٦.";
-    } else {
-      title = "Sports Articles & Tactical Analytics | Mondial 2026";
-      description = "Read the latest trending sports articles, tactical soccer analytics, and AI predictions for the 2026 World Cup.";
+  if (categoryParam) {
+    if (categoryParam === "shoes") {
+      title = "أحذية جري وملاعب رياضية ممتازة | سبورت زون";
+      description = "تصفح تشكيلة واسعة من الأحذية الرياضية المريحة وأحذية الجري المخصصة للماراثونات والملاعب بأعلى التقييمات على أمازون.";
+    } else if (categoryParam === "apparel") {
+      title = "ملابس رياضية وتمرين ممتازة ومضادة للتعرق | سبورت زون";
+      description = "تسوق ملابس رياضية وأطقم تمرين مريحة للرجال والنساء، مصممة من نسيج يسمح بالتهوية ويمتص العرق بكفاءة.";
+    } else if (categoryParam === "equipment") {
+      title = "معدات وأدوات اللياقة البدنية والجيم المنزلي | سبورت زون";
+      description = "اكتشف أفضل أجهزة الكارديو، عقلة الباب، وحبال المقاومة لتجهيز صالتك الرياضية المنزلية المتكاملة بأسعار ممتازة.";
     }
   }
 
-  if (articleSlug) {
-    const art = ARTICLES_SEO.find(a => a.slug === articleSlug);
-    if (art) {
-      if (lang === "ar") {
-        title = art.titleAr;
-        description = art.descAr;
-      } else {
-        title = art.titleEn;
-        description = art.descEn;
-      }
+  if (productParam) {
+    const prod = PRODUCTS_DATA.find(p => p.id === productParam);
+    if (prod) {
+      title = `${prod.titleAr} | سبورت زون`;
+      description = prod.descriptionAr;
+    }
+  } else if (guideParam) {
+    const guide = GUIDES_DATA.find(g => g.id === guideParam);
+    if (guide) {
+      title = `${guide.titleAr} | سبورت زون`;
+      description = guide.excerptAr;
     }
   }
 
-  const dir = lang === "ar" ? "rtl" : "ltr";
-  return { title, description, lang, dir };
+  return { title, description, lang: "ar", dir: "rtl" };
 }
 
 function replaceAllSeoMeta(html: string, seo: { title: string, description: string, lang: string, dir: string }) {
@@ -268,6 +197,61 @@ The output must be a single beautifully synthesized natural photograph, aspect r
       console.error("Error generating match photo via Gemini API:", error);
       return res.status(500).json({ error: error.message || "Failed to generate photo combination" });
     }
+  });
+
+  // Dynamic sitemap.xml generator
+  app.get("/sitemap.xml", (req, res) => {
+    res.header("Content-Type", "application/xml");
+    
+    const host = req.headers.host || "ais-dev-midkp5hm63tkis7b4wleb2-625047059824.europe-west2.run.app";
+    const protocol = "https";
+    const baseUrl = `${protocol}://${host}`;
+    const today = new Date().toISOString().split("T")[0];
+
+    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+    xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+    // 1. Root page
+    xml += `  <url>\n`;
+    xml += `    <loc>${baseUrl}/</loc>\n`;
+    xml += `    <lastmod>${today}</lastmod>\n`;
+    xml += `    <changefreq>daily</changefreq>\n`;
+    xml += `    <priority>1.0</priority>\n`;
+    xml += `  </url>\n`;
+
+    // 2. Categories
+    const categories = ["shoes", "apparel", "equipment"];
+    categories.forEach(cat => {
+      xml += `  <url>\n`;
+      xml += `    <loc>${baseUrl}/?category=${cat}</loc>\n`;
+      xml += `    <lastmod>${today}</lastmod>\n`;
+      xml += `    <changefreq>weekly</changefreq>\n`;
+      xml += `    <priority>0.8</priority>\n`;
+      xml += `  </url>\n`;
+    });
+
+    // 3. Dynamic Products
+    PRODUCTS_DATA.forEach(prod => {
+      xml += `  <url>\n`;
+      xml += `    <loc>${baseUrl}/?product=${prod.id}</loc>\n`;
+      xml += `    <lastmod>${today}</lastmod>\n`;
+      xml += `    <changefreq>weekly</changefreq>\n`;
+      xml += `    <priority>0.7</priority>\n`;
+      xml += `  </url>\n`;
+    });
+
+    // 4. Dynamic Guides
+    GUIDES_DATA.forEach(guide => {
+      xml += `  <url>\n`;
+      xml += `    <loc>${baseUrl}/?guide=${guide.id}</loc>\n`;
+      xml += `    <lastmod>${today}</lastmod>\n`;
+      xml += `    <changefreq>weekly</changefreq>\n`;
+      xml += `    <priority>0.6</priority>\n`;
+      xml += `  </url>\n`;
+    });
+
+    xml += `</urlset>\n`;
+    res.status(200).send(xml);
   });
 
   // Serve static files / Vite bundle in Production or mount Vite in Development

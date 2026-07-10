@@ -60,12 +60,33 @@ export default function App() {
     }
   }, [wishlist]);
 
-  const handleLanguageChange = (newLang: "ar" | "en") => {
-    setLang(newLang);
-    document.documentElement.lang = newLang;
-    document.documentElement.dir = newLang === "ar" ? "rtl" : "ltr";
-    showToastNotification(newLang === "ar" ? "تم تحويل اللغة إلى العربية" : "Language switched to English");
-  };
+  // Read URL query parameters on mount to support deep-linking for products, guides, and categories
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("product");
+    const guideId = params.get("guide");
+    const categoryParam = params.get("category");
+
+    if (productId) {
+      const prod = PRODUCTS_DATA.find((p) => p.id === productId);
+      if (prod) {
+        setActiveProduct(prod);
+      }
+    }
+    if (guideId) {
+      const guide = GUIDES_DATA.find((g) => g.id === guideId);
+      if (guide) {
+        setActiveGuide(guide);
+      }
+    }
+    if (categoryParam) {
+      setSelectedCategory(categoryParam as any);
+    }
+
+    // Force Arabic and RTL layout directions
+    document.documentElement.lang = "ar";
+    document.documentElement.dir = "rtl";
+  }, []);
 
   const showToastNotification = (message: string) => {
     setToast({ show: true, message });
@@ -219,14 +240,7 @@ export default function App() {
               )}
             </button>
 
-            {/* Language Switcher */}
-            <button
-              onClick={() => handleLanguageChange(lang === "ar" ? "en" : "ar")}
-              className="px-3 py-2 rounded-xl bg-white border border-slate-200 hover:border-emerald-500 hover:bg-slate-50 text-xs text-slate-700 font-bold flex items-center gap-1.5 cursor-pointer shadow-sm transition-all"
-            >
-              <Compass className="w-3.5 h-3.5 text-emerald-500" />
-              <span>{isRtl ? "English 🇬🇧" : "العربية 🇸🇦"}</span>
-            </button>
+
           </div>
 
         </div>

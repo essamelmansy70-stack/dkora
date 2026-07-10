@@ -392,7 +392,7 @@ export const PRODUCTS_DATA: Product[] = [
     category: "equipment",
     subCategoryAr: "أدوات تمرين منزلية",
     subCategoryEn: "Home Gym Equipment",
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80",
+    image: "/pullup_bar_product.jpg",
     descriptionAr: "احصل على ظهر عريض وأكتاف قوية من منزلك. قضيب عقلة الباب الاحترافي من كيوشوب مصنع من الفولاذ الكربوني السميك المطور لمنع الالتواء، ومزود بمقابض إسفنجية متعددة ومريحة لحماية مفاصل اليدين أثناء السحب الثقيل دون الحاجة لثقب إطار الباب.",
     descriptionEn: "Build supreme upper body strength from your doorway. Kyoshop premium heavy-duty doorway pull-up bar features high-density carbon steel construction and multiple comfortable foam grip positions for intense pull-up variations without nails or drilling.",
     rating: 4.8,
@@ -415,11 +415,7 @@ export const PRODUCTS_DATA: Product[] = [
     tagsAr: ["قضيب سحب", "تمارين منزلية", "كيوشوب", "ستيل سميك"],
     tagsEn: ["Pull Up Bar", "Home Workout", "Kyoshop", "Doorway Gym"],
     bestUseAr: "الخيار الاحترافي لتمارين العقلة وتطوير عضلات الظهر، الأكتاف، البايسبس وعضلات البطن من البيت.",
-    bestUseEn: "Excellent for intense home lats exercises, shoulder pull-ups, bicep chin-ups, and core training.",
-    gallery: [
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80",
-      "/pullup_bar_install.jpg"
-    ]
+    bestUseEn: "Excellent for intense home lats exercises, shoulder pull-ups, bicep chin-ups, and core training."
   }
 ];
 

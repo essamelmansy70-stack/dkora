@@ -555,7 +555,7 @@ export default function App() {
                           <a
                             href={prod.amazonUrl}
                             target="_blank"
-                            rel="noopener noreferrer"
+                            rel="sponsored noopener noreferrer"
                             onClick={(e) => e.stopPropagation()} // prevent opening detail modal when clicking direct button
                             className="w-full py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white font-extrabold text-[10px] sm:text-xs text-center flex items-center justify-center gap-1.5 shadow-sm transition-all duration-200 group/btn"
                           >
@@ -825,7 +825,7 @@ export default function App() {
               <a
                 href={activeProduct.amazonUrl}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="sponsored noopener noreferrer"
                 className="w-full sm:w-auto px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-xl flex items-center justify-center gap-1.5 shadow-md shadow-emerald-600/10 transition-all duration-200 group/modal-btn"
               >
                 <span>{isRtl ? "تحقق من السعر والتفاصيل على أمازون" : "Check Price & Details on Amazon"}</span>

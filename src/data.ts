@@ -384,6 +384,38 @@ export const PRODUCTS_DATA: Product[] = [
     tagsEn: ["Resistance Bands", "Home Gym", "Full Body Workout", "Natural Latex"],
     bestUseAr: "الحل الذهبي لبناء العضلات، تمرين تمدد اليوجا، العلاج الطبيعي، وشد ترهلات الجسم.",
     bestUseEn: "Best for whole-body muscle toning, physical rehab sessions, pilates stretches, and travel workouts."
+  },
+  {
+    id: "prod-pullup-bar",
+    titleAr: "قضيب سحب للمدخل سميك مطور من كيوشوب®️",
+    titleEn: "Kyoshop® Heavy Duty Doorway Pull-Up & Chin-Up Bar",
+    category: "equipment",
+    subCategoryAr: "أدوات تمرين منزلية",
+    subCategoryEn: "Home Gym Equipment",
+    image: "https://images.unsplash.com/photo-1598289431512-b97b0917affc?auto=format&fit=crop&w=600&q=80",
+    descriptionAr: "احصل على ظهر عريض وأكتاف قوية من منزلك. قضيب عقلة الباب الاحترافي من كيوشوب مصنع من الفولاذ الكربوني السميك المطور لمنع الالتواء، ومزود بمقابض إسفنجية متعددة ومريحة لحماية مفاصل اليدين أثناء السحب الثقيل دون الحاجة لثقب إطار الباب.",
+    descriptionEn: "Build supreme upper body strength from your doorway. Kyoshop premium heavy-duty doorway pull-up bar features high-density carbon steel construction and multiple comfortable foam grip positions for intense pull-up variations without nails or drilling.",
+    rating: 4.8,
+    reviewsCount: 382,
+    featuresAr: [
+      "هيكل من الستيل الفولاذي السميك المطور والمقاوم للالتواء والصدأ",
+      "مقابض إسفنجية مانعة للانزلاق تدعم مستويات قبضة واسعة وضيقة ومتوسطة",
+      "تثبيت آمن ومحكم على إطار الباب يعتمد على قوة رافعة الوزن لحماية الحوائط",
+      "جهاز محمول ومتعدد الاستخدامات يصلح لتمارين العقلة، تمارين البطن، وتمارين الضغط الأرضي"
+    ],
+    featuresEn: [
+      "Advanced heavy-duty thick carbon steel tubing supports high weight capacity safely",
+      "Ergonomic multi-position foam grips prevent slippage and hand fatigue under tension",
+      "Safe lever-arm frame mounting shields wall paint and door frame molding from damage",
+      "Highly portable fitness gear ideal for pull-ups, chin-ups, hanging leg raises, and deep push-ups"
+    ],
+    amazonUrl: "https://link.amazon/B04OiAF67",
+    badgeAr: "تم شراء 50+ سلعة مؤخراً",
+    badgeEn: "50+ Bought Recently",
+    tagsAr: ["قضيب سحب", "تمارين منزلية", "كيوشوب", "ستيل سميك"],
+    tagsEn: ["Pull Up Bar", "Home Workout", "Kyoshop", "Doorway Gym"],
+    bestUseAr: "الخيار الاحترافي لتمارين العقلة وتطوير عضلات الظهر، الأكتاف، البايسبس وعضلات البطن من البيت.",
+    bestUseEn: "Excellent for intense home lats exercises, shoulder pull-ups, bicep chin-ups, and core training."
   }
 ];
 

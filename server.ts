@@ -91,6 +91,41 @@ async function startServer() {
   const app = express();
   const PORT = 3000;
 
+  // Trust reverse proxies (such as Cloud Run, Cloudflare, etc.) to correctly populate req.hostname and req.protocol
+  app.set("trust proxy", true);
+
+  // Helper to escape XML special characters
+  function escapeXml(unsafe: string): string {
+    return unsafe.replace(/[<>&'"]/g, (c) => {
+      switch (c) {
+        case '<': return '&lt;';
+        case '>': return '&gt;';
+        case '&': return '&amp;';
+        case '\'': return '&apos;';
+        case '"': return '&quot;';
+        default: return c;
+      }
+    });
+  }
+
+  // Helper to resolve the correct base URL based on proxy headers and request context
+  function getRequestBaseUrl(req: express.Request): string {
+    const protocol = (req.headers["x-forwarded-proto"] as string) || req.protocol || "https";
+    let host = (req.headers["x-forwarded-host"] as string) || req.get("host") || "";
+    
+    // Fallback if host is completely missing
+    if (!host) {
+      host = "sportzone-aff.com";
+    }
+
+    // In production, remove any internal/external ports from the host header (e.g. example.com:3000 -> example.com)
+    if (process.env.NODE_ENV === "production" && host.includes(":")) {
+      host = host.split(":")[0];
+    }
+    
+    return `${protocol}://${host}`;
+  }
+
   // Enable gzip compression to decrease download payloads and improve FCP
   app.use(compression());
 
@@ -201,10 +236,8 @@ The output must be a single beautifully synthesized natural photograph, aspect r
 
   // Dynamic robots.txt generator
   app.get("/robots.txt", (req, res) => {
-    res.header("Content-Type", "text/plain");
-    const host = req.headers.host || "ais-dev-midkp5hm63tkis7b4wleb2-625047059824.europe-west2.run.app";
-    const protocol = "https";
-    const baseUrl = `${protocol}://${host}`;
+    res.header("Content-Type", "text/plain; charset=utf-8");
+    const baseUrl = getRequestBaseUrl(req);
     
     let text = `User-agent: *\n`;
     text += `Allow: /\n\n`;
@@ -216,11 +249,9 @@ The output must be a single beautifully synthesized natural photograph, aspect r
 
   // Dynamic sitemap.xml generator
   app.get("/sitemap.xml", (req, res) => {
-    res.header("Content-Type", "application/xml");
+    res.header("Content-Type", "application/xml; charset=utf-8");
     
-    const host = req.headers.host || "ais-dev-midkp5hm63tkis7b4wleb2-625047059824.europe-west2.run.app";
-    const protocol = "https";
-    const baseUrl = `${protocol}://${host}`;
+    const baseUrl = getRequestBaseUrl(req);
     const today = new Date().toISOString().split("T")[0];
 
     let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
@@ -228,7 +259,7 @@ The output must be a single beautifully synthesized natural photograph, aspect r
 
     // 1. Root page
     xml += `  <url>\n`;
-    xml += `    <loc>${baseUrl}/</loc>\n`;
+    xml += `    <loc>${escapeXml(`${baseUrl}/`)}</loc>\n`;
     xml += `    <lastmod>${today}</lastmod>\n`;
     xml += `    <changefreq>daily</changefreq>\n`;
     xml += `    <priority>1.0</priority>\n`;
@@ -238,7 +269,7 @@ The output must be a single beautifully synthesized natural photograph, aspect r
     const categories = ["shoes", "apparel", "equipment"];
     categories.forEach(cat => {
       xml += `  <url>\n`;
-      xml += `    <loc>${baseUrl}/?category=${cat}</loc>\n`;
+      xml += `    <loc>${escapeXml(`${baseUrl}/?category=${cat}`)}</loc>\n`;
       xml += `    <lastmod>${today}</lastmod>\n`;
       xml += `    <changefreq>weekly</changefreq>\n`;
       xml += `    <priority>0.8</priority>\n`;
@@ -248,7 +279,7 @@ The output must be a single beautifully synthesized natural photograph, aspect r
     // 3. Dynamic Products
     PRODUCTS_DATA.forEach(prod => {
       xml += `  <url>\n`;
-      xml += `    <loc>${baseUrl}/?product=${prod.id}</loc>\n`;
+      xml += `    <loc>${escapeXml(`${baseUrl}/?product=${prod.id}`)}</loc>\n`;
       xml += `    <lastmod>${today}</lastmod>\n`;
       xml += `    <changefreq>weekly</changefreq>\n`;
       xml += `    <priority>0.7</priority>\n`;
@@ -258,7 +289,7 @@ The output must be a single beautifully synthesized natural photograph, aspect r
     // 4. Dynamic Guides
     GUIDES_DATA.forEach(guide => {
       xml += `  <url>\n`;
-      xml += `    <loc>${baseUrl}/?guide=${guide.id}</loc>\n`;
+      xml += `    <loc>${escapeXml(`${baseUrl}/?guide=${guide.id}`)}</loc>\n`;
       xml += `    <lastmod>${today}</lastmod>\n`;
       xml += `    <changefreq>weekly</changefreq>\n`;
       xml += `    <priority>0.6</priority>\n`;

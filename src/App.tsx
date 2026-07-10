@@ -36,6 +36,18 @@ export default function App() {
   const [activeGuide, setActiveGuide] = useState<GuideItem | null>(null);
   const [showWishlistDrawer, setShowWishlistDrawer] = useState<boolean>(false);
   
+  // Selected gallery image state
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  
+  // Synchronize selectedImage when activeProduct changes
+  useEffect(() => {
+    if (activeProduct) {
+      setSelectedImage(activeProduct.image);
+    } else {
+      setSelectedImage(null);
+    }
+  }, [activeProduct]);
+  
   // User favorite items (local persistence via localStorage)
   const [wishlist, setWishlist] = useState<string[]>(() => {
     try {
@@ -384,29 +396,59 @@ export default function App() {
             {/* Product Hero Block */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
               {/* Product Image Column */}
-              <div className="relative aspect-square w-full bg-slate-100 rounded-3xl overflow-hidden border border-slate-200 shadow-inner group">
-                <img
-                  src={activeProduct.image}
-                  alt={isRtl ? activeProduct.titleAr : activeProduct.titleEn}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80";
-                  }}
-                />
-                {activeProduct.badgeAr && (
-                  <span className="absolute top-4 right-4 z-10 text-xs font-black px-3.5 py-1.5 rounded-full bg-emerald-600 text-white shadow-md flex items-center gap-1.5">
-                    <Trophy className="w-3.5 h-3.5 text-white" />
-                    <span>{isRtl ? activeProduct.badgeAr : activeProduct.badgeEn}</span>
-                  </span>
+              <div className="space-y-4">
+                <div className="relative aspect-square w-full bg-slate-100 rounded-3xl overflow-hidden border border-slate-200 shadow-inner group">
+                  <img
+                    src={selectedImage || activeProduct.image}
+                    alt={isRtl ? activeProduct.titleAr : activeProduct.titleEn}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80";
+                    }}
+                  />
+                  {activeProduct.badgeAr && (
+                    <span className="absolute top-4 right-4 z-10 text-xs font-black px-3.5 py-1.5 rounded-full bg-emerald-600 text-white shadow-md flex items-center gap-1.5">
+                      <Trophy className="w-3.5 h-3.5 text-white" />
+                      <span>{isRtl ? activeProduct.badgeAr : activeProduct.badgeEn}</span>
+                    </span>
+                  )}
+                  {/* Save overlay */}
+                  <button
+                    onClick={() => toggleWishlist(activeProduct.id)}
+                    className="absolute top-4 left-4 z-10 p-3 rounded-full bg-white/90 backdrop-blur-md hover:bg-white text-slate-400 hover:text-red-500 shadow-md transition-colors cursor-pointer"
+                  >
+                    <Heart className={`w-5 h-5 ${wishlist.includes(activeProduct.id) ? "fill-red-500 text-red-500" : ""}`} />
+                  </button>
+                </div>
+
+                {/* Gallery Thumbnails */}
+                {activeProduct.gallery && activeProduct.gallery.length > 1 && (
+                  <div className="flex gap-3 justify-center">
+                    {activeProduct.gallery.map((imgUrl, index) => {
+                      const isActive = (selectedImage || activeProduct.image) === imgUrl;
+                      return (
+                        <button
+                          key={index}
+                          onClick={() => setSelectedImage(imgUrl)}
+                          className={`relative w-16 h-16 rounded-2xl overflow-hidden border-2 cursor-pointer transition-all duration-200 ${
+                            isActive ? "border-emerald-600 ring-4 ring-emerald-500/10 scale-105" : "border-slate-200 hover:border-slate-300 hover:scale-102"
+                          }`}
+                        >
+                          <img
+                            src={imgUrl}
+                            alt={`${activeProduct.titleAr} - ${index + 1}`}
+                            referrerPolicy="no-referrer"
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80";
+                            }}
+                          />
+                        </button>
+                      );
+                    })}
+                  </div>
                 )}
-                {/* Save overlay */}
-                <button
-                  onClick={() => toggleWishlist(activeProduct.id)}
-                  className="absolute top-4 left-4 z-10 p-3 rounded-full bg-white/90 backdrop-blur-md hover:bg-white text-slate-400 hover:text-red-500 shadow-md transition-colors cursor-pointer"
-                >
-                  <Heart className={`w-5 h-5 ${wishlist.includes(activeProduct.id) ? "fill-red-500 text-red-500" : ""}`} />
-                </button>
               </div>
 
               {/* Product Info Column */}

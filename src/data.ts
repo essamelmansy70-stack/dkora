@@ -415,7 +415,11 @@ export const PRODUCTS_DATA: Product[] = [
     tagsAr: ["قضيب سحب", "تمارين منزلية", "كيوشوب", "ستيل سميك"],
     tagsEn: ["Pull Up Bar", "Home Workout", "Kyoshop", "Doorway Gym"],
     bestUseAr: "الخيار الاحترافي لتمارين العقلة وتطوير عضلات الظهر، الأكتاف، البايسبس وعضلات البطن من البيت.",
-    bestUseEn: "Excellent for intense home lats exercises, shoulder pull-ups, bicep chin-ups, and core training."
+    bestUseEn: "Excellent for intense home lats exercises, shoulder pull-ups, bicep chin-ups, and core training.",
+    gallery: [
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80",
+      "/pullup_bar_install.jpg"
+    ]
   }
 ];
 

@@ -19,6 +19,7 @@ export interface Product {
   tagsEn: string[];
   bestUseAr: string;
   bestUseEn: string;
+  gallery?: string[];
 }
 
 export type CategoryFilter = 'all' | 'shoes' | 'apparel' | 'equipment';

@@ -110,9 +110,21 @@ async function startServer() {
 
   // Helper to resolve the correct base URL based on proxy headers and request context
   function getRequestBaseUrl(req: express.Request): string {
+    // 1. If the user configured a custom SITE_URL or SITEMAP_BASE_URL, use it as the absolute source of truth.
+    // This resolves any dynamic proxy-header or Cloud Run container routing issues in Google Search Console.
+    const customSiteUrl = process.env.SITE_URL || process.env.SITEMAP_BASE_URL;
+    if (customSiteUrl) {
+      return customSiteUrl.replace(/\/$/, "");
+    }
+
     const protocol = (req.headers["x-forwarded-proto"] as string) || req.protocol || "https";
     let host = (req.headers["x-forwarded-host"] as string) || req.get("host") || "";
     
+    // If x-forwarded-host contains comma-separated proxy hosts, pick the first (original client host)
+    if (host.includes(",")) {
+      host = host.split(",")[0].trim();
+    }
+
     // Fallback if host is completely missing
     if (!host) {
       host = "sportzone-aff.com";

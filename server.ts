@@ -199,6 +199,21 @@ The output must be a single beautifully synthesized natural photograph, aspect r
     }
   });
 
+  // Dynamic robots.txt generator
+  app.get("/robots.txt", (req, res) => {
+    res.header("Content-Type", "text/plain");
+    const host = req.headers.host || "ais-dev-midkp5hm63tkis7b4wleb2-625047059824.europe-west2.run.app";
+    const protocol = "https";
+    const baseUrl = `${protocol}://${host}`;
+    
+    let text = `User-agent: *\n`;
+    text += `Allow: /\n\n`;
+    text += `Disallow: /node_modules/\n`;
+    text += `Disallow: /dist/\n\n`;
+    text += `Sitemap: ${baseUrl}/sitemap.xml\n`;
+    res.status(200).send(text);
+  });
+
   // Dynamic sitemap.xml generator
   app.get("/sitemap.xml", (req, res) => {
     res.header("Content-Type", "application/xml");

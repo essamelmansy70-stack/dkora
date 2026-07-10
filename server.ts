@@ -108,6 +108,82 @@ async function startServer() {
     });
   }
 
+  // Generate static sitemap.xml and robots.txt files on startup to assist search crawlers and CDNs
+  function generateStaticSitemapAndRobots() {
+    try {
+      const baseUrl = (process.env.SITE_URL || "https://dkora.online").replace(/\/$/, "");
+      const today = new Date().toISOString().split("T")[0];
+
+      // 1. Generate sitemap.xml contents
+      let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+      xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+      // Root
+      xml += `  <url>\n`;
+      xml += `    <loc>${escapeXml(`${baseUrl}/`)}</loc>\n`;
+      xml += `    <lastmod>${today}</lastmod>\n`;
+      xml += `    <changefreq>daily</changefreq>\n`;
+      xml += `    <priority>1.0</priority>\n`;
+      xml += `  </url>\n`;
+
+      // Categories
+      const categories = ["shoes", "apparel", "equipment"];
+      categories.forEach(cat => {
+        xml += `  <url>\n`;
+        xml += `    <loc>${escapeXml(`${baseUrl}/?category=${cat}`)}</loc>\n`;
+        xml += `    <lastmod>${today}</lastmod>\n`;
+        xml += `    <changefreq>weekly</changefreq>\n`;
+        xml += `    <priority>0.8</priority>\n`;
+        xml += `  </url>\n`;
+      });
+
+      // Products
+      PRODUCTS_DATA.forEach(prod => {
+        xml += `  <url>\n`;
+        xml += `    <loc>${escapeXml(`${baseUrl}/?product=${prod.id}`)}</loc>\n`;
+        xml += `    <lastmod>${today}</lastmod>\n`;
+        xml += `    <changefreq>weekly</changefreq>\n`;
+        xml += `    <priority>0.7</priority>\n`;
+        xml += `  </url>\n`;
+      });
+
+      // Guides
+      GUIDES_DATA.forEach(guide => {
+        xml += `  <url>\n`;
+        xml += `    <loc>${escapeXml(`${baseUrl}/?guide=${guide.id}`)}</loc>\n`;
+        xml += `    <lastmod>${today}</lastmod>\n`;
+        xml += `    <changefreq>weekly</changefreq>\n`;
+        xml += `    <priority>0.6</priority>\n`;
+        xml += `  </url>\n`;
+      });
+
+      xml += `</urlset>\n`;
+
+      // 2. Generate robots.txt contents
+      let robots = `User-agent: *\n`;
+      robots += `Allow: /\n\n`;
+      robots += `Disallow: /node_modules/\n`;
+      robots += `Disallow: /dist/\n\n`;
+      robots += `Sitemap: ${baseUrl}/sitemap.xml\n`;
+
+      // Write to /public and /dist directories if they exist
+      const dirsToEnsure = ["public", "dist"];
+      dirsToEnsure.forEach(dirName => {
+        const dirPath = path.join(process.cwd(), dirName);
+        if (fs.existsSync(dirPath)) {
+          fs.writeFileSync(path.join(dirPath, "sitemap.xml"), xml, "utf-8");
+          fs.writeFileSync(path.join(dirPath, "robots.txt"), robots, "utf-8");
+          console.log(`Successfully generated sitemap.xml and robots.txt in /${dirName}`);
+        }
+      });
+    } catch (err) {
+      console.error("Failed to generate static sitemap/robots on startup:", err);
+    }
+  }
+
+  // Run on startup
+  generateStaticSitemapAndRobots();
+
   // Helper to resolve the correct base URL based on proxy headers and request context
   function getRequestBaseUrl(req: express.Request): string {
     // 1. If the user configured a custom SITE_URL or SITEMAP_BASE_URL, use it as the absolute source of truth.
@@ -249,6 +325,9 @@ The output must be a single beautifully synthesized natural photograph, aspect r
   // Dynamic robots.txt generator
   app.get("/robots.txt", (req, res) => {
     res.header("Content-Type", "text/plain; charset=utf-8");
+    res.header("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", "0");
     const baseUrl = getRequestBaseUrl(req);
     
     let text = `User-agent: *\n`;
@@ -262,6 +341,9 @@ The output must be a single beautifully synthesized natural photograph, aspect r
   // Dynamic sitemap.xml generator
   app.get("/sitemap.xml", (req, res) => {
     res.header("Content-Type", "application/xml; charset=utf-8");
+    res.header("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+    res.header("Pragma", "no-cache");
+    res.header("Expires", "0");
     
     const baseUrl = getRequestBaseUrl(req);
     const today = new Date().toISOString().split("T")[0];

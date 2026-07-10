@@ -88,6 +88,110 @@ export default function App() {
     document.documentElement.dir = "rtl";
   }, []);
 
+  // Listen to popstate event (browser back/forward buttons) to update active states dynamically
+  useEffect(() => {
+    const handlePopState = () => {
+      const params = new URLSearchParams(window.location.search);
+      const productId = params.get("product");
+      const guideId = params.get("guide");
+      const categoryParam = params.get("category");
+
+      if (productId) {
+        const prod = PRODUCTS_DATA.find((p) => p.id === productId);
+        setActiveProduct(prod || null);
+        setActiveGuide(null);
+      } else if (guideId) {
+        const guide = GUIDES_DATA.find((g) => g.id === guideId);
+        setActiveGuide(guide || null);
+        setActiveProduct(null);
+      } else {
+        setActiveProduct(null);
+        setActiveGuide(null);
+      }
+
+      if (categoryParam) {
+        setSelectedCategory(categoryParam as any);
+      } else {
+        setSelectedCategory("all");
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  // Dynamic SEO Metadata updates for search engines and social sharing
+  useEffect(() => {
+    let title = "سبورت زون | متجر المعدات والملابس الرياضية بأفضل الأسعار على أمازون";
+    let desc = "تسوق أفضل الأحذية الرياضية، الملابس الأنيقة، ومعدات التدريب واللياقة البدنية عالية الجودة. منتجات موثوقة ومختارة بعناية بروابط مباشرة إلى أمازون.";
+    let url = window.location.href;
+    let image = "https://images.unsplash.com/photo-1460353581641-37baddff0bc2?auto=format&fit=crop&w=1200&q=80";
+
+    if (activeProduct) {
+      title = `${activeProduct.titleAr} | سبورت زون`;
+      desc = `${activeProduct.descriptionAr.slice(0, 160)}... مراجعة فنية كاملة ورابط شراء مباشر من أمازون لـ ${activeProduct.titleAr}`;
+      if (activeProduct.image) image = activeProduct.image;
+    } else if (activeGuide) {
+      title = `${activeGuide.titleAr} | دليل الشراء الذكي | سبورت زون`;
+      desc = `${activeGuide.excerptAr} - اقرأ إرشاداتنا المجانية والمعدة من قبل خبراء ومدربين رياضيين لتختار بشكل صحيح من أمازون.`;
+    } else if (selectedCategory !== "all") {
+      if (selectedCategory === "shoes") {
+        title = "أحذية جري وملاعب رياضية ممتازة | سبورت زون";
+        desc = "تصفح تشكيلة واسعة من الأحذية الرياضية المريحة وأحذية الجري المخصصة للماراثونات والملاعب بأعلى التقييمات على أمازون.";
+      } else if (selectedCategory === "apparel") {
+        title = "ملابس رياضية وتمرين ممتازة ومضادة للتعرق | سبورت زون";
+        desc = "تسوق ملابس رياضية وأطقم تمرين مريحة للرجال والنساء، مصممة من نسيج يسمح بالتهوية ويمتص العرق بكفاءة.";
+      } else if (selectedCategory === "equipment") {
+        title = "معدات وأدوات اللياقة البدنية والجيم المنزلي | سبورت زون";
+        desc = "اكتشف أفضل أجهزة الكارديو، عقلة الباب، وحبال المقاومة لتجهيز صالتك الرياضية المنزلية المتكاملة بأسعار ممتازة.";
+      }
+    }
+
+    // Update title
+    document.title = title;
+
+    // Helper function to update meta tags
+    const updateMeta = (selector: string, attrName: string, value: string) => {
+      let meta = document.head.querySelector(selector);
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute(selector.includes("property") ? "property" : "name", selector.match(/"([^"]+)"/)?.[1] || "");
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute(attrName, value);
+    };
+
+    updateMeta('meta[name="description"]', 'content', desc);
+    updateMeta('meta[property="og:title"]', 'content', title);
+    updateMeta('meta[property="og:description"]', 'content', desc);
+    updateMeta('meta[property="og:image"]', 'content', image);
+    updateMeta('meta[property="og:url"]', 'content', url);
+    updateMeta('meta[property="twitter:title"]', 'content', title);
+    updateMeta('meta[property="twitter:description"]', 'content', desc);
+    updateMeta('meta[property="twitter:url"]', 'content', url);
+  }, [activeProduct, activeGuide, selectedCategory]);
+
+  const openProductPage = (prod: Product) => {
+    setActiveProduct(prod);
+    setActiveGuide(null);
+    window.history.pushState(null, "", `?product=${prod.id}`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const openGuidePage = (guide: GuideItem) => {
+    setActiveGuide(guide);
+    setActiveProduct(null);
+    window.history.pushState(null, "", `?guide=${guide.id}`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const goBackToHome = () => {
+    setActiveProduct(null);
+    setActiveGuide(null);
+    window.history.pushState(null, "", "/");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const showToastNotification = (message: string) => {
     setToast({ show: true, message });
     setTimeout(() => {
@@ -262,382 +366,696 @@ export default function App() {
       </div>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full z-10 flex-grow">
-        
-        {/* Dynamic Marketing Hero Intro */}
-        <section className="mb-10 text-center relative py-12 rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 to-slate-950 text-white shadow-xl shadow-slate-900/10 border border-slate-800">
-          <div className="absolute inset-0 opacity-15 pointer-events-none">
-            <img 
-              src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=50" 
-              alt="Stadium background" 
-              className="w-full h-full object-cover filter grayscale"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950" />
-          </div>
-          <div className="relative max-w-3xl mx-auto px-4 space-y-4">
-            <span className="inline-block px-3 py-1 text-[10px] sm:text-xs font-black tracking-wider uppercase rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-              {isRtl ? "مراجعات وتوجيهات شرائية ذكية لعام ٢٠٢٦" : "Smart Purchase Reviews & Guides 2026"}
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight tracking-tight">
-              {isRtl 
-                ? "أفضل الملابس والمعدات الرياضية بضغطة زر واحدة" 
-                : "Top-Tier Premium Athletic Footwear & Gear"}
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
-              {isRtl
-                ? "دليل منسق بعناية يجمع لك أفضل المنتجات وأعلاها تقييماً على أمازون. وفر وقتك في البحث واطلع على تفاصيل المنتج والخصائص لتصل لأفضل قرار شراء فوري."
-                : "A carefully curated catalogue highlighting Amazon's highest-rated sports apparel and gear. Skip the endless searching and make informed buying decisions instantly."}
-            </p>
-          </div>
-        </section>
-
-        {/* Categories Tab Selector */}
-        <section className="mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
-              <Compass className="w-4 h-4 text-emerald-600" />
-              {isRtl ? "تصفح الفئات الكبرى:" : "Browse Main Categories:"}
-            </h3>
-            {/* Sorting controls */}
-            <div className="flex items-center gap-2">
-              <span className="text-[10px] text-slate-500 font-bold hidden sm:inline">{isRtl ? "ترتيب حسب:" : "Sort by:"}</span>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
-                className="bg-white border border-slate-200 text-[10px] sm:text-xs rounded-lg py-1 px-2.5 font-bold focus:outline-none focus:ring-1 focus:ring-emerald-500"
+        {activeProduct ? (
+          <article className="animate-fade space-y-8 bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm relative">
+            {/* Top Back Action Bar */}
+            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-100">
+              <button
+                onClick={goBackToHome}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold text-xs cursor-pointer transition-all"
               >
-                <option value="rating">{isRtl ? "الأعلى تقييماً" : "Highest Rated"}</option>
-                <option value="reviews">{isRtl ? "الأكثر مراجعة" : "Most Reviews"}</option>
-              </select>
+                {isRtl ? <ArrowRight className="w-4 h-4" /> : <ArrowLeft className="w-4 h-4" />}
+                <span>{isRtl ? "العودة إلى المعرض الرئيسي" : "Back to Home"}</span>
+              </button>
+
+              <div className="flex items-center gap-2">
+                <span className="text-slate-400 text-xs font-bold">{isRtl ? "شارك هذه الصفحة:" : "Share link:"}</span>
+                <input
+                  type="text"
+                  readOnly
+                  value={window.location.href}
+                  className="bg-slate-50 border border-slate-200 text-[10px] text-slate-500 font-mono py-1 px-2.5 rounded-lg w-40 sm:w-60 focus:outline-none"
+                  onClick={(e) => (e.target as HTMLInputElement).select()}
+                />
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(window.location.href);
+                    showToastNotification(isRtl ? "تم نسخ رابط الصفحة المباشر بنجاح!" : "Direct link copied successfully!");
+                  }}
+                  className="text-xs font-black text-emerald-600 hover:text-emerald-800"
+                >
+                  {isRtl ? "نسخ" : "Copy"}
+                </button>
+              </div>
             </div>
-          </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {/* All Category Tab */}
-            <button
-              onClick={() => { setSelectedCategory("all"); setSelectedTag("all"); }}
-              className={`p-4 rounded-2xl border text-right transition-all flex items-center justify-between cursor-pointer ${
-                selectedCategory === "all"
-                  ? "bg-slate-900 text-white border-slate-900 shadow-md shadow-slate-900/10"
-                  : "bg-white text-slate-800 border-slate-200 hover:border-emerald-500 hover:bg-slate-50/50"
-              }`}
-            >
-              <div>
-                <p className={`text-[10px] font-bold ${selectedCategory === "all" ? "text-slate-400" : "text-slate-500"}`}>
-                  {isRtl ? "شاهد كل شيء" : "View Everything"}
-                </p>
-                <h4 className="text-xs sm:text-sm font-black mt-0.5">{isRtl ? "جميع المنتجات" : "All Products"}</h4>
+            {/* Product Hero Block */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+              {/* Product Image Column */}
+              <div className="relative aspect-square w-full bg-slate-100 rounded-3xl overflow-hidden border border-slate-200 shadow-inner group">
+                <img
+                  src={activeProduct.image}
+                  alt={isRtl ? activeProduct.titleAr : activeProduct.titleEn}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80";
+                  }}
+                />
+                {activeProduct.badgeAr && (
+                  <span className="absolute top-4 right-4 z-10 text-xs font-black px-3.5 py-1.5 rounded-full bg-emerald-600 text-white shadow-md flex items-center gap-1.5">
+                    <Trophy className="w-3.5 h-3.5 text-white" />
+                    <span>{isRtl ? activeProduct.badgeAr : activeProduct.badgeEn}</span>
+                  </span>
+                )}
+                {/* Save overlay */}
+                <button
+                  onClick={() => toggleWishlist(activeProduct.id)}
+                  className="absolute top-4 left-4 z-10 p-3 rounded-full bg-white/90 backdrop-blur-md hover:bg-white text-slate-400 hover:text-red-500 shadow-md transition-colors cursor-pointer"
+                >
+                  <Heart className={`w-5 h-5 ${wishlist.includes(activeProduct.id) ? "fill-red-500 text-red-500" : ""}`} />
+                </button>
               </div>
-              <Grid className={`w-5 h-5 shrink-0 ${selectedCategory === "all" ? "text-emerald-400" : "text-slate-400"}`} />
-            </button>
 
-            {/* Shoes Category Tab */}
-            <button
-              onClick={() => { setSelectedCategory("shoes"); setSelectedTag("all"); }}
-              className={`p-4 rounded-2xl border text-right transition-all flex items-center justify-between cursor-pointer ${
-                selectedCategory === "shoes"
-                  ? "bg-emerald-650 text-white border-emerald-600 shadow-md shadow-emerald-600/10"
-                  : "bg-white text-slate-800 border-slate-200 hover:border-emerald-500 hover:bg-slate-50/50"
-              }`}
-            >
-              <div>
-                <p className={`text-[10px] font-bold ${selectedCategory === "shoes" ? "text-emerald-200" : "text-slate-500"}`}>
-                  {isRtl ? "أحذية جري وملاعب" : "Athletic Footwear"}
-                </p>
-                <h4 className="text-xs sm:text-sm font-black mt-0.5">{isRtl ? "أحذية رياضية" : "Sports Shoes"}</h4>
-              </div>
-              <Footprints className={`w-5 h-5 shrink-0 ${selectedCategory === "shoes" ? "text-white" : "text-slate-400"}`} />
-            </button>
+              {/* Product Info Column */}
+              <div className="flex flex-col justify-between space-y-6 text-right rtl:text-right ltr:text-left">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] sm:text-xs font-black px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-150 uppercase">
+                      {isRtl ? activeProduct.subCategoryAr : activeProduct.subCategoryEn}
+                    </span>
+                  </div>
 
-            {/* Apparel Category Tab */}
-            <button
-              onClick={() => { setSelectedCategory("apparel"); setSelectedTag("all"); }}
-              className={`p-4 rounded-2xl border text-right transition-all flex items-center justify-between cursor-pointer ${
-                selectedCategory === "apparel"
-                  ? "bg-emerald-650 text-white border-emerald-600 shadow-md shadow-emerald-600/10"
-                  : "bg-white text-slate-800 border-slate-200 hover:border-emerald-500 hover:bg-slate-50/50"
-              }`}
-            >
-              <div>
-                <p className={`text-[10px] font-bold ${selectedCategory === "apparel" ? "text-emerald-200" : "text-slate-500"}`}>
-                  {isRtl ? "مضادة للتعرق ومريحة" : "Active Apparel"}
-                </p>
-                <h4 className="text-xs sm:text-sm font-black mt-0.5">{isRtl ? "ملابس تمرين" : "Sports Apparel"}</h4>
-              </div>
-              <Shirt className={`w-5 h-5 shrink-0 ${selectedCategory === "apparel" ? "text-white" : "text-slate-400"}`} />
-            </button>
+                  <h1 className="text-xl sm:text-3xl font-black text-slate-900 leading-tight">
+                    {isRtl ? activeProduct.titleAr : activeProduct.titleEn}
+                  </h1>
 
-            {/* Equipment Category Tab */}
-            <button
-              onClick={() => { setSelectedCategory("equipment"); setSelectedTag("all"); }}
-              className={`p-4 rounded-2xl border text-right transition-all flex items-center justify-between cursor-pointer ${
-                selectedCategory === "equipment"
-                  ? "bg-emerald-650 text-white border-emerald-600 shadow-md shadow-emerald-600/10"
-                  : "bg-white text-slate-800 border-slate-200 hover:border-emerald-500 hover:bg-slate-50/50"
-              }`}
-            >
-              <div>
-                <p className={`text-[10px] font-bold ${selectedCategory === "equipment" ? "text-emerald-200" : "text-slate-500"}`}>
-                  {isRtl ? "أدوات كارديو وجيم" : "Fitness Equipment"}
-                </p>
-                <h4 className="text-xs sm:text-sm font-black mt-0.5">{isRtl ? "معدات وأدوات" : "Sports Equipment"}</h4>
-              </div>
-              <Dumbbell className={`w-5 h-5 shrink-0 ${selectedCategory === "equipment" ? "text-white" : "text-slate-400"}`} />
-            </button>
-          </div>
-        </section>
+                  {/* Rating summary */}
+                  <div className="flex items-center gap-2 text-xs sm:text-sm">
+                    <div className="flex items-center text-amber-400">
+                      <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    </div>
+                    <span className="font-black text-slate-900 text-base">{activeProduct.rating}</span>
+                    <span className="text-slate-400 font-semibold">({activeProduct.reviewsCount} {isRtl ? "تقييم حقيقي وموثق" : "authentic reviews"})</span>
+                  </div>
 
-        {/* Tags Sub-Filter Pills */}
-        {availableTags.length > 0 && (
-          <section className="mb-8 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-            <span className="text-[10px] text-slate-500 font-extrabold shrink-0">
-              {isRtl ? "فلاتر سريعة:" : "Quick Tags:"}
-            </span>
-            <button
-              onClick={() => setSelectedTag("all")}
-              className={`px-3 py-1 rounded-full text-[10px] font-bold cursor-pointer transition-all ${
-                selectedTag === "all"
-                  ? "bg-emerald-600 text-white shadow-sm"
-                  : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-100"
-              }`}
-            >
-              {isRtl ? "الكل" : "All"}
-            </button>
-            {availableTags.map((tag) => (
-              <button
-                key={tag}
-                onClick={() => setSelectedTag(tag)}
-                className={`px-3 py-1 rounded-full text-[10px] font-bold cursor-pointer transition-all shrink-0 ${
-                  selectedTag === tag
-                    ? "bg-emerald-600 text-white shadow-sm"
-                    : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-100"
-                }`}
-              >
-                #{tag}
-              </button>
-            ))}
-          </section>
-        )}
+                  {/* Best Use */}
+                  <div className="bg-emerald-50/40 p-4 rounded-2xl border border-emerald-500/10 space-y-1">
+                    <span className="font-extrabold text-emerald-850 text-xs flex items-center gap-1.5">
+                      <span>🎯</span>
+                      <span>{isRtl ? "الاستخدام المثالي والأداء:" : "Recommended Best Use:"}</span>
+                    </span>
+                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                      {isRtl ? activeProduct.bestUseAr : activeProduct.bestUseEn}
+                    </p>
+                  </div>
+                </div>
 
-        {/* Interactive Products Grid */}
-        <section className="mb-14">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-base font-black text-slate-900 flex items-center gap-2">
-              <Grid className="w-4 h-4 text-emerald-600" />
-              <span>
-                {isRtl ? "المنتجات الرياضية المقترحة:" : "Recommended Sports Gear:"}
-              </span>
-              <span className="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full font-bold">
-                {filteredProducts.length}
-              </span>
-            </h3>
-            {(searchQuery || selectedCategory !== "all" || selectedTag !== "all") && (
-              <button
-                onClick={() => {
-                  setSearchQuery("");
-                  setSelectedCategory("all");
-                  setSelectedTag("all");
-                }}
-                className="text-[11px] font-bold text-emerald-600 hover:text-emerald-800 flex items-center gap-1 cursor-pointer"
-              >
-                {isRtl ? "إعادة تعيين الفلاتر" : "Reset Filters"}
-              </button>
-            )}
-          </div>
+                {/* Main Purchase CTA Card */}
+                <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-[10px] text-slate-400 font-bold uppercase">{isRtl ? "تأكيد توافر المخزون" : "Stock Status"}</p>
+                      <span className="text-xs text-emerald-600 font-black flex items-center gap-1">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block animate-ping" />
+                        {isRtl ? "متوفر حالياً للطلب الفوري" : "In Stock - Order Instantly"}
+                      </span>
+                    </div>
+                    <span className="text-[10px] bg-slate-200 text-slate-700 font-bold px-2 py-1 rounded-md">
+                      Amazon Affiliate
+                    </span>
+                  </div>
 
-          {filteredProducts.length === 0 ? (
-            <div className="text-center py-16 bg-white rounded-3xl border border-slate-200 max-w-xl mx-auto space-y-4 shadow-sm">
-              <HelpCircle className="w-12 h-12 text-slate-300 mx-auto" />
-              <div className="space-y-1">
-                <h4 className="text-sm font-black text-slate-900">
-                  {isRtl ? "عذراً! لم نجد أي نتائج مطابقة" : "No matching items found"}
-                </h4>
-                <p className="text-xs text-slate-500 max-w-sm mx-auto px-4 leading-relaxed">
-                  {isRtl 
-                    ? "جرّب تغيير كلمات البحث أو اختر فئة أخرى وتصفح مجموعة المنتجات مجدداً." 
-                    : "Try adjusting your search queries or browse a different sport product category."}
-                </p>
-              </div>
-              <button
-                onClick={() => {
-                  setSearchQuery("");
-                  setSelectedCategory("all");
-                  setSelectedTag("all");
-                }}
-                className="px-4 py-2 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-slate-800 transition-colors cursor-pointer"
-              >
-                {isRtl ? "عرض جميع المنتجات" : "View All Products"}
-              </button>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filteredProducts.map((prod) => {
-                const isFavorite = wishlist.includes(prod.id);
-                const badgeText = isRtl ? prod.badgeAr : prod.badgeEn;
-                const subTitleText = isRtl ? prod.subCategoryAr : prod.subCategoryEn;
-                const titleText = isRtl ? prod.titleAr : prod.titleEn;
-                const descriptionText = isRtl ? prod.descriptionAr : prod.descriptionEn;
-                const tags = isRtl ? prod.tagsAr : prod.tagsEn;
-
-                return (
-                  <div
-                    key={prod.id}
-                    onClick={() => setActiveProduct(prod)}
-                    className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer flex flex-col justify-between"
+                  <a
+                    href={activeProduct.amazonUrl}
+                    target="_blank"
+                    rel="sponsored noopener noreferrer"
+                    className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20 transition-all duration-300 transform hover:-translate-y-0.5 group"
                   >
-                    {/* Card Media Header */}
-                    <div className="relative aspect-square w-full bg-slate-100 overflow-hidden shrink-0">
-                      
-                      {/* Badge Overlays */}
-                      {badgeText && (
-                        <span className="absolute top-3 right-3 z-10 text-[9px] font-black px-2.5 py-1 rounded-full bg-emerald-600 text-white shadow-sm flex items-center gap-1">
-                          <Trophy className="w-3 h-3 text-white" />
-                          <span>{badgeText}</span>
-                        </span>
-                      )}
-
-                      {/* Wishlist Button Overlay */}
-                      <button
-                        onClick={(e) => toggleWishlist(prod.id, e)}
-                        className="absolute top-3 left-3 z-10 p-2 rounded-full bg-white/80 backdrop-blur-md hover:bg-white text-slate-400 hover:text-red-500 shadow-sm transition-colors cursor-pointer"
-                        title={isRtl ? "حفظ في المفضلة" : "Save to Wishlist"}
-                      >
-                        <Heart className={`w-4 h-4 transition-all ${isFavorite ? "fill-red-500 text-red-500 scale-110" : ""}`} />
-                      </button>
-
-                      {/* Fallback & Image */}
-                      <img
-                        src={prod.image}
-                        alt={titleText}
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                        onError={(e) => {
-                          // fallback image if unsplash link fails
-                          (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80";
-                        }}
-                      />
-                      
-                      {/* Dark Overlay view trigger */}
-                      <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span className="bg-white/95 text-slate-900 font-extrabold text-[10px] px-3.5 py-2 rounded-xl shadow-lg flex items-center gap-1 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                          <Compass className="w-3.5 h-3.5 text-emerald-600" />
-                          {isRtl ? "معاينة التفاصيل" : "Quick View"}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Card Content body */}
-                    <div className="p-4 flex-grow flex flex-col justify-between space-y-3">
-                      <div className="space-y-2">
-                        {/* Subtitle */}
-                        <p className="text-[9px] font-extrabold text-emerald-600 uppercase tracking-wider">
-                          {subTitleText}
-                        </p>
-
-                        {/* Ratings */}
-                        <div className="flex items-center gap-1 text-[10px]">
-                          <div className="flex items-center text-amber-400">
-                            <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
-                          </div>
-                          <span className="font-extrabold text-slate-800">{prod.rating}</span>
-                          <span className="text-slate-400 font-medium">({prod.reviewsCount})</span>
-                        </div>
-
-                        {/* Main Title */}
-                        <h4 className="text-xs sm:text-sm font-black text-slate-900 line-clamp-1 group-hover:text-emerald-700 transition-colors">
-                          {titleText}
-                        </h4>
-
-                        {/* Marketing Description */}
-                        <p className="text-[11px] text-slate-500 leading-relaxed line-clamp-2">
-                          {descriptionText}
-                        </p>
-                      </div>
-
-                      {/* Tags & Action Row */}
-                      <div className="space-y-3 pt-2 border-t border-slate-100">
-                        {/* Tags list */}
-                        <div className="flex flex-wrap gap-1">
-                          {tags.slice(0, 3).map((tag, idx) => (
-                            <span key={idx} className="text-[9px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-bold">
-                              #{tag}
-                            </span>
-                          ))}
-                        </div>
-
-                        {/* NO STATIC PRICE ACCORDING TO RULE 4. ALWAYS SHOW AFFILIATE CTA */}
-                        <div className="pt-1">
-                          <a
-                            href={prod.amazonUrl}
-                            target="_blank"
-                            rel="sponsored noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()} // prevent opening detail modal when clicking direct button
-                            className="w-full py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white font-extrabold text-[10px] sm:text-xs text-center flex items-center justify-center gap-1.5 shadow-sm transition-all duration-200 group/btn"
-                          >
-                            <span>{isRtl ? "تحقق من السعر والتفاصيل على أمازون" : "Check Price & Details on Amazon"}</span>
-                            <ExternalLink className="w-3.5 h-3.5 transform group-hover/btn:translate-x-0.5 rtl:group-hover/btn:-translate-x-0.5 transition-transform" />
-                          </a>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </section>
-
-        {/* Informative Sports Guides and Recommendations */}
-        <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
-          <div className="max-w-2xl">
-            <span className="inline-block px-3 py-1 text-[9px] font-black tracking-wider uppercase rounded-full bg-slate-100 text-slate-600 border border-slate-200 mb-2">
-              {isRtl ? "مقالات ودراسات مفيدة" : "Useful Sports Knowledge"}
-            </span>
-            <h3 className="text-base sm:text-lg font-black text-slate-900 mb-2 flex items-center gap-1.5">
-              <HelpCircle className="w-5 h-5 text-emerald-600" />
-              {isRtl ? "دليلك الذكي للشراء والاختيار الصحيح:" : "Our Guides for Smart Purchasing Selection:"}
-            </h3>
-            <p className="text-xs text-slate-500 leading-relaxed mb-6">
-              {isRtl
-                ? "اقرأ إرشاداتنا المجانية والمعدة من قبل مدربين رياضيين لتتعلم كيف تختار المقاسات المثالية وتؤسس صالتك الرياضية المنزلية بأعلى جودة وكفاءة."
-                : "Read our free, trainer-reviewed fitness advice to help you select perfect equipment and find accurate sports sizes without overpaying."}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {GUIDES_DATA.map((guide) => (
-              <div
-                key={guide.id}
-                onClick={() => setActiveGuide(guide)}
-                className="p-5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-slate-50 hover:border-emerald-500/30 transition-all cursor-pointer group flex flex-col justify-between"
-              >
-                <div className="space-y-2">
-                  <div className="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-                    {guide.icon === "shoes" ? (
-                      <Footprints className="w-4.5 h-4.5" />
-                    ) : (
-                      <Dumbbell className="w-4.5 h-4.5" />
-                    )}
-                  </div>
-                  <h4 className="text-xs sm:text-sm font-black text-slate-900 group-hover:text-emerald-700 transition-colors">
-                    {isRtl ? guide.titleAr : guide.titleEn}
-                  </h4>
-                  <p className="text-[11px] text-slate-500 leading-relaxed">
-                    {isRtl ? guide.excerptAr : guide.excerptEn}
-                  </p>
-                </div>
-                
-                <div className="pt-3 flex items-center justify-between text-[11px] font-black text-emerald-600">
-                  <span>{isRtl ? "اقرأ الدليل بالكامل" : "Read Full Guide"}</span>
-                  <div className="flex items-center gap-1">
-                    {isRtl ? <ArrowLeft className="w-3.5 h-3.5" /> : <ArrowRight className="w-3.5 h-3.5" />}
-                  </div>
+                    <span>{isRtl ? "عرض السعر الحالي والشراء من أمازون" : "Check Price & Buy From Amazon"}</span>
+                    <ExternalLink className="w-4.5 h-4.5 transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform" />
+                  </a>
                 </div>
               </div>
-            ))}
-          </div>
-        </section>
+            </div>
 
+            {/* Deep Description & Specifications Checklist */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-slate-100 text-right rtl:text-right ltr:text-left">
+              <div className="space-y-3">
+                <h3 className="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
+                  <span className="w-1.5 h-4 bg-emerald-550 rounded-full" />
+                  {isRtl ? "الوصف التفصيلي والتقييم الرياضي:" : "Detailed Product Overview:"}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed whitespace-pre-line font-medium">
+                  {isRtl ? activeProduct.descriptionAr : activeProduct.descriptionEn}
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h3 className="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
+                  <span className="w-1.5 h-4 bg-emerald-550 rounded-full" />
+                  {isRtl ? "أبرز المواصفات والخصائص المميزة:" : "Key Technical Features:"}
+                </h3>
+                <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700">
+                  {(isRtl ? activeProduct.featuresAr : activeProduct.featuresEn).map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5">
+                      <Check className="w-4.5 h-4.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <span className="font-medium">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Amazon Compliance dynamic price disclaimer */}
+            <div className="bg-amber-50 border border-amber-250 p-5 rounded-2xl space-y-3 text-right rtl:text-right ltr:text-left">
+              <div className="flex items-center gap-2 text-amber-850 font-black text-xs sm:text-sm">
+                <Info className="w-5 h-5 text-amber-600 shrink-0" />
+                <span>{isRtl ? "ملاحظة هامة بخصوص أسعار المنتجات المعروضة" : "Important Pricing & Stock Compliance"}</span>
+              </div>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                {isRtl 
+                  ? "التزاماً بسياسات وإرشادات شركاء أمازون (Amazon Associates)، نود التنويه بأننا لا نقوم بعرض الأسعار بشكل مباشر على موقعنا. وذلك لأن الأسعار، نسب الخصومات الإضافية، مصاريف التوصيل الجغرافي والجمارك، ومدى توفر المنتج في المخازن تتغير بشكل ديناميكي وفي غضون ثوانٍ قليلة على خوادم أمازون. لمعاينة أدق سعر مع تحديثات التوصيل لبلدك، نوصي دائماً بالضغط على زر الانتقال المباشر للمعاينة الرسمية الآمنة."
+                  : "Per Amazon's compliance policy, we do not feature static prices on our app since prices, localized delivery fees, dynamic discounts, and stock status fluctuate in real-time on Amazon's official platform. Please tap the buy button above to view the most current verified details directly on Amazon."}
+              </p>
+            </div>
+
+            {/* Recommended/Related items in the same category */}
+            <div className="pt-8 border-t border-slate-100 space-y-6 text-right rtl:text-right ltr:text-left">
+              <h3 className="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
+                <Trophy className="w-4.5 h-4.5 text-emerald-600" />
+                {isRtl ? "منتجات مشابهة قد تثير اهتمامك أيضاً:" : "Related Products You Might Like:"}
+              </h3>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {PRODUCTS_DATA.filter((p) => p.category === activeProduct.category && p.id !== activeProduct.id)
+                  .slice(0, 4)
+                  .map((prod) => (
+                    <div
+                      key={prod.id}
+                      onClick={() => openProductPage(prod)}
+                      className="bg-slate-50 border border-slate-200/60 rounded-xl p-3 hover:border-emerald-500 transition-all cursor-pointer space-y-2 flex flex-col justify-between"
+                    >
+                      <div className="space-y-1.5">
+                        <div className="aspect-square rounded-lg overflow-hidden bg-white border border-slate-150">
+                          <img src={prod.image} alt={prod.titleAr} className="w-full h-full object-cover animate-fade" />
+                        </div>
+                        <h4 className="text-[11px] font-black text-slate-950 line-clamp-1">
+                          {isRtl ? prod.titleAr : prod.titleEn}
+                        </h4>
+                      </div>
+                      <span className="text-[9px] text-emerald-600 font-extrabold block">
+                        {isRtl ? "عرض ومقارنة التفاصيل ←" : "View Details ←"}
+                      </span>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </article>
+        ) : activeGuide ? (
+          <article className="animate-fade space-y-8 bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-sm text-right rtl:text-right ltr:text-left">
+            {/* Top Back Action Bar */}
+            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-100">
+              <button
+                onClick={goBackToHome}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold text-xs cursor-pointer transition-all"
+              >
+                {isRtl ? <ArrowRight className="w-4 h-4" /> : <ArrowLeft className="w-4 h-4" />}
+                <span>{isRtl ? "العودة إلى المعرض الرئيسي" : "Back to Home"}</span>
+              </button>
+
+              <div className="flex items-center gap-2">
+                <span className="text-slate-400 text-xs font-bold">{isRtl ? "رابط المقال:" : "Article link:"}</span>
+                <input
+                  type="text"
+                  readOnly
+                  value={window.location.href}
+                  className="bg-slate-50 border border-slate-200 text-[10px] text-slate-500 font-mono py-1 px-2.5 rounded-lg w-40 sm:w-60 focus:outline-none"
+                  onClick={(e) => (e.target as HTMLInputElement).select()}
+                />
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(window.location.href);
+                    showToastNotification(isRtl ? "تم نسخ رابط المقال بنجاح!" : "Article link copied successfully!");
+                  }}
+                  className="text-xs font-black text-emerald-600 hover:text-emerald-800"
+                >
+                  {isRtl ? "نسخ" : "Copy"}
+                </button>
+              </div>
+            </div>
+
+            {/* Guide Header */}
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                {activeGuide.icon === "shoes" ? (
+                  <Footprints className="w-6 h-6" />
+                ) : (
+                  <Dumbbell className="w-6 h-6" />
+                )}
+              </div>
+              
+              <h1 className="text-xl sm:text-3xl font-black text-slate-950 leading-tight">
+                {isRtl ? activeGuide.titleAr : activeGuide.titleEn}
+              </h1>
+
+              <p className="text-xs text-slate-400 font-bold flex items-center gap-2">
+                <span>📅 المحدث لعام ٢٠٢٦</span>
+                <span>•</span>
+                <span>بمراجعة كبار المدربين والمختصين</span>
+              </p>
+            </div>
+
+            {/* Guide Body Content */}
+            <div className="border-t border-slate-100 pt-6">
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed whitespace-pre-line font-medium bg-slate-50 p-6 rounded-2xl border border-slate-200/60">
+                {isRtl ? activeGuide.contentAr : activeGuide.contentEn}
+              </p>
+            </div>
+
+            {/* Quick affiliate suggestion query block */}
+            <div className="bg-emerald-50/30 border border-emerald-500/10 p-6 rounded-2xl space-y-4">
+              <h3 className="font-extrabold text-xs sm:text-sm text-slate-900">
+                {isRtl ? "💡 عروض وتجهيزات مطابقة مباشرة من أمازون:" : "💡 Match Equipment Searches on Amazon:"}
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                {isRtl 
+                  ? "بناءً على التوصيات الواردة في الدليل الرياضي، يمكنك استعراض أفضل عروض الشراء المتوفرة على أمازون بنقرة واحدة سريعة لمطابقة روتين تمرينك المفضل."
+                  : "Based on the recommendations in this sports guide, you can search for and browse corresponding gear and accessories immediately."}
+              </p>
+              
+              <div className="flex flex-wrap gap-3 pt-2">
+                <a
+                  href={activeGuide.icon === "shoes" ? "https://www.amazon.com/s?k=Running+Shoes&tag=sportzoneaff-20" : "https://www.amazon.com/s?k=Resistance+Bands&tag=sportzoneaff-20"}
+                  target="_blank"
+                  rel="sponsored noopener noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white font-extrabold text-xs flex items-center gap-1.5 transition-all shadow-sm"
+                >
+                  <span>{isRtl ? "تصفح أفضل الترشيحات على أمازون" : "Browse Top Recommendations on Amazon"}</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+
+            {/* Recommended products from same category */}
+            <div className="pt-8 border-t border-slate-100 space-y-6">
+              <h3 className="font-black text-slate-900 text-sm sm:text-base flex items-center gap-2">
+                <Trophy className="w-4.5 h-4.5 text-emerald-600" />
+                {isRtl ? "منتجات ننصح بها ومطابقة لمحتوى المقال:" : "Recommended Gear Related to This Guide:"}
+              </h3>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {PRODUCTS_DATA.filter((p) => p.category === activeGuide.icon)
+                  .slice(0, 4)
+                  .map((prod) => (
+                    <div
+                      key={prod.id}
+                      onClick={() => openProductPage(prod)}
+                      className="bg-slate-50 border border-slate-200/60 rounded-xl p-3 hover:border-emerald-500 transition-all cursor-pointer space-y-2 flex flex-col justify-between"
+                    >
+                      <div className="space-y-1.5">
+                        <div className="aspect-square rounded-lg overflow-hidden bg-white border border-slate-150">
+                          <img src={prod.image} alt={prod.titleAr} className="w-full h-full object-cover" />
+                        </div>
+                        <h4 className="text-[11px] font-black text-slate-950 line-clamp-1">
+                          {isRtl ? prod.titleAr : prod.titleEn}
+                        </h4>
+                      </div>
+                      <span className="text-[9px] text-emerald-600 font-extrabold block">
+                        {isRtl ? "معاينة المنتج والتفاصيل ←" : "View Details ←"}
+                      </span>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </article>
+        ) : (
+          <>
+            {/* Dynamic Marketing Hero Intro */}
+            <section className="mb-10 text-center relative py-12 rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 to-slate-950 text-white shadow-xl shadow-slate-900/10 border border-slate-800">
+              <div className="absolute inset-0 opacity-15 pointer-events-none">
+                <img 
+                  src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=50" 
+                  alt="Stadium background" 
+                  className="w-full h-full object-cover filter grayscale"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950" />
+              </div>
+              <div className="relative max-w-3xl mx-auto px-4 space-y-4">
+                <span className="inline-block px-3 py-1 text-[10px] sm:text-xs font-black tracking-wider uppercase rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                  {isRtl ? "مراجعات وتوجيهات شرائية ذكية لعام ٢٠٢٦" : "Smart Purchase Reviews & Guides 2026"}
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight tracking-tight">
+                  {isRtl 
+                    ? "أفضل الملابس والمعدات الرياضية بضغطة زر واحدة" 
+                    : "Top-Tier Premium Athletic Footwear & Gear"}
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+                  {isRtl
+                    ? "دليل منسق بعناية يجمع لك أفضل المنتجات وأعلاها تقييماً على أمازون. وفر وقتك في البحث واطلع على تفاصيل المنتج والخصائص لتصل لأفضل قرار شراء فوري."
+                    : "A carefully curated catalogue highlighting Amazon's highest-rated sports apparel and gear. Skip the endless searching and make informed buying decisions instantly."}
+                </p>
+              </div>
+            </section>
+
+            {/* Categories Tab Selector */}
+            <section className="mb-8">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
+                  <Compass className="w-4 h-4 text-emerald-600" />
+                  {isRtl ? "تصفح الفئات الكبرى:" : "Browse Main Categories:"}
+                </h3>
+                {/* Sorting controls */}
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] text-slate-500 font-bold hidden sm:inline">{isRtl ? "ترتيب حسب:" : "Sort by:"}</span>
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value as any)}
+                    className="bg-white border border-slate-200 text-[10px] sm:text-xs rounded-lg py-1 px-2.5 font-bold focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                  >
+                    <option value="rating">{isRtl ? "الأعلى تقييماً" : "Highest Rated"}</option>
+                    <option value="reviews">{isRtl ? "الأكثر مراجعة" : "Most Reviews"}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {/* All Category Tab */}
+                <button
+                  onClick={() => { setSelectedCategory("all"); setSelectedTag("all"); }}
+                  className={`p-4 rounded-2xl border text-right transition-all flex items-center justify-between cursor-pointer ${
+                    selectedCategory === "all"
+                      ? "bg-slate-900 text-white border-slate-900 shadow-md shadow-slate-900/10"
+                      : "bg-white text-slate-800 border-slate-200 hover:border-emerald-500 hover:bg-slate-50/50"
+                  }`}
+                >
+                  <div>
+                    <p className={`text-[10px] font-bold ${selectedCategory === "all" ? "text-slate-400" : "text-slate-500"}`}>
+                      {isRtl ? "شاهد كل شيء" : "View Everything"}
+                    </p>
+                    <h4 className="text-xs sm:text-sm font-black mt-0.5">{isRtl ? "جميع المنتجات" : "All Products"}</h4>
+                  </div>
+                  <Grid className={`w-5 h-5 shrink-0 ${selectedCategory === "all" ? "text-emerald-400" : "text-slate-400"}`} />
+                </button>
+
+                {/* Shoes Category Tab */}
+                <button
+                  onClick={() => { setSelectedCategory("shoes"); setSelectedTag("all"); }}
+                  className={`p-4 rounded-2xl border text-right transition-all flex items-center justify-between cursor-pointer ${
+                    selectedCategory === "shoes"
+                      ? "bg-emerald-650 text-white border-emerald-600 shadow-md shadow-emerald-600/10"
+                      : "bg-white text-slate-800 border-slate-200 hover:border-emerald-500 hover:bg-slate-50/50"
+                  }`}
+                >
+                  <div>
+                    <p className={`text-[10px] font-bold ${selectedCategory === "shoes" ? "text-emerald-200" : "text-slate-500"}`}>
+                      {isRtl ? "أحذية جري وملاعب" : "Athletic Footwear"}
+                    </p>
+                    <h4 className="text-xs sm:text-sm font-black mt-0.5">{isRtl ? "أحذية رياضية" : "Sports Shoes"}</h4>
+                  </div>
+                  <Footprints className={`w-5 h-5 shrink-0 ${selectedCategory === "shoes" ? "text-white" : "text-slate-400"}`} />
+                </button>
+
+                {/* Apparel Category Tab */}
+                <button
+                  onClick={() => { setSelectedCategory("apparel"); setSelectedTag("all"); }}
+                  className={`p-4 rounded-2xl border text-right transition-all flex items-center justify-between cursor-pointer ${
+                    selectedCategory === "apparel"
+                      ? "bg-emerald-650 text-white border-emerald-600 shadow-md shadow-emerald-600/10"
+                      : "bg-white text-slate-800 border-slate-200 hover:border-emerald-500 hover:bg-slate-50/50"
+                  }`}
+                >
+                  <div>
+                    <p className={`text-[10px] font-bold ${selectedCategory === "apparel" ? "text-emerald-200" : "text-slate-500"}`}>
+                      {isRtl ? "مضادة للتعرق ومريحة" : "Active Apparel"}
+                    </p>
+                    <h4 className="text-xs sm:text-sm font-black mt-0.5">{isRtl ? "ملابس تمرين" : "Sports Apparel"}</h4>
+                  </div>
+                  <Shirt className={`w-5 h-5 shrink-0 ${selectedCategory === "apparel" ? "text-white" : "text-slate-400"}`} />
+                </button>
+
+                {/* Equipment Category Tab */}
+                <button
+                  onClick={() => { setSelectedCategory("equipment"); setSelectedTag("all"); }}
+                  className={`p-4 rounded-2xl border text-right transition-all flex items-center justify-between cursor-pointer ${
+                    selectedCategory === "equipment"
+                      ? "bg-emerald-650 text-white border-emerald-600 shadow-md shadow-emerald-600/10"
+                      : "bg-white text-slate-800 border-slate-200 hover:border-emerald-500 hover:bg-slate-50/50"
+                  }`}
+                >
+                  <div>
+                    <p className={`text-[10px] font-bold ${selectedCategory === "equipment" ? "text-emerald-200" : "text-slate-500"}`}>
+                      {isRtl ? "أدوات كارديو وجيم" : "Fitness Equipment"}
+                    </p>
+                    <h4 className="text-xs sm:text-sm font-black mt-0.5">{isRtl ? "معدات وأدوات" : "Sports Equipment"}</h4>
+                  </div>
+                  <Dumbbell className={`w-5 h-5 shrink-0 ${selectedCategory === "equipment" ? "text-white" : "text-slate-400"}`} />
+                </button>
+              </div>
+            </section>
+
+            {/* Tags Sub-Filter Pills */}
+            {availableTags.length > 0 && (
+              <section className="mb-8 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+                <span className="text-[10px] text-slate-500 font-extrabold shrink-0">
+                  {isRtl ? "فلاتر سريعة:" : "Quick Tags:"}
+                </span>
+                <button
+                  onClick={() => setSelectedTag("all")}
+                  className={`px-3 py-1 rounded-full text-[10px] font-bold cursor-pointer transition-all ${
+                    selectedTag === "all"
+                      ? "bg-emerald-600 text-white shadow-sm"
+                      : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-100"
+                  }`}
+                >
+                  {isRtl ? "الكل" : "All"}
+                </button>
+                {availableTags.map((tag) => (
+                  <button
+                    key={tag}
+                    onClick={() => setSelectedTag(tag)}
+                    className={`px-3 py-1 rounded-full text-[10px] font-bold cursor-pointer transition-all shrink-0 ${
+                      selectedTag === tag
+                        ? "bg-emerald-600 text-white shadow-sm"
+                        : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-100"
+                    }`}
+                  >
+                    #{tag}
+                  </button>
+                ))}
+              </section>
+            )}
+
+            {/* Interactive Products Grid */}
+            <section className="mb-14">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-base font-black text-slate-900 flex items-center gap-2">
+                  <Grid className="w-4 h-4 text-emerald-600" />
+                  <span>
+                    {isRtl ? "المنتجات الرياضية المقترحة:" : "Recommended Sports Gear:"}
+                  </span>
+                  <span className="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded-full font-bold">
+                    {filteredProducts.length}
+                  </span>
+                </h3>
+                {(searchQuery || selectedCategory !== "all" || selectedTag !== "all") && (
+                  <button
+                    onClick={() => {
+                      setSearchQuery("");
+                      setSelectedCategory("all");
+                      setSelectedTag("all");
+                    }}
+                    className="text-[11px] font-bold text-emerald-600 hover:text-emerald-800 flex items-center gap-1 cursor-pointer"
+                  >
+                    {isRtl ? "إعادة تعيين الفلاتر" : "Reset Filters"}
+                  </button>
+                )}
+              </div>
+
+              {filteredProducts.length === 0 ? (
+                <div className="text-center py-16 bg-white rounded-3xl border border-slate-200 max-w-xl mx-auto space-y-4 shadow-sm">
+                  <HelpCircle className="w-12 h-12 text-slate-300 mx-auto" />
+                  <div className="space-y-1">
+                    <h4 className="text-sm font-black text-slate-900">
+                      {isRtl ? "عذراً! لم نجد أي نتائج مطابقة" : "No matching items found"}
+                    </h4>
+                    <p className="text-xs text-slate-500 max-w-sm mx-auto px-4 leading-relaxed">
+                      {isRtl 
+                        ? "جرّب تغيير كلمات البحث أو اختر فئة أخرى وتصفح مجموعة المنتجات مجدداً." 
+                        : "Try adjusting your search queries or browse a different sport product category."}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setSearchQuery("");
+                      setSelectedCategory("all");
+                      setSelectedTag("all");
+                    }}
+                    className="px-4 py-2 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-slate-800 transition-colors cursor-pointer"
+                  >
+                    {isRtl ? "عرض جميع المنتجات" : "View All Products"}
+                  </button>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {filteredProducts.map((prod) => {
+                    const isFavorite = wishlist.includes(prod.id);
+                    const badgeText = isRtl ? prod.badgeAr : prod.badgeEn;
+                    const subTitleText = isRtl ? prod.subCategoryAr : prod.subCategoryEn;
+                    const titleText = isRtl ? prod.titleAr : prod.titleEn;
+                    const descriptionText = isRtl ? prod.descriptionAr : prod.descriptionEn;
+                    const tags = isRtl ? prod.tagsAr : prod.tagsEn;
+
+                    return (
+                      <div
+                        key={prod.id}
+                        onClick={() => openProductPage(prod)}
+                        className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer flex flex-col justify-between"
+                      >
+                        {/* Card Media Header */}
+                        <div className="relative aspect-square w-full bg-slate-100 overflow-hidden shrink-0">
+                          
+                          {/* Badge Overlays */}
+                          {badgeText && (
+                            <span className="absolute top-3 right-3 z-10 text-[9px] font-black px-2.5 py-1 rounded-full bg-emerald-600 text-white shadow-sm flex items-center gap-1">
+                              <Trophy className="w-3.5 h-3.5 text-white" />
+                              <span>{badgeText}</span>
+                            </span>
+                          )}
+
+                          {/* Wishlist Button Overlay */}
+                          <button
+                            onClick={(e) => toggleWishlist(prod.id, e)}
+                            className="absolute top-3 left-3 z-10 p-2 rounded-full bg-white/80 backdrop-blur-md hover:bg-white text-slate-400 hover:text-red-500 shadow-sm transition-colors cursor-pointer"
+                            title={isRtl ? "حفظ في المفضلة" : "Save to Wishlist"}
+                          >
+                            <Heart className={`w-4 h-4 transition-all ${isFavorite ? "fill-red-500 text-red-500 scale-110" : ""}`} />
+                          </button>
+
+                          {/* Fallback & Image */}
+                          <img
+                            src={prod.image}
+                            alt={titleText}
+                            referrerPolicy="no-referrer"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                            onError={(e) => {
+                              // fallback image if unsplash link fails
+                              (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80";
+                            }}
+                          />
+                          
+                          {/* Dark Overlay view trigger */}
+                          <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span className="bg-white/95 text-slate-900 font-extrabold text-[10px] px-3.5 py-2 rounded-xl shadow-lg flex items-center gap-1 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                              <Compass className="w-3.5 h-3.5 text-emerald-600" />
+                              {isRtl ? "معاينة التفاصيل" : "Quick View"}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Card Content body */}
+                        <div className="p-4 flex-grow flex flex-col justify-between space-y-3">
+                          <div className="space-y-2">
+                            {/* Subtitle */}
+                            <p className="text-[9px] font-extrabold text-emerald-600 uppercase tracking-wider">
+                              {subTitleText}
+                            </p>
+
+                            {/* Ratings */}
+                            <div className="flex items-center gap-1 text-[10px]">
+                              <div className="flex items-center text-amber-400">
+                                <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+                              </div>
+                              <span className="font-extrabold text-slate-800">{prod.rating}</span>
+                              <span className="text-slate-400 font-medium">({prod.reviewsCount})</span>
+                            </div>
+
+                            {/* Main Title */}
+                            <h4 className="text-xs sm:text-sm font-black text-slate-900 line-clamp-1 group-hover:text-emerald-700 transition-colors">
+                              {titleText}
+                            </h4>
+
+                            {/* Marketing Description */}
+                            <p className="text-[11px] text-slate-500 leading-relaxed line-clamp-2">
+                              {descriptionText}
+                            </p>
+                          </div>
+
+                          {/* Tags & Action Row */}
+                          <div className="space-y-3 pt-2 border-t border-slate-100">
+                            {/* Tags list */}
+                            <div className="flex flex-wrap gap-1">
+                              {tags.slice(0, 3).map((tag, idx) => (
+                                <span key={idx} className="text-[9px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-bold">
+                                  #{tag}
+                                </span>
+                              ))}
+                            </div>
+
+                            {/* NO STATIC PRICE ACCORDING TO RULE 4. ALWAYS SHOW AFFILIATE CTA */}
+                            <div className="pt-1">
+                              <a
+                                href={prod.amazonUrl}
+                                target="_blank"
+                                rel="sponsored noopener noreferrer"
+                                className="w-full py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white font-extrabold text-[10px] sm:text-xs text-center flex items-center justify-center gap-1.5 shadow-sm transition-all duration-200 group/btn"
+                              >
+                                <span>{isRtl ? "تحقق من السعر والتفاصيل على أمازون" : "Check Price & Details on Amazon"}</span>
+                                <ExternalLink className="w-3.5 h-3.5 transform group-hover/btn:translate-x-0.5 rtl:group-hover/btn:-translate-x-0.5 transition-transform" />
+                              </a>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </section>
+
+            {/* Informative Sports Guides and Recommendations */}
+            <section className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+              <div className="max-w-2xl">
+                <span className="inline-block px-3 py-1 text-[9px] font-black tracking-wider uppercase rounded-full bg-slate-100 text-slate-600 border border-slate-200 mb-2">
+                  {isRtl ? "مقالات ودراسات مفيدة" : "Useful Sports Knowledge"}
+                </span>
+                <h3 className="text-base sm:text-lg font-black text-slate-900 mb-2 flex items-center gap-1.5">
+                  <HelpCircle className="w-5 h-5 text-emerald-600" />
+                  {isRtl ? "دليلك الذكي للشراء والاختيار الصحيح:" : "Our Guides for Smart Purchasing Selection:"}
+                </h3>
+                <p className="text-xs text-slate-500 leading-relaxed mb-6">
+                  {isRtl
+                    ? "اقرأ إرشاداتنا المجانية والمعدة من قبل مدربين رياضيين لتتعلم كيف تختار المقاسات المثالية وتؤسس صالتك الرياضية المنزلية بأعلى جودة وكفاءة."
+                    : "Read our free, trainer-reviewed fitness advice to help you select perfect equipment and find accurate sports sizes without overpaying."}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {GUIDES_DATA.map((guide) => (
+                  <div
+                    key={guide.id}
+                    onClick={() => openGuidePage(guide)}
+                    className="p-5 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-slate-50 hover:border-emerald-500/30 transition-all cursor-pointer group flex flex-col justify-between"
+                  >
+                    <div className="space-y-2">
+                      <div className="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                        {guide.icon === "shoes" ? (
+                          <Footprints className="w-4.5 h-4.5" />
+                        ) : (
+                          <Dumbbell className="w-4.5 h-4.5" />
+                        )}
+                      </div>
+                      <h4 className="text-xs sm:text-sm font-black text-slate-900 group-hover:text-emerald-700 transition-colors">
+                        {isRtl ? guide.titleAr : guide.titleEn}
+                      </h4>
+                      <p className="text-[11px] text-slate-500 leading-relaxed">
+                        {isRtl ? guide.excerptAr : guide.excerptEn}
+                      </p>
+                    </div>
+                    
+                    <div className="pt-3 flex items-center justify-between text-[11px] font-black text-emerald-600">
+                      <span>{isRtl ? "اقرأ الدليل بالكامل" : "Read Full Guide"}</span>
+                      <div className="flex items-center gap-1">
+                        {isRtl ? <ArrowLeft className="w-3.5 h-3.5" /> : <ArrowRight className="w-3.5 h-3.5" />}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </>
+        )}
       </main>
 
       {/* COMPACT FLOATING FOOTER */}
@@ -716,216 +1134,7 @@ export default function App() {
         </div>
       </footer>
 
-      {/* PRODUCT DETAILED MODAL */}
-      {activeProduct && (
-        <div 
-          className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade"
-          onClick={() => setActiveProduct(null)}
-        >
-          <div 
-            className="bg-white rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl relative max-h-[90vh] flex flex-col justify-between"
-            dir={isRtl ? "rtl" : "ltr"}
-            onClick={(e) => e.stopPropagation()} // prevent modal close on clicking inner content
-          >
-            {/* Close Trigger */}
-            <button
-              onClick={() => setActiveProduct(null)}
-              className="absolute top-4 right-4 z-10 p-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 cursor-pointer transition-colors"
-              title={isRtl ? "إغلاق" : "Close"}
-            >
-              <X className="w-4 h-4" />
-            </button>
 
-            {/* Scrollable Container */}
-            <div className="overflow-y-auto p-6 space-y-6">
-              
-              {/* Image & Title Header row */}
-              <div className="flex flex-col sm:flex-row gap-6 items-start">
-                <div className="w-full sm:w-48 aspect-square bg-slate-100 rounded-2xl overflow-hidden shrink-0 border border-slate-200">
-                  <img
-                    src={activeProduct.image}
-                    alt={isRtl ? activeProduct.titleAr : activeProduct.titleEn}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                
-                <div className="space-y-2 flex-grow">
-                  <span className="inline-block text-[9px] bg-emerald-55 text-emerald-750 font-black px-2 py-0.5 rounded-md uppercase">
-                    {isRtl ? activeProduct.subCategoryAr : activeProduct.subCategoryEn}
-                  </span>
-                  
-                  <h3 className="text-sm sm:text-base font-black text-slate-950">
-                    {isRtl ? activeProduct.titleAr : activeProduct.titleEn}
-                  </h3>
-
-                  {/* Rating indicator */}
-                  <div className="flex items-center gap-1.5 text-xs">
-                    <div className="flex items-center text-amber-400">
-                      <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                    </div>
-                    <span className="font-black text-slate-900">{activeProduct.rating}</span>
-                    <span className="text-slate-400 font-semibold">({activeProduct.reviewsCount} {isRtl ? "مراجعة حقيقية" : "authentic reviews"})</span>
-                  </div>
-
-                  {/* Target Usage */}
-                  <div className="bg-emerald-50/50 p-3 rounded-xl border border-emerald-500/10 text-[11px] text-slate-700">
-                    <span className="font-extrabold text-emerald-750 block mb-0.5">🎯 {isRtl ? "الاستخدام الأمثل:" : "Recommended Use:"}</span>
-                    <span>{isRtl ? activeProduct.bestUseAr : activeProduct.bestUseEn}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Marketing Narrative Copy */}
-              <div className="space-y-2 pt-2">
-                <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm">
-                  {isRtl ? "الوصف الرياضي للمنتج:" : "Product Athletic Description:"}
-                </h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  {isRtl ? activeProduct.descriptionAr : activeProduct.descriptionEn}
-                </p>
-              </div>
-
-              {/* Technical Features Checklists */}
-              <div className="space-y-3 pt-2">
-                <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm">
-                  {isRtl ? "أبرز المواصفات والخصائص الفنية للمنتج:" : "Key Technical Features:"}
-                </h4>
-                <ul className="space-y-2 text-xs text-slate-700">
-                  {(isRtl ? activeProduct.featuresAr : activeProduct.featuresEn).map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Dynamic Price disclaimer according to Rule 4 */}
-              <div className="bg-amber-50 border border-amber-250 p-4 rounded-xl space-y-2">
-                <div className="flex items-center gap-2 text-amber-850 font-black text-xs">
-                  <Info className="w-4 h-4 text-amber-600 shrink-0" />
-                  <span>{isRtl ? "ملاحظة هامة بخصوص الأسعار" : "Important Pricing Notice"}</span>
-                </div>
-                <p className="text-[10px] sm:text-xs text-slate-600 leading-relaxed">
-                  {isRtl 
-                    ? "وفقاً لسياسة أمازون، نحن لا نعرض أسعاراً ثابتة على موقعنا نظراً لأن عروض الأسعار ونسب الخصم والضرائب والجمارك وتوفر المخزون تتغير بشكل فوري وبشكل مستمر. اضغط على الزر أدناه لمعاينة السعر الحالي وخيارات الشحن بدقة فائقة مباشرة على موقع أمازون."
-                    : "Per Amazon's compliance policy, we do not feature static prices on our app since prices, localized delivery fees, dynamic discounts, and stock status fluctuate in real-time. Please tap the button below to view the most current price directly on Amazon."}
-                </p>
-              </div>
-
-            </div>
-
-            {/* Bottom Sticky Action Footer bar */}
-            <div className="bg-slate-50 border-t border-slate-200 p-4 flex flex-col sm:flex-row gap-3 items-center justify-between">
-              
-              {/* Wishlist Button inside modal */}
-              <button
-                onClick={() => toggleWishlist(activeProduct.id)}
-                className={`w-full sm:w-auto px-4 py-2.5 rounded-xl border text-xs font-black flex items-center justify-center gap-2 cursor-pointer transition-all ${
-                  wishlist.includes(activeProduct.id)
-                    ? "bg-red-50 border-red-200 text-red-600 hover:bg-red-100/50"
-                    : "bg-white border-slate-200 text-slate-700 hover:bg-slate-100"
-                }`}
-              >
-                <Heart className={`w-4 h-4 ${wishlist.includes(activeProduct.id) ? "fill-red-500 text-red-500" : ""}`} />
-                <span>
-                  {wishlist.includes(activeProduct.id) 
-                    ? (isRtl ? "محفوظ في المفضلة" : "Saved in Favorites") 
-                    : (isRtl ? "إضافة لقائمة الحفظ" : "Add to Favorites")}
-                </span>
-              </button>
-
-              {/* Purchase Affiliate Button */}
-              <a
-                href={activeProduct.amazonUrl}
-                target="_blank"
-                rel="sponsored noopener noreferrer"
-                className="w-full sm:w-auto px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-xl flex items-center justify-center gap-1.5 shadow-md shadow-emerald-600/10 transition-all duration-200 group/modal-btn"
-              >
-                <span>{isRtl ? "تحقق من السعر والتفاصيل على أمازون" : "Check Price & Details on Amazon"}</span>
-                <ExternalLink className="w-4 h-4 transform group-modal-btn:translate-x-0.5 rtl:group-modal-btn:-translate-x-0.5 transition-transform" />
-              </a>
-
-            </div>
-
-          </div>
-        </div>
-      )}
-
-      {/* INFORMATIONAL SPORT GUIDE MODAL */}
-      {activeGuide && (
-        <div 
-          className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade"
-          onClick={() => setActiveGuide(null)}
-        >
-          <div 
-            className="bg-white rounded-3xl w-full max-w-xl overflow-hidden shadow-2xl relative max-h-[85vh] flex flex-col"
-            dir={isRtl ? "rtl" : "ltr"}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Trigger */}
-            <button
-              onClick={() => setActiveGuide(null)}
-              className="absolute top-4 right-4 z-10 p-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 cursor-pointer transition-colors"
-              title={isRtl ? "إغلاق" : "Close"}
-            >
-              <X className="w-4 h-4" />
-            </button>
-
-            {/* Content Container */}
-            <div className="overflow-y-auto p-6 space-y-4">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-                {activeGuide.icon === "shoes" ? (
-                  <Footprints className="w-5 h-5" />
-                ) : (
-                  <Dumbbell className="w-5 h-5" />
-                )}
-              </div>
-              
-              <h3 className="text-sm sm:text-base font-black text-slate-950">
-                {isRtl ? activeGuide.titleAr : activeGuide.titleEn}
-              </h3>
-
-              <p className="text-xs text-slate-700 leading-relaxed whitespace-pre-line font-medium border-t border-slate-100 pt-3">
-                {isRtl ? activeGuide.contentAr : activeGuide.contentEn}
-              </p>
-
-              {/* Informative Link to Amazon Related Category query */}
-              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 mt-4 space-y-2">
-                <span className="font-extrabold text-xs text-slate-800 block">
-                  {isRtl ? "💡 ترشيحات شرائية ذات صلة بالأدوات:" : "💡 Recommended Equipment searches:"}
-                </span>
-                <p className="text-[11px] text-slate-500 leading-relaxed mb-2">
-                  {isRtl 
-                    ? "جمعنا لك عروضاً وأدوات مساعدة مطابقة لمحتوى الدليل مباشرة على متجر أمازون للوصول الفوري لها." 
-                    : "We have linked relevant assistant tools and offers on Amazon according to the guide details for fast access."}
-                </p>
-                <a
-                  href={activeGuide.amazonQueryUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs text-emerald-600 hover:text-emerald-800 font-extrabold"
-                >
-                  <span>{isRtl ? "🛒 تصفح العروض والأدوات ذات الصلة على أمازون" : "🛒 Browse Related Products on Amazon"}</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-              </div>
-
-            </div>
-
-            {/* Footer buttons */}
-            <div className="bg-slate-50 border-t border-slate-200 p-4 flex justify-end">
-              <button
-                onClick={() => setActiveGuide(null)}
-                className="px-4 py-2 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-slate-800 transition-colors cursor-pointer"
-              >
-                {isRtl ? "فهمت الدليل" : "Close Guide"}
-              </button>
-            </div>
-
-          </div>
-        </div>
-      )}
 
       {/* WISHLIST SIDEBAR SAVES DRAWER */}
       {showWishlistDrawer && (
@@ -982,7 +1191,7 @@ export default function App() {
                   return (
                     <div 
                       key={prod.id}
-                      onClick={() => { setActiveProduct(prod); setShowWishlistDrawer(false); }}
+                      onClick={() => { openProductPage(prod); setShowWishlistDrawer(false); }}
                       className="flex items-center gap-3 p-3 rounded-xl border border-slate-100 hover:border-emerald-500/30 bg-slate-50/50 hover:bg-slate-50 transition-all cursor-pointer group"
                     >
                       <div className="w-14 h-14 bg-slate-200 rounded-lg overflow-hidden shrink-0 border border-slate-100">

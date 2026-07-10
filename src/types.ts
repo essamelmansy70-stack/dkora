@@ -1,37 +1,36 @@
-export interface Product {
-  id: string;
-  titleAr: string;
-  titleEn: string;
-  category: 'shoes' | 'apparel' | 'equipment';
-  subCategoryAr: string;
-  subCategoryEn: string;
-  image: string;
-  descriptionAr: string;
-  descriptionEn: string;
-  rating: number;
-  reviewsCount: number;
-  featuresAr: string[];
-  featuresEn: string[];
-  amazonUrl: string;
-  badgeAr?: string;
-  badgeEn?: string;
-  tagsAr: string[];
-  tagsEn: string[];
-  bestUseAr: string;
-  bestUseEn: string;
-  gallery?: string[];
+export interface Option {
+  textAr: string;
+  textEn: string;
+  player: "messi" | "ronaldo" | "mbappe" | "haaland" | "modric" | "salah";
 }
 
-export type CategoryFilter = 'all' | 'shoes' | 'apparel' | 'equipment';
+export interface Question {
+  id: number;
+  textAr: string;
+  textEn: string;
+  options: Option[];
+}
 
-export interface GuideItem {
-  id: string;
+export interface PlayerProfile {
+  id: "messi" | "ronaldo" | "mbappe" | "haaland" | "modric" | "salah";
+  nameAr: string;
+  nameEn: string;
   titleAr: string;
   titleEn: string;
-  excerptAr: string;
-  excerptEn: string;
-  contentAr: string;
-  contentEn: string;
+  personalityAr: string;
+  personalityEn: string;
+  strengthsAr: string[];
+  strengthsEn: string[];
+  mottoAr: string;
+  mottoEn: string;
+  avatarColor: string;
+  glowColor: string;
   icon: string;
-  amazonQueryUrl: string;
+  stats: {
+    speed: number;
+    dribbling: number;
+    shooting: number;
+    stamina: number;
+    teamwork: number;
+  };
 }

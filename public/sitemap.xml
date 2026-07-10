@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- 1. الرئيسية - الصفحة الرئيسية الافتراضية (Default Home) -->
+  <url>
+    <loc>https://dkora.online/</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dkora.online/" />
+  </url>
+
+  <!-- 2. الرئيسية باللغة العربية (Arabic Home) -->
+  <url>
+    <loc>https://dkora.online/?lang=ar</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en" />
+  </url>
+
+  <!-- 3. الرئيسية باللغة الإنجليزية (English Home) -->
+  <url>
+    <loc>https://dkora.online/?lang=en</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?lang=en" />
+  </url>
+
+  <!-- 4. أرشيف المدونة ودليل السيّو (Default Blog Index) -->
+  <url>
+    <loc>https://dkora.online/?view=blog</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=blog&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=blog&amp;lang=en" />
+  </url>
+
+  <!-- 5. أرشيف المدونة باللغة العربية (Arabic Blog Index) -->
+  <url>
+    <loc>https://dkora.online/?view=blog&amp;lang=ar</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=blog&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=blog&amp;lang=en" />
+  </url>
+
+  <!-- 6. أرشيف المدونة باللغة الإنجليزية (English Blog Index) -->
+  <url>
+    <loc>https://dkora.online/?view=blog&amp;lang=en</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=blog&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=blog&amp;lang=en" />
+  </url>
+
+  <!-- 7. خريطة الموقع التفاعلية (Default Sitemap View) -->
+  <url>
+    <loc>https://dkora.online/?view=sitemap</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=sitemap&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=sitemap&amp;lang=en" />
+  </url>
+
+  <!-- 8. خريطة الموقع التفاعلية باللغة العربية (Arabic Sitemap View) -->
+  <url>
+    <loc>https://dkora.online/?view=sitemap&amp;lang=ar</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=sitemap&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=sitemap&amp;lang=en" />
+  </url>
+
+  <!-- 9. خريطة الموقع التفاعلية باللغة الإنجليزية (English Sitemap View) -->
+  <url>
+    <loc>https://dkora.online/?view=sitemap&amp;lang=en</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=sitemap&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=sitemap&amp;lang=en" />
+  </url>
+
+  <!-- ==================== BLOG ARTICLES Section ==================== -->
+
+  <!-- Article 1: How to find matched world cup player (Default) -->
+  <url>
+    <loc>https://dkora.online/?article=how-to-find-world-cup-match-ai</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=en" />
+  </url>
+
+  <!-- Article 1: How to find matched world cup player (Arabic) -->
+  <url>
+    <loc>https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=ar</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=en" />
+  </url>
+
+  <!-- Article 1: How to find matched world cup player (English) -->
+  <url>
+    <loc>https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=en</loc>
+    <lastmod>2026-06-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=en" />
+  </url>
+
+  <!-- Article 2: Modern soccer tactics rating stars (Default) -->
+  <url>
+    <loc>https://dkora.online/?article=modern-soccer-tactics-rating-stars</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=en" />
+  </url>
+
+  <!-- Article 2: Modern soccer tactics rating stars (Arabic) -->
+  <url>
+    <loc>https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=ar</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=en" />
+  </url>
+
+  <!-- Article 2: Modern soccer tactics rating stars (English) -->
+  <url>
+    <loc>https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=en</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=en" />
+  </url>
+
+  <!-- Article 3: How to blend face football jersey (Default) -->
+  <url>
+    <loc>https://dkora.online/?article=how-to-blend-face-football-jersey</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=en" />
+  </url>
+
+  <!-- Article 3: How to blend face football jersey (Arabic) -->
+  <url>
+    <loc>https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=ar</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=en" />
+  </url>
+
+  <!-- Article 3: How to blend face football jersey (English) -->
+  <url>
+    <loc>https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=en</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=en" />
+  </url>
+
+  <!-- Article 4: AI predictions helper (Default) -->
+  <url>
+    <loc>https://dkora.online/?article=ai-predictions-2026-world-cup-champion</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ai-predictions-2026-world-cup-champion&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ai-predictions-2026-world-cup-champion&amp;lang=en" />
+  </url>
+
+  <!-- Article 4: AI predictions helper (Arabic) -->
+  <url>
+    <loc>https://dkora.online/?article=ai-predictions-2026-world-cup-champion&amp;lang=ar</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ai-predictions-2026-world-cup-champion&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ai-predictions-2026-world-cup-champion&amp;lang=en" />
+  </url>
+
+  <!-- Article 4: AI predictions helper (English) -->
+  <url>
+    <loc>https://dkora.online/?article=ai-predictions-2026-world-cup-champion&amp;lang=en</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ai-predictions-2026-world-cup-champion&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ai-predictions-2026-world-cup-champion&amp;lang=en" />
+  </url>
+
+  <!-- Article 5: Arab national teams prospects (Default) -->
+  <url>
+    <loc>https://dkora.online/?article=arab-teams-2026-world-cup-prospects</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=arab-teams-2026-world-cup-prospects&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=arab-teams-2026-world-cup-prospects&amp;lang=en" />
+  </url>
+
+  <!-- Article 5: Arab national teams prospects (Arabic) -->
+  <url>
+    <loc>https://dkora.online/?article=arab-teams-2026-world-cup-prospects&amp;lang=ar</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=arab-teams-2026-world-cup-prospects&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=arab-teams-2026-world-cup-prospects&amp;lang=en" />
+  </url>
+
+  <!-- Article 5: Arab national teams prospects (English) -->
+  <url>
+    <loc>https://dkora.online/?article=arab-teams-2026-world-cup-prospects&amp;lang=en</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=arab-teams-2026-world-cup-prospects&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=arab-teams-2026-world-cup-prospects&amp;lang=en" />
+  </url>
+
+  <!-- Article 6: Fastest wingers speed (Default) -->
+  <url>
+    <loc>https://dkora.online/?article=fastest-wingers-2026-world-cup</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=fastest-wingers-2026-world-cup&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=fastest-wingers-2026-world-cup&amp;lang=en" />
+  </url>
+
+  <!-- Article 6: Fastest wingers speed (Arabic) -->
+  <url>
+    <loc>https://dkora.online/?article=fastest-wingers-2026-world-cup&amp;lang=ar</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=fastest-wingers-2026-world-cup&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=fastest-wingers-2026-world-cup&amp;lang=en" />
+  </url>
+
+  <!-- Article 6: Fastest wingers speed (English) -->
+  <url>
+    <loc>https://dkora.online/?article=fastest-wingers-2026-world-cup&amp;lang=en</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=fastest-wingers-2026-world-cup&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=fastest-wingers-2026-world-cup&amp;lang=en" />
+  </url>
+
+  <!-- Article 7: World Cup Connected Stadium tech (Default) -->
+  <url>
+    <loc>https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums&amp;lang=en" />
+  </url>
+
+  <!-- Article 7: World Cup Connected Stadium tech (Arabic) -->
+  <url>
+    <loc>https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums&amp;lang=ar</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums&amp;lang=en" />
+  </url>
+
+  <!-- Article 7: World Cup Connected Stadium tech (English) -->
+  <url>
+    <loc>https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums&amp;lang=en</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums&amp;lang=en" />
+  </url>
+
+  <!-- Article 8: Messi & Ronaldo Swansong (Default) -->
+  <url>
+    <loc>https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup&amp;lang=en" />
+  </url>
+
+  <!-- Article 8: Messi & Ronaldo Swansong (Arabic) -->
+  <url>
+    <loc>https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup&amp;lang=ar</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup&amp;lang=en" />
+  </url>
+
+  <!-- Article 8: Messi & Ronaldo Swansong (English) -->
+  <url>
+    <loc>https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup&amp;lang=en</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup&amp;lang=en" />
+  </url>
+
+</urlset>

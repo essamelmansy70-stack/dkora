@@ -16,6 +16,7 @@ import aiVideoGeneration2026 from '../assets/images/ai_video_generation_2026_178
 import footballNutritionGuide from '../assets/images/football_nutrition_guide_1783473133659.jpg';
 import messiAgeGuide from '../assets/images/messi_age_guide_1783572873773.jpg';
 import footballWallpapersCover from '../assets/images/football_wallpapers_1783725566633.jpg';
+import mbappeReligionCover from '../assets/images/mbappe_religion_guide_1783742954094.jpg';
 
 interface Article {
   id: string;
@@ -58,6 +59,257 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-mbappe-religion-2026",
+    slug: "kylian-mbappe-religion-and-family-background",
+    categoryAr: "سير النجوم واللاعبين",
+    categoryEn: "Player Profiles",
+    titleAr: "حقائق عن كيليان مبابي ديانته وعائلته ونشأته | دليل شامل لعام 2026",
+    titleEn: "Kylian Mbappe Religion, Family & Early Life Facts | Ultimate 2026 Guide",
+    descAr: "كشف حقيقة كيليان مبابي ديانته وخلفيته العائلية المتنوعة. تعرف بالتفصيل على نشأة نجم ريال مدريد والمنتخب الفرنسي، وتأثير والده المسيحي ووالدته الجزائرية المسلمة فايزة العماري على مسيرته الكروية وحياته الشخصية.",
+    descEn: "Explore the facts about Kylian Mbappe's religion, diverse family background, and early life. Learn about the Real Madrid and French star's upbringing, and the influence of his Christian father and Algerian Muslim mother, Fayza Lamari, on his career.",
+    keywordsAr: [
+      "كيليان مبابي ديانته",
+      "ديانة كيليان مبابي",
+      "هل مبابي مسلم",
+      "عائلة كيليان مبابي",
+      "والدة مبابي فايزة العماري",
+      "أصول كيليان مبابي",
+      "سيرة كيليان مبابي ٢٠٢٦"
+    ],
+    keywordsEn: [
+      "kylian mbappe religion",
+      "is mbappe muslim or christian",
+      "mbappe family background",
+      "fayza lamari religion",
+      "kylian mbappe parents"
+    ],
+    image: mbappeReligionCover,
+    date: "2026-07-10",
+    readTime: "10 min read",
+    contentAr: {
+      toc: [
+        "1. مقدمة حول النجم الفرنسي كيليان مبابي",
+        "2. كيليان مبابي ديانته: هل هو مسلم أم مسيحي؟",
+        "3. خلفية عائلية فريدة: فايزة العماري وويلفريد مبابي",
+        "4. تصريحات مبابي الشخصية حول التسامح والتعايش الديني",
+        "5. كيف أثرت التنشئة المتنوعة على سلوك وأخلاقيات اللاعب؟"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة حول النجم الفرنسي كيليان مبابي",
+          body: "يعد كيليان مبابي أحد أبرز وجوه كرة القدم العالمية في القرن الحادي والعشرين، حيث يجمع بين الموهبة الفذة والشخصية القيادية الاستثنائية التي تلهم الملايين حول العالم."
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هي ديانة اللاعب كيليان مبابي الرسمية؟",
+          a: "صرح كيليان مبابي في لقاءات إعلامية سابقة بأنه مسيحي الديانة، لكنه يحمل احتراماً عظيماً جداً للدين الإسلامي نظراً لأن والدته ووكيلة أعماله فايزة العماري مسلمة جزائرية."
+        },
+        {
+          q: "هل والدة كيليان مبابي مسلمة؟",
+          a: "نعم، والدة كيليان مبابي هي فايزة العماري، وهي فرنسية من أصول جزائرية وتعتنق الدين الإسلامي، وتلعب دوراً محورياً كبيراً كوكيلة لأعماله ومديرة لشركاته."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction to French Star Kylian Mbappé",
+        "2. Kylian Mbappé's Religion: Christian or Muslim?",
+        "3. A Unique Family Background: Fayza Lamari & Wilfried Mbappé",
+        "4. Mbappé's Personal Statements on Faith, Respect & Tolerance",
+        "5. The Legacy of Multi-Faith Upbringing on His Athletic Integrity"
+      ],
+      sections: [
+        {
+          title: "1. Introduction to French Star Kylian Mbappé",
+          body: "Kylian Mbappé stands as one of the most prominent football figures of the 21st century, combining incredible tactical athletic prowess with a highly respected personality."
+        }
+      ],
+      faqs: [
+        {
+          q: "What is Kylian Mbappé's official religion?",
+          a: "Mbappé has confirmed in school and media interviews that he is a practicing Christian. However, he shares deeply rooted ties to Islam through his Algerian mother, Fayza Lamari."
+        },
+        {
+          q: "Is Kylian Mbappé's mother Muslim?",
+          a: "Yes, his mother, Fayza Lamari, is of Algerian Muslim descent. She is a core pillar of his professional management team and has shaped his respectful outlook on religious diversity."
+        }
+      ]
+    },
+    isHtml: true,
+    htmlBodyAr: `<div class="space-y-6 text-right font-sans" dir="rtl">
+  <p class="text-slate-300 text-sm leading-relaxed">
+    في عالم الساحرة المستديرة، لا تتوقف رغبة الجماهير عند تتبع إنجازات اللاعبين داخل الملعب فقط، بل تمتد لتشمل تفاصيل حياتهم الشخصية وخلفياتهم الثقافية والدينية. ومن بين الأسئلة الأكثر تداولاً وبحثاً عبر الإنترنت يتصدر موضوع <strong>كيليان مبابي ديانته</strong> محركات البحث العالمية. يتطلع محبو النجم الفرنسي، مهاجم نادي ريال مدريد الإسباني وقائد منتخب فرنسا، لمعرفة المزيد عن نشأته الفريدة في ضواحي باريس وكيف أسهم التنوع الثقافي والديني في تشكيل شخصيته الفذة والمتوازنة التي نراها اليوم في عام <strong>2026</strong>.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-red-500/10 to-indigo-500/10 border-r-4 border-red-500 rounded-l-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1 font-sans">📌 نظرة عامة سريعة على ملف اللاعب الشخصي</h4>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      كيليان مبابي ليس مجرد هداف بارع، بل يمثل رمزاً للاندماج الثقافي والاجتماعي في أوروبا. ولد في ضاحية "بوندي" الباريسية لأب كاميروني مسيحي وأم جزائرية مسلمة، مما جعل منزله نموذجاً حياً للتعايش الديني المبني على الاحترام والمحبة المتبادلة.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">كيليان مبابي ديانته: هل هو مسلم أم مسيحي؟</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    للإجابة عن التساؤل المتكرر حول <strong>كيليان مبابي ديانته</strong>، فقد حسم اللاعب نفسه هذا الجدل في مناسبات إعلامية وتوثيقية مختلفة. يؤكد مبابي أنه يعتنق <strong>الديانة المسيحية</strong>. وفي إحدى المقابلات المصورة الشهيرة التي أجريت معه بحضور مجموعة من الأطفال والشباب، سُئل مبابي بشكل مباشر عن عقيدته الدينية، فأجاب بوضوح وبابتسامته المعتادة: "أنا مسيحي". 
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    ورغم التزامه الشخصي بالمسيحية، إلا أن مبابي نشأ في بيئة عائلية استثنائية تتميز بتعدد الأديان، حيث ترعرع تحت إشراف مباشر من والدته فايزة العماري التي تعتنق الدين الإسلامي، مما جعله مطلعاً ومحترماً لطقوس وقيم الدين الحنيف منذ طفولته المبكرة.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">عائلة كيليان مبابي: التمازج الكاميروني الجزائري الرائع</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    لفهم عمق شخصية هذا اللاعب والتعرف بدقة على محددات هويته، لا بد من الغوص في تفاصيل أسرته التي لعبت الدور الأبرز في صناعة أسطورته الرياضية:
+  </p>
+  <ul class="space-y-3 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+    <li>
+      <strong class="text-white">الأب (ويلفريد مبابي):</strong> ينحدر من أصول كاميرونية، وهو يعتنق الديانة المسيحية. كان يعمل مدرباً لكرة القدم في نادي بوندي المحلي، وهو من غرس في كيليان أساسيات اللعبة والانضباط التكتيكي منذ أن كان طفلاً يداعب الكرة في الحواري الباريسية.
+    </li>
+    <li>
+      <strong class="text-white">الأم (فايزة العماري):</strong> فرنسية من أصول جزائرية تفتخر بهويتها العربية والمسلمة. كانت لاعبة كرة يد سابقة في الدوري الفرنسي الممتاز، وتدير حالياً كافة الجوانب التعاقدية والتجارية لنجلها بعقلية استثمارية فذة. ديانتها الإسلامية تركت أثراً كبيراً في توجيه كيليان نحو قيم التصدق، والتسامح، ومساعدة الفقراء.
+    </li>
+    <li>
+      <strong class="text-white">شقيقه بالتبني (جيريس كيمبو إكوكو):</strong> لاعب محترف سابق تتبناه عائلة مبابي، نشأ مع كيليان في نفس المنزل وتقاسم معه الشغف الكروي والحلم بالاحتراف العالمي.
+    </li>
+    <li>
+      <strong class="text-white">شقيقه الأصغر (إيثان مبابي):</strong> لاعب كرة قدم شاب واعد، ترعرع بدوره في نفس الأجواء العائلية المتسامحة والداعمة للتنوع.
+    </li>
+  </ul>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">جدول مقارنة تفصيلي يوضح التنوع الثقافي والديني في عائلة مبابي</h2>
+  <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+    <table class="w-full text-xs text-slate-300 text-right">
+      <thead class="bg-slate-900 text-white font-bold">
+        <tr>
+          <th class="p-3">أحد أفراد العائلة</th>
+          <th class="p-3">الصلة باللاعب</th>
+          <th class="p-3">الأصول الجغرافية</th>
+          <th class="p-3">الديانة المعتنقة</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-800">
+        <tr>
+          <td class="p-3 font-bold text-red-400">كيليان مبابي</td>
+          <td class="p-3">اللاعب نفسه</td>
+          <td class="p-3">فرنسي (مولود في باريس)</td>
+          <td class="p-3">المسيحية</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">ويلفريد مبابي</td>
+          <td class="p-3">الوالد</td>
+          <td class="p-3">جمهورية الكاميرون</td>
+          <td class="p-3">المسيحية</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">فايزة العماري</td>
+          <td class="p-3">الوالدة ووكيلة الأعمال</td>
+          <td class="p-3">الجزائر (عربية بربرية)</td>
+          <td class="p-3">الإسلام</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">إيثان مبابي</td>
+          <td class="p-3">الشقيق الأصغر</td>
+          <td class="p-3">فرنسي</td>
+          <td class="p-3">المسيحية</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">موقف مبابي من التعايش الديني والتصريحات المؤثرة</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    يرى العديد من خبراء علم الاجتماع الرياضي أن نشأة مبابي في كنف أم مسلمة وأب مسيحي ساهمت بشكل مباشر في بلورة عقليته الإنسانية الفريدة. لا يتردد كيليان مبابي في تهنئة زملائه ومتابعيه المسلمين في الأعياد والمناسبات الدينية الكبرى مثل شهر رمضان المبارك وعيد الفطر السعيد عبر حساباته الرسمية على منصات التواصل الاجتماعي (إنستغرام وإكس).
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    يعبّر اللاعب دائماً عن فخره الشديد بوالدته فايزة، ويشيد بنبل الأخلاق والتربية القويمة التي غرستها فيه. يقول المقربون منه إن المنزل العائلي لم يشهد يوماً خلافاً حول الجوانب العقائدية، بل كان دائماً مكاناً دافئاً للاحتفال بأعياد الميلاد المسيحية والمناسبات الإسلامية جنباً إلى جنب، وهو ما يفسر عدم تعصب مبابي واحترامه البالغ لكافة الثقافات الإنسانية.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">الجانب الخيري والإنساني في مسيرة كيليان مبابي لعام 2026</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    امتداداً لهذه التربية الإنسانية المتميزة، أسس كيليان جمعيته الخيرية المرموقة <strong>"Inspired by KM"</strong> والتي تهدف لتقديم الدعم التعليمي والمالي والرياضي لآلاف الأطفال والشباب المحتاجين من مختلف الخلفيات والأديان في فرنسا وإفريقيا. يتبرع مبابي بانتظام بمبالغ طائلة وجزء كبير من مكافآته الدولية مع منتخب "الديوك" لدعم المشاريع التنموية، مؤكداً أن العطاء الحقيقي وتخفيف آلام البشر هو الجوهر الفعلي لكافة الأديان والتعاليم السماوية.
+  </p>
+
+  <div class="bg-red-500/5 p-4 rounded-2xl border border-red-500/20 space-y-2 mt-8">
+    <h3 class="text-sm font-black text-white font-sans">🔮 الخلاصة والتأصيل السيو ٢٠٢٦ لملف كيليان مبابي ديانته</h3>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      في الختام، عند البحث في مسألة <strong>كيليان مبابي ديانته</strong>، نجد أن الإجابة واضحة تكمن في اعتناقه للمسيحية مع تمتعه بأرقى مستويات الانفتاح والتعايش بفضل والدته المسلمة وأبيه المسيحي. يثبت مبابي للعالم أن الرياضة وسيلة لتوحيد الشعوب وبناء جسور المحبة بين الثقافات، متجاوزة أي اختلافات دينية أو عرقية، ليظل قدوة إيجابية ساطعة للأجيال الحالية والقادمة في كل بقعة من بقاع الأرض.
+    </p>
+  </div>
+</div>`,
+    htmlBodyEn: `<div class="space-y-6 text-left font-sans" dir="ltr">
+  <p class="text-slate-300 text-sm leading-relaxed first-letter:text-3xl first-letter:font-bold first-letter:text-red-500">
+    In the expansive universe of football, global fans do not just cheer for magical dribbles and thunderous goals; they are deeply invested in the cultural, social, and spiritual identities of their beloved soccer icons. Among the most popular search terms worldwide in <strong>2026</strong> stands <strong>kylian mbappe religion</strong> (Arabic: <strong>كيليان مبابي ديانته</strong>). Fans of the Real Madrid superstar and French National Team captain seek to understand how his multi-faith upbringing in the suburbs of Paris molded his exceptional mindset on and off the soccer field.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-red-500/10 to-indigo-500/10 border-l-4 border-red-500 rounded-r-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1">📌 Quick Player Demographic Profile</h4>
+    <p class="text-xs text-slate-300 leading-relaxed">
+      Born in the multicultural suburb of Bondy, France, Kylian Mbappé was raised by a Christian Cameroonian father and an Algerian Muslim mother. This distinct family blend turned his early household into a dynamic sanctuary of interfaith harmony, respect, and deep mutual understanding.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">Kylian Mbappé's Religion: Christian or Muslim?</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    To address the recurrent question of <strong>kylian mbappe religion</strong>, Mbappé himself clarified the topic in historical television appearances and documentary sessions. When directly asked about his spiritual faith by a group of young students in a classroom interview, Mbappé answered with his characteristic honest smile: "I am a Christian."
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    Despite being a practicing Christian, he grew up closely witnessing Islamic values and traditions. His mother, Fayza Lamari, is an Algerian Muslim who embedded a deep appreciation for Islamic heritage, respect, and charitable ethics into her son's daily habits from his earliest days.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">A Beautiful Blend: Fayza Lamari & Wilfried Mbappé</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    A deeper inspection of Mbappé's parentage explains the remarkable sportsmanship and humility of the Real Madrid striker:
+  </p>
+  <ul class="space-y-3 pl-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+    <li>
+      <strong class="text-white">Wilfried Mbappé (Father):</strong> Originally from Cameroon, Wilfried is a devout Christian. As an experienced coach at AS Bondy, he laid down the footballing and athletic foundations that allowed Kylian to thrive professionally.
+    </li>
+    <li>
+      <strong class="text-white">Fayza Lamari (Mother):</strong> Of Algerian Arab-Berber origin, Fayza is a practicing Muslim. A former elite handball player, she serves as Kylian's main business advisor, guiding his career with incredible commercial intelligence while emphasizing the importance of charity and compassion.
+    </li>
+  </ul>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">Demographic Breakdown of the Mbappé Household</h2>
+  <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+    <table class="w-full text-xs text-slate-300 text-left">
+      <thead class="bg-slate-900 text-white font-bold">
+        <tr>
+          <th class="p-3">Family Member</th>
+          <th class="p-3">Relationship</th>
+          <th class="p-3">Ancestry</th>
+          <th class="p-3">Affiliation / Religion</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-800">
+        <tr>
+          <td class="p-3 font-bold text-red-400">Kylian Mbappé</td>
+          <td class="p-3">Self</td>
+          <td class="p-3">French (born in Paris)</td>
+          <td class="p-3">Christianity</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">Wilfried Mbappé</td>
+          <td class="p-3">Father</td>
+          <td class="p-3">Cameroonian</td>
+          <td class="p-3">Christianity</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">Fayza Lamari</td>
+          <td class="p-3">Mother</td>
+          <td class="p-3">Algerian</td>
+          <td class="p-3">Islam</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">Philanthropic Endeavors & Universal Harmony</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    Mbappé has constantly channeled this respectful upbringing into his charitable organization, <strong>"Inspired by KM"</strong>, which funds education, physical health, and sports programs for underprivileged youth across France and Africa. Rather than emphasizing division, Mbappé shows that the core of all religions lies in loving, sharing, and uplifting humanity.
+  </p>
+</div>`
+  },
   {
     id: "art-football-wallpapers-2026",
     slug: "best-football-wallpapers-4k-download-2026",
@@ -3105,6 +3357,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
   const [copiedLink, setCopiedLink] = useState(false);
   const [veoClickCount, setVeoClickCount] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const isRtl = locale === 'ar';
 
@@ -3125,7 +3378,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
   }, [selectedArticle]);
 
   useEffect(() => {
-    // Read the initial article from URL query parameters on load
+    // Read the initial article and page from URL query parameters on load
     const params = new URLSearchParams(window.location.search);
     const articleSlug = params.get("article");
     if (articleSlug) {
@@ -3134,7 +3387,22 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
         setSelectedArticle(matched);
       }
     }
+    const pageParam = params.get("page");
+    if (pageParam) {
+      const pageNum = parseInt(pageParam, 10);
+      if (!isNaN(pageNum) && pageNum > 0) {
+        setCurrentPage(pageNum);
+      }
+    }
   }, []);
+
+  useEffect(() => {
+    // Reset page to 1 when category or search query changes
+    setCurrentPage(1);
+    const url = new URL(window.location.href);
+    url.searchParams.delete("page");
+    window.history.pushState({}, "", url.toString());
+  }, [activeCategory, searchQuery]);
 
   useEffect(() => {
     // Scroll page to top when selecting an article
@@ -3224,6 +3492,24 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
 
   const featuredArticle = searchQuery === '' && activeCategory === 'all' && filteredArticles.length > 0 ? filteredArticles[0] : null;
   const gridArticles = featuredArticle ? filteredArticles.filter(art => art.id !== featuredArticle.id) : filteredArticles;
+
+  const ARTICLES_PER_PAGE = 6;
+  const totalArticlesCount = gridArticles.length;
+  const totalPages = Math.ceil(totalArticlesCount / ARTICLES_PER_PAGE);
+  const activePage = Math.min(currentPage, Math.max(1, totalPages));
+  
+  const startIndex = (activePage - 1) * ARTICLES_PER_PAGE;
+  const paginatedGridArticles = gridArticles.slice(startIndex, startIndex + ARTICLES_PER_PAGE);
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    const url = new URL(window.location.href);
+    url.searchParams.set("page", pageNumber.toString());
+    window.history.pushState({}, "", url.toString());
+    
+    // Smooth scroll to the top of the articles layout section
+    window.scrollTo({ top: 350, behavior: 'smooth' });
+  };
 
   const handleSelectArticle = (art: Article) => {
     setSelectedArticle(art);
@@ -3747,53 +4033,105 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
 
           {/* MAIN GRID OF CARDS - Redesigned as dynamic cards */}
           {gridArticles.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 animate-fade-in font-sans">
-              {gridArticles.map((art) => (
-                <div 
-                  key={art.id}
-                  onClick={() => handleSelectArticle(art)}
-                  className="bg-slate-900/40 backdrop-blur-md border border-slate-800/85 hover:border-[#ff1a40]/60 rounded-3xl overflow-hidden hover:shadow-[0_10px_35px_rgba(255,26,64,0.05)] transition-all duration-300 cursor-pointer flex flex-col group h-full relative"
-                >
-                  {/* Card Cover image */}
-                  <div className="relative aspect-video overflow-hidden bg-slate-950 border-b border-slate-850/80">
-                    <img 
-                      src={art.image} 
-                      alt={isRtl ? art.titleAr : art.titleEn} 
-                      className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute top-3 left-3 px-2 py-1 bg-slate-950/80 border border-slate-800 text-white text-[9px] font-black rounded-md font-mono backdrop-blur-xs">
-                      {art.readTime}
+            <div className="space-y-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 animate-fade-in font-sans">
+                {paginatedGridArticles.map((art) => (
+                  <div 
+                    key={art.id}
+                    onClick={() => handleSelectArticle(art)}
+                    className="bg-slate-900/40 backdrop-blur-md border border-slate-800/85 hover:border-[#ff1a40]/60 rounded-3xl overflow-hidden hover:shadow-[0_10px_35px_rgba(255,26,64,0.05)] transition-all duration-300 cursor-pointer flex flex-col group h-full relative"
+                  >
+                    {/* Card Cover image */}
+                    <div className="relative aspect-video overflow-hidden bg-slate-950 border-b border-slate-850/80">
+                      <img 
+                        src={art.image} 
+                        alt={isRtl ? art.titleAr : art.titleEn} 
+                        className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500"
+                        referrerPolicy="no-referrer"
+                      />
+                      <div className="absolute top-3 left-3 px-2 py-1 bg-slate-950/80 border border-slate-800 text-white text-[9px] font-black rounded-md font-mono backdrop-blur-xs">
+                        {art.readTime}
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Card text content */}
-                  <div className="p-5 flex-grow flex flex-col justify-between space-y-4 text-justify font-sans">
-                    <div className="space-y-2 text-right rtl:text-right ltr:text-left">
-                      <div className="flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#ff1a40]"></span>
-                        <span className="text-[10px] font-extrabold text-[#ff1a40] uppercase tracking-wider block font-sans">
-                          {isRtl ? art.categoryAr : art.categoryEn}
+                    {/* Card text content */}
+                    <div className="p-5 flex-grow flex flex-col justify-between space-y-4 text-justify font-sans">
+                      <div className="space-y-2 text-right rtl:text-right ltr:text-left">
+                        <div className="flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#ff1a40]"></span>
+                          <span className="text-[10px] font-extrabold text-[#ff1a40] uppercase tracking-wider block font-sans">
+                            {isRtl ? art.categoryAr : art.categoryEn}
+                          </span>
+                        </div>
+                        <h3 className="text-sm font-black text-white leading-snug group-hover:text-[#ff1a40] transition-colors duration-250 line-clamp-2">
+                          {isRtl ? art.titleAr : art.titleEn}
+                        </h3>
+                        <p className="text-xs text-slate-400 line-clamp-3 leading-relaxed font-semibold font-sans">
+                          {isRtl ? art.descAr : art.descEn}
+                        </p>
+                      </div>
+
+                      <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400 font-extrabold font-mono">
+                        <span>{art.date}</span>
+                        <span className="text-[#ff1a40] group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform inline-flex items-center gap-1.5 shrink-0 font-black font-sans bg-[#ff1a40]/5 px-2.5 py-1 rounded-lg border border-[#ff1a40]/10">
+                          <span>{isRtl ? "قراءة" : "Read"}</span>
+                          {isRtl ? "←" : "→"}
                         </span>
                       </div>
-                      <h3 className="text-sm font-black text-white leading-snug group-hover:text-[#ff1a40] transition-colors duration-250 line-clamp-2">
-                        {isRtl ? art.titleAr : art.titleEn}
-                      </h3>
-                      <p className="text-xs text-slate-400 line-clamp-3 leading-relaxed font-semibold font-sans">
-                        {isRtl ? art.descAr : art.descEn}
-                      </p>
-                    </div>
-
-                    <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400 font-extrabold font-mono">
-                      <span>{art.date}</span>
-                      <span className="text-[#ff1a40] group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform inline-flex items-center gap-1.5 shrink-0 font-black font-sans bg-[#ff1a40]/5 px-2.5 py-1 rounded-lg border border-[#ff1a40]/10">
-                        <span>{isRtl ? "قراءة" : "Read"}</span>
-                        {isRtl ? "←" : "→"}
-                      </span>
                     </div>
                   </div>
+                ))}
+              </div>
+
+              {/* Dynamic Pagination Controls */}
+              {totalPages > 1 && (
+                <div className="flex items-center justify-center gap-2 pt-6 border-t border-slate-800/45">
+                  {/* Previous Page Button */}
+                  <button
+                    onClick={() => handlePageChange(Math.max(1, activePage - 1))}
+                    disabled={activePage === 1}
+                    className={`flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-black transition-all border ${
+                      activePage === 1
+                        ? "bg-transparent text-slate-600 border-slate-900 cursor-not-allowed opacity-40"
+                        : "bg-slate-950/85 text-slate-300 hover:text-white border-slate-850 hover:border-[#ff1a40]/45 cursor-pointer active:scale-95"
+                    }`}
+                  >
+                    {isRtl ? <ArrowRight className="w-4 h-4" /> : <ArrowLeft className="w-4 h-4" />}
+                    <span>{isRtl ? "السابق" : "Previous"}</span>
+                  </button>
+
+                  {/* Page Numbers */}
+                  <div className="flex items-center gap-1.5">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                      <button
+                        key={pageNum}
+                        onClick={() => handlePageChange(pageNum)}
+                        className={`w-9 h-9 rounded-xl text-xs font-black transition-all border flex items-center justify-center cursor-pointer ${
+                          activePage === pageNum
+                            ? "bg-gradient-to-r from-[#ff1a40] to-rose-600 text-white border-transparent shadow-lg shadow-rose-500/20 scale-105"
+                            : "bg-slate-950/60 text-slate-400 hover:text-white border-slate-850 hover:border-[#ff1a40]/30 active:scale-95"
+                        }`}
+                      >
+                        {pageNum}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Next Page Button */}
+                  <button
+                    onClick={() => handlePageChange(Math.min(totalPages, activePage + 1))}
+                    disabled={activePage === totalPages}
+                    className={`flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-black transition-all border ${
+                      activePage === totalPages
+                        ? "bg-transparent text-slate-600 border-slate-900 cursor-not-allowed opacity-40"
+                        : "bg-slate-950/85 text-slate-300 hover:text-white border-slate-850 hover:border-[#ff1a40]/45 cursor-pointer active:scale-95"
+                    }`}
+                  >
+                    <span>{isRtl ? "التالي" : "Next"}</span>
+                    {isRtl ? <ArrowLeft className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
+                  </button>
                 </div>
-              ))}
+              )}
             </div>
           ) : (
             <div className="p-12 text-center text-slate-400 bg-slate-900/20 border border-dashed border-slate-800 rounded-3xl space-y-2 font-sans">

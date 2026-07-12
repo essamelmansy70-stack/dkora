@@ -65,16 +65,6 @@ export default function Header({
             <span>{t.header.langButton}</span>
             <span className="text-[8px] sm:text-[9px] opacity-75 mr-0.5">文A</span>
           </button>
-
-          {/* Theme button switcher */}
-          <button
-            onClick={handleToggleTheme}
-            className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition-all cursor-pointer focus:outline-none min-w-[44px] min-h-[44px] flex items-center justify-center"
-            title={t.header.themeTitle}
-            aria-label={t.header.themeTitle}
-          >
-            {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
-          </button>
         </div>
 
       </div>

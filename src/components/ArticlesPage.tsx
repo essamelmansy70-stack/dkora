@@ -17,6 +17,7 @@ import footballNutritionGuide from '../assets/images/football_nutrition_guide_17
 import messiAgeGuide from '../assets/images/messi_age_guide_1783572873773.jpg';
 import footballWallpapersCover from '../assets/images/football_wallpapers_1783725566633.jpg';
 import mbappeReligionCover from '../assets/images/mbappe_religion_guide_1783742954094.jpg';
+import messiYamalComparisonCover from '../assets/images/messi_yamal_comparison_1783815283040.jpg';
 
 interface Article {
   id: string;
@@ -59,6 +60,241 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-messi-yamal-comparison-2026",
+    slug: "messi-vs-lamine-yamal-comparison-2026",
+    categoryAr: "سير النجوم واللاعبين",
+    categoryEn: "Player Profiles",
+    titleAr: "مقارنة بين ميسى ولامين يامال: هل يعيد التاريخ نفسه في عام 2026؟",
+    titleEn: "Lionel Messi vs Lamine Yamal Comparison: History Repeating in 2026?",
+    descAr: "مقارنة بين ميسى ولامين يامال تفصيلية وشاملة لعام 2026. تعرف على أرقام الساحر الأرجنتيني والموهبة الإسبانية الصاعدة، والتشابه الفني والجسدي بينهما، والقصة وراء الصورة التاريخية الشهيرة.",
+    descEn: "A complete, in-depth comparison between Lionel Messi and Lamine Yamal in 2026. Discover career statistics, playstyle similarities, tactical roles, and the story behind the iconic baby bath photo.",
+    keywordsAr: [
+      "مقارنة بين ميسى ولامين يامال",
+      "لامين يامال وميسي",
+      "احصائيات ميسي ولامين يامال",
+      "صورة ميسي ولامين يامال وهو صغير",
+      "مقارنة ميسي ويامال 2026",
+      "هل يامال خليفة ميسي",
+      "مقارنة ارقام ميسي ويامال"
+    ],
+    keywordsEn: [
+      "messi vs lamine yamal comparison",
+      "lamine yamal vs lionel messi stats",
+      "messi and lamine yamal baby photo",
+      "is lamine yamal the next messi",
+      "yamal vs messi skills"
+    ],
+    image: messiYamalComparisonCover,
+    date: "2026-07-11",
+    readTime: "12 min read",
+    contentAr: {
+      toc: [
+        "1. مقدمة: فجر جديد في برشلونة ومقارنة حتمية",
+        "2. البداية والنشأة: من روزاريو إلى ماتارو.. رحلة عبر لاماسيا",
+        "3. الأسلوب الفني والمهاري: القدم اليسرى الساحرة والرؤية الثاقبة",
+        "4. لغز الصورة التاريخية: حكاية ميسي الذي عمّد يامال طفلاً",
+        "5. مقارنة الأرقام والإنجازات في سن السابعة عشرة",
+        "6. مستقبل لامين يامال في عام 2026 والضغوطات النفسية"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: فجر جديد في برشلونة ومقارنة حتمية",
+          body: "منذ اللحظة الأولى التي لمس فيها الشاب الواعد لامين يامال الكرة مع الفريق الأول لنادي برشلونة الإسباني، انطلقت المقارنات تلقائياً وبقوة مع الأسطورة الحية ليو ميسي."
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هي حقيقة الصورة الشهيرة التي تجمع ميسي بلامين يامال وهو رضيع؟",
+          a: "الصورة حقيقية تماماً وتعود لعام 2007، حيث تم التقاطها ضمن حملة خيرية نظمتها صحيفة سبورت الإسبانية بالتعاون مع منظمة اليونيسف، وكان ميسي وقتها في بداية عشرينياته ولم يكن يعلم أنه يقوم بتحميم الشخص الذي سيصبح الموهبة التاريخية التالية لبرشلونة."
+        },
+        {
+          q: "من الأفضل بالأرقام في سن 17: ميسي أم يامال؟",
+          a: "يتفوق لامين يامال بشكل واضح في عدد المشاركات والمساهمات التهديفية في سن 17 مقارنة بميسي، حيث قاد يامال منتخب بلاده للتتويج بأمم أوروبا 2024 كعنصر أساسي ومؤثر، بينما كان ميسي في هذا السن يدخل تدريجياً كبديل في تشكيلة برشلونة المليئة بالنجوم الكبار مثل رونالدينيو وإيتو."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: A New Dawn and an Inevitable Comparison",
+        "2. Origins & Upbringing: From Rosario to Mataró through La Masia",
+        "3. Tactical & Playstyle Breakdown: The Left Foot and Spatial Vision",
+        "4. The Myth of the Bath Photo: Messi Baptizing the Baby Yamal",
+        "5. Direct Stat Comparison at Age 17-18",
+        "6. Yamal's Path in 2026 and Handling the Legacy Pressure"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: A New Dawn and an Inevitable Comparison",
+          body: "From Lamine Yamal's very first touch with Barcelona's senior team, direct comparisons with the football god Lionel Messi became completely unavoidable."
+        }
+      ],
+      faqs: [
+        {
+          q: "Is the baby bath photo of Lionel Messi and Lamine Yamal real?",
+          a: "Yes, it is entirely real. Captured in December 2007 for a charity calendar arranged by Diario Sport and UNICEF, a 20-year-old Messi bathed a baby Yamal without knowing he was holding the future of Barcelona."
+        },
+        {
+          q: "Who had better statistics at age 17, Messi or Yamal?",
+          a: "Lamine Yamal vastly outperforms Messi in pure match minutes, starts, and international impact at age 17. Yamal won Euro 2024 as a main starter for Spain, while Messi at 17 was just breaking into Frank Rijkaard's star-studded Barcelona squad."
+        }
+      ]
+    },
+    isHtml: true,
+    htmlBodyAr: `<div class="space-y-6 text-right font-sans" dir="rtl">
+  <p class="text-slate-300 text-sm leading-relaxed">
+    في تاريخ كرة القدم الحديث، نادراً ما نشهد بزوغ نجم يجمع حوله عشاق ومحللي اللعبة على مستوى العالم مثلما فعل الفتى الذهبي لبرشلونة والمنتخب الإسباني. ولعل إجراء <strong>مقارنة بين ميسى ولامين يامال</strong> بات أمراً لا مفر منه، ليس فقط بسبب المهارة الاستثنائية التي يتمتع بها يامال، بل أيضاً بسبب الخلفية المشتركة التي تربط النجمين في جدران مدرسة "لا ماسيا" الكتالونية العريقة. وفي عام <strong>2026</strong>، يتأهب العالم لمشاهدة نضوج الموهبتين في فترتين زمنيتين مختلفتين تماماً؛ ميسي في ختام مسيرته الإعجازية، ويامال في مستهل طموحه لاعتلاء عرش الكرة الذهبية.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-red-500/10 to-indigo-500/10 border-r-4 border-red-500 rounded-l-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1 font-sans">⚡️ خلاصة المقارنة الفنية (السحر المشترك)</h4>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      كلاهما يلعب بالقدم اليسرى السحرية، ويمتلكان قدرة خارقة على الاختراق من الجناح الأيمن نحو العمق للتسديد أو التمرير الحاسم. يكمن الفارق في الهيكل الجسدي والسرعة الانفجارية التي تميز طول يامال الفارع مقارنة بمرونة ميسي وقدرته الفريدة على تغيير الاتجاه بسرعة خاطفة ومركز ثقل منخفض.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">البداية والنشأة: من روزاريو إلى ماتارو.. رحلة عبر لاماسيا</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    عقد <strong>مقارنة بين ميسى ولامين يامال</strong> يتطلب منا العودة للجذور. ليونيل ميسي غادر مسقط رأسه روزاريو بالأرجنتين في سن الثالثة عشرة متوجهاً لبرشلونة بحثاً عن علاج لنقص هرمون النمو وفرصة لإظهار عبقريته. حورب ميسي بالمرور بظروف قاسية وغربة حقيقية صقلت روحه التنافسية الفتاكة.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    على الجانب الآخر، ولد لامين يامال في إسبانيا لأب مغربي وأم من غينيا الاستوائية، ونشأ في حي "روكافوندا" الشعبي البسيط في بلدة ماتارو الكتالونية. انضم لياماسيا في سن السادسة، مما يعني أنه تشرب جينات التيكي تاكا وفلسفة النادي الهجومية منذ طفولته المبكرة جداً، ولم يعانِ من مشكلات الغربة أو التأقلم التي كابدها ميسي، مما مهد له طريقاً أسرع لكسر الأرقام القياسية التاريخية في سن أصغر.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">الأسلوب الفني والمهاري: تشابه الطراز واختلاف التفاصيل البصرية</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    عندما تشاهد يامال يداعب الكرة على الجناح الأيمن، يتراءى لك طيف ميسي الشاب في بدايات القرن الحالي. ومع ذلك، هناك اختلافات جوهرية تحدد أسلوب كل منهما:
+  </p>
+  <ul class="space-y-3 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+    <li>
+      <strong class="text-white">المراوغة وتغيير الاتجاه:</strong> كان ميسي يعتمد على المراوغة اللصيقة بالكرة وبخطوات بالغة السرعة وخداع المدافعين بجسده الرشيق. يامال يدمج بين المراوغة السريعة والسرعة الطولية بفضل طول قامته (حوالي 1.80م)، مما يعطيه ميزة استخدام الخطوات الواسعة والتمرير المقوس العالي من أطراف الملعب بدقة متناهية.
+    </li>
+    <li>
+      <strong class="text-white">صناعة اللعب والتمرير البيني:</strong> ميسي تطور ليصبح صانع الألعاب الأعظم في التاريخ بتمريرات ساقطة (Chip passes) وتمريرات بينية تكسر خطوط الدفاع. يامال، رغم صغر سنه، أظهر نضوجاً تكتيكياً مرعباً في اختيار التوقيت المناسب للتمرير، وهو ما تجلى بوضوح في صناعته للأهداف الحاسمة مع الماتادور الإسباني.
+    </li>
+    <li>
+      <strong class="text-white">إنهاء الهجمات (التسجيل):</strong> ميسي هداف بالفطرة استطاع تسجيل 91 هدفاً في عام ميلادي واحد. يامال لا يزال في مرحلة تطوير غريزته التهديفية الحاسمة أمام المرمى، حيث يفضل حالياً صناعة اللعب وتقديم الحلول الجماعية لزملائه عوضاً عن البحث الشخصي عن هز الشباك بشكل دائم.
+    </li>
+  </ul>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">قصة الصورة التاريخية: حكاية ميسي الذي عمّد يامال طفلاً</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    لا يمكن الحديث عن <strong>مقارنة بين ميسى ولامين يامال</strong> دون التطرق للقصة الأكثر إثارة للدهشة في تاريخ الرياضة الحديثة. في ديسمبر من عام 2007، شارك ميسي الشاب (البالغ من العمر آنذاك 20 عاماً) في جلسة تصوير خيرية لصالح صحيفة "سبورت" الكتالونية بالتعاون مع منظمة اليونيسف لإنتاج تقويم سنوي خيري.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    بمحض الصدفة البحتة، تم اختيار عائلة مغربية تقطن في ماتارو للمشاركة، وكان طفلهم الرضيع ذو الأشهر القليلة هو "لامين يامال". الصورة التي انتشرت كالنار في الهشيم تُظهر ميسي وهو يحمم الرضيع يامال بلطف، وبدت الصورة وكأنها "تعميد كروي" أو انتقال سحري للموهبة من الأسطورة الحالية إلى أسطورة المستقبل دون تخطيط مسبق. وكما صرح والد يامال مازحاً لاحقاً: "ربما يكون لامين هو من بارك ميسي في تلك الصورة!".
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">جدول إحصائي دقيق: مقارنة الأرقام في سن السابعة عشرة (17 عاماً)</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    الجدول التالي يكشف بوضوح الفجوة الإحصائية وكيف تفوق يامال في الانطلاقة المبكرة والقيادة الفعلية لخط هجوم ناديه ومنتخب بلاده مقارنة بالأسطورة الأرجنتيني في نفس المرحلة العمرية:
+  </p>
+  <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+    <table class="w-full text-xs text-slate-300 text-right">
+      <thead class="bg-slate-900 text-white font-bold">
+        <tr>
+          <th class="p-3">معيار المقارنة الإحصائي</th>
+          <th class="p-3">ليونيل ميسي (في سن 17)</th>
+          <th class="p-3">لامين يامال (في سن 17)</th>
+          <th class="p-3">ملاحظة تحليلية لعام 2026</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-800">
+        <tr>
+          <td class="p-3 font-bold text-red-400">عدد المباريات الرسمية مع النادي</td>
+          <td class="p-3">9 مباريات فقط (معظمها كبديل)</td>
+          <td class="p-3">أكثر من 50 مباراة (كعنصر أساسي)</td>
+          <td class="p-3 text-slate-400">يامال حظي بفرصة اللعب بشكل مكثف نظراً لحاجة برشلونة الملحة لموهبته</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">الإنجازات الدولية مع المنتخب الأول</td>
+          <td class="p-3">لم يشارك بعد مع المنتخب الأول</td>
+          <td class="p-3">التتويج بلقب كأس أمم أوروبا (يورو 2024)</td>
+          <td class="p-3 text-slate-400">يامال حقق لقباً قارياً تاريخياً وحصد جائزة أفضل لاعب شاب بالبطولة</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">المساهمات التهديفية الإجمالية</td>
+          <td class="p-3">هدف واحد ضد ألباسيتي</td>
+          <td class="p-3">أكثر من 15 مساهمة تهديفية حاسمة</td>
+          <td class="p-3 text-slate-400">انفجار مبكر جداً ليامال وتفوق إحصائي كاسح في البدايات</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">القيمة السوقية التقريبية</td>
+          <td class="p-3">حوالي 3-5 ملايين يورو</td>
+          <td class="p-3">تتجاوز 120 مليون يورو</td>
+          <td class="p-3 text-slate-400">التضخم في أسعار اللاعبين مع الانفجار الفني المبكر ليامال عالمياً</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">الضغوطات النفسية والتحديات المستقبلية في عام 2026</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    التحدي الأكبر الذي يواجه لامين يامال في مسيرته الحالية ليس فنية اللعب، بل هو العبء النفسي الهائل المصاحب لوصف "ميسي الجديد". على مر السنوات الماضية، سقطت أسماء واعدة كثيرة تحت ثقل هذه المقارنة (أمثال بويان كركيتش، أنسو فاتي، وجيوفاني دوس سانتوس)، حيث عجزت أجسادهم وعقلياتهم عن تحمل التطلعات اللامحدودة للجماهير الكتالونية.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    تتميز إدارة برشلونة والمنتخب الإسباني في عام 2026 بنضج حقيقي لحماية يامال من شبح الإصابات العضلية والإرهاق البدني الناجم عن ضغط المباريات المستمر، عبر وضع برامج تأهيلية وتناوبية دقيقة تضمن عدم استنزاف طاقته البدنية مبكراً، ليتمكن من تسطير اسمه الخاص كـ "لامين يامال" وليس كنسخة مكررة من أي أسطورة سابقة.
+  </p>
+
+  <div class="bg-red-500/5 p-4 rounded-2xl border border-red-500/20 space-y-2 mt-8">
+    <h3 class="text-sm font-black text-white font-sans">🔮 خلاصة البحث السيو والتقييم النهائي</h3>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      في الختام، تعكس الـ <strong>مقارنة بين ميسى ولامين يامال</strong> الفلسفة الخالدة لأكاديمية لاماسيا التي تواصل رفد كرة القدم بأعظم السحرة والمبدعين. ميسي سيبقى الأسطورة التي لا تكرر والملهم التاريخي الأول ليامال، في حين أن لامين يامال يملك كافة المقومات الفنية، والذهنية، والبدنية لكتابة فصول مجيدة وخاصة به في تاريخ اللعبة. تابعوا مدونتنا الرياضية الرائدة لتبقوا على اطلاع دائم بآخر التحليلات وأخبار الساحرة المستديرة لعام 2026!
+    </p>
+  </div>
+</div>`,
+    htmlBodyEn: `<div class="space-y-6 text-left font-sans" dir="ltr">
+  <p class="text-slate-300 text-sm leading-relaxed first-letter:text-3xl first-letter:font-bold first-letter:text-red-500">
+    In modern football, it is extremely rare for a young talent to burst onto the scene and immediately unite global experts and fans in pure admiration. Engaging in a direct <strong>messi vs lamine yamal comparison</strong> (Arabic: <strong>مقارنة بين ميسى ولامين يامال</strong>) has become completely inevitable, not just because of Yamal's spectacular technical prowess, but due to their deep common ancestry rooted within Barcelona's prestigious La Masia Academy. As we navigate the year <strong>2026</strong>, we witness Lionel Messi in the golden twilight of his magical career, while Lamine Yamal enters his prime search for Ballon d'Or supremacy.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-red-500/10 to-indigo-500/10 border-l-4 border-red-500 rounded-r-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1">⚡️ Tactical Synergy & Style Comparison</h4>
+    <p class="text-xs text-slate-300 leading-relaxed">
+      Both players utilize an explosive left foot, drifting inside from the right wing to devastate defenses. The main differentiator lies in their physical structures: Yamal relies on tall strides and rapid wing acceleration, whereas Messi possesses legendary low-center-of-gravity balance and razor-sharp quick turns.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">La Masia Roots: Rosario and Mataró Journeys</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    Lionel Messi famously left Rosario, Argentina at 13 to seek medical growth treatment in Barcelona. This intense adversity forged his lethal competitive mentality. Meanwhile, Lamine Yamal, born to a Moroccan father and an Equatorial Guinean mother in Mataró, joined Barcelona at 6 years old, absorbing Catalan Tiki-Taka philosophy effortlessly from infancy. This paved a smoother, faster transition into Barcelona's senior team, shattering records at a much earlier stage.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">Direct Stat Matrix at Age 17</h2>
+  <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+    <table class="w-full text-xs text-slate-300 text-left">
+      <thead class="bg-slate-900 text-white font-bold">
+        <tr>
+          <th class="p-3">Statistical Criterion</th>
+          <th class="p-3">Lionel Messi (Age 17)</th>
+          <th class="p-3">Lamine Yamal (Age 17)</th>
+          <th class="p-3">2026 Analytical Insight</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-800">
+        <tr>
+          <td class="p-3 font-bold text-red-400">First-Team Apps</td>
+          <td class="p-3">9 matches (mostly substitute)</td>
+          <td class="p-3">50+ matches (undisputed starter)</td>
+          <td class="p-3 text-slate-400">Yamal secured major minutes due to Barca's acute need for his creative genius</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">International Honors</td>
+          <td class="p-3">None yet (U-20 stage)</td>
+          <td class="p-3">UEFA Euro 2024 Champion</td>
+          <td class="p-3 text-slate-400">Yamal was named Euro 2024 Young Player of the Tournament, leading Spain to gold</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">Market Value</td>
+          <td class="p-3">~€3M - €5M</td>
+          <td class="p-3">Exceeding €120M</td>
+          <td class="p-3 text-slate-400">Hyper-inflated modern market coupled with unprecedented early peak output</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>`
+  },
   {
     id: "art-mbappe-religion-2026",
     slug: "kylian-mbappe-religion-and-family-background",

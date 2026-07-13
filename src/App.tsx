@@ -1,6 +1,4 @@
 import { useState, useEffect, useRef, lazy, Suspense } from "react";
-import html2canvas from "html2canvas";
-import Cropper from "cropperjs";
 import "cropperjs/dist/cropper.css";
 import {
   Trophy,
@@ -246,7 +244,7 @@ export default function App() {
   const resultCardRef = useRef<HTMLDivElement>(null);
   const fanCardElementRef = useRef<HTMLDivElement>(null);
   const cropperImgRef = useRef<HTMLImageElement | null>(null);
-  const cropperInstRef = useRef<Cropper | null>(null);
+  const cropperInstRef = useRef<any>(null);
 
   // Sync language and active tab with URL query parameters on initial load
   useEffect(() => {
@@ -526,6 +524,11 @@ export default function App() {
       };
 
       await new Promise((resolve) => setTimeout(resolve, 450)); // Ensure style rendering transitions complete
+      
+      // Load html2canvas dynamically
+      const html2canvasModule = await import("html2canvas");
+      const html2canvas = html2canvasModule.default;
+      
       const canvas = await html2canvas(resultCardRef.current, options);
       const dataUrl = canvas.toDataURL("image/png");
 
@@ -683,6 +686,11 @@ export default function App() {
       };
 
       await new Promise((resolve) => setTimeout(resolve, 450));
+      
+      // Load html2canvas dynamically
+      const html2canvasModule = await import("html2canvas");
+      const html2canvas = html2canvasModule.default;
+      
       const canvas = await html2canvas(fanCardElementRef.current, options);
       const dataUrl = canvas.toDataURL("image/png");
 
@@ -1302,11 +1310,16 @@ export default function App() {
                           src={userUploadedFile}
                           alt="Cropping region"
                           className="max-w-full block"
-                          onLoad={() => {
+                          onLoad={async () => {
                             if (cropperImgRef.current) {
                               if (cropperInstRef.current) {
                                 cropperInstRef.current.destroy();
                               }
+                              
+                              // Load Cropper dynamically
+                              const CropperModule = await import("cropperjs");
+                              const Cropper = CropperModule.default;
+                              
                               cropperInstRef.current = new Cropper(cropperImgRef.current, {
                                 aspectRatio: 1, // perfect square for athlete profile frames
                                 viewMode: 1,

@@ -18,6 +18,7 @@ import messiAgeGuide from '../assets/images/messi_age_guide_1783572873773.jpg';
 import footballWallpapersCover from '../assets/images/football_wallpapers_1783725566633.jpg';
 import mbappeReligionCover from '../assets/images/mbappe_religion_guide_1783742954094.jpg';
 import messiYamalComparisonCover from '../assets/images/messi_yamal_comparison_1783815283040.jpg';
+import ahmedFatouhCover from '../assets/images/ahmed_fatouh_zamalek_1783901713561.jpg';
 
 interface Article {
   id: string;
@@ -60,6 +61,215 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-ahmed-fatouh-2026",
+    slug: "ahmed-fatouh-zamalek-player-career-and-updates-2026",
+    categoryAr: "سير النجوم واللاعبين",
+    categoryEn: "Player Profiles",
+    titleAr: "سيرة ومسيرة احمد فتوح لاعب الزمالك: الفتى الذهبي للظهير الأيسر ومستقبله في عام 2026",
+    titleEn: "Ahmed Fatouh Zamalek Player Profile: Egypt's Left-Back Star & Future in 2026",
+    descAr: "دليل شامل ومفصل عن سيرة احمد فتوح لاعب الزمالك ومنتخب مصر. تعرف على نشأته الكروية، أرقامه، مميزاته التكتيكية، وكيف تمكن من تجاوز أصعب أزماته الشخصية ليعود بقوة لصفوف الفارس الأبيض عام 2026.",
+    descEn: "A comprehensive, in-depth guide to Ahmed Fatouh, the star left-back of Zamalek SC and the Egyptian National Team. Discover his early career, statistics, tactical analysis, and how he overcame his hardest personal crisis to return stronger in 2026.",
+    keywordsAr: [
+      "احمد فتوح لاعب الزمالك",
+      "أحمد فتوح",
+      "ظهير أيسر الزمالك فتوح",
+      "أخبار أحمد فتوح ٢٠٢٦",
+      "مسيرة أحمد فتوح الكروية",
+      "أرقام أحمد فتوح الزمالك",
+      "تاريخ أحمد فتوح مع المنتخب"
+    ],
+    keywordsEn: [
+      "ahmed fatouh",
+      "ahmed fatouh zamalek",
+      "egypt left back fatouh",
+      "ahmed fatouh player profile 2026",
+      "zamalek sc fatouh stats"
+    ],
+    image: ahmedFatouhCover,
+    date: "2026-07-12",
+    readTime: "11 min read",
+    contentAr: {
+      toc: [
+        "1. مقدمة: من هو احمد فتوح لاعب الزمالك؟",
+        "2. النشأة الكروية والانطلاق من مدرسة الفارس الأبيض",
+        "3. التحليل التكتيكي والفني لأسلوب لعب فتوح",
+        "4. العودة الكبرى: كيف تجاوز فتوح أزمته وعاد للتألق في 2026؟",
+        "5. أرقام وإحصائيات أحمد فتوح مع الزمالك والمنتخب الأول",
+        "6. مستقبل أحمد فتوح مع الزمالك وتطلعات الجماهير"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: من هو احمد فتوح لاعب الزمالك؟",
+          body: "يعتبر أحمد فتوح أحد أبرز وأمهر اللاعبين في مركز الظهير الأيسر في مصر والوطن العربي خلال العقد الحالي، حيث يمثل القوة الهجومية والدفاعية لنادي الزمالك العريق."
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هو المركز الأساسي للاعب أحمد فتوح؟",
+          a: "المركز الأساسي لأحمد فتوح هو الظهير الأيسر (Left-Back)، كما يجيد اللعب في مركز خط الوسط الأيسر ووسط الملعب المدافع نظراً لمهارته العالية في الاحتفاظ بالكرة وبناء اللعب."
+        },
+        {
+          q: "متى بدأ أحمد فتوح مسيرته الاحترافية مع الفريق الأول للزمالك؟",
+          a: "بدأ أحمد فتوح الظهور مع الفريق الأول لنادي الزمالك في عام 2016، ثم خرج في فترات إعارة ناجحة لناديي إنبي وسموحة لصقل موهبته، قبل أن يعود ليصبح الركيزة الأساسية للجبهة اليسرى للفريق الأبيض."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: Who is Ahmed Fatouh?",
+        "2. Career Origins and the Rise at Zamalek SC",
+        "3. Tactical & Playstyle Breakdown: The Modern Playmaking Fullback",
+        "4. The Great Return: Overcoming Challenges & Shining in 2026",
+        "5. Career Statistics with Zamalek and Egypt National Team",
+        "6. Looking Ahead: Future Goals and Fan Expectations"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: Who is Ahmed Fatouh?",
+          body: "Ahmed Fatouh is recognized as one of the most talented left-backs in Egyptian and Arab football, acting as a crucial creative and defensive engine for Zamalek SC."
+        }
+      ],
+      faqs: [
+        {
+          q: "What is Ahmed Fatouh's primary playing position?",
+          a: "His primary position is Left-Back (LB), but he is highly versatile and can operate as a left midfielder or central defensive midfielder due to his superb technical skills and ball-retention abilities."
+        },
+        {
+          q: "When did Ahmed Fatouh debut for Zamalek's first team?",
+          a: "He made his first-team debut with Zamalek SC in 2016, went on highly successful loan spells at Enppi and Smouha to gain experience, and then returned to lock down the left flank for the White Knights."
+        }
+      ]
+    },
+    isHtml: true,
+    htmlBodyAr: `<div class="space-y-6 text-right font-sans" dir="rtl">
+  <p class="text-slate-300 text-sm leading-relaxed">
+    في خارطة كرة القدم المصرية، لطالما كانت الجبهة اليسرى مركزاً يتطلب مواصفات فنية خاصة تجمع بين الصلابة الدفاعية والجرأة الهجومية وصناعة اللعب. وفي هذا السياق، يبرز اسم <strong>احمد فتوح لاعب الزمالك</strong> كأحد أفضل من شغل هذا المركز في العقد الأخير. فتوح ليس مجرد مدافع تقليدي يشتت الكرات، بل هو صانع ألعاب يرتدي قميص الظهير الأيسر، يمتلك رؤية ثاقبة وتحكماً بالكرة يضاهي صانعي الألعاب الكبار. وفي عام <strong>2026</strong>، يواصل فتوح كتابة فصول جديدة في مسيرته الكروية الحافلة بالتحديات والإنجازات بعد تجاوزه أصعب الأوقات الشخصية والمهنية.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-red-500/10 to-indigo-500/10 border-r-4 border-red-500 rounded-l-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1 font-sans">⚡️ بطاقة تعريف النجم أحمد فتوح</h4>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      ولد أحمد أبو الفتوح محمد (المعروف بـ أحمد فتوح) في 22 مارس 1998 بمحافظة القاهرة. بدأ مشواره في قطاع الناشئين بنادي الزمالك، وسرعان ما لفت الأنظار بفضل قدمه اليسرى الساحرة وثقته العالية في النفس، ليتدرج في المنتخبات الوطنية حتى بات الخيار الأول للفراعنة في المحافل الكبرى ككأس الأمم الإفريقية وتصفيات كأس العالم.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">النشأة الكروية والانطلاق من مدرسة الفرسان</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    منذ صغره داخل جدران مدرسة الفن والهندسة بنادي الزمالك، أظهر أحمد فتوح رغبة هائلة في التميز. لم يكن الطريق مفروشاً بالورود؛ إذ كان عليه إثبات جدارته باللعب للفريق الأول وسط عمالقة يمتلكون خبرات دولية شاسعة. من أجل ذلك، كان قرار الخروج للإعارة خطوة ذكية للغاية صقلت موهبته ومنحته الدقائق اللازمة للنمو البدني والتكتيكي.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    انتقل فتوح معاراً إلى نادي إنبي البترولي حيث قدم مستويات مذهلة تحت قيادة فنية واعية، ثم حط الرحال بنادي سموحة السكندري ليرسم جبهة يسرى مرعبة كانت حديث النقاد في الدوري المصري الممتاز. هذه الخبرات المتراكمة أقنعت الإدارات الفنية المتعاقبة للزمالك بضرورة استعادة الفتى الذهبي ليكون القائد الفعلي للجبهة اليسرى، وهو ما تم بالفعل ليصبح عنصراً أساسياً لا يمكن الاستغناء عنه في تحقيق بطولتي الدوري وكأس مصر وكأس الكونفدرالية الإفريقية.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">التحليل التكتيكي والفني: كيف يلعب أحمد فتوح؟</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    يختلف أسلوب لعب <strong>احمد فتوح لاعب الزمالك</strong> عن الأظهرة التقليديين في مصر، حيث يتميز بخصائص تجعله قطعة تكتيكية ثمينة لأي مدرب:
+  </p>
+  <ul class="space-y-3 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+    <li>
+      <strong class="text-white">الخروج بالكرة تحت الضغط (Build-up):</strong> يمتلك فتوح هدوءاً يحسد عليه؛ فهو قادر على استلام الكرة في أضيق المساحات وتمريرها بدقة بالغة تحت الضغط العالي للخصوم، مما يسهل عملية التحول الهجومي السلس للزمالك.
+    </li>
+    <li>
+      <strong class="text-white">العرضيات المتقنة والقطرية:</strong> لا يعتمد فتوح على العرضيات العشوائية، بل يرسل كرات مقوسة وموجهة بدقة نحو رؤوس المهاجمين، بالإضافة إلى تميزه في إرسال الكرات الطولية القطرية خلف مدافعي الخصم لكسر خطوط التسلل.
+    </li>
+    <li>
+      <strong class="text-white">المرونة التكتيكية والدخول للعمق (Inverted Fullback):</strong> يجيد فتوح الدخول لعمق الملعب والمساهمة كلاعب وسط إضافي، مما يمنح الزمالك زيادة عددية في معركة وسط الملعب، ويوفر زوايا تمرير جديدة لزملائه في الثلث الهجومي.
+    </li>
+    <li>
+      <strong class="text-white">النزعة الدفاعية الذكية:</strong> بالرغم من قدراته الهجومية الكاسحة، إلا أنه يتميز بذكاء كبير في التمركز واستخلاص الكرات دون ارتكاب أخطاء، مستغلاً سرعته وقدرته الكبيرة على قراءة أفكار المهاجمين.
+    </li>
+  </ul>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">العودة الكبرى: كيف تجاوز فتوح أزمته وعاد للتألق في 2026؟</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    شهدت نهاية عام 2024 وبداية 2025 اختباراً حقيقياً هو الأصعب في حياة أحمد فتوح الشخصية والمهنية إثر الحادث المأساوي الشهير الذي تعرض له. تسببت تلك الفترة في ابتعاده المؤقت عن الملاعب وسط ضغوط نفسية وإعلامية غير مسبوقة كادت أن تنهي مسيرة أحد ألمع مواهب الكرة المصرية.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    لكن بفضل الدعم الجماهيري اللامحدود من عشاق الفارس الأبيض، والمساندة القوية من مجلس إدارة نادي الزمالك وزملائه اللاعبين، تمكن أحمد فتوح من إظهار صلابة ذهنية خارقة للعادة. التزم اللاعب ببرامجه التأهيلية والنفسية والبدنية بعيداً عن الأضواء، وقدم اعتذاراته الصادقة وعمل على تسوية كافة الأمور الإنسانية والقانونية. ومع حلول نهاية عام 2025 وانطلاقة موسم <strong>2026</strong>، عاد فتوح ليركض مجدداً على البساط الأخضر وسط ترحيب حار ودموع الفرح في المدرجات، ليثبت أن البطل الحقيقي هو من يستطيع النهوض بعد السقوط والعودة لتقديم الأفضل لجمهوره العريض.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">جدول مقارنة وإحصائيات مسيرة أحمد فتوح المحلية والدولية لعام 2026</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    يرصد الجدول التالي أبرز الأرقام والإحصائيات التقديرية لمسيرة أحمد فتوح مع نادي الزمالك والمنتخب المصري الأول حتى منتصف عام 2026:
+  </p>
+  <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+    <table class="w-full text-xs text-slate-300 text-right">
+      <thead class="bg-slate-900 text-white font-bold">
+        <tr>
+          <th class="p-3">الإحصائية الكروية</th>
+          <th class="p-3">مع نادي الزمالك (كافة البطولات)</th>
+          <th class="p-3">مع منتخب مصر الأول</th>
+          <th class="p-3">التحليل الفني والتقييم</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-800">
+        <tr>
+          <td class="p-3 font-bold text-red-400">عدد المباريات الرسمية</td>
+          <td class="p-3">أكثر من 160 مباراة</td>
+          <td class="p-3">أكثر من 28 مباراة دولية</td>
+          <td class="p-3 text-slate-400">خبرة دولية ومحلية واسعة جعلته قائداً حقيقياً في الميدان</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">الأهداف المسجلة</td>
+          <td class="p-3">6 أهداف</td>
+          <td class="p-3">هدف واحد حاسم</td>
+          <td class="p-3 text-slate-400">معدل تهديفي ممتاز لظهير أيسر يركز أساساً على التمرير الحاسم</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">التمريرات الحاسمة (Assists)</td>
+          <td class="p-3">أكثر من 18 تمريرة حاسمة</td>
+          <td class="p-3">5 تمريرات حاسمة دولية</td>
+          <td class="p-3 text-slate-400">أحد أفضل صناع اللعب الكلاسيكيين للجبهة اليسرى من الكرات المتحركة والثابتة</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">الألقاب والبطولات</td>
+          <td class="p-3">الدوري المصري (مرتان)، كأس مصر، كأس الكونفدرالية (مرتان)، السوبر الإفريقي</td>
+          <td class="p-3">وصيف كأس الأمم الإفريقية 2021، فضية أمم إفريقيا للشباب تحت 23</td>
+          <td class="p-3 text-slate-400">سجل بطولات مرصع بالذهب والمنصات القارية والمحلية</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">مستقبل أحمد فتوح مع الزمالك وتطلعات الجماهير في عام 2026</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    يتطلع نادي الزمالك وجهازه الفني في عام <strong>2026</strong> للاعتماد الكامل على الجاهزية الفنية والبدنية لأحمد فتوح لاستعادة لقب الدوري المصري الممتاز والذهاب بعيداً في المنافسات الإفريقية الكبرى. يمثل استمرار فتوح وتجديد تعاقده لسنوات إضافية دليلاً راسخاً على وفائه وانتمائه للقلعة البيضاء التي احتضنته منذ الصغر وقدمته للجمهور كأحد أفضل الأظهرة في تاريخ النادي المعاصر.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    على الصعيد الدولي، يستهدف الجهاز الفني لمنتخب مصر إعادة دمج أحمد فتوح تدريجياً ليكون السلاح الفتاك في تصفيات كأس العالم 2026 والاستعداد للبطولات القارية المقبلة، حيث تشكل ثنائية فتوح مع نجوم المنتخب صمام أمان وقوة ضاربة لا يستهان بها في المباريات المصيرية.
+  </p>
+
+  <div class="bg-red-500/5 p-4 rounded-2xl border border-red-500/20 space-y-2 mt-8">
+    <h3 class="text-sm font-black text-white font-sans">🔮 الخلاصة والتأصيل السيو لملف أحمد فتوح</h3>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      في الختام، تجسد قصة ومسيرة <strong>احمد فتوح لاعب الزمالك</strong> معنى التحدي والمثابرة في عالم الرياضة والاحتراف. الموهبة الفذة التي يتمتع بها فتوح داخل الملعب، مقرونة بقدرته على تجاوز الصعاب والمحن الشخصية خارج الملعب، جعلته نموذجاً ملهماً للشباب الصاعد في عام 2026. يبقى فتوح الفتى الذهبي للجماهير البيضاء وعنصراً لا غنى عنه في كتابة أمجاد الكرة المصرية الحديثة. تابعونا للمزيد من التغطيات والتحليلات الحصرية لنجوم الساحرة المستديرة!
+    </p>
+  </div>
+</div>`,
+    htmlBodyEn: `<div class="space-y-6 text-left font-sans" dir="ltr">
+  <p class="text-slate-300 text-sm leading-relaxed first-letter:text-3xl first-letter:font-bold first-letter:text-red-500">
+    In Egyptian football history, the left-back position has always demanded unique characteristics: robust defensive stability mixed with offensive audacity and smart playmaking. In this modern context, the name of <strong>ahmed fatouh</strong> stands out as one of the very best left-backs of the last decade. Fatouh is not just a traditional defender; he acts as a genuine playmaker deployed on the left flank, possessing great spatial vision and superb ball control. In <strong>2026</strong>, Fatouh continues to write spectacular new chapters in his professional career after overcoming great personal and professional hurdles.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-red-500/10 to-indigo-500/10 border-l-4 border-red-500 rounded-r-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1">⚡️ Player Profile: Ahmed Fatouh</h4>
+    <p class="text-xs text-slate-300 leading-relaxed">
+      Born Ahmed Abou El Fotouh Mohamed on March 22, 1998 in Cairo, Egypt. Rising through the youth ranks of Zamalek SC, he quickly distinguished himself through his sublime left foot and composure, eventually becoming the starting left-back for both his club and the Egyptian National Team on major stages like the Africa Cup of Nations and World Cup Qualifiers.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">Tactical Mastery: How Does Ahmed Fatouh Play?</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    Ahmed Fatouh's style differs heavily from conventional fullbacks in Africa. He acts as an 'inverted fullback' or a supplementary midfielder during transitions, providing additional passing lanes and numerical superiority in the middle of the pitch. His crisp low crosses, long diagonal balls, and high resistance to opponent pressure make him an indispensable tactical asset for Zamalek SC in 2026.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">The Great Return & Career Longevity in 2026</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    After facing heavy personal and psychological challenges throughout late 2024 and 2025 following a highly publicized legal incident, Fatouh demonstrated incredible mental resilience. Supported by Zamalek's loyal fanbase and board, he committed to structured physical and mental rehabilitation. By early 2026, he returned to the pitch in peak physical shape, proving that true sports legends are defined by their capacity to rebuild and rise stronger.
+  </p>
+</div>`
+  },
   {
     id: "art-messi-yamal-comparison-2026",
     slug: "messi-vs-lamine-yamal-comparison-2026",

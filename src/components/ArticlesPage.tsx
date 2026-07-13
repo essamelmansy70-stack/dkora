@@ -19,6 +19,7 @@ import footballWallpapersCover from '../assets/images/football_wallpapers_178372
 import mbappeReligionCover from '../assets/images/mbappe_religion_guide_1783742954094.jpg';
 import messiYamalComparisonCover from '../assets/images/messi_yamal_comparison_1783815283040.jpg';
 import ahmedFatouhCover from '../assets/images/ahmed_fatouh_zamalek_1783901713561.jpg';
+import michaelOliseStar from '../assets/images/michael_olise_star_1783903784448.jpg';
 
 interface Article {
   id: string;
@@ -61,6 +62,232 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-michael-olise-2026",
+    slug: "michael-olise-bayern-munich-career-and-stats-2026",
+    categoryAr: "سير النجوم واللاعبين",
+    categoryEn: "Player Profiles",
+    titleAr: "مايكل اوليسه: الفتى الذهبي لبايرن ميونخ ومنتخب فرنسا - دليل شامل لعام 2026",
+    titleEn: "Michael Olise: Bayern Munich & France Star - Comprehensive 2026 Guide",
+    descAr: "دليل شامل ومفصل يغطي مسيرة مايكل اوليسه الكروية، نشأته، أرقامه المذهلة مع بايرن ميونخ، خياراته الدولية المتعددة، وتحليل فني وتكتيكي شامل لمهاراته وأسلوب لعبه المميز لعام 2026.",
+    descEn: "In-depth SEO guide covering Michael Olise's career, statistics, early life, rise at Bayern Munich, tactical breakdown of his playing style, and international success with France in 2026.",
+    keywordsAr: [
+      "مايكل اوليسه",
+      "مايكل أوليسه",
+      "بايرن ميونخ مايكل اوليسه",
+      "أهداف مايكل اوليسه",
+      "إحصائيات مايكل أوليسه ٢٠٢٦",
+      "مهارات مايكل أوليسه",
+      "منتخب فرنسا مايكل اوليسه"
+    ],
+    keywordsEn: [
+      "michael olise",
+      "michael olise bayern munich",
+      "olise stats 2026",
+      "michael olise france",
+      "michael olise goals and assists"
+    ],
+    image: michaelOliseStar,
+    date: "2026-07-12",
+    readTime: "12 min read",
+    contentAr: {
+      toc: [
+        "1. مقدمة: من هو اللاعب مايكل اوليسه؟",
+        "2. الأصول والنشأة: لاعب بأربع جنسيات وقصة اختيار فريدة",
+        "3. الانطلاقة الاحترافية: من ريدينغ إلى توهج سيلهرست بارك",
+        "4. خطوة العمر: الانتقال التاريخي لبايرن ميونخ الألماني",
+        "5. تحليل تكتيكي وفني: لماذا يعتبر اوليسه وريث روبن الشرعي؟",
+        "6. إحصائيات مايكل أوليسه مع بايرن ميونخ والمنتخب حتى 2026",
+        "7. مسيرة مايكل اوليسه مع منتخب فرنسا والتطلعات العالمية لعام 2026",
+        "8. أسئلة شائعة حول مايكل اوليسه"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: من هو اللاعب مايكل اوليسه؟",
+          body: "في عالم يضج بالمواهب الشابة، قليلة هي الأسماء التي تستطيع جذب الأنظار وإبهار المتابعين في فترات زمنية وجيزة كما فعل اللاعب الفرنسي الفذ مايكل اوليسه. يُصنف اوليسه كواحد من أمهر الأجنحة اليمينية في الملاعب الأوروبية حالياً، حيث يجمع بين الذكاء التكتيكي الفائق والقدرة الاستثنائية على المراوغة وصناعة الفرص بلمسات جمالية ساحرة."
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هي الأصول والجنسيات التي يمتلكها مايكل اوليسه؟",
+          a: "ولد مايكل اوليسه في إنجلترا لأب نيجيري وأم فرنسية من أصول جزائرية، مما منحه الحق في تمثيل أربعة منتخبات وطنية مختلفة هي: إنجلترا، فرنسا، نيجيريا، والجزائر، لكنه اختار في النهاية تمثيل الديوك الفرنسية."
+        },
+        {
+          q: "متى انتقل مايكل اوليسه لنادي بايرن ميونخ الألماني؟",
+          a: "انتقل مايكل اوليسه إلى نادي بايرن ميونخ في صيف عام 2024 قادماً من كريستال بالاس الإنجليزي في صفقة ضخمة تخطت قيمتها 50 مليون يورو، وسرعان ما حجز مكانه الأساسي في التشكيلة البافارية."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: Who is Michael Olise?",
+        "2. Multi-National Roots: One Player, Four Nations",
+        "3. Early Professional Journey: From Reading to Selhurst Park",
+        "4. The Big Move: Historical Transfer to Bayern Munich",
+        "5. Tactical Analysis: The Modern Inside-Forward Playmaker",
+        "6. Career Stats & Milestones with Bayern Munich & France",
+        "7. International Career with Les Bleus and World Cup Hopes",
+        "8. FAQs about Michael Olise"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: Who is Michael Olise?",
+          body: "In a footballing landscape filled with high-intensity athletes, few players possess the sheer elegance and tactical brilliance of French winger Michael Olise. Celebrated for his exceptional passing range, clinical crossing, and world-class dribbling, he has taken the Bundesliga and European football by storm."
+        }
+      ],
+      faqs: [
+        {
+          q: "What nationalities is Michael Olise eligible to represent?",
+          a: "Michael Olise was born in England to a Nigerian father and a French-Algerian mother. This made him eligible to represent England, France, Nigeria, or Algeria. He ultimately chose France."
+        },
+        {
+          q: "When did Michael Olise sign for FC Bayern Munich?",
+          a: "Olise joined FC Bayern Munich in July 2024 from Premier League side Crystal Palace in a deal worth over €50 million, establishing himself rapidly as a key player."
+        }
+      ]
+    },
+    isHtml: true,
+    htmlBodyAr: `<div class="space-y-6 text-right font-sans" dir="rtl">
+  <p class="text-slate-300 text-sm leading-relaxed">
+    تعتبر الجناح الأيمن في كرة القدم الحديثة مركزاً حيوياً يتطلب جودة فنية استثنائية وقدرة فائقة على اتخاذ القرارات الصحيحة في كسر الدفاعات المتكتلة. وفي هذا الإطار، يسطع اسم النجم الفرنسي <strong>مايكل اوليسه</strong> (Michael Olise) كواحد من ألمع الجواهر الكروية في ملاعب القارة العجوز لعام <strong>2026</strong>. منذ خطوته الكبرى بالانتقال إلى صفوف نادي بايرن ميونخ الألماني العريق، أثبت اللاعب الشاب أنه يمتلك جينات العبقرية الكروية التي تؤهله ليكون من بين نخبة لاعبي العالم، عاقداً العزم على مواصلة تحطيم الأرقام القياسية وقيادة ناديه ومنتخب بلاده إلى منصات التتويج المحلية والقارية.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-red-500/10 to-indigo-500/10 border-r-4 border-red-500 rounded-l-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1 font-sans">⚡️ بطاقة تعريف اللاعب مايكل اوليسه</h4>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      ولد مايكل أوليسه في 12 ديسمبر 2001 في هامرسميث، لندن، إنجلترا. يتميز بطول يبلغ 1.84 م وقدرات بدنية متوازنة ممتزجة بمهارات فردية مذهلة بقدمه اليسرى الساحرة. يمثل أوليسه في الوقت الراهن نادي بايرن ميونخ في الدوري الألماني الممتاز، ويرتدي قميص منتخب فرنسا الأول بعد مسيرة دولية متألقة مع منتخبات الفئات السنية المختلفة وأولمبياد باريس 2024.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">النشأة والأصول المتعددة: كيف أحدث اوليسه صراعاً رباعياً بين المنتخبات؟</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    تمثل نشأة <strong>مايكل اوليسه</strong> فصلاً استثنائياً في كرة القدم الدولية؛ فاللاعب ولد ونشأ في إنجلترا، لأب ينحدر من أصول نيجيرية، وأم فرنسية من أصول جزائرية. هذه التوليفة الثقافية النادرة جعلته مؤهلاً من الناحية القانونية لتمثيل أربعة منتخبات وطنية كبرى: إنجلترا (بلد الميلاد والنشأة)، نيجيريا (بلد الأب)، الجزائر (بلد الأم الأصلي)، وفرنسا (جنسية الأم).
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    شهدت الأوساط الرياضية العالمية صراعاً شرساً وصامتاً بين هذه الاتحادات لكسب خدمات الموهوب الشاب. بينما حاولت إنجلترا جاهدة ضمه للفئات السنية وضغط الاتحاد النيجيري بقوة مستغلاً رغبة والده، اختار مايكل فتوة قلبه وعاطفته ومستقبله الكروي، مفضلاً تمثيل الديوك الفرنسية منذ استدعائه لمنتخب فرنسا تحت 18 عاماً في عام 2019. وقد عزز هذا الخيار لاحقاً بمشاركته البارزة في أولمبياد باريس 2024 تحت قيادة الأسطورة تييري هنري، حيث نال الميدالية الفضية وقدم عروضاً ساحرة جعلته محبوب الجماهير الفرنسية الأول، ليتلقى فوراً استدعاءً لمنتخب فرنسا الأول ويثبت أقدامه كعنصر رئيسي لا يمس.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">المسيرة الاحترافية: من أكاديميات إنجلترا إلى التألق في الدوري الإنجليزي</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    بدأت رحلة اوليسه الكروية بالمرور عبر عدة أكاديميات لأكبر أندية إنجلترا؛ حيث قضى فترات تطويرية في صفوف أرسنال، تشيلسي، ومانشستر سيتي، لكن الانطلاقة الحقيقية التي مهدت له الطريق نحو عالم الاحتراف كانت رفقة نادي ريدينغ (Reading) في دوري الدرجة الأولى الإنجليزي (Championship). في موسم 2020-2021، نال اوليسه جائزة أفضل لاعب شاب في البطولة بعد مساهمته المباشرة في صناعة وتسجيل العديد من الأهداف، مما لفت أنظار أندية البريميرليغ بقوة.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    في صيف 2021، التقط نادي كريستال بالاس (Crystal Palace) الجوهرة الشابة مقابل تفعيل الشرط الجزائي الزهيد حينها (حوالي 8 ملايين جنيه إسترليني). تحت القيادة الفنية للمدرب الفرنسي باتريك فييرا ثم النمساوي أوليفر غلاسنر، تحول اوليسه إلى كابوس حقيقي لمدافعي الدوري الإنجليزي الممتاز على الجبهة اليمنى بملعب سيلهرست بارك. شكل اوليسه ثنائية مرعبة مع إيبيريشي إيز، ووصل إلى قمة نضجه الكروي في موسم 2023-2024 حينما سجل 10 أهداف وقدم 6 تمريرات حاسمة في 19 مباراة فقط بالدوري، على الرغم من تعرضه لبعض الإصابات العضلية. هذا المردود الفولاذي جعل كبار أوروبا يتسابقون للتوقيع معه في واحدة من أهم صفقات صيف 2024.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">صفقة بايرن ميونخ التاريخية والتوهج في الدوري الألماني</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    في يوليو 2024، أعلن عملاق بافاريا بايرن ميونخ رسمياً تعاقده مع <strong>مايكل اوليسه</strong> بعقد يمتد لخمس سنوات حتى عام 2029، في صفقة بلغت قيمتها الإجمالية حوالي 53 مليون يورو بالإضافة إلى حوافز أخرى. كان رهان إدارة البايرن والمدرب فينسنت كومباني واضحاً: تجديد دماء الجناح الهجومي للفريق وإيجاد لاعب يتمتع بقدرات إبداعية نادرة قادرة على تعويض فترات تراجع هاري كين أو الأجنحة الأخرى وإحداث ثورة في الهجوم البافاري.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    لم يحتج اوليسه وقتاً طويلاً للتأقلم مع أجواء ملعب أليانز أرينا الصاخبة؛ إذ نجح في تسجيل أولى أهدافه وتمريراته الحاسمة بقميص البايرن في غضون أسابيع قليلة من انطلاق بطولة الدوري الألماني (Bundesliga) ودوري أبطال أوروبا. بفضل ثقته الهائلة وتحركاته السلسة، بات مايكل الخيار الأساسي والملهم الأول في الثلث الأخير، مكملاً المنظومة الهجومية البافارية بجانب جمال موسيالا وهاري كين وليروي ساني.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">التحليل التكتيكي والفني لمهارات مايكل أوليسه: خليفة آريين روبن؟</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    تشبه الكثير من الصحف الألمانية والعالمية أسلوب تحرك <strong>مايكل اوليسه</strong> بالأسطورة الهولندي آريين روبن، نظراً للعديد من السمات التكتيكية المتطابقة، مع بعض الفوارق التي تجعل من اوليسه لاعباً فريداً بنسخة حديثة ومطورة:
+  </p>
+  <ul class="space-y-3 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+    <li>
+      <strong class="text-white">الاختراق بالقدم المعاكسة (Inside-Forward):</strong> يبدأ اوليسه تمركزه على الخط الأيمن، وبفضل تحكمه الرهيب بالكرة وقدرته الجسدية على حمايتها، يقوم بقطع الملعب عرضياً نحو الداخل لفتح زوايا التسديد المقوس بقدمه اليسرى أو إرسال تمريرات بينية ساحرة للمهاجمين.
+    </li>
+    <li>
+      <strong class="text-white">صناعة الفرص واللمسة الحاسمة (Key Passes):</strong> خلافاً لبعض الأجنحة الذين يعتمدون فقط على السرعة المفرطة، يتميز اوليسه برؤية تكتيكية وصانع ألعاب من الطراز الرفيع؛ حيث يمكنه تمرير كرات ذكية تضرب خط التسلل بدقة ملليمترية.
+    </li>
+    <li>
+      <strong class="text-white">التميز الكاسح في الكرات الثابتة:</strong> يُعد اوليسه منفذاً فتاكاً للركلات الركنية والضربات الحرة المباشرة وغير المباشرة، مما يجعله سلاحاً استراتيجياً في حسم المباريات المغلقة بنادي بايرن ميونخ والمنتخب الفرنسي.
+    </li>
+    <li>
+      <strong class="text-white">الهدوء والبرود الذهني الشديد:</strong> يشتهر اوليسه ببرود أعصابه وثباته الانفعالي الاستثنائي، مما يسمح له باتخاذ القرارات المثالية في اللحظات الحرجة وتحت ضغوط الجماهير والمدافعين.
+    </li>
+  </ul>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">جدول إحصائيات مايكل أوليسه التقديرية مع الأندية والمنتخب لعام 2026</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    يلخص الجدول التالي الأرقام والبيانات الإحصائية لمسيرة مايكل اوليسه الاحترافية والدولية حتى منتصف عام 2026:
+  </p>
+  <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+    <table class="w-full text-xs text-slate-300 text-right">
+      <thead class="bg-slate-900 text-white font-bold">
+        <tr>
+          <th class="p-3">الفريق والمسابقة</th>
+          <th class="p-3">عدد المباريات</th>
+          <th class="p-3">الأهداف المسجلة</th>
+          <th class="p-3">التمريرات الحاسمة (Assists)</th>
+          <th class="p-3">التقييم الفني العام</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-800">
+        <tr>
+          <td class="p-3 font-bold text-red-400">ريدينغ الإنجليزي (Championship)</td>
+          <td class="p-3">73 مباراة</td>
+          <td class="p-3">7 أهداف</td>
+          <td class="p-3">14 تمريرة حاسمة</td>
+          <td class="p-3 text-slate-400">البداية الحقيقية وجائزة أفضل لاعب شاب في الدوري</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">كريستال بالاس (Premier League)</td>
+          <td class="p-3">90 مباراة</td>
+          <td class="p-3">16 هدفاً</td>
+          <td class="p-3">25 تمريرة حاسمة</td>
+          <td class="p-3 text-slate-400">صناعة الحدث في أقوى دوريات العالم وتأكيد الجودة الكروية</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">بايرن ميونخ الألماني (كافة البطولات حتى 2026)</td>
+          <td class="p-3">أكثر من 72 مباراة</td>
+          <td class="p-3">أكثر من 22 هدفاً</td>
+          <td class="p-3">أكثر من 28 تمريرة حاسمة</td>
+          <td class="p-3 text-slate-400">انفجار تكتيكي وتهديفي كبير تحت إشراف المنظومة الهجومية البافارية</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">المنتخب الفرنسي الأول والأولمبي</td>
+          <td class="p-3">أكثر من 24 مباراة</td>
+          <td class="p-3">8 أهداف</td>
+          <td class="p-3">11 تمريرة حاسمة</td>
+          <td class="p-3 text-slate-400">ميدالية فضية أولمبية وحجز مركز أساسي في تشكيلة ديدييه ديشان</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">تطلعات مايكل اوليسه المستقبلية مع فرنسا والبايرن في عام 2026</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    يعتبر موسم <strong>2026</strong> مفصلياً في حياة مايكل اوليسه المهنية؛ حيث تضع عليه جماهير بايرن ميونخ آمالاً عريضة في استعادة الهيمنة الكاملة على لقب البوندسليغا ورفع ذات الأذنين كأس دوري أبطال أوروبا الغائبة منذ عام 2020. الانسجام الخرافي بينه وبين موسيالا يصنع حقبة ذهبية جديدة لخط هجوم البافاري، تملؤها كرة القدم الجميلة والسرعة والفعالية أمام المرمى.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    أما على صعيد المنتخب الفرنسي، يُعد أوليسه الورقة الرابحة في كتيبة ديدييه ديشان التي تستعد لخوض نهائيات كأس العالم 2026 في أمريكا الشمالية. تألقه بقميص الديوك يمنح الهجوم الفرنسي تنوعاً فريداً من نوعه ويخفف الضغط الفني المسلط على كيليان مبابي، مما يجعل فرنسا المرشح الأبرز لاستعادة اللقب المونديالي المفقود.
+  </p>
+
+  <div class="bg-red-500/5 p-4 rounded-2xl border border-red-500/20 space-y-2 mt-8">
+    <h3 class="text-sm font-black text-white font-sans">🔮 الخلاصة والتأصيل السيو لملف مايكل اوليسه</h3>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      باختصار شديد، يمثل <strong>مايكل اوليسه</strong> مستقبل كرة القدم الهجومية الأنيقة والذكية. نجاحه الكاسح في التأقلم الفوري مع متطلبات اللعب لنادي بحجم بايرن ميونخ والقتال تحت الضغوط الجماهيرية والشخصية يثبت نضجه الكروي المبكر وشخصيته القوية في الميدان. لا شك أن الساحرة المستديرة في عام 2026 وما بعده ستكون على موعد مع فصول جديدة ومثيرة يكتبها هذا الفتى الذهبي بقدمه اليسرى الساحرة.
+    </p>
+  </div>
+</div>`,
+    htmlBodyEn: `<div class="space-y-6 text-left font-sans" dir="ltr">
+  <p class="text-slate-300 text-sm leading-relaxed first-letter:text-3xl first-letter:font-bold first-letter:text-red-500">
+    The modern right-winger role in football demands pristine technical quality, exceptional spatial vision, and lightning-fast decision-making. In this highly demanding environment, <strong>Michael Olise</strong> has firmly established himself as one of the most exciting attacking prospects of <strong>2026</strong>. Since making his highly publicized move to Bundesliga giants FC Bayern Munich, the talented French winger has taken his game to world-class heights, displaying an elite level of dribbling, crossing, and spatial playmaking.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-red-500/10 to-indigo-500/10 border-l-4 border-red-500 rounded-r-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1">⚡️ Player Card: Michael Olise</h4>
+    <p class="text-xs text-slate-300 leading-relaxed">
+      Born on December 12, 2001, in Hammersmith, London, Michael Olise was eligible to represent four top nations (England, France, Algeria, and Nigeria). He ultimately chose France, marking his international arrival during the Paris 2024 Olympic Games and locking down a crucial starting berth in the senior Les Bleus national squad.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">The Rise: From Championship Star to Premier League Sensation</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    After honing his craft at the youth academies of Arsenal, Chelsea, and Manchester City, Olise secured his breakthrough at Reading in the EFL Championship. He won the EFL Young Player of the Season award for the 2020–21 campaign, which prompted Crystal Palace to trigger his release clause in 2021. Under the guidance of Patrick Vieira and Oliver Glasner, Olise terrorized Premier League defenses at Selhurst Park, culminating in a sensational 2023-24 campaign where he registered 10 goals and 6 assists in just 19 appearances, catching the attention of Bayern Munich.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">FC Bayern Munich and International Glory in 2026</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    Signing with FC Bayern Munich in July 2024 for a reported €53 million fee, Olise adapted near-instantly to the high-pressure atmosphere at the Allianz Arena. Operating seamlessly alongside Jamal Musiala and Harry Kane, he has evolved into a key tactical component for Vincent Kompany's squad, frequently drawing tactical comparisons to legendary Bayern winger Arjen Robben. On the international scene, Olise remains a crucial weapon for Didier Deschamps' senior France team as they gear up for the highly anticipated FIFA World Cup 2026.
+  </p>
+</div>`
+  },
   {
     id: "art-ahmed-fatouh-2026",
     slug: "ahmed-fatouh-zamalek-player-career-and-updates-2026",
@@ -4178,73 +4405,22 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
 
                   {/* Interactive Button Click Progress Layout */}
                   <div className="space-y-3 pt-2">
-                    {/* Progress Bar steps */}
-                    <div className="flex items-center justify-between text-[11px] font-bold text-slate-400 px-1">
-                      <span>{isRtl ? "الخطوة ١: التحقق والتأمين" : "Step 1: Link Protection"}</span>
-                      <span>{isRtl ? "الخطوة ٢: التنزيل المباشر" : "Step 2: Install"}</span>
-                    </div>
-                    <div className="h-2 w-full bg-slate-950 border border-slate-900 rounded-full overflow-hidden flex">
-                      <div 
-                        className={`h-full transition-all duration-500 ${
-                          veoClickCount === 0 
-                            ? "w-[15%] bg-slate-700" 
-                            : veoClickCount === 1 
-                              ? "w-[55%] bg-yellow-500 animate-pulse" 
-                              : "w-full bg-emerald-500"
-                        }`}
-                      ></div>
-                    </div>
-
-                    {/* Main Stateful Download Button */}
+                    {/* Main Direct Download Button */}
                     <button
                       onClick={() => {
-                        if (veoClickCount === 0) {
-                          // First Click: Open Moneytag Smart Link in a new tab
-                          window.open("https://omg10.com/4/11125764", "_blank");
-                          setVeoClickCount(1);
-                        } else if (veoClickCount === 1) {
-                          // Second Click: Open actual Google Play store link
-                          window.open("https://play.google.com/store/apps/details?id=com.ainate.ai.video.generate", "_blank");
-                          setVeoClickCount(2);
-                        } else {
-                          // Reset and open Play Store link again
-                          window.open("https://play.google.com/store/apps/details?id=com.ainate.ai.video.generate", "_blank");
-                          setVeoClickCount(0);
-                        }
+                        window.open("https://play.google.com/store/apps/details?id=com.ainate.ai.video.generate", "_blank");
                       }}
-                      className={`w-full py-4 px-6 rounded-2xl font-black text-sm transition-all duration-300 transform active:scale-95 shadow-lg flex items-center justify-center gap-2 cursor-pointer ${
-                        veoClickCount === 0 
-                          ? "bg-rose-600 hover:bg-rose-500 text-white" 
-                          : veoClickCount === 1 
-                            ? "bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-extrabold" 
-                            : "bg-emerald-600 hover:bg-emerald-500 text-white"
-                      }`}
+                      className="w-full py-4 px-6 rounded-2xl font-black text-sm transition-all duration-300 transform active:scale-95 shadow-lg flex items-center justify-center gap-2 cursor-pointer bg-emerald-600 hover:bg-emerald-500 text-white"
                     >
-                      {veoClickCount === 0 ? (
-                        <>
-                          <Flame className="w-4 h-4 animate-bounce" />
-                          <span>{isRtl ? "تحميل تطبيق Veo 3 (اضغط لتأمين الاتصال - خطوة ١)" : "Download Veo 3 App (Click to Protect - Step 1)"}</span>
-                        </>
-                      ) : veoClickCount === 1 ? (
-                        <>
-                          <Sparkles className="w-4 h-4 animate-pulse" />
-                          <span>{isRtl ? "تم التأمين! اضغط للتحميل المباشر من المتجر (خطوة ٢)" : "Secured! Click to Download from Play Store (Step 2)"}</span>
-                        </>
-                      ) : (
-                        <>
-                          <Check className="w-4 h-4" />
-                          <span>{isRtl ? "تم فتح صفحة التحميل! (اضغط للبدء من جديد)" : "Opening Store page! (Click to Reset)"}</span>
-                        </>
-                      )}
+                      <Sparkles className="w-4 h-4 text-white animate-pulse" />
+                      <span>{isRtl ? "تحميل تطبيق Veo 3 المباشر من المتجر" : "Download Veo 3 App Direct From Play Store"}</span>
                     </button>
 
                     {/* Status/Help prompt */}
                     <p className="text-[11px] text-center text-slate-400 font-bold leading-relaxed pt-1 font-sans">
-                      {veoClickCount === 0 
-                        ? (isRtl ? "* اضغط أولاً لتأمين وحماية رابط التنزيل عبر نظام التحقق السريع المعتمد." : "* Click first to encrypt and verify your download parameters via smart protect.")
-                        : veoClickCount === 1 
-                          ? (isRtl ? "✓ تم الفحص وتأكيد أمان الرابط! اضغط الآن للبدء المباشر في متجر Google Play." : "✓ Protection verified! Tap now to complete your Google Play Store download.")
-                          : (isRtl ? "• جاري إعادة التحويل... في حال لم يبدأ التثبيت تلقائياً، يرجى التحديث وإعادة المحاولة." : "• Redirecting... If download fails, refresh and repeat the click flow.")}
+                      {isRtl 
+                        ? "✓ رابط معتمد وآمن للتحميل المباشر من متجر Google Play الرسمي." 
+                        : "✓ Official and secure direct link to download from Google Play Store."}
                     </p>
                   </div>
                 </div>

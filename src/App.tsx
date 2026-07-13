@@ -1759,70 +1759,22 @@ export default function App() {
                   </div>
 
                   {/* Two Click Interaction Progress Flow */}
-                  <div className="space-y-4 pt-2 relative z-10 text-right rtl:text-right ltr:text-left">
-                    <div className="flex items-center justify-between text-[11px] font-bold text-slate-400 px-1">
-                      <span>{isRtl ? "الخطوة ١: التحقق والتأمين" : "Step 1: Link Protection"}</span>
-                      <span>{isRtl ? "الخطوة ٢: التنزيل المباشر" : "Step 2: Install"}</span>
-                    </div>
-                    
-                    <div className="h-2.5 w-full bg-slate-950 border border-slate-900 rounded-full overflow-hidden flex">
-                      <div 
-                        className={`h-full transition-all duration-500 ${
-                          veoClickCount === 0 
-                            ? "w-[15%] bg-slate-700" 
-                            : veoClickCount === 1 
-                              ? "w-[55%] bg-yellow-500 animate-pulse" 
-                              : "w-full bg-emerald-500"
-                        }`}
-                      ></div>
-                    </div>
-
+                  <div className="space-y-4 pt-2 relative z-10 text-right rtl:text-right ltr:text-left font-sans">
                     <button
                       onClick={() => {
-                        if (veoClickCount === 0) {
-                          window.open("https://omg10.com/4/11125764", "_blank");
-                          setVeoClickCount(1);
-                        } else if (veoClickCount === 1) {
-                          window.open("https://play.google.com/store/apps/details?id=com.ainate.ai.video.generate", "_blank");
-                          setVeoClickCount(2);
-                        } else {
-                          window.open("https://play.google.com/store/apps/details?id=com.ainate.ai.video.generate", "_blank");
-                          setVeoClickCount(0);
-                        }
+                        window.open("https://play.google.com/store/apps/details?id=com.ainate.ai.video.generate", "_blank");
                         playInteractionSound();
                       }}
-                      className={`w-full py-4 px-6 rounded-2xl font-black text-xs sm:text-sm transition-all duration-300 transform active:scale-95 shadow-lg flex items-center justify-center gap-2 cursor-pointer ${
-                        veoClickCount === 0 
-                          ? "bg-rose-600 hover:bg-rose-500 text-white" 
-                          : veoClickCount === 1 
-                            ? "bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-extrabold" 
-                            : "bg-emerald-600 hover:bg-emerald-500 text-white"
-                      }`}
+                      className="w-full py-4 px-6 rounded-2xl font-black text-xs sm:text-sm transition-all duration-300 transform active:scale-95 shadow-lg flex items-center justify-center gap-2 cursor-pointer bg-emerald-600 hover:bg-emerald-500 text-white"
                     >
-                      {veoClickCount === 0 ? (
-                        <>
-                          <Flame className="w-4 h-4 animate-bounce text-white" />
-                          <span>{isRtl ? "تحميل تطبيق Veo 3 (اضغط لتأمين الاتصال - خطوة ١)" : "Download Veo 3 App (Click to Protect - Step 1)"}</span>
-                        </>
-                      ) : veoClickCount === 1 ? (
-                        <>
-                          <Sparkles className="w-4 h-4 animate-pulse text-slate-950" />
-                          <span>{isRtl ? "تم التأمين! اضغط للتحميل المباشر من المتجر (خطوة ٢)" : "Secured! Click to Download from Play Store (Step 2)"}</span>
-                        </>
-                      ) : (
-                        <>
-                          <Check className="w-4 h-4 text-white" />
-                          <span>{isRtl ? "تم فتح صفحة التحميل! (اضغط للبدء من جديد)" : "Opening Store page! (Click to Reset)"}</span>
-                        </>
-                      )}
+                      <Sparkles className="w-4 h-4 text-white animate-pulse" />
+                      <span>{isRtl ? "تحميل تطبيق Veo 3 المباشر من المتجر" : "Download Veo 3 App Direct From Play Store"}</span>
                     </button>
 
                     <p className="text-[11px] text-center text-slate-400 font-bold leading-relaxed pt-1">
-                      {veoClickCount === 0 
-                        ? (isRtl ? "* اضغط أولاً لتأمين وحماية رابط التنزيل عبر نظام التحقق السريع المعتمد." : "* Click first to encrypt and verify your download parameters via smart protect.")
-                        : veoClickCount === 1 
-                          ? (isRtl ? "✓ تم الفحص وتأكيد أمان الرابط! اضغط الآن للبدء المباشر في متجر Google Play." : "✓ Protection verified! Tap now to complete your Google Play Store download.")
-                          : (isRtl ? "• جاري إعادة التحويل... في حال لم يبدأ التثبيت تلقائياً، يرجى التحديث وإعادة المحاولة." : "• Redirecting... If download fails, refresh and repeat the click flow.")}
+                      {isRtl 
+                        ? "✓ رابط معتمد وآمن للتحميل المباشر من متجر Google Play الرسمي." 
+                        : "✓ Official and secure direct link to download from Google Play Store."}
                     </p>
                   </div>
                 </div>

@@ -10,8 +10,6 @@ import {
   HelpCircle
 } from 'lucide-react';
 
-// --- Monetag monetization configuration ---
-const monetagLink = "https://omg10.com/4/11125764"; // Monetag Smart Link (رابط موني تاج الذكي الخاص بك)
 const finalDestination = "https://geminigen.ai"; // Original generator page link (الرابط الأصلي المستهدف)
 
 interface VeoVideoPageProps {
@@ -153,16 +151,6 @@ const contentData = {
 export default function VeoVideoPage({ locale }: VeoVideoPageProps) {
   const data = contentData[locale];
   
-  // Track clicks count persistently using sessionStorage to ensure state survives any state resets
-  const [clickCount, setClickCount] = useState<number>(() => {
-    try {
-      const saved = sessionStorage.getItem('veo_cta_clicks');
-      return saved ? parseInt(saved, 10) : 0;
-    } catch (e) {
-      return 0;
-    }
-  });
-
   const playSfx = () => {
     try {
       const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
@@ -185,38 +173,8 @@ export default function VeoVideoPage({ locale }: VeoVideoPageProps) {
     }
   };
 
-  const handleCtaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
+  const handleCtaClick = () => {
     playSfx();
-
-    if (clickCount === 0) {
-      // Record the click first, update state & storage
-      const nextCount = 1;
-      setClickCount(nextCount);
-      try {
-        sessionStorage.setItem('veo_cta_clicks', String(nextCount));
-      } catch (err) {
-        console.error("Storage error:", err);
-      }
-
-      // First Click: Open the Monetag Smart Link in a new window/tab
-      try {
-        window.open(monetagLink, '_blank', 'noopener,noreferrer');
-      } catch (err) {
-        console.error("Popup window blocked or failed:", err);
-        // Fallback: If blocked, redirect directly to avoid user stuckness
-        window.location.href = monetagLink;
-      }
-    } else {
-      // Reset the click count for any future cycles (if they come back or click again)
-      setClickCount(0);
-      try {
-        sessionStorage.removeItem('veo_cta_clicks');
-      } catch (err) {}
-
-      // Second Click: Safe, instant redirection to the main target geminigen.ai in the current frame
-      window.location.href = finalDestination;
-    }
   };
 
   return (
@@ -319,6 +277,8 @@ export default function VeoVideoPage({ locale }: VeoVideoPageProps) {
       <div className="pt-4 text-center animate-fade-in">
         <a 
           href={finalDestination} 
+          target="_blank"
+          rel="noopener noreferrer"
           onClick={handleCtaClick}
           className="inline-flex flex-col items-center gap-1 group no-underline text-inherit"
         >

@@ -20,6 +20,7 @@ import mbappeReligionCover from '../assets/images/mbappe_religion_guide_17837429
 import messiYamalComparisonCover from '../assets/images/messi_yamal_comparison_1783815283040.jpg';
 import ahmedFatouhCover from '../assets/images/ahmed_fatouh_zamalek_1783901713561.jpg';
 import michaelOliseStar from '../assets/images/michael_olise_star_1783903784448.jpg';
+import davidTrezeguetStar from '../assets/images/david_trezeguet_star_1783995832415.jpg';
 
 interface Article {
   id: string;
@@ -62,6 +63,243 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-david-trezeguet-2026",
+    slug: "david-trezeguet-legendary-striker-career-stats-2026",
+    categoryAr: "سير النجوم واللاعبين",
+    categoryEn: "Player Profiles",
+    titleAr: "ديفيد تريزيجيه: القناص الفرنسي الأسطوري وصاحب الهدف الذهبي التاريخي - ملف شامل لعام 2026",
+    titleEn: "David Trezeguet: The Legendary French Striker & Golden Goal Hero - 2026 Guide",
+    descAr: "تقرير سيو شامل ومفصل يتناول مسيرة الهداف الأسطوري ديفيد تريزيجيه، بداياته الفذة، أرقامه القياسية مع يوفنتوس وموناكو، كواليس هدفه الذهبي في يورو 2000، وتحليل فني عميق لأسلوب لعبه لعام 2026.",
+    descEn: "Comprehensive SEO article exploring the legendary career of French striker David Trezeguet, his records at Juventus and Monaco, the famous Euro 2000 Golden Goal, and a complete tactical analysis.",
+    keywordsAr: [
+      "ديفيد تريزيجيه",
+      "ديفيد تريزيغيه",
+      "أهداف ديفيد تريزيجيه",
+      "ديفيد تريزيجيه يوفنتوس",
+      "مسيرة ديفيد تريزيجيه",
+      "هدف ديفيد تريزيجيه الذهبي",
+      "ديفيد تريزيجيه منتخب فرنسا",
+      "إحصائيات ديفيد تريزيجيه"
+    ],
+    keywordsEn: [
+      "david trezeguet",
+      "trezeguet juventus",
+      "david trezeguet stats",
+      "trezeguet golden goal euro 2000",
+      "david trezeguet career"
+    ],
+    image: davidTrezeguetStar,
+    date: "2026-07-13",
+    readTime: "15 min read",
+    contentAr: {
+      toc: [
+        "1. مقدمة: من هو الأسطورة ديفيد تريزيجيه؟",
+        "2. النشأة والجذور: طفل أرجنتيني الهوية، فرنسي المصير",
+        "3. البدايات مع موناكو: الشراكة الخيالية مع تييري هنري",
+        "4. المجد الإيطالي: حقبة ذهبية خالدة في يوفنتوس",
+        "5. اللحظة الخالدة: كواليس الهدف الذهبي في نهائي يورو 2000",
+        "6. تحليل تكتيكي: مهارات وقدرات قناص منطقة الجزاء الكلاسيكي",
+        "7. إحصائيات ديفيد تريزيجيه التاريخية مع الأندية والمنتخب",
+        "8. أسئلة شائعة حول ديفيد تريزيجيه"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: من هو الأسطورة ديفيد تريزيجيه؟",
+          body: "عند الحديث عن المهاجمين الكلاسيكيين الذين تركوا بصمة لا تُمحى في تاريخ كرة القدم الحديثة، يبرز اسم الأسطورة الفرنسي ديفيد تريزيجيه (David Trezeguet) كأحد أفضل الهدافين في جيله. عُرف بلقب 'تريزيغول' بفضل حاسته التهديفية الخارقة وقدرته الفذة على إنهاء الهجمات من لمسة واحدة في أصعب الظروف والمواقف الصعبة."
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هي أهم الأندية التي لعب لها ديفيد تريزيجيه؟",
+          a: "لعب ديفيد تريزيجيه لعدة أندية بارزة أهمها موناكو الفرنسي، يوفنتوس الإيطالي (حيث قضى هناك عقداً من الزمن وصار أحد أعظم هدافيه الأجانب)، وإيركوليس الإسباني، ريفر بليت ونيولز أولد بويز الأرجنتينيين."
+        },
+        {
+          q: "ما هو الهدف الأشهر في مسيرة ديفيد تريزيجيه الدولية؟",
+          a: "الهدف الأشهر بلا شك هو هدفه الذهبي في شباك منتخب إيطاليا في نهائي بطولة أمم أوروبا (يورو 2000) والذي منح فرنسا اللقب التاريخي بعد تسديدة يسارية مذهلة استقرت في سقف مرمى الحارس فرانشيسكو تولدو."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: Who is David Trezeguet?",
+        "2. Roots & Early Life: Argentine Heart, French Destiny",
+        "3. Breakthrough at Monaco: The Iconic Thierry Henry Partnership",
+        "4. Italian Glory: A Golden Decade at Juventus",
+        "5. The Ultimate Moment: The Euro 2000 Golden Goal",
+        "6. Tactical Breakdown: The Ultimate Classical Poacher",
+        "7. Historic Career Statistics for Club & Country",
+        "8. FAQs about David Trezeguet"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: Who is David Trezeguet?",
+          body: "In the history of clinical modern strikers, David Trezeguet stands as a true master of the penalty box. Affectionately nicknamed 'Trezegol' by fans worldwide, the French forward defined an era of European football with his ruthless finishing, aerial dominance, and extraordinary spatial awareness."
+        }
+      ],
+      faqs: [
+        {
+          q: "Which club is David Trezeguet most famous for playing for?",
+          a: "Trezeguet is widely legendary for his brilliant ten-year tenure at Juventus FC in Serie A, where he became the club's highest-scoring foreign player in history."
+        },
+        {
+          q: "What is David Trezeguet's most famous goal?",
+          a: "His most iconic goal is the Golden Goal scored in extra time against Italy in the Euro 2000 final, securing the European Championship trophy for France."
+        }
+      ]
+    },
+    isHtml: true,
+    htmlBodyAr: `<div class="space-y-6 text-right font-sans" dir="rtl">
+  <p class="text-slate-300 text-sm leading-relaxed">
+    تاريخ كرة القدم حافل بالمهاجمين العظماء، لكن قلة منهم فقط امتلكوا تلك الغريزة القاتلة والقدرة على تحويل أنصاف الفرص إلى أهداف حاسمة بلمسة سحرية واحدة. في مقدمة هؤلاء الصفوة يأتي النجم الفرنسي الأسطوري <strong>ديفيد تريزيجيه</strong> (David Trezeguet)، الشهير بلقب "تريزيغول". لطالما كانت منطقة الجزاء بمثابة مملكته الخاصة التي يفرض فيها سطوته وقوانينه الفتاكة. من موناكو إلى تورينو، مرتدياً قميص يوفنتوس والمنتخب الفرنسي، صاغ تريزيجيه مسيرة ذهبية مليئة بالألقاب واللحظات التاريخية الخالدة، أبرزها بالطبع الهدف الذهبي الأكثر شهرة في تاريخ بطولات أمم أوروبا عام 2000. وفي هذا الدليل الشامل والمتكامل لعام <strong>2026</strong>، نغوص بالتفصيل في قصة حياة هذا الهداف الأسطوري ومسيرته وإحصائياته التي جعلته علامة فارقة في تاريخ اللعبة.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border-r-4 border-indigo-500 rounded-l-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1 font-sans">⚡️ بطاقة تعريف اللاعب الأسطوري ديفيد تريزيجيه</h4>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      ولد ديفيد تريزيجيه في 15 أكتوبر 1977 في روان، فرنسا. يبلغ طوله 1.90 م مما منحه تفوقاً في الكرات الهوائية والالتحامات البدنية القوية. لعب كمهاجم صريح (رأس حربة كلاسيكي) وتميز بحاسة تهديفية نادرة وقدرة فائقة على التسديد بكلا القدمين وإنهاء الهجمات بدقة مطلقة، مما جعله الهداف الأجنبي التاريخي لنادي يوفنتوس الإيطالي برصيد 171 هدفاً.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-indigo-500/20 pb-2 mt-8">النشأة والجذور: الهوية الأرجنتينية والقرار الفرنسي الحاسم</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    ولد <strong>ديفيد تريزيجيه</strong> في فرنسا لوالد أرجنتيني كان يمارس كرة القدم الاحترافية هناك (خورخي تريزيجيه). عندما بلغ من العمر عامين فقط، عادت عائلته إلى الأرجنتين حيث نشأ وترعرع في العاصمة بوينس آيرس. هناك، تنفس تريزيجيه شغف كرة القدم اللاتينية وبدأ مسيرته الكروية الشابة مع نادي بلاتينسي الأرجنتيني.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    على الرغم من كونه أرجنتينياً في لغته وثقافته ونشأته، إلا أن حيازته للجنسية الفرنسية بفضل مكان ولادته فتحت له أبواباً سحرية للعودة إلى القارة العجوز. في عام 1995، خاض تريزيجيه اختباراً فنياً ناجحاً مع نادي موناكو الفرنسي، لينضم إلى النادي البافاري الفرنسي ويبدأ رحلة المجد الحقيقي. وعندما جاء وقت الاختيار الدولي، فضل تمثيل منتخب فرنسا بدلاً من الأرجنتين، وهو القرار الذي غير مسار حياته ومسار الديوك الفرنسية إلى الأبد.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-indigo-500/20 pb-2 mt-8">التألق مع موناكو: ولادة الشراكة الأسطورية مع تييري هنري</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    في موناكو وتحت قيادة المدرب الأسطوري الفرنسي جان تيغانا، انفجرت موهبة ديفيد تريزيجيه التهديفية. شكل تريزيجيه ثنائياً هجومياً خارقاً وانسجاماً غير عادي مع النجم الشاب الصاعد حينها <strong>تييري هنري</strong>. كانت هذه الشراكة تجمع بين سرعة ومهارة هنري الفائقة وقدرة تريزيجيه الفتاكة على التمركز والإنهاء المباشر.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    قاد الثنائي المرعب موناكو للفوز بلقب الدوري الفرنسي عام 1997 وتقديم عروض مبهرة في دوري أبطال أوروبا، بما في ذلك إقصاء مانشستر سيتي ومانشستر يونايتد في مواجهات تاريخية. سجل تريزيجيه في موسم 1997-1998 وحده 18 هدفاً في الدوري الفرنسي، محققاً جائزة أفضل لاعب شاب، وهو التألق الذي ضمن له مكاناً في تشكيلة منتخب فرنسا الفائزة بلقب كأس العالم 1998 على أرضها وبين جماهيرها.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-indigo-500/20 pb-2 mt-8">المجد في تورينو: العقد الذهبي لـ 'تريزيغول' مع يوفنتوس</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    في صيف عام 2000، وبعد انتهاء منافسات أمم أوروبا، اتخذ تريزيجيه الخطوة الأهم في مسيرته الاحترافية بالانتقال إلى صفوف نادي <strong>يوفنتوس</strong> الإيطالي مقابل حوالي 23 مليون يورو. في الكالتشيو، الذي كان يُصنف في ذلك الوقت بأنه أقوى دوري دفاعي في العالم، كتب تريزيجيه التاريخ بأحرف من ذهب.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    حقق تريزيجيه نجاحاً فورياً ومذهلاً في يوفنتوس، حيث توج بلقب هداف الدوري الإيطالي (Capocannoniere) برصيد 24 هدفاً في موسم 2001-2002 ونال جائزة أفضل لاعب في الدوري الإيطالي. شكل تريزيجيه مع الأسطورة أليساندرو ديل بييرو واحداً من أعظم الثنائيات الهجومية في تاريخ كرة القدم الإيطالية والعالمية، حيث تفاهم الاثنان بشكل أعمى وقادا البيانكونيري للفوز بالعديد من ألقاب السيري آ والوصول لنهائي دوري أبطال أوروبا عام 2003.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    ولعل ما جعل مكانة تريزيجيه خالدة في قلوب عشاق يوفنتوس هو موقفه البطولي في عام 2006. بعد قرار تهبيط النادي إلى دوري الدرجة الثانية (Serie B) على خلفية فضيحة الكالتشيوبولي، وهروب معظم النجوم الأجانب، قرر تريزيجيه البقاء مخلصاً للسيدة العجوز بجانب ديل بييرو وبوفون وندفيد وكامورانيزي. نجح تريزيجيه في تسجيل 15 هدفاً ساهمت في عودة اليوفي سريعاً لمكانه الطبيعي في الدرجة الأولى، ليرسخ اسمه كأسطورة وفية لا تُنسى في تاريخ تورينو. غادر النادي في عام 2010 وفي رصيده 171 هدفاً كأفضل هداف أجنبي في تاريخ يوفنتوس العريق.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-indigo-500/20 pb-2 mt-8">اللحظة الخالدة: الهدف الذهبي في نهائي يورو 2000 ضد إيطاليا</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    إذا تم سؤال أي مشجع لكرة القدم عن اللحظة الأيقونية المرتبطة باسم ديفيد تريزيجيه، ستكون الإجابة موحدة بلا شك: <strong>الهدف الذهبي التاريخي في نهائي يورو 2000</strong> بمدينة روتردام الهولندية. كانت فرنسا تواجه إيطاليا المتأخرة بهدف حتى الدقيقة الأخيرة قبل أن يعادل سيلفان ويلتورد النتيجة ويذهب بالفريقين للشوطين الإضافيين بفضل نظام الهدف الذهبي (الفريق الذي يسجل أولاً يفوز بالمباراة فوراً).
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    في الدقيقة 103، تسلم روبرت بيريز الكرة على الجهة اليسرى، وراوغ المدافعين ببراعة وأرسل كرة عرضية دقيقة ومثالية نحو منطقة الجزاء. هناك، كان تريزيجيه ينتظر في المكان المناسب؛ وبحركة جسدية مذهلة وتوافق عضلي عصبي خارق، سدد تريزيجيه الكرة مباشرة بقدمه اليسرى "على الطاير" بقوة خارقة استقرت في سقف شباك الحارس الإيطالي فرانشيسكو تولدو الذي لم يحرك ساكناً. أعلن هذا الهدف تتويج فرنسا بطلة لأوروبا وجمعها المجد العالمي والأوروبي معاً، في واحدة من أكثر اللحظات دراماتيكية وإثارة في تاريخ الساحرة المستديرة.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-indigo-500/20 pb-2 mt-8">التحليل التكتيكي والفني لأسلوب لعب ديفيد تريزيجيه: كابوس المدافعين</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    يعتبر ديفيد تريزيجيه نموذجاً مثالياً للمهاجم التقليدي رقم 9 (Traditional Poacher / Number 9)، وهو الأسلوب التكتيكي الذي يفتقده الكثير من المدربين في العصر الحالي لكرة القدم الحديثة. تميز أسلوبه الفني بالعديد من الخصائص القاتلة:
+  </p>
+  <ul class="space-y-3 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+    <li>
+      <strong class="text-white">التمركز المثالي وقراءة المساحات (Positioning):</strong> يمتلك تريزيجيه قدرة فطرية خارقة على التواجد في المكان المناسب داخل منطقة العمليات قبل المدافعين، مستغلاً هفوات التمركز وتشتيت الكرة ليكون دائماً على بعد سنتيمترات من الشباك.
+    </li>
+    <li>
+      <strong class="text-white">الإنهاء من لمسة واحدة (One-touch Finishing):</strong> نادراً ما كان تريزيجيه يحتفظ بالكرة أو يراوغ طويلاً؛ كانت معظم أهدافه تأتي من لمسة واحدة مباشرة وسريعة تفاجئ الحراس والمدافعين، مستخدماً مشط القدم أو باطنها بدقة بالغة.
+    </li>
+    <li>
+      <strong class="text-white">السيادة المطلقة في الهواء (Aerial Dominance):</strong> بفضل قامته الطويلة (190 سم) وارتقائه الاستثنائي وقدرته على توجيه الكرة برأسه بقوة تماثل قوة قدمه، كان تريزيجيه يمثل تهديداً دائماً في الكرات العرضية والركلات الركنية.
+    </li>
+    <li>
+      <strong class="text-white">اللعب بالقدمين بكفاءة متساوية:</strong> على الرغم من اعتماده الأساسي على قدمه اليمنى، إلا أنه كان يسجل أهدافاً مذهلة بقدمه اليسرى (مثل هدفه الذهبي الشهير ضد إيطاليا)، مما جعل من الصعب على المدافعين توقع زاوية التسديد الخاصة به.
+    </li>
+  </ul>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-indigo-500/20 pb-2 mt-8">إحصائيات ديفيد تريزيجيه التاريخية مع الأندية والمنتخب</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    تلخص الإحصائيات والأرقام الموثقة التالية المسيرة الاحترافية والمساهمات التهديفية الخارقة للنجم الفرنسي عبر مختلف المحطات:
+  </p>
+  <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+    <table class="w-full text-xs text-slate-300 text-right">
+      <thead class="bg-indigo-950 text-white font-bold">
+        <tr>
+          <th class="p-3">النادي / المنتخب</th>
+          <th class="p-3">الفترة الزمنية</th>
+          <th class="p-3">عدد المباريات الكلية</th>
+          <th class="p-3">الأهداف المسجلة</th>
+          <th class="p-3">البطولات والإنجازات الأبرز</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-800">
+        <tr>
+          <td class="p-3 font-bold text-indigo-400">موناكو الفرنسي (Monaco)</td>
+          <td class="p-3">1995 - 2000</td>
+          <td class="p-3">125 مباراة</td>
+          <td class="p-3">62 هدفاً</td>
+          <td class="p-3 text-slate-400">الدوري الفرنسي الممتاز (مرتين)، كأس السوبر الفرنسي، جائزة أفضل لاعب شاب</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-indigo-400">يوفنتوس الإيطالي (Juventus)</td>
+          <td class="p-3">2000 - 2010</td>
+          <td class="p-3">320 مباراة</td>
+          <td class="p-3">171 هدفاً</td>
+          <td class="p-3 text-slate-400">الدوري الإيطالي (مرتين)، كأس السوبر الإيطالي (مرتين)، هداف الكالتشيو، الهداف الأجنبي التاريخي للنادي</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-indigo-400">إيركوليس الإسباني وبني ياس الإماراتي</td>
+          <td class="p-3">2010 - 2012</td>
+          <td class="p-3">35 مباراة</td>
+          <td class="p-3">14 هدفاً</td>
+          <td class="p-3 text-slate-400">تجربة كروية سريعة بالليغا الإسبانية والخليج العربي</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-indigo-400">ريفر بليت ونيولز أولد بويز (الأرجنتين)</td>
+          <td class="p-3">2012 - 2014</td>
+          <td class="p-3">66 مباراة</td>
+          <td class="p-3">26 هدفاً</td>
+          <td class="p-3 text-slate-400">قيادة ريفر بليت للعودة إلى الدرجة الأولى في الأرجنتين وسط احتفالات أسطورية للجماهير</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-indigo-400">منتخب فرنسا الأول (Les Bleus)</td>
+          <td class="p-3">1998 - 2008</td>
+          <td class="p-3">71 مباراة دولية</td>
+          <td class="p-3">34 هدفاً دولياً</td>
+          <td class="p-3 text-slate-400">بطل كأس العالم 1998، بطل كأس أمم أوروبا 2000، وصيف كأس العالم 2006، بطل كأس القارات</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-indigo-500/20 pb-2 mt-8">الخلاصة والتأثير الرياضي في كرة القدم الحديثة</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    لم يكن ديفيد تريزيجيه مجرد مهاجم عادي يسجل الأهداف؛ بل كان تجسيداً فنياً للنجاعة والهدوء المطبق أمام المرمى. في زمن بات فيه المهاجمون مطالبين بالقيام بمهام دفاعية وصناعة اللعب والنزول لوسط الميدان، يظل أسلوب "تريزيجيه" الكلاسيكي بمثابة مرجع لكل رأس حربة يطمح في إتقان فن التمركز وحسم المباريات بلمسة واحدة قاتلة. تظل أرقامه وإنجازاته، وتحديداً هدفه الخرافي في مرمى تولدو عام 2000، جزءاً لا يتجزأ من الإرث الكروي الجميل للكرة الفرنسية والعالمية، وملهماً دائماً للأجيال الشابة الباحثة عن أسرار الفعالية الهجومية الفائقة.
+  </p>
+
+  <div class="bg-indigo-500/5 p-4 rounded-2xl border border-indigo-500/20 space-y-2 mt-8">
+    <h3 class="text-sm font-black text-white font-sans">🔮 الخلاصة والتأصيل السيو لملف ديفيد تريزيجيه</h3>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      أثبت <strong>ديفيد تريزيجيه</strong> أن المهاجم الصريح هو العنصر الحاسم الذي يصنع الفارق بين الفرق الكبرى والفرق الأسطورية. إن تفانيه وولائه لنادي يوفنتوس خلال فترات محنته، بجانب أرقامه التهديفية المرعبة وسلوكه الاحترافي المثالي داخل وخارج العشب الأخضر، يضعه بكل جدارة واستحقاق في قاعة مشاهير كرة القدم كواحد من أعظم وأذكى الأجنحة ورؤوس الحربة في القرن الحادي والعشرين.
+    </p>
+  </div>
+</div>`,
+    htmlBodyEn: `<div class="space-y-6 text-left font-sans" dir="ltr">
+  <p class="text-slate-300 text-sm leading-relaxed first-letter:text-3xl first-letter:font-bold first-letter:text-indigo-500">
+    Few strikers in the history of modern football have possessed the ruthless efficiency and raw biological instinct for scoring goals as French legend <strong>David Trezeguet</strong>. Nicknamed "Trezegol" by fans, the prolific striker ruled penalty boxes across Europe with Juventus and Monaco, as well as on the international stage with Les Bleus. Most legendary for scoring the dramatic Golden Goal in the Euro 2000 final against Italy, Trezeguet remains a global reference for the classical number 9 role. In this <strong>2026</strong> comprehensive guide, we unpack his illustrious career, stats, and style.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border-l-4 border-indigo-500 rounded-r-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1">⚡️ Player Profile: David Trezeguet</h4>
+    <p class="text-xs text-slate-300 leading-relaxed">
+      Born in France and raised in Argentina, Trezeguet boasted a brilliant mix of Latin flair and European tactical discipline. Measuring 1.90m, he was an absolute titan in the air and scored 171 goals for Juventus, making him the highest-scoring foreign player in the history of the Italian giants.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-indigo-500/20 pb-2 mt-8">Breakthrough and Absolute Domination</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    Trezeguet's breakthrough at Monaco alongside close friend Thierry Henry laid the groundwork for France's golden generation. Winning the Ligue 1 title and subsequently sealing a high-profile move to Juventus in 2000, he quickly adapted to the ultra-defensive Serie A, winning the Capocannoniere in 2002. His ultimate display of loyalty came in 2006, when he stayed with Juventus in Serie B following the Calciopoli scandal, cementing his legacy forever as a Bianconeri icon.
+  </p>
+</div>`
+  },
   {
     id: "art-michael-olise-2026",
     slug: "michael-olise-bayern-munich-career-and-stats-2026",

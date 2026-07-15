@@ -23,6 +23,7 @@ import michaelOliseStar from '../assets/images/michael_olise_star_1783903784448.
 import davidTrezeguetStar from '../assets/images/david_trezeguet_star_1783995832415.jpg';
 import robertoCarlosLegend from '../assets/images/roberto_carlos_legend_1784002714325.jpg';
 import cucurellaChelseaStar from '../assets/images/cucurella_chelsea_star_1784086524546.jpg';
+import messiTodayStar from '../assets/images/messi_today_star_1784142173801.jpg';
 
 interface Article {
   id: string;
@@ -65,6 +66,229 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-messi-today-2026",
+    slug: "messi-today-image-inter-miami-stats-2026",
+    categoryAr: "سير النجوم واللاعبين",
+    categoryEn: "Player Profiles",
+    titleAr: "صورة ميسى اليوم: دليل شامل يحلل أحدث إطلالات الأسطورة ومسيرته الاستثنائية لعام 2026",
+    titleEn: "Messi's Image Today: Full Look at the Legend's 2026 Inter Miami Journey",
+    descAr: "تقرير سيو تفصيلي من 1000 كلمة يحلل الكلمة المفتاحية 'صورة ميسى اليوم'، مستعرضاً لياقته البدنية، إطلالته الحديثة، أهدافه مع إنتر ميامي، ومستقبله في ملاعب كرة القدم لعام 2026.",
+    descEn: "Comprehensive 2026 SEO article analyzing the keyword 'Messi's image today', his look, Inter Miami achievements, and his tactical evolution in the MLS.",
+    keywordsAr: [
+      "صورة ميسى اليوم",
+      "صورة ميسي اليوم",
+      "صور ميسى الجديدة",
+      "أحدث صورة لميسى",
+      "ميسى إنتر ميامي",
+      "ميسي اليوم",
+      "إحصائيات ليونيل ميسي",
+      "أهداف ميسي اليوم"
+    ],
+    keywordsEn: [
+      "messi image today",
+      "lionel messi photo",
+      "messi today 2026",
+      "messi inter miami",
+      "messi current stats"
+    ],
+    image: messiTodayStar,
+    date: "2026-07-15",
+    readTime: "15 min read",
+    contentAr: {
+      toc: [
+        "1. مقدمة: الشغف العالمي المتجدد بـ 'صورة ميسى اليوم'",
+        "2. تحليل صورة ميسى اليوم: الإطلالة والياقة البدنية والسر الجسدي",
+        "3. ميسى في عام 2026: كيف تبدو مسيرته الحالية مع إنتر ميامي؟",
+        "4. سحر لا ينتهي: قيادة ميسي لمنتخب الأرجنتين نحو تحديات المونديال",
+        "5. دور العائلة في حياة الأسطورة: قراءة في خلفيات صور ميسي اليومية",
+        "6. تحليل تكتيكي وفني: كيف تطور مركز البرغوث الأرجنتيني؟",
+        "7. جدول الإحصائيات الشامل لمسيرة وأرقام ليونيل ميسي التاريخية",
+        "8. أسئلة شائعة ومثيرة حول صورة ميسى اليوم وأخباره الأخيرة"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: الشغف العالمي المتجدد بـ 'صورة ميسى اليوم'",
+          body: "لا يوجد لاعب في تاريخ الساحرة المستديرة يضاهي ليونيل ميسي في جذب انتباه واهتمام الجماهير في جميع أنحاء المعمورة. حتى بعد سنوات طويلة من الإنجازات المتواصلة وحصد الأخضر واليابس من الألقاب الجماعية والفردية، تظل كلمة البحث 'صورة ميسى اليوم' تتصدر تريندات جوجل ومنصات التواصل الاجتماعي يومياً بانتظام، حيث تبحث الجماهير عن أحدث ظهور وتعبيرات وإيماءات الأسطورة الحية لمعرفة كواليس يومياته ومزاجه ونضجه الرياضي المستمر."
+        }
+      ],
+      faqs: [
+        {
+          q: "أين يلعب ليونيل ميسي حالياً في عام 2026؟",
+          a: "يلعب ليونيل ميسي حالياً في صفوف نادي إنتر ميامي الأمريكي (Inter Miami CF) في الدوري الأمريكي لكرة القدم (MLS)، حيث يقدم مستويات أسطورية ويساهم في نشر اللعبة وشعبيتها بكافة الولايات الأمريكية."
+        },
+        {
+          q: "ما هو سر البحث الدائم عن صورة ميسى اليوم؟",
+          a: "البحث الدائم عن صورة ميسى اليوم يعكس الارتباط العاطفي العميق للجماهير باللاعب، لمتابعة حالته البدنية، وتعبيرات وجهه في التدريبات، وإطلالاته مع عائلته، ورصد أي مؤشرات حول استمراريته في ملاعب كرة القدم أو قراره المنتظر بالاعتزال."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: The Global Fascination with Messi's Image Today",
+        "2. Analyzing Messi's Look & Physical Fitness in 2026",
+        "3. Inter Miami Stardom: Breaking Records in the MLS",
+        "4. International Duty: Leading Argentina in World Cup Prelims",
+        "5. The Tactical Shift: Playmaking from Deep Roles",
+        "6. Complete Career Statistics & Historical Achievements Table",
+        "7. FAQs about Lionel Messi's Recent Photos and News"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: The Global Fascination with Messi's Image Today",
+          body: "Lionel Messi remains the ultimate global sports icon. Even in 2026, any image or photo of the legendary Argentine forward instantly commands the attention of millions worldwide. The query 'Messi's image today' represents more than just curiosity; it reflects a deep, enduring passion for football's greatest storyteller."
+        }
+      ],
+      faqs: [
+        {
+          q: "Where is Lionel Messi playing in 2026?",
+          a: "He is currently starring for Inter Miami CF in the Major League Soccer (MLS), continuing his remarkable goal-scoring and playmaking streak in North America."
+        },
+        {
+          q: "What makes his latest photos trend so rapidly?",
+          a: "As he nears the twilight of his career, fans dissect every training picture, match celebration, and family photo for signs of his physical state, happiness, and hints about the 2026 World Cup."
+        }
+      ]
+    },
+    isHtml: true,
+    htmlBodyAr: `<div class="space-y-6 text-right font-sans" dir="rtl">
+  <p class="text-slate-300 text-sm leading-relaxed">
+    تظل كرة القدم العالمية تبحث دائماً عن الأيقونة والقدوة، ولا أحد يجسد هذا المفهوم أفضل من الأسطورة الأرجنتيني الحي <strong>ليونيل ميسي</strong> (Lionel Messi). حتى مع تقدم السنين وتغير الملاعب من إسبانيا وفرنسا إلى الولايات المتحدة الأمريكية، لا يزال البرغوث يتربع على عرش قلوب الملايين. في كل صباح، يبحث ملايين المشجعين والمهتمين بالرياضة في محركات البحث عن عبارة <strong>صورة ميسى اليوم</strong>، رغبةً منهم في متابعة أحدث تفاصيل حياته، كواليس تدريباته مع نادي إنتر ميامي، حالته البدنية والذهنية، وإطلالاته العائلية المميزة. هذه الصورة لا تمثل مجرد لقطة عابرة، بل هي توثيق يومي لمرحلة نضج أعظم لاعب في التاريخ وهو يستمتع بالساحرة المستديرة بعيداً عن ضغوطات الكرة الأوروبية الصاخبة. وفي هذا المقال الشامل المتوافق مع معايير السيو لعام <strong>2026</strong>، نستعرض كواليس هذه الصور وأسرار اللياقة البدنية والذهنية لميسى اليوم ومسيرته وأرقامه الاستثنائية.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-pink-500/10 to-rose-500/10 border-r-4 border-pink-500 rounded-l-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1 font-sans">⚡️ بطاقة تعريف البرغوث الأرجنتيني ليونيل ميسي</h4>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      الاسم الكامل: ليونيل أندريس ميسي كوتشيتيني. تاريخ الميلاد: 24 يونيو 1987. النادي الحالي: إنتر ميامي الأمريكي. المنتخب: الأرجنتين. الإنجازات الفردية الأبرز: بطل كأس العالم، الحائز على الكرة الذهبية (Ballon d'Or) 8 مرات (رقم قياسي تاريخي)، بطل كوبا أمريكا ودوري أبطال أوروبا والعديد من الألقاب الأسطورية الأخرى.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-pink-500/20 pb-2 mt-8">تحليل لغة الجسد: ماذا تكشف لنا صورة ميسى اليوم؟</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    عندما ننظر بعناية ودقة إلى <strong>صورة ميسى اليوم</strong> الملتقطة في ملاعب التدريب بولاية فلوريدا أو خلال مباريات الدوري الأمريكي، نلاحظ تغييراً جذرياً في تعابير وجهه ولغة جسده مقارنة بالسنوات الماضية التي قضاها في برشلونة أو باريس سان جيرمان.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    تُظهر أحدث الصور ميسي بابتسامة دافئة ومرتخية، تعكس حالة من السلام الداخلي والرضا والهدوء العصبي العميق بعد أن حقق حلمه الأكبر والأهم برفع كأس العالم في قطر. لم يعد ميسي تحت وطأة الضغوط الإعلامية الخانقة والمطالبات اليومية بإنقاذ فريقه، بل يبدو كأنه يمارس كرة القدم من أجل المتعة الخالصة ومشاركة الشغف مع الجماهير الأمريكية الصاعدة. تبرز صوره في التدريبات رفقة صديق عمره لويس سواريز والنجوم الآخرين مثل بوسكيتس وألبا روحاً مرحة تذكرنا ببداياتهم الذهبية في الكامب نو، وهو ما ينعكس إيجاباً على روحه الرياضية وعطائه المستمر داخل العشب الأخضر.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-pink-500/20 pb-2 mt-8">ميسى في عام 2026: كيف تبدو رحلته الأسطورية مع إنتر ميامي؟</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    لقد أحدث انتقال ليونيل ميسي إلى نادي <strong>إنتر ميامي</strong> زلزالاً رياضياً واقتصادياً غير مسبوق في القارة الأمريكية الشمالية. واليوم في عام <strong>2026</strong>، نرى بوضوح ثمار هذه الخطوة التاريخية على مستوى جودة اللعب والتسويق وشعبية اللعبة هناك.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    تُظهر كل <strong>صورة ميسى اليوم</strong> مرتدياً القميص الوردي الشهير لإنتر ميامي مدى التأثير الهائل للبرغوث؛ فالمدرجات ممتلئة بالكامل في كل مباراة، ومشاهير هوليوود وأساطير الرياضات الأخرى يحرصون على التواجد في الصفوف الأولى لمجرد مشاهدة لمسة واحدة من سحره الخاص. على المستوى الفني، قاد ميسي إنتر ميامي لحصد بطولة كأس الدوريات، ودرع المشجعين، والمنافسة بقوة على لقب الدوري الأمريكي الممتاز (MLS Cup)، مسجلاً أهدافاً إعجازية من ركلات حرة مباشرة وتمريرات حاسمة تدرس في أكاديميات كرة القدم العالمية، ليثبت للجميع أن الموهبة الحقيقية لا تشيخ ولا تتأثر بمرور الزمن.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-pink-500/20 pb-2 mt-8">السر الجسدي لليونيل ميسي: اللياقة البدنية والسر في عامه الـ39</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    أحد الأسئلة الشائعة التي يطرحها الباحثون عن <strong>صورة ميسى اليوم</strong> هو: كيف يحافظ ميسي على رشاقته وسرعته وقدرته البدنية العالية على الرغم من بلوغه سن الـ39 عاماً؟
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    يكمن السر في تبني ميسي لأسلوب حياة رياضي صارم ونظام غذائي دقيق يعتمد على البروتينات النظيفة والخضراوات والماء، والابتعاد الكامل عن السكريات والمأكولات المصنعة، وهي الخطة التي وضعها له خبير التغذية الإيطالي الشهير جوليانو بوسير في وقت سابق من مسيرته. بالإضافة إلى ذلك، يعتمد ميسي على تدريبات الاستشفاء العضلي السريع، وجلسات العلاج الطبيعي المكثفة، واستخدام غرف الأكسجين عالي الضغط لتجديد الخلايا العضلية ومكافحة الإجهاد، مما يتيح له تفادي الإصابات العضلية واللعب بمستويات بدنية مستقرة تضاهي لاعبي العشرينيات من عمرهم.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-pink-500/20 pb-2 mt-8">التحليل التكتيكي لأسلوب لعب ميسى اليوم: صانع الألعاب العبقري</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    لم يعد ميسي ذلك الجناح السريع الذي يراوغ خمسة لاعبين على طول الخط؛ بل تحول تكتيكياً إلى "المايسترو" وصانع الألعاب المطلق (Deep-lying Playmaker / Quarterback) الذي يتحكم في إيقاع المباراة بأكملها من وسط الملعب. يتميز أسلوبه التكتيكي الحالي بالخصائص التالية:
+  </p>
+  <ul class="space-y-3 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+    <li>
+      <strong class="text-white">المسح البصري المستمر للميدان (Scanning):</strong> يقوم ميسي بمسح بصري متواصل لأرجاء الملعب بمعدل مرتين إلى ثلاث مرات قبل استلام الكرة، مما يتيح له تكوين خريطة ذهنية متكاملة لمواقع زملائه ومدافعي الخصم والتمرير بدقة بالغة من لمسة واحدة.
+    </li>
+    <li>
+      <strong class="text-white">السير والمباغتة (Walking Soccer):</strong> يلاحظ الجماهير في صوره ومقاطعه كثرة المشي في الملعب؛ وهذا ليس كسلاً بل هو تكتيك ذكي لدراسة الثغرات الدفاعية وفصل نفسه عن الرقابة اللصيقة، ثم الانفجار المفاجئ بالسرعة القصوى في اللحظة المناسبة لصناعة الهجمة أو التسديد.
+    </li>
+    <li>
+      <strong class="text-white">الكرات الساقطة خلف المدافعين (Lobbed Passes):</strong> أصبحت هذه اللمسة بمثابة ماركة مسجلة باسم ميسي، حيث يرسل كرات هوائية ساقطة تضرب التكتلات الدفاعية وتضع الأجنحة والمهاجمين في مواجهة مباشرة مع حارس المرمى بنعومة فائقة.
+    </li>
+  </ul>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-pink-500/20 pb-2 mt-8">جدول الإحصائيات الشامل والأرقام التاريخية لليونيل ميسي</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    يرصد الجدول التالي بالتفصيل والأرقام الموثقة المسيرة التاريخية والتهديفية الخارقة للبرغوث الأرجنتيني عبر مختلف محطاته الكروية الأسطورية:
+  </p>
+  <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+    <table class="w-full text-xs text-slate-300 text-right">
+      <thead class="bg-pink-950 text-white font-bold">
+        <tr>
+          <th class="p-3">المحطة الكروية / النادي</th>
+          <th class="p-3">الفترة الزمنية</th>
+          <th class="p-3">المباريات الإجمالية</th>
+          <th class="p-3">الأهداف المسجلة</th>
+          <th class="p-3">التمريرات الحاسمة (Asst)</th>
+          <th class="p-3">أبرز الألقاب والبطولات الجماعية</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-800">
+        <tr>
+          <td class="p-3 font-bold text-pink-400">برشلونة الإسباني (FC Barcelona)</td>
+          <td class="p-3">2004 - 2021</td>
+          <td class="p-3">778 مباراة</td>
+          <td class="p-3">672 هدفاً</td>
+          <td class="p-3">305 صناعة</td>
+          <td class="p-3 text-slate-400">الدوري الإسباني (10 مرات)، دوري أبطال أوروبا (4 مرات)، كأس ملك إسبانيا (7 مرات)</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-pink-400">باريس سان جيرمان (PSG)</td>
+          <td class="p-3">2021 - 2023</td>
+          <td class="p-3">75 مباراة</td>
+          <td class="p-3">32 هدفاً</td>
+          <td class="p-3">35 صناعة</td>
+          <td class="p-3 text-slate-400">الدوري الفرنسي الممتاز (مرتين)، كأس السوبر الفرنسي</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-pink-400">إنتر ميامي الأمريكي (Inter Miami)</td>
+          <td class="p-3">2023 - 2026</td>
+          <td class="p-3">85 مباراة</td>
+          <td class="p-3">64 هدفاً</td>
+          <td class="p-3">42 صناعة</td>
+          <td class="p-3 text-slate-400">كأس الدوريات (Leagues Cup)، درع المشجعين (Supporters' Shield)</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-pink-400">منتخب الأرجنتين الأول (La Albiceleste)</td>
+          <td class="p-3">2005 - 2026</td>
+          <td class="p-3">187 مباراة دولية</td>
+          <td class="p-3">112 هدفاً دولياً</td>
+          <td class="p-3">58 صناعة</td>
+          <td class="p-3 text-slate-400">بطل كأس العالم 2022، بطل كوبا أمريكا (مرتين)، بطل كأس الفيناليسيما، ذهبية أولمبياد بكين</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-pink-500/20 pb-2 mt-8">حياة ميسي العائلية: سر الاستقرار النفسي وصوره مع عائلته</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    وراء كل لقطة متألقة وناجحة لـ <strong>صورة ميسى اليوم</strong> تكمن حياة عائلية مستقرة وهادئة مبنية على الحب والمساندة المتبادلة. يحرص ميسي دائماً على قضاء جل أوقات فراغه رفقة زوجته وأولادهم الثلاثة (تياغو، ماتيو، وتشيرو).
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    تُجمع الجماهير على أن استقراره العائلي وزواجه الناجح من حب طفولته أنطونيلا روكوزو كانا بمثابة الدرع الحامي له من الضغوطات والإحباطات النفسية طوال فترات مسيرته الصعبة؛ فالصور التي ينشرها ميسي بانتظام وهو يشرب "المتة" الأرجنتينية الشهيرة في حديقة منزله بميامي، أو يتابع مباريات أبنائه في أكاديمية إنتر ميامي للشباب، تظهر بوضوح تواضعه وعشقه لدور الأب البسيط، مما يجعله نموذجاً ملهماً للشباب داخل وخارج المستطيل الأخضر.
+  </p>
+
+  <div class="bg-pink-500/5 p-4 rounded-2xl border border-pink-500/20 space-y-2 mt-8">
+    <h3 class="text-sm font-black text-white font-sans">🔮 الخلاصة والتأصيل السيو لملف ليونيل ميسي لعام 2026</h3>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      في الختام، يتبين لنا بوضوح أن البحث الدائم عن <strong>صورة ميسى اليوم</strong> ليس مجرد تريند عابر بل هو ارتباط وجداني وأبدي للجماهير بلاعب أعاد تعريف معايير كرة القدم بأكملها. إن ميسي اليوم في عام <strong>2026</strong>، يمثل الصورة المثالية للبطل الأسطوري الذي انتصر على كافة التحديات وحقق كل الأحلام، ويسعى حالياً للاستمتاع بما تبقى له من سنوات في الملاعب، معيداً كتابة التاريخ بلمسات سحرية ناعمة ستظل تروى لأجيال وأجيال قادمة كأجمل فصول الساحرة المستديرة.
+    </p>
+  </div>
+</div>`,
+    htmlBodyEn: `<div class="space-y-6 text-left font-sans" dir="ltr">
+  <p class="text-slate-300 text-sm leading-relaxed first-letter:text-3xl first-letter:font-bold first-letter:text-pink-500">
+    Lionel Messi continues to redefine sports immortality. Even today in <strong>2026</strong>, as he stars for Inter Miami CF, any release of <strong>"Messi's image today"</strong> instantly trends across millions of social media dashboards and Google search listings worldwide. Overcoming all pressure, the legendary eight-time Ballon d'Or winner carries a look of ultimate inner peace, satisfaction, and profound footballing joy. This comprehensive 2026 guide covers his tactical transition, training fitness, family stability, and career milestones.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-pink-500/10 to-rose-500/10 border-l-4 border-pink-500 rounded-r-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1">⚡️ Profile: Lionel Messi in 2026</h4>
+    <p class="text-xs text-slate-300 leading-relaxed">
+      Born June 24, 1987, in Rosario, Argentina. Currently playing as a deep-lying playmaker for Inter Miami CF in Major League Soccer, Messi remains highly active at the age of 39, showcasing a masterpiece of physical longevity.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-pink-500/20 pb-2 mt-8">The Tactical Evolution and MLS Glory</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    By transitioning from a speedy winger into a deep playmaker, Messi controls games effortlessly, relying on supreme spatial scanning and walking patterns to exploit gaps. In MLS, his presence alongside Luis Suarez, Sergio Busquets, and Jordi Alba has captured North American sports culture, making Inter Miami one of the most followed clubs globally.
+  </p>
+</div>`
+  },
   {
     id: "art-marc-cucurella-2026",
     slug: "marc-cucurella-age-stats-career-2026",

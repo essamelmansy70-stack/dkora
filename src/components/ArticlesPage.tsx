@@ -21,6 +21,8 @@ import messiYamalComparisonCover from '../assets/images/messi_yamal_comparison_1
 import ahmedFatouhCover from '../assets/images/ahmed_fatouh_zamalek_1783901713561.jpg';
 import michaelOliseStar from '../assets/images/michael_olise_star_1783903784448.jpg';
 import davidTrezeguetStar from '../assets/images/david_trezeguet_star_1783995832415.jpg';
+import robertoCarlosLegend from '../assets/images/roberto_carlos_legend_1784002714325.jpg';
+import cucurellaChelseaStar from '../assets/images/cucurella_chelsea_star_1784086524546.jpg';
 
 interface Article {
   id: string;
@@ -63,6 +65,454 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-marc-cucurella-2026",
+    slug: "marc-cucurella-age-stats-career-2026",
+    categoryAr: "سير النجوم واللاعبين",
+    categoryEn: "Player Profiles",
+    titleAr: "كوكوريا كم عمره؟ دليل شامل لمسيرة ونشأة وعمر الأسطورة الإسبانية مارك كوكوريا لعام 2026",
+    titleEn: "Marc Cucurella: How Old Is He? Complete 2026 Age, Stats & Career Guide",
+    descAr: "تقرير سيو شامل ومفصل يجيب بدقة على السؤال الشهير 'كوكوريا كم عمره' لعام 2026، مستعرضاً تاريخ ميلاده، تفاصيل نشأته في لاماسيا، مسيرته مع تشيلسي وبرايتون، وتألقه التاريخي مع منتخب إسبانيا.",
+    descEn: "Comprehensive 2026 guide answering 'How old is Marc Cucurella?', exploring his birthdate, early life in La Masia, Premier League brilliance with Chelsea, and Spain Euro triumph.",
+    keywordsAr: [
+      "كوكوريا كم عمره",
+      "كم عمر كوكوريا",
+      "مارك كوكوريا",
+      "عمر مارك كوكوريا",
+      "مارك كوكوريا تشيلسي",
+      "كوكوريا منتخب إسبانيا",
+      "مارك كوكوريا يورو 2024",
+      "إحصائيات كوكوريا"
+    ],
+    keywordsEn: [
+      "how old is marc cucurella",
+      "marc cucurella age 2026",
+      "cucurella chelsea stats",
+      "marc cucurella spain team",
+      "cucurella height and weight"
+    ],
+    image: cucurellaChelseaStar,
+    date: "2026-07-14",
+    readTime: "12 min read",
+    contentAr: {
+      toc: [
+        "1. مقدمة: من هو الظهير الإسباني الطائر مارك كوكوريا؟",
+        "2. كوكوريا كم عمره؟ الإجابة الحاسمة والتفصيلية لعام 2026",
+        "3. الجذور والنشأة: البداية الذهبية في أكاديمية لاماسيا ببرشلونة",
+        "4. الرحلة الاحترافية: كيف شق كوكوريا طريقه نحو الدوري الإنجليزي الممتاز؟",
+        "5. الانتقال التاريخي إلى تشيلسي: التحديات والنهوض مجدداً بقوة",
+        "6. المجد الدولي: مارك كوكوريا صانع ربيع منتخب إسبانيا في يورو 2024",
+        "7. أسلوب اللعب والخصائص البدنية: طاقة لا تنضب في الجهة اليسرى",
+        "8. جدول إحصائيات وأرقام مارك كوكوريا مع الأندية والمنتخب",
+        "9. أسئلة شائعة ومتكررة حول الأسطورة مارك كوكوريا"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: من هو الظهير الإسباني الطائر مارك كوكوريا؟",
+          body: "يُعتبر اللاعب الإسباني مارك كوكوريا ساسنيتا (Marc Cucurella) أحد أبرز وأكثر مدافعي الجناح الأيسر إثارة للجدل والإعجاب في كرة القدم العالمية الحديثة. بفضل روحه القتالية العالية وشعره الطويل المجعد الأيقوني الذي يجعله لافتاً للأنظار في أي بقعة على المستطيل الأخضر، استطاع هذا النجم الشاب أن يحفر اسمه بأحرف من ذهب كأحد أهم أسلحة نادي تشيلسي الإنجليزي والمنتخب الإسباني الأول لكرة القدم."
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هو تاريخ ميلاد مارك كوكوريا الدقيق؟",
+          a: "ولد مارك كوكوريا في تاريخ 22 يوليو عام 1998 في بلدة أليلا بمقاطعة كتالونيا الإسبانية."
+        },
+        {
+          q: "ما هو سر قصة شعر مارك كوكوريا الكثيفة والمميزة؟",
+          a: "صرح مارك كوكوريا في العديد من المقابلات الصحفية بأن قصة شعره هي بمثابة تميمة حظ وعلامة تجارية خاصة به بدأت منذ طفولته بتشجيع من والدته، وهو يرفض تماماً فكرة قصه لكونه يميزه بوضوح بين الجماهير واللاعبين على أرضية الملعب."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: Who is Marc Cucurella?",
+        "2. How Old is Marc Cucurella? The Exact 2026 Answer",
+        "3. Roots & Early Life: The La Masia Football Academy Years",
+        "4. Premier League Breakthrough: Brighton and Chelsea Journeys",
+        "5. International Glory: Redefining Spain's Left Flank",
+        "6. Tactical Analysis: Work Rate, Tenacity and Curly Hair Power",
+        "7. Comprehensive Career Statistics Table",
+        "8. Frequently Asked Questions about Marc Cucurella"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: Who is Marc Cucurella?",
+          body: "Marc Cucurella Sasneta has established himself as one of the most tenacious, dynamic, and recognizable left-backs in modern European football. Easily identified by his iconic, voluminous curly hair and explosive work rate, the Chelsea and Spanish international defender has become a vital tactical asset for club and country."
+        }
+      ],
+      faqs: [
+        {
+          q: "When was Marc Cucurella born?",
+          a: "He was born on July 22, 1998, in Alella, Catalonia, Spain."
+        },
+        {
+          q: "Did Cucurella win Euro 2024 with Spain?",
+          a: "Yes, he was one of the tournament's absolute standout performers, starting the final and assisting the winning goal scored by Mikel Oyarzabal against England."
+        }
+      ]
+    },
+    isHtml: true,
+    htmlBodyAr: `<div class="space-y-6 text-right font-sans" dir="rtl">
+  <p class="text-slate-300 text-sm leading-relaxed">
+    تزخر كرة القدم الأوروبية بالمدافعين الأقوياء، ولكن قليلاً ما نجد ظهيراً يجمع بين المهارة الكتالونية الكلاسيكية، والروح القتالية البدنية التي لا تكل، والشخصية الكاريزمية الجاذبة للجماهير؛ وكل هذه الصفات تجتمع بوضوح في النجم الإسباني الأسطوري <strong>مارك كوكوريا</strong> (Marc Cucurella). من يتابع مباريات الدوري الإنجليزي الممتاز لكرة القدم أو منافسات المنتخبات الأوروبية، يدرك تماماً القيمة الفنية الهائلة لهذا اللاعب ذي الشعر المجعد الطويل الأيقوني الذي يجري في كل مكان طوال الـ90 دقيقة دون تعب. ومع تصاعد شعبيته الجارفة، يتساءل ملايين العشاق والمتابعين باستمرار عبر محركات البحث: <strong>كوكوريا كم عمره</strong>؟ وما هي كواليس نشأته ومسيرته الاحترافية وأبرز أرقامه لعام <strong>2026</strong>؟ في هذا التقرير الشامل المتكامل والمتوافق تماماً مع قواعد السيو الحديثة، نجيبكم بالتفصيل والتوثيق بالأرقام والتواريخ عن كل ما يخص النجم الإسباني مارك كوكوريا.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border-r-4 border-cyan-500 rounded-l-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1 font-sans">⚡️ بطاقة الهوية الرياضية للاعب مارك كوكوريا</h4>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      الاسم الكامل: مارك كوكوريا ساسنيتا. مكان الولادة: أليلا، إسبانيا. الطول: 1.73 م. المركز الأساسي: ظهير أيسر / جناح أيسر متقدم. يلعب حالياً لنادي تشيلسي الإنجليزي ويرتدي القميص رقم 3، وهو أحد الأعمدة الدفاعية الرئيسية لمنتخب إسبانيا الأول لكرة القدم وصاحب التمريرة الحاسمة لركيزة الفوز ببطولة يورو الأخيرة.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-cyan-500/20 pb-2 mt-8">كوكوريا كم عمره؟ الإجابة الدقيقة والحاسمة لعام 2026</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    للإجابة بشكل حاسم على السؤال الأكثر بحثاً <strong>كوكوريا كم عمره</strong>؛ ولد اللاعب مارك كوكوريا في <strong>22 يوليو 1998</strong>.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    بناءً على تاريخنا الحالي في يوليو <strong>2026</strong>، يبلغ عمر مارك كوكوريا حالياً <strong>27 عاماً</strong>، وسيدخل عامه الـ28 في غضون أيام قليلة وتحديداً في الثاني والعشرين من شهر يوليو الجاري. هذا العمر يمثل قمة العطاء الكروي والبدني ونضج الفكر التكتيكي للاعبي كرة القدم، مما يفسر سبب ثبات أدائه الدفاعي والهجومي الرائع والمستقر مع البلوز والمنتخب الوطني ليكون في مصاف النخبة عالمياً.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-cyan-500/20 pb-2 mt-8">الجذور والنشأة الكتالونية: كيف صقلته أكاديمية "لاماسيا" الأسطورية؟</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    نشأ مارك كوكوريا في بلدة أليلا الصغيرة بمقاطعة كتالونيا القريبة من برشلونة. انطلق شغفه بالكرة منذ طفولته المبكرة وبدأ مسيرته في كرة الصالات (Futsal) التي ساعدته على تطوير مهارات التحكم والسيطرة الرائعة في المساحات الضيقة للغاية.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    سرعان ما تم رصد موهبته الفذة من قبل كشافي نادي إسبانيول، حيث قضى معهم عدة سنوات قبل أن يدرك كشافو غريمه التقليدي <strong>برشلونة</strong> قيمته الكبيرة؛ لينضم في عام 2012 إلى أكاديمية "لاماسيا" الأسطورية وهو بعمر الرابعة عشرة. تدرج كوكوريا في الفئات السنية المختلفة لبرشلونة، حيث تم صقل موهبته وتدريبه على فلسفة الاستحواذ والتمرير السريع والضغط العكسي الذكي التي تميز مدرسة البلوغرانا. على الرغم من تميزه الشديد مع فريق برشلونة الرديف (Barcelona B)، إلا أن صعوبة حجز مكان أساسي بالفريق الأول في ظل وجود المخضرم جوردي ألبا دفعت كوكوريا للبحث عن فرص جديدة ومستقبل أفضل خارج أسوار الكامب نو.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-cyan-500/20 pb-2 mt-8">الانفجار والبريق: الرحلة الإسبانية والتحليق نحو البريميرليغ</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    لم ييأس كوكوريا بل اتخذ من الخروج من برشلونة دافعاً لإثبات نفسه. انتقل بنظام الإعارة إلى نادي <strong>إيبار</strong> في موسم 2018-2019 وقدم مستويات مذهلة تحت قيادة المدرب خوسيه لويس مينديليبار، حيث لعب كجناح أيسر صريح وساهم بقوة في الفوز التاريخي لإيبار على ريال مدريد بثلاثية نظيفة.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    بعد ذلك، انتقل إلى نادي <strong>خيتافي</strong> الذي قرر تفعيل خيار الشراء النهائي مقابل 10 ملايين يورو. هناك، تحول كوكوريا إلى آلة ضغط مرعبة ومنفذ مثالي لتعليمات المدرب خوسيه بوردالاس الدفاعية القاسية، مما جلب إليه أنظار الأندية الإنجليزية الكبرى الباحثة عن الروح القتالية والسرعة البدنية الفائقة.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    في صيف عام 2021، حزم كوكوريا حقائبه متجهاً إلى أقوى دوري في العالم بالانضمام لنادي <strong>برايتون آند هوف ألبيون</strong> بصفقة بلغت 18 مليون يورو. تحت قيادة المدرب العبقري غراهام بوتر، قدم مارك كوكوريا موسماً تاريخياً حصد فيه جائزة أفضل لاعب في الموسم بنادي برايتون متفوقاً على كافة النجوم، وبات حديث وسائل الإعلام الإنجليزية ومطمعاً لأكبر أندية البريميرليغ بفضل ذكائه التكتيكي وقدرته الفريدة على شغل مركزي الظهير الأيسر ومدافع قلب الدفاع الثالث بمرونة غير عادية.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-cyan-500/20 pb-2 mt-8">مرحلة تشيلسي: صعود كوكوريا والتحديات العاصفة في الستامفورد بريدج</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    في صيف عام 2022، وبعد صراع مرير ومنافسة شرسة بين مانشستر سيتي وتشيلسي، نجح النادي اللندني <strong>تشيلسي</strong> في حسم الصفقة لصالحه مقابل مبلغ قياسي ناهز الـ 65 مليون يورو كأحد أغلى المدافعين في تاريخ الدوري الإنجليزي الممتاز.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    البداية لم تكن ممهدة بالورود؛ إذ واجه كوكوريا في موسمه الأول ضغوطاً إعلامية هائلة بالتزامن مع فترة عدم الاستقرار الفني وتغيير المدربين المتلاحق في تشيلسي، بالإضافة إلى تعرضه لوعكة صحية شديدة أفقدته بعضاً من وزنه وقوته البدنية. لكن بحلول نهاية عام 2023 ومطلع عام 2024، وبتوجيهات من المدربين المتعاقبين وثقته الكبيرة بنفسه، استعاد كوكوريا بريقه الخارق وصار ركيزة أساسية لا تُمحى في تشكيلة البلوز. يتميز كوكوريا لعام <strong>2026</strong> بنضج دفاعي مبهر وتحول رائع من مركز الظهير الكلاسيكي إلى الظهير الوهمي (Inverted Full-back) الذي يدخل لعمق الملعب للمساهمة في بناء الهجمات وتأمين خط الوسط، وهو الأسلوب التكتيكي الحديث الذي يفضله كبار مدربي العالم حالياً.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-cyan-500/20 pb-2 mt-8">المجد الدولي: مارك كوكوريا البطل القومي وصاحب فرحة يورو التاريخية</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    إذا كانت مسيرته مع الأندية رائعة، فإن قصة مارك كوكوريا مع <strong>منتخب إسبانيا</strong> الأول تماثل الحكايات الخيالية. فعلى الرغم من غيابه عن الواجهة الدولية لبعض الفترات، قرر مدرب لاروخا لويس دي لا فوينتي الاستعانة به وضمه لتشكيلة منتخب إسبانيا الرسمية المشاركة في نهائيات كأس أمم أوروبا الأخيرة.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    هناك في ألمانيا، فاجأ كوكوريا العالم كله وصار المفاجأة السعيدة والبطاقة الرابحة الأهم لإسبانيا طوال البطولة. لعب بروح فدائية أدهشت الخصوم وقطع الكرات ببراعة فائقة من أمام أعتى الأجنحة الهجومية في العالم. وتوج كوكوريا مسيرته الإعجازية في المباراة النهائية بصناعة هدف الفوز واللقب القاتل للبديل ميكل أويارزابال ضد منتخب إنجلترا، ليعلن تتويج إسبانيا باللقب القاري الغالي وتدوين اسمه كبطل قومي متوج بقلوب الملايين وصاحب مكانة راسخة في التشكيلة المثالية للقارة العجوز.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-cyan-500/20 pb-2 mt-8">جدول أرقام وإحصائيات مارك كوكوريا التاريخية</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    يسرد الجدول التالي بالتفصيل والأرقام الدقيقة المحطات والمساهمات التهديفية والدفاعية البارزة للنجم مارك كوكوريا عبر الأندية والمنتخب الوطني:
+  </p>
+  <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+    <table class="w-full text-xs text-slate-300 text-right">
+      <thead class="bg-slate-900 text-white font-bold">
+        <tr>
+          <th class="p-3">المحطة الكروية / الفريق</th>
+          <th class="p-3">الفترة الزمنية</th>
+          <th class="p-3">المباريات الإجمالية</th>
+          <th class="p-3">الأهداف والصناعة</th>
+          <th class="p-3">الإنجازات والجوائز والألقاب الكبرى</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-800">
+        <tr>
+          <td class="p-3 font-bold text-cyan-400">برشلونة ب وإيبار (إسبانيا)</td>
+          <td class="p-3">2016 - 2019</td>
+          <td class="p-3">92 مباراة</td>
+          <td class="p-3">3 أهداف / 9 صناعة</td>
+          <td class="p-3 text-slate-400">التدرج في الفئات السنية وتطوير اللمسة الكتالونية الفنية وتألق تاريخي ضد ريال مدريد</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-cyan-400">خيتافي (Getafe)</td>
+          <td class="p-3">2019 - 2021</td>
+          <td class="p-3">86 مباراة</td>
+          <td class="p-3">4 أهداف / 8 صناعة</td>
+          <td class="p-3 text-slate-400">المشاركة التاريخية في الدوري الأوروبي وبناء المنظومة الدفاعية الحديدية والصلابة البدنية القوية</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-cyan-400">برايتون الإنجليزي (Brighton)</td>
+          <td class="p-3">2021 - 2022</td>
+          <td class="p-3">38 مباراة</td>
+          <td class="p-3">هدف واحد / 2 صناعة</td>
+          <td class="p-3 text-slate-400">الفوز بجائزة لاعب العام في نادي برايتون وجذب أنظار كبار الدوري الإنجليزي الممتاز والمدربين الكبار</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-cyan-400">تشيلسي اللندني (Chelsea)</td>
+          <td class="p-3">2022 - 2026</td>
+          <td class="p-3">125 مباراة</td>
+          <td class="p-3">4 أهداف / 11 صناعة</td>
+          <td class="p-3 text-slate-400">استعادة البريق الدفاعي وشغل مركز الظهير الوهمي ببراعة كبرى وتقديم توازن دفاعي هائل وممتاز</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-cyan-400">منتخب إسبانيا الأول (La Roja)</td>
+          <td class="p-3">2021 - 2026</td>
+          <td class="p-3">28 مباراة دولية</td>
+          <td class="p-3">هدف واحد / 5 صناعة</td>
+          <td class="p-3 text-slate-400">بطل كأس أمم أوروبا (يورو)، وصناعة هدف التتويج بالنهائي والتشكيلة المثالية للبطولة القارية الغالية</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-cyan-500/20 pb-2 mt-8">الخصائص التكتيكية لأسلوب مارك كوكوريا: طاقة جينية فريدة</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    يتجاوز نجاح مارك كوكوريا مجرد إجابة عابرة للسؤال <strong>كوكوريا كم عمره</strong>؛ بل يكمن السر الحقيقي في جيناته الرياضية وقدرته الفائقة على تلبية المتطلبات الحديثة لمركز الظهير الأيسر:
+  </p>
+  <ul class="space-y-3 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+    <li>
+      <strong class="text-white">معدل العمل والركض اللانهائي (Work Rate):</strong> يتمتع كوكوريا بلياقة بدنية مرعبة تسمح له بتغطية الرواق الأيسر بالكامل طوال المباراة هجوماً ودفاعاً والعودة سريعاً لتغطية زملائه وإحباط الهجمات المعاكسة السريعة.
+    </li>
+    <li>
+      <strong class="text-white">الظهير الوهمي الذكي (Inverted Full-back):</strong> تحت قيادة الفكر التكتيكي المتطور، يجيد كوكوريا الدخول كلاعب وسط إضافي لمساندة الارتكاز وبناء اللعب والتمرير القصير، مما يعطي فريقه تفوقاً عددياً هائلاً في وسط الميدان.
+    </li>
+    <li>
+      <strong class="text-white">الصلابة في المواجهات المباشرة (1v1 Defending):</strong> يصعب للغاية على أجنحة الخصم المرور من كوكوريا بفضل شراسته البدنية وتوقيته الممتاز في قطع الكرة وتضييق المساحات على حامل الكرة لمنع العرضيات والتسديدات.
+    </li>
+  </ul>
+
+  <div class="bg-cyan-500/5 p-4 rounded-2xl border border-cyan-500/20 space-y-2 mt-8">
+    <h3 class="text-sm font-black text-white font-sans">🔮 الخلاصة والتأصيل السيو للاعب مارك كوكوريا</h3>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      في نهاية هذا الدليل المتكامل لعام <strong>2026</strong>، نكون قد أجبنا بوضوح تام على استفساركم <strong>كوكوريا كم عمره</strong> والذي يبلغ حالياً <strong>27 عاماً</strong>، مستعرضين محطاته الاستثنائية وتفاصيل نشأته وقصته الأسطورية. يبرهن مارك كوكوريا يوماً بعد يوم أن الإصرار والالتزام والروح الرياضية العالية قادرة على تفتيت كافة الصعاب والانتقادات الإعلامية والوصول بالفرد إلى مصاف أساطير كرة القدم الخالدين الذين لا تمحو أرقامهم السنين أبداً.
+    </p>
+  </div>
+</div>`,
+    htmlBodyEn: `<div class="space-y-6 text-left font-sans" dir="ltr">
+  <p class="text-slate-300 text-sm leading-relaxed first-letter:text-3xl first-letter:font-bold first-letter:text-cyan-500">
+    In modern football, few players demonstrate as much raw energy, tenacity, and distinct charisma as Chelsea’s Spanish left-back <strong>Marc Cucurella</strong>. Recognized immediately by his magnificent, wild curly hair and high-octane performance, Cucurella has become an indispensable figure for both Chelsea and the Spanish national team. This comprehensive <strong>2026</strong> guide answers the popular query <strong>"How old is Cucurella?"</strong>, while providing a detailed breakdown of his youth, professional rise, career statistics, and tactical flexibility.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border-l-4 border-cyan-500 rounded-r-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1">⚡️ Player Profile: Marc Cucurella</h4>
+    <p class="text-xs text-slate-300 leading-relaxed">
+      Born on July 22, 1998, in Alella, Spain, Cucurella stands at 1.73m. Today in 2026, he is 27 years old, playing at the absolute peak of his footballing capability. Overcoming initial hurdles, he secured his place among the world's finest left-backs with a stellar Euro 2024 triumph.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-cyan-500/20 pb-2 mt-8">The La Masia Roots & Premier League Stardom</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    Hailing from Barcelona's world-famous La Masia academy, Cucurella refined his exquisite ball control and quick-passing style before making his mark in La Liga with Eibar and Getafe. His highly-publicized move to Brighton in 2021 paved the way for his mega-transfer to Chelsea in 2022, where he successfully adapted to the Inverted Full-back role. His defensive masterclass and game-winning assist in the Euro 2024 final against England earned him legendary status across Spain.
+  </p>
+</div>`
+  },
+  {
+    id: "art-roberto-carlos-2022",
+    slug: "roberto-carlos-2022-legendary-career-and-stats",
+    categoryAr: "سير النجوم واللاعبين",
+    categoryEn: "Player Profiles",
+    titleAr: "روبرتو كارلوس2022: مسيرة المدفعجي البرازيلي وتحليل الأسطورة التي لا تتكرر",
+    titleEn: "Roberto Carlos 2022: The Brazilian Bullet's Legacy, Career & Modern Physics",
+    descAr: "مقال سيو تفصيلي من 1000 كلمة يحلل مسيرة روبرتو كارلوس، مع التركيز على الكلمة المفتاحية 'روبرتو كارلوس2022' وكواليسه كسفير لمونديال 2022 ومشاركته الشهيرة في دوري الهواة.",
+    descEn: "In-depth 1000-word SEO article exploring the legendary career of Roberto Carlos, focusing on his 2022 World Cup ambassador details and tactical masterclass.",
+    keywordsAr: [
+      "روبرتو كارلوس2022",
+      "روبرتو كارلوس",
+      "أهداف روبرتو كارلوس",
+      "تسديدة روبرتو كارلوس ضد فرنسا",
+      "روبرتو كارلوس ريال مدريد",
+      "إحصائيات روبرتو كارلوس",
+      "أسرع تسديدة لروبرتو كارلوس",
+      "روبرتو كارلوس في كأس العالم"
+    ],
+    keywordsEn: [
+      "roberto carlos 2022",
+      "roberto carlos",
+      "roberto carlos free kick",
+      "roberto carlos stats",
+      "roberto carlos real madrid"
+    ],
+    image: robertoCarlosLegend,
+    date: "2026-07-13",
+    readTime: "14 min read",
+    contentAr: {
+      toc: [
+        "1. مقدمة: من هو الأسطورة روبرتو كارلوس؟",
+        "2. لغز الكلمة المفتاحية روبرتو كارلوس2022: حضور بارز ومشاركة خيالية",
+        "3. الفيزياء تتحدى المنطق: كواليس الضربة الحرة الإعجازية ضد فرنسا",
+        "4. العصر الذهبي مع ريال مدريد: الجناح الطائر في كتيبة الجالكتيكوس",
+        "5. مسيرة المجد مع السامبا البرازيلية: من كأس العالم 1998 إلى قمة 2002",
+        "6. تحليل تكتيكي: كيف غير روبرتو كارلوس مفهوم الظهير الأيسر الحديث؟",
+        "7. إحصائيات وأرقام قياسية لا تُنسى في تاريخ المدفعجي البرازيلي",
+        "8. أسئلة شائعة حول الأسطورة روبرتو كارلوس2022"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: من هو الأسطورة روبرتو كارلوس؟",
+          body: "يُعتبر روبرتو كارلوس دا سيلفا روكا (Roberto Carlos) واحداً من أعظم المدافعين وأكثر الأظهرة اليسارية تأثيراً في تاريخ كرة القدم العالمية. بفضل عضلات فخذيه القوية التي تخطى محيطها 60 سنتيمتراً، وقدرته الرهيبة على إطلاق تسديدات صاروخية تجاوزت سرعتها 137 كيلومتراً في الساعة، رسم النجم البرازيلي حقبة كروية فريدة من نوعها امتزج فيها الدفاع الصلب بالهجوم المدمر والمهارة الاستثنائية التي طالما أسعدت عشاق الساحرة المستديرة."
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هي السرعة القصوى لتسديدات روبرتو كارلوس؟",
+          a: "تجاوزت بعض تسديدات روبرتو كارلوس حاجز 137 كيلومتراً في الساعة، ولعل أبرزها ركلته الحرة التاريخية ضد منتخب فرنسا في بطولة فرنسا الدولية الودية عام 1997."
+        },
+        {
+          q: "ما هي تفاصيل قصة روبرتو كارلوس2022 في إنجلترا؟",
+          a: "في أوائل عام 2022، أحدث روبرتو كارلوس ضجة إعلامية هائلة بمشاركته في مباراة رسمية مع فريق هواة إنجليزي يسمى 'بول إن ذا بارن' بعد فوزهم بمسابقة يانصيب خيرية، حيث دخل كبديل وسجل ركلة جزاء وسط أجواء احتفالية رائعة."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: Who is Roberto Carlos?",
+        "2. The Story Behind Roberto Carlos 2022: World Cup & Sunday League",
+        "3. Defying Physics: The Legendary Impossible Free Kick against France",
+        "4. Real Madrid Era: The Flying Full-Back in Galácticos",
+        "5. International Glory with Brazil: From 1998 Heartbreak to 2002 Triumph",
+        "6. Tactical Blueprint: How He Redefined the Left-Back Role",
+        "7. Career Statistics and Records of the Brazilian Bullet",
+        "8. Frequently Asked Questions about Roberto Carlos 2022"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: Who is Roberto Carlos?",
+          body: "Widely regarded as the greatest left-back in the history of football, Roberto Carlos redefined the defensive position with his incredible athleticism, overlapping runs, and a lethal left foot that launched physics-defying free kicks at over 137 km/h."
+        }
+      ],
+      faqs: [
+        {
+          q: "How fast did Roberto Carlos kick the football?",
+          a: "Roberto Carlos has clocked shots at speeds exceeding 137 km/h (85 mph), with his most famous rocket occurring during the 1997 Tournoi de France against France."
+        },
+        {
+          q: "What is the Sunday League story of Roberto Carlos in 2022?",
+          a: "In early 2022, Roberto Carlos signed for a Shrewsbury-based Sunday League pub team, Bull in the Barne United, for a one-off charity match, causing a massive internet sensation."
+        }
+      ]
+    },
+    isHtml: true,
+    htmlBodyAr: `<div class="space-y-6 text-right font-sans" dir="rtl">
+  <p class="text-slate-300 text-sm leading-relaxed">
+    تتعدد أسماء المدافعين والأجنحة الطائرة في ذاكرة كرة القدم العالمية، ولكن يبقى هناك اسم واحد ينبض بالإثارة والقوة كلما ذُكرت الضربات الحرة البعيدة والسرعات الفائقة؛ إنه الأسطورة البرازيلية <strong>روبرتو كارلوس</strong> (Roberto Carlos). يعتبر هذا النجم الفذ بمثابة ثورة تكتيكية متحركة في مركز الظهير الأيسر، إذ استطاع طوال مسيرته الحافلة أن يمزج بين الصلابة الدفاعية المطلقة والنزعة الهجومية الجريئة التي جعلته أشبه بمهاجم إضافي مباغت. ومع حلول عام <strong>روبرتو كارلوس2022</strong>، عادت الأضواء لتسلط بقوة على هذا الإرث الذهبي الخالد، بالتزامن مع مرور عقدين كاملين على تتويجه بمونديال كوريا واليابان 2002، وظهوره اللامع في الفعاليات الدولية وسفيرًا فوق العادة للاتحاد الدولي لكرة القدم (FIFA) في مونديال قطر 2022. وفي هذا المقال الشامل المتوافق مع أحدث معايير السيو لعام <strong>2026</strong>، سنتعرف بالتفصيل على كواليس هذه المسيرة الاستثنائية، وأسرار جاذبية الظهير الطائر ومساهماته التي لا تُمحى من تاريخ كرة القدم.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-yellow-500/10 to-green-500/10 border-r-4 border-yellow-500 rounded-l-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1 font-sans">⚡️ بطاقة الأسطورة روبرتو كارلوس الفنية</h4>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      ولد روبرتو كارلوس في 10 أبريل 1973 في غارسا، ساو باولو، البرازيل. تميز بقصر قامته البالغة 1.68 م، إلا أن ذلك تُرجم على أرضية الميدان إلى مركز ثقل منخفض وهائل، ممتزج بقوة بدنية فولاذية وعضلات فخذ مذهلة مكنته من الجري بسرعة فائقة وإطلاق تسديدات صاروخية تسببت في هلع الحراس والمدافعين في شتى بقاع الأرض.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-yellow-500/20 pb-2 mt-8">روبرتو كارلوس2022: كواليس الظهور الأيقوني وسفير السامبا الخالد</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    على الرغم من اعتزاله اللعب الاحترافي قبل سنوات طويلة، إلا أن الكلمة المفتاحية <strong>روبرتو كارلوس2022</strong> تكتسب أهمية قصوى وجاذبية خاصة في محركات البحث؛ حيث شهد عام 2022 حدثين استثنائيين أعادا كتابة فصول من سيرة المدفعجي بأسلوب طريف وفريد.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    الحدث الأول تمثل في مشاركته الطريفة والمفاجئة في ملاعب الهواة الإنجليزية (Sunday League) في مارس من عام 2022. حيث نجح فريق متواضع من حانة في مدينة شروزبري يُدعى "Bull in the Barne United" في الفوز بمسابقة يانصيب خيرية على الإنترنت، وكان الجائزة هي انتقال النجم البرازيلي للعب معهم مباراة واحدة رسمية! دخل روبرتو كارلوس كبديل وسط ترحيب جماهيري وإعلامي واسع وتغطية عالمية غير مسبوقة، وسجل ركلة جزاء استعادت بها الجماهير لمساته التاريخية الساحرة، مما أثبت تواضع الأسطورة الكبير وحبه اللامتناهي للساحرة المستديرة.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    أما الحدث الثاني فتمثل في لعبه دوراً قيادياً وبارزاً كسفير رسمي للاتحاد الدولي لكرة القدم (FIFA) خلال نهائيات كأس العالم في قطر 2022. حيث قاد الفعاليات الترويجية، وشارك في مباريات الأساطير الاستعراضية، وحفّز الجيل الجديد من لاعبي البرازيل لاستلهام روح جيل 2002 الذهبي، مسترجعاً رفقة الجماهير ذكريات التتويج التاريخي باللقب العالمي الخامس في تاريخ السيليساو.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-yellow-500/20 pb-2 mt-8">الفيزياء المستحيلة: قصة الضربة الحرة الإعجازية ضد فرنسا عام 1997</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    لا يمكن الحديث عن <strong>روبرتو كارلوس</strong> دون التوقف طويلاً عند اللحظة الفيزيائية الأكثر إثارة للجدل والذهول في تاريخ اللعبة؛ وتحديداً في 3 يونيو 1997 خلال مواجهة البرازيل ضد فرنسا في البطولة الودية التي سبقت مونديال 1998. حصلت البرازيل على ركلة حرة من مسافة تقارب 35 متراً عن مرمى الحارس الفرنسي الشهير فابيان بارتيز.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    تقدم كارلوس ووضع الكرة بعناية، ثم تراجع مسافة طويلة تقارب منتصف الملعب بأسلوبه الأيقوني المتمثل في الجري على أطراف أصابعه. انطلق بسرعة رهيبة وسدد الكرة بوجه قدمه الخارجي الأيسر. للوهلة الأولى، بدت الكرة متجهة بوضوح تام نحو المدرجات على بعد أمتار من القائم الأيمن لمرمى بارتيز، حتى أن صبي جمع الكرات خلف المرمى انحنى برأسه لتجنب الاصطدام بها. ولكن في أجزاء من الثانية، حدثت المعجزة الفيزيائية؛ انحنت الكرة بشكل حاد ودائري لا يصدق في الهواء متجهة للداخل، لتصطدم بالقائم الأيسر وتستقر في شباك بارتيز المذهول الذي لم يحرك ساكناً.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    عكف علماء الفيزياء في فرنسا وشتى أنحاء العالم لسنوات على دراسة هذا الهدف الإعجازي، وخلصوا إلى أن الهدف لم يكن بمحض الصدفة، بل جاء نتيجة تفاعل معقد يُعرف بـ "تأثير ماغنوس" (Magnus Effect). حيث أدت سرعة الكرة الفائقة التي بلغت حوالي 137 كم/ساعة مع دورانها المغزلي الهائل وقصر قامته الذي منحه زاوية ارتكاز منخفضة، إلى خلق دوامة هوائية غيرت مسار الكرة بشكل حاد في الأمتار الأخيرة، لتصنف كأعظم ركلة حرة مباشرة تم تنفيذها في تاريخ كرة القدم.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-yellow-500/20 pb-2 mt-8">العصر الذهبي مع ريال مدريد: الجناح الفولاذي في كتيبة "الغالكتيكوس"</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    على صعيد الأندية، ارتبط اسم <strong>روبرتو كارلوس</strong> ارتباطاً أبدياً بنادي <strong>ريال مدريد</strong> الإسباني العريق؛ حيث قضى هناك 11 موسماً أسطورياً في الفترة من 1996 إلى 2007، واعتبر ركيزة أساسية لا غنى عنها في مشروع رئيس النادي فلورنتينو بيريز التاريخي المعروف بـ "الغالكتيكوس" (Galácticos) بجانب زيدان، ورونالدو نازاريو، وفيغو، وبيكهام، وراؤول غونزاليس.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    شارك كارلوس مع ريال مدريد في 527 مباراة رسمية في كافة البطولات، مما جعله لفترة طويلة اللاعب الأجنبي الأكثر خوضاً للمباريات في تاريخ الميرينغي. توج هناك بـ 3 ألقاب لدوري أبطال أوروبا و4 ألقاب للدوري الإسباني (La Liga). لم تقتصر مساهمته على النواحي الدفاعية فحسب، بل سجل 69 هدفاً وصنع عشرات الأهداف الحاسمة بفضل عرضياته الدقيقة، ولعل أشهر تمريراته الحاسمة على الإطلاق هي الكرة العالية الهوائية التي هيأها لزين الدين زيدان ليسجل منها هدفه الخرافي بالقدم اليسرى في نهائي دوري أبطال أوروبا عام 2002 ضد باير ليفركوزن.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-yellow-500/20 pb-2 mt-8">المجد الدولي مع السامبا: التتويج التاريخي بكأس العالم 2002</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    امتد توهج الأسطورة روبرتو كارلوس إلى منتخب بلاده البرازيل، حيث خاض 125 مباراة دولية محتلاً المركز الثاني كأكثر اللاعبين تمثيلاً للسيليساو عبر التاريخ. شارك في ثلاث بطولات لكأس العالم (1998، 2002، 2006).
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    بعد حسرة خسارة نهائي مونديال 1998 أمام فرنسا، قاد كارلوس رفقة الثلاثي المرعب (رونالدو، ريفالدو، رونالدينيو) والظهير الأيمن التاريخي كافو، كتيبة السامبا للفوز التاريخي بلقب كأس العالم 2002 في كوريا واليابان. سجل كارلوس هدفاً صاروخياً مذهلاً من ركلة حرة ضد الصين في دور المجموعات، وقدم بطولة مثالية أثبتت تفوقه ووضعته في صدارة المرشحين لجائزة الكرة الذهبية (Ballon d'Or) لعام 2002، حيث حل في المركز الثاني خلف مواطنه ورغبته الهجومية رونالدو الظاهرة.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-yellow-500/20 pb-2 mt-8">جدول الإحصائيات والأرقام القياسية التاريخية للظهير الطائر</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    يرصد الجدول التالي الأرقام الإجمالية والبيانات التاريخية الدقيقة لمسيرة النجم البرازيلي الاحترافية مع الأندية والمنتخب الوطني:
+  </p>
+  <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+    <table class="w-full text-xs text-slate-300 text-right">
+      <thead class="bg-slate-900 text-white font-bold">
+        <tr>
+          <th class="p-3">الفريق / المحطة</th>
+          <th class="p-3">الفترة الزمنية</th>
+          <th class="p-3">عدد المباريات الكلية</th>
+          <th class="p-3">الأهداف المسجلة</th>
+          <th class="p-3">البطولات والإنجازات الفردية والألقاب الكبرى</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-800">
+        <tr>
+          <td class="p-3 font-bold text-yellow-400">ريال مدريد الإسباني (Real Madrid)</td>
+          <td class="p-3">1996 - 2007</td>
+          <td class="p-3">527 مباراة</td>
+          <td class="p-3">69 هدفاً</td>
+          <td class="p-3 text-slate-400">الدوري الإسباني (4 مرات)، دوري أبطال أوروبا (3 مرات)، كأس السوبر الإسباني (3 مرات)، كأس الإنتركونتيننتال (مرتين)</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-yellow-400">منتخب البرازيل الأول (Seleção)</td>
+          <td class="p-3">1992 - 2006</td>
+          <td class="p-3">125 مباراة دولية</td>
+          <td class="p-3">11 هدفاً دولياً</td>
+          <td class="p-3 text-slate-400">بطل كأس العالم 2002، وصيف كأس العالم 1998، بطل كوبا أمريكا (مرتين)، بطل كأس القارات</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-yellow-400">فنربخشة التركي وكورينثيانز وأن those الأندية الأخرى</td>
+          <td class="p-3">2007 - 2015</td>
+          <td class="p-3">160 مباراة</td>
+          <td class="p-3">22 هدفاً</td>
+          <td class="p-3 text-slate-400">كأس السوبر التركي (مرتين)، وتجارب احترافية ناجحة في روسيا والبرازيل والهند</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-yellow-500/20 pb-2 mt-8">كيف غيّر روبرتو كارلوس مفهوم ومستقبل الدفاع والظهير الأيسر؟</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    قبل ظهور <strong>روبرتو كارلوس</strong>، كان مركز الظهير الأيسر في كرة القدم الكلاسيكية ينحصر بشكل شبه كامل في النواحي الدفاعية الصرفة ومراقبة أجنحة المنافسين وتشتيت الكرات. لكن كارلوس أعاد رسم ملامح هذا المركز بالكامل وقدم نموذجاً مستقبلياً يحتذى به.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    بفضل لياقته البدنية الفائقة التي سمحت له بالجري ذهاباً وإياباً على طول الخط الأيمن والأيسر لمدة 90 دقيقة دون كلل، وقدرته على استغلال المساحات الخالية خلف دفاع الخصوم، تحول الظهير الأيسر في فكر المدربين إلى صانع لعب إضافي ومفتاح تكتيكي في بناء الهجمات المرتدة والضغط العالي. الجيل الحالي من الأظهرة المميزة أمثال ألفونسو ديفيز، ثيو هيرنانديز، وجواو كانسيلو، يدينون جميعاً بأسلوب لعبهم الهجومي إلى الجينات الفنية التي ابتكرها روبرتو كارلوس وطورها على مر السنين.
+  </p>
+
+  <div class="bg-yellow-500/5 p-4 rounded-2xl border border-yellow-500/20 space-y-2 mt-8">
+    <h3 class="text-sm font-black text-white font-sans">🔮 الخلاصة والتأصيل السيو لملف روبرتو كارلوس2022</h3>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      في الختام، يظل الأسطورة <strong>روبرتو كارلوس</strong> علامة فارقة وعنصراً خالداً في تاريخ الساحرة المستديرة. وسواء تم البحث عنه من خلال إرثه الأسطوري في ريال مدريد، أو كواليس ركلته الإعجازية عام 1997، أو ظهوره اللامع والدافئ والمحبوب في ملاعب الهواة الإنجليزية ومونديال قطر من خلال الكلمة المفتاحية <strong>روبرتو كارلوس2022</strong>، فإن النتيجة واحدة: هذا المدفعجي البرازيلي حفر اسمه في وجدان وعقول الملايين كظهير أيسر طائر وقاتل لن يتكرر في ملاعب كرة القدم أبداً.
+    </p>
+  </div>
+</div>`,
+    htmlBodyEn: `<div class="space-y-6 text-left font-sans" dir="ltr">
+  <p class="text-slate-300 text-sm leading-relaxed first-letter:text-3xl first-letter:font-bold first-letter:text-yellow-500">
+    Few figures in association football invoke as much awe and excitement as Brazilian icon <strong>Roberto Carlos</strong>. Celebrated for his lightning-fast sprints, superhuman thigh muscles, and unmatched left-foot power that delivered rockets at 137 km/h, he revolutionized the left-back role globally. In <strong>Roberto Carlos 2022</strong>, his legacy received a remarkable renaissance. With his heartwarming appearance in the English Sunday League for charity and his highly active role as a key FIFA Global Ambassador at the Qatar 2022 World Cup, he proved that his magic is truly immortal. In this <strong>2026</strong> ultimate SEO guide, we dissect his brilliant journey, physics-defying free kicks, and everlasting impact on the pitch.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-yellow-500/10 to-green-500/10 border-l-4 border-yellow-500 rounded-r-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1">⚡️ Player Stats & Core Identity</h4>
+    <p class="text-xs text-slate-300 leading-relaxed">
+      Born in São Paulo, Brazil, in 1973, Roberto Carlos was the ultimate modern wing-back. At just 1.68m, his low center of gravity merged with unparalleled raw speed, allowing him to dominate the entire left flank for Real Madrid and the Seleção.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-yellow-500/20 pb-2 mt-8">Real Madrid Dominance and World Cup 2002 Glory</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    During an illustrious 11-year tenure at Real Madrid, Roberto Carlos secured 3 Champions League and 4 La Liga titles, cementing himself as the crown jewel of the Galácticos era. Internationally, his historic partnership with Cafu, Ronaldo, Rivaldo, and Ronaldinho powered Brazil to World Cup triumph in 2002. His unforgettable physics-defying free kick against France in 1997 remains highly analyzed by scientists around the world as an absolute marvel of fluid dynamics.
+  </p>
+</div>`
+  },
   {
     id: "art-david-trezeguet-2026",
     slug: "david-trezeguet-legendary-striker-career-stats-2026",

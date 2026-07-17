@@ -5,7 +5,7 @@
   <!-- 1. الرئيسية - الصفحة الرئيسية الافتراضية (Default Home) -->
   <url>
     <loc>https://dkora.online/</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar" />
@@ -16,7 +16,7 @@
   <!-- 2. الرئيسية باللغة العربية (Arabic Home) -->
   <url>
     <loc>https://dkora.online/?lang=ar</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar" />
@@ -26,7 +26,7 @@
   <!-- 3. الرئيسية باللغة الإنجليزية (English Home) -->
   <url>
     <loc>https://dkora.online/?lang=en</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?lang=ar" />
@@ -36,7 +36,7 @@
   <!-- 4. أرشيف المدونة ودليل السيّو (Default Blog Index) -->
   <url>
     <loc>https://dkora.online/?view=blog</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=blog&amp;lang=ar" />
@@ -46,7 +46,7 @@
   <!-- 5. أرشيف المدونة باللغة العربية (Arabic Blog Index) -->
   <url>
     <loc>https://dkora.online/?view=blog&amp;lang=ar</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=blog&amp;lang=ar" />
@@ -56,7 +56,7 @@
   <!-- 6. أرشيف المدونة باللغة الإنجليزية (English Blog Index) -->
   <url>
     <loc>https://dkora.online/?view=blog&amp;lang=en</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=blog&amp;lang=ar" />
@@ -66,7 +66,7 @@
   <!-- 7. خريطة الموقع التفاعلية (Default Sitemap View) -->
   <url>
     <loc>https://dkora.online/?view=sitemap</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=sitemap&amp;lang=ar" />
@@ -76,7 +76,7 @@
   <!-- 8. خريطة الموقع التفاعلية باللغة العربية (Arabic Sitemap View) -->
   <url>
     <loc>https://dkora.online/?view=sitemap&amp;lang=ar</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=sitemap&amp;lang=ar" />
@@ -86,253 +86,871 @@
   <!-- 9. خريطة الموقع التفاعلية باللغة الإنجليزية (English Sitemap View) -->
   <url>
     <loc>https://dkora.online/?view=sitemap&amp;lang=en</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?view=sitemap&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?view=sitemap&amp;lang=en" />
   </url>
 
-  <!-- ==================== BLOG ARTICLES Section ==================== -->
+  <!-- ==================== BLOG ARTICLES Section (33 Articles) ==================== -->
 
-  <!-- Article 1: How to find matched world cup player (Default) -->
+  <!-- 1. Mohamed Aboutrika Legend -->
+  <url>
+    <loc>https://dkora.online/?article=mohamed-aboutrika-egyptian-football-legend-2026</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=mohamed-aboutrika-egyptian-football-legend-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=mohamed-aboutrika-egyptian-football-legend-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=mohamed-aboutrika-egyptian-football-legend-2026&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=mohamed-aboutrika-egyptian-football-legend-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=mohamed-aboutrika-egyptian-football-legend-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=mohamed-aboutrika-egyptian-football-legend-2026&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=mohamed-aboutrika-egyptian-football-legend-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=mohamed-aboutrika-egyptian-football-legend-2026&amp;lang=en" />
+  </url>
+
+  <!-- 2. Di Maria Retirement -->
+  <url>
+    <loc>https://dkora.online/?article=di-maria-retirement-argentina-career-2026</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=di-maria-retirement-argentina-career-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=di-maria-retirement-argentina-career-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=di-maria-retirement-argentina-career-2026&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=di-maria-retirement-argentina-career-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=di-maria-retirement-argentina-career-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=di-maria-retirement-argentina-career-2026&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=di-maria-retirement-argentina-career-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=di-maria-retirement-argentina-career-2026&amp;lang=en" />
+  </url>
+
+  <!-- 3. Hossam Hassan Wife -->
+  <url>
+    <loc>https://dkora.online/?article=hossam-hassan-wife-family-life-2026</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=hossam-hassan-wife-family-life-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=hossam-hassan-wife-family-life-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=hossam-hassan-wife-family-life-2026&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=hossam-hassan-wife-family-life-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=hossam-hassan-wife-family-life-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=hossam-hassan-wife-family-life-2026&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=hossam-hassan-wife-family-life-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=hossam-hassan-wife-family-life-2026&amp;lang=en" />
+  </url>
+
+  <!-- 4. Enzo Fernandez Chelsea Stats -->
+  <url>
+    <loc>https://dkora.online/?article=enzo-fernandez-chelsea-stats-career-2026</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=enzo-fernandez-chelsea-stats-career-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=enzo-fernandez-chelsea-stats-career-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=enzo-fernandez-chelsea-stats-career-2026&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=enzo-fernandez-chelsea-stats-career-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=enzo-fernandez-chelsea-stats-career-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=enzo-fernandez-chelsea-stats-career-2026&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=enzo-fernandez-chelsea-stats-career-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=enzo-fernandez-chelsea-stats-career-2026&amp;lang=en" />
+  </url>
+
+  <!-- 5. Messi Today Inter Miami Stats -->
+  <url>
+    <loc>https://dkora.online/?article=messi-today-image-inter-miami-stats-2026</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=messi-today-image-inter-miami-stats-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=messi-today-image-inter-miami-stats-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=messi-today-image-inter-miami-stats-2026&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=messi-today-image-inter-miami-stats-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=messi-today-image-inter-miami-stats-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=messi-today-image-inter-miami-stats-2026&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=messi-today-image-inter-miami-stats-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=messi-today-image-inter-miami-stats-2026&amp;lang=en" />
+  </url>
+
+  <!-- 6. Marc Cucurella Age Stats -->
+  <url>
+    <loc>https://dkora.online/?article=marc-cucurella-age-stats-career-2026</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=marc-cucurella-age-stats-career-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=marc-cucurella-age-stats-career-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=marc-cucurella-age-stats-career-2026&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=marc-cucurella-age-stats-career-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=marc-cucurella-age-stats-career-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=marc-cucurella-age-stats-career-2026&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=marc-cucurella-age-stats-career-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=marc-cucurella-age-stats-career-2026&amp;lang=en" />
+  </url>
+
+  <!-- 7. Roberto Carlos Legend -->
+  <url>
+    <loc>https://dkora.online/?article=roberto-carlos-2022-legendary-career-and-stats</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=roberto-carlos-2022-legendary-career-and-stats&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=roberto-carlos-2022-legendary-career-and-stats&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=roberto-carlos-2022-legendary-career-and-stats&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=roberto-carlos-2022-legendary-career-and-stats&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=roberto-carlos-2022-legendary-career-and-stats&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=roberto-carlos-2022-legendary-career-and-stats&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=roberto-carlos-2022-legendary-career-and-stats&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=roberto-carlos-2022-legendary-career-and-stats&amp;lang=en" />
+  </url>
+
+  <!-- 8. David Trezeguet -->
+  <url>
+    <loc>https://dkora.online/?article=david-trezeguet-legendary-striker-career-stats-2026</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=david-trezeguet-legendary-striker-career-stats-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=david-trezeguet-legendary-striker-career-stats-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=david-trezeguet-legendary-striker-career-stats-2026&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=david-trezeguet-legendary-striker-career-stats-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=david-trezeguet-legendary-striker-career-stats-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=david-trezeguet-legendary-striker-career-stats-2026&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=david-trezeguet-legendary-striker-career-stats-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=david-trezeguet-legendary-striker-career-stats-2026&amp;lang=en" />
+  </url>
+
+  <!-- 9. Michael Olise -->
+  <url>
+    <loc>https://dkora.online/?article=michael-olise-bayern-munich-career-and-stats-2026</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=michael-olise-bayern-munich-career-and-stats-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=michael-olise-bayern-munich-career-and-stats-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=michael-olise-bayern-munich-career-and-stats-2026&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=michael-olise-bayern-munich-career-and-stats-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=michael-olise-bayern-munich-career-and-stats-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=michael-olise-bayern-munich-career-and-stats-2026&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=michael-olise-bayern-munich-career-and-stats-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=michael-olise-bayern-munich-career-and-stats-2026&amp;lang=en" />
+  </url>
+
+  <!-- 10. Ahmed Fatouh Zamalek -->
+  <url>
+    <loc>https://dkora.online/?article=ahmed-fatouh-zamalek-player-career-and-updates-2026</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ahmed-fatouh-zamalek-player-career-and-updates-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ahmed-fatouh-zamalek-player-career-and-updates-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=ahmed-fatouh-zamalek-player-career-and-updates-2026&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ahmed-fatouh-zamalek-player-career-and-updates-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ahmed-fatouh-zamalek-player-career-and-updates-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=ahmed-fatouh-zamalek-player-career-and-updates-2026&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ahmed-fatouh-zamalek-player-career-and-updates-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ahmed-fatouh-zamalek-player-career-and-updates-2026&amp;lang=en" />
+  </url>
+
+  <!-- 11. Messi vs Lamine Yamal -->
+  <url>
+    <loc>https://dkora.online/?article=messi-vs-lamine-yamal-comparison-2026</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=messi-vs-lamine-yamal-comparison-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=messi-vs-lamine-yamal-comparison-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=messi-vs-lamine-yamal-comparison-2026&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=messi-vs-lamine-yamal-comparison-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=messi-vs-lamine-yamal-comparison-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=messi-vs-lamine-yamal-comparison-2026&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=messi-vs-lamine-yamal-comparison-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=messi-vs-lamine-yamal-comparison-2026&amp;lang=en" />
+  </url>
+
+  <!-- 12. Kylian Mbappe Religion -->
+  <url>
+    <loc>https://dkora.online/?article=kylian-mbappe-religion-and-family-background</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=kylian-mbappe-religion-and-family-background&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=kylian-mbappe-religion-and-family-background&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=kylian-mbappe-religion-and-family-background&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=kylian-mbappe-religion-and-family-background&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=kylian-mbappe-religion-and-family-background&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=kylian-mbappe-religion-and-family-background&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=kylian-mbappe-religion-and-family-background&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=kylian-mbappe-religion-and-family-background&amp;lang=en" />
+  </url>
+
+  <!-- 13. Best Football Wallpapers 4K -->
+  <url>
+    <loc>https://dkora.online/?article=best-football-wallpapers-4k-download-2026</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=best-football-wallpapers-4k-download-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=best-football-wallpapers-4k-download-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=best-football-wallpapers-4k-download-2026&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=best-football-wallpapers-4k-download-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=best-football-wallpapers-4k-download-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=best-football-wallpapers-4k-download-2026&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=best-football-wallpapers-4k-download-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=best-football-wallpapers-4k-download-2026&amp;lang=en" />
+  </url>
+
+  <!-- 14. How Old Is Lionel Messi -->
+  <url>
+    <loc>https://dkora.online/?article=how-old-is-lionel-messi-age-records-2026</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-old-is-lionel-messi-age-records-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-old-is-lionel-messi-age-records-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=how-old-is-lionel-messi-age-records-2026&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-old-is-lionel-messi-age-records-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-old-is-lionel-messi-age-records-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=how-old-is-lionel-messi-age-records-2026&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-old-is-lionel-messi-age-records-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-old-is-lionel-messi-age-records-2026&amp;lang=en" />
+  </url>
+
+  <!-- 15. Perfect Diet Program Football -->
+  <url>
+    <loc>https://dkora.online/?article=perfect-diet-program-football-players-stamina-speed</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=perfect-diet-program-football-players-stamina-speed&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=perfect-diet-program-football-players-stamina-speed&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=perfect-diet-program-football-players-stamina-speed&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=perfect-diet-program-football-players-stamina-speed&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=perfect-diet-program-football-players-stamina-speed&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=perfect-diet-program-football-players-stamina-speed&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=perfect-diet-program-football-players-stamina-speed&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=perfect-diet-program-football-players-stamina-speed&amp;lang=en" />
+  </url>
+
+  <!-- 16. Ultimate Guide Free AI Video Generation -->
+  <url>
+    <loc>https://dkora.online/?article=ultimate-guide-free-ai-video-generation-2026-seo-masterclass</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ultimate-guide-free-ai-video-generation-2026-seo-masterclass&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ultimate-guide-free-ai-video-generation-2026-seo-masterclass&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=ultimate-guide-free-ai-video-generation-2026-seo-masterclass&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ultimate-guide-free-ai-video-generation-2026-seo-masterclass&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ultimate-guide-free-ai-video-generation-2026-seo-masterclass&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=ultimate-guide-free-ai-video-generation-2026-seo-masterclass&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ultimate-guide-free-ai-video-generation-2026-seo-masterclass&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ultimate-guide-free-ai-video-generation-2026-seo-masterclass&amp;lang=en" />
+  </url>
+
+  <!-- 17. Free AI Video Generator Google Veo -->
+  <url>
+    <loc>https://dkora.online/?article=free-ai-video-generator-app-google-veo3-2026-guide</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=free-ai-video-generator-app-google-veo3-2026-guide&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=free-ai-video-generator-app-google-veo3-2026-guide&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=free-ai-video-generator-app-google-veo3-2026-guide&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=free-ai-video-generator-app-google-veo3-2026-guide&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=free-ai-video-generator-app-google-veo3-2026-guide&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=free-ai-video-generator-app-google-veo3-2026-guide&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=free-ai-video-generator-app-google-veo3-2026-guide&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=free-ai-video-generator-app-google-veo3-2026-guide&amp;lang=en" />
+  </url>
+
+  <!-- 18. Official Guide Book FIFA World Cup 2026 Tickets -->
+  <url>
+    <loc>https://dkora.online/?article=official-guide-book-fifa-world-cup-2026-tickets-prices-steps</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=official-guide-book-fifa-world-cup-2026-tickets-prices-steps&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=official-guide-book-fifa-world-cup-2026-tickets-prices-steps&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=official-guide-book-fifa-world-cup-2026-tickets-prices-steps&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=official-guide-book-fifa-world-cup-2026-tickets-prices-steps&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=official-guide-book-fifa-world-cup-2026-tickets-prices-steps&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=official-guide-book-fifa-world-cup-2026-tickets-prices-steps&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=official-guide-book-fifa-world-cup-2026-tickets-prices-steps&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=official-guide-book-fifa-world-cup-2026-tickets-prices-steps&amp;lang=en" />
+  </url>
+
+  <!-- 19. New FIFA World Cup 2026 Tournament Format -->
+  <url>
+    <loc>https://dkora.online/?article=new-fifa-world-cup-2026-tournament-format-explained-48-teams</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=new-fifa-world-cup-2026-tournament-format-explained-48-teams&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=new-fifa-world-cup-2026-tournament-format-explained-48-teams&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=new-fifa-world-cup-2026-tournament-format-explained-48-teams&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=new-fifa-world-cup-2026-tournament-format-explained-48-teams&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=new-fifa-world-cup-2026-tournament-format-explained-48-teams&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=new-fifa-world-cup-2026-tournament-format-explained-48-teams&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=new-fifa-world-cup-2026-tournament-format-explained-48-teams&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=new-fifa-world-cup-2026-tournament-format-explained-48-teams&amp;lang=en" />
+  </url>
+
+  <!-- 20. Ultimate Accommodation Lodging Guide World Cup 2026 -->
+  <url>
+    <loc>https://dkora.online/?article=ultimate-accommodation-lodging-guide-fifa-world-cup-2026</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ultimate-accommodation-lodging-guide-fifa-world-cup-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ultimate-accommodation-lodging-guide-fifa-world-cup-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=ultimate-accommodation-lodging-guide-fifa-world-cup-2026&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ultimate-accommodation-lodging-guide-fifa-world-cup-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ultimate-accommodation-lodging-guide-fifa-world-cup-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=ultimate-accommodation-lodging-guide-fifa-world-cup-2026&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ultimate-accommodation-lodging-guide-fifa-world-cup-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ultimate-accommodation-lodging-guide-fifa-world-cup-2026&amp;lang=en" />
+  </url>
+
+  <!-- 21. How to Volunteer World Cup 2026 -->
+  <url>
+    <loc>https://dkora.online/?article=how-to-volunteer-world-cup-2026-portal-requirements-registration</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-volunteer-world-cup-2026-portal-requirements-registration&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-volunteer-world-cup-2026-portal-requirements-registration&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=how-to-volunteer-world-cup-2026-portal-requirements-registration&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-volunteer-world-cup-2026-portal-requirements-registration&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-volunteer-world-cup-2026-portal-requirements-registration&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=how-to-volunteer-world-cup-2026-portal-requirements-registration&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-volunteer-world-cup-2026-portal-requirements-registration&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-volunteer-world-cup-2026-portal-requirements-registration&amp;lang=en" />
+  </url>
+
+  <!-- 22. Ultimate Evergreen Guide FIFA World Cup 2026 Trends -->
+  <url>
+    <loc>https://dkora.online/?article=ultimate-evergreen-guide-fifa-world-cup-2026-trends-insights</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ultimate-evergreen-guide-fifa-world-cup-2026-trends-insights&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ultimate-evergreen-guide-fifa-world-cup-2026-trends-insights&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=ultimate-evergreen-guide-fifa-world-cup-2026-trends-insights&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ultimate-evergreen-guide-fifa-world-cup-2026-trends-insights&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ultimate-evergreen-guide-fifa-world-cup-2026-trends-insights&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=ultimate-evergreen-guide-fifa-world-cup-2026-trends-insights&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ultimate-evergreen-guide-fifa-world-cup-2026-trends-insights&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ultimate-evergreen-guide-fifa-world-cup-2026-trends-insights&amp;lang=en" />
+  </url>
+
+  <!-- 23. Most Successful World Cup Nations -->
+  <url>
+    <loc>https://dkora.online/?article=most-successful-world-cup-nations-history-records</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=most-successful-world-cup-nations-history-records&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=most-successful-world-cup-nations-history-records&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=most-successful-world-cup-nations-history-records&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=most-successful-world-cup-nations-history-records&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=most-successful-world-cup-nations-history-records&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=most-successful-world-cup-nations-history-records&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=most-successful-world-cup-nations-history-records&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=most-successful-world-cup-nations-history-records&amp;lang=en" />
+  </url>
+
+  <!-- 24. Complete Stadiums Guide FIFA World Cup 2026 -->
+  <url>
+    <loc>https://dkora.online/?article=complete-stadiums-guide-fifa-world-cup-2026-capacity-cities</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=complete-stadiums-guide-fifa-world-cup-2026-capacity-cities&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=complete-stadiums-guide-fifa-world-cup-2026-capacity-cities&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=complete-stadiums-guide-fifa-world-cup-2026-capacity-cities&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=complete-stadiums-guide-fifa-world-cup-2026-capacity-cities&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=complete-stadiums-guide-fifa-world-cup-2026-capacity-cities&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=complete-stadiums-guide-fifa-world-cup-2026-capacity-cities&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=complete-stadiums-guide-fifa-world-cup-2026-capacity-cities&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=complete-stadiums-guide-fifa-world-cup-2026-capacity-cities&amp;lang=en" />
+  </url>
+
+  <!-- 25. FIFA World Cup 2026 Predictions -->
+  <url>
+    <loc>https://dkora.online/?article=fifa-world-cup-2026-predictions-favorites-dark-horses</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=fifa-world-cup-2026-predictions-favorites-dark-horses&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=fifa-world-cup-2026-predictions-favorites-dark-horses&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=fifa-world-cup-2026-predictions-favorites-dark-horses&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=fifa-world-cup-2026-predictions-favorites-dark-horses&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=fifa-world-cup-2026-predictions-favorites-dark-horses&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=fifa-world-cup-2026-predictions-favorites-dark-horses&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=fifa-world-cup-2026-predictions-favorites-dark-horses&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=fifa-world-cup-2026-predictions-favorites-dark-horses&amp;lang=en" />
+  </url>
+
+  <!-- 26. Egypt vs Belgium World Cup Match Details -->
+  <url>
+    <loc>https://dkora.online/?article=egypt-vs-belgium-world-cup-match-details-2026</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=egypt-vs-belgium-world-cup-match-details-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=egypt-vs-belgium-world-cup-match-details-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=egypt-vs-belgium-world-cup-match-details-2026&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=egypt-vs-belgium-world-cup-match-details-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=egypt-vs-belgium-world-cup-match-details-2026&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=egypt-vs-belgium-world-cup-match-details-2026&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=egypt-vs-belgium-world-cup-match-details-2026&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=egypt-vs-belgium-world-cup-match-details-2026&amp;lang=en" />
+  </url>
+
+  <!-- 27. How Old Is Ayyoub Bouaddi -->
+  <url>
+    <loc>https://dkora.online/?article=how-old-is-ayyoub-bouaddi</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-old-is-ayyoub-bouaddi&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-old-is-ayyoub-bouaddi&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=how-old-is-ayyoub-bouaddi&amp;lang=ar</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-old-is-ayyoub-bouaddi&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-old-is-ayyoub-bouaddi&amp;lang=en" />
+  </url>
+  <url>
+    <loc>https://dkora.online/?article=how-old-is-ayyoub-bouaddi&amp;lang=en</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-old-is-ayyoub-bouaddi&amp;lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-old-is-ayyoub-bouaddi&amp;lang=en" />
+  </url>
+
+  <!-- 28. How to Find World Cup Match AI -->
   <url>
     <loc>https://dkora.online/?article=how-to-find-world-cup-match-ai</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=en" />
   </url>
-
-  <!-- Article 1: How to find matched world cup player (Arabic) -->
   <url>
     <loc>https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=ar</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=en" />
   </url>
-
-  <!-- Article 1: How to find matched world cup player (English) -->
   <url>
     <loc>https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=en</loc>
-    <lastmod>2026-06-12</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-find-world-cup-match-ai&amp;lang=en" />
   </url>
 
-  <!-- Article 2: Modern soccer tactics rating stars (Default) -->
+  <!-- 29. Modern Soccer Tactics Rating Stars -->
   <url>
     <loc>https://dkora.online/?article=modern-soccer-tactics-rating-stars</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=en" />
   </url>
-
-  <!-- Article 2: Modern soccer tactics rating stars (Arabic) -->
   <url>
     <loc>https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=ar</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=en" />
   </url>
-
-  <!-- Article 2: Modern soccer tactics rating stars (English) -->
   <url>
     <loc>https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=en</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=modern-soccer-tactics-rating-stars&amp;lang=en" />
   </url>
 
-  <!-- Article 3: How to blend face football jersey (Default) -->
+  <!-- 30. How to Blend Face Football Jersey -->
   <url>
     <loc>https://dkora.online/?article=how-to-blend-face-football-jersey</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=en" />
   </url>
-
-  <!-- Article 3: How to blend face football jersey (Arabic) -->
   <url>
     <loc>https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=ar</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=en" />
   </url>
-
-  <!-- Article 3: How to blend face football jersey (English) -->
   <url>
     <loc>https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=en</loc>
-    <lastmod>2026-06-10</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=how-to-blend-face-football-jersey&amp;lang=en" />
   </url>
 
-  <!-- Article 4: AI predictions helper (Default) -->
+  <!-- 31. AI Predictions 2026 World Cup Champion -->
   <url>
     <loc>https://dkora.online/?article=ai-predictions-2026-world-cup-champion</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ai-predictions-2026-world-cup-champion&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ai-predictions-2026-world-cup-champion&amp;lang=en" />
   </url>
-
-  <!-- Article 4: AI predictions helper (Arabic) -->
   <url>
     <loc>https://dkora.online/?article=ai-predictions-2026-world-cup-champion&amp;lang=ar</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ai-predictions-2026-world-cup-champion&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ai-predictions-2026-world-cup-champion&amp;lang=en" />
   </url>
-
-  <!-- Article 4: AI predictions helper (English) -->
   <url>
     <loc>https://dkora.online/?article=ai-predictions-2026-world-cup-champion&amp;lang=en</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=ai-predictions-2026-world-cup-champion&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=ai-predictions-2026-world-cup-champion&amp;lang=en" />
   </url>
 
-  <!-- Article 5: Arab national teams prospects (Default) -->
+  <!-- 32. Arab Teams 2026 World Cup Prospects -->
   <url>
     <loc>https://dkora.online/?article=arab-teams-2026-world-cup-prospects</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=arab-teams-2026-world-cup-prospects&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=arab-teams-2026-world-cup-prospects&amp;lang=en" />
   </url>
-
-  <!-- Article 5: Arab national teams prospects (Arabic) -->
   <url>
     <loc>https://dkora.online/?article=arab-teams-2026-world-cup-prospects&amp;lang=ar</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=arab-teams-2026-world-cup-prospects&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=arab-teams-2026-world-cup-prospects&amp;lang=en" />
   </url>
-
-  <!-- Article 5: Arab national teams prospects (English) -->
   <url>
     <loc>https://dkora.online/?article=arab-teams-2026-world-cup-prospects&amp;lang=en</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=arab-teams-2026-world-cup-prospects&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=arab-teams-2026-world-cup-prospects&amp;lang=en" />
   </url>
 
-  <!-- Article 6: Fastest wingers speed (Default) -->
+  <!-- 33. Fastest Wingers 2026 World Cup -->
   <url>
     <loc>https://dkora.online/?article=fastest-wingers-2026-world-cup</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=fastest-wingers-2026-world-cup&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=fastest-wingers-2026-world-cup&amp;lang=en" />
   </url>
-
-  <!-- Article 6: Fastest wingers speed (Arabic) -->
   <url>
     <loc>https://dkora.online/?article=fastest-wingers-2026-world-cup&amp;lang=ar</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=fastest-wingers-2026-world-cup&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=fastest-wingers-2026-world-cup&amp;lang=en" />
   </url>
-
-  <!-- Article 6: Fastest wingers speed (English) -->
   <url>
     <loc>https://dkora.online/?article=fastest-wingers-2026-world-cup&amp;lang=en</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-07-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=fastest-wingers-2026-world-cup&amp;lang=ar" />
     <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=fastest-wingers-2026-world-cup&amp;lang=en" />
-  </url>
-
-  <!-- Article 7: World Cup Connected Stadium tech (Default) -->
-  <url>
-    <loc>https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums&amp;lang=ar" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums&amp;lang=en" />
-  </url>
-
-  <!-- Article 7: World Cup Connected Stadium tech (Arabic) -->
-  <url>
-    <loc>https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums&amp;lang=ar</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums&amp;lang=ar" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums&amp;lang=en" />
-  </url>
-
-  <!-- Article 7: World Cup Connected Stadium tech (English) -->
-  <url>
-    <loc>https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums&amp;lang=en</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums&amp;lang=ar" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=tech-evolution-2026-world-cup-stadiums&amp;lang=en" />
-  </url>
-
-  <!-- Article 8: Messi & Ronaldo Swansong (Default) -->
-  <url>
-    <loc>https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup&amp;lang=ar" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup&amp;lang=en" />
-  </url>
-
-  <!-- Article 8: Messi & Ronaldo Swansong (Arabic) -->
-  <url>
-    <loc>https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup&amp;lang=ar</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup&amp;lang=ar" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup&amp;lang=en" />
-  </url>
-
-  <!-- Article 8: Messi & Ronaldo Swansong (English) -->
-  <url>
-    <loc>https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup&amp;lang=en</loc>
-    <lastmod>2026-06-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup&amp;lang=ar" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://dkora.online/?article=messi-ronaldo-last-dance-2026-world-cup&amp;lang=en" />
   </url>
 
 </urlset>

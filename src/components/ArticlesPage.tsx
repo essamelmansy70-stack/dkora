@@ -26,6 +26,7 @@ import cucurellaChelseaStar from '../assets/images/cucurella_chelsea_star_178408
 import messiTodayStar from '../assets/images/messi_today_star_1784142173801.jpg';
 import enzoFernandezStar from '../assets/images/enzo_fernandez_star_1784159119439.jpg';
 import hossamHassanCoach from '../assets/images/hossam_hassan_coach_1784247472193.jpg';
+import diMariaRetirement from '../assets/images/di_maria_retirement_1784249250242.jpg';
 
 interface Article {
   id: string;
@@ -68,6 +69,246 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-di-maria-retirement-2026",
+    slug: "di-maria-retirement-argentina-career-2026",
+    categoryAr: "سير النجوم واللاعبين",
+    categoryEn: "Player Profiles",
+    titleAr: "دى ماريا اعتزل: نهاية حكاية الملاك الأرجنتيني الخالدة ومسيرته الأسطورية في عالم كرة القدم",
+    titleEn: "Di Maria Retired: The End of an Era for Argentina's Clutch Angel",
+    descAr: "تقرير رياضي وسيو متكامل يتجاوز الـ 1000 كلمة يبحث بالتفصيل في الكلمة المفتاحية 'دى ماريا اعتزل'، مستعرضاً تاريخ الملاك الحارس لمنتخب التانغو وأهدافه الحاسمة في جميع النهائيات التاريخية.",
+    descEn: "A comprehensive 1000+ words tribute guide on Angel Di Maria's retirement, exploring his clutch finals, career achievements, and legacy.",
+    keywordsAr: [
+      "دى ماريا اعتزل",
+      "اعتزال دي ماريا",
+      "انخيل دي ماريا",
+      "أهداف دي ماريا في النهايات",
+      "دي ماريا الأرجنتين",
+      "مسيرة دي ماريا الكروية"
+    ],
+    keywordsEn: [
+      "di maria retired",
+      "angel di maria retirement",
+      "di maria argentina",
+      "di maria clutch goals"
+    ],
+    image: diMariaRetirement,
+    date: "2026-07-16",
+    readTime: "15 min read",
+    contentAr: {
+      toc: [
+        "1. مقدمة: عندما ينحني التاريخ لوداع 'الملاك' أنخيل دي ماريا",
+        "2. البداية والنشأة: من روزاريو وعمال الفحم إلى سماء المجد الكروي",
+        "3. تخصّص نهائيات: العبقري الذي لا يعرف الخوف في المباريات الحاسمة",
+        "4. دي ماريا والمنتخب الأرجنتيني: رحلة العذاب التي تكللت بالذهب",
+        "5. دى ماريا اعتزل: كواليس القرار والأصداء العالمية لرحيل الساحر",
+        "6. تحليل فني وتكتيكي: لماذا يعد دي ماريا فريداً ومستحيل التعويض؟",
+        "7. جدول الإحصائيات الشامل لمسيرة أنخيل دي ماريا التاريخية حتى اعتزاله",
+        "8. أسئلة شائعة ومثيرة حول قرار اعتزال دي ماريا ومستقبله"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: عندما ينحني التاريخ لوداع 'الملاك' أنخيل دي ماريا",
+          body: "كرة القدم ليست مجرد أهداف تسجل أو ألقاب ترفع، بل هي حكايات ملهمة يكتبها رجال بأحرف من ذهب على عشب الملاعب الخضراء. واليوم، يتصدر موضوع 'دى ماريا اعتزل' محركات البحث الرياضية ومواقع التواصل، حيث تودع الجماهير واحداً من أكثر اللاعبين إخلاصاً وعبقرية وتأثيراً في الجيل الذهبي للكرة الأرجنتينية والعالمية."
+        }
+      ],
+      faqs: [
+        {
+          q: "متى اعتزل أنخيل دي ماريا اللعب الدولي؟",
+          a: "اعتزل أنخيل دي ماريا اللعب الدولي رسمياً بعد قيادة منتخب الأرجنتين للتتويج بلقب كوبا أمريكا 2024، معلناً نهاية مسيرته الأسطورية مع التانغو كبطل متوج."
+        },
+        {
+          q: "ما هي أبرز أهداف دي ماريا في النهائيات؟",
+          a: "سجل دي ماريا هدف الفوز بذهبية أولمبياد بكين 2008، وهدف الفوز بكوبا أمريكا 2021، وهدفاً في شباك إيطاليا في الفيناليسيما 2022، وهدفاً أسطورياً في نهائي كأس العالم 2022 ضد فرنسا."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: Saying Goodbye to the Angel of Rosario",
+        "2. The Ultimate Big-Game Player: Di Maria's Iconic Final Goals",
+        "3. The Argentina Journey: Overcoming Heartbreak for Golden Glory",
+        "4. Angel Di Maria Retired: Behind the Scenes of a Historic Decision",
+        "5. Tactical Genius: Why Di Maria is Irreplaceable",
+        "6. Angel Di Maria Complete Career Statistics Table",
+        "7. Frequently Asked Questions about Di Maria's Retirement"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: Saying Goodbye to the Angel of Rosario",
+          body: "Few players in football history possess the rare ability to consistently turn the tide in the most high-stakes matches. Angel Di Maria's retirement marks the conclusion of an outstanding career defined by sheer brilliance, selflessness, and a legendary legacy."
+        }
+      ],
+      faqs: [
+        {
+          q: "When did Angel Di Maria retire from international duty?",
+          a: "Angel Di Maria officially retired from international football following Argentina's triumphant Copa América campaign in 2024, leaving as a double Copa América and World Cup Champion."
+        }
+      ]
+    },
+    isHtml: true,
+    htmlBodyAr: `<div class="space-y-6 text-right font-sans" dir="rtl">
+  <p class="text-slate-300 text-sm leading-relaxed">
+    كرة القدم ليست مجرد أرقام تُحصى أو مهارات تُعرض؛ بل هي حكايات ملهمة يكتبها رجال حقيقيون واجهوا المستحيل وانتصروا عليه. واليوم، حين يتردد صدى العبارة المحزنة والمبهرة في آن واحد: <strong>دى ماريا اعتزل</strong>، ينحني عالم كرة القدم إجلالاً واحتراماً لمسيرة لاعب أعاد تعريف مفهوم "رجل المواعيد الكبرى". أنخيل دي ماريا (Ángel Di María)، الساحر النحيف الذي طالما جرى في أطراف الملاعب كغزال بري يوزع الفرحة والتمريرات الحاسمة، قرر أخيراً وضع حد لمسيرته الأسطورية؛ تاركاً وراءه إرثاً كروياً ناصع البياض لا يمكن لأي نجم قادم أن يمحوه أو يتجاوزه بسهولة. في هذا التقرير الشامل والمتوافق تماماً مع متطلبات السيو الحديثة لعام <strong>2026</strong>، سنغوص بعمق في تفاصيل حياة ومسيرة الملاك الأرجنتيني، مستعرضين محطاته التاريخية، وأسرار تألقه الخارق في كافة المباريات النهائية، والسبب الذي جعل اعتزاله بمثابة زلزال عاطفي هز قلوب مشجعي التانغو والساحرة المستديرة حول العالم.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-violet-500/10 to-purple-500/10 border-r-4 border-violet-500 rounded-l-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1 font-sans">🇦🇷 بطاقة الهوية الرياضية والمهنية للساحر دي ماريا</h4>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      الاسم الكامل: أنخيل فابيان دي ماريا هيرنانديز. تاريخ الميلاد: 14 فبراير 1988 (روزاريو، الأرجنتين). الطول: 1.80 م. اللقب الشهير: الملاك (El Fideo - النودلز). الأندية التي مثلها: روزاريو سنترال، بنفيكا، ريال مدريد، مانشستر يونايتد، باريس سان جيرمان، يوفنتوس. المنصب الحالي في 2026: أسطورة كروية معتزلة، وسفير رياضي دولي. اللحظة الحاسمة: التتويج بكأس العالم 2022 وكوبا أمريكا مرتين متتاليتين.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-violet-500/20 pb-2 mt-8">البداية والنشأة الصعبة: من عمال الفحم في روزاريو إلى قمة العالم</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    لم تولد نجومية أنخيل دي ماريا وفي فمه ملعقة من ذهب؛ بل نشأ في حي "بيردريل" المتواضع بمدينة روزاريو الأرجنتينية. هناك، كان الطفل النحيف يساعد والده يومياً في تعبئة أكياس الفحم الحجري الثقيلة تحت أشعة الشمس الحارقة والأتربة الخانقة ليوفر للعائلة قوت يومها. كانت تلاحظ والدته فرط حركته وطاقته الهائلة، فقررت تسجيله في نادي محلي بناءً على نصيحة الطبيب لتفريغ طاقته الزائدة، ولم تكن تعلم أن هذه الخطوة البسيطة هي بداية صناعة أحد أعظم لاعبي خط الوسط الهجومي والأجنحة في تاريخ أمريكا الجنوبية.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    انتقل دي ماريا سريعاً إلى نادي روزاريو سنترال، حيث كان يضطر لركوب الدراجة خلف والدته لمسافات طويلة يومياً للوصول إلى ملعب التدريب بسب عدم توفر أجرة الحافلة. هذا الكفاح الملحمي صقل داخله روحاً قتالية نادرة ظهرت بوضوح في تحركاته وقدرته على الجري طوال الـ 90 دقيقة دون تعب. وبمجرد بروزه في الدوري الأرجنتيني وتألقه في كأس العالم للشباب، سارع نادي <strong>بنفيكا البرتغالي</strong> للتعاقد معه في عام 2007، لتبدأ من لشبونة فصول رحلته الأسطورية في القارة العجوز.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-violet-500/20 pb-2 mt-8">مستشفى النهائيات الكبرى: دي ماريا المتخصص في حسم الألقاب لمنتخب الأرجنتين</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    يمتلك دي ماريا ميزة استثنائية تفوق بها على سائر جيله من اللاعبين، بما فيهم أساطير كبار؛ وهي قدرته الخارقة والتاريخية على الحسم الفعلي والمباشر في المباريات النهائية الكبرى. لطالما عانت الأرجنتين من غياب الفاعلية الهجومية والتوتر النفسي في النهائيات، ولكن حضور دي ماريا كان دائماً يمثل الترياق السحري والضمانة الحقيقية للفوز بالذهب. لنستعرض معاً أهدافه الخالدة التي صنعت التاريخ:
+  </p>
+  <ul class="space-y-3 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+    <li>
+      <strong class="text-white">ذهبية أولمبياد بكين 2008:</strong> سجل دي ماريا هدف الفوز التاريخي والوحيد في شباك نيجيريا بطريقته الشهيرة "لوب" (Chip) ساقطة من فوق الحارس بعد تمريرة سحرية من صديق عمره ليونيل ميسي.
+    </li>
+    <li>
+      <strong class="text-white">كوبا أمريكا 2021 في ماراكانا:</strong> أنهى دي ماريا صيام الأرجنتين عن الألقاب القارية لمدة 28 عاماً، بسيناريو مكرر حيث استلم تمريرة طولية وسددها ساقطة رائعة من فوق الحارس البرازيلي إيدرسون ليهدي بلاده اللقب الأغلى في قلب البرازيل.
+    </li>
+    <li>
+      <strong class="text-white">كأس الفيناليسيما 2022 ضد إيطاليا:</strong> أحرز دي ماريا الهدف الثاني بمهارة فائقة وسرعة خاطفة، مبرهناً على تفوقه التام على أقوى الدفاعات الأوروبية في مباراة انتهت بثلاثية نظيفة للأرجنتين.
+    </li>
+    <li>
+      <strong class="text-white">نهائي كأس العالم قطر 2022 ضد فرنسا:</strong> قدم دي ماريا واحدة من أعظم المباريات الفردية في تاريخ نهائيات المونديال؛ حيث حصل على ركلة جزاء سجل منها ميسي الهدف الأول، ثم عاد ليسجل بنفسه الهدف الثاني التاريخي من هجمة مرتدة جماعية سريعة ومثالية، واضعاً الأرجنتين على طريق رفع الكأس الذهبية الأثمن عالمياً.
+    </li>
+  </ul>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-violet-500/20 pb-2 mt-8">تحليل كواليس القرار: لماذا وكيف اتخذ دي ماريا قرار الاعتزال؟</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    لكل قصة بداية ونهاية، وكان أنخيل دي ماريا حكيماً للغاية في اختيار اللحظة المناسبة لترجل الفارس عن صهوة جواده. فمنذ نهاية نهائي مونديال قطر 2022 التاريخي، ألمح دي ماريا إلى أنه يستعد لفتح صفحة الختام مع منتخب الألبيسيليستي لمنح الفرصة للمواهب الشابة الصاعدة مثل أليخاندرو غارناتشو ونيكولاس غونزاليس لقيادة خط الهجوم الأرجنتيني.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    وجاء الإعلان الحاسم والمؤثر في بطولة <strong>كوبا أمريكا 2024</strong> بالولايات المتحدة؛ حيث صرح والدموع تملأ عينيه أن هذه البطولة ستكون رقصته الأخيرة بقميص التانغو. وبالفعل، قدم مستويات بطولية وقاد بلاده للوصول للنهائي والتتويج باللقب على حساب كولومبيا، ليخرج من الباب الكبير مرفوع الرأس كبطل حقيقي تغنت باسمه الجماهير طويلاً في الملاعب الأمريكية واللاتينية. وحين سئل لاحقاً عن إمكانية التراجع عن القرار، أكد دي ماريا أن الاستمرار لعام 2026 قد يضر بالمنتخب وأن الجيل القادم يستحق كتابة تاريخه الخاص، ليثبت مجدداً روحه الرياضية وتواضعه الشديد الذي جعله معشوقاً لجميع زملائه ومدربيه.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-violet-500/20 pb-2 mt-8">جدول الإحصائيات والأرقام التراكمية لمسيرة دي ماريا الذهبية</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    يوضح الجدول التفصيلي التالي الأرقام والبيانات الإحصائية الكاملة لمسيرة أنخيل دي ماريا مع مختلف الأندية الأوروبية الكبرى والمنتخب الأرجنتيني الأول حتى اعتزاله التاريخي:
+  </p>
+  <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+    <table class="w-full text-xs text-slate-300 text-right">
+      <thead class="bg-violet-950 text-white font-bold">
+        <tr>
+          <th class="p-3">المحطة الرياضية / النادي</th>
+          <th class="p-3">الفترة الزمنية</th>
+          <th class="p-3">المباريات الإجمالية</th>
+          <th class="p-3">الأهداف المسجلة</th>
+          <th class="p-3">التمريرات الحاسمة (Asst)</th>
+          <th class="p-3">أبرز الألقاب الجماعية والبطولات</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-800">
+        <tr>
+          <td class="p-3 font-bold text-violet-400">بنفيكا البرتغالي (Benfica)</td>
+          <td class="p-3">2007 - 2010 / 2023 - 2024</td>
+          <td class="p-3">175 مباراة</td>
+          <td class="p-3">32 هدفاً</td>
+          <td class="p-3">45 صناعة</td>
+          <td class="p-3 text-slate-400">الدوري البرتغالي (مرة)، كأس السوبر البرتغالي (مرتين)، كأس الرابطة</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-violet-400">ريال مدريد الإسباني (Real Madrid)</td>
+          <td class="p-3">2010 - 2014</td>
+          <td class="p-3">190 مباراة</td>
+          <td class="p-3">36 هدفاً</td>
+          <td class="p-3">85 صناعة</td>
+          <td class="p-3 text-slate-400">دوري أبطال أوروبا (العاشرة الأسطورية)، الدوري الإسباني، كأس الملك (مرتين)</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-violet-400">مانشستر يونايتد الإنجليزي (Man Utd)</td>
+          <td class="p-3">2014 - 2015</td>
+          <td class="p-3">32 مباراة</td>
+          <td class="p-3">4 أهداف</td>
+          <td class="p-3">12 صناعة</td>
+          <td class="p-3 text-slate-400">رحلة تخللها صعوبات التكيف مع أسلوب لويس فان خال</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-violet-400">باريس سان جيرمان الفرنسي (PSG)</td>
+          <td class="p-3">2015 - 2022</td>
+          <td class="p-3">295 مباراة</td>
+          <td class="p-3">93 هدفاً</td>
+          <td class="p-3">119 صناعة</td>
+          <td class="p-3 text-slate-400">الدوري الفرنسي (5 مرات)، كأس فرنسا (5 مرات)، وصيف دوري الأبطال 2020</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-violet-400">يوفنتوس الإيطالي (Juventus)</td>
+          <td class="p-3">2022 - 2023</td>
+          <td class="p-3">40 مباراة</td>
+          <td class="p-3">8 أهداف</td>
+          <td class="p-3">7 صناعة</td>
+          <td class="p-3 text-slate-400">موسم انتقالي شهد تقديم لمسات سحرية نادرة في الدوري الإيطالي</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-violet-400">منتخب الأرجنتين الأول (La Albiceleste)</td>
+          <td class="p-3">2008 - 2024</td>
+          <td class="p-3">145 مباراة دولية</td>
+          <td class="p-3">31 هدفاً دولياً</td>
+          <td class="p-3">30 صناعة</td>
+          <td class="p-3 text-slate-400">بطل كأس العالم 2022، بطل كوبا أمريكا (مرتين)، ذهبية الأولمبياد، الفيناليسيما</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-violet-500/20 pb-2 mt-8">التحليل التكتيكي والفني لأسلوب لعب أنخيل دي ماريا: السهل الممتنع</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    ما الذي يجعل دي ماريا فريداً للغاية وغير قابل للتعويض؟ إنه يدمج بين ثلاثة أبعاد تكتيكية بالغة الصعوبة:
+  </p>
+  <ul class="space-y-3 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+    <li>
+      <strong class="text-white">المرونة التمركزية الخارقة (Positioning Versatility):</strong> يستطيع اللعب كجناح كلاسيكي صريح على الجهة اليسرى، أو جناح مقلوب على الجهة اليمنى يخترق ويسدد باليسرى الفتاكة، كما أبدع مع كارلو أنشيلوتي في ريال مدريد كلاعب وسط ثالث مساند (Mezzala) في موسم العاشرة التاريخي.
+    </li>
+    <li>
+      <strong class="text-white">الجرأة في المواجهات الثنائية (Dribbling courage):</strong> لا يخشى دي ماريا مواجهة المدافعين وجهاً لوجه؛ بل يستفيد من رشاقته وبنيته النحيفة للمرور بسرعة مباغتة، مستغلاً مهارة "الرابونا" والكرات العرضية المقوسة التي تشكل كابوساً لحراس المرمى.
+    </li>
+    <li>
+      <strong class="text-white">الوفاء التكتيكي والتضحية الدفاعية (Defensive Work Rate):</strong> على عكس الكثير من الأجنحة المهارية، يتميز دي ماريا بمعدل ارتداد دفاعي هائل ومساعدة دائمة لظهير الجنب، مما يمنح الفريق توازناً استثنائياً في الأوقات الصعبة.
+    </li>
+  </ul>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-violet-500/20 pb-2 mt-8">الخلاصة والتأصيل السيو لعام 2026</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    في نهاية هذا التقرير التفصيلي والاستقصائي، ندرك تماماً أن عبارة <strong>دى ماريا اعتزل</strong> ليست مجرد خبر رياضي عابر؛ بل هي كتابة السطر الأخير في واحدة من أجمل روايات الوفاء والتضحية والإبداع في عالم الساحرة المستديرة. لقد عانى دي ماريا طويلاً من الانتقادات الحادة والإصابات اللعينة والتشكيك المستمر في بلاده، ولكنه صبر وثابر وقاتل حتى تحول إلى أيقونة وطنية مقدسة بجانب ليونيل ميسي. إن اعتزاله يترك فراغاً تكتيكياً وعاطفياً هائلاً في خط هجوم التانغو، لكنه سيبقى حياً في ذاكرة عشاق اللعبة بأهدافه الأنيقة، قلبه الذي يشير به للجماهير بعد كل هدف، وتواضعه الفريد الذي جعل منه بطلاً للشعوب.
+  </p>
+
+  <div class="bg-violet-500/5 p-4 rounded-2xl border border-violet-500/20 space-y-2 mt-8">
+    <h3 class="text-sm font-black text-white font-sans">🔮 نظرة السيو والتحليل الرياضي لعام 2026</h3>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      يبقى إرث أنخيل دي ماريا في عام <strong>2026</strong> معياراً يقاس عليه أداء الأجنحة وصناع اللعب المعاصرين. إن دروس الكفاح التي قدمها من شوارع روزاريو الصعبة وحتى منصات التتويج المونديالية ستظل تروى كأفضل قصة ملهمة تثبت أن العمل الشاق والصمت والصبر هم المفاتيح الحقيقية للوصول لقمة الخلود الكروي.
+    </p>
+  </div>
+</div>`,
+    htmlBodyEn: `<div class="space-y-6 text-left font-sans" dir="ltr">
+  <p class="text-slate-300 text-sm leading-relaxed first-letter:text-3xl first-letter:font-bold first-letter:text-violet-500">
+    Angel Di Maria retired from professional and international football as one of the most brilliant and selfless big-game players in the sport's history. Today in <strong>2026</strong>, his absence is heavily felt by the Argentine national team and Benfica, where his creative vision, devastating pace, and remarkable defensive work rate established him as an absolute legend.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-violet-500/10 to-purple-500/10 border-l-4 border-violet-500 rounded-r-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1">⚡️ The Legendary Career of Ángel Di María</h4>
+    <p class="text-xs text-slate-300 leading-relaxed">
+      Born February 14, 1988, in Rosario, Argentina. Famously known as 'El Fideo' (The Noodle), the Argentine winger proved to be the ultimate clutch hero, scoring historic winning goals in the 2008 Olympics, 2021 Copa América, and the magnificent 2022 FIFA World Cup Final.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-violet-500/20 pb-2 mt-8">Clutch Finals and International Stardom</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    Angel Di Maria's ability to shine under extreme pressure remains legendary. For years, Argentina struggled to secure major trophies, but Di Maria's clinical finishes turned final heartbreaks into golden celebrations. Following Argentina's historic Copa América triumph in 2024, the Argentine magician decided to hang up his boots on international football, departing at the absolute peak of his global fame.
+  </p>
+</div>`
+  },
   {
     id: "art-hossam-hassan-wife-2026",
     slug: "hossam-hassan-wife-family-life-2026",

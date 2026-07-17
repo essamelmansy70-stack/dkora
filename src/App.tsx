@@ -779,7 +779,9 @@ export default function App() {
 
   return (
     <div 
-      className="min-h-screen bg-white text-slate-900 flex flex-col items-center justify-between font-sans selection:bg-red-600 selection:text-white relative overflow-hidden"
+      className={`min-h-screen flex flex-col items-center justify-between font-sans selection:bg-red-600 selection:text-white relative overflow-hidden transition-colors duration-500 ${
+        activeTab === "blog" ? "bg-[#03071c] text-white" : "bg-white text-slate-900"
+      }`}
       dir={isRtl ? "rtl" : "ltr"}
     >
       
@@ -796,7 +798,11 @@ export default function App() {
       {/* Global Bilingual Header in pristine responsive white banner */}
       <header 
         onClick={() => { handleTabChange("quiz"); playInteractionSound(); }}
-        className="w-full max-w-4xl px-4 py-5 flex flex-col sm:flex-row gap-4 items-center justify-between border-b border-slate-200 z-10 bg-white/80 backdrop-blur-md cursor-pointer hover:bg-slate-50/50 transition-colors duration-200 group/header"
+        className={`w-full px-4 py-5 flex flex-col sm:flex-row gap-4 items-center justify-between border-b z-10 backdrop-blur-md cursor-pointer transition-all duration-350 group/header ${
+          activeTab === "blog" 
+            ? "max-w-none px-6 md:px-12 lg:px-16 bg-[#03071c]/90 border-slate-800 hover:bg-[#070c2c]/50 text-white" 
+            : "max-w-4xl bg-white/80 border-slate-200 hover:bg-slate-50/50 text-slate-900"
+        }`}
         title={lang === "ar" ? "اضغط للذهاب لالصفحة الرئيسية" : "Click to go to Home Page"}
       >
         <div 
@@ -806,7 +812,11 @@ export default function App() {
             <Trophy className="w-5.5 h-5.5 text-white animate-bounce" />
           </div>
           <div className="text-center sm:text-start rtl:sm:text-right ltr:sm:text-left">
-            <h1 className="text-sm sm:text-base font-black tracking-tight bg-gradient-to-r from-slate-950 via-red-600 to-slate-950 bg-clip-text text-transparent group-hover:text-red-650 transition-colors">
+            <h1 className={`text-sm sm:text-base font-black tracking-tight bg-clip-text text-transparent transition-colors ${
+              activeTab === "blog"
+                ? "bg-gradient-to-r from-white via-red-500 to-white group-hover:text-red-500"
+                : "bg-gradient-to-r from-slate-950 via-red-600 to-slate-950 group-hover:text-red-650"
+            }`}>
               {t.title}
             </h1>
             <p className="text-[10px] text-slate-400 font-mono tracking-widest uppercase">
@@ -820,7 +830,11 @@ export default function App() {
           <button
             id="lang-toggle-btn"
             onClick={() => handleLanguageChange(lang === "ar" ? "en" : "ar")}
-            className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-red-500 hover:bg-slate-100 text-xs text-slate-700 hover:text-slate-950 transition-all font-bold flex items-center gap-1.5 cursor-pointer shadow-sm"
+            className={`px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center gap-1.5 cursor-pointer shadow-sm transition-all ${
+              activeTab === "blog"
+                ? "bg-[#090e30]/80 border-slate-800 hover:border-red-500 hover:bg-[#12194d]/85 text-slate-300 hover:text-white"
+                : "bg-slate-50 border-slate-200 hover:border-red-500 hover:bg-slate-100 text-slate-700 hover:text-slate-950"
+            }`}
           >
             <Globe className="w-3.5 h-3.5 text-red-500" />
             <span>{lang === "ar" ? "English 🇬🇧" : "العربية 🇸🇦"}</span>
@@ -829,7 +843,11 @@ export default function App() {
       </header>
 
       {/* Primary Workspace */}
-      <main className="w-full max-w-4xl px-4 py-8 flex flex-col justify-center items-center flex-grow z-10">
+      <main className={`w-full flex flex-col justify-center items-center flex-grow z-10 transition-all ${
+        activeTab === "blog" 
+          ? "max-w-none px-4 sm:px-6 md:px-12 lg:px-20 py-8" 
+          : "max-w-4xl px-4 py-8"
+      }`}>
         
         {/* TAB 1: FOOTBALL PERSONALITY QUIZ FLOW */}
         {activeTab === "quiz" && (
@@ -1800,7 +1818,7 @@ export default function App() {
 
         {/* TAB 2: ARTICLES BLOG SECTION */}
         {activeTab === "blog" && (
-          <div className="w-full animate-fade-in py-2 bg-white">
+          <div className="w-full animate-fade-in py-2 bg-transparent">
             <Suspense fallback={
               <div className="flex flex-col items-center justify-center p-12 text-slate-500 font-bold">
                 <Loader2 className="w-8 h-8 animate-spin text-red-600 mb-2" />
@@ -1987,14 +2005,24 @@ export default function App() {
       )}
 
       {/* Styled Footer with Legal and Sitemap navigators */}
-      <footer className="w-full max-w-4xl px-4 py-6 border-t border-slate-205 text-center space-y-6 z-10 bg-white/50 backdrop-blur-sm mt-12">
+      <footer className={`w-full px-4 py-6 border-t text-center space-y-6 z-10 backdrop-blur-sm mt-12 transition-all duration-350 ${
+        activeTab === "blog"
+          ? "max-w-none px-6 md:px-12 lg:px-16 bg-[#03071c]/50 border-slate-800 text-slate-300"
+          : "max-w-4xl bg-white/50 border-slate-205 text-slate-900"
+      }`}>
         
         {/* SEO EXPLANATION PANEL - INJECTED FOR GOOGLE SEARCH INDEXING 2026 */}
-        <section className="bg-slate-50 border border-slate-205 p-5 rounded-2xl text-start space-y-3">
+        <section className={`border p-5 rounded-2xl text-start space-y-3 ${
+          activeTab === "blog"
+            ? "bg-[#070d2c]/60 border-slate-850"
+            : "bg-slate-50 border-slate-205"
+        }`}>
           <h4 className="text-xs sm:text-sm font-black text-red-500 uppercase tracking-wider">
             {lang === "ar" ? "حول اختبار شبيهك من لاعبي المونديال المتطور لعام ٢٠٢٦" : "About the Advanced 2026 World Cup Player Match Quiz"}
           </h4>
-          <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed text-justify font-sans">
+          <p className={`text-[11px] sm:text-xs leading-relaxed text-justify font-sans ${
+            activeTab === "blog" ? "text-slate-300" : "text-slate-600"
+          }`}>
             {lang === "ar" 
               ? "يقوم هذا المحرك المتكامل بتحليل سماتك الفردية ونمط قيادتك وتكتيكك الخاص في كرة القدم لتحديد الأسطورة المونديالية المتطابقة معك تماماً (مثل ميسي، رونالدو، مبابي، هالاند، مودريتش، أو محمد صلاح). بفضل معايير اختبارات الشخصية الرياضية السيكومترية لعام ٢٠٢٦، نقوم بفرز وتحليل البيانات محلياً وبشكل مجاني بالكامل بدون الحاجة لأي اشتراك أو تخزين بيانات خارجية لضمان خصوصيتك الكلية وسرعة استجابة مذهلة."
               : "This specialized engine assesses your personality, tactical sports logic, and on-pitch decision making to locate your precise legendary football matching profile (including Messi, Ronaldo, Mbappe, Haaland, Modric, or Salah). Operating completely client-side in 2026, it ensures absolute privacy with instant, offline evaluation and customizable downloadable cards without storing any personal user parameters."
@@ -2002,16 +2030,22 @@ export default function App() {
           </p>
         </section>
 
-        <p className="text-[10px] sm:text-xs text-slate-450 font-semibold font-sans">
+        <p className={`text-[10px] sm:text-xs font-semibold font-sans ${
+          activeTab === "blog" ? "text-slate-400" : "text-slate-450"
+        }`}>
           {t.footerRights}
         </p>
 
-        <p className="text-[9px] text-slate-400 font-mono tracking-widest uppercase font-extrabold pb-2">
+        <p className={`text-[9px] font-mono tracking-widest uppercase font-extrabold pb-2 ${
+          activeTab === "blog" ? "text-slate-500" : "text-slate-400"
+        }`}>
           {t.footerMeta}
         </p>
 
         {/* Footnotes links trigger at the absolute bottom */}
-        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-black text-slate-500 border-t border-slate-100 pt-4">
+        <div className={`flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-black border-t pt-4 ${
+          activeTab === "blog" ? "border-slate-800 text-slate-400" : "border-slate-100 text-slate-500"
+        }`}>
           <button 
             onClick={() => { setActiveLegalModal("privacy"); playInteractionSound(); }}
             className="hover:text-red-500 transition-colors cursor-pointer"

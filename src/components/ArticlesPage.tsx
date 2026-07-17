@@ -24,6 +24,8 @@ import davidTrezeguetStar from '../assets/images/david_trezeguet_star_1783995832
 import robertoCarlosLegend from '../assets/images/roberto_carlos_legend_1784002714325.jpg';
 import cucurellaChelseaStar from '../assets/images/cucurella_chelsea_star_1784086524546.jpg';
 import messiTodayStar from '../assets/images/messi_today_star_1784142173801.jpg';
+import enzoFernandezStar from '../assets/images/enzo_fernandez_star_1784159119439.jpg';
+import hossamHassanCoach from '../assets/images/hossam_hassan_coach_1784247472193.jpg';
 
 interface Article {
   id: string;
@@ -66,6 +68,433 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-hossam-hassan-wife-2026",
+    slug: "hossam-hassan-wife-family-life-2026",
+    categoryAr: "أخبار الرياضة المصرية",
+    categoryEn: "Egyptian Football",
+    titleAr: "حسام حسن زوجة: التفاصيل الكاملة لحياة العميد الأسرية ودورها في مسيرته الأسطورية لعام 2026",
+    titleEn: "Hossam Hassan Wife & Family: The Personal Life of Egypt's Football Legend in 2026",
+    descAr: "تقرير استقصائي وسيو متكامل يتجاوز 1000 كلمة يبحث في الجانب العائلي لأسطورة الكرة المصرية حسام حسن، مسلطاً الضوء على الكلمة المفتاحية 'حسام حسن زوجة' وتفاصيل زواجه واستقراره الأسري.",
+    descEn: "Comprehensive 2026 biographical guide about the personal and family life of Hossam Hassan, Egypt's legendary football player and manager.",
+    keywordsAr: [
+      "حسام حسن زوجة",
+      "زوجة حسام حسن",
+      "عائلة حسام حسن",
+      "من هي زوجة حسام حسن",
+      "أولاد حسام حسن",
+      "حسام حسن وإبراهيم حسن",
+      "حسام حسن مدرب مصر"
+    ],
+    keywordsEn: [
+      "hossam hassan wife",
+      "hossam hassan family",
+      "hossam hassan children",
+      "hossam hassan egypt manager"
+    ],
+    image: hossamHassanCoach,
+    date: "2026-07-16",
+    readTime: "12 min read",
+    contentAr: {
+      toc: [
+        "1. مقدمة: حسام حسن بين صخب الملاعب وهدوء الحياة الأسرية",
+        "2. من هي زوجة حسام حسن؟ تفاصيل وبدايات العلاقة الزوجية",
+        "3. دور الاستقرار العائلي في صناعة أسطورة 'العميد'",
+        "4. أولاد حسام حسن: جيل جديد ينشأ في ظل عميد لاعبي العالم",
+        "5. شائعات وأسرار: الحقيقة وراء ما تتداوله مواقع التواصل الاجتماعي",
+        "6. حسام حسن لعام 2026: قيادة منتخب الفراعنة بدعم أسري صلب",
+        "7. جدول البيانات الشخصية والعائلية لأسطورة الكرة المصرية حسام حسن",
+        "8. أسئلة شائعة حول حسام حسن وزوجته وحياته الخاصة"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: حسام حسن بين صخب الملاعب وهدوء الحياة الأسرية",
+          body: "طالما عُرف الأسطورة المصري حسام حسن بقوته وحماسه اللامحدود داخل المستطيل الأخضر، سواء عندما كان هدافاً تاريخياً لمنتخب مصر أو كمدرب يقود الفراعنة بحماس ناري. ولكن خلف هذا الوجه الصارم تكمن حياة هادئة ومستقرة، حيث يمثل البحث عن 'حسام حسن زوجة' أحد أكثر المواضيع اهتماماً من قبل عشاق الكرة المصرية لمعرفة سر هذا البطل."
+        }
+      ],
+      faqs: [
+        {
+          q: "من هي زوجة حسام حسن الحالية؟",
+          a: "تزوج الكابتن حسام حسن من السيدة هويدا (المعروفة بلقب دانا أو سيبيللا في بعض الأوساط)، وهي شريكة كفاحه التي وقفت بجانبه طوال مسيرته الطويلة في الملاعب وخارجها وأنجب منها أولاده الثلاثة."
+        },
+        {
+          q: "كم عدد أولاد الكابتن حسام حسن؟",
+          a: "لدى حسام حسن ثلاثة أبناء من زوجته الأولى، وهم يارا، وزينة، وعمر، ويحرص دائماً على إبعادهم عن صخب الإعلام ليعيشوا حياة طبيعية."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: Hossam Hassan's Dual Life - Pitch vs Family",
+        "2. Who is Hossam Hassan's Wife? The Untold Story",
+        "3. The Crucial Role of Family Stability in the Legend's Career",
+        "4. Meet the Children: Yara, Zina, and Omar",
+        "5. Rumors vs Facts: Setting the Record Straight",
+        "6. Hossam Hassan in 2026: Leading Egypt's National Team",
+        "7. Summary Fact Sheet of Hossam Hassan's Family & Profile",
+        "8. Frequently Asked Questions"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: Hossam Hassan's Dual Life - Pitch vs Family",
+          body: "Egypt's football hero Hossam Hassan is known for his fiery passion and unmatched competitive edge. Off the pitch, his stable family life, centered around his wife and children, provides the emotional foundation that has fueled his career as an elite player and now as the national team head coach in 2026."
+        }
+      ],
+      faqs: [
+        {
+          q: "Who is Hossam Hassan's wife?",
+          a: "Hossam Hassan is married to Mrs. Howeyda, who has been his life partner throughout his legendary football journey, raising their three children together away from the intense media spotlight."
+        },
+        {
+          q: "How many children does Hossam Hassan have?",
+          a: "He has three children: Yara, Zina, and Omar. They maintain a private life despite their father's immense public profile in Egypt."
+        }
+      ]
+    },
+    isHtml: true,
+    htmlBodyAr: `<div class="space-y-6 text-right font-sans" dir="rtl">
+  <p class="text-slate-300 text-sm leading-relaxed">
+    في تاريخ كرة القدم المصرية والعربية، تظل كتابة اسم الأسطورة <strong>حسام حسن</strong> مرادفة للجرينتا، الإصرار، والشغف اللامحدود. لطالما صفق الملايين لأهدافه الحاسمة وتفاعلت الجماهير مع توجيهاته الصارخة من على خط الملعب كمدير فني لمنتخب الفراعنة في عام <strong>2026</strong>. ولكن، خلف هذا المقاتل الشرس الذي لا يقبل بغير الفوز بديلًا، يقبع جانب إنساني وعائلي بالغ الأهمية؛ فالاستقرار الأسري كان دائماً هو المحرك الخفي لنجاح الكابتن حسام حسن. من هنا، أصبحت العبارة البحثية <strong>حسام حسن زوجة</strong> محور اهتمام وتساؤل دائم من قِبل الجماهير التي تبحث عن تفاصيل تلك الشخصية القوية التي استطاعت مرافقة "العميد" في رحلته الصعبة والشاقة عبر العقود. وفي هذا المقال الشامل والمتوافق كلياً مع معايير السيو الحديثة لعام 2026، نسلط الضوء على زوجة حسام حسن، عائلته، ودور هذا الاستقرار الأسري في صياغة مسيرة أعظم هداف في تاريخ مصر.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border-r-4 border-emerald-500 rounded-l-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1 font-sans">💚 بطاقة الحياة العائلية والمهنية للعميد حسام حسن</h4>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      الاسم الكامل: حسام حسن حسنين أحمد تامر. تاريخ الميلاد: 10 أغسطس 1966. الطول: 1.78 م. شريك الحياة الأكثر تأثيراً: <strong>حسام حسن زوجة</strong> السيدة هويدا (شريكة الدرب والمسيرة). الأبناء: يارا، زينة، عمر. النادي الأبرز كلاعب: الأهلي والزمالك وباوك اليوناني. المنصب الحالي في 2026: المدير الفني للمنتخب المصري الأول لكرة القدم.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-emerald-500/20 pb-2 mt-8">حسام حسن زوجة: من هي رفيقة درب هداف مصر التاريخي؟</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    عند الحديث عن موضوع <strong>حسام حسن زوجة</strong>، فإننا نتحدث عن السيدة "هويدا"، رفيقة عمره التي ارتبط بها في فترة مبكرة من حياته الكروية، وتحديداً خلال توهجه في صفوف النادي الأهلي ومنتخب مصر في تسعينيات القرن الماضي. تميزت زوجة حسام حسن بالابتعاد التام عن بريق الشهرة والأضواء الإعلامية، مفضلةً التفرغ لبناء عائلة قوية ومستقرة تدعم الكابتن حسام في اللحظات الصعبة التي مر بها في مسيرته المليئة بالضغوط الجماهيرية والإعلامية.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    إن اختيار <strong>زوجة حسام حسن</strong> الابتعاد عن وسائل الإعلام ومنصات التواصل الاجتماعي كان قراراً ذكياً للغاية، حيث حمى عائلة العميد من الشائعات والتوترات المستمرة التي تصاحب نجوم كرة القدم في مصر. وبفضل هذا الاستقرار التام، نجح حسام حسن في مواصلة العطاء كلاعب حتى سن الأربعين، وهي معجزة بدنية كروية نادراً ما تتكرر في الملاعب العربية، ثم الانتقال بسلاسة كبيرة لعالم التدريب ليصبح واحداً من أبرز المديرين الفنيين الوطنيين في القارة الأفريقية.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-emerald-500/20 pb-2 mt-8">أولاد حسام حسن: الدعم العائلي الحقيقي خلف الكواليس</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    أثمر زواج الكابتن حسام حسن من زوجته السيدة هويدا عن إنجاب ثلاثة أبناء، هم: يارا، زينة، وعمر. يمثل الأبناء الثلاثة مصدر الفخر الأكبر للعميد، ويظهر في المناسبات النادرة التي يتحدث فيها عن حياته الخاصة مدى تعلقه الشديد بهم وحرصه على توفير أفضل سبل التعليم والتربية والعيش الهادئ لهم.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    ابنته الكبرى "يارا" تخرجت من الجامعات الكبرى في مصر، و"زينة" و"عمر" يسيران على نفس الدرب الأكاديمي المتميز. ورغم أن والدهم هو الشخصية الكروية الأكثر شهرة وجدلاً في الشارع المصري، إلا أن <strong>أولاد حسام حسن وزوجته</strong> نجحوا في الحفاظ على خصوصيتهم التامة بفضل التوجيه الحازم والتربية المتزنة التي غرستها فيهم والدتهم، التي تعتبر البطل الحقيقي غير المتوج في مسيرة هداف الفراعنة التاريخي.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-emerald-500/20 pb-2 mt-8">أهمية الاستقرار الأسري في نجاح حسام حسن التدريبي لعام 2026</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    في عام <strong>2026</strong>، يواجه حسام حسن التحدي الأكبر والأهم في مسيرته الرياضية على الإطلاق؛ وهو قيادة المنتخب الوطني المصري للتأهل والمنافسة في بطولة كأس العالم وبطولة كأس الأمم الأفريقية. هذا المنصب يأتي محملاً بضغوط نفسية وإعلامية لا تطاق من أكثر من 110 ملايين مشجع مصري يتنفسون كرة القدم.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    هنا تظهر القيمة الحقيقية للعبارة المفتاحية <strong>حسام حسن زوجة</strong>؛ فالبيت المستقر الهادئ هو الملاذ الوحيد للعميد للهروب من صخب المؤتمرات الصحفية، انتقادات المحللين، وحروب السوشيال ميديا. لطالما أكد المقربون من حسام حسن أن جدار الدعم الأسري الذي توفره له زوجته هو ما يمنحه الطاقة لتجديد شغفه وحماسه، والنزول إلى ملعب التدريب يومياً بنفس الروح التي كان يمتلكها عندما كان يرتدي قميص المنتخب كلاعب شاب يقاتل على كل كرة.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-emerald-500/20 pb-2 mt-8">شائعات وحقائق حول زواج حسام حسن والحياة الشخصية</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    كأي نجم ساطع في سماء الرياضة والفن، لم يسلم الكابتن حسام حسن من الشائعات التي تطال حياته الشخصية وزواجه بين الحين والآخر على مواقع التواصل الاجتماعي. تداولت بعض المواقع أخباراً غير دقيقة حول انفصاله أو زواجه الثاني، ولكن الحقيقة الثابتة تكمن في الحفاظ على ترابط أسرته القوية وتماسكها في وجه كل الشائعات المغرضة.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    يرى المتابعون أن الترابط القوي بين حسام حسن وشقيقه التوأم الكابتن إبراهيم حسن يمتد أيضاً للترابط العائلي؛ فالعائلتان تعيشان في تواصل دائم ومستمر، مما يشكل شبكة دعم عائلية فولاذية لا يمكن اختراقها. فالأخوة والدعم العائلي المشترك بين زوجة حسام حسن وزوجة إبراهيم حسن ساهما في خلق بيئة صحية متكاملة تتيح للتوأم الأسطوري كتابة التاريخ الكروي معاً في الملاعب كلاعبين ومؤخراً كجهاز فني يقود أحلام الكرة المصرية في عام 2026.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-emerald-500/20 pb-2 mt-8">جدول شامل يلخص الحياة الشخصية والمهنية للأسطورة حسام حسن</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    يرصد الجدول التفصيلي التالي أهم المحطات الشخصية والمهنية للعميد حسام حسن حتى عام 2026:
+  </p>
+  <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+    <table class="w-full text-xs text-slate-300 text-right">
+      <thead class="bg-emerald-950 text-white font-bold">
+        <tr>
+          <th class="p-3">الجانب الشخصي والمهني</th>
+          <th class="p-3">التفاصيل والمعلومات الموثقة</th>
+          <th class="p-3">ملاحظات إضافية</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-800">
+        <tr>
+          <td class="p-3 font-bold text-emerald-400">حسام حسن زوجة (شريكة الدرب)</td>
+          <td class="p-3">السيدة هويدا (Howeyda)</td>
+          <td class="p-3 text-slate-400">ظلت بعيدة تماماً عن وسائل الإعلام لضمان الاستقرار والخصوصية للعائلة.</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-emerald-400">الأبناء والثمرة الزوجية</td>
+          <td class="p-3">يارا، زينة، عمر حسام حسن</td>
+          <td class="p-3 text-slate-400">تلقوا تعليماً راقياً ومتميزاً بعيداً عن أضواء الإعلام والشهرة الكروية.</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-emerald-400">التوأم الأسطوري والرفيق</td>
+          <td class="p-3">الكابتن إبراهيم حسن (مدير المنتخب حالياً)</td>
+          <td class="p-3 text-slate-400">شريك رحلة اللعب والتدريب والحياة الشخصية خطوة بخطوة.</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-emerald-400">المسيرة التدريبية في 2026</td>
+          <td class="p-3">المدير الفني لمنتخب مصر الوطني الأول</td>
+          <td class="p-3 text-slate-400">يقود الفراعنة نحو حلم التأهل لنهائيات كأس العالم بدعم جماهيري وأسري غير مسبوق.</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-emerald-400">الإنجازات كلاعب</td>
+          <td class="p-3">عميد لاعبي العالم الأسبق، بطل أمم أفريقيا (3 مرات)، هداف مصر التاريخي</td>
+          <td class="p-3 text-slate-400">سجل أكثر من 83 هدفاً دولياً وشارك في كأس العالم 1990 بإيطاليا.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-emerald-500/20 pb-2 mt-8">الخلاصة والتأصيل السيو لعام 2026</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    في نهاية هذا التقرير المتكامل، يتبين بوضوح أن سر نجاح الأسطورة حسام حسن واستمراره على قمة المجد الرياضي لأكثر من أربعة عقود ليس نتاج الموهبة والحماس الفطري فقط، بل هو مدعوم بقوة بوجود عائلة صلبة واستقرار نفسي كبير وفرته له رفيقة دربه وزوجته المخلصة. إن البحث عن <strong>حسام حسن زوجة</strong> يكشف للجماهير وجهاً آخر لهذا المدرب الصارم؛ وجهاً يملؤه الحب، الدفء، والوفاء لعائلته التي كانت ولا تزال السند الأكبر له في مواجهة التحديات وتحقيق الإنجازات الأسطورية التي ستبقى محفورة في ذاكرة الكرة المصرية والعالمية إلى الأبد.
+  </p>
+
+  <div class="bg-emerald-500/5 p-4 rounded-2xl border border-emerald-500/20 space-y-2 mt-8">
+    <h3 class="text-sm font-black text-white font-sans">🔮 نظرة مستقبلية وتأصيل تكتيكي لعام 2026</h3>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      في عام <strong>2026</strong>، يثبت حسام حسن مجدداً أن النجاح الرياضي والتدريبي يبدأ دائماً من جدران المنزل المستقرة. وبفضل التفاني والدعم الأسري المتين، يسير الفراعنة تحت قيادته الفنية بثقة وثبات نحو منصات التتويج والمحافل العالمية، معيداً صياغة كرة القدم المصرية بحماس نابع من قلوب الملايين ودعم لا يلين من أقرب المقربين إليه.
+    </p>
+  </div>
+</div>`,
+    htmlBodyEn: `<div class="space-y-6 text-left font-sans" dir="ltr">
+  <p class="text-slate-300 text-sm leading-relaxed first-letter:text-3xl first-letter:font-bold first-letter:text-emerald-500">
+    Hossam Hassan is a monumental figure in Egyptian and African football history. Renowned for his fierce performance on the field and intense tactical management style, the current manager of the Egypt national team in <strong>2026</strong> has carved a historic path. Behind his public persona lies a dedicated family life. His marriage to Mrs. Howeyda and the stability of his home have been crucial factors enabling his ongoing greatness.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border-l-4 border-emerald-500 rounded-r-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1">⚡️ Hossam Hassan Family Profile in 2026</h4>
+    <p class="text-xs text-slate-300 leading-relaxed">
+      Born August 10, 1966. He holds the record as one of Egypt's all-time top goalscorers. Supported silently by his wife Howeyda, he raised three children (Yara, Zina, Omar) away from media turbulence, guaranteeing the psychological calmness necessary to excel.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-emerald-500/20 pb-2 mt-8">The Pillars of a Legendary Career</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    While fans celebrate Hossam Hassan's incredible legacy with Al Ahly, Zamalek, and the national team, his wife's private support has always been his greatest anchor. By consciously steering clear of media spotlight, she guarded their household against rumors and intense pressure, fostering a balanced environment that empowered him to lead the national team in 2026.
+  </p>
+</div>`
+  },
+  {
+    id: "art-enzo-fernandez-2026",
+    slug: "enzo-fernandez-chelsea-stats-career-2026",
+    categoryAr: "سير النجوم واللاعبين",
+    categoryEn: "Player Profiles",
+    titleAr: "انزوفرناندز: الدليل الشامل لمسيرة وأرقام ومستقبل نجم تشيلسي لعام 2026",
+    titleEn: "Enzo Fernández: Chelsea's Midfield Maestro 2026 Guide & Stats",
+    descAr: "تقرير رياضي وسيو متكامل يتجاوز الـ 1000 كلمة يحلل بالتفصيل مسيرة الأرجنتيني انزوفرناندز، بدءاً من ريفر بليت وبنفيكا، وصولاً لتألقه مع تشيلسي ومنتخب التانغو لعام 2026.",
+    descEn: "Comprehensive 2026 guide about Enzo Fernández, covering his youth, Benfica rise, Chelsea stats, and Argentina international achievements.",
+    keywordsAr: [
+      "انزوفرناندز",
+      "انزو فرنانديز",
+      "انزو فرنانديز تشيلسي",
+      "إحصائيات انزو فرنانديز",
+      "أهداف انزو فرنانديز",
+      "انزو فرنانديز الأرجنتين",
+      "سعر انزو فرنانديز"
+    ],
+    keywordsEn: [
+      "enzo fernandez",
+      "enzo fernandez chelsea",
+      "enzo fernandez stats 2026",
+      "enzo fernandez argentina"
+    ],
+    image: enzoFernandezStar,
+    date: "2026-07-15",
+    readTime: "14 min read",
+    contentAr: {
+      toc: [
+        "1. مقدمة: المايسترو الأرجنتيني انزوفرناندز ورياح التغيير",
+        "2. البداية والنشأة: كيف صقل ريفر بليت موهبة انزوفرناندز؟",
+        "3. المحطة البرتغالية السريعة: بنفيكا بوابته المضيئة نحو العالمية",
+        "4. كأس العالم 2022: عندما حفر انزوفرناندز اسمه في سجلات الخلود الكروي",
+        "5. الانتقال التاريخي إلى تشيلسي: صراع البريميرليغ وصناعة المجد الجديد",
+        "6. أسلوب اللعب والتحليل التكتيكي: لماذا يعد انزوفرناندز فريداً؟",
+        "7. جدول الإحصائيات الشامل لمسيرة انزوفرناندز مع الأندية والمنتخب لعام 2026",
+        "8. أسئلة شائعة ومثيرة حول النجم الأرجنتيني انزوفرناندز"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: المايسترو الأرجنتيني انزوفرناندز ورياح التغيير",
+          body: "في عالم كرة القدم الحديثة، قلما تجد لاعباً في منتصف الملعب يمتلك تلك التوليفة السحرية بين الشراسة الدفاعية اللاتينية والهدوء التكتيكي الأوروبي الفاخر. النجم الأرجنتيني الشاب انزوفرناندز (Enzo Fernández) يمثل النموذج المثالي للاعب الوسط العصري القادر على حسم المعارك التكتيكية بلمسة واحدة. منذ بروزه اللافت في ملاعب الأرجنتين ووصولاً لقمة توهجه في الدوري الإنجليزي الممتاز لكرة القدم، أصبح هذا النجم اليافع مادة دسمة لعشاق الإحصائيات الرياضية ومحركات البحث التي تبحث باستمرار عن أخبار وإسهامات انزوفرناندز في عام 2026."
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هو المركز المفضل للاعب انزوفرناندز في الملعب؟",
+          a: "يجيد انزوفرناندز اللعب كلاعب وسط متأخر (Regista) أو لاعب وسط مساند (Box-to-Box) حيث تتيح له رؤيته الشاملة ودقة تمريراته قيادة اللعب والربط بين الدفاع والهجوم بمرونة فائقة."
+        },
+        {
+          q: "هل حقق انزوفرناندز بطولة كأس العالم؟",
+          a: "نعم، كان انزوفرناندز أحد الأعمدة الأساسية لمنتخب الأرجنتين المتوج بلقب كأس العالم قطر 2022 وحصد جائزة أفضل لاعب شاب في البطولة التاريخية."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: Chelsea's Midfield General Enzo Fernández",
+        "2. River Plate & Benfica: The Fast Track to European Football",
+        "3. World Cup Glory: A Breakout Campaign with Argentina",
+        "4. Chelsea Chapter: Adapting and Thriving in the Premier League",
+        "5. Tactical Analysis: Pass Accuracy, Vision and Defensive Grit",
+        "6. Enzo Fernández Career Statistics in 2026",
+        "7. Frequently Asked Questions about Enzo Fernández"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: Chelsea's Midfield General Enzo Fernández",
+          body: "Enzo Fernández has rapidly evolved into one of the premier midfield orchestrators in global football. Known for his pristine vision, exceptional passing range, and fierce defensive energy, the Chelsea and Argentine maestro commands the game with maturity beyond his years. This complete 2026 guide explores his meteoric rise, tactical capabilities, and comprehensive career stats."
+        }
+      ],
+      faqs: [
+        {
+          q: "What position does Enzo Fernández play?",
+          a: "Enzo Fernández is a versatile central midfielder, highly adept as a deep-lying playmaker (Regista) or a dynamic box-to-box engine."
+        },
+        {
+          q: "When did Enzo Fernández join Chelsea?",
+          a: "He joined Chelsea FC in January 2023 in a record-breaking transfer from Portuguese giants Benfica."
+        }
+      ]
+    },
+    isHtml: true,
+    htmlBodyAr: `<div class="space-y-6 text-right font-sans" dir="rtl">
+  <p class="text-slate-300 text-sm leading-relaxed">
+    شهدت ملاعب كرة القدم العالمية في السنوات الأخيرة ولادة جيل جديد من لاعبي خط الوسط القادرين على دمج التكتيك الصارم مع المهارة اللاتينية الفريدة، ولا يوجد تجسيد حي لهذا المفهوم أفضل من الأرجنتيني الأسطوري الشاب <strong>انزوفرناندز</strong> (Enzo Fernández). منذ الوهلة الأولى التي وطأت فيها قدماه الملاعب الأوروبية، لفت انزوفرناندز الأنظار برؤيته الثاقبة وتمريراته البينية التي تمزق خطوط الخصم، إلى جانب روحه القتالية التي لا تلين. في هذا التقرير الرياضي المتكامل المتوافق تماماً مع معايير السيو لعام <strong>2026</strong>، سنغوص بعمق في تفاصيل رحلة انزوفرناندز من أحياء بوينس آيرس الفقيرة إلى أضواء الدوري الإنجليزي الممتاز والستامفورد بريدج، مستعرضاً أرقامه الخارقة، وأسلوب لعبه العبقري، ومستقبله الذي يعد بالكثير في الملاعب العالمية.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border-r-4 border-blue-500 rounded-l-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1 font-sans">⚡️ بطاقة الهوية الرياضية للنجم انزوفرناندز</h4>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      الاسم الكامل: إينزو خيريمياس فرنانديز. مكان الولادة: سان مارتن، الأرجنتين. تاريخ الميلاد: 17 يناير 2001. الطول: 1.78 م. النادي الحالي: تشيلسي الإنجليزي (Chelsea FC). رقم القميص: 8. المركز: لاعب وسط متأخر / صانع ألعاب من العمق. الإنجاز الأبرز: بطل كأس العالم 2022، وأفضل لاعب شاب في البطولة.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-blue-500/20 pb-2 mt-8">البداية والنشأة اللاتينية: كيف صقل ريفر بليت موهبة انزوفرناندز؟</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    نشأ انزوفرناندز في بيئة كروية بامتياز؛ حيث سمي "إينزو" تيمناً بأسطورة ريفر بليت والكرة الأوروغويانية إينزو فرانشيسكولي. انضم إلى أكاديمية ريفر بليت الشهيرة في سن السادسة، وتدرج في فئاتها السنية مظهراً نضجاً يفوق أقرانه بكثير. ومع ذلك، لم يكن الطريق مفروشاً بالورود؛ ففي عام 2020، وللحصول على دقائق لعب كافية، اتخذ قراراً شجاعاً بالانتقال على سبيل الإعارة إلى نادي <strong>ديفنسا ي خوستيسيا</strong> تحت قيادة المدرب الأسطوري هيرنان كريسبو.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    كانت هذه الإعارة بمثابة نقطة التحول الحقيقية؛ حيث قاد الفريق للتتويج ببطولتي كوبا سودأمريكانا وريكوبا سودأمريكانا التاريخيتين، مبرهناً على قدرته الهائلة على قيادة خط الوسط في أصعب الظروف. هذا التألق أجبر المدرب المخضرم مارسيلو غاياردو على استدعائه سريعاً للعودة إلى ريفر بليت، حيث أصبح المحرك الأساسي للفريق وقاده للفوز بلقب الدوري الأرجنتيني الممتاز، ليعلن عن نفسه كأحد أفضل المواهب الشابة في قارة أمريكا الجنوبية بأكملها ويجذب كشافة الأندية الأوروبية الكبرى.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-blue-500/20 pb-2 mt-8">الانفجار الأوروبي الصاعق: محطة بنفيكا البرتغالي السريعة والمبهرة</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    في صيف عام 2022، نجح نادي <strong>بنفيكا البرتغالي</strong>، المعروف بقدرته الفائقة على اصطياد المواهب اللاتينية وصقلها، في التعاقد مع انزوفرناندز بصفقة بلغت قيمتها نحو 10 ملايين يورو بالإضافة إلى حوافز. ولم يكن أحد يتوقع أن يتكيف اللاعب بهذه السرعة الخارقة مع أجواء الكرة الأوروبية ودوري أبطال أوروبا.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    خلال ستة أشهر فقط في لشبونة، تحول انزوفرناندز إلى حديث الصحافة الأوروبية بأكملها. فرض أسلوبه الأنيق وتمريراته الطولية الدقيقة في دوري أبطال أوروبا ضد باريس سان جيرمان ويوفنتوس، مساهماً بقوة في تصدر بنفيكا لمجموعته النارية بدون أي هزيمة. حاز جائزة أفضل لاعب وسط في الدوري البرتغالي لعدة أشهر متتالية، وبات من الواضح أن بقاءه في البرتغال لن يطول، حيث بدأت أندية النخبة في إنجلترا وإسبانيا في رصد ميزانيات ضخمة لكسر عقده الجزائي.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-blue-500/20 pb-2 mt-8">مونديال قطر 2022: انزوفرناندز يكتب التاريخ رفقة الأسطورة ليونيل ميسي</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    إذا كانت مسيرة انزوفرناندز مع الأندية استثنائية، فإن قصته مع منتخب الأرجنتين في كأس العالم قطر 2022 هي حكاية سينمائية خالدة. دخل انزو البطولة كلاعب احتياطي، ولكن بعد الهزيمة المفاجئة ضد السعودية، قرر المدرب ليونيل سكالوني الدفع بالشاب اليافع لإعادة التوازن والابتكار لخط الوسط، وكان ذلك القرار الأفضل في مسيرته التدريبية.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    في المباراة الثانية المصيرية ضد المكسيك، نزل انزوفرناندز كبديل ليسجل هدفاً خرافياً من تسديدة لولبية سكنت أقصى الزاوية اليمنى لحارس المرمى أوتشوا بعد تمريرة حاسمة من ليونيل ميسي، مؤمناً الفوز الأرجنتيني الغالي ومفجراً طاقات الجماهير. منذ تلك اللحظة، صار أساسياً لا غنى عنه طوال البطولة، مقدماً توازناً دفاعياً هائلاً ومساهماً في بناء الهجمات بدقة مرعبة. تكللت هذه الملحمة برفع الكأس الغالية بعد النهائي الأسطوري ضد فرنسا، وتتويج انزو بجائزة أفضل لاعب شاب في المونديال، ليدخل التاريخ من أوسع أبوابه بجانب الكبار.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-blue-500/20 pb-2 mt-8">تشيلسي والبريميرليغ: التحديات الكبرى وإثبات الجدارة لعام 2026</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    في يناير 2023، وفي واحدة من أكثر الصفقات إثارة وجدلاً في تاريخ كرة القدم الحديثة، نجح نادي <strong>تشيلسي الإنجليزي</strong> في حسم انتقال انزوفرناندز إلى صفوفه مقابل مبلغ قياسي تجاوز الـ 121 مليون يورو كأغلى لاعب وسط في تاريخ البريميرليغ آنذاك. تطلبت هذه الصفقة الضخمة مواجهة ضغوطات إعلامية وجماهيرية هائلة في بيئة لندنية تمر بفترة تجديد وإعادة بناء شاملة.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    واليوم في عام <strong>2026</strong>، وبعد مرور عدة مواسم وتطور كبير في نضجه التكتيكي وبنيته الجسدية، يثبت انزوفرناندز أنه يستحق كل بنس دفع من أجله. تحت قيادة الأجهزة الفنية المتعاقبة في تشيلسي، تحول انزو إلى القائد الفعلي لخط الوسط وصاحب الكلمة الأولى في توزيع اللعب وإدارة الإيقاع التكتيكي للبلوز. يتميز انزو لعام 2026 بقدرة فائقة على أداء دور "الارتكاز المساند" والدخول في عمق الثلث الأخير لتقديم تمريرات حاسمة لزملائه المهاجمين، مع الحفاظ على معدل افتكاك كرات مرتفع وتغطية مساحات واسعة في منتصف الملعب، مما يجعله صمام الأمان والقلب النابض للفريق اللندني في سعيه للعودة لمنصات التتويج المحلية والأوروبية.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-blue-500/20 pb-2 mt-8">التحليل التكتيكي لأسلوب لعب انزوفرناندز: العقل المدبر والمايسترو</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    ما الذي يجعل انزوفرناندز مميزاً للغاية بين لاعبي خط الوسط في العالم؟ السر يكمن في مرونته التكتيكية العالية وقدرته على القيام بعدة مهام معقدة في آن واحد:
+  </p>
+  <ul class="space-y-3 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+    <li>
+      <strong class="text-white">دقة التمرير الطولي القاتل (Diagonal Long Passes):</strong> يمتلك انزو قدرة خارقة على إرسال كرات طولية قطرية تضرب الأجنحة الدفاعية للخصم وتضع مهاجمي تشيلسي في مساحات خالية ممتازة، بدقة تتجاوز 88% حتى تحت الضغط العالي.
+    </li>
+    <li>
+      <strong class="text-white">قراءة الملعب والمسح البصري (Spatial Awareness):</strong> قبل استلام الكرة، يقوم انزو بعمليات مسح بصري متتالية، مما يتيح له معرفة أماكن الضغط واتخاذ القرار السليم بالتمرير من لمسة واحدة أو الدوران بالكرة وتجاوز المدافعين بسلاسة.
+    </li>
+    <li>
+      <strong class="text-white">افتكاك الكرات والضغط العكسي الذكي (Tackling & Interceptions):</strong> لا يقتصر دور انزو على الجانب الهجومي الأنيق؛ بل هو مقاتل شرس يتدخل بقوة واحترافية لقطع الكرات ومنع الهجمات المرتدة السريعة، مستفيداً من تمركزه الذكي وقوته البدنية المتطورة.
+    </li>
+  </ul>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-blue-500/20 pb-2 mt-8">جدول إحصائيات وأرقام انزوفرناندز مع الأندية والمنتخب لعام 2026</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    يوضح الجدول التالي الأرقام والإحصائيات التراكمية الدقيقة والموثقة لمسيرة انزوفرناندز الاحترافية عبر الأندية المختلفة والمنتخب الأرجنتيني الأول حتى عام 2026:
+  </p>
+  <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+    <table class="w-full text-xs text-slate-300 text-right">
+      <thead class="bg-blue-950 text-white font-bold">
+        <tr>
+          <th class="p-3">الفريق / المحطة الرياضية</th>
+          <th class="p-3">الفترة الزمنية</th>
+          <th class="p-3">المباريات الإجمالية</th>
+          <th class="p-3">الأهداف المسجلة</th>
+          <th class="p-3">التمريرات الحاسمة</th>
+          <th class="p-3">أبرز الألقاب والجوائز الكبرى</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-800">
+        <tr>
+          <td class="p-3 font-bold text-blue-400">ريفر بليت وديفنسا (الأرجنتين)</td>
+          <td class="p-3">2019 - 2022</td>
+          <td class="p-3">85 مباراة</td>
+          <td class="p-3">14 هدفاً</td>
+          <td class="p-3">15 صناعة</td>
+          <td class="p-3 text-slate-400">كوبا سودأمريكانا، ريكوبا سودأمريكانا، الدوري الأرجنتيني الممتاز</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-blue-400">بنفيكا البرتغالي (SL Benfica)</td>
+          <td class="p-3">2022 - 2023</td>
+          <td class="p-3">29 مباراة</td>
+          <td class="p-3">4 أهداف</td>
+          <td class="p-3">7 صناعة</td>
+          <td class="p-3 text-slate-400">الدوري البرتغالي الممتاز، وتألق لافت في دوري أبطال أوروبا</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-blue-400">تشيلسي الإنجليزي (Chelsea)</td>
+          <td class="p-3">2023 - 2026</td>
+          <td class="p-3">135 مباراة</td>
+          <td class="p-3">11 هدفاً</td>
+          <td class="p-3">19 صناعة</td>
+          <td class="p-3 text-slate-400">قيادة خط وسط البلوز، والوصول لنهائيات الكؤوس الإنجليزية المحلية</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-blue-400">منتخب الأرجنتين الأول (La Albiceleste)</td>
+          <td class="p-3">2022 - 2026</td>
+          <td class="p-3">42 مباراة دولية</td>
+          <td class="p-3">5 أهداف دولية</td>
+          <td class="p-3">8 صناعة</td>
+          <td class="p-3 text-slate-400">بطل كأس العالم قطر 2022، أفضل لاعب شاب في المونديال، بطل كوبا أمريكا 2024</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-blue-500/20 pb-2 mt-8">الحياة الشخصية والاستقرار: ركائز النجاح المستمر</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    خلف النجاح الكروي الباهر لـ <strong>انزوفرناندز</strong> تكمن حياة عائلية مستقرة تدعمه بقوة؛ فهو أب لطفلة صغيرة تدعى أوليفيا، ويشارك الجماهير بانتظام عبر حساباته على منصات التواصل الاجتماعي لقطات دافئة تجمعه بعائلته الصغيرة في لندن. هذا الاستقرار النفسي والعائلي ساعده على التكيف السريع مع نمط الحياة الإنجليزية الصارم ومواجهة الضغوطات والتركيز التام على تطوير مهاراته وتقديم أداء من النخبة في كل عطلة نهاية أسبوع.
+  </p>
+
+  <div class="bg-blue-500/5 p-4 rounded-2xl border border-blue-500/20 space-y-2 mt-8">
+    <h3 class="text-sm font-black text-white font-sans">🔮 الخلاصة والتأصيل السيو لملف انزوفرناندز لعام 2026</h3>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      في نهاية هذا الدليل المتكامل والشامل، يبرهن <strong>انزوفرناندز</strong> يوماً بعد يوم أنه ليس مجرد صفقة قياسية عابرة في تاريخ الدوري الإنجليزي؛ بل هو ركيزة أساسية ومحرك تكتيكي يعيد صياغة أساليب اللعب الحديثة في منتصف الملعب لعام <strong>2026</strong>. موهبته الفذة، روحه الرياضية العالية، وتفانيه المستمر داخل وخارج الملعب، تجعل منه نموذجاً ساطعاً لأجيال المستقبل من عشاق الساحرة المستديرة في كل مكان.
+    </p>
+  </div>
+</div>`,
+    htmlBodyEn: `<div class="space-y-6 text-left font-sans" dir="ltr">
+  <p class="text-slate-300 text-sm leading-relaxed first-letter:text-3xl first-letter:font-bold first-letter:text-blue-500">
+    Enzo Fernández stands as one of the preeminent central midfielders of modern football. Today in <strong>2026</strong>, his masterful playmaking for Chelsea FC and his core defensive work for the Argentine national team make him a global sports icon. Having clinched the 2022 FIFA World Cup and the Best Young Player award, Enzo has fully transitioned into Chelsea's midfield maestro, handling high-intensity Premier League battles with composure and incredible tactical accuracy.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border-l-4 border-blue-500 rounded-r-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1">⚡️ Player Profile: Enzo Fernández in 2026</h4>
+    <p class="text-xs text-slate-300 leading-relaxed">
+      Born January 17, 2001, in San Martín, Argentina. Standing at 1.78m, the Chelsea midfielder commands the pitch with an elite passing range, incredible vision, and fierce competitive fire that anchors club and country.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-blue-500/20 pb-2 mt-8">The Journey to Premier League Stardom</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    From his foundational years at River Plate and a crucial loan spell at Defensa y Justicia, Enzo Fernández established himself rapidly. His lightning six months at SL Benfica introduced his talents to European giants before Chelsea secured him in a historic British record-breaking transfer. His dynamic, deep-lying playmaker abilities continue to serve as the heart of Chelsea's rebuilding era in 2026.
+  </p>
+</div>`
+  },
   {
     id: "art-messi-today-2026",
     slug: "messi-today-image-inter-miami-stats-2026",
@@ -5568,7 +5997,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
           {/* MAIN GRID OF CARDS - Redesigned as dynamic cards */}
           {gridArticles.length > 0 ? (
             <div className="space-y-10">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 animate-fade-in font-sans">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 sm:gap-7 animate-fade-in font-sans">
                 {paginatedGridArticles.map((art) => (
                   <div 
                     key={art.id}

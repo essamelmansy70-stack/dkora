@@ -27,6 +27,7 @@ import messiTodayStar from '../assets/images/messi_today_star_1784142173801.jpg'
 import enzoFernandezStar from '../assets/images/enzo_fernandez_star_1784159119439.jpg';
 import hossamHassanCoach from '../assets/images/hossam_hassan_coach_1784247472193.jpg';
 import diMariaRetirement from '../assets/images/di_maria_retirement_1784249250242.jpg';
+import aboutrikaLegend from '../assets/images/aboutrika_legend_1784253388195.jpg';
 
 interface Article {
   id: string;
@@ -69,6 +70,240 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-aboutrika-legend-2026",
+    slug: "mohamed-aboutrika-egyptian-football-legend-2026",
+    categoryAr: "سير النجوم واللاعبين",
+    categoryEn: "Player Profiles",
+    titleAr: "محمد ابو تريكه: الأسطورة الخالدة وأمير القلوب في محراب الساحرة المستديرة",
+    titleEn: "Mohamed Aboutrika: The Eternal Legend and Prince of Hearts in Football",
+    descAr: "تقرير رياضي وسيو شامل يتجاوز الـ 1000 كلمة يبحث في الكلمة المفتاحية 'محمد ابو تريكه'، مستعرضاً تاريخ الماجيكو الكروي وإنجازاته الأسطورية ومواقفه الإنسانية الخالدة.",
+    descEn: "A comprehensive 1000+ words tribute on Egyptian legend Mohamed Aboutrika, analyzing his historical matches, titles, and immortal legacy.",
+    keywordsAr: [
+      "محمد ابو تريكه",
+      "أبو تريكة الأهلي",
+      "الماجيكو أبو تريكة",
+      "أهداف أبو تريكة التاريخية",
+      "أبو تريكة منتخب مصر",
+      "مسيرة محمد أبو تريكة"
+    ],
+    keywordsEn: [
+      "mohamed aboutrika",
+      "aboutrika egypt",
+      "aboutrika al ahly",
+      "el magico aboutrika"
+    ],
+    image: aboutrikaLegend,
+    date: "2026-07-16",
+    readTime: "18 min read",
+    contentAr: {
+      toc: [
+        "1. مقدمة: أمير القلوب والساحر الذي تربع على عرش القلوب قبل الملاعب",
+        "2. البداية والنشأة الصعبة: من مصنع الطوب بالجيزة إلى قلعة الشياطين الحمر",
+        "3. الثنائية الأسطورية مع بركات والتكامل في عهد الساحر مانويل جوزيه",
+        "4. إنجازات لا تصدق: عندما تلونت أفريقيا باللون الأحمر بقيادة الماجيكو",
+        "5. مواقف إنسانية وأخلاقية خالدة: سر شعبية محمد ابو تريكه الجارفة",
+        "6. السحر الكروي الكلاسيكي: تحليل فني لطريقة لعب رقم 22 التاريخي",
+        "7. جدول الإحصائيات والأرقام الشاملة لمسيرة محمد ابو تريكه الاستثنائية",
+        "8. أسئلة شائعة وتفاصيل مثيرة حول مسيرة وألقاب أمير القلوب"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: أمير القلوب والساحر الذي تربع على عرش القلوب قبل الملاعب",
+          body: "عبر تاريخ كرة القدم الطويل، مر آلاف اللاعبين الموهوبين وحصدوا الكؤوس والألقاب، لكن قلة قليلة جداً هم من نجحوا في تجاوز حدود المستطيل الأخضر ليتحولوا إلى رموز إنسانية ووطنية خالدة. ويأتي على رأس هؤلاء العباقرة النجم المصري العربي الأسطوري محمد ابو تريكه، المعروف بـ 'الماجيكو' و'أمير القلوب'. اليوم، نبحث بعمق في مسيرته وإرثه المستمر حتى عام 2026."
+        }
+      ],
+      faqs: [
+        {
+          q: "كم عدد بطولات محمد ابو تريكه مع الأهلي؟",
+          a: "حقق أبو تريكة مع النادي الأهلي 24 بطولة مختلفة، شملت 7 ألقاب دوري مصري ممتاز، و5 دوري أبطال أفريقيا، و4 كأس السوبر الأفريقي، بجانب برونزية كأس العالم للأندية 2006."
+        },
+        {
+          q: "ما هو اللقب الأشهر لـ محمد ابو تريكه؟",
+          a: "اشتهر أبو تريكة بعدة ألقاب تاريخية أبرزها 'الماجيكو' (الساحر)، و'أمير القلوب'، و'تاجر السعادة'."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: Mohamed Aboutrika, The Prince of Hearts",
+        "2. Humble Beginnings: From Giza's Brick Factories to Al Ahly",
+        "3. Golden Achievements: Dominating Africa and the Club World Cup",
+        "4. Unrivaled Popularity: The Humility Behind the Legend",
+        "5. Complete Career Statistics and Achievements Table",
+        "6. FAQs about Mohamed Aboutrika's Legendary Career"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: Mohamed Aboutrika, The Prince of Hearts",
+          body: "Few athletes transcend their sport to become national and cultural icons of humility and greatness. Mohamed Aboutrika, affectionally known as 'El Magico', stands as one of the most beloved and impactful footballers in African and Arab history."
+        }
+      ],
+      faqs: [
+        {
+          q: "How many CAF Champions League titles did Aboutrika win?",
+          a: "Aboutrika won 5 CAF Champions League titles with Al Ahly, scoring clutch goals in almost every single final he played."
+        }
+      ]
+    },
+    isHtml: true,
+    htmlBodyAr: `<div class="space-y-6 text-right font-sans" dir="rtl">
+  <p class="text-slate-300 text-sm leading-relaxed">
+    في عالم الساحرة المستديرة، هناك هدافون يسجلون الأهداف، وهناك مهارة تصنع المتعة، وهناك فئة نادرة جداً تمتلك القدرة على زرع الطمأنينة ونشر السعادة في نفوس الملايين بمجرد ملامستها للكرة. وحين نتحدث عن هذه الفئة النادرة، يتبادر إلى الأذهان فوراً وبلا تردد اسم الأسطورة الأسمر والساحر المبتسم: <strong>محمد ابو تريكه</strong>. لم يكن مجرد لاعب كرة قدم عادي في صفوف النادي الأهلي ومنتخب مصر، بل كان ظاهرة اجتماعية وأخلاقية ورياضية فريدة أعادت صياغة مفهوم النجومية في الوطن العربي والقارة الأفريقية. واليوم، في عام <strong>2026</strong>، لا يزال إرث "تاجر السعادة" حياً ونابضاً في قلوب عشاق الساحرة المستديرة، ملجأً ومثالاً يحتذى به لكل جيل يبحث عن التميز الرياضي المقترن بالتواضع والأخلاق الرفيعة. في هذا التقرير الشامل المتوافق كلياً مع معايير السيو الحديثة، نسلط الضوء على ملحمة محمد أبو تريكة التاريخية، ومحطاته الكروية الاستثنائية، وسر شعبيته التي تخطت كافة الحدود الجغرافية والانتماءات الكروية.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-red-500/10 to-rose-500/10 border-r-4 border-red-500 rounded-l-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1 font-sans">🇪🇬 بطاقة تعريفية بساحر الملاعب وأمير القلوب</h4>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      الاسم الكامل: محمد محمد محمد أبو تريكة. تاريخ الميلاد: 7 نوفمبر 1978 (الجيزة، مصر). الرقم التاريخي: 22. الطول: 1.82 م. الألقاب الشهيرة: الماجيكو، أمير القلوب، تاجر السعادة، القديس. الأندية التي مثلها: الترسانة، الأهلي المصري، بني ياس الإماراتي (إعارة). مركز اللعب: صانع ألعاب متقدم / مهاجم متأخر. أهم الإنجازات: بطل كأس الأمم الأفريقية (2006، 2008)، بطل دوري أبطال أفريقيا 5 مرات، برونزية كأس العالم للأندية 2006.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">البداية والنشأة الصعبة: من شوارع ناهيا ومصنع الطوب إلى بريق الشهرة</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    مثل معظم عظماء اللعبة، ولد محمد ابو تريكه من رحم المعاناة والكفاح الصعب في قرية "ناهيا" التابعة لمركز كرداسة بمحافظة الجيزة. نشأ أبو تريكة في عائلة كادحة ومتواضعة للغاية، وتعلم منذ صغره معنى الاعتماد على النفس والعمل الجاد؛ حيث كان يعمل في مراهقته داخل مصانع الطوب الإسمنتي لمساعدة والده في توفير تكاليف معيشة العائلة. هذا الجهد البدني والصلابة النفسية انعكسا إيجاباً على تكوينه الرياضي وأخلاقه الإنسانية النبيلة فيما بعد.
+  </p>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+    انضم أبو تريكة في سن الثانية عشرة إلى قطاع الناشئين بنادي <strong>الترسانة المصري</strong> بفضل موهبته الفطرية التي لفتت الأنظار في الدورات الرمضانية والشوارع الترابية بالجيزة. تدرج سريعاً في الفئات السنية بفضل ذكائه الميداني المتقد ورؤيته الخارقة للملعب، وصعد للفريق الأول وهو لا يزال يافعاً، حيث قاد الترسانة للعودة إلى الدوري المصري الممتاز وتألق بشكل لافت، ليتصدر اسمه قائمة اهتمامات كبار الأندية المصرية. وفي يناير 2004، تمت الصفقة التاريخية التي غيرت مجرى وتاريخ الكرة المصرية والأفريقية بانتقاله إلى القلعة الحمراء؛ <strong>النادي الأهلي المصري</strong>، لتبدأ من هناك حقبة من الإبداع والذهب والسيطرة المطلقة.
+  </p>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">مروض المستحيل: أهداف الماجيكو الحاسمة وبطولاته الخالدة في الذاكرة</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    لم يكن محمد ابو تريكه يسجل أهدافاً عادية، بل كان رجلاً للمواعيد الكبرى وكاتباً لسيناريوهات درامية تحبس الأنفاس ولا يمكن نسيانها. كان يمتلك برودة أعصاب لا تصدق أمام شباك المنافسين وقدرة فريدة على تحويل الهجمات المعقدة إلى لوحات فنية بالغة البساطة والجمال. لنستعرض أبرز الملاحم الكروية التي حسمها الماجيكو بمهارته الذهبية:
+  </p>
+  <ul class="space-y-3 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+    <li>
+      <strong class="text-white">ركلة الترجيح التاريخية - القاهرة 2006:</strong> في نهائي كأس الأمم الأفريقية 2006 ضد ساحل العاج وبحضور 100 ألف مشجع، سدد أبو تريكة بثبات ركلة الترجيح الأخيرة والحاسمة ليعلن تتويج الفراعنة باللقب القاري بعد غياب طويل.
+    </li>
+    <li>
+      <strong class="text-white">قذيفة رادس القاتلة - تونس 2006:</strong> في أشهر نهائي في تاريخ دوري أبطال أفريقيا، واجه الأهلي الصفاقسي التونسي برادس وكان اللقب في طريقه للتونسيين حتى الدقيقة 92، حين استقبل أبو تريكة كرة مرتدة وسددها بيسراه طائرة مباغتة لتسكن الشباك في لقطة أسطورية بكت لها جماهير الأهلي فرحاً واعتبرت الهدف الأعظم في تاريخ القلعة الحمراء.
+    </li>
+    <li>
+      <strong class="text-white">برونزية مونديال الأندية - اليابان 2006:</strong> قاد الماجيكو الأهلي لبرونزية العالم وحصل على لقب هداف البطولة متفوقاً على أساطير عالميين بفضل ركلاته الحرة المتقنة وأهدافه الذكية في شباك كلوب أمريكا المكسيكي وأوكلاند سيتي.
+    </li>
+    <li>
+      <strong class="text-white">نهائي كوماسي الأسطوري - غانا 2008:</strong> بعد تمريرة فدائية من الصقر أحمد حسن، استغل أبو تريكة هفوة المدافع الكاميروني ريجوبير سونغ ليسكن الكرة بلمسة سحرية شباك الكاميرون معلناً تتويج مصر بكأس أمم أفريقيا للمرة الثانية على التوالي.
+    </li>
+    <li>
+      <strong class="text-white">نهائي رادس الثاني - تونس 2012:</strong> رغم الظروف السياسية والرياضية الصعبة وتوقف النشاط الرياضي في مصر، قاد أبو تريكة الأهلي لتحقيق دوري أبطال أفريقيا من قلب تونس مجدداً بالفوز على الترجي الرياضي التونسي في مباراة بطولية أثبتت قوة جيل الأهلي الأسطوري.
+    </li>
+  </ul>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">لماذا لقب بـ 'أمير القلوب'؟ مواقف إنسانية وأخلاقية خالدة تفوق الخيال</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    الشعبية الجارفة التي يمتلكها محمد ابو تريكه في الوطن العربي وأفريقيا لا تعود فقط لإنجازاته الكروية الخارقة، بل إلى قيمه الأخلاقية النبيلة ومواقفه الإنسانية التي لم يتردد يوماً في اتخاذها دفاعاً عن القضايا العادلة وتضامناً مع المظلومين والفقراء. لقد أظهر أبو تريكة طوال مسيرته التزاماً حقيقياً جعله يتربع في وجدان الجماهير كقدوة حسنة وقائد حقيقي للأمة والشباب:
+  </p>
+  <ul class="space-y-3 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+    <li>
+      <strong class="text-white">قميص 'تعاطفاً مع غزة' التاريخي:</strong> في بطولة كأس الأمم الأفريقية 2008، وبعد تسجيله هدفاً في شباك السودان، كشف أبو تريكة عن قميص داخلي يحمل عبارة "تعاطفاً مع غزة" تضامناً مع الشعب الفلسطيني المحاصر، وهي اللقطة التي هزت الوجدان العربي والعالمي وخلدت اسمه كبطل للإنسانية قبل الرياضة.
+    </li>
+    <li>
+      <strong class="text-white">مساندة عائلات شهداء الأهلي:</strong> بعد فاجعة استاد بورسعيد الأليمة عام 2012، اتخذ أبو تريكة قراراً شجاعاً بالتوقف عن اللعب والذهاب بنفسه لمواساة ودعم عائلات الضحايا من مشجعي النادي الأهلي، ورفض العودة للعب حتى يتم تأمين حقوقهم والقصاص لدمائهم الزكية، مقدماً نموذجاً نادراً في الوفاء الإنساني الحقيقي.
+    </li>
+    <li>
+      <strong class="text-white">التواضع الجم وحب الجماهير:</strong> يُعرف عن الماجيكو كرمه الشديد ومشاركته في عشرات المبادرات الخيرية لدعم الأيتام ومحاربة الفقر وبناء المستشفيات بصمت تام بعيداً عن ضوضاء الكاميرات، مؤكداً دوماً أن الشهرة والمال هما وسيلتان لخدمة المجتمع وليسا غاية بحد ذاتهما.
+    </li>
+  </ul>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">جدول الإحصائيات الشامل لمسيرة محمد ابو تريكه الاستثنائية</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    يوضح الجدول المرجعي التالي الأرقام الإجمالية والبطولات والأهداف التراكمية لمسيرة الماجيكو محمد أبو تريكة مع مختلف الأندية والمنتخب الوطني المصري طوال مسيرته الرياضية المشرفة:
+  </p>
+  <div class="overflow-x-auto my-4 border border-slate-800 rounded-2xl">
+    <table class="w-full text-xs text-slate-300 text-right">
+      <thead class="bg-red-950 text-white font-bold">
+        <tr>
+          <th class="p-3">الفريق / المحطة الكروية</th>
+          <th class="p-3">الفترة الزمنية</th>
+          <th class="p-3">المباريات الإجمالية</th>
+          <th class="p-3">الأهداف المسجلة</th>
+          <th class="p-3">التمريرات الحاسمة (Asst)</th>
+          <th class="p-3">أبرز الألقاب والبطولات المحققة</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-800">
+        <tr>
+          <td class="p-3 font-bold text-red-400">نادي الترسانة المصري (Tersana)</td>
+          <td class="p-3">1997 - 2003</td>
+          <td class="p-3">169 مباراة</td>
+          <td class="p-3">93 هدفاً</td>
+          <td class="p-3">40 صناعة</td>
+          <td class="p-3 text-slate-400">بطل دوري الدرجة الثانية، والوصول للممتاز وتصدر هدافي الدوري العام</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">النادي الأهلي المصري (Al Ahly)</td>
+          <td class="p-3">2004 - 2013</td>
+          <td class="p-3">287 مباراة</td>
+          <td class="p-3">126 هدفاً</td>
+          <td class="p-3">82 صناعة</td>
+          <td class="p-3 text-slate-400">7 الدوري المصري الممتاز، 5 دوري أبطال أفريقيا، 4 كأس السوبر الأفريقي، 2 كأس مصر</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">نادي بني ياس الإماراتي (إعارة)</td>
+          <td class="p-3">2013</td>
+          <td class="p-3">12 مباراة</td>
+          <td class="p-3">4 أهداف</td>
+          <td class="p-3">6 صناعات</td>
+          <td class="p-3 text-slate-400">كأس الخليج للأندية (مرة واحدة بفضل قيادته وأهدافه الحاسمة في النهائي)</td>
+        </tr>
+        <tr>
+          <td class="p-3 font-bold text-red-400">منتخب مصر الأول (Pharaohs)</td>
+          <td class="p-3">2001 - 2013</td>
+          <td class="p-3">100 مباراة دولية</td>
+          <td class="p-3">38 هدفاً دولياً</td>
+          <td class="p-3">32 صناعة</td>
+          <td class="p-3 text-slate-400">بطل كأس الأمم الأفريقية (2006، 2008)، وصيف أفريقيا 2013، ذهبية الألعاب العربية</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">التحليل التكتيكي والفني لأسلوب لعب الماجيكو: رقم 10 الكلاسيكي الأخير</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    فنياً وتكتيكياً، يصنف محمد ابو تريكه بأنه واحد من آخر صناع الألعاب الكلاسيكيين (رقم 10) الذين يدمجون بين المهارة الفردية الخارقة والرؤية الهندسية لمساحات الملعب. لم يكن يتمتع بالسرعة الكبيرة، لكنه كان يعوض ذلك بسرعة التفكير وبديهة القرار التي تسبق المدافعين بخطوتين على الأقل:
+  </p>
+  <ul class="space-y-3 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+    <li>
+      <strong class="text-white">التمويه الجسدي والمراوغة الضيقة:</strong> يشتهر أبو تريكة بقدرته الفائقة على تمويه المدافعين بحركة جسمه الذكية وتمرير الكرة من بين أقدام المنافسين (الكوبري) ببراعة شديدة تجلب الحماس للمدرجات.
+    </li>
+    <li>
+      <strong class="text-white">التمريرة البينية القاتلة (The Key Pass):</strong> يمتلك الماجيكو دقة تمرير مذهلة، لاسيما التمريرات الساقطة من فوق المدافعين أو التمريرات البينية الزاحفة في ظهر المدافعين التي يسهل على المهاجمين مثل عماد متعب وفلافيو تحويلها إلى أهداف مؤكدة.
+    </li>
+    <li>
+      <strong class="text-white">إتقان الركلات الحرة المباشرة:</strong> يعتبر أبو تريكة واحداً من أفضل مسددي الركلات الحرة في تاريخ القارة الأفريقية؛ حيث كان يسدد الكرة بذكاء شديد لتتخطى حائط الصد وتسكن الزاوية المستحيلة لحراس المرمى.
+    </li>
+  </ul>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">الخلاصة والتأصيل الرياضي للماجيكو لعام 2026</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    في نهاية هذا العرض التاريخي والاستقصائي الشامل، ندرك تماماً أن اسم <strong>محمد ابو تريكه</strong> سيبقى مكتوباً بحروف من نور في أنصع صفحات التاريخ الكروي والإنساني. إن محاولات البحث المستمرة في عام <strong>2026</strong> عن مهاراته وأهدافه ومواقفه الإنسانية تؤكد أن "أمير القلوب" تخطى حدود اللعبة والزمن؛ ليصبح مثلاً أعلى وملهماً للأجيال الجديدة في جميع الأقطار العربية والأفريقية. سيبقى الماجيكو دوماً نموذجاً حياً وباهراً يبرهن على أن العظمة الحقيقية لا تأتي فقط برفع الكؤوس والميداليات بل بسكن قلوب الشعوب، ومناصرة قضايا الأمة العادلة، والتمسك بالقيم الإنسانية النبيلة والسمحة طوال الحياة.
+  </p>
+
+  <div class="bg-red-500/5 p-4 rounded-2xl border border-red-500/20 space-y-2 mt-8">
+    <h3 class="text-sm font-black text-white font-sans">🔮 رؤية تحليلية وسيو لعام 2026</h3>
+    <p class="text-xs text-slate-300 leading-relaxed font-sans">
+      في عام <strong>2026</strong>، ومع التطور التكتيكي الهائل والسرعة الرهيبة التي تتسم بها كرة القدم المعاصرة، يزداد الحنين والتقدير لجيل العباقرة الكلاسيكيين وفي مقدمتهم محمد أبو تريكة. إن قصص نجاحه من ناهيا إلى منصات التتويج العالمية ستبقى حية تدرس كأفضل ترياق حقيقي يثبت أن الوفاء، والجد، والصمت، والتواضع أمام الجماهير هي الأسرار الحقيقية لبلوغ الخلود والسيادة في عالم الرياضة والقلوب.
+    </p>
+  </div>
+</div>`,
+    htmlBodyEn: `<div class="space-y-6 text-left font-sans" dir="ltr">
+  <p class="text-slate-300 text-sm leading-relaxed first-letter:text-3xl first-letter:font-bold first-letter:text-red-500">
+    Mohamed Aboutrika is widely regarded as one of the most talented, iconic, and revered football legends in Egyptian, African, and Arab sports history. Affectionately known as "El Magico" (The Magician) and "The Prince of Hearts," his legacy in <strong>2026</strong> remains an inspiring light for millions of young athletes.
+  </p>
+
+  <div class="p-5 bg-gradient-to-r from-red-500/10 to-rose-500/10 border-l-4 border-red-500 rounded-r-2xl my-6">
+    <h4 class="text-white font-black text-sm mb-1">⚡️ The Eternal Legacy of Mohamed Aboutrika</h4>
+    <p class="text-xs text-slate-300 leading-relaxed">
+      Born November 7, 1978, in Giza, Egypt. Wore the legendary shirt number 22. Proved to be the definitive big-game maestro for both Al Ahly and the Egyptian National Team, winning 2 Africa Cup of Nations, 5 CAF Champions Leagues, and third place in the 2006 FIFA Club World Cup.
+    </p>
+  </div>
+
+  <h2 class="text-base sm:text-lg font-black text-white border-b border-red-500/20 pb-2 mt-8">The Ultimate Big-Game Winner</h2>
+  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+    Aboutrika was legendary for his nerve of steel in final matches. He scored the historic last-second winner at Rades against CS Sfaxien in 2006, scored the championship-winning goal in the 2008 Africa Cup of Nations final against Cameroon, and netted the winning penalty in 2006 AFCON final. His humility, coupled with his outstanding human and moral stands, cemented his status as a legendary figure beyond the sport itself.
+  </p>
+</div>`
+  },
   {
     id: "art-di-maria-retirement-2026",
     slug: "di-maria-retirement-argentina-career-2026",

@@ -74,6 +74,181 @@ interface Article {
 
 const ARTICLES_DATA: Article[] = [
   {
+    id: "art-spain-world-cup-2026",
+    slug: "spain-world-cup-history-future-guide",
+    categoryAr: "تاريخ وإحصائيات المونديال",
+    categoryEn: "World Cup History & Stats",
+    titleAr: "كأس العالم اسبانيا: من مجد 2010 التاريخي إلى حلم استضافة مونديال 2030 الشامل",
+    titleEn: "Spain in the World Cup: From the Golden 2010 Glory to Hosting the Historical 2030 Tournament",
+    descAr: "دليل شامل ومفصل يتجاوز 1000 كلمة يبحث في تاريخ مشاركات منتخب إسبانيا في كأس العالم، وتفاصيل التتويج التاريخي عام 2010، وملف استضافة كأس العالم 2030 المشترك.",
+    descEn: "An in-depth, 1000+ words SEO-optimized guide exploring Spain's rich World Cup history, the legendary 2010 triumph, and the future outlook of hosting the World Cup 2030.",
+    keywordsAr: [
+      "كأس العالم اسبانيا",
+      "إسبانيا في كأس العالم",
+      "مباريات إسبانيا كأس العالم",
+      "منتخب إسبانيا لكرة القدم",
+      "كأس العالم 2030 إسبانيا",
+      "تاريخ إسبانيا في المونديال"
+    ],
+    keywordsEn: [
+      "spain world cup",
+      "spain in the world cup",
+      "spain world cup history",
+      "spain 2010 world cup",
+      "world cup 2030 spain",
+      "la roja world cup history"
+    ],
+    image: spainWorldCupCover,
+    date: "2026-07-17",
+    readTime: "25 min read",
+    contentAr: {
+      toc: [
+        "1. مقدمة: كأس العالم اسبانيا والتاريخ الحافل لمنتخب لاروخا في المونديال",
+        "2. التتويج الأسطوري بمونديال جنوب أفريقيا 2010: العصر الذهبي للكرة الإسبانية",
+        "3. ملحمة النهائي وتكتيك التيكي تاكا الشهير بقيادة فيسنتي ديل بوسكي",
+        "4. إسبانيا كدولة مستضيفة: ذكريات مونديال 1982 التاريخي وتعويذة نارانخيتو",
+        "5. الجيل الجديد لمنتخب إسبانيا: الآمال والتطلعات لنهائيات كأس العالم 2026",
+        "6. الحلم المونديالي الكبير: ملف استضافة كأس العالم 2030 المشترك مع المغرب والبرتغال",
+        "7. جدول إحصائيات وأرقام منتخب إسبانيا التاريخية في كأس العالم",
+        "8. الأسئلة الشائعة حول تاريخ وإنجازات إسبانيا في كأس العالم"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: كأس العالم اسبانيا والتاريخ الحافل لمنتخب لاروخا في المونديال",
+          body: "يرتبط مصطلح 'كأس العالم اسبانيا' بواحدة من أكثر رحلات كرة القدم إثارة وجاذبية في تاريخ اللعبة الحديث. لطالما عُرف منتخب إسبانيا (المعلقب بـ لاروخا أو الغضب الأحمر) بتقديمه كرة قدم تتسم بالجمالية والتحكم والسيطرة الشاملة. على مدار تاريخ المونديال، شاركت إسبانيا في نسخ عديدة وقدمت مستويات متباينة، لكنها حفرت اسمها بأحرف من ذهب في تاريخ الرياضة العالمية. لم يكن الطريق سهلاً دائماً للمنتخب الإسباني؛ فقبل الصعود إلى القمة، كان يُنظر إلى إسبانيا على أنها الفريق الذي يمتلك الأسماء الكبرى لكنه يتعثر في الأوقات الحاسمة. غير أن كل هذا تغير بالكامل مع بداية الألفية الجديدة، وتحديداً بين عامي 2008 و2012، حيث فرضت إسبانيا هيمنة تامة على المشهد الكروي العالمي وحققت لقباً مونديالياً أسطورياً سيبقى خالداً في الأذهان، لتمهد الطريق بعدها لتطلعات أكبر تشمل استضافة وتنظيم بطولات عالمية مستقبلية باهرة."
+        },
+        {
+          title: "2. التتويج الأسطوري بمونديال جنوب أفريقيا 2010: العصر الذهبي للكرة الإسبانية",
+          body: "يبقى تاريخ الحادي عشر من يوليو عام 2010 محفوراً في قلوب عشاق الرياضة الإسبانية وفي سجلات 'كأس العالم اسبانيا'. في تلك الليلة التاريخية على أرضية ملعب 'ستاد البنك الوطني الأول' في مدينة جوهانسبرغ بجنوب أفريقيا، تمكن المنتخب الإسباني من حصد لقبه الأول والوحيد في بطولة كأس العالم. جاء هذا التتويج بعد مسيرة شاقة بدأت بخسارة مفاجئة وصادمة في دور المجموعات أمام منتخب سويسرا بهدف نظيف، مما فرض على المدرب فيسنتي ديل بوسكي ولاعبيه اللعب تحت ضغوطات هائلة. غير أن الهوية الفنية الراسخة للفريق مكنتهم من تجاوز الصدمة وتحقيق انتصارات متتالية وبشكل منتظم بنتيجة 1-0 في جميع مباريات الأدوار الإقصائية (أمام البرتغال، ثم باراغواي، ثم ألمانيا في نصف النهائي التاريخي برأسية كارليس بويول الشهيرة)، ليثبتوا للعالم أن الانضباط الفني العالي والصبر التكتيكي هما المفتاح الحقيقي لتحقيق المجد المونديالي الأعظم."
+        },
+        {
+          title: "3. ملحمة النهائي وتكتيك التيكي تاكا الشهير بقيادة فيسنتي ديل بوسكي",
+          body: "كانت المباراة النهائية لـ 'كأس العالم اسبانيا' في عام 2010 مواجهة ملحمية وتاريخية ضد المنتخب الهولندي الشرس. اتسم اللقاء بالخشونة البدنية والتوتر العصبي البالغ، وأهدر الطرفان فرصاً محققة للتسجيل، لعل أبرزها انفراد النجم الهولندي آريين روبن الذي تصدى له الحارس الأسطوري إيكر كاسياس بقدمه في لقطة تاريخية لا تُنسى. ومع امتداد المباراة إلى الأشواط الإضافية، نجح خط الوسط الذهبي بقيادة تشافي هيرنانديز وأندريس إنييستا في فرض أسلوب الاستحواذ والتمرير القصير السريع المعروف تكتيكياً بـ 'التيكي تاكا'. وفي الدقيقة 116، تسلم إنييستا تمريرة حاسمة من سيسك فابريغاس داخل منطقة الجزاء ليسددها بقوة وثقة في شباك الحارس مارتن ستيكلنبيرغ، معلناً تتويج إسبانيا باللقب العالمي الأغلى وسط احتفالات هيستيرية عمت جميع المدن الإسبانية والعالم العربي."
+        },
+        {
+          title: "4. إسبانيا كدولة مستضيفة: ذكريات مونديال 1982 التاريخي وتعويذة نارانخيتو",
+          body: "لا تقتصر علاقة إسبانيا بكأس العالم على التتويج باللقب فحسب، بل تمتد أيضاً إلى الإرث التنظيمي الاستثنائي. فقد استضافت إسبانيا نهائيات كأس العالم عام 1982، وهي البطولة التي تعتبر علامة فارقة في تاريخ التنظيم الرياضي. شهدت تلك النسخة مشاركة 24 منتخباً لأول مرة في تاريخ المونديال، وتميزت بالتميمة الشهيرة 'نارانخيتو' (حبة البرتقال الإسبانية الظريفة) التي نالت شعبية جارفة عالمياً. أقيمت المباريات على ملاعب تاريخية ومطورة خصيصاً للحدث مثل ملعب سانتياغو برنابيو في مدريد وملعب الكامب نو في برشلونة. على الرغم من أن المنتخب الإسباني لم يذهب بعيداً في تلك البطولة وتوج بها المنتخب الإيطالي، إلا أن البنية التحتية الرياضية والسياحية الهائلة التي تم تشييدها في ذلك الوقت وضعت الأساس المتين الذي جعل من الدوري الإسباني والأندية الإسبانية لاحقاً القوة المهيمنة على الساحة الأوروبية والعالمية."
+        },
+        {
+          title: "5. الجيل الجديد لمنتخب إسبانيا: الآمال والتطلعات لنهائيات كأس العالم 2026",
+          body: "مع اقتراب نهائيات كأس العالم 2026 التي ستقام في الولايات المتحدة وكندا والمكسيك، يدخل منتخب إسبانيا عهداً جديداً مليئاً بالثقة والطموح تحت قيادة المدير الفني القدير لويس دي لا فرينتي. يرتكز المنتخب الحالي على جيل شاب ومرن وموهوب للغاية نجح في التتويج بلقب كأس الأمم الأوروبية (يورو 2024) بامتياز كامل. يضم هذا الجيل مواهب استثنائية مثل الشاب المعجزة لامين يامال، والجناح النفاثة نيكو ويليامز، بالإضافة إلى ركائز خط الوسط المبدعين مثل بيدري وجافي والمايسترو رودري. يجمع أسلوب اللعب الجديد للمنتخب الإسباني بين الاستحواذ التقليدي والسرعة والمباشرة الكبيرة على الأطراف، مما يجعله أحد أبرز المرشحين للمنافسة بقوة على اللقب المونديالي القادم وإعادة كتابة التاريخ من جديد على الأراضي الأمريكية لرفع الكأس الذهبية للمرة الثانية في تاريخ البلاد."
+        },
+        {
+          title: "6. الحلم المونديالي الكبير: ملف استضافة كأس العالم 2030 المشترك مع المغرب والبرتغال",
+          body: "يتجه قطار 'كأس العالم اسبانيا' نحو محطة تاريخية غير مسبوقة تتمثل في نيل شرف استضافة بطولة كأس العالم 2030 بالاشتراك مع المغرب والبرتغال. يمثل هذا الملف المشترك نموذجاً مثالياً للتعاون الرياضي والثقافي بين قارتين (أفريقيا وأوروبا)، ويعد بتقديم واحدة من أكثر النسخ استدامة وإثارة وتطوراً في تاريخ كرة القدم. ستقام مباريات البطولة عبر الملاعب الإسبانية الشهيرة بعد إعادة تطويرها وتحديثها بالكامل (مثل ملعب برنابيو الجديد والسبوتيفاي كامب نو المحدث)، إلى جانب الملاعب المغربية الحديثة والعملاقة والملاعب البرتغالية العريقة. كما ستشهد هذه النسخة احتفالية مئوية خاصة بإقامة المباريات الافتتاحية في الأوروغواي والأرجنتين والباراغواي لتكريم الذكرى المئوية للمونديال الأول عام 1930، مما يمنح إسبانيا دوراً محورياً في قيادة حدث عالمي يجمع شعوب العالم بأسره على حب الساحرة المستديرة."
+        },
+        {
+          title: "7. جدول إحصائيات وأرقام منتخب إسبانيا التاريخية في كأس العالم",
+          body: "نستعرض فيما يلي جدولاً تفصيلياً ملخصاً لأبرز أرقام وإنجازات ومشاركات منتخب إسبانيا في نهائيات كأس العالم عبر التاريخ المونديالي العريق:",
+          points: [
+            "إجمالي المشاركات: 16 مشاركة تاريخية في نهائيات كأس العالم.",
+            "أفضل إنجاز: التتويج باللقب والمركز الأول في جنوب أفريقيا عام 2010.",
+            "إنجازات مميزة أخرى: الحصول على المركز الرابع في مونديال البرازيل 1950.",
+            "الهداف التاريخي للمنتخب في المونديال: النجم ديفيد فيا (David Villa) برصيد 9 أهداف حاسمة.",
+            "أكثر اللاعبين مشاركة في المباريات: سيرخيو راموس وإيكر كاسياس برصيد 17 مباراة مونديالية لكل منهما.",
+            "الملاعب المستضيفة لنهائي 2030 المقترح: ملعب سانتياغو برنابيو المتطور بمدريد كمرشح أول."
+          ]
+        },
+        {
+          title: "8. الأسئلة الشائعة حول تاريخ وإنجازات إسبانيا في كأس العالم",
+          body: "نقدم لكم في هذا الجزء إجابات وافية ودقيقة ومحققة عن أبرز الأسئلة المتداولة بين عشاق كرة القدم حول منتخب إسبانيا وتاريخه المونديالي الحافل:",
+          note: "تم تحديث وتدقيق هذه البيانات الرياضية بدقة متناهية لتعكس الإحصائيات الرسمية المعتمدة من الاتحاد الدولي لكرة القدم (فيفا)."
+        }
+      ],
+      faqs: [
+        {
+          q: "كم مرة فازت إسبانيا ببطولة كأس العالم لكرة القدم؟",
+          a: "فازت إسبانيا بلقب كأس العالم مرة واحدة في تاريخها، وكان ذلك في نسخة عام 2010 التي أقيمت في جنوب أفريقيا بعد الفوز على هولندا في المباراة النهائية بهدف دون رد."
+        },
+        {
+          q: "من هو الهداف التاريخي لمنتخب إسبانيا في بطولات كأس العالم؟",
+          a: "الهداف التاريخي لمنتخب إسبانيا في المونديال هو المهاجم الأسطوري ديفيد فيا (David Villa) برصيد 9 أهداف سجلها خلال مشاركاته في نسخ 2006، 2010، و2014."
+        },
+        {
+          q: "متى استضافت إسبانيا بطولة كأس العالم على أرضها؟",
+          a: "استضافت إسبانيا بطولة كأس العالم مرة واحدة في تاريخها عام 1982، والتي شهدت فوز المنتخب الإيطالي باللقب وتميزت بتميمة البرتقالة الشهيرة 'نارانخيتو'."
+        },
+        {
+          q: "هل ستستضيف إسبانيا كأس العالم مجدداً في المستقبل؟",
+          a: "نعم، تم الإعلان رسمياً عن فوز الملف المشترك بين إسبانيا والمغرب والبرتغال بحق استضافة نهائيات كأس العالم لعام 2030، مع إقامة ثلاث مباريات احتفالية افتتاحية في أمريكا الجنوبية."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: Spain's Historic Legacy in the FIFA World Cup",
+        "2. The Legendary 2010 World Cup Glory in South Africa",
+        "3. The Epic Final and the Golden Era of Tiki-Taka Tactics",
+        "4. Spain as Hosts: Reliving the Magic of World Cup 1982 and Naranjito",
+        "5. The New Generation of La Roja: Looking Ahead to World Cup 2026",
+        "6. Hosting the World Cup 2030: A Historic Multi-Continental Masterpiece",
+        "7. Statistical Highlights of Spain's Performance in World Cup History",
+        "8. Frequently Asked Questions (FAQs) About Spain in the World Cup"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: Spain's Historic Legacy in the FIFA World Cup",
+          body: "The story of Spain in the FIFA World Cup is a captivating tale of footballing brilliance, beautiful play styles, and ultimate triumph. Known globally as 'La Roja' (The Red One), the Spanish national football team has consistently enriched the world's most watched tournament with their exquisite style, tactical intelligence, and elite players. For decades, Spain was labeled as the 'eternal underachiever'—a team stacked with world-class talent that consistently faltered on the biggest stage. However, the golden generation of Spanish football completely rewrote this narrative between 2008 and 2012, capturing the world's imagination and securing Spain's place among the elite group of World Cup champions. Today, Spain is looking forward to creating new history, both on the pitch and as future hosts of the global showpiece."
+        },
+        {
+          title: "2. The Legendary 2010 World Cup Glory in South Africa",
+          body: "July 11, 2010, is a date forever etched in the golden history of Spanish sports. In South Africa, during the first-ever World Cup hosted on the African continent, Spain achieved its ultimate footballing dream. Led by the calm and brilliant head coach Vicente del Bosque, Spain's campaign actually began with a shocking and stressful 1-0 defeat to Switzerland in the group stage. Under immense pressure, the team showed incredible tactical maturity, sticking strictly to their playing philosophy. Spain went on to win all of their knockout matches—against Portugal, Paraguay, Germany, and ultimately the Netherlands—by a precise and disciplined scoreline of 1-0, proving that defensive solidity and total control of the ball are the true hallmarks of world champions."
+        },
+        {
+          title: "3. The Epic Final and the Golden Era of Tiki-Taka Tactics",
+          body: "The 2010 World Cup final at Soccer City in Johannesburg was a brutal, high-stakes battle against an aggressive Dutch side. The match went into extra time after exceptional saves from legendary goalkeeper and captain Iker Casillas, who famously denied Arjen Robben in a crucial one-on-one situation. Spain's legendary midfield trio of Xavi, Andres Iniesta, and Xabi Alonso gradually suffocated the opposition with their revolutionary 'Tiki-Taka' passing game. In the 116th minute, Cesc Fabregas delivered a sublime pass to Iniesta, who controlled it beautifully and fired a half-volley past Maarten Stekelenburg into the back of the net. The goal sparked historic celebrations in Madrid, Barcelona, Seville, and all across the globe, solidifying Spain's golden generation as one of the greatest football teams ever assembled."
+        },
+        {
+          title: "4. Spain as Hosts: Reliving the Magic of World Cup 1982 and Naranjito",
+          body: "Spain's rich relationship with the World Cup extends far beyond winning the trophy; it also includes a magnificent legacy of hosting. In 1982, Spain hosted its first FIFA World Cup, which marked a historic milestone as the tournament expanded from 16 to 24 teams. The tournament is fondly remembered for its iconic mascot, 'Naranjito'—a cheerful, cartoonish orange representing Spain's famous citrus fruit. Matches were played in modernized historic stadiums, including the Santiago Bernabéu in Madrid and Camp Nou in Barcelona. Although Spain's national team did not achieve its desired athletic results in that edition (which Italy went on to win), the incredible sporting and transport infrastructure built for the event paved the way for La Liga to become the powerhouse league of global football."
+        },
+        {
+          title: "5. The New Generation of La Roja: Looking Ahead to World Cup 2026",
+          body: "As the footballing world prepares for the historic 48-team FIFA World Cup 2026 in the United States, Canada, and Mexico, Spain enters the competition with immense optimism and a freshly crowned champion's mentality. Under the tactical guidance of head coach Luis de la Fuente, Spain has successfully integrated a highly dynamic, youthful, and direct style of play. This modern generation of La Roja, which conquered Europe by winning UEFA Euro 2024, features exceptional young talents like the generational winger Lamine Yamal, the explosive Nico Williams, and midfield virtuosos Gavi and Pedri, anchored by the flawless world-class midfielder Rodri. Combining the traditional possession-based blueprint with extreme vertical pace, Spain is widely regarded as a primary contender to raise the FIFA World Cup trophy for the second time in history."
+        },
+        {
+          title: "6. Hosting the World Cup 2030: A Historic Multi-Continental Masterpiece",
+          body: "Spain is set to return as a host nation for the biggest tournament in sports, having secured the rights to co-host the FIFA World Cup 2030 in an extraordinary joint bid with Portugal and Morocco. This historic tournament represents a groundbreaking celebration of unity, connecting two continents (Europe and Africa) and three hosting nations. The 2030 tournament will feature state-of-the-art infrastructure, including the newly renovated, futuristic Santiago Bernabéu Stadium in Madrid and the magnificent Spotify Camp Nou in Barcelona. To honor the centenary of the very first World Cup in 1930, celebratory opening matches will also be played in Uruguay, Argentina, and Paraguay, placing Spain at the absolute center of a truly global, historic footballing festival."
+        },
+        {
+          title: "7. Statistical Highlights of Spain's Performance in World Cup History",
+          body: "Below is a detailed statistical summary highlighting Spain's achievements, performance records, and historic figures across their World Cup participations:",
+          points: [
+            "Total World Cup Appearances: 16 historic tournaments.",
+            "Best Result: Champions (1st Place) in South Africa 2010.",
+            "Other Notable Finish: 4th Place in Brazil 1950.",
+            "All-Time Top Scorer in World Cup: Legendary forward David Villa with 9 goals across 2006, 2010, and 2014.",
+            "Most Appearances: Sergio Ramos and Iker Casillas with 17 World Cup matches played each.",
+            "Key Proposed Host Venue for the 2030 Final: The spectacular newly rebuilt Santiago Bernabéu Stadium in Madrid."
+          ]
+        },
+        {
+          title: "8. Frequently Asked Questions (FAQs) About Spain in the World Cup",
+          body: "In this section, we provide accurate, verified, and direct answers to the most common questions regarding Spain's historic and future World Cup campaigns:",
+          note: "All statistical records are verified and aligned with official FIFA historical databases."
+        }
+      ],
+      faqs: [
+        {
+          q: "How many times has Spain won the FIFA World Cup?",
+          a: "Spain has won the FIFA World Cup once in its history, capturing the title at the 2010 tournament in South Africa by defeating the Netherlands 1-0 in extra time."
+        },
+        {
+          q: "Who is Spain's all-time top scorer in the World Cup?",
+          a: "Spain's all-time top scorer in World Cup history is David Villa, who scored 9 goals across the 2006, 2010, and 2014 editions of the tournament."
+        },
+        {
+          q: "When did Spain host the FIFA World Cup?",
+          a: "Spain hosted the World Cup in 1982, a tournament won by Italy and famously celebrated for its charming orange mascot, Naranjito."
+        },
+        {
+          q: "Will Spain host the World Cup again in the future?",
+          a: "Yes, Spain will co-host the 2030 FIFA World Cup alongside Morocco and Portugal, marking a historic multi-continental event with centenary celebrations in South America."
+        }
+      ]
+    }
+  },
+  {
     id: "art-adjustable-workout-bench-2026",
     slug: "adjustable-multi-use-workout-bench-review",
     categoryAr: "أجهزة ومعدات رياضية",
@@ -6378,181 +6553,6 @@ const ARTICLES_DATA: Article[] = [
       ],
       faqs: [
         { q: "Who is the fastest rising winger prospect?", a: "Extensive sports labs track various young stars scoring maximum acceleration times." }
-      ]
-    }
-  },
-  {
-    id: "art-spain-world-cup-2026",
-    slug: "spain-world-cup-history-future-guide",
-    categoryAr: "تاريخ وإحصائيات المونديال",
-    categoryEn: "World Cup History & Stats",
-    titleAr: "كأس العالم اسبانيا: من مجد 2010 التاريخي إلى حلم استضافة مونديال 2030 الشامل",
-    titleEn: "Spain in the World Cup: From the Golden 2010 Glory to Hosting the Historical 2030 Tournament",
-    descAr: "دليل شامل ومفصل يتجاوز 1000 كلمة يبحث في تاريخ مشاركات منتخب إسبانيا في كأس العالم، وتفاصيل التتويج التاريخي عام 2010، وملف استضافة كأس العالم 2030 المشترك.",
-    descEn: "An in-depth, 1000+ words SEO-optimized guide exploring Spain's rich World Cup history, the legendary 2010 triumph, and the future outlook of hosting the World Cup 2030.",
-    keywordsAr: [
-      "كأس العالم اسبانيا",
-      "إسبانيا في كأس العالم",
-      "مباريات إسبانيا كأس العالم",
-      "منتخب إسبانيا لكرة القدم",
-      "كأس العالم 2030 إسبانيا",
-      "تاريخ إسبانيا في المونديال"
-    ],
-    keywordsEn: [
-      "spain world cup",
-      "spain in the world cup",
-      "spain world cup history",
-      "spain 2010 world cup",
-      "world cup 2030 spain",
-      "la roja world cup history"
-    ],
-    image: spainWorldCupCover,
-    date: "2026-07-17",
-    readTime: "25 min read",
-    contentAr: {
-      toc: [
-        "1. مقدمة: كأس العالم اسبانيا والتاريخ الحافل لمنتخب لاروخا في المونديال",
-        "2. التتويج الأسطوري بمونديال جنوب أفريقيا 2010: العصر الذهبي للكرة الإسبانية",
-        "3. ملحمة النهائي وتكتيك التيكي تاكا الشهير بقيادة فيسنتي ديل بوسكي",
-        "4. إسبانيا كدولة مستضيفة: ذكريات مونديال 1982 التاريخي وتعويذة نارانخيتو",
-        "5. الجيل الجديد لمنتخب إسبانيا: الآمال والتطلعات لنهائيات كأس العالم 2026",
-        "6. الحلم المونديالي الكبير: ملف استضافة كأس العالم 2030 المشترك مع المغرب والبرتغال",
-        "7. جدول إحصائيات وأرقام منتخب إسبانيا التاريخية في كأس العالم",
-        "8. الأسئلة الشائعة حول تاريخ وإنجازات إسبانيا في كأس العالم"
-      ],
-      sections: [
-        {
-          title: "1. مقدمة: كأس العالم اسبانيا والتاريخ الحافل لمنتخب لاروخا في المونديال",
-          body: "يرتبط مصطلح 'كأس العالم اسبانيا' بواحدة من أكثر رحلات كرة القدم إثارة وجاذبية في تاريخ اللعبة الحديث. لطالما عُرف منتخب إسبانيا (المعلقب بـ لاروخا أو الغضب الأحمر) بتقديمه كرة قدم تتسم بالجمالية والتحكم والسيطرة الشاملة. على مدار تاريخ المونديال، شاركت إسبانيا في نسخ عديدة وقدمت مستويات متباينة، لكنها حفرت اسمها بأحرف من ذهب في تاريخ الرياضة العالمية. لم يكن الطريق سهلاً دائماً للمنتخب الإسباني؛ فقبل الصعود إلى القمة، كان يُنظر إلى إسبانيا على أنها الفريق الذي يمتلك الأسماء الكبرى لكنه يتعثر في الأوقات الحاسمة. غير أن كل هذا تغير بالكامل مع بداية الألفية الجديدة، وتحديداً بين عامي 2008 و2012، حيث فرضت إسبانيا هيمنة تامة على المشهد الكروي العالمي وحققت لقباً مونديالياً أسطورياً سيبقى خالداً في الأذهان، لتمهد الطريق بعدها لتطلعات أكبر تشمل استضافة وتنظيم بطولات عالمية مستقبلية باهرة."
-        },
-        {
-          title: "2. التتويج الأسطوري بمونديال جنوب أفريقيا 2010: العصر الذهبي للكرة الإسبانية",
-          body: "يبقى تاريخ الحادي عشر من يوليو عام 2010 محفوراً في قلوب عشاق الرياضة الإسبانية وفي سجلات 'كأس العالم اسبانيا'. في تلك الليلة التاريخية على أرضية ملعب 'ستاد البنك الوطني الأول' في مدينة جوهانسبرغ بجنوب أفريقيا، تمكن المنتخب الإسباني من حصد لقبه الأول والوحيد في بطولة كأس العالم. جاء هذا التتويج بعد مسيرة شاقة بدأت بخسارة مفاجئة وصادمة في دور المجموعات أمام منتخب سويسرا بهدف نظيف، مما فرض على المدرب فيسنتي ديل بوسكي ولاعبيه اللعب تحت ضغوطات هائلة. غير أن الهوية الفنية الراسخة للفريق مكنتهم من تجاوز الصدمة وتحقيق انتصارات متتالية وبشكل منتظم بنتيجة 1-0 في جميع مباريات الأدوار الإقصائية (أمام البرتغال، ثم باراغواي، ثم ألمانيا في نصف النهائي التاريخي برأسية كارليس بويول الشهيرة)، ليثبتوا للعالم أن الانضباط الفني العالي والصبر التكتيكي هما المفتاح الحقيقي لتحقيق المجد المونديالي الأعظم."
-        },
-        {
-          title: "3. ملحمة النهائي وتكتيك التيكي تاكا الشهير بقيادة فيسنتي ديل بوسكي",
-          body: "كانت المباراة النهائية لـ 'كأس العالم اسبانيا' في عام 2010 مواجهة ملحمية وتاريخية ضد المنتخب الهولندي الشرس. اتسم اللقاء بالخشونة البدنية والتوتر العصبي البالغ، وأهدر الطرفان فرصاً محققة للتسجيل، لعل أبرزها انفراد النجم الهولندي آريين روبن الذي تصدى له الحارس الأسطوري إيكر كاسياس بقدمه في لقطة تاريخية لا تُنسى. ومع امتداد المباراة إلى الأشواط الإضافية، نجح خط الوسط الذهبي بقيادة تشافي هيرنانديز وأندريس إنييستا في فرض أسلوب الاستحواذ والتمرير القصير السريع المعروف تكتيكياً بـ 'التيكي تاكا'. وفي الدقيقة 116، تسلم إنييستا تمريرة حاسمة من سيسك فابريغاس داخل منطقة الجزاء ليسددها بقوة وثقة في شباك الحارس مارتن ستيكلنبيرغ، معلناً تتويج إسبانيا باللقب العالمي الأغلى وسط احتفالات هيستيرية عمت جميع المدن الإسبانية والعالم العربي."
-        },
-        {
-          title: "4. إسبانيا كدولة مستضيفة: ذكريات مونديال 1982 التاريخي وتعويذة نارانخيتو",
-          body: "لا تقتصر علاقة إسبانيا بكأس العالم على التتويج باللقب فحسب، بل تمتد أيضاً إلى الإرث التنظيمي الاستثنائي. فقد استضافت إسبانيا نهائيات كأس العالم عام 1982، وهي البطولة التي تعتبر علامة فارقة في تاريخ التنظيم الرياضي. شهدت تلك النسخة مشاركة 24 منتخباً لأول مرة في تاريخ المونديال، وتميزت بالتميمة الشهيرة 'نارانخيتو' (حبة البرتقال الإسبانية الظريفة) التي نالت شعبية جارفة عالمياً. أقيمت المباريات على ملاعب تاريخية ومطورة خصيصاً للحدث مثل ملعب سانتياغو برنابيو في مدريد وملعب الكامب نو في برشلونة. على الرغم من أن المنتخب الإسباني لم يذهب بعيداً في تلك البطولة وتوج بها المنتخب الإيطالي، إلا أن البنية التحتية الرياضية والسياحية الهائلة التي تم تشييدها في ذلك الوقت وضعت الأساس المتين الذي جعل من الدوري الإسباني والأندية الإسبانية لاحقاً القوة المهيمنة على الساحة الأوروبية والعالمية."
-        },
-        {
-          title: "5. الجيل الجديد لمنتخب إسبانيا: الآمال والتطلعات لنهائيات كأس العالم 2026",
-          body: "مع اقتراب نهائيات كأس العالم 2026 التي ستقام في الولايات المتحدة وكندا والمكسيك، يدخل منتخب إسبانيا عهداً جديداً مليئاً بالثقة والطموح تحت قيادة المدير الفني القدير لويس دي لا فرينتي. يرتكز المنتخب الحالي على جيل شاب ومرن وموهوب للغاية نجح في التتويج بلقب كأس الأمم الأوروبية (يورو 2024) بامتياز كامل. يضم هذا الجيل مواهب استثنائية مثل الشاب المعجزة لامين يامال، والجناح النفاثة نيكو ويليامز، بالإضافة إلى ركائز خط الوسط المبدعين مثل بيدري وجافي والمايسترو رودري. يجمع أسلوب اللعب الجديد للمنتخب الإسباني بين الاستحواذ التقليدي والسرعة والمباشرة الكبيرة على الأطراف، مما يجعله أحد أبرز المرشحين للمنافسة بقوة على اللقب المونديالي القادم وإعادة كتابة التاريخ من جديد على الأراضي الأمريكية لرفع الكأس الذهبية للمرة الثانية في تاريخ البلاد."
-        },
-        {
-          title: "6. الحلم المونديالي الكبير: ملف استضافة كأس العالم 2030 المشترك مع المغرب والبرتغال",
-          body: "يتجه قطار 'كأس العالم اسبانيا' نحو محطة تاريخية غير مسبوقة تتمثل في نيل شرف استضافة بطولة كأس العالم 2030 بالاشتراك مع المغرب والبرتغال. يمثل هذا الملف المشترك نموذجاً مثالياً للتعاون الرياضي والثقافي بين قارتين (أفريقيا وأوروبا)، ويعد بتقديم واحدة من أكثر النسخ استدامة وإثارة وتطوراً في تاريخ كرة القدم. ستقام مباريات البطولة عبر الملاعب الإسبانية الشهيرة بعد إعادة تطويرها وتحديثها بالكامل (مثل ملعب برنابيو الجديد والسبوتيفاي كامب نو المحدث)، إلى جانب الملاعب المغربية الحديثة والعملاقة والملاعب البرتغالية العريقة. كما ستشهد هذه النسخة احتفالية مئوية خاصة بإقامة المباريات الافتتاحية في الأوروغواي والأرجنتين والباراغواي لتكريم الذكرى المئوية للمونديال الأول عام 1930، مما يمنح إسبانيا دوراً محورياً في قيادة حدث عالمي يجمع شعوب العالم بأسره على حب الساحرة المستديرة."
-        },
-        {
-          title: "7. جدول إحصائيات وأرقام منتخب إسبانيا التاريخية في كأس العالم",
-          body: "نستعرض فيما يلي جدولاً تفصيلياً ملخصاً لأبرز أرقام وإنجازات ومشاركات منتخب إسبانيا في نهائيات كأس العالم عبر التاريخ المونديالي العريق:",
-          points: [
-            "إجمالي المشاركات: 16 مشاركة تاريخية في نهائيات كأس العالم.",
-            "أفضل إنجاز: التتويج باللقب والمركز الأول في جنوب أفريقيا عام 2010.",
-            "إنجازات مميزة أخرى: الحصول على المركز الرابع في مونديال البرازيل 1950.",
-            "الهداف التاريخي للمنتخب في المونديال: النجم ديفيد فيا (David Villa) برصيد 9 أهداف حاسمة.",
-            "أكثر اللاعبين مشاركة في المباريات: سيرخيو راموس وإيكر كاسياس برصيد 17 مباراة مونديالية لكل منهما.",
-            "الملاعب المستضيفة لنهائي 2030 المقترح: ملعب سانتياغو برنابيو المتطور بمدريد كمرشح أول."
-          ]
-        },
-        {
-          title: "8. الأسئلة الشائعة حول تاريخ وإنجازات إسبانيا في كأس العالم",
-          body: "نقدم لكم في هذا الجزء إجابات وافية ودقيقة ومحققة عن أبرز الأسئلة المتداولة بين عشاق كرة القدم حول منتخب إسبانيا وتاريخه المونديالي الحافل:",
-          note: "تم تحديث وتدقيق هذه البيانات الرياضية بدقة متناهية لتعكس الإحصائيات الرسمية المعتمدة من الاتحاد الدولي لكرة القدم (فيفا)."
-        }
-      ],
-      faqs: [
-        {
-          q: "كم مرة فازت إسبانيا ببطولة كأس العالم لكرة القدم؟",
-          a: "فازت إسبانيا بلقب كأس العالم مرة واحدة في تاريخها، وكان ذلك في نسخة عام 2010 التي أقيمت في جنوب أفريقيا بعد الفوز على هولندا في المباراة النهائية بهدف دون رد."
-        },
-        {
-          q: "من هو الهداف التاريخي لمنتخب إسبانيا في بطولات كأس العالم؟",
-          a: "الهداف التاريخي لمنتخب إسبانيا في المونديال هو المهاجم الأسطوري ديفيد فيا (David Villa) برصيد 9 أهداف سجلها خلال مشاركاته في نسخ 2006، 2010، و2014."
-        },
-        {
-          q: "متى استضافت إسبانيا بطولة كأس العالم على أرضها؟",
-          a: "استضافت إسبانيا بطولة كأس العالم مرة واحدة في تاريخها عام 1982، والتي شهدت فوز المنتخب الإيطالي باللقب وتميزت بتميمة البرتقالة الشهيرة 'نارانخيتو'."
-        },
-        {
-          q: "هل ستستضيف إسبانيا كأس العالم مجدداً في المستقبل؟",
-          a: "نعم، تم الإعلان رسمياً عن فوز الملف المشترك بين إسبانيا والمغرب والبرتغال بحق استضافة نهائيات كأس العالم لعام 2030، مع إقامة ثلاث مباريات احتفالية افتتاحية في أمريكا الجنوبية."
-        }
-      ]
-    },
-    contentEn: {
-      toc: [
-        "1. Introduction: Spain's Historic Legacy in the FIFA World Cup",
-        "2. The Legendary 2010 World Cup Glory in South Africa",
-        "3. The Epic Final and the Golden Era of Tiki-Taka Tactics",
-        "4. Spain as Hosts: Reliving the Magic of World Cup 1982 and Naranjito",
-        "5. The New Generation of La Roja: Looking Ahead to World Cup 2026",
-        "6. Hosting the World Cup 2030: A Historic Multi-Continental Masterpiece",
-        "7. Statistical Highlights of Spain's Performance in World Cup History",
-        "8. Frequently Asked Questions (FAQs) About Spain in the World Cup"
-      ],
-      sections: [
-        {
-          title: "1. Introduction: Spain's Historic Legacy in the FIFA World Cup",
-          body: "The story of Spain in the FIFA World Cup is a captivating tale of footballing brilliance, beautiful play styles, and ultimate triumph. Known globally as 'La Roja' (The Red One), the Spanish national football team has consistently enriched the world's most watched tournament with their exquisite style, tactical intelligence, and elite players. For decades, Spain was labeled as the 'eternal underachiever'—a team stacked with world-class talent that consistently faltered on the biggest stage. However, the golden generation of Spanish football completely rewrote this narrative between 2008 and 2012, capturing the world's imagination and securing Spain's place among the elite group of World Cup champions. Today, Spain is looking forward to creating new history, both on the pitch and as future hosts of the global showpiece."
-        },
-        {
-          title: "2. The Legendary 2010 World Cup Glory in South Africa",
-          body: "July 11, 2010, is a date forever etched in the golden history of Spanish sports. In South Africa, during the first-ever World Cup hosted on the African continent, Spain achieved its ultimate footballing dream. Led by the calm and brilliant head coach Vicente del Bosque, Spain's campaign actually began with a shocking and stressful 1-0 defeat to Switzerland in the group stage. Under immense pressure, the team showed incredible tactical maturity, sticking strictly to their playing philosophy. Spain went on to win all of their knockout matches—against Portugal, Paraguay, Germany, and ultimately the Netherlands—by a precise and disciplined scoreline of 1-0, proving that defensive solidity and total control of the ball are the true hallmarks of world champions."
-        },
-        {
-          title: "3. The Epic Final and the Golden Era of Tiki-Taka Tactics",
-          body: "The 2010 World Cup final at Soccer City in Johannesburg was a brutal, high-stakes battle against an aggressive Dutch side. The match went into extra time after exceptional saves from legendary goalkeeper and captain Iker Casillas, who famously denied Arjen Robben in a crucial one-on-one situation. Spain's legendary midfield trio of Xavi, Andres Iniesta, and Xabi Alonso gradually suffocated the opposition with their revolutionary 'Tiki-Taka' passing game. In the 116th minute, Cesc Fabregas delivered a sublime pass to Iniesta, who controlled it beautifully and fired a half-volley past Maarten Stekelenburg into the back of the net. The goal sparked historic celebrations in Madrid, Barcelona, Seville, and all across the globe, solidifying Spain's golden generation as one of the greatest football teams ever assembled."
-        },
-        {
-          title: "4. Spain as Hosts: Reliving the Magic of World Cup 1982 and Naranjito",
-          body: "Spain's rich relationship with the World Cup extends far beyond winning the trophy; it also includes a magnificent legacy of hosting. In 1982, Spain hosted its first FIFA World Cup, which marked a historic milestone as the tournament expanded from 16 to 24 teams. The tournament is fondly remembered for its iconic mascot, 'Naranjito'—a cheerful, cartoonish orange representing Spain's famous citrus fruit. Matches were played in modernized historic stadiums, including the Santiago Bernabéu in Madrid and Camp Nou in Barcelona. Although Spain's national team did not achieve its desired athletic results in that edition (which Italy went on to win), the incredible sporting and transport infrastructure built for the event paved the way for La Liga to become the powerhouse league of global football."
-        },
-        {
-          title: "5. The New Generation of La Roja: Looking Ahead to World Cup 2026",
-          body: "As the footballing world prepares for the historic 48-team FIFA World Cup 2026 in the United States, Canada, and Mexico, Spain enters the competition with immense optimism and a freshly crowned champion's mentality. Under the tactical guidance of head coach Luis de la Fuente, Spain has successfully integrated a highly dynamic, youthful, and direct style of play. This modern generation of La Roja, which conquered Europe by winning UEFA Euro 2024, features exceptional young talents like the generational winger Lamine Yamal, the explosive Nico Williams, and midfield virtuosos Gavi and Pedri, anchored by the flawless world-class midfielder Rodri. Combining the traditional possession-based blueprint with extreme vertical pace, Spain is widely regarded as a primary contender to raise the FIFA World Cup trophy for the second time in history."
-        },
-        {
-          title: "6. Hosting the World Cup 2030: A Historic Multi-Continental Masterpiece",
-          body: "Spain is set to return as a host nation for the biggest tournament in sports, having secured the rights to co-host the FIFA World Cup 2030 in an extraordinary joint bid with Portugal and Morocco. This historic tournament represents a groundbreaking celebration of unity, connecting two continents (Europe and Africa) and three hosting nations. The 2030 tournament will feature state-of-the-art infrastructure, including the newly renovated, futuristic Santiago Bernabéu Stadium in Madrid and the magnificent Spotify Camp Nou in Barcelona. To honor the centenary of the very first World Cup in 1930, celebratory opening matches will also be played in Uruguay, Argentina, and Paraguay, placing Spain at the absolute center of a truly global, historic footballing festival."
-        },
-        {
-          title: "7. Statistical Highlights of Spain's Performance in World Cup History",
-          body: "Below is a detailed statistical summary highlighting Spain's achievements, performance records, and historic figures across their World Cup participations:",
-          points: [
-            "Total World Cup Appearances: 16 historic tournaments.",
-            "Best Result: Champions (1st Place) in South Africa 2010.",
-            "Other Notable Finish: 4th Place in Brazil 1950.",
-            "All-Time Top Scorer in World Cup: Legendary forward David Villa with 9 goals across 2006, 2010, and 2014.",
-            "Most Appearances: Sergio Ramos and Iker Casillas with 17 World Cup matches played each.",
-            "Key Proposed Host Venue for the 2030 Final: The spectacular newly rebuilt Santiago Bernabéu Stadium in Madrid."
-          ]
-        },
-        {
-          title: "8. Frequently Asked Questions (FAQs) About Spain in the World Cup",
-          body: "In this section, we provide accurate, verified, and direct answers to the most common questions regarding Spain's historic and future World Cup campaigns:",
-          note: "All statistical records are verified and aligned with official FIFA historical databases."
-        }
-      ],
-      faqs: [
-        {
-          q: "How many times has Spain won the FIFA World Cup?",
-          a: "Spain has won the FIFA World Cup once in its history, capturing the title at the 2010 tournament in South Africa by defeating the Netherlands 1-0 in extra time."
-        },
-        {
-          q: "Who is Spain's all-time top scorer in the World Cup?",
-          a: "Spain's all-time top scorer in World Cup history is David Villa, who scored 9 goals across the 2006, 2010, and 2014 editions of the tournament."
-        },
-        {
-          q: "When did Spain host the FIFA World Cup?",
-          a: "Spain hosted the World Cup in 1982, a tournament won by Italy and famously celebrated for its charming orange mascot, Naranjito."
-        },
-        {
-          q: "Will Spain host the World Cup again in the future?",
-          a: "Yes, Spain will co-host the 2030 FIFA World Cup alongside Morocco and Portugal, marking a historic multi-continental event with centenary celebrations in South America."
-        }
       ]
     }
   }

@@ -28,6 +28,7 @@ import enzoFernandezStar from '../assets/images/enzo_fernandez_star_178415911943
 import hossamHassanCoach from '../assets/images/hossam_hassan_coach_1784247472193.jpg';
 import diMariaRetirement from '../assets/images/di_maria_retirement_1784249250242.jpg';
 import aboutrikaLegend from '../assets/images/aboutrika_legend_1784253388195.jpg';
+import mourinhoMadridLegend from '../assets/images/mourinho_madrid_legend_1784334115299.jpg';
 
 interface Article {
   id: string;
@@ -70,6 +71,174 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-mourinho-real-madrid-2026",
+    slug: "jose-mourinho-with-real-madrid-legendary-era",
+    categoryAr: "تحليلات كروية وتاريخية",
+    categoryEn: "Football History",
+    titleAr: "جوزيه مورينيو مع ريال مدريد: حقبة كسر الهيمنة وتأسيس جيل البطولات التاريخي",
+    titleEn: "Jose Mourinho with Real Madrid: The Era of Breaking Dominance and Building a Dynasty",
+    descAr: "تقرير رياضي وسيو شامل ومفصل يتجاوز 1000 كلمة يبحث في فترة تدريب جوزيه مورينيو مع ريال مدريد، مستعرضاً تكتيكاته الاستثنائية وصراعاته الملحمية وموسم الـ 100 نقطة التاريخي.",
+    descEn: "A detailed 1000+ words SEO-optimized analysis of Jose Mourinho's legendary tenure with Real Madrid, his tactical masterclasses, Clásico wars, and La Liga of 100 points.",
+    keywordsAr: [
+      "جوزيه مورينيو مع ريال مدريد",
+      "مورينيو ريال مدريد",
+      "ريال مدريد 100 نقطة",
+      "كلاسيكو مورينيو وجوارديولا",
+      "أرقام مورينيو مع ريال مدريد",
+      "تكتيك مورينيو مع ريال مدريد"
+    ],
+    keywordsEn: [
+      "jose mourinho with real madrid",
+      "mourinho real madrid",
+      "real madrid 100 points",
+      "mourinho vs guardiola",
+      "mourinho madrid stats"
+    ],
+    image: mourinhoMadridLegend,
+    date: "2026-07-17",
+    readTime: "22 min read",
+    contentAr: {
+      toc: [
+        "1. مقدمة: جوزيه مورينيو مع ريال مدريد - حقبة تاريخية غير مسبوقة",
+        "2. ليلة الوصول وصدمة البداية: كيف تسلم السبيشال وان تركة ريال مدريد؟",
+        "3. بناء الهوية التكتيكية: المرتدات الفتاكة والتحول الدفاعي الهجومي الإعجازي",
+        "4. موسم الـ 100 نقطة والـ 121 هدفاً: لغة الأرقام القياسية التي لا تقهر في الليغا",
+        "5. كلاسيكو الغضب: الصراع التكتيكي والذهني الأعظم بين مورينيو وجوارديولا",
+        "6. استعادة الهيبة الأوروبية: كيف أعاد مورينيو هيبة الملكي في دوري الأبطال؟",
+        "7. نهاية المشوار والأثر الممتد: كيف مهد السبيشال وان الطريق لجيل العاشرة وما بعدها؟",
+        "8. أرقام وإحصائيات جوزيه مورينيو التاريخية مع ريال مدريد",
+        "9. الأسئلة الشائعة حول حقبة جوزيه مورينيو مع ريال مدريد"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: جوزيه مورينيو مع ريال مدريد - حقبة تاريخية غير مسبوقة",
+          body: "عندما أعلن نادي ريال مدريد الإسباني في صيف عام 2010 عن التعاقد مع المدرب البرتغالي العبقري جوزيه مورينيو، كانت كرة القدم العالمية تعيش تحت هيمنة مطلقة ونفوذ جارف لبرشلونة بقيادة بيب جوارديولا. في ذلك التوقيت بالذات، كان البحث عن الرجل القادر على إيقاف قطار العملاق الكتالوني هو الشغل الشاغل لإدارة الملكي برئاسة فلورنتينو بيريز. ومن هنا بدأت مسيرة 'جوزيه مورينيو مع ريال مدريد'، وهي الفترة التي تعد واحدة من أكثر الفترات إثارة وجدلاً وقوة في تاريخ كرة القدم الحديث. في هذا التحليل الرياضي المتكامل والشامل، نغوص في أدق تفاصيل تلك الحقبة التاريخية التي غيرت مجرى الصراع الكروي في إسبانيا وأوروبا."
+        },
+        {
+          title: "2. ليلة الوصول وصدمة البداية: كيف تسلم السبيشال وان تركة ريال مدريد؟",
+          body: "وصل جوزيه مورينيو إلى سانتياغو برنابيو متوجاً بالثلاثية التاريخية مع إنتر ميلان الإيطالي، بعد أن نجح في إقصاء برشلونة نفسه في ليلة تكتيكية شهيرة في الكامب نو. كانت مهمة مورينيو واضحة وصارمة: كسر الهيمنة وبناء عقلية انتصارية جديدة لفريق كان يعاني من عقدة الخروج من دور الستة عشر في دوري أبطال أوروبا لستة مواسم متتالية. ومع ذلك، لم تكن البداية مفروشة بالورود؛ إذ تلقى الفريق صدمة مدوية بالخسارة بخماسية نظيفة في أول كلاسيكو لمورينيو بالكامب نو. هذه الخسارة القاسية، بدلاً من أن تكسر المدرب البرتغالي، كانت نقطة التحول التاريخية التي أسست للثورة التكتيكية اللاحقة وعلمت اللاعبين معنى الصمود والقتال التكتيكي الشرس."
+        },
+        {
+          title: "3. بناء الهوية التكتيكية: المرتدات الفتاكة والتحول الدفاعي الهجومي الإعجازي",
+          body: "عُرفت حقبة جوزيه مورينيو مع ريال مدريد بتقديم أحد أسرع وأقوى أساليب الارتداد الهجومي في تاريخ اللعبة. لم يكن تكتيك مورينيو يعتمد على الدفاع البحت كما يروج البعض، بل كان منظومة تحول خارقة وسريعة للغاية تعتمد على دقة التمركز واستخلاص الكرة ثم تمريرها بسرعة فائقة. بوجود خط وسط حديدي ومبتكر يضم تشابي ألونسو ومسعود أوزيل، وتحركات الأطراف المدمرة بقيادة كريستيانو رونالدو وأنخيل دي ماريا، بالإضافة إلى إنهاء الهجمات المثالي من كريم بنزيما أو غونزالو هيغواين، كان ريال مدريد يحتاج فقط إلى 3 أو 4 لمسات في أقل من 10 ثوانٍ لينقل الكرة من منطقة جزائه إلى شباك الخصم. هذا الأسلوب الفتاك جعل من ريال مدريد ماكينة أهداف مرعبة قادرة على تمزيق أي دفاع منظم في بضع ثوانٍ معدودة."
+        },
+        {
+          title: "4. موسم الـ 100 نقطة والـ 121 هدفاً: لغة الأرقام القياسية التي لا تقهر في الليغا",
+          body: "إذا أردنا تلخيص النجاح التكتيكي والبدني لحقبة 'جوزيه مورينيو مع ريال مدريد'، فإن موسم 2011-2012 يقف شاهداً كأعظم موسم في تاريخ الدوري الإسباني. في هذا الموسم الإعجازي، تمكن النادي الملكي من الفوز باللقب بعد حصد 100 نقطة كاملة كأول فريق يحقق هذا الإنجاز التاريخي، مسجلاً 121 هدفاً كأقوى خط هجوم في تاريخ البطولة. كانت العزيمة والتركيز الذهني الذي زرعه مورينيو في نفوس لاعبيه وراء هذا الانتظام الرهيب، حيث حسم الفريق مباريات صعبة جداً خارج ملعبه بفضل اللياقة العالية والتنظيم الدقيق، وتوج ذلك بالفوز الحاسم على برشلونة في عقر داره بالكامب نو بنتيجة 2-1 بهدف كريستيانو رونالدو الشهير وحركته التاريخية 'Calma Calma'، والتي أعلنت رسمياً نهاية هيمنة برشلونة المحلية."
+        },
+        {
+          title: "5. كلاسيكو الغضب: الصراع التكتيكي والذهني الأعظم بين مورينيو وجوارديولا",
+          body: "لم تكن مباريات الكلاسيكو في عهد جوزيه مورينيو مع ريال مدريد مجرد مباريات كرة قدم، بل كانت معارك حرب نفسية وتكتيكية وإعلامية حامية الوطيس. واجه مورينيو بيب جوارديولا في سلسلة كلاسيكيات متتالية غيّرت مفهوم التنافس الرياضي. استعمل مورينيو الحرب الإعلامية لتخفيف الضغط عن لاعبيه ونقله إلى معسكر المنافس، وابتكر خططاً تكتيكية مبتكرة للحد من خطورة التيكي تاكا الكتالونية، مثل إشراك المدافع بيبي كلاعب ارتكاز دفاعي (تربيل بيفوت) في وسط الملعب لقطع خطوط التمرير لليونيل ميسي. هذا التنافس الشرس بلغ ذروته في نهائي كأس ملك إسبانيا 2011 عندما حقق ريال مدريد اللقب برأسية رونالدو الشهيرة في الأوقات الإضافية، ليكون أول لقب حقيقي يثبت نجاح مشروع السبيشال وان ضد برشلونة الأسطوري."
+        },
+        {
+          title: "6. استعادة الهيبة الأوروبية: كيف أعاد مورينيو هيبة الملكي في دوري الأبطال؟",
+          body: "قبل قدوم جوزيه مورينيو، كان ريال مدريد يعاني من عقدة أوروبية مستعصية، حيث كان يخرج باستمرار من دور الـ 16، وفقد بريقه وهيبته على الصعيد الأوروبي. نجح مورينيو في كسر هذه اللعنة فوراً في موسمه الأول، حيث قاد الفريق للتأهل إلى نصف نهائي دوري أبطال أوروبا لثلاثة مواسم متتالية (2011، 2012، 2013). وعلى الرغم من سوء الحظ وركلات الترجيح الشهيرة أمام بايرن ميونخ في عام 2012، والقرارات التحكيمية الجدلية التي منعت الفريق من بلوغ النهائي، إلا أن مورينيو نجح في إعادة بناء هيبة ريال مدريد في القارة العجوز وجعل الفرق الأوروبية تخشى مواجهة الملكي مجدداً في البرنابيو، واضعاً القواعد الأساسية للروح والصلابة اللازمة للتتويج باللقب الأوروبي لاحقاً."
+        },
+        {
+          title: "7. نهاية الحقبة المثيرة للجدل: الوداع والأثر المستمر الذي مهّد لعهد العاشرة",
+          body: "انتهت حقبة جوزيه مورينيو مع ريال مدريد في صيف 2013 وسط انقسامات وإثارة للجدل، خاصة مع بعض اللاعبين الكبار ووسائل الإعلام الإسبانية. لكن الأثر الفني والتكتيكي والذهني الذي تركه مورينيو في النادي الملكي كان لا يقدر بثمن. لقد غيّر عقلية اللاعبين من فريق مستسلم للهيمنة الكتالونية إلى فريق محارب يمتلك جينات الفوز والقتال حتى الرمق الأخير. اللاعبون الذين صقلهم مورينيو تكتيكياً وبدنياً - مثل راموس، ورونالدو، وبنزيمة، ومودريتش، وتشابي ألونسو، وفاران - هم أنفسهم الذين شكلوا العمود القبلي للفريق الذي حقق لقب دوري أبطال أوروبا العاشر 'العاشرة' في عام 2014 تحت قيادة كارلو أنشيلوتي، ثم الهيمنة المطلقة بثلاثية زيدان المتتالية. باختصار، يمكن القول إن مورينيو بنى الآلة التي حصدت الذهب لسنوات طويلة."
+        },
+        {
+          title: "8. أرقام وإحصائيات جوزيه مورينيو التاريخية مع ريال مدريد",
+          body: "خلال ثلاثة مواسم قضاها جوزيه مورينيو مع ريال مدريد، خاض الفريق مواجهات تاريخية بأرقام مذهلة تعبر عن القوة الكبيرة والهيمنة التكتيكية. إليكم الجدول الإحصائي الشامل لهذه الحقبة:",
+          points: [
+            "إجمالي المباريات: 178 مباراة في جميع البطولات الرسمية.",
+            "عدد الانتصارات: 128 انتصاراً بنسبة فوز استثنائية بلغت 71.9%.",
+            "عدد التعادلات: 28 تعادلاً فقط.",
+            "عدد الهزائم: 22 هزيمة طوال 3 مواسم كاملة.",
+            "الأهداف المسجلة: 475 هدفاً بمعدل تهديفي رهيب قارب 2.67 هدف في المباراة الواحدة.",
+            "الأهداف المستقبلة: 168 هدفاً فقط، مما يدل على القوة الدفاعية الكبيرة.",
+            "الألقاب المحققة: 3 ألقاب كبرى (الدوري الإسباني التاريخي 2011-2012، كأس ملك إسبانيا 2010-2011، كأس السوبر الإسباني 2012)."
+          ]
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هو أبرز إنجاز حققه جوزيه مورينيو مع ريال مدريد؟",
+          a: "أبرز إنجاز هو التتويج بلقب الدوري الإسباني 'La Liga' لموسم 2011-2012 برقم قياسي تاريخي وهو 100 نقطة وتسجيل 121 هدفاً، كاسراً هيمنة برشلونة جوارديولا الأسطورية."
+        },
+        {
+          q: "لماذا يعتبر مورينيو المؤسس الحقيقي لجيل العاشرة لريال مدريد؟",
+          a: "لأنه أعاد صياغة عقلية الفريق التنافسية وبنى العمود الفقري الدفاعي والهجومي الصارم، وأنهى عقدة دور الـ 16 الأوروبي بالتأهل لنصف النهائي ثلاث مرات متتالية، مما مهد الطريق لأنشيلوتي ثم زيدان لتحقيق الألقاب الأوروبية التاريخية."
+        },
+        {
+          q: "كم عدد الكلاسيكيات التي خاضها مورينيو ضد برشلونة مع ريال مدريد؟",
+          a: "خاض مورينيو 17 مواجهة كلاسيكو رسمية ضد برشلونة خلال فترته مع ريال مدريد في جميع البطولات، تميزت بندية رهيبة وصراعات تكتيكية ونفسية دخلت تاريخ اللعبة."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: Jose Mourinho with Real Madrid - A Historic Era",
+        "2. The Arrival: Tackling the Catalan Dominance",
+        "3. Tactical Philosophy: Masterclass in Counter-Attacks",
+        "4. The 100-Point and 121-Goal Record-Breaking Season",
+        "5. The El Clásico Wars: Mourinho vs. Guardiola",
+        "6. Restoring European Prestige and Eliminating the Round of 16 Jinx",
+        "7. The Legacy: Building the Foundation for 'La Décima'",
+        "8. Key Statistics of Jose Mourinho's Reign with Real Madrid",
+        "9. FAQs about Jose Mourinho with Real Madrid"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: Jose Mourinho with Real Madrid - A Historic Era",
+          body: "When Portuguese tactician Jose Mourinho was appointed as Real Madrid's manager in 2010, Pep Guardiola's Barcelona was dominating the world. Real Madrid's president Florentino Pérez brought the 'Special One' with a clear mission: break Barca's dominance. This initiated one of the most intense, fiercely competitive, and tactically supreme eras in football history. Here we analyze Jose Mourinho with Real Madrid in deep detail."
+        },
+        {
+          title: "2. The Arrival: Tackling the Catalan Dominance",
+          body: "Mourinho arrived fresh from winning the treble with Inter Milan, famously eliminating Barcelona at the Camp Nou. He inherited a squad that had failed to advance past the Champions League Round of 16 for six consecutive seasons. Although his first Clásico ended in a harsh 5-0 defeat, it was the turning point that sparked a tactical revolution and built a relentless fighting spirit."
+        },
+        {
+          title: "3. Tactical Philosophy: Masterclass in Counter-Attacks",
+          body: "Real Madrid under Mourinho developed into one of the most lethal counter-attacking machines the football world has ever witnessed. Utilizing players like Xabi Alonso and Mesut Özil for precise delivery, flanked by the blistering pace of Cristiano Ronaldo and Ángel Di María, they could transition from defense to goal in 3-4 touches in under 10 seconds. This style redefined modern transition play."
+        },
+        {
+          title: "4. The 100-Point and 121-Goal Record-Breaking Season",
+          body: "The 2011-2012 La Liga season stands as one of the greatest domestic campaigns in history. Under Mourinho's guidance, Real Madrid achieved a milestone of 100 points and scored an unprecedented 121 goals. A decisive 2-1 win at Camp Nou, marked by Ronaldo's iconic 'Calma Calma' celebration, mathematically sealed the championship and ended Barcelona's supreme domestic run."
+        },
+        {
+          title: "5. The El Clásico Wars: Mourinho vs. Guardiola",
+          body: "Clásicos during this period were intense wars of tactics and mental games. Mourinho deployed innovative formations, including deploying Pepe as a defensive midfielder in a 'trivote' to disrupt Messi's movements. This fierce rivalry reached its peak when Real Madrid lifted the 2011 Copa del Rey trophy thanks to Ronaldo's extra-time header, proving they could defeat Guardiola's legendary side."
+        },
+        {
+          title: "6. Restoring European Prestige and Eliminating the Round of 16 Jinx",
+          body: "Before Mourinho's arrival, Real Madrid suffered from a mental block in Europe. Mourinho broke the Round of 16 curse instantly and led the club to three consecutive Champions League semi-finals (2011, 2012, and 2013). Though bad luck in penalty shootouts and controversial referee decisions prevented them from reaching the final, he restored Madrid's fearsome status across the European continent."
+        },
+        {
+          title: "7. The Legacy: Building the Foundation for 'La Décima'",
+          body: "Mourinho left Real Madrid in 2013, but his tactical structure and winning mentality persisted. The core players he developed—Ramos, Ronaldo, Benzema, Modrić, Varane, Alonso—formed the backbone of the historic team that won 'La Décima' in 2014 under Ancelotti, and the subsequent Champions League three-peat under Zidane. Mourinho built the machine that won it all."
+        },
+        {
+          title: "8. Key Statistics of Jose Mourinho's Reign with Real Madrid",
+          body: "Mourinho's tenure with Real Madrid is backed by staggering numbers showing high efficiency and tactical dominance:",
+          points: [
+            "Total matches: 178 games across all competitions.",
+            "Wins: 128 wins, representing an exceptional 71.9% win rate.",
+            "Draws: 28 draws.",
+            "Losses: Only 22 losses in 3 years.",
+            "Goals scored: 475 goals, with an outstanding average of 2.67 goals per match.",
+            "Goals conceded: 168 goals, showing defensive robustness.",
+            "Trophies: La Liga (2011-12), Copa del Rey (2010-11), Supercopa de España (2012)."
+          ]
+        }
+      ],
+      faqs: [
+        {
+          q: "What is Jose Mourinho's greatest achievement with Real Madrid?",
+          a: "His greatest achievement is winning the 2011-2012 La Liga with a record-breaking 100 points and 121 goals, snapping Barcelona's legendary dominance."
+        },
+        {
+          q: "How did Mourinho influence the winning of La Décima?",
+          a: "He ended the mental block of the Round of 16, brought Madrid back to European semi-finals, and built the core squad and relentless winning mentality that won the 10th Champions League in 2014."
+        },
+        {
+          q: "What was Mourinho's win percentage at Real Madrid?",
+          a: "Mourinho achieved a brilliant 71.9% win percentage, winning 128 matches out of 178 during his three seasons."
+        }
+      ]
+    }
+  },
   {
     id: "art-aboutrika-legend-2026",
     slug: "mohamed-aboutrika-egyptian-football-legend-2026",

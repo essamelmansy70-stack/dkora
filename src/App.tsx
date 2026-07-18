@@ -800,7 +800,7 @@ export default function App() {
         onClick={() => { handleTabChange("quiz"); playInteractionSound(); }}
         className={`w-full px-4 py-5 flex flex-col sm:flex-row gap-4 items-center justify-between border-b z-10 backdrop-blur-md cursor-pointer transition-all duration-350 group/header ${
           activeTab === "blog" 
-            ? "max-w-none px-6 md:px-12 lg:px-16 bg-[#03071c]/90 border-slate-800 hover:bg-[#070c2c]/50 text-white" 
+            ? "max-w-none px-4 sm:px-6 md:px-8 lg:px-10 bg-[#03071c]/90 border-slate-800 hover:bg-[#070c2c]/50 text-white" 
             : "max-w-4xl bg-white/80 border-slate-200 hover:bg-slate-50/50 text-slate-900"
         }`}
         title={lang === "ar" ? "اضغط للذهاب لالصفحة الرئيسية" : "Click to go to Home Page"}
@@ -845,7 +845,7 @@ export default function App() {
       {/* Primary Workspace */}
       <main className={`w-full flex flex-col justify-center items-center flex-grow z-10 transition-all ${
         activeTab === "blog" 
-          ? "max-w-none px-4 sm:px-6 md:px-12 lg:px-20 py-8" 
+          ? "max-w-none px-2 sm:px-4 md:px-6 lg:px-8 py-8" 
           : "max-w-4xl px-4 py-8"
       }`}>
         
@@ -2007,7 +2007,7 @@ export default function App() {
       {/* Styled Footer with Legal and Sitemap navigators */}
       <footer className={`w-full px-4 py-6 border-t text-center space-y-6 z-10 backdrop-blur-sm mt-12 transition-all duration-350 ${
         activeTab === "blog"
-          ? "max-w-none px-6 md:px-12 lg:px-16 bg-[#03071c]/50 border-slate-800 text-slate-300"
+          ? "max-w-none px-4 sm:px-6 md:px-8 lg:px-10 bg-[#03071c]/50 border-slate-800 text-slate-300"
           : "max-w-4xl bg-white/50 border-slate-205 text-slate-900"
       }`}>
         

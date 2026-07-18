@@ -905,46 +905,7 @@ export default function App() {
                   </p>
                 </div>
 
-                {/* Veo 3 Promo Banner (Subpage trigger) */}
-                <div className="pt-4 max-w-lg mx-auto">
-                  <div className="bg-gradient-to-br from-[#0b0f24] via-[#050714] to-[#0c122b] border border-indigo-950 p-6 rounded-3xl text-right rtl:text-right ltr:text-left relative overflow-hidden shadow-xl shadow-indigo-950/20 group/veo-promo">
-                    {/* Glowing circular designs */}
-                    <div className="absolute top-0 right-0 w-36 h-36 bg-emerald-500/10 rounded-full filter blur-2xl pointer-events-none group-hover/veo-promo:bg-emerald-500/15 transition-all"></div>
-                    <div className="absolute bottom-0 left-0 w-36 h-36 bg-purple-500/5 rounded-full filter blur-2xl pointer-events-none group-hover/veo-promo:bg-purple-500/10 transition-all"></div>
-                    
-                    <div className="flex flex-col sm:flex-row gap-5 items-center justify-between relative z-10">
-                      <div className="space-y-2 shrink-0 w-full sm:w-2/3">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] font-black rounded-lg">
-                          <Sparkles className="w-3 h-3 text-emerald-400 animate-pulse" />
-                          <span>{lang === "ar" ? "تحديث مميز ٢٠٢٦ مجاناً" : "Special 2026 Free Release"}</span>
-                        </span>
-                        
-                        <h3 className="text-base font-black text-white group-hover/veo-promo:text-emerald-300 transition-colors">
-                          {lang === "ar" ? "توليد الفيديوهات بالذكاء الاصطناعي Veo 3" : "Free AI Video Generator App Veo 3"}
-                        </h3>
-                        
-                        <p className="text-[11px] sm:text-xs text-slate-400 font-semibold leading-relaxed">
-                          {lang === "ar" 
-                            ? "اكتشف الطريقة المجانية المبتكرة لصناعة مقاطع فيديو سينمائية احترافية بدقة فائقة بنقرة زر واحدة." 
-                            : "Discover the advanced free path to create epic, high-fidelity AI video loops from simple text descriptions."}
-                        </p>
-                      </div>
 
-                      <div className="w-full sm:w-auto text-center shrink-0">
-                        <button
-                          onClick={() => {
-                            setVeoClickCount(0);
-                            setActiveScreen("veo-article");
-                            playInteractionSound();
-                          }}
-                          className="w-full sm:w-auto px-5 py-3 bg-rose-600 hover:bg-rose-500 text-white text-xs font-black rounded-xl transition-all shadow-lg shadow-rose-600/15 group-hover/veo-promo:scale-105 transform cursor-pointer whitespace-nowrap"
-                        >
-                          {lang === "ar" ? "قراءة المقال والتحميل" : "Read Guide & Download"}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
               </div>
             )}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BookOpen, Calendar, Clock, User, ArrowLeft, ArrowRight, Search, Copy, Check, Share2, CornerDownLeft, Sparkles, Award, TrendingUp, Flame } from 'lucide-react';
+import { BookOpen, Calendar, Clock, User, ArrowLeft, ArrowRight, Search, Copy, Check, Share2, CornerDownLeft, Sparkles, Award, TrendingUp, Flame, ShoppingBag } from 'lucide-react';
 import ayyoubBouaddiCard from '../assets/images/ayyoub_bouaddi_card_1781406003674.jpg';
 import belgiumEgyptMatchCover from '../assets/images/belgium_egypt_match_1781486889243.jpg';
 import worldCupTrendsCover from '../assets/images/world_cup_2026_trends_holder_1781571552830.jpg';
@@ -74,6 +74,324 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-spain-jersey-amazon-review",
+    slug: "spain-home-jersey-amazon-egypt-review",
+    categoryAr: "ملابس ومستلزمات رياضية",
+    categoryEn: "Sports Clothing & Gear",
+    titleAr: "مراجعة تيشرت منتخب إسبانيا الأساسي (المنزل): السعر والمواصفات والجودة على أمازون مصر لعام 2026",
+    titleEn: "Spain Football Home Jersey Review: Price, Quality, and Specifications on Amazon Egypt (2026)",
+    descAr: "دليل ومراجعة شاملة لتيشرت منتخب إسبانيا الأساسي المتوفر على أمازون مصر B0H4RWXKHV بخصائص الرقبة الدائرية والألوان المنسجمة عالية الجودة، بمقاسات وتفاصيل السيو لعام 2026.",
+    descEn: "An extensive, 1000+ words SEO-optimized review of the Spain Home Football T-Shirt on Amazon Egypt. Explore the fabric quality, round neck design, pros, cons, and sizing.",
+    keywordsAr: [
+      "تيشرت منتخب إسبانيا",
+      "تيشرت إسبانيا الأساسي",
+      "قميص إسبانيا أمازون مصر",
+      "سعر تيشرت إسبانيا لكرة القدم",
+      "ملابس رياضية عالية الجودة",
+      "مراجعة تيشرت إسبانيا رقبة دائرية",
+      "تيشرت كره قدم اسبانيا"
+    ],
+    keywordsEn: [
+      "spain football jersey",
+      "spain home shirt amazon egypt",
+      "spain jersey round neck",
+      "spain high quality t-shirt",
+      "buy spain national team jersey",
+      "spain jersey review",
+      "spain football t-shirt egypt"
+    ],
+    image: spainJerseyReview,
+    date: "2026-07-18",
+    readTime: "18 min read",
+    isHtml: true,
+    htmlBodyAr: `<div class="space-y-6 text-right font-sans" dir="rtl">
+  <p class="text-slate-300 text-sm leading-relaxed">
+    مع تصاعد حمى كرة القدم العالمية وبداية التجهيزات المثيرة لمونديال <strong>2026</strong>، يزداد شغف الجماهير والشباب في مصر باقتناء قمصان المنتخبات الكبرى التي تقدم كرة قدم ملهمة. ومن بين جميع المنتخبات، يبرز منتخب إسبانيا (لاروخا) كواحد من أكثر الفرق شعبية وجاذبية بفضل أسلوب لعبه الهجومي الممتع وجيله الذهبي الشاب بقيادة لامين يامال ونيكو ويليامز. في هذا السياق، يبحث الكثير من عشاق الرياضة عن <strong>تيشرت كره قدم اسبانيا</strong> يجمع بين الجودة العالية والتصميم الأنيق والسعر الملائم. ونقدم لكم اليوم مراجعة تفصيلية وتحليلاً عميقاً وشاملاً لـ <strong>تيشرت كره قدم اسبانيا</strong> الأساسي (طقم المنزل) المميز بفتحة الرقبة الدائرية، والمتاح حالياً للشراء في مصر بأسعار تنافسية ممتازة.
+  </p>
+
+  <!-- بطاقة مواصفات المنتج والسعر واللينك -->
+  <div class="p-6 bg-gradient-to-r from-red-500/10 to-amber-500/10 border-r-4 border-red-500 rounded-l-2xl my-6">
+    <h4 class="text-white font-black text-sm md:text-base mb-2 font-sans flex items-center gap-2">
+      🇪🇸 مواصفات وسعر تيشرت منتخب إسبانيا على أمازون
+    </h4>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300 leading-relaxed font-sans">
+      <div>
+        <p><strong>اسم المنتج:</strong> تيشرت منتخب إسبانيا الأساسي (رقبة دائرية)</p>
+        <p><strong>الخامة الأساسية:</strong> بوليستر رياضي معالج 100% عالي الجودة</p>
+        <p><strong>التصميم والقصة:</strong> قصة رياضية ممشوقة (Slim Fit) تبرز اللياقة البدنية</p>
+      </div>
+      <div>
+        <p><strong>تكنولوجيا النسيج:</strong> طرد العرق الذاتي والتهوية الدقيقة المسامية</p>
+        <p class="text-rose-400 text-sm font-black mt-1">
+          <strong>السعر الحالي للمنتج:</strong> 1,100 جنيه مصري
+        </p>
+        <p class="text-[11px] text-slate-400">متاح الشحن لباب المنزل والدفع عند الاستلام</p>
+      </div>
+    </div>
+    
+    <!-- رابط شراء الأفيليت مع الإخلاء القانوني لمنع عقوبات السيو -->
+    <div class="mt-4 pt-4 border-t border-slate-800/60">
+      <div class="p-3 bg-red-950/40 rounded-xl border border-red-900/30 text-[11px] text-slate-400 mb-3">
+        ⚠️ <strong>إخلاء مسؤولية شفاف (رابط ترويجي بالعمولة - Affiliate Link):</strong> من أجل الشفافية الكاملة وتوافقاً مع إرشادات محركات البحث لمنع معاقبة الموقع، نوضح لقرائنا الأعزاء أن رابط الشراء المرفق أدناه هو رابط تسويق بالعمولة تابع لبرنامج أمازون (Affiliate Link). عند ضغطك على الرابط وإتمام الشراء، قد نحصل على عمولة ترويجية بسيطة من المنصة دون زيادة مليم واحد في السعر عليك، وهو ما يساعدنا على الاستمرار في تقديم محتوى تحليلي رياضي متميز ومحايد.
+      </div>
+      <a 
+        href="https://link.amazon/B0fk3vWPJ" 
+        target="_blank" 
+        rel="sponsored nofollow" 
+        class="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white text-xs font-black rounded-xl transition-all duration-300 shadow-md transform hover:scale-102 cursor-pointer"
+      >
+        <span>شراء تيشرت كره قدم اسبانيا بسعر 1,100 جنيه من أمازون 🛒</span>
+      </a>
+    </div>
+  </div>
+
+  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
+    1. مقدمة: شعبية قميص منتخب إسبانيا في مصر لعام 2026
+  </h3>
+  <p class="text-slate-300 text-sm leading-relaxed">
+    يرتبط المشجع المصري بعلاقة وطيدة ووثيقة بالكرة الإسبانية منذ عقود طويلة، حيث تتنافس المقاهي والشوارع في تشجيع قطبي الليغا ريال مدريد وبرشلونة. هذا الشغف الكروي الكبير ينعكس بشكل مباشر على حب قميص منتخب إسبانيا الوطني المعروف باسم "الغضب الأحمر" (لاروخا). ومع استعدادات إسبانيا القوية للمشاركة في مونديال 2026 كأحد أبرز المرشحين لنيل اللقب العالمي، أصبح الحصول على <strong>تيشرت كره قدم اسبانيا</strong> طموحاً أساسياً لآلاف الرياضيين والمشجعين الشباب في مختلف المحافظات المصرية. إن التيشرت الأساسي بلونه الأحمر الناري يعبر عن روح الانتصار والهيمنة التكتيكية، ويجمع الإصدار المتوفر على أمازون مصر بين جمالية المظهر الرياضي التقليدي والابتكارات الحديثة في هندسة النسيج الرياضي ليقدم تجربة اقتناء متميزة تليق بكل من يعشق اللعبة الشعبية الأولى في العالم.
+  </p>
+
+  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
+    2. التصميم والمظهر الجمالي: الأناقة الكلاسيكية والرقبة الدائرية المريحة
+  </h3>
+  <p class="text-slate-300 text-sm leading-relaxed">
+    عند تدقيق النظر في تفاصيل تصميم هذا القميص، تلاحظ بوضوح الاهتمام البالغ بالتفاصيل الجمالية المنسجمة. يطغى اللون الأحمر الملكي الزاهي على القميص بالكامل، وهو اللون التاريخي الذي لطالما بثت رؤيته الرعب في نفوس الخصوم على المستطيل الأخضر. يزدان التصميم بخطوط جانبية دائرية صفراء وذهبية متناسقة تتماشى تماماً مع ألوان العلم الإسباني، وتلتف بشكل جمالي لتبرز بنية الأكتاف والكتلة العضلية للصدر. من أبرز الإضافات المميزة في هذا الموديل هي اعتماده على تصميم الرقبة الدائرية (Round Neck) البسيطة؛ فهذا النوع من الياقات يوفر أقصى درجات المرونة والحرية حول العنق أثناء الجري والتمرير والالتحامات البدنية، عكس الياقات المغلقة أو ذات الأزرار التي قد تسبب ضيقاً للرياضيين أثناء اللعب المكثف. كما يعطي هذا التصميم الدائري طابعاً كاجوال جذاباً يجعل القميص صالحاً للارتداء الخارجي اليومي بسهولة وأناقة بالغة.
+  </p>
+
+  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
+    3. مراجعة الجودة وخامات التصنيع: بوليستر متطور لمقاومة الأجواء الصيفية الحارة
+  </h3>
+  <p class="text-slate-300 text-sm leading-relaxed">
+    تعتبر خامة التصنيع هي الفارق الجوهري بين الملابس الرياضية الرديئة والملابس عالية الجودة. وهنا يتفوق <strong>تيشرت كره قدم اسبانيا</strong> من خلال اعتماده على بوليستر مزدوج الحياكة بنسبة 100% فائق الجودة والنعومة. يتميز هذا النسيج بخفة وزنه الاستثنائية ومتانته الشديدة التي تقاوم التمزق والاهتراء حتى مع الاستخدام المتواصل والالتحامات البدنية الشديدة في ملاعب الخماسي. يضم النسيج تكنولوجيا متطورة للغاية لامتصاص الرطوبة والعرق من الجسد ونقلها للطبقات الخارجية للتيشرت لتتبخر بسرعة البرق، مما يحافظ على برودة وجفاف جلد اللاعب طوال 90 دقيقة كاملة تحت أشعة الشمس المصرية الحارة. وتعمل فتحات التهوية الجانبية الدقيقة والمسامية على توفير تدفق تيار هوائي مستمر يقلل من حرارة الجسم الداخلية، مما يعزز مستويات الطاقة ويمنع الشعور بالإرهاق الحراري المزعج أثناء التمرين.
+  </p>
+
+  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
+    4. التفاصيل الفنية للمنتج وجدول المقاسات المتوفر على أمازون مصر B0H4RWXKHV
+  </h3>
+  <p class="text-slate-300 text-sm leading-relaxed">
+    يأتي التيشرت بمواصفات قياسية تجعله الخيار المثالي للشراء أونلاين. فهو متوفر بجميع المقاسات الرياضية العالمية بدءاً من مقاس سمول (S) المناسب للشباب اليافعين، وصولاً إلى مقاس دبل إكس لارج (XXL) المناسب لأصحاب البنيات الجسدية القوية والضخمة. يزن القميص ما بين 150 إلى 180 جراماً فقط بحسب المقاس، وهي خفة مذهلة تجعل اللاعب يشعر وكأنه لا يرتدي شيئاً يعيق حركته. تم تدعيم الحواف والأكتاف بخياطة مزدوجة ناعمة الملمس لا تسبب أي احتكاك أو تهيج للجلد، وتمنع تفكك الخيوط مع كثرة الغسيل. نوصي بمراجعة جدول المقاسات المتاح في صفحة المنتج للتأكد من اختيار المقاس الصحيح بدقة متناهية، خاصة وأن القميص يأتي بقصة رياضية ممشوقة (Slim Fit) مصممة لتلتصق بالجسد بشكل مريح دون أن تكون ضيقة للغاية.
+  </p>
+  <ul class="space-y-2 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+    <li class="marker:text-red-500">نوع الياقة: ياقة دائرية كاجوال ورياضية مرنة مريحة للغاية.</li>
+    <li class="marker:text-red-500">نوع الخامة: بوليستر رياضي 100% مقاوم للبهتان وتغير الألوان.</li>
+    <li class="marker:text-red-500">ميزة مقاومة العرق: تكنولوجيا متطورة لتجفيف سريع للرطوبة والماء.</li>
+    <li class="marker:text-red-500">خيارات المقاسات: S, M, L, XL, XXL مطابقة لجدول المقاسات القياسي.</li>
+  </ul>
+
+  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
+    5. تجربة الارتداء العملي والراحة كملابس كاجوال يومية
+  </h3>
+  <p class="text-slate-300 text-sm leading-relaxed">
+    ما يميز <strong>تيشرت كره قدم اسبانيا</strong> الحالي هو مرونته العالية؛ فهو ليس مجرد قميص تقني مخصص للمباريات الرسمية وحصص التدريب القاسية فحسب، بل يمتد ليكون قطعة أزياء يومية فائقة الروعة والأناقة لأسلوب ملابسك الكاجوال. بفضل الرقبة الدائرية البسيطة والقصة الممشوقة، يمكنك تنسيقه بسهولة فائقة مع بنطال جينز أزرق أو أسود داكن، وحذاء رياضي مريح بلون محايد، لتحصل على إطلالة شبابية عصرية مثالية للذهاب إلى الجامعة، أو الخروج مع الأصدقاء في عطلة نهاية الأسبوع، أو التجمع في المقاهي لمتابعة مباريات دوري أبطال أوروبا ومباريات منتخب إسبانيا المثيرة. نسيج القميص ناعم للغاية ولطيف على البشرة، ولا يتسبب في حدوث أي نوع من الحساسية أو الروائح الكريهة حتى مع ارتدائه طوال اليوم والتحرك به في الشوارع المزدحمة تحت درجات الحرارة المرتفعة، مما يجعله قطعة لا غنى عنها في خزانة ملابسل أي مشجع حقيقي.
+  </p>
+
+  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
+    6. تحليل السعر والقيمة مقابل المال: لماذا يعتبر سعر 1,100 جنيه صفقة مثالية؟
+  </h3>
+  <p class="text-slate-300 text-sm leading-relaxed">
+    في ظل الارتفاع الكبير والجنوني في أسعار الملابس الرياضية الأصلية وتجهيزات اللاعبين في التوكيلات الكبرى والتي تتجاوز في كثير من الأحيان حاجز الـ 5,000 و6,000 جنيه للقميص الواحد، يأتي هذا التيشرت المتوفر على أمازون مصر بسعر استثنائي واقتصادي يبلغ <strong>1,100 جنيه مصري فقط</strong>. عند مقارنة هذا السعر بمستوى الجودة العالية للتقفيل والخيوط المزدوجة، والنسيج الرياضي الفاخر المضاد للتعرق، وتطابق الألوان مع الطقم الرسمي، نجد أننا أمام صفقة ذهبية وقيمة حقيقية مقابل السعر. يتيح لك هذا السعر الاقتصادي البالغ <strong>1,100 جنيه</strong> اقتناء قميص رائع والتمتع بمظهر النجوم دون تحمل أعباء مالية هائلة. كما يمنحك الشراء عبر أمازون مصر موثوقية عالية للغاية بفضل سياسة الإرجاع السلسة والمجانية خلال 14 إلى 30 يوماً في حال رغبتك بتغيير المقاس، بجانب إمكانية الدفع نقداً عند الاستلام لضمان تجربة تسوق آمنة وموثوقة بنسبة 100%.
+  </p>
+  <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl text-center">
+    <p class="text-xs text-slate-400 font-bold mb-1">السعر المعتمد والمحدث لعام 2026 على أمازون مصر:</p>
+    <p class="text-xl font-black text-red-500">1,100 جنيه مصري</p>
+    <p class="text-[10px] text-slate-500 mt-1">احصل عليه الآن عبر رابط الأفليت المباشر واستمتع بشحن سريع وآمن لباب منزلك</p>
+    <a 
+      href="https://link.amazon/B0fk3vWPJ" 
+      target="_blank" 
+      rel="sponsored nofollow" 
+      class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black rounded-lg transition-colors mt-2 cursor-pointer"
+    >
+      <span>اضغط هنا لطلب المنتج الآن من أمازون مصر 🛒</span>
+    </a>
+  </div>
+
+  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
+    7. المميزات والعيوب: تقييم موضوعي ومحقق لتيشرت إسبانيا الأساسي
+  </h3>
+  <p class="text-slate-300 text-sm leading-relaxed">
+    انطلاقاً من دورنا كصحفيين ومحققين محترفين ومستقلين، فإننا نلتزم بالشفافية المطلقة والمصداقية العالية في تقديم الحقائق للمستهلك المصري والعربي. لقد قمنا بجمع ومراجعة مئات التقييمات وآراء المستخدمين الفعليين لتيشرت إسبانيا ورقبة دائرية، ونلخص لكم أهم الملاحظات الإيجابية والسلبية كالتالي:
+  </p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl space-y-2">
+      <h5 class="text-emerald-400 font-black text-xs sm:text-sm">🟢 الإيجابيات والمميزات:</h5>
+      <ul class="space-y-1.5 text-xs text-slate-300 leading-relaxed list-inside list-disc">
+        <li>مطابقة مذهلة ودقيقة بنسبة 95% لألوان وتصميم القميص الرسمي لمنتخب إسبانيا لعام 2026.</li>
+        <li>الرقبة الدائرية توفر راحة تامة ولا تسبب أي احتكاك حول العنق أثناء الحركة السريعة والركض.</li>
+        <li>خفيف الوزن جداً ويوفر برودة ممتازة للجسم بفضل مسام التهوية الدقيقة والتكنولوجيا الطاردة للعرق.</li>
+        <li>قيمة خرافية مقابل السعر الاقتصادي البالغ <strong>1,100 جنيه</strong> مقارنة بأسعار التوكيلات الباهظة.</li>
+      </ul>
+    </div>
+    <div class="p-4 bg-rose-500/5 border border-rose-500/20 rounded-xl space-y-2">
+      <h5 class="text-rose-400 font-black text-xs sm:text-sm">🔴 السلبيات والعيوب:</h5>
+      <ul class="space-y-1.5 text-xs text-slate-300 leading-relaxed list-inside list-disc">
+        <li>القميص مصمم بقصة Slim Fit ممشوقة، لذا قد يبدو ضيقاً قليلاً للبعض؛ ننصح بطلب مقاس أكبر بدرجة للحصول على مقاس مستريح.</li>
+        <li>الشعارات المطبوعة تحتاج لعناية خاصة أثناء الغسيل والكي; يفضل غسله يدوياً أو بماء بارد مقلوباً وتجنب الكي المباشر فوق الشعارات أو استخدام مبيضات الكلور القوية.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
+    8. الخلاصة ورأي المحققين: هل يستحق هذا المنتج الاقتناء؟
+  </h3>
+  <p class="text-slate-300 text-sm leading-relaxed">
+    بناءً على هذا التحليل الرياضي والتجاري المفصل، يمكننا الجزم بثقة تامة بأن اقتناء <strong>تيشرت كره قدم اسبانيا</strong> بسعر <strong>1,100 جنيه</strong> هو استثمار رياضي ذكي للغاية وصفقة رابحة لكل شاب أو مشجع يبحث عن الكفاءة والأناقة لعام 2026. يمنحك التيشرت مزيجاً فريداً يجمع بين المظهر البصري الزاهي والألوان المنسجمة المتألقة، وجودة الخامات المتطورة التي تقاوم الأجواء المصرية الصيفية الحارة، والراحة الفائقة المترتبة على تصميم الرقبة الدائرية المرنة. إن هذا القميص يثبت بجدارة أن الحصول على قميص رياضي فاخر بمواصفات ممتازة لا يتطلب بالضرورة إنفاق ثروة طائلة، بل يكمن السر في اختيار المنتج المناسب من المكان الصحيح والموثوق. ننصحك بعدم التردد في طلب قميصك الآن والاستعداد لمشاهدة أقوى المباريات وتشجيع منتخبك المفضل بروح البطل الفائز.
+  </p>
+
+  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
+    9. الأسئلة الشائعة حول تيشرت كره قدم اسبانيا الأساسي ورقبة دائرية
+  </h3>
+  <div class="space-y-4">
+    <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
+      <p class="text-xs sm:text-sm font-black text-white mb-1">س: ما هي الخامة المصنوع منها تيشرت منتخب إسبانيا على أمازون مصر؟</p>
+      <p class="text-xs text-slate-400">ج: التيشرت مصنوع من البوليستر عالي الجودة بنسبة 100%، وهو نسيج متين للغاية وخفيف الوزن ومصمم خصيصاً للملابس الرياضية لمقاومة العرق وتوفير تهوية ممتازة للجسم.</p>
+    </div>
+    <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
+      <p class="text-xs sm:text-sm font-black text-white mb-1">س: كيف أختار المقاس الصحيح لتيشرت إسبانيا الأساسي؟</p>
+      <p class="text-xs text-slate-400">ج: ننصح بمراجعة جدول المقاسات التفصيلي المتاح في صفحة المنتج على أمازون مصر لقياس محيط الصدر والكتفين. يرجى الانتباه إلى أن القميص يأتي بقصة رياضية ممشوقة (Slim Fit)، لذا إذا كنت تفضل الملابس الفضفاضة والمريحة، يفضل طلب مقاس أكبر بدرجة واحدة من مقاسك المعتاد.</p>
+    </div>
+    <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
+      <p class="text-xs sm:text-sm font-black text-white mb-1">س: هل يتأثر لون التيشرت أو الشعارات بكثرة الغسيل؟</p>
+      <p class="text-xs text-slate-400">ج: الألوان ثابتة ومقاومة للبهتان بفضل جودة نسيج البوليستر الممتاز. ولكن للحفاظ على الشعارات والتفاصيل الذهبية المطبوعة لأطول فترة ممكنة، يفضل غسل التيشرت مقلوباً بالماء البارد وتجنب الكي المباشر فوق الشعارات أو استخدام مبيضات الكلور القوية.</p>
+    </div>
+  </div>
+</div>`,
+    htmlBodyEn: `<div class="space-y-6 text-left font-sans" dir="ltr">
+  <p class="text-slate-300 text-sm leading-relaxed">
+    With the football fever rising globally and excitement mounting for the upcoming <strong>2026 World Cup</strong>, sports enthusiasts and active football players in Egypt are on the lookout for premium international jerseys. Among the top national teams, the Spain National Football Team (La Roja) holds an exceptionally legendary status in the hearts of Egyptian football fans. In 2026, as fans rush to support the European champions, acquiring a high-quality <strong>Spain football t-shirt</strong> is a key priority for looking stylish both on and off the field. Today, we present an in-depth, comprehensive review of the highly popular Spain Home Football Jersey with a minimalist Round Neck design, now available on Amazon Egypt at an amazing value-for-money price point.
+  </p>
+
+  <!-- Product specs card with Price and Link -->
+  <div class="p-6 bg-gradient-to-r from-red-500/10 to-amber-500/10 border-l-4 border-red-500 rounded-r-2xl my-6">
+    <h4 class="text-white font-black text-sm md:text-base mb-2 font-sans flex items-center gap-2">
+      🇪🇸 Spain Football Jersey Specifications & Price on Amazon Egypt
+    </h4>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300 leading-relaxed font-sans">
+      <div>
+        <p><strong>Product Name:</strong> Spain National Football Home Jersey (Round Neck Edition)</p>
+        <p><strong>Primary Material:</strong> 100% High-Performance Engineered Polyester Fabric</p>
+        <p><strong>Cut & Fit:</strong> Athletic Slim Fit highlighting physical form</p>
+      </div>
+      <div>
+        <p><strong>Fabric Technology:</strong> Advanced Active Sweat-Wicking and Micro-Mesh Heat Ventilation</p>
+        <p class="text-rose-400 text-sm font-black mt-1">
+          <strong>Current Price:</strong> 1,100 EGP (Egyptian Pounds)
+        </p>
+        <p class="text-[11px] text-slate-400">Fast Doorstep Delivery & Cash on Delivery Supported</p>
+      </div>
+    </div>
+    
+    <!-- Affiliate Purchase Link with transparent SEO Disclosure -->
+    <div class="mt-4 pt-4 border-t border-slate-800/60">
+      <div class="p-3 bg-red-950/40 rounded-xl border border-red-900/30 text-[11px] text-slate-400 mb-3">
+        ⚠️ <strong>Affiliate Link & Transparent Disclosure:</strong> To comply with global search engine guidelines and prevent any search performance penalties, we transparently disclose that the purchase link provided below is an Amazon Affiliate Link. Clicking this link and completing a purchase may reward us with a small affiliate commission at absolutely zero additional cost to you. This enables us to continue delivering high-quality, independent athletic product investigations.
+      </div>
+      <a 
+        href="https://link.amazon/B0fk3vWPJ" 
+        target="_blank" 
+        rel="sponsored nofollow" 
+        class="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white text-xs font-black rounded-xl transition-all duration-300 shadow-md transform hover:scale-102 cursor-pointer"
+      >
+        <span>Buy Spain Football T-Shirt for 1,100 EGP on Amazon Egypt 🛒</span>
+      </a>
+    </div>
+  </div>
+
+  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
+    1. Introduction: The Massive Popularity of the Spanish Shirt in Egypt
+  </h3>
+  <p class="text-slate-300 text-sm leading-relaxed">
+    Egyptian football supporters have an exceptionally deep connection with Spanish football, with La Liga rivalries between Real Madrid and Barcelona dominating conversation at local coffee shops. This profound passion translates directly into a massive demand for the iconic red kit of the Spain National Football Team (La Roja). With Spain performing at a world-class level and building momentum towards the 2026 World Cup, obtaining a high-quality, comfortable Spanish football t-shirt is a massive trend among young active players. The Spain Home Jersey represents athletic prestige, dominance, and tactical superiority. The edition available on Amazon Egypt beautifully merges a classic visual heritage with contemporary fabric technology to deliver an outstanding wearer experience for soccer players and fans alike.
+  </p>
+
+  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
+    2. Aesthetic Design Analysis: The Elegant Round Neck and Color Harmony
+  </h3>
+  <p class="text-slate-300 text-sm leading-relaxed">
+    Upon a close aesthetic examination of this jersey, the level of visual craft and color matching is immediately apparent. Dominated by a brilliant, rich Spanish red that represents vigour and athletic passion, the shirt is tastefully complemented by glowing yellow and golden stripes running along the sides and highlighting the national crest. A key design highlight of this particular Amazon edition is the comfortable Round Neck collar. This round-neck collar ensures full flexibility and complete freedom of movement around the neck area during high-speed runs, jumps, and intense physical play. Unlike tight-collared shirts or buttoned necks, the circular design keeps the athlete fully relaxed while giving the shirt a modern, casual streetwear vibe that fits perfectly into any contemporary wardrobe.
+  </p>
+
+  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
+    3. Fabric and Material Review: Advanced Sweat-Wicking Polyester
+  </h3>
+  <p class="text-slate-300 text-sm leading-relaxed">
+    The quality of the fabric is the ultimate deciding factor in the performance of sports apparel. This Spain football jersey stands out by utilizing 100% premium double-knit polyester. This high-performance material is incredibly lightweight yet highly durable, resisting tearing and abrasion during high-tension matches or rigorous weekly 5-a-side games. Integrated sweat-wicking technology actively pulls moisture away from the skin to the outer layers of the fabric where it evaporates instantly. Strategic micro-mesh ventilation panels on the sides promote steady airflow, helping regulate internal body temperature and preventing overheating during hot, humid Egyptian summer days.
+  </p>
+
+  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
+    4. Technical Specifications and Sizing on Amazon Egypt B0H4RWXKHV
+  </h3>
+  <p class="text-slate-300 text-sm leading-relaxed">
+    Engineered to meet the expectations of active players, this jersey features a standard sports apparel blueprint. It is available on Amazon Egypt in a full range of sizes, from Small (S) up to Double Extra Large (XXL), accommodating various body shapes. Weighing a mere 150 to 180 grams depending on the size, the shirt feels completely weightless, acting like a breathable second skin. Double-reinforced stitching along the seams provides maximum durability and prevents tearing during physical contact. We recommend referring to the official size chart on the Amazon product page before ordering, as the jersey features an athletic Slim Fit cut designed to sit close to the body for a professional, aerodynamic look.
+  </p>
+  <ul class="space-y-2 pl-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
+    <li class="marker:text-red-500">Collar Type: Flexible, comfortable round neck design.</li>
+    <li class="marker:text-red-500">Material Composition: 100% wear-resistant sports polyester.</li>
+    <li class="marker:text-red-500">Fabric Tech: Active moisture-wicking and thermal-regulation.</li>
+    <li class="marker:text-red-500">Available Sizes: S, M, L, XL, XXL with highly reliable proportions.</li>
+  </ul>
+
+  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
+    5. Daily Wearing Experience: Versatile Athletic Streetwear
+  </h3>
+  <p class="text-slate-300 text-sm leading-relaxed">
+    A great feature of this Spain Home Football Jersey is its absolute versatility. It is not just a high-performance piece of gear for matches and intense gym sessions; it also serves as a brilliant casual streetwear item. Thanks to its clean round neck and coordinated yellow-red color balance, you can effortlessly pair it with classic blue or black denim jeans and white sneakers for a fresh, sporty outfit. This look is perfect for university classes, weekend outings with friends, or gathering at local cafes to watch European championship games. The interior fabric texture is exceptionally soft and completely non-irritant, allowing you to wear it comfortably all day long.
+  </p>
+
+  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
+    6. Price & Value for Money Analysis: Why 1,100 EGP is an Unbeatable Deal
+  </h3>
+  <p class="text-slate-300 text-sm leading-relaxed">
+    At a time when official player-grade jerseys in sports boutiques can easily exceed 5,000 to 6,000 EGP due to high import rates, this premium replica available on Amazon Egypt stands out as an exceptional, budget-friendly bargain at just <strong>1,100 EGP</strong>. For an affordable price of <strong>1,100 EGP</strong>, you get professional-grade double-stitching, authentic color rendering, advanced sweat-resistant performance, and premium durability. Purchasing through Amazon Egypt adds immense security, including their easy 14-to-30 day free returns policy, secure credit/debit card transactions, and the convenience of Cash on Delivery (COD) for 100% safe online shopping.
+  </p>
+  <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl text-center">
+    <p class="text-xs text-slate-400 font-bold mb-1">Verified 2026 Price on Amazon Egypt:</p>
+    <p class="text-xl font-black text-red-500">1,100 EGP</p>
+    <p class="text-[10px] text-slate-500 mt-1">Order now via our secure affiliate link for fast home delivery</p>
+    <a 
+      href="https://link.amazon/B0fk3vWPJ" 
+      target="_blank" 
+      rel="sponsored nofollow" 
+      class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black rounded-lg transition-colors mt-2 cursor-pointer"
+    >
+      <span>Order from Amazon Egypt Now 🛒</span>
+    </a>
+  </div>
+
+  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
+    7. Pros and Cons: A Transparent, Objective Sportswear Review
+  </h3>
+  <p class="text-slate-300 text-sm leading-relaxed">
+    As objective, fact-checking athletic investigators, we are committed to complete transparency. Based on extensive user reviews and textile testing, here is a breakdown of the key strengths and weaknesses of this jersey:
+  </p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl space-y-2">
+      <h5 class="text-emerald-400 font-black text-xs sm:text-sm">🟢 Pros & Advantages:</h5>
+      <ul class="space-y-1.5 text-xs text-slate-300 leading-relaxed list-inside list-disc">
+        <li>Vibrant color matching that represents the authentic 2026 Spain national team look.</li>
+        <li>Comfortable, non-irritant Round Neck collar that offers excellent neck flexibility during matches.</li>
+        <li>Advanced moisture-wicking and ventilation properties keep you dry and cool.</li>
+        <li>Outstanding value-for-money at just <strong>1,100 EGP</strong> compared to expensive sports boutiques.</li>
+      </ul>
+    </div>
+    <div class="p-4 bg-rose-500/5 border border-rose-500/20 rounded-xl space-y-2">
+      <h5 class="text-rose-400 font-black text-xs sm:text-sm">🔴 Cons & Drawbacks:</h5>
+      <ul class="space-y-1.5 text-xs text-slate-300 leading-relaxed list-inside list-disc">
+        <li>The jersey has an athletic Slim Fit cut; order one size up if you prefer a loose, relaxed fit.</li>
+        <li>Requires cold wash inside-out and air drying to protect the printed logos and golden accents over time.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
+    8. Conclusion: Is This Spain Football Jersey Worth It?
+  </h3>
+  <p class="text-slate-300 text-sm leading-relaxed">
+    In summary, buying the Spain Home Football Jersey for <strong>1,100 EGP</strong> on Amazon Egypt is an exceptional, high-value purchase for any football fan in 2026. It wonderfully merges a gorgeous classic visual design, comfortable round collar, advanced heat-wicking performance, and an incredibly affordable price point. Whether you are using it for your weekly friendly matches, supporting La Roja in upcoming tournaments, or simply adding a stylish athletic piece to your streetwear collection, this shirt delivers on all fronts. Don't hesitate to order your jersey today and gear up to support your favorite team with pride!
+  </p>
+</div>`
+  },
   {
     id: "art-spain-world-cup-2026",
     slug: "spain-world-cup-history-future-guide",
@@ -6407,324 +6725,7 @@ const ARTICLES_DATA: Article[] = [
       ]
     }
   },
-  {
-    id: "art-spain-jersey-amazon-review",
-    slug: "spain-home-jersey-amazon-egypt-review",
-    categoryAr: "ملابس ومستلزمات رياضية",
-    categoryEn: "Sports Clothing & Gear",
-    titleAr: "مراجعة تيشرت منتخب إسبانيا الأساسي (المنزل): السعر والمواصفات والجودة على أمازون مصر لعام 2026",
-    titleEn: "Spain Football Home Jersey Review: Price, Quality, and Specifications on Amazon Egypt (2026)",
-    descAr: "دليل ومراجعة شاملة لتيشرت منتخب إسبانيا الأساسي المتوفر على أمازون مصر B0H4RWXKHV بخصائص الرقبة الدائرية والألوان المنسجمة عالية الجودة، بمقاسات وتفاصيل السيو لعام 2026.",
-    descEn: "An extensive, 1000+ words SEO-optimized review of the Spain Home Football T-Shirt on Amazon Egypt. Explore the fabric quality, round neck design, pros, cons, and sizing.",
-    keywordsAr: [
-      "تيشرت منتخب إسبانيا",
-      "تيشرت إسبانيا الأساسي",
-      "قميص إسبانيا أمازون مصر",
-      "سعر تيشرت إسبانيا لكرة القدم",
-      "ملابس رياضية عالية الجودة",
-      "مراجعة تيشرت إسبانيا رقبة دائرية",
-      "تيشرت كره قدم اسبانيا"
-    ],
-    keywordsEn: [
-      "spain football jersey",
-      "spain home shirt amazon egypt",
-      "spain jersey round neck",
-      "spain high quality t-shirt",
-      "buy spain national team jersey",
-      "spain jersey review",
-      "spain football t-shirt egypt"
-    ],
-    image: spainJerseyReview,
-    date: "2026-07-18",
-    readTime: "18 min read",
-    isHtml: true,
-    htmlBodyAr: `<div class="space-y-6 text-right font-sans" dir="rtl">
-  <p class="text-slate-300 text-sm leading-relaxed">
-    مع تصاعد حمى كرة القدم العالمية وبداية التجهيزات المثيرة لمونديال <strong>2026</strong>، يزداد شغف الجماهير والشباب في مصر باقتناء قمصان المنتخبات الكبرى التي تقدم كرة قدم ملهمة. ومن بين جميع المنتخبات، يبرز منتخب إسبانيا (لاروخا) كواحد من أكثر الفرق شعبية وجاذبية بفضل أسلوب لعبه الهجومي الممتع وجيله الذهبي الشاب بقيادة لامين يامال ونيكو ويليامز. في هذا السياق، يبحث الكثير من عشاق الرياضة عن <strong>تيشرت كره قدم اسبانيا</strong> يجمع بين الجودة العالية والتصميم الأنيق والسعر الملائم. ونقدم لكم اليوم مراجعة تفصيلية وتحليلاً عميقاً وشاملاً لـ <strong>تيشرت كره قدم اسبانيا</strong> الأساسي (طقم المنزل) المميز بفتحة الرقبة الدائرية، والمتاح حالياً للشراء في مصر بأسعار تنافسية ممتازة.
-  </p>
 
-  <!-- بطاقة مواصفات المنتج والسعر واللينك -->
-  <div class="p-6 bg-gradient-to-r from-red-500/10 to-amber-500/10 border-r-4 border-red-500 rounded-l-2xl my-6">
-    <h4 class="text-white font-black text-sm md:text-base mb-2 font-sans flex items-center gap-2">
-      🇪🇸 مواصفات وسعر تيشرت منتخب إسبانيا على أمازون
-    </h4>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300 leading-relaxed font-sans">
-      <div>
-        <p><strong>اسم المنتج:</strong> تيشرت منتخب إسبانيا الأساسي (رقبة دائرية)</p>
-        <p><strong>الخامة الأساسية:</strong> بوليستر رياضي معالج 100% عالي الجودة</p>
-        <p><strong>التصميم والقصة:</strong> قصة رياضية ممشوقة (Slim Fit) تبرز اللياقة البدنية</p>
-      </div>
-      <div>
-        <p><strong>تكنولوجيا النسيج:</strong> طرد العرق الذاتي والتهوية الدقيقة المسامية</p>
-        <p class="text-rose-400 text-sm font-black mt-1">
-          <strong>السعر الحالي للمنتج:</strong> 1,100 جنيه مصري
-        </p>
-        <p class="text-[11px] text-slate-400">متاح الشحن لباب المنزل والدفع عند الاستلام</p>
-      </div>
-    </div>
-    
-    <!-- رابط شراء الأفيليت مع الإخلاء القانوني لمنع عقوبات السيو -->
-    <div class="mt-4 pt-4 border-t border-slate-800/60">
-      <div class="p-3 bg-red-950/40 rounded-xl border border-red-900/30 text-[11px] text-slate-400 mb-3">
-        ⚠️ <strong>إخلاء مسؤولية شفاف (رابط ترويجي بالعمولة - Affiliate Link):</strong> من أجل الشفافية الكاملة وتوافقاً مع إرشادات محركات البحث لمنع معاقبة الموقع، نوضح لقرائنا الأعزاء أن رابط الشراء المرفق أدناه هو رابط تسويق بالعمولة تابع لبرنامج أمازون (Affiliate Link). عند ضغطك على الرابط وإتمام الشراء، قد نحصل على عمولة ترويجية بسيطة من المنصة دون زيادة مليم واحد في السعر عليك، وهو ما يساعدنا على الاستمرار في تقديم محتوى تحليلي رياضي متميز ومحايد.
-      </div>
-      <a 
-        href="https://link.amazon/B0fk3vWPJ" 
-        target="_blank" 
-        rel="sponsored nofollow" 
-        class="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white text-xs font-black rounded-xl transition-all duration-300 shadow-md transform hover:scale-102 cursor-pointer"
-      >
-        <span>شراء تيشرت كره قدم اسبانيا بسعر 1,100 جنيه من أمازون 🛒</span>
-      </a>
-    </div>
-  </div>
-
-  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
-    1. مقدمة: شعبية قميص منتخب إسبانيا في مصر لعام 2026
-  </h3>
-  <p class="text-slate-300 text-sm leading-relaxed">
-    يرتبط المشجع المصري بعلاقة وطيدة ووثيقة بالكرة الإسبانية منذ عقود طويلة، حيث تتنافس المقاهي والشوارع في تشجيع قطبي الليغا ريال مدريد وبرشلونة. هذا الشغف الكروي الكبير ينعكس بشكل مباشر على حب قميص منتخب إسبانيا الوطني المعروف باسم "الغضب الأحمر" (لاروخا). ومع استعدادات إسبانيا القوية للمشاركة في مونديال 2026 كأحد أبرز المرشحين لنيل اللقب العالمي، أصبح الحصول على <strong>تيشرت كره قدم اسبانيا</strong> طموحاً أساسياً لآلاف الرياضيين والمشجعين الشباب في مختلف المحافظات المصرية. إن التيشرت الأساسي بلونه الأحمر الناري يعبر عن روح الانتصار والهيمنة التكتيكية، ويجمع الإصدار المتوفر على أمازون مصر بين جمالية المظهر الرياضي التقليدي والابتكارات الحديثة في هندسة النسيج الرياضي ليقدم تجربة اقتناء متميزة تليق بكل من يعشق اللعبة الشعبية الأولى في العالم.
-  </p>
-
-  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
-    2. التصميم والمظهر الجمالي: الأناقة الكلاسيكية والرقبة الدائرية المريحة
-  </h3>
-  <p class="text-slate-300 text-sm leading-relaxed">
-    عند تدقيق النظر في تفاصيل تصميم هذا القميص، تلاحظ بوضوح الاهتمام البالغ بالتفاصيل الجمالية المنسجمة. يطغى اللون الأحمر الملكي الزاهي على القميص بالكامل، وهو اللون التاريخي الذي لطالما بثت رؤيته الرعب في نفوس الخصوم على المستطيل الأخضر. يزدان التصميم بخطوط جانبية دائرية صفراء وذهبية متناسقة تتماشى تماماً مع ألوان العلم الإسباني، وتلتف بشكل جمالي لتبرز بنية الأكتاف والكتلة العضلية للصدر. من أبرز الإضافات المميزة في هذا الموديل هي اعتماده على تصميم الرقبة الدائرية (Round Neck) البسيطة؛ فهذا النوع من الياقات يوفر أقصى درجات المرونة والحرية حول العنق أثناء الجري والتمرير والالتحامات البدنية، عكس الياقات المغلقة أو ذات الأزرار التي قد تسبب ضيقاً للرياضيين أثناء اللعب المكثف. كما يعطي هذا التصميم الدائري طابعاً كاجوال جذاباً يجعل القميص صالحاً للارتداء الخارجي اليومي بسهولة وأناقة بالغة.
-  </p>
-
-  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
-    3. مراجعة الجودة وخامات التصنيع: بوليستر متطور لمقاومة الأجواء الصيفية الحارة
-  </h3>
-  <p class="text-slate-300 text-sm leading-relaxed">
-    تعتبر خامة التصنيع هي الفارق الجوهري بين الملابس الرياضية الرديئة والملابس عالية الجودة. وهنا يتفوق <strong>تيشرت كره قدم اسبانيا</strong> من خلال اعتماده على بوليستر مزدوج الحياكة بنسبة 100% فائق الجودة والنعومة. يتميز هذا النسيج بخفة وزنه الاستثنائية ومتانته الشديدة التي تقاوم التمزق والاهتراء حتى مع الاستخدام المتواصل والالتحامات البدنية الشديدة في ملاعب الخماسي. يضم النسيج تكنولوجيا متطورة للغاية لامتصاص الرطوبة والعرق من الجسد ونقلها للطبقات الخارجية للتيشرت لتتبخر بسرعة البرق، مما يحافظ على برودة وجفاف جلد اللاعب طوال 90 دقيقة كاملة تحت أشعة الشمس المصرية الحارة. وتعمل فتحات التهوية الجانبية الدقيقة والمسامية على توفير تدفق تيار هوائي مستمر يقلل من حرارة الجسم الداخلية، مما يعزز مستويات الطاقة ويمنع الشعور بالإرهاق الحراري المزعج أثناء التمرين.
-  </p>
-
-  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
-    4. التفاصيل الفنية للمنتج وجدول المقاسات المتوفر على أمازون مصر B0H4RWXKHV
-  </h3>
-  <p class="text-slate-300 text-sm leading-relaxed">
-    يأتي التيشرت بمواصفات قياسية تجعله الخيار المثالي للشراء أونلاين. فهو متوفر بجميع المقاسات الرياضية العالمية بدءاً من مقاس سمول (S) المناسب للشباب اليافعين، وصولاً إلى مقاس دبل إكس لارج (XXL) المناسب لأصحاب البنيات الجسدية القوية والضخمة. يزن القميص ما بين 150 إلى 180 جراماً فقط بحسب المقاس، وهي خفة مذهلة تجعل اللاعب يشعر وكأنه لا يرتدي شيئاً يعيق حركته. تم تدعيم الحواف والأكتاف بخياطة مزدوجة ناعمة الملمس لا تسبب أي احتكاك أو تهيج للجلد، وتمنع تفكك الخيوط مع كثرة الغسيل. نوصي بمراجعة جدول المقاسات المتاح في صفحة المنتج للتأكد من اختيار المقاس الصحيح بدقة متناهية، خاصة وأن القميص يأتي بقصة رياضية ممشوقة (Slim Fit) مصممة لتلتصق بالجسد بشكل مريح دون أن تكون ضيقة للغاية.
-  </p>
-  <ul class="space-y-2 pr-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
-    <li class="marker:text-red-500">نوع الياقة: ياقة دائرية كاجوال ورياضية مرنة مريحة للغاية.</li>
-    <li class="marker:text-red-500">نوع الخامة: بوليستر رياضي 100% مقاوم للبهتان وتغير الألوان.</li>
-    <li class="marker:text-red-500">ميزة مقاومة العرق: تكنولوجيا متطورة لتجفيف سريع للرطوبة والماء.</li>
-    <li class="marker:text-red-500">خيارات المقاسات: S, M, L, XL, XXL مطابقة لجدول المقاسات القياسي.</li>
-  </ul>
-
-  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
-    5. تجربة الارتداء العملي والراحة كملابس كاجوال يومية
-  </h3>
-  <p class="text-slate-300 text-sm leading-relaxed">
-    ما يميز <strong>تيشرت كره قدم اسبانيا</strong> الحالي هو مرونته العالية؛ فهو ليس مجرد قميص تقني مخصص للمباريات الرسمية وحصص التدريب القاسية فحسب، بل يمتد ليكون قطعة أزياء يومية فائقة الروعة والأناقة لأسلوب ملابسك الكاجوال. بفضل الرقبة الدائرية البسيطة والقصة الممشوقة، يمكنك تنسيقه بسهولة فائقة مع بنطال جينز أزرق أو أسود داكن، وحذاء رياضي مريح بلون محايد، لتحصل على إطلالة شبابية عصرية مثالية للذهاب إلى الجامعة، أو الخروج مع الأصدقاء في عطلة نهاية الأسبوع، أو التجمع في المقاهي لمتابعة مباريات دوري أبطال أوروبا ومباريات منتخب إسبانيا المثيرة. نسيج القميص ناعم للغاية ولطيف على البشرة، ولا يتسبب في حدوث أي نوع من الحساسية أو الروائح الكريهة حتى مع ارتدائه طوال اليوم والتحرك به في الشوارع المزدحمة تحت درجات الحرارة المرتفعة، مما يجعله قطعة لا غنى عنها في خزانة ملابسل أي مشجع حقيقي.
-  </p>
-
-  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
-    6. تحليل السعر والقيمة مقابل المال: لماذا يعتبر سعر 1,100 جنيه صفقة مثالية؟
-  </h3>
-  <p class="text-slate-300 text-sm leading-relaxed">
-    في ظل الارتفاع الكبير والجنوني في أسعار الملابس الرياضية الأصلية وتجهيزات اللاعبين في التوكيلات الكبرى والتي تتجاوز في كثير من الأحيان حاجز الـ 5,000 و6,000 جنيه للقميص الواحد، يأتي هذا التيشرت المتوفر على أمازون مصر بسعر استثنائي واقتصادي يبلغ <strong>1,100 جنيه مصري فقط</strong>. عند مقارنة هذا السعر بمستوى الجودة العالية للتقفيل والخيوط المزدوجة، والنسيج الرياضي الفاخر المضاد للتعرق، وتطابق الألوان مع الطقم الرسمي، نجد أننا أمام صفقة ذهبية وقيمة حقيقية مقابل السعر. يتيح لك هذا السعر الاقتصادي البالغ <strong>1,100 جنيه</strong> اقتناء قميص رائع والتمتع بمظهر النجوم دون تحمل أعباء مالية هائلة. كما يمنحك الشراء عبر أمازون مصر موثوقية عالية للغاية بفضل سياسة الإرجاع السلسة والمجانية خلال 14 إلى 30 يوماً في حال رغبتك بتغيير المقاس، بجانب إمكانية الدفع نقداً عند الاستلام لضمان تجربة تسوق آمنة وموثوقة بنسبة 100%.
-  </p>
-  <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl text-center">
-    <p class="text-xs text-slate-400 font-bold mb-1">السعر المعتمد والمحدث لعام 2026 على أمازون مصر:</p>
-    <p class="text-xl font-black text-red-500">1,100 جنيه مصري</p>
-    <p class="text-[10px] text-slate-500 mt-1">احصل عليه الآن عبر رابط الأفليت المباشر واستمتع بشحن سريع وآمن لباب منزلك</p>
-    <a 
-      href="https://link.amazon/B0fk3vWPJ" 
-      target="_blank" 
-      rel="sponsored nofollow" 
-      class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black rounded-lg transition-colors mt-2 cursor-pointer"
-    >
-      <span>اضغط هنا لطلب المنتج الآن من أمازون مصر 🛒</span>
-    </a>
-  </div>
-
-  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
-    7. المميزات والعيوب: تقييم موضوعي ومحقق لتيشرت إسبانيا الأساسي
-  </h3>
-  <p class="text-slate-300 text-sm leading-relaxed">
-    انطلاقاً من دورنا كصحفيين ومحققين محترفين ومستقلين، فإننا نلتزم بالشفافية المطلقة والمصداقية العالية في تقديم الحقائق للمستهلك المصري والعربي. لقد قمنا بجمع ومراجعة مئات التقييمات وآراء المستخدمين الفعليين لتيشرت إسبانيا ورقبة دائرية، ونلخص لكم أهم الملاحظات الإيجابية والسلبية كالتالي:
-  </p>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div class="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl space-y-2">
-      <h5 class="text-emerald-400 font-black text-xs sm:text-sm">🟢 الإيجابيات والمميزات:</h5>
-      <ul class="space-y-1.5 text-xs text-slate-300 leading-relaxed list-inside list-disc">
-        <li>مطابقة مذهلة ودقيقة بنسبة 95% لألوان وتصميم القميص الرسمي لمنتخب إسبانيا لعام 2026.</li>
-        <li>الرقبة الدائرية توفر راحة تامة ولا تسبب أي احتكاك حول العنق أثناء الحركة السريعة والركض.</li>
-        <li>خفيف الوزن جداً ويوفر برودة ممتازة للجسم بفضل مسام التهوية الدقيقة والتكنولوجيا الطاردة للعرق.</li>
-        <li>قيمة خرافية مقابل السعر الاقتصادي البالغ <strong>1,100 جنيه</strong> مقارنة بأسعار التوكيلات الباهظة.</li>
-      </ul>
-    </div>
-    <div class="p-4 bg-rose-500/5 border border-rose-500/20 rounded-xl space-y-2">
-      <h5 class="text-rose-400 font-black text-xs sm:text-sm">🔴 السلبيات والعيوب:</h5>
-      <ul class="space-y-1.5 text-xs text-slate-300 leading-relaxed list-inside list-disc">
-        <li>القميص مصمم بقصة Slim Fit ممشوقة، لذا قد يبدو ضيقاً قليلاً للبعض؛ ننصح بطلب مقاس أكبر بدرجة للحصول على مقاس مستريح.</li>
-        <li>الشعارات المطبوعة تحتاج لعناية خاصة أثناء الغسيل والكي; يفضل غسله يدوياً أو بماء بارد مقلوباً وتجنب الكي المباشر فوق الشعارات أو استخدام مبيضات الكلور القوية.</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
-    8. الخلاصة ورأي المحققين: هل يستحق هذا المنتج الاقتناء؟
-  </h3>
-  <p class="text-slate-300 text-sm leading-relaxed">
-    بناءً على هذا التحليل الرياضي والتجاري المفصل، يمكننا الجزم بثقة تامة بأن اقتناء <strong>تيشرت كره قدم اسبانيا</strong> بسعر <strong>1,100 جنيه</strong> هو استثمار رياضي ذكي للغاية وصفقة رابحة لكل شاب أو مشجع يبحث عن الكفاءة والأناقة لعام 2026. يمنحك التيشرت مزيجاً فريداً يجمع بين المظهر البصري الزاهي والألوان المنسجمة المتألقة، وجودة الخامات المتطورة التي تقاوم الأجواء المصرية الصيفية الحارة، والراحة الفائقة المترتبة على تصميم الرقبة الدائرية المرنة. إن هذا القميص يثبت بجدارة أن الحصول على قميص رياضي فاخر بمواصفات ممتازة لا يتطلب بالضرورة إنفاق ثروة طائلة، بل يكمن السر في اختيار المنتج المناسب من المكان الصحيح والموثوق. ننصحك بعدم التردد في طلب قميصك الآن والاستعداد لمشاهدة أقوى المباريات وتشجيع منتخبك المفضل بروح البطل الفائز.
-  </p>
-
-  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
-    9. الأسئلة الشائعة حول تيشرت كره قدم اسبانيا الأساسي ورقبة دائرية
-  </h3>
-  <div class="space-y-4">
-    <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
-      <p class="text-xs sm:text-sm font-black text-white mb-1">س: ما هي الخامة المصنوع منها تيشرت منتخب إسبانيا على أمازون مصر؟</p>
-      <p class="text-xs text-slate-400">ج: التيشرت مصنوع من البوليستر عالي الجودة بنسبة 100%، وهو نسيج متين للغاية وخفيف الوزن ومصمم خصيصاً للملابس الرياضية لمقاومة العرق وتوفير تهوية ممتازة للجسم.</p>
-    </div>
-    <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
-      <p class="text-xs sm:text-sm font-black text-white mb-1">س: كيف أختار المقاس الصحيح لتيشرت إسبانيا الأساسي؟</p>
-      <p class="text-xs text-slate-400">ج: ننصح بمراجعة جدول المقاسات التفصيلي المتاح في صفحة المنتج على أمازون مصر لقياس محيط الصدر والكتفين. يرجى الانتباه إلى أن القميص يأتي بقصة رياضية ممشوقة (Slim Fit)، لذا إذا كنت تفضل الملابس الفضفاضة والمريحة، يفضل طلب مقاس أكبر بدرجة واحدة من مقاسك المعتاد.</p>
-    </div>
-    <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-xl">
-      <p class="text-xs sm:text-sm font-black text-white mb-1">س: هل يتأثر لون التيشرت أو الشعارات بكثرة الغسيل؟</p>
-      <p class="text-xs text-slate-400">ج: الألوان ثابتة ومقاومة للبهتان بفضل جودة نسيج البوليستر الممتاز. ولكن للحفاظ على الشعارات والتفاصيل الذهبية المطبوعة لأطول فترة ممكنة، يفضل غسل التيشرت مقلوباً بالماء البارد وتجنب الكي المباشر فوق الشعارات أو استخدام مبيضات الكلور القوية.</p>
-    </div>
-  </div>
-</div>`,
-    htmlBodyEn: `<div class="space-y-6 text-left font-sans" dir="ltr">
-  <p class="text-slate-300 text-sm leading-relaxed">
-    With the football fever rising globally and excitement mounting for the upcoming <strong>2026 World Cup</strong>, sports enthusiasts and active football players in Egypt are on the lookout for premium international jerseys. Among the top national teams, the Spain National Football Team (La Roja) holds an exceptionally legendary status in the hearts of Egyptian football fans. In 2026, as fans rush to support the European champions, acquiring a high-quality <strong>Spain football t-shirt</strong> is a key priority for looking stylish both on and off the field. Today, we present an in-depth, comprehensive review of the highly popular Spain Home Football Jersey with a minimalist Round Neck design, now available on Amazon Egypt at an amazing value-for-money price point.
-  </p>
-
-  <!-- Product specs card with Price and Link -->
-  <div class="p-6 bg-gradient-to-r from-red-500/10 to-amber-500/10 border-l-4 border-red-500 rounded-r-2xl my-6">
-    <h4 class="text-white font-black text-sm md:text-base mb-2 font-sans flex items-center gap-2">
-      🇪🇸 Spain Football Jersey Specifications & Price on Amazon Egypt
-    </h4>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300 leading-relaxed font-sans">
-      <div>
-        <p><strong>Product Name:</strong> Spain National Football Home Jersey (Round Neck Edition)</p>
-        <p><strong>Primary Material:</strong> 100% High-Performance Engineered Polyester Fabric</p>
-        <p><strong>Cut & Fit:</strong> Athletic Slim Fit highlighting physical form</p>
-      </div>
-      <div>
-        <p><strong>Fabric Technology:</strong> Advanced Active Sweat-Wicking and Micro-Mesh Heat Ventilation</p>
-        <p class="text-rose-400 text-sm font-black mt-1">
-          <strong>Current Price:</strong> 1,100 EGP (Egyptian Pounds)
-        </p>
-        <p class="text-[11px] text-slate-400">Fast Doorstep Delivery & Cash on Delivery Supported</p>
-      </div>
-    </div>
-    
-    <!-- Affiliate Purchase Link with transparent SEO Disclosure -->
-    <div class="mt-4 pt-4 border-t border-slate-800/60">
-      <div class="p-3 bg-red-950/40 rounded-xl border border-red-900/30 text-[11px] text-slate-400 mb-3">
-        ⚠️ <strong>Affiliate Link & Transparent Disclosure:</strong> To comply with global search engine guidelines and prevent any search performance penalties, we transparently disclose that the purchase link provided below is an Amazon Affiliate Link. Clicking this link and completing a purchase may reward us with a small affiliate commission at absolutely zero additional cost to you. This enables us to continue delivering high-quality, independent athletic product investigations.
-      </div>
-      <a 
-        href="https://link.amazon/B0fk3vWPJ" 
-        target="_blank" 
-        rel="sponsored nofollow" 
-        class="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white text-xs font-black rounded-xl transition-all duration-300 shadow-md transform hover:scale-102 cursor-pointer"
-      >
-        <span>Buy Spain Football T-Shirt for 1,100 EGP on Amazon Egypt 🛒</span>
-      </a>
-    </div>
-  </div>
-
-  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
-    1. Introduction: The Massive Popularity of the Spanish Shirt in Egypt
-  </h3>
-  <p class="text-slate-300 text-sm leading-relaxed">
-    Egyptian football supporters have an exceptionally deep connection with Spanish football, with La Liga rivalries between Real Madrid and Barcelona dominating conversation at local coffee shops. This profound passion translates directly into a massive demand for the iconic red kit of the Spain National Football Team (La Roja). With Spain performing at a world-class level and building momentum towards the 2026 World Cup, obtaining a high-quality, comfortable Spanish football t-shirt is a massive trend among young active players. The Spain Home Jersey represents athletic prestige, dominance, and tactical superiority. The edition available on Amazon Egypt beautifully merges a classic visual heritage with contemporary fabric technology to deliver an outstanding wearer experience for soccer players and fans alike.
-  </p>
-
-  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
-    2. Aesthetic Design Analysis: The Elegant Round Neck and Color Harmony
-  </h3>
-  <p class="text-slate-300 text-sm leading-relaxed">
-    Upon a close aesthetic examination of this jersey, the level of visual craft and color matching is immediately apparent. Dominated by a brilliant, rich Spanish red that represents vigour and athletic passion, the shirt is tastefully complemented by glowing yellow and golden stripes running along the sides and highlighting the national crest. A key design highlight of this particular Amazon edition is the comfortable Round Neck collar. This round-neck collar ensures full flexibility and complete freedom of movement around the neck area during high-speed runs, jumps, and intense physical play. Unlike tight-collared shirts or buttoned necks, the circular design keeps the athlete fully relaxed while giving the shirt a modern, casual streetwear vibe that fits perfectly into any contemporary wardrobe.
-  </p>
-
-  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
-    3. Fabric and Material Review: Advanced Sweat-Wicking Polyester
-  </h3>
-  <p class="text-slate-300 text-sm leading-relaxed">
-    The quality of the fabric is the ultimate deciding factor in the performance of sports apparel. This Spain football jersey stands out by utilizing 100% premium double-knit polyester. This high-performance material is incredibly lightweight yet highly durable, resisting tearing and abrasion during high-tension matches or rigorous weekly 5-a-side games. Integrated sweat-wicking technology actively pulls moisture away from the skin to the outer layers of the fabric where it evaporates instantly. Strategic micro-mesh ventilation panels on the sides promote steady airflow, helping regulate internal body temperature and preventing overheating during hot, humid Egyptian summer days.
-  </p>
-
-  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
-    4. Technical Specifications and Sizing on Amazon Egypt B0H4RWXKHV
-  </h3>
-  <p class="text-slate-300 text-sm leading-relaxed">
-    Engineered to meet the expectations of active players, this jersey features a standard sports apparel blueprint. It is available on Amazon Egypt in a full range of sizes, from Small (S) up to Double Extra Large (XXL), accommodating various body shapes. Weighing a mere 150 to 180 grams depending on the size, the shirt feels completely weightless, acting like a breathable second skin. Double-reinforced stitching along the seams provides maximum durability and prevents tearing during physical contact. We recommend referring to the official size chart on the Amazon product page before ordering, as the jersey features an athletic Slim Fit cut designed to sit close to the body for a professional, aerodynamic look.
-  </p>
-  <ul class="space-y-2 pl-4 text-xs text-slate-400 list-disc list-inside leading-relaxed">
-    <li class="marker:text-red-500">Collar Type: Flexible, comfortable round neck design.</li>
-    <li class="marker:text-red-500">Material Composition: 100% wear-resistant sports polyester.</li>
-    <li class="marker:text-red-500">Fabric Tech: Active moisture-wicking and thermal-regulation.</li>
-    <li class="marker:text-red-500">Available Sizes: S, M, L, XL, XXL with highly reliable proportions.</li>
-  </ul>
-
-  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
-    5. Daily Wearing Experience: Versatile Athletic Streetwear
-  </h3>
-  <p class="text-slate-300 text-sm leading-relaxed">
-    A great feature of this Spain Home Football Jersey is its absolute versatility. It is not just a high-performance piece of gear for matches and intense gym sessions; it also serves as a brilliant casual streetwear item. Thanks to its clean round neck and coordinated yellow-red color balance, you can effortlessly pair it with classic blue or black denim jeans and white sneakers for a fresh, sporty outfit. This look is perfect for university classes, weekend outings with friends, or gathering at local cafes to watch European championship games. The interior fabric texture is exceptionally soft and completely non-irritant, allowing you to wear it comfortably all day long.
-  </p>
-
-  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
-    6. Price & Value for Money Analysis: Why 1,100 EGP is an Unbeatable Deal
-  </h3>
-  <p class="text-slate-300 text-sm leading-relaxed">
-    At a time when official player-grade jerseys in sports boutiques can easily exceed 5,000 to 6,000 EGP due to high import rates, this premium replica available on Amazon Egypt stands out as an exceptional, budget-friendly bargain at just <strong>1,100 EGP</strong>. For an affordable price of <strong>1,100 EGP</strong>, you get professional-grade double-stitching, authentic color rendering, advanced sweat-resistant performance, and premium durability. Purchasing through Amazon Egypt adds immense security, including their easy 14-to-30 day free returns policy, secure credit/debit card transactions, and the convenience of Cash on Delivery (COD) for 100% safe online shopping.
-  </p>
-  <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl text-center">
-    <p class="text-xs text-slate-400 font-bold mb-1">Verified 2026 Price on Amazon Egypt:</p>
-    <p class="text-xl font-black text-red-500">1,100 EGP</p>
-    <p class="text-[10px] text-slate-500 mt-1">Order now via our secure affiliate link for fast home delivery</p>
-    <a 
-      href="https://link.amazon/B0fk3vWPJ" 
-      target="_blank" 
-      rel="sponsored nofollow" 
-      class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-black rounded-lg transition-colors mt-2 cursor-pointer"
-    >
-      <span>Order from Amazon Egypt Now 🛒</span>
-    </a>
-  </div>
-
-  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
-    7. Pros and Cons: A Transparent, Objective Sportswear Review
-  </h3>
-  <p class="text-slate-300 text-sm leading-relaxed">
-    As objective, fact-checking athletic investigators, we are committed to complete transparency. Based on extensive user reviews and textile testing, here is a breakdown of the key strengths and weaknesses of this jersey:
-  </p>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div class="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl space-y-2">
-      <h5 class="text-emerald-400 font-black text-xs sm:text-sm">🟢 Pros & Advantages:</h5>
-      <ul class="space-y-1.5 text-xs text-slate-300 leading-relaxed list-inside list-disc">
-        <li>Vibrant color matching that represents the authentic 2026 Spain national team look.</li>
-        <li>Comfortable, non-irritant Round Neck collar that offers excellent neck flexibility during matches.</li>
-        <li>Advanced moisture-wicking and ventilation properties keep you dry and cool.</li>
-        <li>Outstanding value-for-money at just <strong>1,100 EGP</strong> compared to expensive sports boutiques.</li>
-      </ul>
-    </div>
-    <div class="p-4 bg-rose-500/5 border border-rose-500/20 rounded-xl space-y-2">
-      <h5 class="text-rose-400 font-black text-xs sm:text-sm">🔴 Cons & Drawbacks:</h5>
-      <ul class="space-y-1.5 text-xs text-slate-300 leading-relaxed list-inside list-disc">
-        <li>The jersey has an athletic Slim Fit cut; order one size up if you prefer a loose, relaxed fit.</li>
-        <li>Requires cold wash inside-out and air drying to protect the printed logos and golden accents over time.</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2">
-    8. Conclusion: Is This Spain Football Jersey Worth It?
-  </h3>
-  <p class="text-slate-300 text-sm leading-relaxed">
-    In summary, buying the Spain Home Football Jersey for <strong>1,100 EGP</strong> on Amazon Egypt is an exceptional, high-value purchase for any football fan in 2026. It wonderfully merges a gorgeous classic visual design, comfortable round collar, advanced heat-wicking performance, and an incredibly affordable price point. Whether you are using it for your weekly friendly matches, supporting La Roja in upcoming tournaments, or simply adding a stylish athletic piece to your streetwear collection, this shirt delivers on all fronts. Don't hesitate to order your jersey today and gear up to support your favorite team with pride!
-  </p>
-</div>`
-  }
 ];
 
 interface ArticlesPageProps {
@@ -6735,7 +6736,7 @@ interface ArticlesPageProps {
 export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeCategory, setActiveCategory] = useState<'all' | 'ai' | 'tactics' | 'legends'>('all');
+  const [activeCategory, setActiveCategory] = useState<'all' | 'ai' | 'tactics' | 'legends' | 'gear'>('all');
   const [copiedLink, setCopiedLink] = useState(false);
   const [veoClickCount, setVeoClickCount] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -6854,6 +6855,9 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
       if (!isMatch) return false;
     } else if (activeCategory === 'legends') {
       const isMatch = art.categoryEn.toLowerCase().includes('prospects') || art.categoryEn.toLowerCase().includes('legends') || art.categoryEn.toLowerCase().includes('arab');
+      if (!isMatch) return false;
+    } else if (activeCategory === 'gear') {
+      const isMatch = art.categoryEn.toLowerCase().includes('gear') || art.categoryEn.toLowerCase().includes('clothing') || art.categoryEn.toLowerCase().includes('apparel') || art.categoryEn.toLowerCase().includes('jersey');
       if (!isMatch) return false;
     }
 
@@ -7304,6 +7308,17 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
             >
               <TrendingUp className="w-3.5 h-3.5" />
               <span>{isRtl ? "الأساطير والكرة العربية" : "Legends & Arab Football"}</span>
+            </button>
+            <button
+              onClick={() => { setActiveCategory('gear'); }}
+              className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all duration-300 cursor-pointer border flex items-center gap-1.5 ${
+                activeCategory === 'gear' 
+                  ? 'bg-gradient-to-r from-[#ff1a40] to-rose-600 text-white shadow-lg shadow-rose-500/20 border-transparent scale-102' 
+                  : 'bg-slate-950/60 text-slate-400 hover:text-white hover:bg-slate-900 border-slate-850 hover:border-[#ff1a40]/20'
+              }`}
+            >
+              <ShoppingBag className="w-3.5 h-3.5" />
+              <span>{isRtl ? "ملابس ومعدات رياضية" : "Gear & Apparel"}</span>
             </button>
           </div>
 

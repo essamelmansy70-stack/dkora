@@ -31,11 +31,16 @@ import {
 } from "lucide-react";
 
 import veo3VideoGenerationGuide from "./assets/images/veo3_video_generation_guide_1782439141821.jpg";
+import heroWorldCupLegendsMobile from "./assets/images/hero_world_cup_legends_mobile.webp";
 
 import { Question, PlayerProfile } from "./types";
 import { QUESTION_BANK, PLAYER_PROFILES } from "./data";
 const ArticlesPage = lazy(() => import("./components/ArticlesPage"));
 const LegalModals = lazy(() => import("./components/LegalModals"));
+const BackgroundRemoverPage = lazy(() => import("./components/BackgroundRemoverPage"));
+const SvgConverterPage = lazy(() => import("./components/SvgConverterPage"));
+const CropperPage = lazy(() => import("./components/CropperPage"));
+const VeoVideoPage = lazy(() => import("./components/VeoVideoPage"));
 import { translations } from "./translations";
 
 // UI translation dictionary
@@ -213,8 +218,8 @@ const VIRAL_HEADLINES = [
 ];
 
 export default function App() {
-  // Navigation tabs: "quiz" (Home) | "blog" (Articles) | "sitemap" (Sitemap page)
-  const [activeTab, setActiveTab] = useState<"quiz" | "blog" | "sitemap" >("quiz");
+  // Navigation tabs: "quiz" (Home) | "blog" (Articles) | "sitemap" (Sitemap page) | creation tools
+  const [activeTab, setActiveTab] = useState<"quiz" | "blog" | "sitemap" | "bg-remover" | "svg-converter" | "cropper" | "veo-video">("quiz");
   
   // Legal modal state
   const [activeLegalModal, setActiveLegalModal] = useState<'privacy' | 'terms' | 'about' | 'contact' | 'disclaimer' | null>(null);
@@ -264,10 +269,13 @@ export default function App() {
     // 2. Setup Active tab / view
     const viewParam = params.get("view");
     const articleParam = params.get("article");
+    const toolParam = params.get("tool");
     if (viewParam === "blog" || articleParam) {
       setActiveTab("blog");
     } else if (viewParam === "sitemap") {
       setActiveTab("sitemap");
+    } else if (toolParam === "bg-remover" || toolParam === "svg-converter" || toolParam === "cropper" || toolParam === "veo-video") {
+      setActiveTab(toolParam as any);
     } else {
       setActiveTab("quiz");
     }
@@ -873,6 +881,20 @@ export default function App() {
                   <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed font-semibold">
                     {t.heroDesc}
                   </p>
+                </div>
+
+                {/* Hero Banner Image - Highly Optimized for PageSpeed */}
+                <div className="w-full max-w-lg mx-auto rounded-3xl overflow-hidden border border-slate-200/60 shadow-lg bg-slate-100 relative">
+                  <picture>
+                    <source srcSet={heroWorldCupLegendsMobile} type="image/webp" />
+                    <img
+                      src={heroWorldCupLegendsMobile}
+                      alt={lang === "ar" ? "اكتشف شبيهك من أساطير كأس العالم" : "Discover your World Cup Legend Match"}
+                      {...({ fetchPriority: "high" } as any)}
+                      loading="eager"
+                      className="w-full h-auto object-cover max-h-56"
+                    />
+                  </picture>
                 </div>
 
                 {/* Info Badges */}
@@ -1855,6 +1877,54 @@ export default function App() {
                       <span className="text-[9px] px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-805 font-mono font-bold">?view=sitemap</span>
                     </button>
                   </li>
+                  <li>
+                    <button 
+                      onClick={() => { setActiveTab("bg-remover"); playInteractionSound(); }}
+                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center justify-between rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
+                    >
+                      <span className="flex items-center gap-2">
+                        <span className="font-mono text-xs text-slate-400">04.</span>
+                        <span>{lang === "ar" ? "أداة إزالة خلفية الصور بالذكاء الاصطناعي" : "AI Image Background Remover Tool"}</span>
+                      </span>
+                      <span className="text-[9px] px-1.5 py-0.5 rounded bg-rose-105 text-[#ff1a40] font-mono font-bold">?tool=bg-remover</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => { setActiveTab("svg-converter"); playInteractionSound(); }}
+                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center justify-between rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
+                    >
+                      <span className="flex items-center gap-2">
+                        <span className="font-mono text-xs text-slate-400">05.</span>
+                        <span>{lang === "ar" ? "أداة تحويل الصور إلى متجهات SVG" : "Image to Vector SVG Converter"}</span>
+                      </span>
+                      <span className="text-[9px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 font-mono font-bold">?tool=svg-converter</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => { setActiveTab("cropper"); playInteractionSound(); }}
+                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center justify-between rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
+                    >
+                      <span className="flex items-center gap-2">
+                        <span className="font-mono text-xs text-slate-400">06.</span>
+                        <span>{lang === "ar" ? "أداة قص وتعديل صور اللاعبين" : "Athlete Profile Photo Cropper"}</span>
+                      </span>
+                      <span className="text-[9px] px-1.5 py-0.5 rounded bg-violet-100 text-violet-705 font-mono font-bold">?tool=cropper</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => { setActiveTab("veo-video"); playInteractionSound(); }}
+                      className="text-slate-700 hover:text-red-500 text-xs sm:text-sm font-bold flex items-center justify-between rtl:text-right ltr:text-left w-full cursor-pointer hover:translate-x-1 duration-150"
+                    >
+                      <span className="flex items-center gap-2">
+                        <span className="font-mono text-xs text-slate-400">07.</span>
+                        <span>{lang === "ar" ? "توليد فيديوهات Veo 3 بالذكاء الاصطناعي" : "Google Veo 3 Video Generator Page"}</span>
+                      </span>
+                      <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-mono font-bold">?tool=veo-video</span>
+                    </button>
+                  </li>
                 </ul>
               </div>
 
@@ -1950,6 +2020,58 @@ export default function App() {
               </div>
             </div>
 
+          </div>
+        )}
+
+        {activeTab === "bg-remover" && (
+          <div className="w-full max-w-4xl mx-auto py-2">
+            <Suspense fallback={
+              <div className="flex flex-col items-center justify-center p-12 text-slate-500 font-bold">
+                <Loader2 className="w-8 h-8 animate-spin text-red-650 mb-2" />
+                <span>{lang === 'ar' ? 'جاري التحميل...' : 'Loading...'}</span>
+              </div>
+            }>
+              <BackgroundRemoverPage locale={lang} />
+            </Suspense>
+          </div>
+        )}
+
+        {activeTab === "svg-converter" && (
+          <div className="w-full max-w-4xl mx-auto py-2">
+            <Suspense fallback={
+              <div className="flex flex-col items-center justify-center p-12 text-slate-500 font-bold">
+                <Loader2 className="w-8 h-8 animate-spin text-red-650 mb-2" />
+                <span>{lang === 'ar' ? 'جاري التحميل...' : 'Loading...'}</span>
+              </div>
+            }>
+              <SvgConverterPage locale={lang} t={t} />
+            </Suspense>
+          </div>
+        )}
+
+        {activeTab === "cropper" && (
+          <div className="w-full max-w-4xl mx-auto py-2">
+            <Suspense fallback={
+              <div className="flex flex-col items-center justify-center p-12 text-slate-500 font-bold">
+                <Loader2 className="w-8 h-8 animate-spin text-red-650 mb-2" />
+                <span>{lang === 'ar' ? 'جاري التحميل...' : 'Loading...'}</span>
+              </div>
+            }>
+              <CropperPage locale={lang} />
+            </Suspense>
+          </div>
+        )}
+
+        {activeTab === "veo-video" && (
+          <div className="w-full max-w-4xl mx-auto py-2">
+            <Suspense fallback={
+              <div className="flex flex-col items-center justify-center p-12 text-slate-500 font-bold">
+                <Loader2 className="w-8 h-8 animate-spin text-red-650 mb-2" />
+                <span>{lang === 'ar' ? 'جاري التحميل...' : 'Loading...'}</span>
+              </div>
+            }>
+              <VeoVideoPage locale={lang} />
+            </Suspense>
           </div>
         )}
 

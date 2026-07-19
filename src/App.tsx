@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, lazy, Suspense } from "react";
-import "cropperjs/dist/cropper.css";
 import {
   Trophy,
   Award,
@@ -31,7 +30,6 @@ import {
 } from "lucide-react";
 
 import veo3VideoGenerationGuide from "./assets/images/veo3_video_generation_guide_1782439141821.jpg";
-import heroWorldCupLegendsMobile from "./assets/images/hero_world_cup_legends_mobile.webp";
 
 import { Question, PlayerProfile } from "./types";
 import { QUESTION_BANK, PLAYER_PROFILES } from "./data";
@@ -884,14 +882,17 @@ export default function App() {
                 </div>
 
                 {/* Hero Banner Image - Highly Optimized for PageSpeed */}
-                <div className="w-full max-w-lg mx-auto rounded-3xl overflow-hidden border border-slate-200/60 shadow-lg bg-slate-100 relative">
+                <div className="w-full max-w-lg mx-auto rounded-3xl overflow-hidden border border-slate-200/60 shadow-lg bg-slate-100 relative aspect-[16/7]">
                   <picture>
-                    <source srcSet={heroWorldCupLegendsMobile} type="image/webp" />
+                    <source srcSet="/hero_world_cup_legends_mobile.webp" type="image/webp" />
                     <img
-                      src={heroWorldCupLegendsMobile}
+                      src="/hero_world_cup_legends_mobile.webp"
                       alt={lang === "ar" ? "اكتشف شبيهك من أساطير كأس العالم" : "Discover your World Cup Legend Match"}
+                      width="512"
+                      height="224"
                       {...({ fetchPriority: "high" } as any)}
                       loading="eager"
+                      decoding="async"
                       className="w-full h-auto object-cover max-h-56"
                     />
                   </picture>

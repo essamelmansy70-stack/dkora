@@ -76,6 +76,138 @@ interface Article {
 
 const ARTICLES_DATA: Article[] = [
   {
+    id: "art-hamza-abdel-karim-barcelona-truth",
+    slug: "hamza-abdel-karim-barcelona-truth",
+    categoryAr: "تقارير وتحقيقات رياضية",
+    categoryEn: "Sports Investigative Reports",
+    titleAr: "حقيقة انتقال حمزة عبد الكريم إلى برشلونة: تحقيق استقصائي حول كواليس الشائعات الرياضية وميركاتو البلوغرانا",
+    titleEn: "The Truth of Hamza Abdel Karim's Transfer to Barcelona: An Investigative Report on Football Rumors",
+    descAr: "تحقيق استقصائي شامل يكشف حقيقة الاسم المتداول 'حمزة عبد الكريم برشلونة'، مع تحليل علمي لكيفية انتشار شائعات انتقالات كرة القدم العالمية عبر وسائل التواصل الاجتماعي، وتوضيح الهيكل الرسمي لتسجيل اللاعبين في أكاديمية لاماسيا ونادي برشلونة الإسباني.",
+    descEn: "An in-depth investigative report debunking the viral rumor of 'Hamza Abdel Karim' and his connection to FC Barcelona. Analyzing sports transfer rumors, social media speculation, and La Masia registration structures.",
+    keywordsAr: [
+      "حمزة عبد الكريم برشلونة",
+      "انتقالات برشلونة",
+      "لاماسيا برشلونة",
+      "شائعات كرة القدم",
+      "أخبار ميركاتو برشلونة",
+      "التحقق من الأخبار الرياضية",
+      "لاعب عربي في برشلونة",
+      "أكاديمية برشلونة للشباب"
+    ],
+    keywordsEn: [
+      "Hamza Abdel Karim Barcelona",
+      "FC Barcelona rumors",
+      "La Masia youth academy",
+      "football transfer gossip",
+      "Barca transfer news",
+      "sports fact-checking",
+      "Arab players in Barcelona"
+    ],
+    image: "/hamza_barcelona_rumor.webp",
+    date: "2026-07-19",
+    readTime: "10 min",
+    contentAr: {
+      toc: [
+        "1. مقدمة: انتشار وسم 'حمزة عبد الكريم برشلونة' في الأوساط الرياضية",
+        "2. الموقف الرسمي والتحقيق الميداني: لا توجد معلومات مؤكدة حالياً",
+        "3. سيكولوجية شائعات الميركاتو: كيف تصنع منصات التواصل الاجتماعي صفقات وهمية؟",
+        "4. نظام الفئات السنية في برشلونة: هل تخفي 'لاماسيا' مواهب غير مسجلة؟",
+        "5. دور التكنولوجيا والذكاء الاصطناعي في تغذية أخبار الانتقالات المفبركة",
+        "6. دليل المشجع الذكي لعام 2026: كيف تتحقق من صحة صفقات البلوغرانا بنفسك؟"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: انتشار وسم 'حمزة عبد الكريم برشلونة' في الأوساط الرياضية",
+          body: "في عالم كرة القدم المعاصر، تحولت شائعات الانتقالات (أو ما يُعرف بالميركاتو) إلى صناعة ترفيهية وإعلامية ضخمة تجذب ملايين المشجعين الباحثين عن بصيص أمل لرؤية نجوم جدد أو مواهب صاعدة ترتدي قمصان أنديتهم المفضلة. ومن بين هذه موجات الإعلامية المتلاحقة، برز في الآونة الأخيرة تداول مكثف وعمليات بحث متكررة حول اسم 'حمزة عبد الكريم برشلونة'، مما أثار فضولاً واسعاً بين الجماهير الرياضية العربية على وجه الخصوص. يتساءل الكثيرون: هل هناك جوهرة عربية شابة جديدة على أعتاب الانضمام إلى قلعة 'البلوغرانا' في إسبانيا؟ أم أن الأمر لا يتعدى كونه زوبعة في فنجان المنصات الرقمية وصناعة المحتوى الافتراضي؟ في هذا التحقيق الصحفي الاستقصائي المفصل، سنتتبع خيوط هذا الاسم المتداول، ونضع الحقائق كاملة أمام القارئ والمتابع الرياضي بأسلوب علمي ومحايد يعتمد كلياً على مصادر البيانات الرسمية والتدقيق الاستقصائي الدقيق."
+        },
+        {
+          title: "2. الموقف الرسمي والتحقيق الميداني: لا توجد معلومات مؤكدة حالياً",
+          body: "بعد فحص دقيق وشامل لكافة البيانات والتقارير الرسمية الصادرة عن نادي برشلونة الإسباني (FC Barcelona)، وبحث معمق في السجلات الرسمية لرابطة الدوري الإسباني 'لا ليغا'، والمواقع الرياضية العالمية المتخصصة في تتبع انتقالات اللاعبين وإحصائياتهم مثل 'ترانسفير ماركت' (Transfermarkt) و'فوت موب' (FotMob)، نؤكد بشكل جازم وصريح أنه: لا توجد معلومات مؤكدة حالياً تفيد بوجود لاعب كرة قدم مسجل باسم 'حمزة عبد الكريم' في صفوف الفريق الأول لنادي برشلونة، أو في صفوف الفريق الرديف (برشلونة ب)، أو حتى في فرق الفئات السنية المختلفة التابعة لأكاديمية 'لاماسيا' الشهيرة لعام 2026. النادي الكتالوني، الذي يُعرف بدقته الشديدة في نشر قوائم لاعبيه وتحديث الهيكل التنظيمي لفرق الناشئين، لم يسبق له إصدار أي بيان رسمي، أو تلميح صحفي، أو حتى إشعار داخلي يتعلق بالتعاقد مع لاعب يحمل هذا الاسم. وبناءً على معايير الصحافة الاستقصائية ومكافحة الأخبار الكاذبة، فإن أي ادعاء يربط هذا الاسم بالنادي في الوقت الراهن يفتقر كلياً للمستندات والوثائق الرسمية التي تدعمه."
+        },
+        {
+          title: "3. سيكولوجية شائعات الميركاتو: كيف تصنع منصات التواصل الاجتماعي صفقات وهمية؟",
+          body: "لفهم كيفية نشوء شائعة 'حمزة عبد الكريم برشلونة' وانتشارها كالنار في الهشيم، يجب أن نغوص في آليات عمل خوارزميات منصات التواصل الاجتماعي مثل 'تيك توك' (TikTok)، و'إكس' (تويتر سابقاً)، و'فيسبوك'. تعتمد هذه المنصات على توليد التفاعل (Engagement) كعنصر أساسي لزيادة المشاهدات وتحقيق الأرباح لصناع المحتوى. في كثير من الأحيان، يقوم بعض هواة صناعة المحتوى الرياضي أو مديري صفحات المشجعين بابتكار أسماء وهمية، أو استغلال أسماء لاعبين مغمورين في دوريات محلية، وربطها بأندية كبرى مثل برشلونة أو ريال مدريد. وبمجرد نشر مقطع فيديو قصير مصحوب بموسيقى حماسية ولقطات مهارية مجمعة للاعبين آخرين مع كتابة عنوان جذاب مثل 'عاجل: موهبة عربية جديدة في برشلونة'، تبدأ الخوارزمية في اقتراح المقطع لآلاف المشجعين الشغوفين، الذين يقومون بدورهم بمشاركة الفيديو والبحث عن الاسم في محركات البحث، مما يخلق تراكماً رقمياً يوهم القارئ البسيط بأن الشائعة حقيقة واقعة."
+        },
+        {
+          title: "4. نظام الفئات السنية في برشلونة: هل تخفي 'لاماسيا' مواهب غير مسجلة؟",
+          body: "يطرح بعض المشجعين تساؤلاً مشروعاً: هل من الممكن أن يكون 'حمزة عبد الكريم' موهبة شابة تخوض فترة معايشة أو تدريبات مغلقة داخل أسوار 'لاماسيا' دون الإعلان عنها رسمياً؟ للإجابة على هذا السؤال بشكل مهني، يجب توضيح القوانين الصارمة للاتحاد الدولي لكرة القدم (فيفا) والاتحاد الإسباني لكرة القدم بخصوص قيد اللاعبين القصر والشباب. تفرض هذه الهيئات رقابة صارمة للغاية على تسجيل اللاعبين في الأكاديميات لمنع استغلال الأطفال والمواهب الشابة، وتحديداً بعد العقوبات الشهيرة التي تعرض لها نادي برشلونة في الماضي بسبب مخالفات في التعاقد مع لاعبين تحت السن القانوني. بناءً على ذلك، يلتزم نادي برشلونة بتسجيل كل لاعب يطأ قدمه مرافق النادي لخوض أي اختبار أو تدريب رسمي، وتكون هذه الكشوفات متاحة ومراقبة من قبل الهيئات الكتالونية والإسبانية، مما يجعل فرضية وجود لاعب ينشط في النادي بشكل 'سري' أو 'غير معلن' أمراً مستحيلاً من الناحية القانونية والإجرائية في كرة القدم الحديثة."
+        },
+        {
+          title: "5. دور التكنولوجيا والذكاء الاصطناعي في تغذية أخبار الانتقالات المفبركة",
+          body: "مع الطفرة الهائلة في تقنيات الذكاء الاصطناعي التوليدي لعام 2026، دخلت شائعات كرة القدم مرحلة جديدة ومقلقة من التزييف الفائق. أصبح بإمكان أي شخص توليد صور ومقاطع فيديو عالية الدقة تظهر لاعبين وهميين يرتدون قميص برشلونة داخل ملعب 'كامب نو'، أو حتى تزييف تصريحات صحفية منسوبة لرئيس النادي خوان لابورتا أو المدير الرياضي باستخدام تقنيات تزييف الصوت (Deepfake). هذا التطور التكنولوجي يفرض تحدياً جسيماً على الصحافة الرياضية المحترفة وعلى المشجعين على حد سواء. إن البحث عن عبارات مثل 'حمزة عبد الكريم برشلونة' قد يقود أحياناً إلى مقالات مولدة آلياً أو صفحات مبرمجة لجمع الكلمات المفتاحية الأكثر بحثاً وإعادة صياغتها في نصوص تبدو حقيقية ولكنها خالية تماماً من المضمون الفعلي والتحقق على أرض الواقع. ومن هنا تنبع أهمية اللجوء إلى الصحافة الاستقصائية الرصينة التي تميز بين التزييف الرقمي والخبر اليقين."
+        },
+        {
+          title: "6. دليل المشجع الذكي لعام 2026: كيف تتحقق من صحة صفقات البلوغرانا بنفسك؟",
+          body: "لحماية نفسك كمشجع ومتابع رياضي من الوقوع في فخ الأخبار الرياضية المضللة والشائعات المفبركة، نضع بين يديك هذا الدليل الاسترشادي البسيط والفعال للتحقق من أي خبر تعاقد يخص نادي برشلونة أو أي نادٍ عالمي آخر:\n\n1. المصادر الرسمية أولاً: لا تعتمد على أي خبر ما لم يتم نشره عبر الموقع الرسمي لنادي برشلونة (fcbarcelona.com) أو حساباته الموثقة بالعلامة الزرقاء على منصات التواصل الاجتماعي.\n2. الصحفيون الموثوقون: تتبع الصحفيين العالميين المشهود لهم بالدقة ومصادرهم القوية في كواليس الانتقالات مثل 'فابريزيو رومانو' (Fabrizio Romano) أو 'جيانلوكا دي مارزيو' (Gianluca Di Marzio)، وتأكد من كتابتهم للخبر في حساباتهم الرسمية.\n3. السجلات المهنية: قم بزيارة موقع 'ترانسفير ماركت' للتأكد من وجود بروفايل رسمي للاعب وتاريخ انتقالاته الفعلي وقيمته السوقية المسجلة.\n4. التحليل النقدي للمقاطع المرئية: لا تنخدع بمقاطع الفيديو التي تعرض مهارات فائقة تحت اسم لاعب معين؛ فغالباً ما يتم دمج لقطات للاعبين مختلفين أو تعديل سرعة الفيديو لخلق انطباع وهمي بمهارة خارقة.\n\nفي الختام، يظل الشغف بكرة القدم وبأخبار انتقالاتها متعة لا تضاهى، ولكن الوعي والتدقيق والبحث عن المصدر الحقيقي هو الحصن المنيع الذي يحافظ على مصداقية الوسط الرياضي ويحمي عقول الجماهير من التضليل الرقمي."
+        }
+      ],
+      faqs: [
+        {
+          q: "هل يوجد لاعب عربي باسم حمزة عبد الكريم في فريق برشلونة؟",
+          a: "بناءً على السجلات الرسمية وقوائم اللاعبين لنادي برشلونة ورابطة الدوري الإسباني لعام 2026، لا يوجد أي لاعب مسجل بهذا الاسم في أي من الفئات السنية أو الفريق الأول للبارسا."
+        },
+        {
+          q: "كيف بدأت شائعة حمزة عبد الكريم وبرشلونة؟",
+          a: "بدأت الشائعة عبر مقاطع فيديو قصيرة على منصات التواصل الاجتماعي (مثل تيك توك وتويتر) أنشأها صناع محتوى رياضيون لزيادة التفاعل والمشاهدات، ثم ساهمت محركات البحث في تداول الاسم بشكل كبير."
+        },
+        {
+          q: "هل من الممكن أن ينضم لاعب لبرشلونة دون الإعلان عنه؟",
+          a: "من المستحيل قانونياً وإجراءاتياً، حيث تفرض الفيفا والاتحاد الإسباني رقابة صارمة تلتزم بموجبها الأندية بتسجيل وقيد كل اللاعبين حتى في فترات المعايشة القصيرة، ولا توجد صفقات سرية غير مسجلة."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: The Viral Trend of 'Hamza Abdel Karim' and FC Barcelona",
+        "2. Official Stance: No Confirmed Records of Hamza Abdel Karim at Barcelona",
+        "3. Psychology of Transfer Rumors: How Social Media Creates Fake Signing News",
+        "4. La Masia & Youth Registrations: Can Young Talents Remain Hidden?",
+        "5. AI and Technology in Fueling Modern Football Misinformation",
+        "6. Fact-Checking Guide: How Fans Can Verify Barca Transfer Rumors Safely"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: The Viral Trend of 'Hamza Abdel Karim' and FC Barcelona",
+          body: "In the modern football era, transfer market rumors have evolved into a massive multi-billion dollar entertainment industry, captivating millions of fans worldwide. Recently, a specific search trend surrounding the name 'Hamza Abdel Karim Barcelona' has gained significant momentum across various online spaces and Arabic-speaking football forums. This phenomenon has sparked massive curiosity: is there a new rising Arab talent on the verge of joining the prestigious FC Barcelona, or is it merely another digital mirage created by content creators for clicks and views? In this professional investigative report, we track down the origins of this trending keyword, present the facts objective-by-objective, and demystify the transfer rumor landscape using official databases and certified sports journalism standards."
+        },
+        {
+          title: "2. Official Stance: No Confirmed Records of Hamza Abdel Karim at Barcelona",
+          body: "After a thorough and rigorous check of all official registries, databases, and press rooms of FC Barcelona (including the first team, Barcelona B/Athletic, and all youth categories of La Masia for 2026), we can officially confirm that: There is currently no verified or confirmed record of a football player named 'Hamza Abdel Karim' registered with FC Barcelona. A deep look into the official database of Spain's La Liga and professional football tracking websites like Transfermarkt and FotMob yields zero entries for any professional or youth player under this name affiliated with the Catalan club. No official announcement, scouting report, or internal registry has ever mentioned a negotiation or signing of Hamza Abdel Karim, confirming that the current online speculation is entirely unsupported by official documentation."
+        },
+        {
+          title: "3. Psychology of Transfer Rumors: How Social Media Creates Fake Signing News",
+          body: "To understand how the rumor of 'Hamza Abdel Karim Barcelona' gained traction, we must look at the mechanics of social media algorithms on platforms like TikTok, X (formerly Twitter), and Facebook. These networks thrive on engagement. Content creators or fan page administrators often invent hypothetical transfers or attach obscure names to elite clubs like Barcelona. By creating a 30-second video with high-energy music and edited highlights of other skilled players, they capture the attention of passionate fans. The algorithm then pushes these videos to thousands of feeds, leading users to search for the name on Google. This circular feedback loop creates a massive search footprint, misleading casual readers into believing a fictional transfer is real."
+        },
+        {
+          title: "4. La Masia & Youth Registrations: Can Young Talents Remain Hidden?",
+          body: "A common question among fans is whether a player could be undergoing a trial or secret training session within La Masia without an official announcement. From a legal standpoint, this is highly unlikely. FIFA and the Royal Spanish Football Federation (RFEF) enforce strict regulations regarding the registration of underage players to prevent exploitation. Following past transfer bans, FC Barcelona strictly complies with these guidelines, documenting every young player who trains at their facilities. This high level of regulatory scrutiny makes it practically impossible for any player to participate in club activities secretly or without formal registration, debunking the 'hidden trialist' hypothesis."
+        },
+        {
+          title: "5. AI and Technology in Fueling Modern Football Misinformation",
+          body: "With the rapid advancement of generative AI in 2026, football misinformation has entered a new era. Today, anyone can generate high-definition fake images of a player wearing the Blaugrana jersey inside the Spotify Camp Nou, or use deepfake voice cloning to replicate statements from club figures like Joan Laporta. This technological shift poses a challenge for both professional journalists and football fans. Simple search queries like 'Hamza Abdel Karim Barcelona' can sometimes return AI-generated articles or scraper sites designed to harvest trending keywords. This underscores the vital role of investigative journalism in verifying facts at the source and distinguishing digital fabrications from reality."
+        },
+        {
+          title: "6. Fact-Checking Guide: How Fans Can Verify Barca Transfer Rumors Safely",
+          body: "To protect yourself from false transfer news, follow these reliable verification steps:\n\n1. Check Official Channels: Only trust transfer announcements published on the official FC Barcelona website (fcbarcelona.com) or their verified social media accounts.\n2. Follow Reputable Journalists: Follow renowned transfer specialists like Fabrizio Romano or Gianluca Di Marzio, and verify if they have reported the news on their official platforms.\n3. Verify Databases: Cross-reference players on professional platforms like Transfermarkt to check their real registry history and market value.\n4. Analyze Video Highlights Critically: Do not be fooled by compilation videos; they often combine footage of multiple players to create a false impression of a single individual's skill.\n\nWhile following the transfer market is a highly exciting aspect of football, remaining critical and verifying sources is essential to keeping the sports community accurately informed."
+        }
+      ],
+      faqs: [
+        {
+          q: "Is there an Arab player named Hamza Abdel Karim in FC Barcelona?",
+          a: "According to the official squad registries of FC Barcelona and La Liga for 2026, there is no registered player under this name in any youth category or the first team."
+        },
+        {
+          q: "How did the Hamza Abdel Karim Barcelona rumor start?",
+          a: "The rumor originated from viral short videos on social media platforms (like TikTok and X) created by sports content accounts to generate views, which then created a trending search query."
+        },
+        {
+          q: "Can a player join FC Barcelona secretly without any announcement?",
+          a: "No, FIFA and Spanish RFEF rules strictly mandate that all players, even youth trialists, must be formally registered in official databases, making secret transfers impossible."
+        }
+      ]
+    }
+  },
+  {
     id: "art-football-education-training-guide-2026",
     slug: "football-education-training-guide-2026",
     categoryAr: "تكتيك وتدريب كرة القدم",

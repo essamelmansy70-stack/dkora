@@ -814,8 +814,13 @@ export default function App() {
         <div 
           className="flex items-center gap-3 select-none group transition-opacity"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-650 via-red-500 to-white flex items-center justify-center shadow-md shadow-red-500/10 shrink-0 transition-transform group-hover:scale-105 group-hover/header:scale-105">
-            <Trophy className="w-5.5 h-5.5 text-white animate-bounce" />
+          <div className="w-10 h-10 rounded-xl overflow-hidden border border-slate-200/50 dark:border-slate-800 shadow-sm shrink-0 transition-transform group-hover:scale-105 group-hover/header:scale-105">
+            <img 
+              src="/logo.jpg" 
+              alt="dkora" 
+              className="w-full h-full object-cover select-none"
+              referrerPolicy="no-referrer"
+            />
           </div>
           <div className="text-center sm:text-start rtl:sm:text-right ltr:sm:text-left">
             <h1 className={`text-sm sm:text-base font-black tracking-tight bg-clip-text text-transparent transition-colors ${

@@ -35,6 +35,7 @@ import spainJerseyReview from '../assets/images/spain_jersey_2026_1784418108833.
 import footballTrainingGuide from '../assets/images/football_training_guide_1784421683725.jpg';
 import hamzaBarcelonaRumor from '../assets/images/hamza_barcelona_rumor_1784511233523.jpg';
 import pumaAttacantoOriginal from '../assets/images/puma_attacanto_original_1784517816448.jpg';
+import pauCubarsiBarcelonaStar from '../assets/images/pau_cubarsi_barcelona_star_1784520407347.jpg';
 
 interface Article {
   id: string;
@@ -77,6 +78,138 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-pau-cubarsi-instagram-star",
+    slug: "pau-cubarsi-instagram-official-profile",
+    categoryAr: "أخبار ومشاهير الرياضة",
+    categoryEn: "Sports Stars & News",
+    titleAr: "باو كوبارسي انستا: الحساب الرسمي والتحليل الشامل للحضور الرقمي لنجم دفاع برشلونة الواعد",
+    titleEn: "Pau Cubarsi Instagram: The Official Account and Digital Analysis of Barca's Defensive Prodigy",
+    descAr: "دليل استقصائي شامل يغوص في كواليس الحساب الرسمي لنجم برشلونة الصاعد باو كوبارسي انستا (@paucubarsi)، مع تحليل دقيق لأثر مهاراته الدفاعية في نمو قاعدته الجماهيرية وتفاعله مع مشجعي البلوغرانا لعام 2026.",
+    descEn: "An in-depth investigative guide exploring the official Instagram presence of FC Barcelona's defensive prodigy Pau Cubarsí (@paucubarsi). Analyzing his digital footprint, fan engagement, and rise to stardom in 2026.",
+    keywordsAr: [
+      "باو كوبارسي انستا",
+      "باو كوبارسي انستقرام",
+      "حساب باو كوبارسي الرسمي",
+      "لاعب برشلونة باو كوبارسي",
+      "مدافع برشلونة الشاب",
+      "Pau Cubarsi Instagram",
+      "أخبار باو كوبارسي",
+      "نجوم لاماسيا الرقمية"
+    ],
+    keywordsEn: [
+      "Pau Cubarsi Instagram",
+      "Pau Cubarsi official account",
+      "Pau Cubarsi Barcelona",
+      "Pau Cubarsi social media",
+      "Barca youth defender insta",
+      "La Masia stars online",
+      "Pau Cubarsi photos"
+    ],
+    image: pauCubarsiBarcelonaStar,
+    date: "2026-07-19",
+    readTime: "9 min",
+    contentAr: {
+      toc: [
+        "1. مقدمة: الشهرة المتسارعة ومحركات البحث عن 'باو كوبارسي انستا'",
+        "2. الحساب الرسمي الموثق: كيف تصل إلى حساب باو كوبارسي الأصلي وتتجنب المزيفين؟",
+        "3. كواليس المنشورات: ماذا يشارك صخرة دفاع كتالونيا مع متابعيه على المنصة؟",
+        "4. سيكولوجية التفاعل: كيف يعزز تألق كوبارسي على أرض الملعب قيمته التسويقية الرقمية؟",
+        "5. دليل التدقيق لعام 2026: كيف تميز بين التصريحات الحقيقية والمنشورات المفبركة للنجم الشاب؟",
+        "6. الخلاصة والتقييم النهائي للحضور الرقمي لـ باو كوبارسي"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: الشهرة المتسارعة ومحركات البحث عن 'باو كوبارسي انستا'",
+          body: "في تاريخ كرة القدم الحديثة، قلما نشهد صعوداً دراماتيكياً ومفاجئاً للاعب في خط الدفاع مثلما حدث مع النجم الإسباني الشاب باو كوبارسي (Pau Cubarsí). فمنذ تصعيده إلى الفريق الأول لنادي برشلونة الإسباني قادماً من أكاديمية 'لاماسيا' العريقة، لفت اللاعب الأنظار ببرود أعصابه الاستثنائي وقدرته الفائقة على بناء اللعب من الخلف وتمرير الكرات الطولية بدقة متناهية، ناهيك عن صلابته الدفاعية أمام أعتى مهاجمي القارة العجوز. هذا التألق الرياضي لفت الانتباه بطبيعة الحال إلى جوانب حياته الشخصية والرقمية، وتحديداً حسابه الرسمي على منصة 'انستغرام'، حيث شهدت عبارة البحث 'باو كوبارسي انستا' ارتفاعاً جنونياً من قبل ملايين المشجعين والناشئين الراغبين في متابعة تفاصيل هذا المدافع الفريد الذي يراه الكثيرون بمثابة خليفة الأسطورة كارليس بويول وجيرارد بيكيه في قلعة البلوغرانا."
+        },
+        {
+          title: "2. الحساب الرسمي الموثق: كيف تصل إلى حساب باو كوبارسي الأصلي وتتجنب المزيفين؟",
+          body: "مع الصعود السريع لأسهم اللاعب في سماء الكرة العالمية، انتشرت مئات الحسابات الوهمية وصفحات المعجبين (Fan Pages) التي تحمل اسم باو كوبارسي على منصات التواصل الاجتماعي، والتي يقوم بعضها بنشر تصريحات مفبركة أو صور مضللة للحصول على المتابعين. لتجنب هذا التضليل الرقمي، نوضح بشكل قاطع أن الحساب الرسمي والوحيد الموثق للاعب على منصة انستغرام هو:\n\n• اسم المستخدم (Handle): [@paucubarsi](https://www.instagram.com/paucubarsi/)\n• التوثيق: يتميز الحساب بوجود شارة التحقق الزرقاء الرسمية من شركة 'ميتا'.\n• عدد المتابعين: تشهد أرقام المتابعين نمواً يومياً متسارعاً يقدر بمئات الآلاف تزامناً مع كل مباراة كبيرة يخوضها اللاعب في الدوري الإسباني 'لا ليغا' ودوري أبطال أوروبا، ولكن لا توجد معلومات مؤكدة حالياً حول الرقم الإجمالي الدقيق للمتابعين بالمليون في هذه اللحظة بالذات نظراً للتحديث المستمر والسريع لقاعدته الجماهيرية.\n\nمن الضروري جداً للمشجع الواعي الاعتماد حصرياً على هذا الحساب الموثق للحصول على الصور الرسمية والتصريحات المباشرة وتجنب الحسابات المزيفة التي تفتقر للأصداقية."
+        },
+        {
+          title: "3. كواليس المنشورات: ماذا يشارك صخرة دفاع كتالونيا مع متابعيه على المنصة؟",
+          body: "يتميز حساب باو كوبارسي على انستغرام بالطابع المهني والرياضي المحترف، حيث يركز اللاعب بشكل أساسي على مسيرته الكروية وحياته داخل نادي برشلونة. وتتنوع منشوراته لتشمل:\n\n1. لقطات المباريات الحماسية: ينشر كوبارسي صوراً عالية الدقة لتدخلاته الدفاعية الحاسمة واحتفالاته بالفوز في ملعب 'كامب نو' والملاعب الأوروبية الأخرى.\n2. تدريبات الفريق الأول: يشارك المتابعين لمحات من الحصص التدريبية اليومية تحت قيادة الطاقم الفني لبرشلونة، مما يعكس جديته والتزامه العالي بتطوير مستواه الفني والبدني.\n3. اللحظات التاريخية مع زملائه: تظهر بوضوح روح الفريق الواحد من خلال الصور التي يجمعها كوبارسي مع زملائه الشباب مثل لamine Yamal (لامين يامال) وGavi (جافي) وPedri (بيدري)، والذين يشكلون النواة الذهبية الجديدة لمستقبل برشلونة.\n4. الاحتفالات بالإنجازات الوطنية: لا تخلو صفحته من صور تمثيله للمنتخبات الوطنية الإسبانية، واحتفالاته بالانتصارات الدولية الكبرى.\n5. المنشورات الترويجية والشراكات: تزامناً مع نجوميته، يعرض الحساب بعض الشراكات الرسمية مع شركات المستلزمات الرياضية العالمية الراعية للاعب، والتي يتم تقديمها بأسلوب تسويقي أنيق واحترافي."
+        },
+        {
+          title: "4. سيكولوجية التفاعل: كيف يعزز تألق كوبارسي على أرض الملعب قيمته التسويقية الرقمية؟",
+          body: "توجد علاقة طردية وثيقة في كرة القدم المعاصرة لعام 2026 بين الأداء الفني للاعب على أرضية الميدان وحجم تفاعله الرقمي (Digital Engagement) على السوشيال ميديا. في حالة باو كوبارسي، فإن كل تدخل دفاعي ناجح أو تمريرة حاسمة تكسر خطوط المنافس تترجم فوراً إلى آلاف التعليقات والإعجابات والمشاركات على حسابه في انستغرام. يحلل خبراء التسويق الرياضي الحضور الرقمي لكوبارسي بأنه يحمل طابعاً متواضعاً وجاداً؛ فهو لا يميل إلى إثارة الجدل أو استعراض مظاهر البذخ، بل يركز كلياً على كرة القدم والعلاقات الإيجابية مع زملائه والمشجعين. هذا الأسلوب الرصين يعزز من قيمته كنموذج يحتذى به للناشئين، ويجعله خياراً جذاباً للغاية للعلامات التجارية العالمية الكبرى التي تبحث عن سفراء يتمتعون بالانضباط الرياضي والقبول الجماهيري الواسع."
+        },
+        {
+          title: "5. دليل التدقيق لعام 2026: كيف تميز بين التصريحات الحقيقية والمنشورات المفبركة للنجم الشاب؟",
+          body: "مع التقدم الهائل لتقنيات الذكاء الاصطناعي والتلاعب بالصور لعام 2026، يتعرض نجوم كرة القدم لشائعات مستمرة وحملات تضليل رقمي عبر صفحات السوشيال ميديا غير الرسمية. لحماية نفسك كمتابع رياضي، نقترح الالتزام بالخطوات التالية لتثبيت الحقائق:\n\n1. دقق في شارة التوثيق: تأكد دائماً أن المنشور أو 'الستوري' صادر مباشرة من المعرف الموثق [@paucubarsi](https://www.instagram.com/paucubarsi/) وليس من حساب شبيه باسم قريب.\n2. غياب التصريحات المثيرة للجدل: تشير السيرة المهنية لكوبارسي إلى تجنبه التام للإدلاء بأي تصريحات هجومية أو إثارة الجدل؛ لذا فإن أي تصريح منسوب له يحمل طابع الاستفزاز هو على الأرجح مفبرك ومزيف.\n3. مراجعة الصحف الكتلونية المعتمدة: في حال تداول خبر كبير أو تصريح منسوب للاعب، قم بمطابقته مع الصحف الرياضية الإسبانية الكبرى ذات المصداقية مثل 'سبورت' (Sport) أو 'موندو ديبورتيفو' (Mundo Deportivo) للتأكد من صحته.\n4. التحقق من العلامة التجارية المروجة: الإعلانات والشراكات الرسمية يتم الإعلان عنها عبر ميزة 'المساهم المتابع' (Collab) المشتركة بين حساب اللاعب والحساب الرسمي للشركة الراعية."
+        },
+        {
+          title: "6. الخلاصة والتقييم النهائي للحضور الرقمي لـ باو كوبارسي",
+          body: "في الختام، يمثل حساب 'باو كوبارسي انستا' المرآة الحقيقية لشخصية هذا اللاعب الفذ: هادئ، منضبط، ومثابر. إن ابتعاده عن صخب الشائعات وتركيزه على إبراز نجاحاته الرياضية وعلاقاته الأخوية مع زملائه يثبت أن الحضور الرقمي الذكي والراقي يمكن أن يكون داعماً رئيساً لمسيرة اللاعب الرياضية بدلاً من كونه مصدر إلهاء أو ضغط نفسي. يظل باو كوبارسي نموذجاً رائعاً للاعب كرة القدم العصري الذي يوازن بامتياز بين الإبداع على المستطيل الأخضر والاحترافية والمسؤولية خلف الشاشات الرقمية."
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هو الحساب الرسمي الوحيد لباو كوبارسي على انستغرام؟",
+          a: "الحساب الرسمي الوحيد والموثق بالعلامة الزرقاء هو paucubarsi ويجب الحذر من الحسابات المزيفة التي تتربص باسم اللاعب."
+        },
+        {
+          q: "هل ينشر باو كوبارسي تفاصيل حياته الخاصة على السوشيال ميديا؟",
+          a: "لا، يغلب الطابع الرياضي والمهني الصارم على حساب اللاعب الشاب، حيث يركز على تدريباته ومبارياته مع برشلونة وإسبانيا وصوره مع زملائه وتجنب إثارة الجدل."
+        },
+        {
+          q: "لماذا يتزايد البحث عن 'باو كوبارسي انستا' بانتظام؟",
+          a: "بسبب أدائه الدفاعي الأسطوري والقيادي مع الفريق الأول لبرشلونة في سن مبكرة جداً، مما أثار شغف الجماهير والناشئين بمتابعة يومياته وتطور مسيرته الاحترافية."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: The Sudden Rise of Pau Cubarsí and Online Interest",
+        "2. The Official Verified Handle: Discovering @paucubarsi on Instagram",
+        "3. Behind the Posts: What Does the Barca Defender Share with His Fans?",
+        "4. Psychology of Engagement: How Pitch Performance Translates into Brand Value",
+        "5. 2026 Fact-Checking Guide: Avoiding Fake Quotes and Fabricated Media",
+        "6. Summary & Final Evaluation of Pau Cubarsí's Digital Presence"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: The Sudden Rise of Pau Cubarsí and Online Interest",
+          body: "In the modern history of football, rare are the moments where a teenage defender rises to global stardom as rapidly as Spanish center-back Pau Cubarsí. Since his debut for FC Barcelona's first team directly from the world-renowned La Masia youth academy, he has amazed fans and critics alike with his cold composure, incredible passing accuracy from the back, and tactical maturity beyond his years. This phenomenal sporting rise has naturally drawn massive attention to his off-pitch personality, especially his official Instagram account. Searches for 'Pau Cubarsí Instagram' have skyrocketed as millions of fans and aspiring young players seek to follow the daily life and achievements of the young talent widely viewed as the long-term successor to Puyol and Piqué."
+        },
+        {
+          title: "2. The Official Verified Handle: Discovering @paucubarsi on Instagram",
+          body: "With Cubarsí's stocks rising daily, hundreds of fan-made pages and fake accounts have surfaced, sometimes spreading fabricated quotes or edited photos to harvest followers. To ensure you follow the real athlete, here are his official credentials:\n\n• Username (Handle): [@paucubarsi](https://www.instagram.com/paucubarsi/)\n• Verification: The profile carries Meta's official blue verification badge.\n• Followers Growth: His following increases by thousands after every major La Liga and Champions League clash. Due to the high-velocity real-time growth, there are currently no confirmed records of his exact live follower count in millions, which is constantly fluctuating as his global footprint expands.\n\nAlways verify that you are interacting with his official handle to get accurate media and statements directly from the player."
+        },
+        {
+          title: "3. Behind the Posts: What Does the Barca Defender Share with His Fans?",
+          body: "Pau Cubarsí's Instagram profile is highly professional and sports-centric, keeping the spotlight on his professional journey with FC Barcelona. His content generally consists of:\n\n1. High-Definition Match Action: Crisp photos of his crucial tackles, interceptions, and celebrations at the Spotify Camp Nou and other iconic European stadiums.\n2. Training Ground Insights: Sneak peeks into the daily intensive training sessions with Barcelona's first-team squad under the tactical coaching staff.\n3. Bond with Teammates: Warm moments capturing his close friendship with Barcelona's teenage golden generation, including Lamine Yamal, Gavi, and Pedri.\n4. National Team Pride: Highlights representing Spain's youth and senior squads, including major international tournaments and Olympic milestones.\n5. Professional Partnerships: Classy advertising posts with leading global sports brands sponsoring the player, delivered with top-tier marketing elegance."
+        },
+        {
+          title: "4. Psychology of Engagement: How Pitch Performance Translates into Brand Value",
+          body: "In 2026, there is a direct correlation between on-pitch brilliance and digital engagement on social media platforms. For Pau Cubarsí, every exceptional defensive clearance or line-breaking pass translates immediately into thousands of likes, comments, and shares. Sports marketing experts analyze his digital brand as humble, authentic, and completely focused on football. He stays clear of luxury showboating or controversy, prioritizing his commitment to his team and supporters. This disciplined approach establishes him as a premier role model for youth athletes, making him an incredibly attractive partner for global brands seeking disciplined, universally liked sports ambassadors."
+        },
+        {
+          title: "5. 2026 Fact-Checking Guide: Avoiding Fake Quotes and Fabricated Media",
+          body: "Given the immense power of generative AI and media manipulation tools in 2026, football stars are constant targets for viral rumors. To guard your perspective against sports misinformation:\n\n1. Confirm the Handle: Always ensure the posts or stories are directly from [@paucubarsi](https://www.instagram.com/paucubarsi/) and not an impersonator using a visually similar username.\n2. Respectful Composure: Cubarsí's public persona is consistently professional and quiet. Any provocative or aggressive statements attributed to him are almost certainly fake.\n3. Cross-Reference with Catalonian Media: If a massive statement goes viral, cross-reference it with reputable Spanish sports news sources like Sport or Mundo Deportivo to verify its authenticity.\n4. Joint Collaborations: Authentic sponsorship campaigns utilize Instagram's official Collab feature, connecting his account directly to the official sponsor's page."
+        },
+        {
+          title: "6. Summary & Final Evaluation of Pau Cubarsí's Digital Presence",
+          body: "In conclusion, Pau Cubarsí's Instagram account is a perfect digital mirror of his on-field character: calm, disciplined, and highly focused. By staying away from noise and showcasing his sporting dedication alongside genuine camaraderie with his teammates, he proves that a classy digital presence is an asset rather than a distraction. He stands as an excellent example for modern athletes, balancing world-class pitch creativity with immense digital responsibility."
+        }
+      ],
+      faqs: [
+        {
+          q: "What is Pau Cubarsí's official Instagram username?",
+          a: "His official, blue-badge verified Instagram handle is @paucubarsi. Always watch out for duplicate fan pages or fake accounts."
+        },
+        {
+          q: "Does Pau Cubarsí post about his private life?",
+          a: "No, his account has a highly professional, sports-oriented layout focusing almost exclusively on his FC Barcelona career, international duty, and team training."
+        },
+        {
+          q: "Why is the search keyword 'Pau Cubarsi Instagram' trending?",
+          a: "Due to his sensational defensive leadership for FC Barcelona at such a young age, football enthusiasts are eager to track his career growth and off-pitch updates."
+        }
+      ]
+    }
+  },
   {
     id: "art-puma-attacanto-original-review",
     slug: "puma-attacanto-original-review-specs",

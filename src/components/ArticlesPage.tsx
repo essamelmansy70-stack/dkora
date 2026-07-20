@@ -7196,6 +7196,44 @@ const ARTICLES_DATA: Article[] = [
 
 ];
 
+// Helper function to render text that might contain markdown-style links [link text](url)
+function renderTextWithLinks(text: string) {
+  if (!text) return null;
+  const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = regex.exec(text)) !== null) {
+    const [_, linkText, url] = match;
+    const matchIndex = match.index;
+
+    if (matchIndex > lastIndex) {
+      parts.push(text.substring(lastIndex, matchIndex));
+    }
+
+    parts.push(
+      <a
+        key={matchIndex}
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        className="text-[#ff1a40] hover:text-[#ff4d6a] underline font-black transition-colors mx-1"
+      >
+        {linkText}
+      </a>
+    );
+
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.substring(lastIndex));
+  }
+
+  return parts.length > 0 ? parts : text;
+}
+
 interface ArticlesPageProps {
   locale: 'ar' | 'en';
   t: any;
@@ -7534,8 +7572,8 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                       <h2 className="text-base sm:text-lg font-black text-white border-b border-rose-500/15 pb-2 leading-snug">
                         {sec.title}
                       </h2>
-                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
-                        {sec.body}
+                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans whitespace-pre-line">
+                        {renderTextWithLinks(sec.body)}
                       </p>
 
                       {/* Optional point system bullets */}

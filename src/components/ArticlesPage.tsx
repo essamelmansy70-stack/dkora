@@ -33,6 +33,7 @@ import adjustableWorkoutBench from '../assets/images/adjustable_workout_bench_17
 import spainWorldCupCover from '../assets/images/spain_world_cup_cover_1784350511963.jpg';
 import spainJerseyReview from '../assets/images/spain_jersey_2026_1784418108833.jpg';
 import footballTrainingGuide from '../assets/images/football_training_guide_1784421683725.jpg';
+import hamzaBarcelonaRumor from '../assets/images/hamza_barcelona_rumor_1784511233523.jpg';
 
 interface Article {
   id: string;
@@ -103,7 +104,7 @@ const ARTICLES_DATA: Article[] = [
       "sports fact-checking",
       "Arab players in Barcelona"
     ],
-    image: "/hamza_barcelona_rumor.webp",
+    image: hamzaBarcelonaRumor,
     date: "2026-07-19",
     readTime: "10 min",
     contentAr: {

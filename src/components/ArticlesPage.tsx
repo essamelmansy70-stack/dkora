@@ -37,6 +37,7 @@ import hamzaBarcelonaRumor from '../assets/images/hamza_barcelona_rumor_17845112
 import pumaAttacantoOriginal from '../assets/images/puma_attacanto_original_1784517816448.jpg';
 import pauCubarsiBarcelonaStar from '../assets/images/pau_cubarsi_barcelona_star_1784520407347.jpg';
 import football2026GameDownload from '../assets/images/football_2026_game_download_1784525455386.jpg';
+import rodriManchesterCityStar from '../assets/images/rodri_manchester_city_star_1784567482842.jpg';
 
 interface Article {
   id: string;
@@ -79,6 +80,138 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-rodri-age-analysis",
+    slug: "rodri-exact-age-and-career-milestones",
+    categoryAr: "أخبار ومشاهير الرياضة",
+    categoryEn: "Sports Stars & News",
+    titleAr: "سن رودري: العمر الحقيقي لصخرة مانشستر سيتي وإسبانيا ومسيرته الأسطورية حتى عام 2026",
+    titleEn: "Rodri Age: The Real Age of Manchester City's Star and His Legendary Milestones up to 2026",
+    descAr: "تحقيق رياضي شامل يستعرض سن رودري الحقيقي وتاريخ ميلاده، مع مراجعة دقيقة لمسيرته الأسطورية وكيف يؤثر عامل السن على نضجه التكتيكي والبدني في عام 2026.",
+    descEn: "An in-depth investigative analysis of Rodri's real age, birthdate, legendary career milestones with Manchester City and Spain, and historical achievements leading up to 2026.",
+    keywordsAr: [
+      "سن رودرى",
+      "سن رودري",
+      "عمر اللاعب رودري",
+      "كم عمر رودري",
+      "تاريخ ميلاد رودري",
+      "لاعب مانشستر سيتي رودري",
+      "رودريغو هيرنانديز كاسكانتي",
+      "إنجازات رودري 2026"
+    ],
+    keywordsEn: [
+      "Rodri age 2026",
+      "how old is Rodri",
+      "Rodri birthdate",
+      "Rodrigo Hernandez Cascante",
+      "Manchester City Rodri midfield",
+      "Rodri Ballon d'or",
+      "Spain national team Rodri"
+    ],
+    image: rodriManchesterCityStar,
+    date: "2026-07-20",
+    readTime: "9 min",
+    contentAr: {
+      toc: [
+        "1. مقدمة: الشغف الجماهيري بمعرفة 'سن رودري' الحقيقي",
+        "2. تاريخ ميلاد رودري وسنه الحقيقي لعام 2026",
+        "3. المحطات الذهبية في مسيرة صانع أمجاد السيتي والمنتخب الإسباني",
+        "4. سر النضج الفني والتكتيكي: كيف ينعكس سن رودري على أدائه في الملعب؟",
+        "5. الإنجازات والجوائز الكبرى التي حققها رودري خلال مسيرته الاحترافية",
+        "6. الخلاصة والتقييم الرياضي لمسيرة ونضج اللاعب رودري"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: الشغف الجماهيري بمعرفة 'سن رودري' الحقيقي",
+          body: "في عالم كرة القدم الحديثة، قلما تجد لاعباً يجمع بين القوة البدنية الرهيبة، والذكاء التكتيكي الفذ، والقدرة الفائقة على قراءة مسار اللعب وإدارته من وسط الميدان مثل الإسباني رودريغو هيرنانديز كاسكانتي المعروف شعبياً باسم 'رودري' (Rodri). فمنذ صعود نجمه مع الأندية الإسبانية ومن ثم انتقاله التاريخي إلى مانشستر سيتي الإنجليزي تحت قيادة العبقري بيب غوارديولا، تحول رودري إلى الترمومتر الذي يقيس نبض وتوازن الفريق بأكمله. هذا الوهج المهني قاد جماهير كرة القدم العربية والعالمية للبحث المكثف حول أدق تفاصيل حياته، وتصدرت عبارة 'سن رودرى' محركات البحث ومواقع الإحصاءات الكروية، حيث يتساءل المتابعون عن العمر الدقيق لهذا اللاعب الذي يلعب بعقلية خبير مخضرم بينما يركض بطاقة شاب يافع على المستطيل الأخضر."
+        },
+        {
+          title: "2. تاريخ ميلاد رودري وسنه الحقيقي لعام 2026",
+          body: "ولد اللاعب الإسباني الفذ رودريغو هيرنانديز كاسكانتي في العاصمة الإسبانية مدريد بتاريخ 22 يونيو من عام 1996. وبناءً على هذه الحقيقة التاريخية والمدققة، فإن سن رودري في وقتنا الحالي (يوليو 2026) هو تماماً 30 عاماً.\n\nتعتبر سن الثلاثين في كرة القدم الحديثة بمثابة 'العصر الذهبي' أو ذروة النضج الكروي للاعبي خط الوسط الدفاعي (الارتكاز)؛ حيث تجتمع في هذا العمر القوة البدنية المتراكمة مع الخبرة الذهنية الطويلة التي تتيح للاعب قراءة هجمات الخصوم وتوزيع الكرات بدقة متناهية دون الحاجة إلى الركض العشوائي. يتميز رودري ببنية جسدية مثالية يبلغ طولها حوالي 1.91 متراً، مما يمنحه تفوقاً كاسحاً في الكرات الهوائية والالتحامات البدنية الشرسة، وهو ما يعزز مكانته كأفضل لاعب ارتكاز في العالم في هذه المرحلة السنية الحساسة من مسيرته."
+        },
+        {
+          title: "3. المحطات الذهبية في مسيرة صانع أمجاد السيتي والمنتخب الإسباني",
+          body: "لم يكن وصول رودري إلى سن الثلاثين وهو على قمة الهرم الكروي العالمي وليد الصدفة، بل كان نتاج رحلة كفاح وتدرج مدروس في أعرق المدارس الكروية الإسبانية:\n\n• البدايات الأكاديمية: بدأ مسيرته الناشئة في الفئات السنية لنادي ريال مدريد، قبل أن ينتقل إلى أكاديمية نادي أتلتيكو مدريد، ومن ثم استقر به المطاف في نادي فياريال حيث لمع اسمه وبدأ العالم يتعرف على موهبته الاستثنائية.\n• البروز في فياريال (2015-2018): قدم مستويات مبهرة مع الغواصات الصفراء أثبتت امتلاكه جينات القيادة في وسط الملعب.\n• العودة إلى الأتليتي (2018-2019): عاد لناديه القديم أتلتيكو مدريد تحت إمرة دييغو سيميوني، حيث صقل مهاراته الدفاعية والالتحامية واكتسب صلابة وقوة بدنية هائلة.\n• الانتقال التاريخي لمانشستر سيتي (2019 - حتى الآن): دفع السيتي قيمة الشرط الجزائي لضمه، ومنذ ذلك الحين تحول إلى القطعة الأساسية التي لا يمكن تعويضها في تشكيلة الفيلسوف بيب غوارديولا، محققاً معه العديد من الألقاب المحلية والقارية التاريخية."
+        },
+        {
+          title: "4. سر النضج الفني والتكتيكي: كيف ينعكس سن رودري على أدائه في الملعب؟",
+          body: "عندما ننظر إلى كيفية إدارة رودري للمباريات في سن الـ 30، ندرك تماماً سبب الاهتمام المتزايد بـ سن رودرى وتأثير النضج العمري على أدائه الفني. فاللاعب لا يتميز فقط بقطع الكرات، بل هو صانع ألعاب متأخر وباني الهجمات الأول. يتجلى تأثير نضجه في النقاط التالية:\n\n1. التحكم في ريتم المباراة: يستطيع رودري بمفرده تسريع وتيرة اللعب أو إبطائها حسب حاجة الفريق وضغط المباراة، وهو ما يطلق عليه المدربون 'ضبط الإيقاع'.\n2. التموضع الدفاعي الذكي: عوضاً عن الجري المستمر والمجهد، يتواجد رودري في المكان المناسب دائماً لقطع التمريرات بفضل التوقع الذكي المبني على خبرة السنين.\n3. التسديد من مسافات بعيدة: حسم رودري الكثير من المباريات الصعبة والنهائيات بفضل تسديداته الأرضية والقوية الزاحفة من خارج منطقة الجزاء، ولعل هدفه الشهير في نهائي دوري أبطال أوروبا ضد إنتر ميلان هو المثال الأبرز على ذلك.\n4. القيادة الروحية: مع وصوله لسن الثلاثين، بات رودري قائداً حقيقياً داخل غرف الملابس وعلى أرضية الملعب، يوجه زملائه الشباب وينشر الطمأنينة والثقة في أرجاء الفريق."
+        },
+        {
+          title: "5. الإنجازات والجوائز الكبرى التي حققها رودري خلال مسيرته الاحترافية",
+          body: "تزخر خزائن النجم الإسباني بالعديد من الكؤوس الذهبية والجوائز الفردية التي تجعل منه واحداً من أكثر اللاعبين تتويجاً في الجيل الحالي. وإليكم رصداً لأبرز الإنجازات الفردية والجماعية التي حققها خلال مسيرته:\n\n• مع مانشستر سيتي: توج بلقب الدوري الإنجليزي الممتاز (Premier League) عدة مرات متتالية، كأس الاتحاد الإنجليزي، وكأس الرابطة، بالإضافة إلى اللقب الأغلى وهو دوري أبطال أوروبا (UEFA Champions League) الذي حسم لقبه بنفسه بتسجيل هدف الفوز التاريخي في النهائي.\n• مع المنتخب الإسباني: قاد الماتادور الإسباني للتتويج بلقب دوري الأمم الأوروبية وكأس الأمم الأوروبية 'اليورو'، وحصل على جائزة أفضل لاعب في البطولة بفضل مستوياته الأسطورية.\n• الجوائز الفردية الكبرى: ترشح لعدة جوائز فردية عالمية مرموقة مثل الكرة الذهبية (Ballon d'Or) وجائزة الأفضل من الفيفا، حيث يعتبره النقاد كسرًا لاحتكار المهاجمين وصناع اللعب التقليديين لتلك الجوائز، بفضل دوره الشامل والمحوري دفاعاً وهجوماً."
+        },
+        {
+          title: "6. الخلاصة والتقييم الرياضي لمسيرة ونضج اللاعب رودري",
+          body: "في نهاية هذا التحقيق الإستقصائي المدقق، يتضح لنا أن الاهتمام العالمي بمعرفة 'سن رودري' ليس مجرد فضول حول رقم، بل هو رغبة في فهم أسرار قمة العطاء الكروي للاعب الارتكاز المعاصر. عند سن الثلاثين، يثبت رودري أن السن في كرة القدم الحديثة هو مجرد رقم إذا ما اقترن بالانضباط البدني الصارم، والذكاء التكتيكي الفائق، والقدرة المستمرة على التطور والتعلم. يظل النجم الإسباني علامة فارقة في تاريخ خط الوسط، ونموذجاً يُحتذى به للأجيال الصاعدة التي ترغب في تعلم فنون القيادة وضبط الإيقاع وبناء اللعب من الخلف بأعلى درجات الدقة والاحترافية."
+        }
+      ],
+      faqs: [
+        {
+          q: "كم يبلغ سن رودري الحالي لعام 2026؟",
+          a: "يبلغ سن رودري في عام 2026 تماماً 30 عاماً، حيث ولد في 22 يونيو من عام 1996."
+        },
+        {
+          q: "ما هو اسم النادي الحالي الذي يلعب له اللاعب رودري؟",
+          a: "يلعب رودري في صفوف نادي مانشستر سيتي الإنجليزي في مركز خط الوسط الدفاعي (الارتكاز)، كما يمثل المنتخب الإسباني الأول لكرة القدم."
+        },
+        {
+          q: "ما هو الطول والمركز الأساسي للاعب رودري؟",
+          a: "يبلغ طول رودري 1.91 متراً، ويلعب بصفة أساسية في مركز وسط الملعب الدفاعي (الارتكاز / رقم 6)."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: The Worldwide Passion to Learn Rodri's Age",
+        "2. Exact Birthdate and Age of Rodri in 2026",
+        "3. Golden Career Milestones of Manchester City's Engine",
+        "4. Secret of Tactical Maturity: How His Age Reflects on His Gameplay",
+        "5. Major Achievements and Individual Trophies of Rodri's Career",
+        "6. Summary & Final Evaluation of Rodri's Footballing Stature"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: The Worldwide Passion to Learn Rodri's Age",
+          body: "In modern football, it is extremely rare to find a midfielder who combines incredible physical dominance with high-level footballing intelligence, acting as the undisputed tactical brain of the team. Rodrigo Hernández Cascante, famously known as 'Rodri', has established himself as the benchmark player of our generation. Since his high-profile move to Manchester City under Pep Guardiola, Rodri has become the vital balance wheel of his squad. This stunning level of performance has prompted millions of fans globally and in the Arab world to actively search for 'Rodri's age', eager to discover the background of a player who commands the pitch with the wisdom of a veteran and the inexhaustible stamina of a young star."
+        },
+        {
+          title: "2. Exact Birthdate and Age of Rodri in 2026",
+          body: "Rodrigo Hernández Cascante was born in the Spanish capital, Madrid, on June 22, 1996. Based on these verified facts, Rodri's exact age in July 2026 is 30 years old.\n\nIn contemporary football, turning 30 marks the absolute 'golden peak' for defensive holding midfielders. At this threshold, a player's physical capabilities merge perfectly with years of elite decision-making experience, allowing them to dictate play and break up dangerous counter-attacks effortlessly. Standing at 1.91 meters, Rodri possesses a formidable frame that makes him exceptionally dominant in aerial duels and physical contests, solidifying his standing as the best defensive midfielder on the planet."
+        },
+        {
+          title: "3. Golden Career Milestones of Manchester City's Engine",
+          body: "Reaching the absolute pinnacle of global football at age 30 was not an overnight miracle, but rather the result of a meticulously structured journey through top Spanish academies:\n\n• Early Youth: Formed initially in Madrid's youth tiers before transitioning to Atletico Madrid's academy and later Villarreal, where his professional breakthrough took place.\n• Breakthrough at Villarreal (2015-2018): Put on spectacular displays showing clear leadership capabilities and playmaking mastery from deep.\n• Return to Atletico (2018-2019): Joined Diego Simeone's squad where he dramatically refined his defensive positioning, aggression, and physical dueling.\n• Historic Man City Era (2019-Present): City triggered his release clause, and he quickly became the indispensable foundation of Pep Guardiola's tactical masterclasses, winning consecutive league titles and prestigious continental trophies."
+        },
+        {
+          title: "4. Secret of Tactical Maturity: How His Age Reflects on His Gameplay",
+          body: "When observing Rodri's command over games at the age of 30, it is easy to understand the deep global interest in his maturity. He is not just a ball-winner; he is a deep-lying playmaker. His maturity is evident in key tactical dimensions:\n\n1. Tempo Regulation: He single-handedly controls the speed of the match, accelerating or slowing down play depending on the game state.\n2. Intelligent Positioning: Instead of exhausting, constant runs, he uses spatial intelligence to intercept passes effortlessly.\n3. Clutch Long-Range Shoots: He has won numerous tight finals with powerful, precise ground shots from outside the box—his legendary winner in the UEFA Champions League final against Inter Milan being the absolute pinnacle.\n4. Pitch Leadership: At 30, Rodri is a commanding voice, guiding young players and bringing immense calm during high-pressure phases."
+        },
+        {
+          title: "5. Major Achievements and Individual Trophies of Rodri's Career",
+          body: "Rodri's trophy cabinet is filled with prestigious silverware and individual accolades, ranking him among the most successful players of the contemporary era:\n\n• With Manchester City: Won multiple Premier League titles, FA Cups, Carabao Cups, and the legendary UEFA Champions League, where he secured the historic trophy by scoring the decisive goal in the final.\n• With Spain: Guided his nation to major international glory including the UEFA Nations League and the UEFA European Championship (Euro), winning the Player of the Tournament award for his stellar performances.\n• Personal Accolades: Consistently nominated for the Ballon d'Or and FIFA Best awards, with sports critics viewing him as a rare candidate who breaks the attacker-dominated monopoly over individual awards."
+        },
+        {
+          title: "6. Summary & Final Evaluation of Rodri's Footballing Stature",
+          body: "In conclusion, the immense digital interest in 'Rodri's age' goes far beyond a simple number; it represents a collective desire to understand the peak performance parameters of a modern midfielder. At 30, Rodri proves that age is merely a statistic when combined with disciplined conditioning, deep tactical intellect, and an ongoing hunger to adapt. He remains an absolute benchmark in football history, inspiring a generation of young players on how to dominate, lead, and play with absolute class."
+        }
+      ],
+      faqs: [
+        {
+          q: "How old is Rodri in 2026?",
+          a: "He is exactly 30 years old as of 2026, born on June 22, 1996."
+        },
+        {
+          q: "Which team does Rodri play for currently?",
+          a: "Rodri plays as a defensive midfielder for Premier League giants Manchester City and represents the Spanish senior national team."
+        },
+        {
+          q: "What is Rodri's height and main position?",
+          a: "He stands at 1.91 meters tall and plays primarily as a defensive holding midfielder (No. 6 position)."
+        }
+      ]
+    }
+  },
   {
     id: "art-download-football-2026",
     slug: "download-football-league-2026-apk",

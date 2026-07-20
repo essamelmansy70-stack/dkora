@@ -34,6 +34,7 @@ import spainWorldCupCover from '../assets/images/spain_world_cup_cover_178435051
 import spainJerseyReview from '../assets/images/spain_jersey_2026_1784418108833.jpg';
 import footballTrainingGuide from '../assets/images/football_training_guide_1784421683725.jpg';
 import hamzaBarcelonaRumor from '../assets/images/hamza_barcelona_rumor_1784511233523.jpg';
+import pumaAttacantoOriginal from '../assets/images/puma_attacanto_original_1784517816448.jpg';
 
 interface Article {
   id: string;
@@ -76,6 +77,138 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-puma-attacanto-original-review",
+    slug: "puma-attacanto-original-review-specs",
+    categoryAr: "مراجعات العتاد الرياضي",
+    categoryEn: "Sports Gear Reviews",
+    titleAr: "مراجعة شاملة لـ ستارز بوما أصلي للأطفال: مواصفات ومميزات حذاء كرة القدم Puma Attacanto باللون الأسود والفضي",
+    titleEn: "Comprehensive Review of Original Puma Attacanto Kids Soccer Cleats: Specs & Performance of Black & Silver Stars",
+    descAr: "دليل ومراجعة متكاملة لأشهر أحذية كرة القدم للأطفال لعام 2026: ستارز بوما أصلي موديل اتاكانتو (Puma Attacanto) باللون الأسود والفضي المتميز. تعرف على مواصفاته التقنية، مزاياه، عيوبه، وكيف تكتشف الأصلي وتتجنب التقليد.",
+    descEn: "An in-depth review of the popular Puma Attacanto kids soccer cleats (Original Puma Stars) in Black & Silver. Discover the technical specifications, performance evaluation, pros, cons, and how to verify authenticity.",
+    keywordsAr: [
+      "ستارز بوما اصلى",
+      "بوما اتاكانتو للأطفال",
+      "حذاء كرة قدم بوما",
+      "ستارز بوما أسود وفضي",
+      "مراجعة حذاء بوما",
+      "حذاء كرة قدم أصلي",
+      "Puma Attacanto Egypt",
+      "ستارز كرة قدم للأطفال"
+    ],
+    keywordsEn: [
+      "Original Puma Stars",
+      "Puma Attacanto kids review",
+      "Puma soccer cleats original",
+      "Puma Attacanto Black Silver",
+      "kids football boots original",
+      "sports gear review 2026",
+      "best youth football cleats"
+    ],
+    image: pumaAttacantoOriginal,
+    date: "2026-07-19",
+    readTime: "8 min",
+    contentAr: {
+      toc: [
+        "1. مقدمة: لماذا يبحث أولياء الأمور والناشئون عن 'ستارز بوما أصلي'؟",
+        "2. مواصفات حذاء بوما اتاكانتو (Puma Attacanto Black & Silver) التقنية",
+        "3. تحليل الأداء والمزايا الرئيسية لـ ستارز بوما اتاكانتو للأطفال",
+        "4. عيوب ونقاط ضعف حذاء بوما اتاكانتو التي يجب معرفتها قبل الشراء",
+        "5. دليل سيو 2026: كيف تفرق بين ستارز بوما الأصلي والتقليد في السوق المصري؟",
+        "6. الخلاصة والتقييم النهائي: هل يستحق حذاء بوما اتاكانتو الشراء؟"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: لماذا يبحث أولياء الأمور والناشئون عن 'ستارز بوما أصلي'؟",
+          body: "تعتبر مرحلة الطفولة والشباب من أهم مراحل تأسيس لاعبي كرة القدم؛ حيث يتطلب اللعب المتواصل على ملاعب العشب الطبيعي أو العشب الصناعي حذاءً يوفر الأمان والراحة للقدم النامية، إلى جانب الثبات الكافي لتجنب الانزلاقات والإصابات. ومن هنا، يبرز البحث المكثف عن عبارة 'ستارز بوما أصلي' في الأسواق العربية عموماً والمصرية خصوصاً، حيث تعد شركة 'بوما' الألمانية واحدة من عمالقة صناعة المستلزمات الرياضية عالمياً، وتشتهر بتقديم توازن عبقري بين الجودة العالية والأسعار المناسبة لجميع الفئات. وفي هذا الدليل، نسلط الضوء على أحد أبرز موديلات العلامة المخصصة للأطفال والناشئين، وهو حذاء 'بوما اتاكانتو' (Puma Attacanto) باللونين الأسود والفضي الرائع، مستندين إلى البيانات الرسمية وآراء المدربين واللاعبين لعام 2026."
+        },
+        {
+          title: "2. مواصفات حذاء بوما اتاكانتو (Puma Attacanto Black & Silver) التقنية",
+          body: "يأتي حذاء بوما اتاكانتو (Puma Attacanto) كخيار مثالي صُمم خصيصاً ليجمع بين التصميم العصري الجذاب والعملية القصوى. وإليكم تفصيل المواصفات الفنية لهذا الموديل المتميز:\n\n• الجزء العلوي (Upper): مصنع من خامات صناعية (Synthetic) خفيفة الوزن للغاية وذات متانة فائقة. يتميز السطح بوجود نقوش بارزة وتعرجات هندسية دقيقة صُممت خصيصاً لتعزيز قوة الاحتكاك بالكرة والمساعدة في التحكم والدوران والتسديد بدقة عالية.\n• اللون والتصميم: يمزج الحذاء بين اللون الأسود الكلاسيكي الفاخر مع لمسات وتفاصيل فضية معدنية (Silver) تظهر بوضوح في شعار بوما الشهير (Formstrip) على الجانبين، مما يمنح الطفل مظهراً احترافياً ومميزاً على أرض الملعب.\n• النعل الخارجي (Soleplate): يتميز بتصميم مبتكر وخفيف الوزن من مادة البولي يوريثان الحراري (TPU). يحتوي النعل على سدادات (ستارز) مخروطية الشكل وموزعة هندسياً بدقة متناهية لتوزيع الضغط بالتساوي على كامل القدم.\n• نظام الإغلاق: يعتمد الحذاء على الأربطة التقليدية (Lace Closure) التي تضمن ملاءمة محكمة وقابلة للتعديل حسب حجم مشط قدم الطفل، مما يوفر الدعم الكافي لرباط الكاحل ويقلل احتمالية التواء القدم.\n• البطانة الداخلية (Insole): مزود بفرش داخلي مبطن وناعم لامتصاص الصدمات الناتجة عن الركض على الملاعب الصلبة أو الترتان.\n• سعر المنتج ورابط الشراء: يبلغ السعر الرسمي الحالي لهذا المنتج حوالي 1,786.95 جنيه مصري. لشراء المنتج الأصلي مباشرة وضمان حقوق المستهلك، يمكنكم زيارة الرابط التالي: [اضغط هنا للذهاب إلى صفحة المنتج على أمازون مصر](https://link.amazon/B05HCwoBu) (تنويه شفاف متوافق مع معايير السيو ومحركات البحث: هذا الرابط عبارة عن رابط تسويق بالعمولة 'Affiliate Link'؛ قد نتلقى عمولة مادية بسيطة ومحدودة عند إتمام الشراء من خلاله دون تحميلكم أي تكاليف إضافية على الإطلاق، وهو ما يساهم في دعم استدامة وتطوير المحتوى الاستقصائي الرياضي ومراجعاتنا المحايدة)."
+        },
+        {
+          title: "3. تحليل الأداء والمزايا الرئيسية لـ ستارز بوما اتاكانتو للأطفال",
+          body: "عند تقييم حذاء بوما اتاكانتو الأصلي على أرض الواقع، نجد أنه يتفوق في تقديم عدة مزايا حيوية تجعله المفضل لدى الكثير من العائلات والمدربين في الأكاديميات الكروية:\n\n1. خفة الوزن الفائقة: يساهم الوزن الخفيف في زيادة سرعة استجابة الطفل ورشاقته أثناء الجري والمراوغة، مما يقلل من شعور الإجهاد العضلي المبكر في الساقين.\n2. تحكم مثالي بالكرة: النقوش الهندسية البارزة على الجزء الأمامي للحذاء تمنح اللاعب الصغير لمسة أولى (First Touch) ممتازة، وهو أمر ضروري جداً لتعلم مهارات الاستلام والتمرير بشكل صحيح في سن مبكرة.\n3. متانة جبارة وسهولة تنظيف: المادة الصناعية المصنع منها الحذاء مقاومة للماء والتمزق، وتتحمل الاحتكاكات القوية بالملاعب. كما يمكن تنظيف الحذاء بمسحة رطبة بسيطة بعد كل تمرين ليعود كأنه جديد.\n4. ملاءمة مزدوجة للملاعب (FG/AG): السدادات المخروطية تجعل هذا الحذاء مرناً للغاية؛ فهو يعمل بكفاءة قصوى على ملاعب العشب الطبيعي الجافة (Firm Ground) والملاعب ذات العشب الصناعي (Artificial Grass) دون التسبب في آلام الظهر أو الركبة للطفل.\n5. سعر اقتصادي مناسب: بالمقارنة مع موديلات أخرى مثل Puma Future أو Ultra، يندرج موديل 'اتاكانتو' تحت الفئة الاقتصادية التي تقدم قيمة ممتازة مقابل السعر، مما يجعله خياراً ممتازاً للأطفال الذين تنمو أقدامهم بسرعة ويحتاجون لتغيير الأحذية بشكل دوري."
+        },
+        {
+          title: "4. عيوب ونقاط ضعف حذاء بوما اتاكانتو التي يجب معرفتها قبل الشراء",
+          body: "رغم المزايا العديدة التي يتمتع بها حذاء بوما اتاكانتو، إلا أن الأمانة الصحفية تقتضي توضيح بعض نقاط الضعف التي قد تواجه بعض المستخدمين لتكون على دراية كاملة قبل اتخاذ قرار الشراء:\n\n• مرونة الجزء العلوي: نظراً لاعتماده على خامات صناعية متينة بدلاً من الجلد الطبيعي، قد يشعر الطفل ببعض الصلابة في المرات الأولى لارتداء الحذاء، ويحتاج إلى تمرينين أو ثلاثة حتى يتمدد الحذاء ويأخذ شكل القدم بشكل مريح (مرحلة Break-in).\n• المساحة لعرض القدم: الموديل مصمم بمقاسات تميل إلى الضيق قليلاً في المنتصف. لذا، إذا كان طفلك يمتلك قدماً عريضة (Wide Foot)، فقد يشعر ببعض الضغط على الجانبين، ويُنصح في هذه الحالة بشراء مقاس أكبر بنصف درجة أو درجة كاملة لضمان الراحة المطلقة.\n• عدم ملاءمة الملاعب المبللة جداً: نعل FG/AG مصمم للملاعب الجافة أو رطبة قليلاً، ولكنه قد لا يوفر الثبات الكافي في الملاعب الطينية الموحلة جداً، والتي تتطلب سدادات معدنية طويلة (SG) غير متوفرة في هذا الموديل المخصص للناشئين."
+        },
+        {
+          title: "5. دليل سيو 2026: كيف تفرق بين ستارز بوما الأصلي والتقليد في السوق المصري؟",
+          body: "مع انتشار المنتجات المقلدة (هاي كوبي) في الأسواق، يصبح من الضروري معرفة كيفية التحقق من أن المنتج الذي تشتريه هو 'ستارز بوما أصلي' بنسبة 100%:\n\n1. كود المنتج (Product Code): يحتوي كل حذاء بوما أصلي على كود مصنعي فريد مطبوع على الملصق الداخلي لسان الحذاء وعلى علبة الكرتون الأصلية (مثال: كود الموديل لـ Attacanto). يجب أن يتطابق الكود تماماً عند البحث عنه في موقع بوما الرسمي أو محرك بحث جوجل.\n2. جودة التقفيل والخياطة: تتميز الأحذية الأصلية بدقة متناهية في اللصق والخياطة، مع غياب أي روائح كيميائية قوية أو بقايا صمغ ظاهرة على حواف النعل، وهي الأمور الشائعة جداً في النسخ المقلدة.\n3. الشعار والخطوط: شعار الفهد القافز (Puma Cat) وشريط (Formstrip) على الأحذية الأصلية يكونان مرسومين بدقة وبحواف حادة ومصنوعين من خامات عالية الجودة لا تتقشر بسهولة مع الاستخدام.\n4. علبة الحذاء الأصلية: تأتي الأحذية الأصلية في علبة كرتونية حمراء أو خضراء سميكة تحمل شعار بوما الرسمي وبها ملصق تفصيلي يوضح المقاسات بمختلف الأنظمة (UK, US, EUR, CM) وبلد المنشأ وكود الموديل.\n5. الشراء من منصات موثوقة: تضمن منصات التجارة الإلكترونية الكبرى مثل Amazon.eg (شريطة أن يكون البائع هو أمازون نفسه أو متجر بوما الرسمي المعتمد) الحصول على منتج أصلي مع إمكانية الإرجاع المجاني في حال وجود أي شك."
+        },
+        {
+          title: "6. الخلاصة والتقييم النهائي: هل يستحق حذاء بوما اتاكانتو الشراء؟",
+          body: "في الختام، يمثل حذاء كرة القدم للأطفال بوما اتاكانتو باللونين الأسود والفضي (Puma Attacanto Black & Silver) صفقة رابحة بكل المقاييس لعام 2026. إنه يجمع بنجاح كبير بين الأناقة العصرية الكلاسيكية، والأداء الفني المتوازن على أرض الملعب، والمتانة الاستثنائية التي يحتاجها الأطفال في تدريباتهم اليومية، وكل ذلك بسعر اقتصادي ذكي لا يرهق ميزانية الأسرة. إذا كان طفلك يبدأ خطواته الأولى في عالم الساحرة المستديرة أو يتدرب بانتظام في الأكاديمية الرياضية، فإن الاستثمار في 'ستارز بوما أصلي' مثل موديل اتاكانتو سيوفر له الدعم والأمان الكافي لتطوير مهاراته الكروية بثقة واحترافية عالية."
+        }
+      ],
+      faqs: [
+        {
+          q: "هل حذاء بوما اتاكانتو مناسب للملاعب الترتان (العشب الصناعي)؟",
+          a: "نعم، نعل الحذاء مزود بسدادات مخروطية الشكل (FG/AG) تجعله مناسباً تماماً ومريحاً للعب على العشب الصناعي (الترتان) والعشب الطبيعي على حد سواء."
+        },
+        {
+          q: "كيف أختار المقاس الصحيح لطفلي في حذاء بوما اتاكانتو؟",
+          a: "الحذاء يميل إلى الضيق قليلاً. لذا، يُفضل قياس طول قدم الطفل بالسنتيمتر واختيار مقاس أكبر بنصف درجة لضمان الراحة ومساحة مناسبة لنمو القدم وسمك جورب كرة القدم الثقيل."
+        },
+        {
+          q: "هل خامات حذاء بوما اتاكانتو مقاومة للماء والتمزق؟",
+          a: "نعم، الجزء العلوي مصنوع من خامات صناعية عالية الجودة تمتاز بمقاومتها للماء وسهولة تنظيفها بقطعة قماش رطبة، كما أنها تتحمل الاحتكاك الشديد خلال المباريات والتدريبات."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: Why Parents and Youth Seek 'Original Puma Stars'",
+        "2. Technical Specifications of Puma Attacanto (Black & Silver)",
+        "3. Performance Analysis & Main Benefits of Puma Attacanto Kids Cleats",
+        "4. Drawbacks and Limitations to Consider Before Purchasing",
+        "5. 2026 Buying Guide: How to Spot Original Puma Stars vs Fakes",
+        "6. Summary and Final Verdict: Is Puma Attacanto Worth Buying?"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: Why Parents and Youth Seek 'Original Puma Stars'",
+          body: "Childhood and youth are the critical developmental phases for soccer players. Practicing regularly on natural or artificial pitches demands football boots that provide comfort, safety, and excellent traction to prevent injuries. This is why searching for 'Original Puma Stars/Cleats' is highly popular among soccer families and academy trainees. The German giant Puma is renowned for offering an outstanding balance between premium sports engineering and highly competitive pricing. In this comprehensive review, we evaluate the Puma Attacanto kids soccer cleats in the stunning Black & Silver colorway, utilizing official technical data and trainer feedback for 2026."
+        },
+        {
+          title: "2. Technical Specifications of Puma Attacanto (Black & Silver)",
+          body: "The Puma Attacanto is a smart-entry boot designed to merge high-durability synthetic materials with a professional visual appearance. Here are its key specs:\n\n• Upper Material: Crafted from lightweight yet extremely durable synthetic material. The upper features debossed textures designed to enhance friction with the ball, supporting precise control, passing, and shooting.\n• Design & Aesthetics: Features a dominant classic black base with striking metallic silver details, specifically on the iconic Puma Formstrip, providing a modern professional look.\n• Soleplate & Studs: Made of lightweight TPU, featuring conical studs positioned strategically to distribute foot pressure evenly across the pitch.\n• Closure System: Classical lace closure ensuring a customizable, secure fit that supports the ankle and reduces slippage during rapid direction changes.\n• Insole: Cushioned lining to absorb impact forces from running on hard or artificial turfs.\n• Product Price & Shop Link: This model is currently listed at an official price of 1,786.95 EGP. You can secure your original pair via the following official listing: [Click here to view Puma Attacanto on Amazon Egypt](https://link.amazon/B05HCwoBu) (Disclosure: This is an affiliate link; we may earn a small referral commission if you complete a purchase through this link at no additional cost to you, which complies with search engine transparency standards and sustains our independent review project)."
+        },
+        {
+          title: "3. Performance Analysis & Main Benefits of Puma Attacanto Kids Cleats",
+          body: "Evaluating the original Puma Attacanto cleats on the pitch reveals why they are a highly recommended entry boot by academy coaches:\n\n1. Extremely Lightweight: Reduced boot weight helps improve agility, speed, and responsiveness, lowering muscle fatigue for young athletes.\n2. Optimized Ball Feel: Textured upper details give kids a reliable first touch, which is crucial for early-stage skill development.\n3. High Durability & Easy Maintenance: The synthetic upper material is water-resistant, durable, and easily wiped clean with a wet cloth after a muddy session.\n4. Dual Ground Utility (FG/AG): Conical studs allow the boot to perform exceptionally on both dry natural fields (Firm Ground) and modern artificial grass (AG) pitches.\n5. Exceptional Cost-Performance Ratio: Unlike premium lines like Puma Future or Ultra, the Attacanto represents a highly budget-friendly choice, perfect for fast-growing kids."
+        },
+        {
+          title: "4. Drawbacks and Limitations to Consider Before Purchasing",
+          body: "Despite its many strengths, here are a few limitations of the Puma Attacanto that buyers should consider:\n\n• Initial Stiffness: Due to the synthetic construction instead of natural leather, the upper can feel slightly rigid at first, requiring 2 to 3 training sessions to soften and fully conform to the foot.\n• Fit Width: The silhouette is slightly narrow in the midfoot. If your child has wide feet, it is highly recommended to purchase a half-size or full-size larger to prevent uncomfortable pressure.\n• Wet pitches limitation: The FG/AG soleplate is great for dry or slightly damp pitches, but lacks the deep traction needed for extremely muddy wet grass fields which require long SG metal studs."
+        },
+        {
+          title: "5. 2026 Buying Guide: How to Spot Original Puma Stars vs Fakes",
+          body: "To protect yourself from counterfeit (High Copy) soccer cleats, follow these simple authenticity verification steps:\n\n1. Product Model Code: Every authentic Puma boot has a unique model code printed on the tongue tag and the box. Verify this code against Google or the official Puma website.\n2. Manufacturing Quality: Authentic boots feature clean glue lines, precise stitching, and lack any toxic industrial smells commonly associated with fake replicas.\n3. Puma Logos: The Puma Jumping Cat and Formstrip logos must have sharp, solid edges and use high-quality materials that do not easily peel or crack.\n4. Box Details: Genuine boots ship in sturdy Puma branding boxes with a detailed label specifying exact multi-regional sizing (US, UK, EUR, CM) matching the inner tongue tag.\n5. Buy from Reliable Retailers: Ordering through trusted platforms like Amazon.eg (with Amazon itself as the seller or Puma's official store) ensures an original product and a hassle-free return policy."
+        },
+        {
+          title: "6. Summary and Final Verdict: Is Puma Attacanto Worth Buying?",
+          body: "In summary, the Puma Attacanto Black & Silver soccer cleats represent an exceptionally smart buy for kids and junior players in 2026. It merges sleek professional aesthetics with durable performance and wallet-friendly pricing. If your child is taking their first steps in a local academy or playing soccer with friends, choosing an 'Original Puma Star' like the Attacanto is a wonderful investment in their athletic comfort, safety, and confidence."
+        }
+      ],
+      faqs: [
+        {
+          q: "Are Puma Attacanto cleats suitable for artificial turf?",
+          a: "Yes, the FG/AG conical studs make them perfectly comfortable and safe to use on both artificial grass (turf) and natural grass pitches."
+        },
+        {
+          q: "How should I choose the right size for my child?",
+          a: "Since the boot runs slightly narrow, it is recommended to choose a half-size up to allow room for growth and the thickness of professional football socks."
+        },
+        {
+          q: "Is the upper material water-resistant?",
+          a: "Yes, the synthetic upper resists moisture and is exceptionally easy to clean with a damp cloth after training."
+        }
+      ]
+    }
+  },
   {
     id: "art-hamza-abdel-karim-barcelona-truth",
     slug: "hamza-abdel-karim-barcelona-truth",

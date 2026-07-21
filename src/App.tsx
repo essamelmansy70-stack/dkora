@@ -816,7 +816,7 @@ export default function App() {
         >
           <div className="w-10 h-10 rounded-xl overflow-hidden border border-slate-200/50 dark:border-slate-800 shadow-sm shrink-0 transition-transform group-hover:scale-105 group-hover/header:scale-105">
             <img 
-              src="/logo.jpg" 
+              src="/logo.jpg?v=2.2" 
               alt="dkora" 
               className="w-full h-full object-cover select-none"
               referrerPolicy="no-referrer"
@@ -889,9 +889,9 @@ export default function App() {
                 {/* Hero Banner Image - Highly Optimized for PageSpeed */}
                 <div className="w-full max-w-lg mx-auto rounded-3xl overflow-hidden border border-slate-200/60 shadow-lg bg-slate-100 relative aspect-[16/7]">
                   <picture>
-                    <source srcSet="/hero_world_cup_legends_mobile.webp" type="image/webp" />
+                    <source srcSet="/hero_world_cup_legends_mobile.webp?v=2.2" type="image/webp" />
                     <img
-                      src="/hero_world_cup_legends_mobile.webp"
+                      src="/hero_world_cup_legends_mobile.webp?v=2.2"
                       alt={lang === "ar" ? "اكتشف شبيهك من أساطير كأس العالم" : "Discover your World Cup Legend Match"}
                       width="512"
                       height="224"

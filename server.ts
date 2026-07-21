@@ -9,6 +9,12 @@ import compression from "compression";
 // Load environment variables
 dotenv.config();
 
+// Extremely robust path resolver that works under both ESM development and bundled CJS production,
+// regardless of the current working directory (CWD) on Cloud Run
+const rootDir = typeof __dirname !== "undefined"
+  ? (__dirname.endsWith("dist") ? path.join(__dirname, "..") : __dirname)
+  : process.cwd();
+
 const ARTICLES_SEO = [
   {
     slug: "how-to-find-world-cup-match-ai",
@@ -170,7 +176,7 @@ async function startServer() {
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
   // Always serve static files from the "public" directory directly to prevent broken images
-  app.use(express.static(path.join(process.cwd(), "public")));
+  app.use(express.static(path.join(rootDir, "public")));
 
   // API Route: Combine user base64 photo with their matching players using Gemini
   app.post("/api/match-photo", async (req, res) => {
@@ -303,7 +309,7 @@ The output must be a single beautifully synthesized natural photograph, aspect r
     app.use(vite.middlewares);
   } else {
     console.log("Starting server in PRODUCTION mode.");
-    const distPath = path.join(process.cwd(), "dist");
+    const distPath = path.join(rootDir, "dist");
     
     // Serve static files with robust Cache-Control headers for high-fidelity caching and performance
     app.use(express.static(distPath, {

@@ -169,6 +169,9 @@ async function startServer() {
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
+  // Always serve static files from the "public" directory directly to prevent broken images
+  app.use(express.static(path.join(process.cwd(), "public")));
+
   // API Route: Combine user base64 photo with their matching players using Gemini
   app.post("/api/match-photo", async (req, res) => {
     try {

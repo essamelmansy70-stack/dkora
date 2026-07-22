@@ -39,6 +39,7 @@ import pauCubarsiBarcelonaStar from '../assets/images/pau_cubarsi_barcelona_star
 import football2026GameDownload from '../assets/images/football_2026_game_download_1784525455386.jpg';
 import rodriManchesterCityStar from '../assets/images/rodri_manchester_city_star_1784567482842.jpg';
 import amazonStarsCleats from '../assets/images/amazon_stars_cleats_1784690335216.jpg';
+import learnFootballGuide2026 from '../assets/images/learn_football_guide_2026_1784736115484.jpg';
 
 interface Article {
   id: string;
@@ -81,6 +82,171 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-learn-football-mastery-guide-2026",
+    slug: "learn-football-step-by-step-beginners-guide-2026",
+    categoryAr: "تطوير المهارات والتدريب",
+    categoryEn: "Skills & Training Guide",
+    titleAr: "تعلم كرة القدم للمبتدئين والكبار: الدليل العملي الشامل لإتقان المهارات والأساسيات في عام 2026",
+    titleEn: "Learn Football for Beginners & Adults: The Ultimate 2026 Practical Mastery & Skills Guide",
+    descAr: "دليل إفرجرين (Evergreen) يتجاوز 900 كلمة يغطي خطوة بخطوة كيفية تعلم كرة القدم من الصفر للمبتدئين والكبار. يغطي التحكم بالكرة، اللمسة الأولى، التمرير، المراوغة، التسديد، واللياقة البدنية.",
+    descEn: "An extensive 900+ word evergreen guide detailing step-by-step instructions to learn football from scratch for beginners and adults. Covers ball control, first touch, passing, dribbling, shooting, and athletic conditioning.",
+    keywordsAr: [
+      "تعلم كرة القدم",
+      "كيف اتعلم كرة القدم",
+      "اساسيات تعلم كرة القدم",
+      "تعلم كرة القدم للمبتدئين",
+      "مهارات كرة القدم للمبتدئين",
+      "تعلم التمرير والتسديد في كرة القدم",
+      "تمارين تعلم كرة القدم في البيت",
+      "دليل تعلم كرة القدم 2026"
+    ],
+    keywordsEn: [
+      "learn football",
+      "how to learn football",
+      "football basics for beginners",
+      "learn soccer skills step by step",
+      "football training guide 2026",
+      "mastering ball control and passing"
+    ],
+    image: learnFootballGuide2026,
+    date: "2026-07-22",
+    readTime: "12 min",
+    contentAr: {
+      toc: [
+        "1. مقدمة: لماذا يُعد 'تعلم كرة القدم' خطوة حاسمة لتطوير لياقتك ومهارتك في 2026؟",
+        "2. الركيزة الأولى: إتقان اللمسة الأولى (First Touch) والتحكم بالمزيج الحر للكرة",
+        "3. الركيزة الثانية: أساسيات التمرير الدقيق والاستلام الصحيح تحت الضغط",
+        "4. الركيزة الثالثة: فن المراوغة والجري بالكرة (Dribbling & Ball Carrying)",
+        "5. الركيزة الرابعة: تقنيات التسديد القوي والدقيق وإنهاء الهجمات أمام المرمى",
+        "6. الركيزة الخامسة: التمركز التكتيكي والوعي المكاني داخل المستطيل الأخضر",
+        "7. برنامج تدريبي منزلي وفردي لمدة 30 يوماً لتطوير مستوى تعلم كرة القدم",
+        "8. الإعداد البدني والتغذية والوقاية من الإصابات الكروية الشائعة",
+        "9. الأسئلة الشائعة (FAQs) حول تعلم كرة القدم"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: لماذا يُعد 'تعلم كرة القدم' خطوة حاسمة لتطوير لياقتك ومهارتك في 2026؟",
+          body: "تعتبر كرة القدم اللعبة الشعبية الأولى عالمياً، حيث تجمع ملايين الشغوفين حول العالم. وسواء كنت تسعى إلى **تعلم كرة القدم** لتستمتع بالمباريات الأسبوعية مع أصدقائك في الملاعب الخماسية، أو ترغب في تطوير قدرات طفلك، أو حتى البدء في ممارسة هذه الرياضة كبالغ لتحسين صحتك البدنية والذهنية، فإن البدء بالأسس الصحيحة والتدريب المنهجي يختصر عليك سنوات من المحاولات العشوائية.\n\nفي هذا الدليل الشامل والمحدث لعام 2026، نأخذك في رحلة متكاملة تتجاوز 900 كلمة لتغطية كافة جوانب عملية **تعلم كرة القدم** من الصفر وحتى الاحتراف الميداني. ستتعرف على التقنيات البيوميكانيكية الحديثة لاستلام الكرة، وكيفية تطوير الرؤية التكتيكية داخل الملعب، بالإضافة إلى خطة تدريبية عملية يمكنك تطبيقها فردياً في المنزل أو الملعب المفتوح."
+        },
+        {
+          title: "2. الركيزة الأولى: إتقان اللمسة الأولى (First Touch) والتحكم بالمزيج الحر للكرة",
+          body: "تُعد 'اللمسة الأولى' (First Touch) الفارق الجوهري والحد الفاصل بين اللاعب الهواة واللاعب الماهر. عند **تعلم كرة القدم**، يجب أن يتجه تركيزك الأول نحو كيفية استقبال الكرة القادمة إليك وسحب سرعتها تماماً لتصبح تحت سيطرتك المباشرة في الخطوة التالية.\n\n• **الاستلام بأسفل القدم (Sole Control)**: استخدم باطن أو أسفل الحذاء لإيقاف الكرة الثابتة أو القادمة ببطء، وهي مهارة محورية جداً في كرة القدم الخماسية وعلى ملاعب الترتان.\n• **الاستلام بباطن القدم (Inside Foot Control)**: وهي الطريقة الأكثر استخداماً في كرة القدم. قم بامتصاص سرعة الكرة عن طريق سحب قدمك قليلاً للداخل عند لحظة الملامسة.\n• **التوجيه المسبق (Oriented First Touch)**: لا تكتفِ بإيقاف الكرة مكانها؛ بل وجه اللمسة الأولى نحو المساحة الخالية بعيداً عن أقدام المدافع المقابل لك لتسهيل الحركة التالية.\n• **تمرين تنطيط الكرة (Juggling)**: يساعد تنطيط الكرة بالقدمين والفخذين والحديث اليومي مع الكرة على بناء التوافق العضلي العصبي وسرعة البديهة."
+        },
+        {
+          title: "3. الركيزة الثانية: أساسيات التمرير الدقيق والاستلام الصحيح تحت الضغط",
+          body: "كرة القدم لعبة جماعية قائمة في جوهرها على التمرير والسلاسة الحركية. لا يمكنك النجاح في **تعلم كرة القدم** دون إتقان التمرير القصير والطويل بجميع أجزاء القدم.\n\n• **التمرير الأرضي بباطن القدم (Inside Pass)**: قف بحيث تكون قدمك غير الضاربة (الداعمة) بجانب الكرة وموجهة نحو الهدف. استخدم باطن القدم الأخرى لتمرير الكرة بمركزها للحصول على مسار مستقيم وسلس.\n• **التمرير القاطع بظهر القدم (Instep Pass)**: يُستخدم للتمريرات الطويلة والعرضيات. اضرب الكرة من الأسفل قليلاً بظهر القدم (موضع الأربطة) لمنح الكرة ارتفاعاً وقوة مناسبين.\n• **التمرير بنقرة واحدة (One-Touch Passing)**: يتطلب رؤية مسرح اللعب قبل وصول الكرة إليك. يرفع هذا النمط من سرعة إيقاع الفريق ويصعب مهمة الخصم في الضغط عليك."
+        },
+        {
+          title: "4. الركيزة الثالثة: فن المراوغة والجري بالكرة (Dribbling & Ball Carrying)",
+          body: "المراوغة ليست مجرد حركات استعراضية، بل هي وسيلة تكتيكية لخلق مساحات وتجاوز المدافعين والتغلب على التكتلات الدفاعية. أثناء مسيرتك في **تعلم كرة القدم**، يجب أن تركز على إبقاء الكرة قريبة من قدمك أثناء الجري.\n\n• **الجري بالمقاس القريب (Close Control Dribbling)**: استخدم وجه القدم الخارجي للدفع الخفيف للكرة أثناء الجري السريع، بحيث لا تبتعد الكرة عنك بأكثر من خطوة واحدة.\n• **تغيير السرعة والاتجاه (Change of Pace & Direction)**: التمويه بالجسد (Body Feint) وإيهام المدافع بالتحرك لجهة معينة ثم الانعطاف الشديد للجهة الأخرى يُعتبر السلاح الأقوى في المراوغة الفعالة.\n• **حماية الكرة بالجسد (Shielding)**: ضع جسمك دائماً كعائق بين المدافع والكرة، واستخدم ذراعيك بطريقة قانونية للحفاظ على التوازن ومنع المنافس من الوصول للكرة."
+        },
+        {
+          title: "5. الركيزة الرابعة: تقنيات التسديد القوي والدقيق وإنهاء الهجمات أمام المرمى",
+          body: "الهدف النهائي من كل هجمة في كرة القدم هو إسكان الكرة في شبك المنافس. ولهذا فإن جزءاً رئيساً من **تعلم كرة القدم** يعتمد على تنوع مهارات التسديد والتصويب:\n\n• **التسديد بظهر القدم (Power Shot)**: ثبت قدم الارتكاز بجانب الكرة تماماً، واضرب مركز الكرة بقوة باستخدام مشط القدم أو موضع الأربطة للحصول على تسديدة صاروخية مستقيمة.\n• **التسديد القوسي بباطن القدم (Curved/Finesse Shot)**: يُستخدم لوضع الكرة في الزوايا البعيدة للمرمى (R2). استخدم باطن القدم ولِف الكرة بحركة دائرية لتأخذ مساراً قوسياً يخدع الحارس.\n• **التسديد بالرأس (Headers)**: اضرب الكرة بجبهة الرأس وليس بأعلى الجمجمة، وابق عينيك مفتوحتين أثناء القفز والتوجيه نحو الزوايا السفلى للمرمى."
+        },
+        {
+          title: "6. الركيزة الخامسة: التمركز التكتيكي والوعي المكاني داخل المستطيل الأخضر",
+          body: "المهارة الفردية بدون وعي تكتيكي لا تكفي للنجاح في المباريات الحقيقية. عند الإقدام على **تعلم كرة القدم**، من الضروري فهم أدوار المراكز الكروية ومفاهيم التمركز:\n\n• **مسح الملعب المستمر (Scanning)**: عوّد عينيك على الدوران ومسح الملعب كل 3 إلى 5 ثوانٍ قبل استلام الكرة لتعرف أماكن زملائك والمنافسين والمساحات الخالية.\n• **طلب الكرة في المساحة (Calling for Space)**: التحرك في المساحات الفارغة وصنع زوايا تمرير مريحة للزميل الذي يحمل الكرة يخفف الضغط عن فريقك ككل.\n• **الالتزام بالواجبات الدفاعية**: حتى لو كنت مهاجماً، فإن الضغط العالي والعودة لإغلاق خطوط التمرير يُعتبران جزءاً لا يتجزأ من كرة القدم الحديثة في عام 2026."
+        },
+        {
+          title: "7. برنامج تدريبي منزلي وفردي لمدة 30 يوماً لتطوير مستوى تعلم كرة القدم",
+          body: "إليك خطة تدريبية فردية مبسطة يمكنك ممارستها في حديقة المنزل أو الملعب القريب دون الحاجة لمدرب شخصي:\n\n• **الأسبوع الأول (التحكم واللمسة الأولى)**: 20 دقيقة يومياً من تنطيط الكرة + 15 دقيقة تمرير متبادل مع الحائط بباطن القدم اليمنى واليسرى.\n• **الأسبوع الثاني (المراوغة والتوازن)**: 20 دقيقة تنقل بالكرة بين 6 أقماع (Cones) بمسافات ضيقة + 15 دقيقة تدريب على التمويه بالجسد والتوقف المفاجئ.\n• **الأسبوع الثالث (التسديد والدقة)**: 20 دقيقة تسديد على حائط أو مرمى صغير مع تركيز كامل على دقة ضرب مركز الكرة بباطن وظهر القدم.\n• **الأسبوع الرابع (المحاكاة واللياقة)**: 30 دقيقة من تدريبات الجري الارتدادي بالكرة (Shuttle Runs) مع دمج التمرير والتسديد في محاكاة لظروف المباراة الواقعية."
+        },
+        {
+          title: "8. الإعداد البدني والتغذية والوقاية من الإصابات الكروية الشائعة",
+          body: "تتطلب رياضة كرة القدم مرونة عالية، وقوة انفجارية، وتحملاً دورياً تنفسياً ممتازاً. لضمان الاستمرار في **تعلم كرة القدم** دون التعرض للإصابات:\n\n• **الإحماء الديناميكي (Dynamic Warm-up)**: لا تبدأ باللعب مباشرة؛ قم بعمل تدريبات إحماء لمدة 10-15 دقيقة تشمل إطالة العضلات والجري الخفيف لتنشيط الدورة الدموية.\n• **تقوية عضلات الجذع والساقين**: ممارسة تمارين السكوات (Squats) والبلانك (Plank) تقوي الركبتين وأوتار المأبض وتمنع التواء الكاحل.\n• **التغذية والترطيب**: اشرب كميات كافية من الماء قبل وأثناء وبعد التدريب، وتناول وجبة غنية بالكبوهيدرات المعقدة والبروتين لدعم استشفاء العضلات."
+        },
+        {
+          title: "9. الأسئلة الشائعة (FAQs) حول تعلم كرة القدم",
+          body: "إليك إجابات لأبرز الأسئلة المتكررة التي يطرحها الراغبون في تعلم كرة القدم من مختلف الأعمار:"
+        }
+      ],
+      faqs: [
+        {
+          q: "هل يمكن تعلم كرة القدم في سن متأخرة أو للكبار؟",
+          a: "نعم بالتأكيد! كرة القدم مهارة مكتسبة تتطور بالتدريب المستمر والالتزام بالأساسيات، ويمكن لأي شخص في أي عمر ممارستها وتطوير مستواه البدني والمهاري بشكل ملحوظ."
+        },
+        {
+          q: "كم ساعة أحتاجها يومياً لتعلم كرة القدم للمبتدئين؟",
+          a: "يكفي التدريب لمدة 30 إلى 45 دقيقة يومياً بشكل منتظم 4 مرات أسبوعياً لرؤية تحسن كبير في التحكم بالكرة والتمرير خلال بضعة أسابيع."
+        },
+        {
+          q: "ما هي أهم مهارة يجب البدء بها عند تعلم كرة القدم؟",
+          a: "اللمسة الأولى (First Touch) والتحكم بالكرة بباطن القدم هما أساس كل المهارات الكروية الأخرى، وبدونهما يصعب تطبيق التمرير أو التسديد."
+        },
+        {
+          q: "هل أحتاج لمعدات خاصة لبدء تعلم كرة القدم؟",
+          a: "كل ما تحتاجه هو كرة قدم ذات مقاس مناسب (مقاس 5 للكبار)، وحذاء رياضي مخصص لنوع الملعب (ترتان أو عشب)، وملابس رياضية مريحة."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: Why Learning Football in 2026 Boosts Fitness and Athletic Skills",
+        "2. First Pillar: Mastering the First Touch and Ball Control",
+        "3. Second Pillar: Accurate Passing and Receiving Under Pressure",
+        "4. Third Pillar: Dribbling Art and Ball Carrying Techniques",
+        "5. Fourth Pillar: Shooting Power, Precision, and Finishing",
+        "6. Fifth Pillar: Tactical Positioning and Spatial Awareness",
+        "7. 30-Day Solo Home Training Plan to Learn Football",
+        "8. Physical Conditioning, Nutrition, and Injury Prevention",
+        "9. Frequently Asked Questions (FAQs) About Learning Football"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: Why Learning Football in 2026 Boosts Fitness and Athletic Skills",
+          body: "Football remains the most popular sport globally. Whether you want to **learn football** to play casual weekend matches with friends, support your child's athletic growth, or start playing as an adult to enhance cardiovascular health, mastering the fundamental mechanics is the ultimate shortcut to enjoying the game.\n\nIn this comprehensive 2026 guide spanning over 900 words, we cover every aspect of learning football step-by-step from zero to pitch mastery. You will learn modern biomechanical touch techniques, spatial tactical reading, and a practical 30-day solo training routine."
+        },
+        {
+          title: "2. First Pillar: Mastering the First Touch and Ball Control",
+          body: "The 'First Touch' separates amateur players from skilled competitors. When learning football, your top priority must be cushioning incoming passes so the ball settles instantly under your control.\n\n• Sole Control: Stop rolling balls using the underside of your boot—crucial on turf pitches.\n• Inside Foot Cushioning: Withdraw your foot slightly on impact to absorb ball speed.\n• Oriented Touch: Push the ball towards open space away from defenders to prepare your next move.\n• Juggling Practice: Daily juggling builds touch sensitivity, ankle flexibility, and muscle memory."
+        },
+        {
+          title: "3. Second Pillar: Accurate Passing and Receiving Under Pressure",
+          body: "Football is fundamentally a passing game. You cannot learn football effectively without mastering both short ground passes and long lofted balls.\n\n• Inside Foot Ground Pass: Plant your non-kicking foot beside the ball pointing at the target. Strike through the center of the ball with the inside of your kicking foot.\n• Instep Long Pass: Strike underneath the ball using your laces to gain height and power.\n• One-Touch Passing: Scan the pitch before receiving the ball to execute quick team passes."
+        },
+        {
+          title: "4. Third Pillar: Dribbling Art and Ball Carrying Techniques",
+          body: "Dribbling is a tactical tool used to bypass defenders and unlock space. Keep the ball close to your boots while running.\n\n• Close Control: Push the ball softly using your outside foot so it never strays more than a step away.\n• Pace & Direction Changes: Body feints and rapid shifts deceive defenders effectively.\n• Ball Shielding: Position your body between the defender and the ball, using arms legally for balance."
+        },
+        {
+          title: "5. Fourth Pillar: Shooting Power, Precision, and Finishing",
+          body: "The ultimate goal of attacking play is scoring goals. Master various finishing techniques:\n\n• Laces Power Shot: Plant your standing foot firmly and strike the center of the ball with your laces.\n• Curved Finesse Shot: Wrap the inside of your boot around the ball to curl it into far corners.\n• Heading: Strike with your forehead, keeping eyes open while directing headers downwards."
+        },
+        {
+          title: "6. Fifth Pillar: Tactical Positioning and Spatial Awareness",
+          body: "Technical skill requires tactical awareness to succeed in actual games:\n\n• Pitch Scanning: Turn your head every 3-5 seconds to map teammates, defenders, and space.\n• Space Creation: Move into open passing lanes to relieve pressure on ball handlers.\n• Defensive Responsibility: Pressing and tracking back are essential modern duties."
+        },
+        {
+          title: "7. 30-Day Solo Home Training Plan to Learn Football",
+          body: "Follow this 4-week solo practice plan:\n• Week 1: 20 mins daily ball juggling + 15 mins wall passing with both feet.\n• Week 2: 20 mins cone dribbling + 15 mins body feint drills.\n• Week 3: 20 mins targeted wall/goal shooting for accuracy.\n• Week 4: 30 mins shuttle runs with ball control simulating match conditions."
+        },
+        {
+          title: "8. Physical Conditioning, Nutrition, and Injury Prevention",
+          body: "Football demands agility, explosive power, and stamina. Protect yourself against injuries:\n\n• Dynamic Warm-Up: Spend 10-15 minutes on mobility drills before playing.\n• Core & Leg Strength: Squats and planks strengthen knees, hamstrings, and ankles.\n• Hydration & Fuel: Drink adequate water and consume complex carbs and protein post-training."
+        },
+        {
+          title: "9. Frequently Asked Questions (FAQs) About Learning Football",
+          body: "Here are answers to common questions about learning football at any age."
+        }
+      ],
+      faqs: [
+        {
+          q: "Can adults learn football from scratch?",
+          a: "Yes! Football skills are acquired through structured practice and consistency regardless of age."
+        },
+        {
+          q: "How many hours of practice are needed daily to learn football?",
+          a: "30 to 45 minutes of focused daily training 4 times a week yields significant improvement within weeks."
+        },
+        {
+          q: "What is the most important skill to learn first in football?",
+          a: "First touch and inside-foot ball control are the foundational building blocks for all other football skills."
+        }
+      ]
+    }
+  },
   {
     id: "art-football-stars-cleats-review-2026",
     slug: "football-stars-cleats-turf-review-amazon-egypt",

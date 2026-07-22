@@ -17,6 +17,13 @@ const rootDir = typeof __dirname !== "undefined"
 
 const ARTICLES_SEO = [
   {
+    slug: "learn-football-step-by-step-beginners-guide-2026",
+    titleAr: "تعلم كرة القدم للمبتدئين والكبار: الدليل العملي الشامل لإتقان المهارات والأساسيات في عام 2026 | dkora",
+    titleEn: "Learn Football for Beginners & Adults: The Ultimate 2026 Practical Mastery & Skills Guide | dkora",
+    descAr: "دليل إفرجرين (Evergreen) يتجاوز 900 كلمة يغطي خطوة بخطوة كيفية تعلم كرة القدم من الصفر للمبتدئين والكبار. يغطي التحكم بالكرة، اللمسة الأولى، التمرير، المراوغة، التسديد، واللياقة البدنية.",
+    descEn: "An extensive 900+ word evergreen guide detailing step-by-step instructions to learn football from scratch for beginners and adults."
+  },
+  {
     slug: "football-stars-cleats-turf-review-amazon-egypt",
     titleAr: "مراجعة حذاء ستارز كرة قدم ترتان للجنسين من أمازون مصر: التقييم الشامل والمميزات لعام 2026 | dkora",
     titleEn: "Unisex Turf Football Stars Cleats Review on Amazon Egypt: 2026 In-Depth Analysis | dkora",

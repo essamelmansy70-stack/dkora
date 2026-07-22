@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BookOpen, Calendar, Clock, User, ArrowLeft, ArrowRight, Search, Copy, Check, Share2, CornerDownLeft, Sparkles, Award, TrendingUp, Flame, ShoppingBag } from 'lucide-react';
+import { BookOpen, Calendar, Clock, User, ArrowLeft, ArrowRight, Search, Copy, Check, Share2, CornerDownLeft, Sparkles, Award, TrendingUp, Flame, ShoppingBag, Download, FileText } from 'lucide-react';
 import ayyoubBouaddiCard from '../assets/images/ayyoub_bouaddi_card_1781406003674.jpg';
 import belgiumEgyptMatchCover from '../assets/images/belgium_egypt_match_1781486889243.jpg';
 import worldCupTrendsCover from '../assets/images/world_cup_2026_trends_holder_1781571552830.jpg';
@@ -127,7 +127,7 @@ const ARTICLES_DATA: Article[] = [
       sections: [
         {
           title: "1. مقدمة: لماذا يُعد 'تعلم كرة القدم' خطوة حاسمة لتطوير لياقتك ومهارتك في 2026؟",
-          body: "تعتبر كرة القدم اللعبة الشعبية الأولى عالمياً، حيث تجمع ملايين الشغوفين حول العالم. وسواء كنت تسعى إلى **تعلم كرة القدم** لتستمتع بالمباريات الأسبوعية مع أصدقائك في الملاعب الخماسية، أو ترغب في تطوير قدرات طفلك، أو حتى البدء في ممارسة هذه الرياضة كبالغ لتحسين صحتك البدنية والذهنية، فإن البدء بالأسس الصحيحة والتدريب المنهجي يختصر عليك سنوات من المحاولات العشوائية.\n\nفي هذا الدليل الشامل والمحدث لعام 2026، نأخذك في رحلة متكاملة تتجاوز 900 كلمة لتغطية كافة جوانب عملية **تعلم كرة القدم** من الصفر وحتى الاحتراف الميداني. ستتعرف على التقنيات البيوميكانيكية الحديثة لاستلام الكرة، وكيفية تطوير الرؤية التكتيكية داخل الملعب، بالإضافة إلى خطة تدريبية عملية يمكنك تطبيقها فردياً في المنزل أو الملعب المفتوح."
+          body: "تعتبر كرة القدم اللعبة الشعبية الأولى عالمياً، حيث تجمع ملايين الشغوفين حول العالم. وسواء كنت تسعى إلى **تعلم كرة القدم** لتستمتع بالمباريات الأسبوعية مع أصدقائك في الملاعب الخماسية، أو ترغب في تطوير قدرات طفلك، أو حتى البدء في ممارسة هذه الرياضة كبالغ لتحسين صحتك البدنية والذهنية، فإن البدء بالأسس الصحيحة والتدريب المنهجي يختصر عليك سنوات من المحاولات العشوائية.\n\nفي هذا الدليل الشامل والمحدث لعام 2026، نأخذك في رحلة متكاملة تتجاوز 900 كلمة لتغطية كافة جوانب عملية **تعلم كرة القدم** من الصفر وحتى الاحتراف الميداني. ستتعرف على التقنيات البيوميكانيكية الحديثة لاستلام الكرة، وكيفية تطوير الرؤية التكتيكية داخل الملعب، بالإضافة إلى خطة تدريبية عملية يمكنك تطبيقها فردياً في المنزل أو الملعب المفتوح.\n\n[▶ اضغط هنا لتحميل كتاب تعلم كرة القدم للمبتدئين والكبار PDF مجاناً](https://link.amazon/B0iYOTPXh)"
         },
         {
           title: "2. الركيزة الأولى: إتقان اللمسة الأولى (First Touch) والتحكم بالمزيج الحر للكرة",
@@ -151,11 +151,11 @@ const ARTICLES_DATA: Article[] = [
         },
         {
           title: "7. برنامج تدريبي منزلي وفردي لمدة 30 يوماً لتطوير مستوى تعلم كرة القدم",
-          body: "إليك خطة تدريبية فردية مبسطة يمكنك ممارستها في حديقة المنزل أو الملعب القريب دون الحاجة لمدرب شخصي:\n\n• **الأسبوع الأول (التحكم واللمسة الأولى)**: 20 دقيقة يومياً من تنطيط الكرة + 15 دقيقة تمرير متبادل مع الحائط بباطن القدم اليمنى واليسرى.\n• **الأسبوع الثاني (المراوغة والتوازن)**: 20 دقيقة تنقل بالكرة بين 6 أقماع (Cones) بمسافات ضيقة + 15 دقيقة تدريب على التمويه بالجسد والتوقف المفاجئ.\n• **الأسبوع الثالث (التسديد والدقة)**: 20 دقيقة تسديد على حائط أو مرمى صغير مع تركيز كامل على دقة ضرب مركز الكرة بباطن وظهر القدم.\n• **الأسبوع الرابع (المحاكاة واللياقة)**: 30 دقيقة من تدريبات الجري الارتدادي بالكرة (Shuttle Runs) مع دمج التمرير والتسديد في محاكاة لظروف المباراة الواقعية."
+          body: "إليك خطة تدريبية فردية مبسطة يمكنك ممارستها في حديقة المنزل أو الملعب القريب دون الحاجة لمدرب شخصي:\n\n• **الأسبوع الأول (التحكم واللمسة الأولى)**: 20 دقيقة يومياً من تنطيط الكرة + 15 دقيقة تمرير متبادل مع الحائط بباطن القدم اليمنى واليسرى.\n• **الأسبوع الثاني (المراوغة والتوازن)**: 20 دقيقة تنقل بالكرة بين 6 أقماع (Cones) بمسافات ضيقة + 15 دقيقة تدريب على التمويه بالجسد والتوقف المفاجئ.\n• **الأسبوع الثالث (التسديد والدقة)**: 20 دقيقة تسديد على حائط أو مرمى صغير مع تركيز كامل على دقة ضرب مركز الكرة بباطن وظهر القدم.\n• **الأسبوع الرابع (المحاكاة واللياقة)**: 30 دقيقة من تدريبات الجري الارتدادي بالكرة (Shuttle Runs) مع دمج التمرير والتسديد في محاكاة لظروف المباراة الواقعية.\n\n[▶ اضغط هنا لتحميل جدول تمارين تعلم كرة القدم 30 يوماً PDF](https://link.amazon/B0iYOTPXh)"
         },
         {
           title: "8. الإعداد البدني والتغذية والوقاية من الإصابات الكروية الشائعة",
-          body: "تتطلب رياضة كرة القدم مرونة عالية، وقوة انفجارية، وتحملاً دورياً تنفسياً ممتازاً. لضمان الاستمرار في **تعلم كرة القدم** دون التعرض للإصابات:\n\n• **الإحماء الديناميكي (Dynamic Warm-up)**: لا تبدأ باللعب مباشرة؛ قم بعمل تدريبات إحماء لمدة 10-15 دقيقة تشمل إطالة العضلات والجري الخفيف لتنشيط الدورة الدموية.\n• **تقوية عضلات الجذع والساقين**: ممارسة تمارين السكوات (Squats) والبلانك (Plank) تقوي الركبتين وأوتار المأبض وتمنع التواء الكاحل.\n• **التغذية والترطيب**: اشرب كميات كافية من الماء قبل وأثناء وبعد التدريب، وتناول وجبة غنية بالكبوهيدرات المعقدة والبروتين لدعم استشفاء العضلات."
+          body: "تتطلب رياضة كرة القدم مرونة عالية، وقوة انفجارية، وتحملاً دورياً تنفسياً ممتازاً. لضمان الاستمرار في **تعلم كرة القدم** دون التعرض للإصابات:\n\n• **الإحماء الديناميكي (Dynamic Warm-up)**: لا تبدأ باللعب مباشرة؛ قم بعمل تدريبات إحماء لمدة 10-15 دقيقة تشمل إطالة العضلات والجري الخفيف لتنشيط الدورة الدموية.\n• **تقوية عضلات الجذع والساقين**: ممارسة تمارين السكوات (Squats) والبلانك (Plank) تقوي الركبتين وأوتار المأبض وتمنع التواء الكاحل.\n• **التغذية والترطيب**: اشرب كميات كافية من الماء قبل وأثناء وبعد التدريب، وتناول وجبة غنية بالكبوهيدرات المعقدة والبروتين لدعم استشفاء العضلات.\n\n[▶ اضغط هنا لتحميل كتاب تعلم كرة القدم الشامل PDF (رابط أفيليت معتمد مع كتاب مجاني)](https://link.amazon/B0iYOTPXh)"
         },
         {
           title: "9. الأسئلة الشائعة (FAQs) حول تعلم كرة القدم",
@@ -8370,6 +8370,53 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                       {isRtl 
                         ? "✓ رابط معتمد وآمن للتحميل المباشر من متجر Google Play الرسمي." 
                         : "✓ Official and secure direct link to download from Google Play Store."}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Specialized Interactive Download Section for Learn Football PDF Book */}
+              {selectedArticle.id === "art-learn-football-mastery-guide-2026" && (
+                <div id="download-pdf-book" className="p-6 bg-gradient-to-br from-[#1c0d23] via-[#12081d] to-[#0d0517] border border-rose-500/25 rounded-3xl shadow-2xl space-y-5 relative overflow-hidden text-right rtl:text-right">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-rose-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
+                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-red-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
+
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="space-y-1.5">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-rose-500/15 text-rose-400 text-[10px] font-black rounded-lg border border-rose-500/20">
+                        <FileText className="w-3.5 h-3.5" />
+                        <span>{isRtl ? "تحميل كتاب PDF مجاني 100%" : "100% Free PDF Book Download"}</span>
+                      </span>
+                      <h3 className="text-base sm:text-lg font-black text-white">
+                        {isRtl ? "تحميل كتاب تعلم كرة القدم للمبتدئين والكبار PDF (الدليل الشامل 2026)" : "Download Learn Football Mastery Complete PDF Book 2026"}
+                      </h3>
+                      <p className="text-xs text-slate-300 font-semibold leading-relaxed">
+                        {isRtl 
+                          ? "احصل الآن على الكتاب الإلكتروني الشامل بصيغة PDF الذي يحتوي على كشف أساسيات اللمسة الأولى، التمرير، التسديد، وجدول تمارين 30 يوماً مجاناً." 
+                          : "Get the complete PDF ebook edition covering all fundamentals, techniques, and the 30-day solo training plan."}
+                      </p>
+                    </div>
+                    <div className="p-3 bg-slate-900/80 border border-slate-800 rounded-2xl shrink-0 shadow-inner">
+                      <Download className="w-5 h-5 text-rose-500 animate-bounce" />
+                    </div>
+                  </div>
+
+                  {/* Interactive Direct Download CTA Button */}
+                  <div className="space-y-3 pt-2">
+                    <a
+                      href="https://link.amazon/B0iYOTPXh"
+                      target="_blank"
+                      rel="noopener noreferrer nofollow sponsored"
+                      className="w-full py-4 px-6 rounded-2xl font-black text-sm transition-all duration-300 transform active:scale-95 shadow-xl flex items-center justify-center gap-2 cursor-pointer bg-gradient-to-r from-[#ff1a40] via-[#e11d48] to-[#dc2626] hover:from-[#ff3355] hover:to-[#ef4444] text-white no-underline border border-rose-400/30"
+                    >
+                      <Download className="w-4 h-4 text-white" />
+                      <span>{isRtl ? "اضغط هنا لتحميل كتاب تعلم كرة القدم PDF مجاناً" : "Click Here to Download Learn Football PDF Book Free"}</span>
+                    </a>
+
+                    <p className="text-[11px] text-center text-slate-400 font-bold leading-relaxed pt-1 font-sans">
+                      {isRtl 
+                        ? "✓ كتاب إلكتروني جاهز للتحميل والتصفح السريع على الأندرويد والآيفون وأجهزة الكمبيوتر." 
+                        : "✓ Ready-to-read PDF ebook compatible with all smartphones, tablets, and computers."}
                     </p>
                   </div>
                 </div>

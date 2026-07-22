@@ -38,7 +38,7 @@ import pumaAttacantoOriginal from '../assets/images/puma_attacanto_original_1784
 import pauCubarsiBarcelonaStar from '../assets/images/pau_cubarsi_barcelona_star_1784520407347.jpg';
 import football2026GameDownload from '../assets/images/football_2026_game_download_1784525455386.jpg';
 import rodriManchesterCityStar from '../assets/images/rodri_manchester_city_star_1784567482842.jpg';
-import footballStarsCleats from '../assets/images/football_stars_cleats_1784689563417.jpg';
+import amazonStarsCleats from '../assets/images/amazon_stars_cleats_1784690335216.jpg';
 
 interface Article {
   id: string;
@@ -108,7 +108,7 @@ const ARTICLES_DATA: Article[] = [
       "best turf football studs 2026",
       "Egypt football gear review"
     ],
-    image: footballStarsCleats,
+    image: amazonStarsCleats,
     date: "2026-07-21",
     readTime: "10 min",
     contentAr: {

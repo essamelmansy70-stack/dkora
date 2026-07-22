@@ -17,6 +17,13 @@ const rootDir = typeof __dirname !== "undefined"
 
 const ARTICLES_SEO = [
   {
+    slug: "football-stars-cleats-turf-review-amazon-egypt",
+    titleAr: "مراجعة حذاء ستارز كرة قدم ترتان للجنسين من أمازون مصر: التقييم الشامل والمميزات لعام 2026 | dkora",
+    titleEn: "Unisex Turf Football Stars Cleats Review on Amazon Egypt: 2026 In-Depth Analysis | dkora",
+    descAr: "مراجعة تفصيلية شاملة تتجاوز 800 كلمة عن حذاء ستارز كرة قدم ترتان للجنسين المتاح على أمازون مصر (B0FNNN4ZTP). نناقش الخامات وثبات النعل الشامل مع رابط الشراء المباشر.",
+    descEn: "An in-depth 800+ word review of the unisex turf football stars cleats available on Amazon Egypt (B0FNNN4ZTP). Exploring durability, TF traction, padding, and direct buy link."
+  },
+  {
     slug: "how-to-find-world-cup-match-ai",
     titleAr: "كيف تكتشف شبيهك الكروي من لاعبي المونديال بدقة بالذكاء الاصطناعي؟ | dkora",
     titleEn: "How to Find Your Exact World Cup Player Match Using Gemini AI | dkora",

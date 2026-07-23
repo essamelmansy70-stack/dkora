@@ -17,6 +17,13 @@ const rootDir = typeof __dirname !== "undefined"
 
 const ARTICLES_SEO = [
   {
+    slug: "marwan-attia-al-ahly-player-contract-renewal-2031-profile-2026",
+    titleAr: "مروان عطية لاعب الاهلي: كواليس تجديد العقد حتى 2031، تحصين القلعة الحمراء، وتحليل أداء 'رئة' وسط المارد الأحمر | dkora",
+    titleEn: "Marwan Attia Al Ahly Player: Contract Renewal to 2031, Salary Upgrade & Midfield Engine Analysis 2026 | dkora",
+    descAr: "تقرير صحفي متكامل ومفصل يتجاوز 800 كلمة يغطي كواليس تجديد عقد مروان عطية لاعب الاهلي، تعديل الفئة المالية، تحصينه بعقد طويل الأجل حتى 2031، وتأثيره التكتيكي كأحد أهم أعمدة خط الوسط في الأهلي ومنتخب مصر.",
+    descEn: "Comprehensive 800+ word journalistic report covering Marwan Attia's contract extension with Al Ahly, salary upgrade to category one, long-term security, and tactical analysis of his key midfield role for Al Ahly and Egypt."
+  },
+  {
     slug: "julian-alvarez-barcelona-atletico-madrid-transfer-rumors-profile-2026",
     titleAr: "جوليان ألفاريز: كواليس اهتمام برشلونة، موقف أتلتيكو مدريد، ومستقبل 'العنكبوت' الأرجنتيني | dkora",
     titleEn: "Julián Álvarez: Barcelona Transfer Links, Atlético Madrid Stance & 'El Araña' Career Breakdown 2026 | dkora",

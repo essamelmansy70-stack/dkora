@@ -17,6 +17,13 @@ const rootDir = typeof __dirname !== "undefined"
 
 const ARTICLES_SEO = [
   {
+    slug: "crysencio-summerville-origins-al-hilal-transfer-profile-2026",
+    titleAr: "اصول كريسينسيو سامرفيل: مسيرة الجناح الهولندي الشاب ورحلته من فاينورد إلى البريميرليغ واهتمام الهلال | dkora",
+    titleEn: "Origins of Crysencio Summerville: Career, Surinamese Heritage & Football Journey to Al Hilal Links | dkora",
+    descAr: "تقرير شامل ومفصل يتجاوز 800 كلمة يتناول أصول كريسينسيو سامرفيل (Crysencio Summerville)، جذوره السورينامية، نشأته في روتردام، محطاته الكروية مع فاينورد، ليدز يونايتد، ووست هام، وصولاً إلى اهتمام نادي الهلال السعودي بخدماته.",
+    descEn: "In-depth 800+ word profile covering the origins of Crysencio Summerville, his Surinamese heritage, birth in Rotterdam, youth days at Feyenoord, Leeds United mastery, West Ham transfer, and links to Al Hilal."
+  },
+  {
     slug: "learn-football-step-by-step-beginners-guide-2026",
     titleAr: "تعلم كرة القدم للمبتدئين والكبار: الدليل العملي الشامل لإتقان المهارات والأساسيات في عام 2026 | dkora",
     titleEn: "Learn Football for Beginners & Adults: The Ultimate 2026 Practical Mastery & Skills Guide | dkora",

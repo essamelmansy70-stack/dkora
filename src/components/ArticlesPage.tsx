@@ -40,6 +40,7 @@ import football2026GameDownload from '../assets/images/football_2026_game_downlo
 import rodriManchesterCityStar from '../assets/images/rodri_manchester_city_star_1784567482842.jpg';
 import amazonStarsCleats from '../assets/images/amazon_stars_cleats_1784690335216.jpg';
 import learnFootballGuide2026 from '../assets/images/learn_football_guide_2026_1784736115484.jpg';
+import crysencioSummervilleStar from '../assets/images/crysencio_summerville_star_1784824392236.jpg';
 
 interface Article {
   id: string;
@@ -82,6 +83,171 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-crysencio-summerville-origins-2026",
+    slug: "crysencio-summerville-origins-al-hilal-transfer-profile-2026",
+    categoryAr: "أخبار وسير اللاعبين",
+    categoryEn: "Player Profiles & Transfers",
+    titleAr: "اصول كريسينسيو سامرفيل: مسيرة الجناح الهولندي الشاب ورحلته الكروية من فاينورد إلى البريميرليغ واهتمام الهلال",
+    titleEn: "Origins of Crysencio Summerville: Career, Surinamese Heritage & Football Journey to Al Hilal Links",
+    descAr: "تقرير شامل ومفصل يتجاوز 800 كلمة يتناول أصول كريسينسيو سامرفيل (Crysencio Summerville)، جذوره السورينامية، نشأته في روتردام، محطاته الكروية مع فاينورد، ليدز يونايتد، ووست هام، وصولاً إلى اهتمام نادي الهلال السعودي بخدماته.",
+    descEn: "In-depth 800+ word profile covering the origins of Crysencio Summerville, his Surinamese heritage, birth in Rotterdam, youth days at Feyenoord, Leeds United mastery, West Ham transfer, and links to Al Hilal.",
+    keywordsAr: [
+      "اصول كريسينسيو سامرفيل",
+      "أصول كريسينسيو سامرفيل",
+      "من هو كريسينسيو سامرفيل",
+      "جنسية كريسينسيو سامرفيل",
+      "لاعب الهلال كريسينسيو سامرفيل",
+      "كريسينسيو سامرفيل وست هام",
+      "كريسينسيو سامرفيل ليدز يونايتد",
+      "سيرة كريسينسيو سامرفيل الذاتية"
+    ],
+    keywordsEn: [
+      "crysencio summerville origins",
+      "crysencio summerville nationality",
+      "crysencio summerville al hilal",
+      "crysencio summerville west ham",
+      "crysencio summerville leeds united",
+      "who is crysencio summerville"
+    ],
+    image: crysencioSummervilleStar,
+    date: "2026-07-23",
+    readTime: "11 min",
+    contentAr: {
+      toc: [
+        "1. مقدمة: من هو الجناح الهولندي وما هي اصول كريسينسيو سامرفيل؟",
+        "2. الأصول السورينامية ونشأة سامرفيل في شوارع روتردام الهولندية",
+        "3. البداية الكروية: التأسيس الأكاديمي الصارم في مدرسة فاينورد روتردام",
+        "4. خطوة الإعارات الصاقلة: تجربة دوردريخت وأدو دين هاغ بالدوري الهولندي",
+        "5. الانفجار الكروي في إنجلترا: التألق الأسطوري مع ليدز يونايتد والتتويج بالأفضل",
+        "6. المحطة الحالية: الانتقال إلى وست هام يونايتد واهتمام الهلال السعودي",
+        "7. الأسلوب التكتيكي والخصائص الفنية للجناح الهولندي الطائر",
+        "8. بطاقة البيانات الشخصية والمحطات الكروية لـ كريسينسيو سامرفيل",
+        "9. الأسئلة الشائعة (FAQs) حول اصول كريسينسيو سامرفيل ومسيرته"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: من هو الجناح الهولندي وما هي اصول كريسينسيو سامرفيل؟",
+          body: "خطف الجناح الهولندي الشاب كريسينسيو سامرفيل (Crysencio Summerville) أنظار الجماهير الكروية ومتابعي سوق الانتقالات العالمية والعربية مؤخراً، وذلك بعد المستويات الباهرة التي قدمها في الملاعب الإنجليزي والتحركات المكثفة التي ربطت اسمه بأعرق الأندية الأوروبية والسعودية. ومع تزايد التساؤلات بين عشاق الكرة العربية حول **اصول كريسينسيو سامرفيل** والخلفية العائلية والرياضية لهذا الموهوب الطائر، يأتي هذا التقرير الشامل ليغوص في أدق تفاصيل حياته ونشأته ومسيرته الكروية الحافلة بالإنجازات.\n\nولد كريسينسيو جيلبرت سيلفيريو سيرو سامرفيل (Crysencio Jilbert Sylverio Cirro Summerville) في مدينة روتردام الكروية الشهيرة في هولندا بتاريخ 30 أكتوبر 2001. ويتميز اللاعب بخلفية متعددة الثقافات؛ حيث تعود **اصول كريسينسيو سامرفيل** العائلية والجينية إلى دولة سورينام (Suriname) الواقعة في أمريكا الجنوبية، وهي الدولة ذات التاريخ العريق في رفد الكرة الهولندية بأساطير تاريخية لا تُنسى مثل رود خوليت، فرانك ريكارد، باتريك كلايفرت، وفيرجيل فان دايك."
+        },
+        {
+          title: "2. الأصول السورينامية ونشأة سامرفيل في شوارع روتردام الهولندية",
+          body: "تُعد **اصول كريسينسيو سامرفيل** السورينامية ركناً أساسياً في تشكيل شخصيته الرياضية وأسلوب لعبه المثير؛ حيث هاجر والداه من سورينام واستقرا في مدينة روتردام الهولندية بحثاً عن حياة أفضل ورعاية أسرية كريمة. نشأ سامرفيل في أحياء روتردام الشعبية المفعمة بالشغف الكروي، حيث بدأ ممارسة اللعبة في ساحات الأحياء المفتوحة وعلى الملاعب الخماسية (Street Football).\n\nمنحته هذه النشأة الشارعية المرونة العالية، المهارة الفطرية في المراوغة في المساحات الضيقة جداً، والسرعة الانفجارية في تغيير الاتجاه. تجمع **اصول كريسينسيو سامرفيل** السورينامية والهولندية بين السحر والابتكار اللاتيني والقدرة على التحكم الارتجالي بالكرة من جهة، والانضباط التكتيكي والالتزام بالتدريبات البيوميكانيكية الحديثة من جهة أخرى، مما جعله لاعباً استثنائياً يلفت الأنظار منذ سن مبكرة جداً."
+        },
+        {
+          title: "3. البداية الكروية: التأسيس الأكاديمي الصارم في مدرسة فاينورد روتردام",
+          body: "بدأ سامرفيل مسيرته الكروية المنظمة في نادي نورديركوارشير (RVVH Noorderkwartier) المحلي، وسرعان ما التقطته أعين كشافي نادي فاينورد روتردام (Feyenoord) العريق عام 2008 وهو لم يتجاوز السابعة من عمره. انضم كريسينسيو إلى أكاديمية فاينورد الشهيرة بإنتاج أفضل المواهب في أوروبا.\n\nتدرج اللاعب الشاب في كافة الفئات السنية لأكاديمية فاينورد، وظهر بمستويات خارقة في بطولات الفئات السنية الهولندية بفضل سرعته الشديدة وقدرته على حسم المواجهات الفردية (1v1). وخلال هذه الفترة، صُقلت مهاراته في التمرير والتسديد بالقدمين، وأصبح محط اهتمام مدربي المنتخبات الوطنية الفئات السنية في هولندا، حيث تم استدعاؤه لتمثيل منتخبات هولندا تحت 16 و17 و18 و19 و21 عاماً، وساهم في تتويج منتخب هولندا تحت 17 سنة بلقب بطولة أمم أوروبا للناشئين عام 2018."
+        },
+        {
+          title: "4. خطوة الإعارات الصاقلة: تجربة دوردريخت وأدو دين هاغ بالدوري الهولندي",
+          body: "رغم موهبته الفذة، كان التنافس كبيراً في الفريق الأول لنادي فاينورد، مما دفع إداريي النادي إلى إعارته لكسب الخبرة الميدانية والاحتكاك باللاعبين المحترفين في الدوري الهولندي:\n\n• **تجربة دوردريخت (FC Dordrecht - 2018/2019)**: أعير سامرفيل إلى نادي دوردريخت في الدرجة الثانية وهو بعمر 17 عاماً فقط، حيث خاض 18 مباراة وسجل 5 أهداف وصنع هدفاً، ليصبح أصغر لاعب يسجل هدفاً في تاريخ النادي في دوري الدرجة الثانية.\n• **تجربة أدو دين هاغ (ADO Den Haag - 2019/2020)**: انتقل على سبيل الإعارة إلى نادي أدو دين هاغ في الدوري الهولندي الممتاز (Eredivisie)، وتألق بشكل لافت بخوضه 21 مباراة تسجيلاً وصناعة، ونال إشادة واسعة من وسائل الإعلام الهولندية التي وصفته بالموهبة القادمة بسرعة الصاروخ بفضل قدرته الفائقة على الاختراق من الأطراف."
+        },
+        {
+          title: "5. الانفجار الكروي في إنجلترا: التألق الأسطوري مع ليدز يونايتد والتتويج بالأفضل",
+          body: "في سبتمبر 2020، خطف نادي ليدز يونايتد الإنجليزي (Leeds United) توقيع الشاب الموهوب بعقد طويل الأمد. بدأ سامرفيل مشواره مع فريق الشباب تحت 23 سنة في ليدز، وسرعان ما فرض نفسه على الفريق الأول تحت قيادة الأجهزة الفنية المتعاقبة بالبريميرليغ.\n\nوجاء الانفجار الحقيقي والكامل للموهبة الكروية خلال موسم 2023-2024 بالدوري الإنجليزي الدرجة الأولى (EFL Championship):\n• **الأرقام التهديفية المرعبة**: خاض سامرفيل 49 مباراة بمختلف البطولات مع ليدز، وسجل 21 هدفاً وقدم 10 تمريرات حاسمة.\n• **جائزة أفضل لاعب في البطولة**: تُوج كريسينسيو سامرفيل بجائزة 'لاعب الموسم في التشامبيونشيب' (EFL Championship Player of the Season 2023/24)، وتم اختياره ضمن التشكيلة المثالية للبطولة، مما جعله من أكثر الأجنحة طلباً في الميركاتو الصيفي الأوروبي."
+        },
+        {
+          title: "6. المحطة الحالية: الانتقال إلى وست هام يونايتد واهتمام الهلال السعودي",
+          body: "بفضل أدائه الاستثنائي مع ليدز، نجح نادي وست هام يونايتد (West Ham United) في التعاقد مع كريسينسيو سامرفيل في أغسطس 2024 بعقد ينتهي عام 2029 وفي صفقة قدرت بنحو 25 إلى 30 مليون جنيه إسترليني، ليصبح أحد الأوراق الهجومية الأساسية في كتيبة الهامرز بالدوري الإنجليزي الممتاز.\n\nومع الطفرة الكبيرة والاستثنائية التي شهدها دوري روشن السعودي للمحترفين في استقطاب أبرز نجوم العالم، انتشرت تقارير صحفية عالمية وصحف رياضية عربية تسلط الضوء على اهتمام نادي الهلال السعودي (Al Hilal) بخدمات سامرفيل. يسعى الهلال لتدعيم خط هجومه بجناح شاب يمتلك السرعة والحلول الفردية الخارقة في المساحات الضيقة إلى جانب نجوم الفريق مثل مالكوم وميتروفيتش وسالم الدوسري، مما جعل اسم اللاعب يتردد بقوة في الأوساط الرياضية الخليجية والعربية.\n\n[▶ اضغط هنا لتحميل كتاب تعلم وتطوير المهارات الكروية للمبتدئين والكبار PDF مجاناً](https://link.amazon/B0iYOTPXh)"
+        },
+        {
+          title: "7. الأسلوب التكتيكي والخصائص الفنية للجناح الهولندي الطائر",
+          body: "يتسم أسلوب لعب كريسينسيو سامرفيل بمجموعة من الخصائص الفنية المتميزة التي تجعله كابوساً لخطوط الدفاع المنافسة:\n\n• **السرعة والانفجارية**: يمتلك معدل تسارع شاهق وانطلاقات سريعة تتجاوز 34 كم/ساعة، مما يسمح له بتجاوز المدافعين في التمريرات الطولية والكرات المرتدة.\n• **المراوغة الفردية (Inside Dribbling)**: يفضل اللعب على الجناح الأيسر لقطع الكرة للداخل والدخول بعمق الملعب على قدمه اليمنى المفضلة للتسديد المباشر أو لعب التمريرات البينية الساقطة.\n• **الإنهاء أمام المرمى (Clinical Finishing)**: يتميز بدقة عالية في تسديد الكرات القوسية (Finesse Shots) في الزوايا البعيدة لحراس المرمى.\n• **المرونة التكتيكية والضغط العالي**: يستطيع اللعب كجناح أيسر، جناح أيمن، أو مهاجم ثانٍ، ويمتاز بالتزامه التكتيكي الشديد في الضغط العالي واستعادة الكرة سريعا."
+        },
+        {
+          title: "8. بطاقة البيانات الشخصية والمحطات الكروية لـ كريسينسيو سامرفيل",
+          body: "إليك ملخصاً سريعاً لكافة البيانات والبطاقة التعريفية الخاصة بالنجم الهولندي:\n\n• **الاسم الكامل**: كريسينسيو جيلبرت سيلفيريو سيرو سامرفيل (Crysencio Summerville).\n• **تاريخ الميلاد**: 30 أكتوبر 2001 (العمر 24 عاماً بحلول 2026).\n• **مكان الميلاد**: روتردام، هولندا.\n• **أصول كريسينسيو سامرفيل**: أصول سورينامية (سورينام - أمريكا الجنوبية) وحامل للجنسية الهولندية.\n• **المركز الأساسي**: جناح أيسر (Left Winger) / جناح أيمن.\n• **الأندية المحترفة**: فاينورد، دوردريخت، أدو دين هاغ، ليدز يونايتد، وست هام يونايتد.\n• **أبرز الجوائز الفردية**: أفضل لاعب في الدوري الإنجليزي الدرجة الأولى (Championship Player of the Year 2023/24)، بطل يورو تحت 17 سنة مع هولندا (2018)."
+        },
+        {
+          title: "9. الأسئلة الشائعة (FAQs) حول اصول كريسينسيو سامرفيل ومسيرته",
+          body: "نستعرض هنا أجوبة شاملة لأبرز الأسئلة التي يطرحها المشجعون والمتابعون حول اللاعب:"
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هي اصول كريسينسيو سامرفيل الحقيقية؟",
+          a: "تعود اصول كريسينسيو سامرفيل العائلية إلى دولة سورينام في أمريكا الجنوبية، بينما ولد ونشأ في مدينة روتردام بالهولندا ويحمل الجنسية الهولندية."
+        },
+        {
+          q: "ما هو النادي الحالي الذي يلعب له كريسينسيو سامرفيل؟",
+          a: "يلعب سامرفيل حالياً في صفوف نادي وست هام يونايتد الإنجليزي (West Ham United) في البريميرليغ بعد انتقاله إليه قادماً من ليدز يونايتد."
+        },
+        {
+          q: "هل كريسينسيو سامرفيل انضم رسمياً لنادي الهلال السعودي؟",
+          a: "ارتبط اسم اللاعب بتقارير صحفية واهتمام هلالي لتعزيز خط الهجوم، إلا أن اللاعب يرتبط بعقد مع نادي وست هام يونايتد الإنجليزي."
+        },
+        {
+          q: "ما هي أبرز إنجازات سامرفيل الكروية حتى الآن؟",
+          a: "التتويج بجائزة أفضل لاعب في التشامبيونشيب الإنجليزي (2023/24)، وحصد بطولة أمم أوروبا تحت 17 سنة مع منتخب هولندا عام 2018."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: Who is Crysencio Summerville and What Are His Origins?",
+        "2. Surinamese Roots and Childhood in Rotterdam, Netherlands",
+        "3. Academy Beginnings: Development at Feyenoord Rotterdam",
+        "4. Loan Spells: FC Dordrecht and ADO Den Haag Experience",
+        "5. Breakthrough in England: Championship Player of the Year at Leeds United",
+        "6. Current Status: West Ham United Transfer and Al Hilal Saudi Links",
+        "7. Tactical Style and Technical Attributes of the Dutch Winger",
+        "8. Crysencio Summerville Personal Profile and Career Stats",
+        "9. Frequently Asked Questions (FAQs) About Summerville's Origins"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: Who is Crysencio Summerville and What Are His Origins?",
+          body: "Dutch winger Crysencio Summerville has captured the attention of global football fans and transfer market analysts following stellar performances in English football. With rising queries about **Crysencio Summerville origins**, his background, and transfer links to Saudi giant Al Hilal, this comprehensive report delves into his life, career, and technical prowess.\n\nBorn Crysencio Jilbert Sylverio Cirro Summerville in Rotterdam on October 30, 2001, he possesses a rich multicultural heritage. **Crysencio Summerville origins** trace back to Suriname in South America—a nation renowned for supplying legendary talent to Dutch football like Ruud Gullit, Frank Rijkaard, Patrick Kluivert, and Virgil van Dijk."
+        },
+        {
+          title: "2. Surinamese Roots and Childhood in Rotterdam, Netherlands",
+          body: "Summerville's Surinamese descent played a crucial role in shaping his football identity. His parents migrated from Suriname to Rotterdam. Growing up in Rotterdam's vibrant street football culture gave him rapid footwork, tight space agility, and explosive dribbling.\n\nCombining Surinamese creative flair with tactical Dutch academy discipline, Crysencio quickly stood out among youth prospects across the Netherlands."
+        },
+        {
+          title: "3. Academy Beginnings: Development at Feyenoord Rotterdam",
+          body: "He joined RVVH Noorderkwartier before entering Feyenoord's famed academy in 2008 at age seven. Summerville progressed through all youth ranks at Feyenoord, representing Netherlands youth national teams (U16 to U21) and winning the UEFA European Under-17 Championship in 2018."
+        },
+        {
+          title: "4. Loan Spells: FC Dordrecht and ADO Den Haag Experience",
+          body: "To gain senior match experience, Feyenoord loaned Summerville to FC Dordrecht (2018/19) where he scored 5 goals in 18 appearances, becoming Dordrecht's youngest ever goalscorer in the Eerste Divisie. He followed that with a successful top-flight loan at ADO Den Haag in the Eredivisie."
+        },
+        {
+          title: "5. Breakthrough in England: Championship Player of the Year at Leeds United",
+          body: "In September 2020, Leeds United secured his signature. In the 2023/24 season, Summerville exploded on the scene, scoring 21 goals and delivering 10 assists in 49 appearances. He was awarded the prestigious **EFL Championship Player of the Season** award."
+        },
+        {
+          title: "6. Current Status: West Ham United Transfer and Al Hilal Saudi Links",
+          body: "In August 2024, West Ham United signed Summerville on a five-year contract worth around £25+ million. His electrifying pace also attracted interest from Saudi Pro League champion Al Hilal, seeking a dynamic young winger to complement stars like Malcom, Mitrović, and Salem Al-Dawsari."
+        },
+        {
+          title: "7. Tactical Style and Technical Attributes of the Dutch Winger",
+          body: "Summerville excels on the left wing, cutting inside onto his stronger right foot to unleash curling finesse shots or sharp through balls. His top sprint speed exceeds 34 km/h, paired with relentless high pressing."
+        },
+        {
+          title: "8. Crysencio Summerville Personal Profile and Career Stats",
+          body: "• Full Name: Crysencio Jilbert Sylverio Cirro Summerville\n• Date of Birth: October 30, 2001\n• Place of Birth: Rotterdam, Netherlands\n• Origins: Surinamese heritage / Dutch nationality\n• Position: Left Winger / Right Winger\n• Clubs: Feyenoord, FC Dordrecht, ADO Den Haag, Leeds United, West Ham United\n• Key Honors: EFL Championship Player of the Season (2023/24), UEFA European U-17 Champion (2018)."
+        },
+        {
+          title: "9. Frequently Asked Questions (FAQs) About Summerville's Origins",
+          body: "Here are answers to top questions regarding Crysencio Summerville's background and career."
+        }
+      ],
+      faqs: [
+        {
+          q: "What are Crysencio Summerville's origins?",
+          a: "Crysencio Summerville has Surinamese heritage from his parents, while he was born in Rotterdam and represents Netherlands internationally."
+        },
+        {
+          q: "Which club does Crysencio Summerville play for?",
+          a: "Summerville currently plays for West Ham United in the English Premier League."
+        },
+        {
+          q: "Was Summerville named Championship Player of the Year?",
+          a: "Yes, he won the official EFL Championship Player of the Season award for 2023/24 with Leeds United."
+        }
+      ]
+    }
+  },
   {
     id: "art-learn-football-mastery-guide-2026",
     slug: "learn-football-step-by-step-beginners-guide-2026",

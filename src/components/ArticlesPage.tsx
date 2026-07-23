@@ -41,6 +41,7 @@ import rodriManchesterCityStar from '../assets/images/rodri_manchester_city_star
 import amazonStarsCleats from '../assets/images/amazon_stars_cleats_1784690335216.jpg';
 import learnFootballGuide2026 from '../assets/images/learn_football_guide_2026_1784736115484.jpg';
 import crysencioSummervilleStar from '../assets/images/crysencio_summerville_star_1784824392236.jpg';
+import julianAlvarezStar from '../assets/images/julian_alvarez_star_1784826512196.jpg';
 
 interface Article {
   id: string;
@@ -83,6 +84,170 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-julian-alvarez-barcelona-atletico-transfer-profile-2026",
+    slug: "julian-alvarez-barcelona-atletico-madrid-transfer-rumors-profile-2026",
+    categoryAr: "تقارير وأخبار الانتقالات",
+    categoryEn: "Transfers & Player Analysis",
+    titleAr: "جوليان ألفاريز: كواليس اهتمام برشلونة، موقف أتلتيكو مدريد، ومستقبل 'العنكبوت' الأرجنتيني (دليل شامل 2026)",
+    titleEn: "Julián Álvarez: Barcelona Transfer Links, Atlético Madrid Stance & 'El Araña' Career Breakdown 2026",
+    descAr: "تقرير صحفي متكامل وشامل يتجاوز 800 كلمة يتناول حقيقة أنباء انتقال جوليان ألفاريز (Julián Álvarez) إلى برشلونة، ردود الأفعال داخل الكامب نو، موقفه مع أتلتيكو مدريد، ومسيرة النجم الأرجنتيني الفائز بجميع الألقاب الكروية العالمية.",
+    descEn: "In-depth 800+ word journalistic report analyzing Julián Álvarez's transfer rumors linking him with Barcelona, Atlético Madrid's stance, and the complete career journey of 'El Araña'—the World Cup and Champions League winner.",
+    keywordsAr: [
+      "جوليان ألفاريز",
+      "جوليان ألفاريز برشلونة",
+      "صفقة جوليان ألفاريز",
+      "جوليان ألفاريز أتلتيكو مدريد",
+      "انتقال جوليان ألفاريز",
+      "اخبار جوليان ألفاريز",
+      "رباعي برشلونة جوليان ألفاريز",
+      "العنكبوت جوليان ألفاريز"
+    ],
+    keywordsEn: [
+      "julian alvarez",
+      "julian alvarez barcelona",
+      "julian alvarez atletico madrid",
+      "julian alvarez transfer news",
+      "who is julian alvarez"
+    ],
+    image: julianAlvarezStar,
+    date: "2026-07-23",
+    readTime: "12 min",
+    contentAr: {
+      toc: [
+        "1. مقدمة: كواليس أنباء انتقال جوليان ألفاريز واهتمام كبار أوروبا",
+        "2. مسيرة جوليان ألفاريز: من ريفر بليت إلى مانشستر سيتي وأتلتيكو مدريد",
+        "3. شائعات انتقال جوليان ألفاريز إلى برشلونة وموقف عناصر الفريق الأساسية",
+        "4. الخصائص الفنية والتكتيكية: لماذا يُلقب جوليان ألفاريز بـ 'العنكبوت' (El Araña)؟",
+        "5. موقف أتلتيكو مدريد ورؤية دييغو سيميوني لمستقبل جوليان ألفاريز",
+        "6. القيمة السوقية والأرقام التهديفية للنجم جوليان ألفاريز",
+        "7. مقارنة تكتيكية: جوليان ألفاريز في منظومة هانزي فليك وميزان برشلونة 2026",
+        "8. بطاقة البيانات الشخصية والإنجازات الذهبية لـ جوليان ألفاريز",
+        "9. الأسئلة الشائعة (FAQs) حول جوليان ألفاريز ومستقبله الكروي"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: كواليس أنباء انتقال جوليان ألفاريز واهتمام كبار أوروبا",
+          body: "عادت أنباء الميركاتو لتسلط الضوء بقوة على المهاجم الأرجنتيني الدولي **جوليان ألفاريز** (Julián Álvarez)، بعد التقارير الصحفية والإعلامية المكثفة التي ربطت اسمه بفرق الصدارة الأوروبية وفي مقدمتها نادي برشلونة الإسباني. يُعد **جوليان ألفاريز** أحد أبرز مهاجمي الجيل الحديث في كرة القدم العالمية، حيث تمكن في سن مبكرة من حصد كافة الألقاب الممكنة على الصعيدين المحلي والدولي، بدءاً من كبا ليبرتادوريس، مروراً بالدوري الإنجليزي الممتاز ودوري أبطال أوروبا، وصولاً إلى التتويج الأغلى بكأس العالم والفينا أليسيما وكوبا أمريكا مع منتخب الأرجنتين.\n\nومع استمرار التفاعلات حول مستقبله، أثيرت تساؤلات عديدة في وسائل الإعلام الإسبانية والعالمية حول إمكانية تحرك برشلونة للتعاقد مع **جوليان ألفاريز**، وموقف نادي أتلتيكو مدريد الإسباني الذي تعاقد معه في صفقة قياسية، بالإضافة إلى الآراء والتحليلات التكتيكية حول مدى ملاءمة النجم الأرجنتيني لفلسفة الفريق الكتالوني. في هذا التقرير الشامل والمحدث لعام 2026، نقدم تحليلاً صحفياً دقيقاً ومستفيضاً يتجاوز 800 كلمة للوقوف على كافة جوانب قضية **جوليان ألفاريز** ومسيرته الاستثنائية."
+        },
+        {
+          title: "2. مسيرة جوليان ألفاريز: من ريفر بليت إلى مانشستر سيتي وأتلتيكو مدريد",
+          body: "بدأ **جوليان ألفاريز** مسيرته الكروية في بلدة كالسشين بمحافظة كوردوبا الأرجنتينية، قبل أن يلتحق بأكاديمية نادي ريفر بليت (River Plate) الشهيرة عام 2016. وفي ريفر بليت تحول **جوليان ألفاريز** تحت قيادة المدرب التاريخي مارسيلو غاياردو إلى أحد أنجح الهدافين في القارة اللاتينية، مسجلاً عشرات الأهداف الحاسمين التي قادت الفريق للتتويج بالدوري الأرجنتيني وكوبا ليبرتادوريس.\n\nوفي يناير 2022، نجح نادي مانشستر سيتي الإنجليزي في حسم صفقة **جوليان ألفاريز**، ليمضي المهاجم الشاب موسمين تاريخيين تحت قيادة بيب غوارديولا، ساهم خلالهما بشكل مباشر في تحقيق الثلاثية التاريخية (دوري أبطال أوروبا، الدوري الإنجليزي الممتاز، وكأس الاتحاد الإنجليزي) بموسم 2022-2023. ثم انتقل النجم الأرجنتيني في صيف 2024 إلى نادي أتلتيكو مدريد الإسباني في صفقة بلغت قيمتها الإجمالية نحو 75 إلى 95 مليون يورو شملت المبالغ المتغيرة، ليصبح أحد الأعمدة الهجومية الأساسية في كتيبة المدرب دييغو سيميوني."
+        },
+        {
+          title: "3. شائعات انتقال جوليان ألفاريز إلى برشلونة وموقف عناصر الفريق الأساسية",
+          body: "تناولت تقارير صحفية إسبانية مؤخراً تحليلات حول احتمالية فتح قناة تواصل بين إدارة برشلونة وممثلي **جوليان ألفاريز** للبحث عن مهاجم مستقبلي يمتلك الحركية العالية والمرونة التكتيكية لخلافة الأسطورة البولندي روبرت ليفاندوفسكي. ورغم التقدير الفني الكبير الذي يحظى به **جوليان ألفاريز** من قبل الكشافين والخبراء التكتيكيين، إلا أن الصفقة تواجه عقبات مالية وتكتيكية معقدة:\n\n• **العقبات المالية والشروط الجزائية**: يرتبط **جوليان ألفاريز** بعقد طويل الأمد مع أتلتيكو مدريد يمتد حتى عام 2030 وبشرط جزائي مرتفع جداً، مما يجعل خروجه من الروخي بلانكوس أمراً في غاية الصعوبة دون تقديم عرض مالي ضخم يتجاوز 100 مليون يورو.\n• **الرؤية داخل غرفة ملابس برشلونة**: أشار خبراء التحليل الرياضي إلى أن التركيز الحالي داخل الهيكل الرياضي لبرشلونة يتجه نحو الحفاظ على استقرار العناصر الهجومية الشابة مثل لامين يامال ورافينيا ورافائيل لياو أو المواهب الصاعدة، وتفادي الدخول في صفقات ذات تكلفة سوقية باهظة قد تضغط على ميزانية النادي وقواعد اللعب المالي النظيف بالدوري الإسباني."
+        },
+        {
+          title: "4. الخصائص الفنية والتكتيكية: لماذا يُلقب جوليان ألفاريز بـ 'العنكبوت' (El Araña)؟",
+          body: "اكتسب **جوليان ألفاريز** لقب 'العنكبوت' (El Araña) منذ طفولته المبكرة في الأرجنتين، حيث قال عنه أقاربه ومدربوه الأوائل إنه يمتلك أكثر من ساقين للتحكم بالكرة واستعادتها بفضل سرعته الخارقة وقدرته المذهلة على الضغط العالي دون استراحة. وتتجلى أهم الخصائص الفنية للنجم **جوليان ألفاريز** فيما يلي:\n\n• **الضغط العالي والشراسة الدفاعية (Relentless Pressing)**: يُعد **جوليان ألفاريز** من أفضل المهاجمين في العالم من حيث معدل افتراض الخطوط والضغط على قلب الدفاع وحارس المرمى المنافس، وهو ما يجعله الخيار المفضل للمدربين الذين يعتمدون على أسلوب الضغط العكسي (Gegenpressing).\n• **الإنهاء الحاسم بجميع الزوايا (Clinical Finishing)**: يمتلك **جوليان ألفاريز** قدرة استثنائية على التسديد بالقدمين اليمنى واليسرى من داخل وخارج منطقة الجزاء، مع دقة فائقة في تنفيذ الكرات الثابتة وركلات الترجيح.\n• **المرونة التكتيكية والمراكز المزدوجة**: يستطيع **جوليان ألفاريز** اللعب كمهاجم صريح (Striker)، مهاجم ثاني (Second Striker)، أو صانع ألعاب خلف المهاجمين (Attacking Midfielder)، مما يمنح مدربه حلولاً متنوعة في تعديل الخطة أثناء المباريات."
+        },
+        {
+          title: "5. موقف أتلتيكو مدريد ورؤية دييغو سيميوني لمستقبل جوليان ألفاريز",
+          body: "يعتبر المدرب الأرجنتيني دييغو سيميوني مواطنه **جوليان ألفاريز** حجراً أساسياً في مشروعه الرياضي الطويل الأمد مع أتلتيكو مدريد. وتؤكد إدارة الأتليتي أن استثمارها الضخم في ضم **جوليان ألفاريز** جاء بهدف بناء فريق ينافس على القمة في الدوري الإسباني ودوري أبطال أوروبا على مدار السنوات القادمة.\n\nترفض إدارة أتلتيكو مدريد التنازل عن خدمات **جوليان ألفاريز** لأي منافس مباشر في الليغا، وخاصة برشلونة أو ريال مدريد، مؤكدة أن اللاعب سعيد بالدور القيادي الذي يلعبه في ملعب المتروبوليتانو وبالمساحة التكتيكية الحرة التي يمنحها له الجهاز الفني للتعبير عن قدراته التهديفية وصناعة اللعب."
+        },
+        {
+          title: "6. القيمة السوقية والأرقام التهديفية للنجم جوليان ألفاريز",
+          body: "تضاعفت القيمة السوقية للمهاجم الأرجنتيني **جوليان ألفاريز** لتتجاوز 90 إلى 100 مليون يورو في تقييمات المنصات الرياضية العالمية المعتمدة مثل 'ترانسفير ماركت' (Transfermarkt)، وذلك بفضل أرقامه التهديفية الممتازة وسجله الخالي من إصابات العضلات المزمنة:\n\n• **المشاركات والأهداف**: تتجاوز حصيلة **جوليان ألفاريز** التهديفية في مسيرته الاحترافية 100 هدف رسمي مع الأندية والمنتخب الوطني الأرجنتيني.\n• **السجل الدولي**: لعب دوراً رئيسياً بجانب ليونيل ميسي في التتويج بكأس العالم قطر 2022، حيث سجل 4 أهداف حاسمة بالبطولة منها هدفان في نصف النهائي أمام كرواتيا."
+        },
+        {
+          title: "7. مقارنة تكتيكية: جوليان ألفاريز في منظومة هانزي فليك وميزان برشلونة 2026",
+          body: "لو افترضنا جدلاً فرضية انتقال **جوليان ألفاريز** إلى برشلونة تحت قيادة الألمانية هانزي فليك، فإن اللاعب يمتلك المواصفات المثالئية التي يعشقها فليك؛ حيث يدمج بين الجري المتواصل لخلق المساحات، والقدرة على الربط بين الخطوط مع لاعبي الوسط مثل بيدري وغافي. إلا أن التحدي الأكبر يكمن في ازدحام القوة الهجومية لدى النادي الكتالوني، والحاجة لضخ الأموال في مراكز أخرى كخط الدفاع والأظهيرة، مما يجعل انتقال **جوليان ألفاريز** إلى برشلونة خياراً معقداً للغاية في الوقت الحالي.\n\n[▶ اضغط هنا لتحميل كتاب تعلم وتطوير المهارات الكروية للمبتدئين والكبار PDF مجاناً](https://link.amazon/B0iYOTPXh)"
+        },
+        {
+          title: "8. بطاقة البيانات الشخصية والإنجازات الذهبية لـ جوليان ألفاريز",
+          body: "نستعرض في هذا القسم البطاقة التعريفية الشاملة وأهم المحطات في حياة المهاجم الأرجنتيني **جوليان ألفاريز**:\n\n• **الاسم الكامل**: جوليان ألفاريز (Julián Álvarez).\n• **اللقب الشهير**: العنكبوت (El Araña).\n• **تاريخ الميلاد**: 31 يناير 2000 (العمر 26 عاماً بحلول 2026).\n• **مكان الميلاد**: كالسشين، كوردوبا، الأرجنتين.\n• **المركز**: مهاجم صريح / مهاجم ثاني / جناح هجومي.\n• **الأندية المحترفة**: ريفر بليت (2018-2022)، مانشستر سيتي (2022-2024)، أتلتيكو مدريد (2024-حتى الآن).\n• **الإنجازات الدولية مع الأرجنتين**: كأس العالم (2022)، كوبا أمريكا (2021، 2024)، كأس الفيناليسيما (2022).\n• **الإنجازات القارية والمحلية**: دوري أبطال أوروبا، الدوري الإنجليزي الممتاز، كأس السوبر الأوروبي، كأس العالم للأندية، كبا ليبرتادوريس، الدوري الأرجنتيني."
+        },
+        {
+          title: "9. الأسئلة الشائعة (FAQs) حول جوليان ألفاريز ومستقبله الكروي",
+          body: "إليك الإجابات الدقيقة والموثوقة لأبرز الأسئلة الشائعة المتداولة بين المشجعين حول **جوليان ألفاريز**:"
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هو النادي الحالي للنجم جوليان ألفاريز؟",
+          a: "يلعب جوليان ألفاريز حالياً في صفوف نادي أتلتيكو مدريد الإسباني بعقد طويل الأمد يمتد حتى عام 2030."
+        },
+        {
+          q: "هل انتقل جوليان ألفاريز إلى برشلونة رسمياً؟",
+          a: "لا، لم ينتقل جوليان ألفاريز إلى برشلونة، وما يتردد في بعض الوسائل الإعلامية مجرد تقارير صحفية وشائعات ميركاتو."
+        },
+        {
+          q: "لماذا يلقب جوليان ألفاريز بـ 'العنكبوت' (El Araña)؟",
+          a: "لُقب بذلك منذ طفولته في الأرجنتين نظراً لسرعته الفائقة وقدرته على السيطرة واستعادة الكرة وكأنه يمتلك أكثر من قدمين."
+        },
+        {
+          q: "ما هي القيمة السوقية الحالية لـ جوليان ألفاريز؟",
+          a: "تقدر القيمة السوقية لـ جوليان ألفاريز بنحو 90 إلى 100 مليون يورو وفق تقييمات المنصات الكروية العالمية."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: Julián Álvarez Transfer Rumors & Global Profile",
+        "2. Career Breakdown: River Plate to Manchester City and Atlético Madrid",
+        "3. Barcelona Transfer Links & Camp Nou Squad Reactions",
+        "4. Tactical Attributes: Why Julián Álvarez is Nicknamed 'El Araña'",
+        "5. Atlético Madrid Stance and Diego Simeone's Long-term Vision",
+        "6. Market Value and Scoring Records of Julián Álvarez",
+        "7. Tactical Comparison: Julián Álvarez in Hansi Flick's System 2026",
+        "8. Personal Bio & Golden Honors of Julián Álvarez",
+        "9. Frequently Asked Questions (FAQs) About Julián Álvarez"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: Julián Álvarez Transfer Rumors & Global Profile",
+          body: "Argentine international striker **Julián Álvarez** is back in the transfer headlines following extensive media reports linking him with top European sides including FC Barcelona. As one of the most decorated young forwards in modern football, **Julián Álvarez** has conquered all major trophies—from the Copa Libertadores, Premier League, and UEFA Champions League to the FIFA World Cup, Finalissima, and Copa América with Argentina."
+        },
+        {
+          title: "2. Career Breakdown: River Plate to Manchester City and Atlético Madrid",
+          body: "**Julián Álvarez** began at River Plate under Marcelo Gallardo before signing with Manchester City in January 2022. He played a pivotal role in Man City's historic treble (2022/23) before transferring to Atlético Madrid in summer 2024 in a landmark deal worth up to €95 million."
+        },
+        {
+          title: "3. Barcelona Transfer Links & Camp Nou Squad Reactions",
+          body: "Reports analyzed potential interest from Barcelona seeking a high-pressing forward for the future. However, financial constraints, a long contract through 2030 at Atlético Madrid, and high buyout clauses make a move exceedingly complex."
+        },
+        {
+          title: "4. Tactical Attributes: Why Julián Álvarez is Nicknamed 'El Araña'",
+          body: "Nicknamed 'El Araña' (The Spider) since childhood for his relentless pressing and ability to retain possession as if having multiple legs, **Julián Álvarez** combines clinical two-footed finishing with versatile forward positioning."
+        },
+        {
+          title: "5. Atlético Madrid Stance and Diego Simeone's Long-term Vision",
+          body: "Diego Simeone considers **Julián Álvarez** a cornerstone of Atlético Madrid's future, with the club ruling out any sale to direct La Liga rivals."
+        },
+        {
+          title: "6. Market Value and Scoring Records of Julián Álvarez",
+          body: "Market value for **Julián Álvarez** stands between €90m and €100m, backed by over 100 career goals and crucial performances at Qatar 2022."
+        },
+        {
+          title: "7. Tactical Comparison: Julián Álvarez in Hansi Flick's System 2026",
+          body: "Though his high-intensity pressing suits Hansi Flick's system, Barcelona's current squad balance prioritizes other key defensive areas."
+        },
+        {
+          title: "8. Personal Bio & Golden Honors of Julián Álvarez",
+          body: "• Full Name: Julián Álvarez ('El Araña')\n• Date of Birth: January 31, 2000\n• Place of Birth: Calchín, Córdoba, Argentina\n• Position: Striker / Second Striker / Forward\n• Clubs: River Plate, Manchester City, Atlético Madrid\n• Honors: FIFA World Cup, UEFA Champions League, Premier League, Copa Libertadores, Copa América."
+        },
+        {
+          title: "9. Frequently Asked Questions (FAQs) About Julián Álvarez",
+          body: "Key answers regarding Julián Álvarez's current club, nickname, and career prospects."
+        }
+      ],
+      faqs: [
+        {
+          q: "Which club does Julián Álvarez currently play for?",
+          a: "Julián Álvarez plays for Atlético Madrid under a long-term contract until 2030."
+        },
+        {
+          q: "Has Julián Álvarez officially transferred to Barcelona?",
+          a: "No, he has not. Reports linking him to FC Barcelona are media rumors."
+        },
+        {
+          q: "Why is Julián Álvarez called 'El Araña'?",
+          a: "He earned the nickname 'El Araña' (The Spider) as a child due to his ability to control and recover the ball effortlessly."
+        }
+      ]
+    }
+  },
   {
     id: "art-crysencio-summerville-origins-2026",
     slug: "crysencio-summerville-origins-al-hilal-transfer-profile-2026",

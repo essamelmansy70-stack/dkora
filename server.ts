@@ -17,6 +17,13 @@ const rootDir = typeof __dirname !== "undefined"
 
 const ARTICLES_SEO = [
   {
+    slug: "julian-alvarez-barcelona-atletico-madrid-transfer-rumors-profile-2026",
+    titleAr: "جوليان ألفاريز: كواليس اهتمام برشلونة، موقف أتلتيكو مدريد، ومستقبل 'العنكبوت' الأرجنتيني | dkora",
+    titleEn: "Julián Álvarez: Barcelona Transfer Links, Atlético Madrid Stance & 'El Araña' Career Breakdown 2026 | dkora",
+    descAr: "تقرير صحفي متكامل وشامل يتجاوز 800 كلمة يتناول حقيقة أنباء انتقال جوليان ألفاريز (Julián Álvarez) إلى برشلونة، ردود الأفعال داخل الكامب نو، موقفه مع أتلتيكو مدريد، ومسيرة النجم الأرجنتيني الفائز بجميع الألقاب الكروية العالمية.",
+    descEn: "In-depth 800+ word journalistic report analyzing Julián Álvarez's transfer rumors linking him with Barcelona, Atlético Madrid's stance, and the complete career journey of 'El Araña'—the World Cup and Champions League winner."
+  },
+  {
     slug: "crysencio-summerville-origins-al-hilal-transfer-profile-2026",
     titleAr: "اصول كريسينسيو سامرفيل: مسيرة الجناح الهولندي الشاب ورحلته من فاينورد إلى البريميرليغ واهتمام الهلال | dkora",
     titleEn: "Origins of Crysencio Summerville: Career, Surinamese Heritage & Football Journey to Al Hilal Links | dkora",

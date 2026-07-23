@@ -1,4 +1,4 @@
-import { Sparkles, Moon, Sun } from 'lucide-react';
+import { Sparkles, Moon, Sun, Globe } from 'lucide-react';
 import { TranslationType } from '../translations';
 
 interface HeaderProps {
@@ -19,51 +19,56 @@ export default function Header({
   t,
 }: Omit<HeaderProps, 'soundEnabled' | 'setSoundEnabled'>) {
   return (
-    <header className="sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-slate-950/70 border-b border-slate-100 dark:border-slate-900 shadow-xs transition-colors duration-200">
-      <div className="max-w-7xl mx-auto px-4 py-3 sm:py-3.5 flex items-center justify-between">
+    <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/90 dark:bg-[#030712]/90 border-b border-slate-200/80 dark:border-slate-800/80 shadow-sm transition-all duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between">
         
         {/* Logo and branding */}
-        <div className="flex flex-row items-center gap-3 py-1">
-          {/* Logo container with brand title directly under it */}
-          <div className="flex flex-col items-center shrink-0">
-            <img 
-              src="/logo.jpg?v=2.2" 
-              alt="dkora" 
-              className="w-11 h-11 sm:w-12 sm:h-12 object-contain rounded-lg shadow-sm select-none animate-fade-in"
-              referrerPolicy="no-referrer"
-            />
-            <span className="text-[10px] sm:text-[11px] font-black tracking-tight text-slate-900 dark:text-white font-sans mt-0.5 select-none">
-              d<span className="text-[#ff1a40]">kora</span>
-            </span>
+        <div className="flex items-center gap-3">
+          {/* Logo container with sleek glow and fallback error handling */}
+          <div className="relative group shrink-0">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#ff1a40] to-[#e11d48] rounded-2xl blur-xs opacity-75 group-hover:opacity-100 transition duration-300"></div>
+            <div className="relative w-11 h-11 sm:w-12 sm:h-12 bg-slate-950 rounded-2xl overflow-hidden p-1 flex items-center justify-center border border-slate-800 shadow-md">
+              <img 
+                src="/logo.png?v=3.0" 
+                alt="dkora" 
+                className="w-full h-full object-contain select-none transition-transform duration-300 group-hover:scale-105"
+                referrerPolicy="no-referrer"
+                onError={(e) => {
+                  e.currentTarget.src = "/logo.jpg";
+                }}
+              />
+            </div>
           </div>
 
-          {/* Description details aligned side-by-side with the logo */}
-          <div className="flex flex-col justify-center min-h-[44px]">
-            <div className="flex items-center gap-1.5 mb-0.5">
-              <span className="inline-block px-1.5 py-0.5 bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 text-[8px] sm:text-[9px] font-bold rounded">
+          {/* Description details aligned side-by-side with logo */}
+          <div className="flex flex-col justify-center">
+            <div className="flex items-center gap-2">
+              <span className="text-base sm:text-lg font-black tracking-tight text-slate-900 dark:text-white font-sans select-none">
+                d<span className="text-[#ff1a40]">kora</span>
+              </span>
+              <span className="px-2 py-0.5 bg-rose-500/10 dark:bg-rose-950/50 text-[#ff1a40] dark:text-rose-400 text-[10px] font-black rounded-full border border-rose-500/20 uppercase tracking-wide">
                 {t.header.badge}
               </span>
-              <span className="text-[9px] text-slate-500 dark:text-slate-400 font-semibold">{t.header.logoSuffix}</span>
             </div>
-            <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 font-medium leading-snug max-w-[180px] sm:max-w-md">
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium leading-tight max-w-[200px] sm:max-w-md truncate">
               {t.header.subtitle}
             </p>
           </div>
         </div>
 
-        {/* Left: Interactive controls */}
-        <div className="flex items-center gap-3">
-          {/* Real Language Toggle Button */}
+        {/* Controls */}
+        <div className="flex items-center gap-2">
+          {/* Language Toggle Button */}
           <button 
             onClick={() => {
               const nextLocale = locale === 'ar' ? 'en' : 'ar';
               setLocale(nextLocale);
             }}
-            className="flex items-center justify-center gap-1 px-1.5 py-0.5 text-[8px] sm:text-[9px] text-[#ff1a40] dark:text-rose-400 bg-rose-500/10 dark:bg-rose-950/40 hover:bg-rose-500/15 dark:hover:bg-rose-950/60 border border-rose-200/50 dark:border-rose-900/40 rounded-md transition-all cursor-pointer font-bold h-fit w-fit"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-black text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-900 hover:bg-rose-50 dark:hover:bg-rose-950/40 border border-slate-200 dark:border-slate-800 hover:border-rose-300 dark:hover:border-rose-900/60 rounded-xl transition-all cursor-pointer shadow-xs active:scale-95"
             aria-label={locale === 'ar' ? 'تغيير لغة الموقع إلى الإنجليزية' : 'Change website language to Arabic'}
           >
+            <Globe className="w-3.5 h-3.5 text-[#ff1a40]" />
             <span>{t.header.langButton}</span>
-            <span className="text-[8px] sm:text-[9px] opacity-75 mr-0.5">文A</span>
           </button>
         </div>
 

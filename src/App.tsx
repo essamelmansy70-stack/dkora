@@ -801,57 +801,103 @@ export default function App() {
         <div className="absolute top-0 right-0 left-0 h-1 bg-gradient-to-r from-transparent via-red-500/20 to-transparent" />
       </div>
 
-      {/* Global Bilingual Header in pristine responsive white banner */}
-      <header 
-        onClick={() => { handleTabChange("quiz"); playInteractionSound(); }}
-        className={`w-full px-4 py-5 flex flex-col sm:flex-row gap-4 items-center justify-between border-b z-10 backdrop-blur-md cursor-pointer transition-all duration-350 group/header ${
-          activeTab === "blog" 
-            ? "max-w-none px-4 sm:px-6 md:px-8 lg:px-10 bg-[#03071c]/90 border-slate-800 hover:bg-[#070c2c]/50 text-white" 
-            : "max-w-4xl bg-white/80 border-slate-200 hover:bg-slate-50/50 text-slate-900"
-        }`}
-        title={lang === "ar" ? "اضغط للذهاب لالصفحة الرئيسية" : "Click to go to Home Page"}
-      >
-        <div 
-          className="flex items-center gap-3 select-none group transition-opacity"
-        >
-          <div className="w-10 h-10 rounded-xl overflow-hidden border border-slate-200/50 dark:border-slate-800 shadow-sm shrink-0 transition-transform group-hover:scale-105 group-hover/header:scale-105">
-            <img 
-              src="/logo.jpg?v=2.2" 
-              alt="dkora" 
-              className="w-full h-full object-cover select-none"
-              referrerPolicy="no-referrer"
-            />
-          </div>
-          <div className="text-center sm:text-start rtl:sm:text-right ltr:sm:text-left">
-            <h1 className={`text-sm sm:text-base font-black tracking-tight bg-clip-text text-transparent transition-colors ${
-              activeTab === "blog"
-                ? "bg-gradient-to-r from-white via-red-500 to-white group-hover:text-red-500"
-                : "bg-gradient-to-r from-slate-950 via-red-600 to-slate-950 group-hover:text-red-650"
-            }`}>
-              {t.title}
-            </h1>
-            <p className="text-[10px] text-slate-400 font-mono tracking-widest uppercase">
-              {t.subtitle}
-            </p>
-          </div>
-        </div>
-
-        {/* Navigation Switchboard & Language toggle */}
-        <div className="flex flex-wrap items-center justify-center gap-2" onClick={(e) => e.stopPropagation()}>
-          <button
-            id="lang-toggle-btn"
-            onClick={() => handleLanguageChange(lang === "ar" ? "en" : "ar")}
-            className={`px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center gap-1.5 cursor-pointer shadow-sm transition-all ${
-              activeTab === "blog"
-                ? "bg-[#090e30]/80 border-slate-800 hover:border-red-500 hover:bg-[#12194d]/85 text-slate-300 hover:text-white"
-                : "bg-slate-50 border-slate-200 hover:border-red-500 hover:bg-slate-100 text-slate-700 hover:text-slate-950"
-            }`}
+      {/* Global Bilingual Header - Ultra Sleek Sports Media Navigation Bar */}
+      <header className={`sticky top-0 z-50 w-full backdrop-blur-xl border-b transition-all duration-300 shadow-sm ${
+        activeTab === "blog" 
+          ? "bg-[#030712]/90 border-slate-800 text-white" 
+          : "bg-white/90 border-slate-200/80 text-slate-900"
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+          
+          {/* Logo & Brand Identity */}
+          <div 
+            onClick={() => { handleTabChange("quiz"); playInteractionSound(); }}
+            className="flex items-center gap-3 cursor-pointer group select-none"
           >
-            <Globe className="w-3.5 h-3.5 text-red-500" />
-            <span>{lang === "ar" ? "English 🇬🇧" : "العربية 🇸🇦"}</span>
-          </button>
+            <div className="relative shrink-0">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-[#ff1a40] to-[#e11d48] rounded-2xl blur-xs opacity-80 group-hover:opacity-100 transition duration-300"></div>
+              <div className="relative w-11 h-11 bg-slate-950 rounded-2xl overflow-hidden p-1 flex items-center justify-center border border-slate-800 shadow-md">
+                <img 
+                  src="/logo.png?v=3.0" 
+                  alt="dkora" 
+                  className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    e.currentTarget.src = "/logo.jpg";
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col">
+              <div className="flex items-center gap-2">
+                <span className="text-lg font-black tracking-tight font-sans">
+                  d<span className="text-[#ff1a40]">kora</span>
+                </span>
+                <span className="px-2 py-0.5 text-[9px] font-black rounded-full bg-rose-500/10 text-[#ff1a40] border border-rose-500/20 uppercase tracking-widest">
+                  2026
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+                {lang === "ar" ? "منصة الأخبار واختبارات الكرة الشاملة" : "World Cup Football News & Interactive Hub"}
+              </p>
+            </div>
+          </div>
+
+          {/* Navigation Bar Tabs */}
+          <div className="flex flex-wrap items-center justify-center gap-1.5 p-1 bg-slate-100 dark:bg-slate-900/90 rounded-2xl border border-slate-200/80 dark:border-slate-800">
+            <button
+              onClick={() => { handleTabChange("quiz"); playInteractionSound(); }}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition-all flex items-center gap-1.5 cursor-pointer ${
+                activeTab === "quiz"
+                  ? "bg-[#ff1a40] text-white shadow-md shadow-rose-500/20"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800/60"
+              }`}
+            >
+              <Trophy className="w-3.5 h-3.5" />
+              <span>{lang === "ar" ? "اختبار المونديال" : "World Cup Quiz"}</span>
+            </button>
+
+            <button
+              onClick={() => { handleTabChange("blog"); playInteractionSound(); }}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition-all flex items-center gap-1.5 cursor-pointer ${
+                activeTab === "blog"
+                  ? "bg-[#ff1a40] text-white shadow-md shadow-rose-500/20"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800/60"
+              }`}
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>{lang === "ar" ? "المقالات الرياضية" : "Articles & Guides"}</span>
+            </button>
+
+            <button
+              onClick={() => { handleTabChange("bg-remover"); playInteractionSound(); }}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition-all flex items-center gap-1.5 cursor-pointer ${
+                activeTab === "bg-remover" || activeTab === "cropper" || activeTab === "svg-converter" || activeTab === "veo-video"
+                  ? "bg-[#ff1a40] text-white shadow-md shadow-rose-500/20"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800/60"
+              }`}
+            >
+              <Zap className="w-3.5 h-3.5 text-amber-400" />
+              <span>{lang === "ar" ? "الأدوات الذكية" : "AI Tools"}</span>
+            </button>
+          </div>
+
+          {/* Language Switcher */}
+          <div className="flex items-center gap-2">
+            <button
+              id="lang-toggle-btn"
+              onClick={() => handleLanguageChange(lang === "ar" ? "en" : "ar")}
+              className="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 hover:bg-rose-50 dark:hover:bg-rose-950/40 hover:border-rose-300 text-xs font-black flex items-center gap-1.5 cursor-pointer shadow-xs transition-all active:scale-95 text-slate-800 dark:text-slate-200"
+            >
+              <Globe className="w-3.5 h-3.5 text-[#ff1a40]" />
+              <span>{lang === "ar" ? "English 🇬🇧" : "العربية 🇸🇦"}</span>
+            </button>
+          </div>
+
         </div>
       </header>
+
 
       {/* Primary Workspace */}
       <main className={`w-full flex flex-col justify-center items-center flex-grow z-10 transition-all ${
@@ -1100,6 +1146,7 @@ export default function App() {
                           className="w-full h-full object-cover"
                           referrerPolicy="no-referrer"
                           crossOrigin="anonymous"
+                          onError={(e) => { e.currentTarget.src = "/logo.jpg"; }}
                         />
                         <div className="absolute -inset-1 rounded-2xl bg-white opacity-5 animate-pulse pointer-events-none" />
                       </div>
@@ -1436,7 +1483,7 @@ export default function App() {
                                   : "border-slate-200 bg-white text-slate-500 hover:border-slate-350 hover:bg-slate-100"
                               }`}
                             >
-                              <img src={`/${p.id}.jpg`} alt={p.nameEn} className="w-8 h-8 rounded-full object-cover mb-1 shrink-0" referrerPolicy="no-referrer" crossOrigin="anonymous"/>
+                              <img src={`/${p.id}.jpg`} alt={p.nameEn} className="w-8 h-8 rounded-full object-cover mb-1 shrink-0" referrerPolicy="no-referrer" crossOrigin="anonymous" onError={(e) => { e.currentTarget.src = "/logo.jpg"; }}/>
                               <span className="text-[10px] leading-tight block truncate w-full">{lang === "ar" ? p.nameAr : p.nameEn}</span>
                               {selectedRivalId === p.id && <span className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-red-600" />}
                             </button>
@@ -1533,6 +1580,7 @@ export default function App() {
                                   className="w-full h-full object-cover"
                                   referrerPolicy="no-referrer"
                                   crossOrigin="anonymous"
+                                  onError={(e) => { e.currentTarget.src = "/logo.jpg"; }}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
                               </div>

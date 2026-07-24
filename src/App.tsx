@@ -30,6 +30,8 @@ import {
 } from "lucide-react";
 
 import veo3VideoGenerationGuide from "./assets/images/veo3_video_generation_guide_1782439141821.jpg";
+import dkoraLogo from "./assets/images/dkora_new_logo_1784777171618.jpg";
+import heroWorldCupLegends from "./assets/images/hero_world_cup_legends_1784429970300.jpg";
 
 import { Question, PlayerProfile } from "./types";
 import { QUESTION_BANK, PLAYER_PROFILES } from "./data";
@@ -818,9 +820,9 @@ export default function App() {
               <div className="absolute -inset-0.5 bg-gradient-to-r from-[#ff1a40] to-[#e11d48] rounded-2xl blur-xs opacity-80 group-hover:opacity-100 transition duration-300"></div>
               <div className="relative w-11 h-11 bg-slate-950 rounded-2xl overflow-hidden p-1 flex items-center justify-center border border-slate-800 shadow-md">
                 <img 
-                  src="/logo.png?v=3.0" 
+                  src={dkoraLogo} 
                   alt="dkora" 
-                  className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
                     e.currentTarget.src = "/logo.jpg";
@@ -935,9 +937,9 @@ export default function App() {
                 {/* Hero Banner Image - Highly Optimized for PageSpeed */}
                 <div className="w-full max-w-lg mx-auto rounded-3xl overflow-hidden border border-slate-200/60 shadow-lg bg-slate-100 relative aspect-[16/7]">
                   <picture>
-                    <source srcSet="/hero_world_cup_legends_mobile.webp?v=2.2" type="image/webp" />
+                    <source srcSet={heroWorldCupLegends} type="image/jpeg" />
                     <img
-                      src="/hero_world_cup_legends_mobile.webp?v=2.2"
+                      src={heroWorldCupLegends}
                       alt={lang === "ar" ? "اكتشف شبيهك من أساطير كأس العالم" : "Discover your World Cup Legend Match"}
                       width="512"
                       height="224"
@@ -945,6 +947,9 @@ export default function App() {
                       loading="eager"
                       decoding="async"
                       className="w-full h-auto object-cover max-h-56"
+                      onError={(e) => {
+                        e.currentTarget.src = "/hero_world_cup_legends_mobile.webp";
+                      }}
                     />
                   </picture>
                 </div>

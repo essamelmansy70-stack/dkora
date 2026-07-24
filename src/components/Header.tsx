@@ -1,5 +1,6 @@
 import { Sparkles, Moon, Sun, Globe } from 'lucide-react';
 import { TranslationType } from '../translations';
+import dkoraLogo from '../assets/images/dkora_new_logo_1784777171618.jpg';
 
 interface HeaderProps {
   theme: 'light' | 'dark';
@@ -29,9 +30,9 @@ export default function Header({
             <div className="absolute -inset-0.5 bg-gradient-to-r from-[#ff1a40] to-[#e11d48] rounded-2xl blur-xs opacity-75 group-hover:opacity-100 transition duration-300"></div>
             <div className="relative w-11 h-11 sm:w-12 sm:h-12 bg-slate-950 rounded-2xl overflow-hidden p-1 flex items-center justify-center border border-slate-800 shadow-md">
               <img 
-                src="/logo.png?v=3.0" 
+                src={dkoraLogo} 
                 alt="dkora" 
-                className="w-full h-full object-contain select-none transition-transform duration-300 group-hover:scale-105"
+                className="w-full h-full object-cover select-none transition-transform duration-300 group-hover:scale-105"
                 referrerPolicy="no-referrer"
                 onError={(e) => {
                   e.currentTarget.src = "/logo.jpg";

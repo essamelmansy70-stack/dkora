@@ -367,11 +367,19 @@ The output must be a single beautifully synthesized natural photograph, aspect r
         const seo = getSeoMetaData(req);
         html = replaceAllSeoMeta(html, seo);
         
-        // Transform stylesheet link tags to non-render-blocking async load pattern
-        html = html.replace(
-          /<link rel="stylesheet"([^>]*href="\/assets\/[^"]+\.css"[^>]*)>/gi,
-          '<link rel="preload" as="style" $1 /><link rel="stylesheet" $1 media="print" onload="this.media=\'all\'" /><noscript><link rel="stylesheet" $1 /></noscript>'
-        );
+        // Inline index CSS if present to eliminate render-blocking CSS requests completely
+        const assetsDir = path.join(distPath, "assets");
+        if (fs.existsSync(assetsDir)) {
+          const files = fs.readdirSync(assetsDir);
+          const cssFile = files.find(f => f.endsWith(".css") && f.startsWith("index-"));
+          if (cssFile) {
+            const cssContent = fs.readFileSync(path.join(assetsDir, cssFile), "utf-8");
+            html = html.replace(
+              /<link rel="stylesheet"[^>]*href="\/assets\/index-[^"]+\.css"[^>]*>/gi,
+              `<style>${cssContent}</style>`
+            );
+          }
+        }
         
         res.status(200).set({ 
           "Content-Type": "text/html",

@@ -820,7 +820,7 @@ export default function App() {
               <div className="absolute -inset-0.5 bg-gradient-to-r from-[#ff1a40] to-[#e11d48] rounded-2xl blur-xs opacity-80 group-hover:opacity-100 transition duration-300"></div>
               <div className="relative w-11 h-11 bg-slate-950 rounded-2xl overflow-hidden p-1 flex items-center justify-center border border-slate-800 shadow-md">
                 <img 
-                  src={dkoraLogo} 
+                  src="/logo.jpg" 
                   alt="dkora" 
                   width="48"
                   height="48"
@@ -829,7 +829,6 @@ export default function App() {
                   fetchPriority="high"
                   decoding="async"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  referrerPolicy="no-referrer"
                   onError={(e) => {
                     e.currentTarget.src = "/logo.jpg";
                   }}
@@ -947,18 +946,18 @@ export default function App() {
                 {/* Hero Banner Image - Highly Optimized for PageSpeed */}
                 <div className="w-full max-w-lg mx-auto rounded-3xl overflow-hidden border border-slate-200/60 shadow-lg bg-slate-100 relative aspect-[16/7]">
                   <picture>
-                    <source srcSet={heroWorldCupLegends} type="image/jpeg" />
+                    <source srcSet="/hero_world_cup_legends.jpg" type="image/jpeg" />
                     <img
-                      src={heroWorldCupLegends}
+                      src="/hero_world_cup_legends.jpg"
                       alt={lang === "ar" ? "اكتشف شبيهك من أساطير كأس العالم" : "Discover your World Cup Legend Match"}
-                      width="512"
-                      height="224"
+                      width="400"
+                      height="223"
                       {...({ fetchPriority: "high" } as any)}
                       loading="eager"
                       decoding="async"
                       className="w-full h-auto object-cover max-h-56"
                       onError={(e) => {
-                        e.currentTarget.src = "/hero_world_cup_legends_mobile.webp";
+                        e.currentTarget.src = "/logo.jpg";
                       }}
                     />
                   </picture>

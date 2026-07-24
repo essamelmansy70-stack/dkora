@@ -366,7 +366,17 @@ The output must be a single beautifully synthesized natural photograph, aspect r
         let html = fs.readFileSync(path.join(distPath, "index.html"), "utf-8");
         const seo = getSeoMetaData(req);
         html = replaceAllSeoMeta(html, seo);
-        res.status(200).set({ "Content-Type": "text/html" }).end(html);
+        
+        // Transform stylesheet link tags to non-render-blocking async load pattern
+        html = html.replace(
+          /<link rel="stylesheet"([^>]*href="\/assets\/[^"]+\.css"[^>]*)>/gi,
+          '<link rel="preload" as="style" $1 /><link rel="stylesheet" $1 media="print" onload="this.media=\'all\'" /><noscript><link rel="stylesheet" $1 /></noscript>'
+        );
+        
+        res.status(200).set({ 
+          "Content-Type": "text/html",
+          "Cache-Control": "public, max-age=0, must-revalidate"
+        }).end(html);
       } catch (err) {
         res.sendFile(path.join(distPath, "index.html"));
       }

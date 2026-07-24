@@ -9,12 +9,20 @@
     <link rel="icon" type="image/jpeg" sizes="16x16" href="/logo.jpg" />
     <link rel="shortcut icon" type="image/jpeg" href="/logo.jpg" />
     <link rel="apple-touch-icon" href="/logo.jpg" />
-    <link rel="preload" href="/logo.jpg" as="image" type="image/jpeg" fetchpriority="high" />
-    <link rel="preload" href="/hero_world_cup_legends_mobile.webp" as="image" type="image/webp" fetchpriority="high" />
     
-    <!-- Google Analytics (gtag.js) - Delayed/Lazy-Loaded on User Interaction/Scroll -->
+    <!-- High-Priority Image Preloads for LCP and Brand Header -->
+    <link rel="preload" href="/logo.jpg" as="image" type="image/jpeg" fetchpriority="high" />
+    <link rel="preload" href="/hero_world_cup_legends.jpg" as="image" type="image/jpeg" fetchpriority="high" />
+    
+    <!-- Fast Preconnects and DNS Prefetch for External Domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+    
+    <!-- Google Analytics (gtag.js) - Delayed/Lazy-Loaded on User Interaction/Scroll -->
     <script>
       (function() {
         let loaded = false;
@@ -22,38 +30,33 @@
           if (loaded) return;
           loaded = true;
           
-          // Remove event listeners to prevent duplicate executions
           window.removeEventListener('scroll', loadGA, { passive: true });
           window.removeEventListener('mousemove', loadGA, { passive: true });
           window.removeEventListener('touchstart', loadGA, { passive: true });
           window.removeEventListener('keydown', loadGA, { passive: true });
           
-          // Dynamically inject Google Analytics script
           const script = document.createElement('script');
           script.async = true;
           script.src = 'https://www.googletagmanager.com/gtag/js?id=G-1X9DTB7PL5';
           document.head.appendChild(script);
           
-          // Initialize gtag
           window.dataLayer = window.dataLayer || [];
           window.gtag = function() { window.dataLayer.push(arguments); };
           gtag('js', new Date());
           gtag('config', 'G-1X9DTB7PL5');
         }
         
-        // Bind to multiple user interaction gestures for instant response
         window.addEventListener('scroll', loadGA, { passive: true });
         window.addEventListener('mousemove', loadGA, { passive: true });
         window.addEventListener('touchstart', loadGA, { passive: true });
         window.addEventListener('keydown', loadGA, { passive: true });
         
-        // Fallback load on page load when browser is idle to ensure tracking isn't lost
         if (window.requestIdleCallback) {
           window.requestIdleCallback(function() {
-            setTimeout(loadGA, 4000);
+            setTimeout(loadGA, 5000);
           });
         } else {
-          setTimeout(loadGA, 5000);
+          setTimeout(loadGA, 6000);
         }
       })();
     </script>
@@ -69,7 +72,7 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ais-dev-midkp5hm63tkis7b4wleb2-625047059824.europe-west2.run.app" />
+    <meta property="og:url" content="https://dkora.online" />
     <meta property="og:site_name" content="World Cup Quiz" />
     <meta property="og:title" content="من يشبهك من لاعبي المونديال؟ | اختبار شخصية كرة القدم التفاعلي" />
     <meta property="og:description" content="اكتشف توأمك الكروي من أساطير كأس العالم! اختبار تفاعلي سريع وممتع يخمن شخصيتك الرياضية." />
@@ -77,11 +80,11 @@
 
     <!-- Twitter Cards -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://ais-dev-midkp5hm63tkis7b4wleb2-625047059824.europe-west2.run.app" />
+    <meta property="twitter:url" content="https://dkora.online" />
     <meta property="twitter:title" content="من يشبهك من لاعبي المونديال؟ | اختبار شخصية كرة القدم" />
     <meta property="twitter:description" content="اكتشف توأمك الكروي من أساطير كأس العالم! اختبار تفاعلي سريع وممتع يخمن شخصيتك الرياضية." />
     
-    <!-- Structured Data JSON-LD (WebSite & GameApplication Schema Optimized for Google 2026) -->
+    <!-- Structured Data JSON-LD (WebSite & GameApplication Schema) -->
     <script type="application/ld+json">
     [
       {
@@ -113,19 +116,17 @@
     ]
     </script>
     
-    <!-- Cairo Font for beautiful modern Arabic Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" as="style" />
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <!-- Optimized Cairo Font Loading for Arabic & English UI -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" /></noscript>
     
+    <!-- Critical Shell Inline CSS for Instant FCP < 0.2s -->
     <style>
-      html {
-        font-family: 'Cairo', system-ui, -apple-system, sans-serif;
-        scroll-behavior: smooth;
-      }
+      *, ::before, ::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e2e8f0; }
+      html { font-family: 'Cairo', system-ui, -apple-system, sans-serif; scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+      body { margin: 0; padding: 0; background-color: #020617; color: #f8fafc; min-height: 100vh; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+      #app { min-height: 100vh; display: flex; flex-direction: column; }
     </style>
   </head>
   <body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen transition-colors duration-300">

@@ -25,38 +25,15 @@ export default defineConfig(() => {
             // Split third-party vendor dependencies
             if (id.includes('node_modules')) {
               if (id.includes('react') || id.includes('react-dom') || id.includes('scheduler')) {
-                return 'vendor-react-core';
+                return 'vendor-react';
               }
               if (id.includes('lucide-react')) {
-                return 'vendor-lucide';
+                return 'vendor-icons';
               }
               if (id.includes('cropperjs')) {
                 return 'vendor-cropper';
               }
-              return 'vendor-utils';
-            }
-            // Split heavy local JSON/encyclopedia data
-            if (id.includes('src/data.ts') || id.includes('src/data') || id.includes('data.ts')) {
-              return 'encyclopedia-data';
-            }
-            if (id.includes('src/translations.ts') || id.includes('translations.ts')) {
-              return 'encyclopedia-translations';
-            }
-            // Split heavy component pages out of initial index/vendor bundle
-            if (id.includes('src/components/ArticlesPage')) {
-              return 'component-articles';
-            }
-            if (id.includes('src/components/BackgroundRemoverPage')) {
-              return 'component-bg-remover';
-            }
-            if (id.includes('src/components/SvgConverterPage')) {
-              return 'component-svg-converter';
-            }
-            if (id.includes('src/components/CropperPage')) {
-              return 'component-cropper';
-            }
-            if (id.includes('src/components/VeoVideoPage')) {
-              return 'component-veovideo';
+              return 'vendor-deps';
             }
           }
         }

@@ -191,7 +191,7 @@ export default function VeoVideoPage({ locale }: VeoVideoPageProps) {
           {data.title}
         </h1>
         
-        <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-350 max-w-2xl mx-auto leading-relaxed font-normal">
+        <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed font-normal">
           {data.subtitle}
         </p>
 
@@ -209,7 +209,7 @@ export default function VeoVideoPage({ locale }: VeoVideoPageProps) {
           <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
             {data.sections.introTitle}
           </h2>
-          <p className="text-sm text-slate-600 dark:text-slate-450 leading-relaxed font-normal">
+          <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
             {data.sections.introDesc}
           </p>
         </div>
@@ -301,7 +301,7 @@ export default function VeoVideoPage({ locale }: VeoVideoPageProps) {
           </h2>
         </div>
 
-        <div className="space-y-6 divide-y divide-slate-150 dark:divide-slate-900/60 font-sans">
+        <div className="space-y-6 divide-y divide-slate-200 dark:divide-slate-900/60 font-sans">
           {data.faqs.map((faq, idx) => (
             <div 
               key={`faq-${idx}`} 

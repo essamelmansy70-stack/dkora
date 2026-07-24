@@ -8853,15 +8853,15 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                 
                 {/* Meta details */}
                 <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 pt-2">
-                  <span className="flex items-center gap-1.5 px-3 py-1 bg-slate-900/80 rounded-lg border border-slate-850">
+                  <span className="flex items-center gap-1.5 px-3 py-1 bg-slate-900/80 rounded-lg border border-slate-800">
                     <Calendar className="w-3.5 h-3.5 text-[#ff1a40]" />
                     <span className="font-mono">{selectedArticle.date}</span>
                   </span>
-                  <span className="flex items-center gap-1.5 px-3 py-1 bg-slate-900/80 rounded-lg border border-slate-850">
+                  <span className="flex items-center gap-1.5 px-3 py-1 bg-slate-900/80 rounded-lg border border-slate-800">
                     <Clock className="w-3.5 h-3.5 text-[#ff1a40]" />
                     <span className="font-mono">{selectedArticle.readTime}</span>
                   </span>
-                  <span className="flex items-center gap-1.5 px-3 py-1 bg-slate-900/80 rounded-lg border border-slate-850">
+                  <span className="flex items-center gap-1.5 px-3 py-1 bg-slate-900/80 rounded-lg border border-slate-800">
                     <User className="w-3.5 h-3.5 text-[#ff1a40]" />
                     <span>{isRtl ? "محلل رياضي معتمد" : "Verified Analyst"}</span>
                   </span>
@@ -8880,7 +8880,12 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                   decoding="async"
                   className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
                   referrerPolicy="no-referrer"
-                  onError={(e) => { e.currentTarget.src = "/logo.jpg"; }}
+                  onError={(e) => {
+                    if (!e.currentTarget.dataset.failed) {
+                      e.currentTarget.dataset.failed = "true";
+                      e.currentTarget.src = "/logo.jpg";
+                    }
+                  }}
                 />
               </div>
 
@@ -9072,7 +9077,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                   
                   <div className="grid grid-cols-1 gap-4 text-justify">
                     {(isRtl ? selectedArticle.contentAr.faqs : selectedArticle.contentEn.faqs).map((faq, fIdx) => (
-                      <div key={fIdx} className="p-5 bg-slate-950/40 border border-slate-850 rounded-2xl space-y-2">
+                      <div key={fIdx} className="p-5 bg-slate-950/40 border border-slate-800 rounded-2xl space-y-2">
                         <h4 className="text-xs sm:text-sm font-black text-neutral-100 flex items-start gap-1.5">
                           <span className="text-emerald-500 font-extrabold text-sm shrink-0 font-mono">Q.</span>
                           <span>{faq.q}</span>
@@ -9087,7 +9092,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
               )}
 
               {/* Social and SEO sharing action box */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 bg-slate-950/60 border border-slate-850 rounded-2xl">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 bg-slate-950/60 border border-slate-800 rounded-2xl">
                 <div className="text-xs space-y-1 text-center sm:text-right rtl:sm:text-right ltr:sm:text-left font-sans">
                   <span className="font-black block text-white">
                     {isRtl ? "المقال متوافق ومحدث تماماً مع خوارزميات ومؤشرات كأس العالم ٢٠٢٦" : "This article is verified and updated for 2026 World Cup indexes"}
@@ -9126,7 +9131,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                     <div 
                       key={art.id}
                       onClick={() => handleSelectArticle(art)}
-                      className="bg-slate-950/40 border border-slate-850 hover:border-[#ff1a40] p-4 rounded-xl cursor-pointer group transition-all space-y-3 flex flex-col justify-between hover:-translate-y-0.5 duration-300"
+                      className="bg-slate-950/40 border border-slate-800 hover:border-[#ff1a40] p-4 rounded-xl cursor-pointer group transition-all space-y-3 flex flex-col justify-between hover:-translate-y-0.5 duration-300"
                     >
                       <div className="space-y-2">
                         <span className="text-[9px] font-extrabold text-[#ff1a40] uppercase tracking-wider block font-sans">
@@ -9178,7 +9183,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                 placeholder={isRtl ? "ابحث بالكلمات الدلالية والتكتيكية..." : "Search key tactics & players..."}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-3 bg-slate-950 border border-slate-850 rounded-2xl text-xs font-bold text-white placeholder-slate-500 outline-none focus:border-[#ff1a40] focus:ring-1 focus:ring-[#ff1a40]/30 transition-all shadow-inner font-sans"
+                className="w-full pl-9 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-2xl text-xs font-bold text-white placeholder-slate-500 outline-none focus:border-[#ff1a40] focus:ring-1 focus:ring-[#ff1a40]/30 transition-all shadow-inner font-sans"
                 aria-label={isRtl ? 'بحث في مقالات الكرة' : 'Search in football guides'}
               />
               <Search className="w-4 h-4 absolute top-1/2 -translate-y-1/2 left-3 text-slate-400 pointer-events-none" />
@@ -9192,7 +9197,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
               className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all duration-300 cursor-pointer border ${
                 activeCategory === 'all' 
                   ? 'bg-gradient-to-r from-[#ff1a40] to-rose-600 text-white shadow-lg shadow-rose-500/20 border-transparent scale-102' 
-                  : 'bg-slate-950/60 text-slate-400 hover:text-white hover:bg-slate-900 border-slate-850 hover:border-[#ff1a40]/20'
+                  : 'bg-slate-950/60 text-slate-400 hover:text-white hover:bg-slate-900 border-slate-800 hover:border-[#ff1a40]/20'
               }`}
             >
               {isRtl ? "الكل" : "All Articles"}
@@ -9202,7 +9207,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
               className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all duration-300 cursor-pointer border flex items-center gap-1.5 ${
                 activeCategory === 'ai' 
                   ? 'bg-gradient-to-r from-[#ff1a40] to-rose-600 text-white shadow-lg shadow-rose-500/20 border-transparent scale-102' 
-                  : 'bg-slate-950/60 text-slate-400 hover:text-white hover:bg-slate-900 border-slate-850 hover:border-[#ff1a40]/20'
+                  : 'bg-slate-950/60 text-slate-400 hover:text-white hover:bg-slate-900 border-slate-800 hover:border-[#ff1a40]/20'
               }`}
             >
               <Sparkles className="w-3.5 h-3.5" />
@@ -9213,7 +9218,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
               className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all duration-300 cursor-pointer border flex items-center gap-1.5 ${
                 activeCategory === 'tactics' 
                   ? 'bg-gradient-to-r from-[#ff1a40] to-rose-600 text-white shadow-lg shadow-rose-500/20 border-transparent scale-102' 
-                  : 'bg-slate-950/60 text-slate-400 hover:text-white hover:bg-slate-900 border-slate-850 hover:border-[#ff1a40]/20'
+                  : 'bg-slate-950/60 text-slate-400 hover:text-white hover:bg-slate-900 border-slate-800 hover:border-[#ff1a40]/20'
               }`}
             >
               <Award className="w-3.5 h-3.5" />
@@ -9224,7 +9229,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
               className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all duration-300 cursor-pointer border flex items-center gap-1.5 ${
                 activeCategory === 'legends' 
                   ? 'bg-gradient-to-r from-[#ff1a40] to-rose-600 text-white shadow-lg shadow-rose-500/20 border-transparent scale-102' 
-                  : 'bg-slate-950/60 text-slate-400 hover:text-white hover:bg-slate-900 border-slate-850 hover:border-[#ff1a40]/20'
+                  : 'bg-slate-950/60 text-slate-400 hover:text-white hover:bg-slate-900 border-slate-800 hover:border-[#ff1a40]/20'
               }`}
             >
               <TrendingUp className="w-3.5 h-3.5" />
@@ -9235,7 +9240,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
               className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all duration-300 cursor-pointer border flex items-center gap-1.5 ${
                 activeCategory === 'gear' 
                   ? 'bg-gradient-to-r from-[#ff1a40] to-rose-600 text-white shadow-lg shadow-rose-500/20 border-transparent scale-102' 
-                  : 'bg-slate-950/60 text-slate-400 hover:text-white hover:bg-slate-900 border-slate-850 hover:border-[#ff1a40]/20'
+                  : 'bg-slate-950/60 text-slate-400 hover:text-white hover:bg-slate-900 border-slate-800 hover:border-[#ff1a40]/20'
               }`}
             >
               <ShoppingBag className="w-3.5 h-3.5" />
@@ -9263,7 +9268,12 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                     decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     referrerPolicy="no-referrer"
-                    onError={(e) => { e.currentTarget.src = "/logo.jpg"; }}
+                    onError={(e) => {
+                      if (!e.currentTarget.dataset.failed) {
+                        e.currentTarget.dataset.failed = "true";
+                        e.currentTarget.src = "/logo.jpg";
+                      }
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#04081c] via-[#04081c]/25 to-transparent"></div>
                   
@@ -9296,7 +9306,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                   </div>
 
                   <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400 font-extrabold font-mono">
-                    <span className="bg-[#050920] border border-slate-850 px-3 py-1.5 rounded-lg text-[10px]">{featuredArticle.date}</span>
+                    <span className="bg-[#050920] border border-slate-800 px-3 py-1.5 rounded-lg text-[10px]">{featuredArticle.date}</span>
                     <span className="text-white group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform inline-flex items-center gap-1.5 bg-[#ff1a40] px-4 py-2 rounded-xl border border-rose-500/20 font-black shadow-md font-sans">
                       <span>{isRtl ? "قراءة المقال المميز" : "Read Featured Article"}</span>
                       {isRtl ? "←" : "→"}
@@ -9318,7 +9328,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                     className="bg-slate-900/40 backdrop-blur-md border border-slate-800/85 hover:border-[#ff1a40]/60 rounded-3xl overflow-hidden hover:shadow-[0_10px_35px_rgba(255,26,64,0.05)] transition-all duration-300 cursor-pointer flex flex-col group h-full relative"
                   >
                     {/* Card Cover image */}
-                    <div className="relative aspect-video overflow-hidden bg-slate-950 border-b border-slate-850/80">
+                    <div className="relative aspect-video overflow-hidden bg-slate-950 border-b border-slate-800/80">
                       <img 
                         src={art.image} 
                         alt={isRtl ? art.titleAr : art.titleEn} 
@@ -9328,7 +9338,12 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                         decoding="async"
                         className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500"
                         referrerPolicy="no-referrer"
-                        onError={(e) => { e.currentTarget.src = "/logo.jpg"; }}
+                        onError={(e) => {
+                          if (!e.currentTarget.dataset.failed) {
+                            e.currentTarget.dataset.failed = "true";
+                            e.currentTarget.src = "/logo.jpg";
+                          }
+                        }}
                       />
                       <div className="absolute top-3 left-3 px-2 py-1 bg-slate-950/80 border border-slate-800 text-white text-[9px] font-black rounded-md font-mono backdrop-blur-xs">
                         {art.readTime}
@@ -9374,7 +9389,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                     className={`flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-black transition-all border ${
                       activePage === 1
                         ? "bg-transparent text-slate-600 border-slate-900 cursor-not-allowed opacity-40"
-                        : "bg-slate-950/85 text-slate-300 hover:text-white border-slate-850 hover:border-[#ff1a40]/45 cursor-pointer active:scale-95"
+                        : "bg-slate-950/85 text-slate-300 hover:text-white border-slate-800 hover:border-[#ff1a40]/45 cursor-pointer active:scale-95"
                     }`}
                   >
                     {isRtl ? <ArrowRight className="w-4 h-4" /> : <ArrowLeft className="w-4 h-4" />}
@@ -9390,7 +9405,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                         className={`w-9 h-9 rounded-xl text-xs font-black transition-all border flex items-center justify-center cursor-pointer ${
                           activePage === pageNum
                             ? "bg-gradient-to-r from-[#ff1a40] to-rose-600 text-white border-transparent shadow-lg shadow-rose-500/20 scale-105"
-                            : "bg-slate-950/60 text-slate-400 hover:text-white border-slate-850 hover:border-[#ff1a40]/30 active:scale-95"
+                            : "bg-slate-950/60 text-slate-400 hover:text-white border-slate-800 hover:border-[#ff1a40]/30 active:scale-95"
                         }`}
                       >
                         {pageNum}
@@ -9405,7 +9420,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                     className={`flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-black transition-all border ${
                       activePage === totalPages
                         ? "bg-transparent text-slate-600 border-slate-900 cursor-not-allowed opacity-40"
-                        : "bg-slate-950/85 text-slate-300 hover:text-white border-slate-850 hover:border-[#ff1a40]/45 cursor-pointer active:scale-95"
+                        : "bg-slate-950/85 text-slate-300 hover:text-white border-slate-800 hover:border-[#ff1a40]/45 cursor-pointer active:scale-95"
                     }`}
                   >
                     <span>{isRtl ? "التالي" : "Next"}</span>

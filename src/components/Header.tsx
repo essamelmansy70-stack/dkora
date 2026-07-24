@@ -30,7 +30,7 @@ export default function Header({
             <div className="absolute -inset-0.5 bg-gradient-to-r from-[#ff1a40] to-[#e11d48] rounded-2xl blur-xs opacity-75 group-hover:opacity-100 transition duration-300"></div>
             <div className="relative w-11 h-11 sm:w-12 sm:h-12 bg-slate-950 rounded-2xl overflow-hidden p-1 flex items-center justify-center border border-slate-800 shadow-md">
               <img 
-                src="/logo.jpg" 
+                src={dkoraLogo} 
                 alt="dkora" 
                 width="48"
                 height="48"
@@ -40,7 +40,10 @@ export default function Header({
                 decoding="async"
                 className="w-full h-full object-cover select-none transition-transform duration-300 group-hover:scale-105"
                 onError={(e) => {
-                  e.currentTarget.src = "/logo.jpg";
+                  if (!e.currentTarget.dataset.failed) {
+                    e.currentTarget.dataset.failed = "true";
+                    e.currentTarget.src = "/logo.jpg";
+                  }
                 }}
               />
             </div>

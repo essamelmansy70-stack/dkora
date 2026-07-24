@@ -47,7 +47,7 @@ export default function LegalModals({ isOpen, onClose, t }: LegalModalsProps) {
           </div>
           <button 
             onClick={onClose}
-            className="p-1 px-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-400 dark:text-slate-350 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1 shrink-0"
+            className="p-1 px-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-400 dark:text-slate-400 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1 shrink-0"
           >
             {t.legal.closeBtn}
             <X className="w-4 h-4" />
@@ -167,7 +167,7 @@ export default function LegalModals({ isOpen, onClose, t }: LegalModalsProps) {
               </div>
 
               {/* Direct Email Display and Interactive copy button */}
-              <div className="mt-6 flex flex-col items-center justify-center p-6 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-850 rounded-2xl text-center space-y-3.5">
+              <div className="mt-6 flex flex-col items-center justify-center p-6 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-2xl text-center space-y-3.5">
                 <span className="text-[11px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest block">
                   {isRtl ? "للتواصل الإداري والفني المعتمد:" : "Professional Administration Inbox:"}
                 </span>
@@ -182,7 +182,7 @@ export default function LegalModals({ isOpen, onClose, t }: LegalModalsProps) {
                   
                   <button
                     onClick={handleCopyEmail}
-                    className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-705 dark:text-slate-300 font-extrabold text-[10px] sm:text-xs rounded-lg transition-all cursor-pointer"
+                    className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-extrabold text-[10px] sm:text-xs rounded-lg transition-all cursor-pointer"
                     aria-label="Copy support email address"
                   >
                     {copied ? (
@@ -220,7 +220,7 @@ export default function LegalModals({ isOpen, onClose, t }: LegalModalsProps) {
                 </div>
               </div>
 
-              <div className="space-y-4 text-left rtl:text-right mt-4 leading-relaxed font-semibold text-slate-650 dark:text-slate-400 text-xs text-justify">
+              <div className="space-y-4 text-left rtl:text-right mt-4 leading-relaxed font-semibold text-slate-600 dark:text-slate-400 text-xs text-justify">
                 <p>
                   {isRtl 
                     ? "١. جميع كود الفرز اللوني الذكي، وضاغط الصور المتقدم، وآليات تفريغ الخلفية المعروضة على dkora.online تعمل بالكامل بمتصفح المستخدم (Client-side) محلياً وبالمجان. نحن لا نضمن دقة الاستخلاص الكاملة لبعض الصور النادرة أو الضعيفة التباين." 
@@ -243,10 +243,10 @@ export default function LegalModals({ isOpen, onClose, t }: LegalModalsProps) {
         </div>
 
         {/* Footer of Modal */}
-        <div className="flex justify-end pt-3 border-t border-slate-100 dark:border-slate-850">
+        <div className="flex justify-end pt-3 border-t border-slate-100 dark:border-slate-800">
           <button 
             onClick={onClose}
-            className="px-5 py-2 bg-slate-900 hover:bg-slate-800 dark:bg-slate-850 dark:hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition-all cursor-pointer"
+            className="px-5 py-2 bg-slate-900 hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition-all cursor-pointer"
           >
             {t.legal.acceptBtn}
           </button>

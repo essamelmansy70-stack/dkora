@@ -820,7 +820,7 @@ export default function App() {
               <div className="absolute -inset-0.5 bg-gradient-to-r from-[#ff1a40] to-[#e11d48] rounded-2xl blur-xs opacity-80 group-hover:opacity-100 transition duration-300"></div>
               <div className="relative w-11 h-11 bg-slate-950 rounded-2xl overflow-hidden p-1 flex items-center justify-center border border-slate-800 shadow-md">
                 <img 
-                  src="/logo.jpg" 
+                  src={dkoraLogo} 
                   alt="dkora" 
                   width="48"
                   height="48"
@@ -830,7 +830,10 @@ export default function App() {
                   decoding="async"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   onError={(e) => {
-                    e.currentTarget.src = "/logo.jpg";
+                    if (!e.currentTarget.dataset.failed) {
+                      e.currentTarget.dataset.failed = "true";
+                      e.currentTarget.src = "/logo.jpg";
+                    }
                   }}
                 />
               </div>
@@ -904,9 +907,9 @@ export default function App() {
                 {/* Hero Banner Image - Highly Optimized for PageSpeed */}
                 <div className="w-full max-w-lg mx-auto rounded-3xl overflow-hidden border border-slate-200/60 shadow-lg bg-slate-100 relative aspect-[16/7]">
                   <picture>
-                    <source srcSet="/hero_world_cup_legends.jpg" type="image/jpeg" />
+                    <source srcSet={heroWorldCupLegends} type="image/jpeg" />
                     <img
-                      src="/hero_world_cup_legends.jpg"
+                      src={heroWorldCupLegends}
                       alt={lang === "ar" ? "اكتشف شبيهك من أساطير كأس العالم" : "Discover your World Cup Legend Match"}
                       width="400"
                       height="223"
@@ -915,7 +918,10 @@ export default function App() {
                       decoding="async"
                       className="w-full h-auto object-cover max-h-56"
                       onError={(e) => {
-                        e.currentTarget.src = "/logo.jpg";
+                        if (!e.currentTarget.dataset.failed) {
+                          e.currentTarget.dataset.failed = "true";
+                          e.currentTarget.src = "/hero_world_cup_legends.jpg";
+                        }
                       }}
                     />
                   </picture>
@@ -962,7 +968,7 @@ export default function App() {
                 
                 {/* Top Stat tracker & dynamic progress slider */}
                 <div className="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-3 shadow-sm">
-                  <div className="flex items-center justify-between text-xs font-bold text-slate-650">
+                  <div className="flex items-center justify-between text-xs font-bold text-slate-600">
                     <span>
                       {t.questionLabel} <span className="text-slate-900 font-mono text-base">{currentIndex + 1}</span> {t.ofLabel} <span className="text-slate-800 font-mono">7</span>
                     </span>
@@ -1007,7 +1013,7 @@ export default function App() {
                           <span className="leading-normal">{isRtl ? option.textAr : option.textEn}</span>
                         </div>
                         
-                        <span className="w-2.5 h-2.5 rounded-full border border-slate-350 bg-transparent group-hover:bg-red-500 group-hover:border-red-400 transition-all shrink-0 ml-1" />
+                        <span className="w-2.5 h-2.5 rounded-full border border-slate-400 bg-transparent group-hover:bg-red-500 group-hover:border-red-400 transition-all shrink-0 ml-1" />
                       </button>
                     );
                   })}
@@ -1100,7 +1106,7 @@ export default function App() {
                 >
                   <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.04] bg-[radial-gradient(#ef4444_1px,transparent_1px)] [background-size:20px_20px]" />
                   
-                  <div className="absolute top-5 left-5 opacity-20 pointer-events-none text-right font-mono text-[9px] text-slate-350 tracking-widest hidden sm:block">
+                  <div className="absolute top-5 left-5 opacity-20 pointer-events-none text-right font-mono text-[9px] text-slate-400 tracking-widest hidden sm:block">
                     {t.resultProfileId} #{finalPlayer.id.toUpperCase()}-2026
                   </div>
 
@@ -1118,7 +1124,12 @@ export default function App() {
                           className="w-full h-full object-cover"
                           referrerPolicy="no-referrer"
                           crossOrigin="anonymous"
-                          onError={(e) => { e.currentTarget.src = "/logo.jpg"; }}
+                          onError={(e) => {
+                            if (!e.currentTarget.dataset.failed) {
+                              e.currentTarget.dataset.failed = "true";
+                              e.currentTarget.src = "/logo.jpg";
+                            }
+                          }}
                         />
                         <div className="absolute -inset-1 rounded-2xl bg-white opacity-5 animate-pulse pointer-events-none" />
                       </div>
@@ -1215,21 +1226,21 @@ export default function App() {
                             <span className="font-mono font-bold text-red-400 text-sm">{finalPlayer.stats.shooting}%</span>
                           </div>
                           <div className="w-full h-1.5 bg-[#070b1e] rounded-full overflow-hidden">
-                            <div className="h-full bg-red-650 rounded-full" style={{ width: `${finalPlayer.stats.shooting}%` }} />
+                            <div className="h-full bg-red-600 rounded-full" style={{ width: `${finalPlayer.stats.shooting}%` }} />
                           </div>
                         </div>
 
                         {/* Stamina & Teamwork Row */}
                         <div className="grid grid-cols-2 gap-4 pt-1">
                           <div>
-                            <div className="text-[10px] sm:text-xs text-slate-350 font-black mb-1 block uppercase">{t.statStamina}</div>
+                            <div className="text-[10px] sm:text-xs text-slate-400 font-black mb-1 block uppercase">{t.statStamina}</div>
                             <div className="flex items-center gap-1.5 text-white font-mono font-black text-xs sm:text-sm">
                               <Activity className="w-3.5 h-3.5 text-red-500" />
                               {finalPlayer.stats.stamina}%
                             </div>
                           </div>
                           <div>
-                            <div className="text-[10px] sm:text-xs text-slate-350 font-black mb-1 block uppercase">{t.statTeamwork}</div>
+                            <div className="text-[10px] sm:text-xs text-slate-400 font-black mb-1 block uppercase">{t.statTeamwork}</div>
                             <div className="flex items-center gap-1.5 text-white font-mono font-black text-xs sm:text-sm">
                               <Heart className="w-3.5 h-3.5 text-white" />
                               {finalPlayer.stats.teamwork}%
@@ -1402,7 +1413,7 @@ export default function App() {
                         <button
                           type="button"
                           onClick={() => { setUserUploadedFile(null); setUserCroppedImage(null); playInteractionSound(); }}
-                          className="py-3 px-4 bg-slate-105 hover:bg-slate-150 text-slate-600 rounded-xl text-xs font-bold transition-all text-center"
+                          className="py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl text-xs font-bold transition-all text-center"
                         >
                           {lang === "ar" ? "إلغاء ورفع صورة أخرى" : "Cancel & upload another"}
                         </button>
@@ -1452,10 +1463,10 @@ export default function App() {
                               className={`p-2 rounded-xl border transition-all flex flex-col items-center text-center text-xs font-black relative overflow-hidden cursor-pointer ${
                                 selectedRivalId === p.id
                                   ? "border-red-500 bg-red-50 text-slate-900 shadow-sm"
-                                  : "border-slate-200 bg-white text-slate-500 hover:border-slate-350 hover:bg-slate-100"
+                                  : "border-slate-200 bg-white text-slate-500 hover:border-slate-400 hover:bg-slate-100"
                               }`}
                             >
-                              <img src={`/${p.id}.jpg`} alt={p.nameEn} className="w-8 h-8 rounded-full object-cover mb-1 shrink-0" referrerPolicy="no-referrer" crossOrigin="anonymous" onError={(e) => { e.currentTarget.src = "/logo.jpg"; }}/>
+                              <img src={`/${p.id}.jpg`} alt={p.nameEn} className="w-8 h-8 rounded-full object-cover mb-1 shrink-0" referrerPolicy="no-referrer" crossOrigin="anonymous" onError={(e) => { if (!e.currentTarget.dataset.failed) { e.currentTarget.dataset.failed = "true"; e.currentTarget.src = "/logo.jpg"; } }}/>
                               <span className="text-[10px] leading-tight block truncate w-full">{lang === "ar" ? p.nameAr : p.nameEn}</span>
                               {selectedRivalId === p.id && <span className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-red-600" />}
                             </button>
@@ -1481,8 +1492,8 @@ export default function App() {
                               onClick={() => { setActiveFilter(f.id); playInteractionSound(); }}
                               className={`p-2 rounded-xl border text-[10px] sm:text-xs font-extrabold transition-all text-center cursor-pointer ${
                                 activeFilter === f.id
-                                  ? "border-red-500 bg-red-650 text-white"
-                                  : "border-slate-205 bg-slate-50 text-slate-600 hover:bg-slate-100"
+                                  ? "border-red-500 bg-red-600 text-white"
+                                  : "border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100"
                               }`}
                             >
                               {lang === "ar" ? f.ar : f.en}
@@ -1552,7 +1563,12 @@ export default function App() {
                                   className="w-full h-full object-cover"
                                   referrerPolicy="no-referrer"
                                   crossOrigin="anonymous"
-                                  onError={(e) => { e.currentTarget.src = "/logo.jpg"; }}
+                                  onError={(e) => {
+                                    if (!e.currentTarget.dataset.failed) {
+                                      e.currentTarget.dataset.failed = "true";
+                                      e.currentTarget.src = "/logo.jpg";
+                                    }
+                                  }}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
                               </div>
@@ -1599,7 +1615,7 @@ export default function App() {
                           <button
                             type="button"
                             onClick={() => { setUserUploadedFile(null); setUserCroppedImage(null); playInteractionSound(); }}
-                            className="w-full py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1.5 border border-slate-205 cursor-pointer shadow-sm"
+                            className="w-full py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1.5 border border-slate-200 cursor-pointer shadow-sm"
                           >
                             <RotateCcw className="w-3.5 h-3.5" />
                             <span>{lang === "ar" ? "تغيير صورتك ورفع أخرى" : "Upload another picture"}</span>
@@ -1609,7 +1625,7 @@ export default function App() {
                         <button
                           type="button"
                           onClick={handleDownloadFanCard}
-                          className="w-full py-4 bg-gradient-to-r from-red-650 to-red-500 hover:opacity-95 text-white font-black text-sm rounded-2xl shadow-lg cursor-pointer transform active:scale-[0.99] duration-150 flex items-center justify-center gap-2"
+                          className="w-full py-4 bg-gradient-to-r from-red-600 to-red-500 hover:opacity-95 text-white font-black text-sm rounded-2xl shadow-lg cursor-pointer transform active:scale-[0.99] duration-150 flex items-center justify-center gap-2"
                         >
                           <Download className="w-5 h-5 text-white animate-bounce" />
                           <span>{lang === "ar" ? "تحميل كرت التباهي ومشاركة النتيجة" : "Download Bragging Card & Share"}</span>
@@ -1668,12 +1684,12 @@ export default function App() {
                   >
                     {isRtl ? (
                       <>
-                        <ArrowRight className="w-3.5 h-3.5 text-red-655" />
+                        <ArrowRight className="w-3.5 h-3.5 text-red-600" />
                         <span>العودة للرئيسية</span>
                       </>
                     ) : (
                       <>
-                        <ArrowLeft className="w-3.5 h-3.5 text-red-655" />
+                        <ArrowLeft className="w-3.5 h-3.5 text-red-600" />
                         <span>Back to Home</span>
                       </>
                     )}
@@ -1739,7 +1755,7 @@ export default function App() {
                         <li><strong>استغلال الميزات المجانية اليومية:</strong> استمتع بتوليد عدد كبير من اللقطات والحركات المجانية المخصصة لك لتجربة كافة الخصائص الإبداعية.</li>
                       </ol>
 
-                      <div className="p-4 bg-red-500/5 border-r-4 border-red-650 rounded-l-xl text-slate-700 text-[11px] sm:text-xs font-bold leading-relaxed mt-6">
+                      <div className="p-4 bg-red-500/5 border-r-4 border-red-600 rounded-l-xl text-slate-700 text-[11px] sm:text-xs font-bold leading-relaxed mt-6">
                         تنبيه أمان وسيو 2026: تم فحص وتأمين رابط التحميل المباشر أدناه لضمان حصولك على أحدث نسخة رسمية وخالية تماماً من الإعلانات المزعجة أو البرمجيات الخبيثة. اتبع خطوات الضغط بدقة للتحميل الفوري السريع.
                       </div>
                     </div>
@@ -1774,7 +1790,7 @@ export default function App() {
                 </div>
 
                 {/* Download Protection Flow Component (Dual clicks) */}
-                <div className="p-6 bg-gradient-to-br from-[#0e163d] via-[#090d29] to-[#0a1033] border border-slate-850 rounded-3xl shadow-xl space-y-5 relative overflow-hidden">
+                <div className="p-6 bg-gradient-to-br from-[#0e163d] via-[#090d29] to-[#0a1033] border border-slate-800 rounded-3xl shadow-xl space-y-5 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full filter blur-2xl pointer-events-none"></div>
                   <div className="absolute bottom-0 left-0 w-48 h-48 bg-rose-500/5 rounded-full filter blur-2xl pointer-events-none"></div>
 
@@ -1862,7 +1878,7 @@ export default function App() {
               {/* Primary Pages Group */}
               <div className="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-4">
                 <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2 border-b border-slate-200 pb-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-650" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-600" />
                   {lang === "ar" ? "الصفحات الرئيسية والأدوات" : "Main Core Pages & Tools"}
                 </h3>
                 
@@ -2053,7 +2069,7 @@ export default function App() {
           <div className="w-full max-w-4xl mx-auto py-2">
             <Suspense fallback={
               <div className="flex flex-col items-center justify-center p-12 text-slate-500 font-bold">
-                <Loader2 className="w-8 h-8 animate-spin text-red-650 mb-2" />
+                <Loader2 className="w-8 h-8 animate-spin text-red-600 mb-2" />
                 <span>{lang === 'ar' ? 'جاري التحميل...' : 'Loading...'}</span>
               </div>
             }>
@@ -2066,7 +2082,7 @@ export default function App() {
           <div className="w-full max-w-4xl mx-auto py-2">
             <Suspense fallback={
               <div className="flex flex-col items-center justify-center p-12 text-slate-500 font-bold">
-                <Loader2 className="w-8 h-8 animate-spin text-red-650 mb-2" />
+                <Loader2 className="w-8 h-8 animate-spin text-red-600 mb-2" />
                 <span>{lang === 'ar' ? 'جاري التحميل...' : 'Loading...'}</span>
               </div>
             }>
@@ -2079,7 +2095,7 @@ export default function App() {
           <div className="w-full max-w-4xl mx-auto py-2">
             <Suspense fallback={
               <div className="flex flex-col items-center justify-center p-12 text-slate-500 font-bold">
-                <Loader2 className="w-8 h-8 animate-spin text-red-650 mb-2" />
+                <Loader2 className="w-8 h-8 animate-spin text-red-600 mb-2" />
                 <span>{lang === 'ar' ? 'جاري التحميل...' : 'Loading...'}</span>
               </div>
             }>
@@ -2092,7 +2108,7 @@ export default function App() {
           <div className="w-full max-w-4xl mx-auto py-2">
             <Suspense fallback={
               <div className="flex flex-col items-center justify-center p-12 text-slate-500 font-bold">
-                <Loader2 className="w-8 h-8 animate-spin text-red-650 mb-2" />
+                <Loader2 className="w-8 h-8 animate-spin text-red-600 mb-2" />
                 <span>{lang === 'ar' ? 'جاري التحميل...' : 'Loading...'}</span>
               </div>
             }>
@@ -2117,14 +2133,14 @@ export default function App() {
       <footer className={`w-full px-4 py-6 border-t text-center space-y-6 z-10 backdrop-blur-sm mt-12 transition-all duration-350 ${
         activeTab === "blog"
           ? "max-w-none px-4 sm:px-6 md:px-8 lg:px-10 bg-[#03071c]/50 border-slate-800 text-slate-300"
-          : "max-w-4xl bg-white/50 border-slate-205 text-slate-900"
+          : "max-w-4xl bg-white/50 border-slate-200 text-slate-900"
       }`}>
         
         {/* SEO EXPLANATION PANEL - INJECTED FOR GOOGLE SEARCH INDEXING 2026 */}
         <section className={`border p-5 rounded-2xl text-start space-y-3 ${
           activeTab === "blog"
-            ? "bg-[#070d2c]/60 border-slate-850"
-            : "bg-slate-50 border-slate-205"
+            ? "bg-[#070d2c]/60 border-slate-800"
+            : "bg-slate-50 border-slate-200"
         }`}>
           <h4 className="text-xs sm:text-sm font-black text-red-500 uppercase tracking-wider">
             {lang === "ar" ? "حول اختبار شبيهك من لاعبي المونديال المتطور لعام ٢٠٢٦" : "About the Advanced 2026 World Cup Player Match Quiz"}
@@ -2140,7 +2156,7 @@ export default function App() {
         </section>
 
         <p className={`text-[10px] sm:text-xs font-semibold font-sans ${
-          activeTab === "blog" ? "text-slate-400" : "text-slate-450"
+          activeTab === "blog" ? "text-slate-400" : "text-slate-400"
         }`}>
           {t.footerRights}
         </p>

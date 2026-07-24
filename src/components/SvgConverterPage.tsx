@@ -293,7 +293,7 @@ export default function SvgConverterPage({ locale, t }: SvgConverterPageProps) {
               </div>
               <button 
                 type="button" 
-                className="px-4 py-2 bg-slate-900 hover:bg-black dark:bg-slate-800 dark:hover:bg-slate-750 text-white text-[11px] font-black rounded-xl cursor-pointer transition-all border-0 shadow-xs"
+                className="px-4 py-2 bg-slate-900 hover:bg-black dark:bg-slate-800 dark:hover:bg-slate-700 text-white text-[11px] font-black rounded-xl cursor-pointer transition-all border-0 shadow-xs"
               >
                 {t.svgConverter.dropzoneBtn}
               </button>
@@ -498,7 +498,7 @@ export default function SvgConverterPage({ locale, t }: SvgConverterPageProps) {
                     <span className="text-[10px] font-black text-slate-700 dark:text-slate-400">{t.svgConverter.originalLabel}</span>
                     <span className="text-[10px] font-mono text-slate-400 font-bold">{formatBytes(fileSize)}</span>
                   </div>
-                  <div className="relative flex-1 min-h-[250px] sm:min-h-[350px] bg-slate-50/50 dark:bg-slate-910 flex items-center justify-center p-4">
+                  <div className="relative flex-1 min-h-[250px] sm:min-h-[350px] bg-slate-50/50 dark:bg-slate-900 flex items-center justify-center p-4">
                     <img 
                       src={imageSrc} 
                       alt="Original source raster block" 

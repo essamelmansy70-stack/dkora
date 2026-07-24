@@ -417,20 +417,20 @@ export default function CropperPage({ locale }: CropperPageProps) {
             <div class="lg:col-span-4 space-y-6">
                 <!-- Preset Aspect Ratio Panel -->
                 <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-                    <h3 class="text-sm font-black border-b border-slate-100 dark:border-slate-850 pb-2">🎯 نسبة أبعاد القص (Aspect Ratio)</h3>
+                    <h3 class="text-sm font-black border-b border-slate-100 dark:border-slate-800 pb-2">🎯 نسبة أبعاد القص (Aspect Ratio)</h3>
                     <div class="grid grid-cols-2 gap-2 text-xs">
-                        <button onclick="setAspect('free')" class="aspect-btn bg-rose-500 text-white font-bold p-2.5 rounded-xl border border-slate-150 transition-all text-center">حر</button>
-                        <button onclick="setAspect('1/1')" class="aspect-btn bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 font-bold p-2.5 rounded-xl border border-slate-150 transition-all text-center">1:1 مربع</button>
-                        <button onclick="setAspect('16/9')" class="aspect-btn bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 font-bold p-2.5 rounded-xl border border-slate-150 transition-all text-center">16:9 شاشة عريضة</button>
-                        <button onclick="setAspect('4/3')" class="aspect-btn bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 font-bold p-2.5 rounded-xl border border-slate-150 transition-all text-center">4:3 كلاسيك</button>
-                        <button onclick="setAspect('9/16')" class="aspect-btn bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 font-bold p-2.5 rounded-xl border border-slate-150 transition-all text-center">9:16 طولي</button>
-                        <button onclick="setAspect('2/3')" class="aspect-btn bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 font-bold p-2.5 rounded-xl border border-slate-150 transition-all text-center">2:3 بورتريه</button>
+                        <button onclick="setAspect('free')" class="aspect-btn bg-rose-500 text-white font-bold p-2.5 rounded-xl border border-slate-200 transition-all text-center">حر</button>
+                        <button onclick="setAspect('1/1')" class="aspect-btn bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 font-bold p-2.5 rounded-xl border border-slate-200 transition-all text-center">1:1 مربع</button>
+                        <button onclick="setAspect('16/9')" class="aspect-btn bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 font-bold p-2.5 rounded-xl border border-slate-200 transition-all text-center">16:9 شاشة عريضة</button>
+                        <button onclick="setAspect('4/3')" class="aspect-btn bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 font-bold p-2.5 rounded-xl border border-slate-200 transition-all text-center">4:3 كلاسيك</button>
+                        <button onclick="setAspect('9/16')" class="aspect-btn bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 font-bold p-2.5 rounded-xl border border-slate-200 transition-all text-center">9:16 طولي</button>
+                        <button onclick="setAspect('2/3')" class="aspect-btn bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 font-bold p-2.5 rounded-xl border border-slate-200 transition-all text-center">2:3 بورتريه</button>
                     </div>
                 </div>
 
                 <!-- Custom Scale Inputs Panel -->
                 <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-                    <h3 class="text-sm font-black border-b border-slate-100 dark:border-slate-850 pb-2">⚙️ أبعاد صندوق التصدير (بكسل)</h3>
+                    <h3 class="text-sm font-black border-b border-slate-100 dark:border-slate-800 pb-2">⚙️ أبعاد صندوق التصدير (بكسل)</h3>
                     <div class="grid grid-cols-2 gap-3 text-xs">
                         <div>
                             <label class="block mb-1 opacity-70">العرض (px)</label>
@@ -448,10 +448,10 @@ export default function CropperPage({ locale }: CropperPageProps) {
 
                 <!-- Extensions Selection and Save Trigger -->
                 <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-                    <h3 class="text-sm font-black border-b border-slate-100 dark:border-slate-850 pb-2">💾 صيغة الملف والتنزيل</h3>
+                    <h3 class="text-sm font-black border-b border-slate-100 dark:border-slate-800 pb-2">💾 صيغة الملف والتنزيل</h3>
                     <div class="grid grid-cols-2 gap-2 text-xs">
                         <button onclick="setExtension('png')" id="btnFormatPng" class="p-2.5 rounded-xl border font-bold text-center border-rose-500 bg-rose-500 text-white transition-all">PNG صيغة</button>
-                        <button onclick="setExtension('jpg')" id="btnFormatJpg" class="p-2.5 rounded-xl border font-bold text-center border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 hover:bg-slate-150 dark:hover:bg-slate-700 transition-all">JPEG صيغة</button>
+                        <button onclick="setExtension('jpg')" id="btnFormatJpg" class="p-2.5 rounded-xl border font-bold text-center border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">JPEG صيغة</button>
                     </div>
 
                     <button onclick="downloadImage()" class="w-full bg-[#ff1a40] hover:bg-[#e01032] text-white font-black text-xs py-3.5 rounded-2xl flex items-center justify-center gap-2.5 cursor-pointer shadow-xl transition">
@@ -558,10 +558,10 @@ export default function CropperPage({ locale }: CropperPageProps) {
             const j = document.getElementById('btnFormatJpg');
             if (ext === 'png') {
                 p.className = "p-2.5 rounded-xl border font-bold text-center border-rose-500 bg-rose-500 text-white transition-all";
-                j.className = "p-2.5 rounded-xl border font-bold text-center border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 hover:bg-slate-150 transition-all";
+                j.className = "p-2.5 rounded-xl border font-bold text-center border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 hover:bg-slate-200 transition-all";
             } else {
                 j.className = "p-2.5 rounded-xl border font-bold text-center border-rose-500 bg-rose-500 text-white transition-all";
-                p.className = "p-2.5 rounded-xl border font-bold text-center border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 hover:bg-slate-150 transition-all";
+                p.className = "p-2.5 rounded-xl border font-bold text-center border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 hover:bg-slate-200 transition-all";
             }
         }
 
@@ -658,7 +658,7 @@ export default function CropperPage({ locale }: CropperPageProps) {
           className={`bg-white dark:bg-slate-900 border-2 border-dashed rounded-3xl p-12 text-center cursor-pointer transition-all duration-300 shadow-lg select-none group min-h-[300px] flex flex-col items-center justify-center gap-4 ${
             isDragging 
               ? 'border-[#ff1a40] bg-rose-50/10' 
-              : 'border-slate-200 dark:border-slate-800 hover:border-[#ff1a40] hover:bg-slate-50 dark:hover:bg-slate-850'
+              : 'border-slate-200 dark:border-slate-800 hover:border-[#ff1a40] hover:bg-slate-50 dark:hover:bg-slate-800'
           }`}
         >
           <input 
@@ -699,7 +699,7 @@ export default function CropperPage({ locale }: CropperPageProps) {
               <div className="flex flex-wrap items-center gap-2">
                 <button 
                   onClick={() => handleRotate(-90)} 
-                  className="p-2 sm:px-3 sm:py-2 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-750 text-slate-800 dark:text-white text-xs font-black rounded-lg transition-all flex items-center gap-1.5 cursor-pointer border border-slate-150 dark:border-slate-800"
+                  className="p-2 sm:px-3 sm:py-2 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-white text-xs font-black rounded-lg transition-all flex items-center gap-1.5 cursor-pointer border border-slate-200 dark:border-slate-800"
                   title={t.rotateLeft}
                 >
                   <RotateCcw className="w-3.5 h-3.5 text-[#ff1a40]" />
@@ -707,7 +707,7 @@ export default function CropperPage({ locale }: CropperPageProps) {
                 </button>
                 <button 
                   onClick={() => handleRotate(90)} 
-                  className="p-2 sm:px-3 sm:py-2 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-750 text-slate-800 dark:text-white text-xs font-black rounded-lg transition-all flex items-center gap-1.5 cursor-pointer border border-slate-150 dark:border-slate-800"
+                  className="p-2 sm:px-3 sm:py-2 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-white text-xs font-black rounded-lg transition-all flex items-center gap-1.5 cursor-pointer border border-slate-200 dark:border-slate-800"
                   title={t.rotateRight}
                 >
                   <RotateCw className="w-3.5 h-3.5 text-[#ff1a40]" />
@@ -715,7 +715,7 @@ export default function CropperPage({ locale }: CropperPageProps) {
                 </button>
                 <button 
                   onClick={handleScaleX} 
-                  className="p-2 sm:px-3 sm:py-2 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-750 text-slate-800 dark:text-white text-xs font-black rounded-lg transition-all flex items-center gap-1.5 cursor-pointer border border-slate-150 dark:border-slate-800"
+                  className="p-2 sm:px-3 sm:py-2 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-white text-xs font-black rounded-lg transition-all flex items-center gap-1.5 cursor-pointer border border-slate-200 dark:border-slate-800"
                   title={t.flipH}
                 >
                   <FlipHorizontal className="w-3.5 h-3.5 text-[#ff1a40]" />
@@ -723,7 +723,7 @@ export default function CropperPage({ locale }: CropperPageProps) {
                 </button>
                 <button 
                   onClick={handleScaleY} 
-                  className="p-2 sm:px-3 sm:py-2 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-750 text-slate-800 dark:text-white text-xs font-black rounded-lg transition-all flex items-center gap-1.5 cursor-pointer border border-slate-150 dark:border-slate-800"
+                  className="p-2 sm:px-3 sm:py-2 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-white text-xs font-black rounded-lg transition-all flex items-center gap-1.5 cursor-pointer border border-slate-200 dark:border-slate-800"
                   title={t.flipV}
                 >
                   <FlipVertical className="w-3.5 h-3.5 text-[#ff1a40]" />
@@ -731,7 +731,7 @@ export default function CropperPage({ locale }: CropperPageProps) {
                 </button>
                 <button 
                   onClick={() => handleZoom(0.12)} 
-                  className="p-2 sm:px-3 sm:py-2 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-750 text-slate-800 dark:text-white text-xs font-black rounded-lg transition-all flex items-center gap-1.5 cursor-pointer border border-slate-150 dark:border-slate-800"
+                  className="p-2 sm:px-3 sm:py-2 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-white text-xs font-black rounded-lg transition-all flex items-center gap-1.5 cursor-pointer border border-slate-200 dark:border-slate-800"
                   title={t.zoomIn}
                 >
                   <ZoomIn className="w-3.5 h-3.5 text-[#ff1a40]" />
@@ -739,7 +739,7 @@ export default function CropperPage({ locale }: CropperPageProps) {
                 </button>
                 <button 
                   onClick={() => handleZoom(-0.12)} 
-                  className="p-2 sm:px-3 sm:py-2 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-750 text-slate-800 dark:text-white text-xs font-black rounded-lg transition-all flex items-center gap-1.5 cursor-pointer border border-slate-150 dark:border-slate-800"
+                  className="p-2 sm:px-3 sm:py-2 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-white text-xs font-black rounded-lg transition-all flex items-center gap-1.5 cursor-pointer border border-slate-200 dark:border-slate-800"
                   title={t.zoomOut}
                 >
                   <ZoomOut className="w-3.5 h-3.5 text-[#ff1a40]" />
@@ -756,7 +756,7 @@ export default function CropperPage({ locale }: CropperPageProps) {
                 </button>
                 <button 
                   onClick={clearImage} 
-                  className="px-3.5 py-2 text-slate-700 hover:text-white hover:bg-rose-600 dark:text-slate-350 bg-slate-100 dark:bg-slate-800 dark:hover:bg-[#ff1a40] text-xs font-black rounded-lg transition-all cursor-pointer"
+                  className="px-3.5 py-2 text-slate-700 hover:text-white hover:bg-rose-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 dark:hover:bg-[#ff1a40] text-xs font-black rounded-lg transition-all cursor-pointer"
                 >
                   <Trash2 className="w-3.5 h-3.5 inline mr-1" />
                   {isRtl ? 'تغيير الصورة' : 'Change Image'}
@@ -770,7 +770,7 @@ export default function CropperPage({ locale }: CropperPageProps) {
             
             {/* Aspect Ratio Box Preset */}
             <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-4">
-              <h3 className="text-xs font-black text-slate-800 dark:text-white flex items-center gap-2 pb-2.5 border-b border-slate-100 dark:border-slate-850">
+              <h3 className="text-xs font-black text-slate-800 dark:text-white flex items-center gap-2 pb-2.5 border-b border-slate-100 dark:border-slate-800">
                 <Sliders className="w-4 h-4 text-[#ff1a40]" />
                 {t.aspectRatioTitle}
               </h3>
@@ -790,7 +790,7 @@ export default function CropperPage({ locale }: CropperPageProps) {
                     className={`p-2.5 text-xxs sm:text-xs font-black rounded-xl border transition-all text-center cursor-pointer ${
                       selectedAspect === item.value
                         ? 'border-[#ff1a40] bg-[#ff1a40] text-white shadow-md'
-                        : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-850 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'
+                        : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'
                     }`}
                   >
                     {item.label}
@@ -801,7 +801,7 @@ export default function CropperPage({ locale }: CropperPageProps) {
 
             {/* Custom Scale Input pixels */}
             <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-4">
-              <div className="flex items-center justify-between pb-2.5 border-b border-slate-100 dark:border-slate-850">
+              <div className="flex items-center justify-between pb-2.5 border-b border-slate-100 dark:border-slate-800">
                 <h3 className="text-xs font-black text-slate-800 dark:text-white flex items-center gap-2">
                   <Crop className="w-4 h-4 text-[#ff1a40]" />
                   {t.dimensionsTitle}
@@ -818,7 +818,7 @@ export default function CropperPage({ locale }: CropperPageProps) {
                     type="number"
                     value={customWidth}
                     onChange={(e) => setCustomWidth(e.target.value)}
-                    className="w-full bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-750 text-slate-850 dark:text-slate-200 rounded-xl p-2.5 font-bold focus:outline-none focus:ring-1 focus:ring-[#ff1a40] text-center"
+                    className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 rounded-xl p-2.5 font-bold focus:outline-none focus:ring-1 focus:ring-[#ff1a40] text-center"
                   />
                 </div>
                 <div>
@@ -827,14 +827,14 @@ export default function CropperPage({ locale }: CropperPageProps) {
                     type="number"
                     value={customHeight}
                     onChange={(e) => setCustomHeight(e.target.value)}
-                    className="w-full bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-750 text-slate-850 dark:text-slate-200 rounded-xl p-2.5 font-bold focus:outline-none focus:ring-1 focus:ring-[#ff1a40] text-center"
+                    className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 rounded-xl p-2.5 font-bold focus:outline-none focus:ring-1 focus:ring-[#ff1a40] text-center"
                   />
                 </div>
               </div>
 
               <button
                 onClick={applyCustomBoxDimensions}
-                className="w-full py-2 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-750 text-slate-800 dark:text-slate-200 font-extrabold text-xxs sm:text-xs rounded-xl border border-slate-200 dark:border-slate-700 transition cursor-pointer"
+                className="w-full py-2 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-extrabold text-xxs sm:text-xs rounded-xl border border-slate-200 dark:border-slate-700 transition cursor-pointer"
               >
                 {t.applyDimensions}
               </button>
@@ -842,7 +842,7 @@ export default function CropperPage({ locale }: CropperPageProps) {
 
             {/* Custom Format Selection and Download trigger */}
             <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl p-5 sm:p-6 shadow-xl space-y-4">
-              <h3 className="text-xs font-black text-slate-800 dark:text-white flex items-center gap-2 pb-2.5 border-b border-slate-100 dark:border-slate-850">
+              <h3 className="text-xs font-black text-slate-800 dark:text-white flex items-center gap-2 pb-2.5 border-b border-slate-100 dark:border-slate-800">
                 <ImageIcon className="w-4 h-4 text-[#ff1a40]" />
                 {t.formatLabel}
               </h3>
@@ -853,7 +853,7 @@ export default function CropperPage({ locale }: CropperPageProps) {
                   className={`p-2.5 rounded-xl border font-bold text-center cursor-pointer transition-all ${
                     fileExtension === 'png'
                       ? 'border-[#ff1a40] bg-rose-500/10 text-[#ff1a40] shadow-sm font-extrabold'
-                      : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-850 hover:bg-slate-100 dark:hover:bg-slate-750 text-slate-600 dark:text-slate-400'
+                      : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400'
                   }`}
                 >
                   PNG صيغة
@@ -863,7 +863,7 @@ export default function CropperPage({ locale }: CropperPageProps) {
                   className={`p-2.5 rounded-xl border font-bold text-center cursor-pointer transition-all ${
                     fileExtension === 'jpeg'
                       ? 'border-[#ff1a40] bg-rose-500/10 text-[#ff1a40] shadow-sm font-extrabold'
-                      : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-850 hover:bg-slate-100 dark:hover:bg-slate-750 text-slate-600 dark:text-slate-400'
+                      : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400'
                   }`}
                 >
                   JPEG صيغة
@@ -886,13 +886,13 @@ export default function CropperPage({ locale }: CropperPageProps) {
 
       {/* Integration CDN HTML Single File box (Exactly meeting user request!) */}
       <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl mt-12 space-y-6 animate-fade-in relative z-10 select-none">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-150 dark:border-slate-850 pb-5">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-5">
           <div className="space-y-1.5 max-w-2xl">
             <h3 className="text-lg font-black text-slate-800 dark:text-white flex items-center gap-2.5">
               <FileCode className="w-5.5 h-5.5 text-[#ff1a40]" />
               {t.integrationHeader}
             </h3>
-            <p className="text-[11px] sm:text-xs text-slate-700 dark:text-slate-350 leading-relaxed md:w-11/12">
+            <p className="text-[11px] sm:text-xs text-slate-700 dark:text-slate-400 leading-relaxed md:w-11/12">
               {t.integrationDesc}
             </p>
           </div>

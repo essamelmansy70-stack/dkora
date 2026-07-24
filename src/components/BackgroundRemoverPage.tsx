@@ -816,14 +816,14 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
           <div className="bg-[#ff1a40]/5 dark:bg-rose-950/20 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3.5 text-[#ff1a40]">
             <Upload className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
-          <h3 className="text-sm sm:text-[15.5px] font-black text-slate-700 dark:text-slate-350">
+          <h3 className="text-sm sm:text-[15.5px] font-black text-slate-700 dark:text-slate-400">
             {t.dropzoneTitle}
           </h3>
-          <p className="text-[10px] sm:text-[11px] text-slate-450 dark:text-slate-500 mt-2">
+          <p className="text-[10px] sm:text-[11px] text-slate-400 dark:text-slate-500 mt-2">
             {t.dropzoneSubtitle}
           </p>
 
-          <div className="mt-6 inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-900/60 px-3.5 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-medium leading-normal border border-slate-200/50 dark:border-slate-850">
+          <div className="mt-6 inline-flex items-center gap-2 text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-900/60 px-3.5 py-1.5 rounded-lg text-[10px] sm:text-[11px] font-medium leading-normal border border-slate-200/50 dark:border-slate-800">
             <Info className="w-3.5 h-3.5 text-[#ff1a40] flex-shrink-0" />
             <span>{locale === 'ar' ? "آمن ١٠٠٪ ومحلي بالكامل داخل جهازك ومثالي لمتاجر سلة، زد وشوبيفاي." : "100% Secure, locally on-device. Perfect for e-commerce stores."}</span>
           </div>
@@ -852,7 +852,7 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>{t.autoBackdropBtn}</span>
               </button>
-              <p className="text-[9.5px] text-slate-450 dark:text-slate-500 text-center leading-relaxed">
+              <p className="text-[9.5px] text-slate-400 dark:text-slate-500 text-center leading-relaxed">
                 {t.autoBackdropDesc}
               </p>
             </div>
@@ -868,7 +868,7 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
                 className={`w-full flex items-center justify-between p-2.5 rounded-xl border text-[11px] sm:text-[11.5px] transition font-bold cursor-pointer ${
                   activeTool === 'magicWand'
                     ? 'border-[#ff1a40] bg-[#ff1a40]/5 text-[#ff1a40]'
-                    : 'border-slate-200 dark:border-slate-900 bg-slate-50/50 dark:bg-slate-900/50 text-slate-705 dark:text-slate-300 hover:bg-slate-100/50'
+                    : 'border-slate-200 dark:border-slate-900 bg-slate-50/50 dark:bg-slate-900/50 text-slate-700 dark:text-slate-300 hover:bg-slate-100/50'
                 }`}
               >
                 <span className="flex items-center gap-1.5">
@@ -887,7 +887,7 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
                 className={`w-full flex items-center justify-between p-2.5 rounded-xl border text-[11px] sm:text-[11.5px] transition font-bold cursor-pointer ${
                   activeTool === 'eraser'
                     ? 'border-[#ff1a40] bg-[#ff1a40]/5 text-[#ff1a40]'
-                    : 'border-slate-200 dark:border-slate-900 bg-slate-50/50 dark:bg-slate-900/50 text-slate-705 dark:text-slate-300 hover:bg-slate-100/50'
+                    : 'border-slate-200 dark:border-slate-900 bg-slate-50/50 dark:bg-slate-900/50 text-slate-700 dark:text-slate-300 hover:bg-slate-100/50'
                 }`}
               >
                 <span className="flex items-center gap-1.5">
@@ -906,7 +906,7 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
                 className={`w-full flex items-center justify-between p-2.5 rounded-xl border text-[11px] sm:text-[11.5px] transition font-bold cursor-pointer ${
                   activeTool === 'restore'
                     ? 'border-[#ff1a40] bg-[#ff1a40]/5 text-[#ff1a40]'
-                    : 'border-slate-200 dark:border-slate-900 bg-slate-50/50 dark:bg-slate-900/50 text-slate-705 dark:text-slate-300 hover:bg-slate-100/50'
+                    : 'border-slate-200 dark:border-slate-900 bg-slate-50/50 dark:bg-slate-900/50 text-slate-700 dark:text-slate-300 hover:bg-slate-100/50'
                 }`}
               >
                 <span className="flex items-center gap-1.5">
@@ -939,7 +939,7 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
               {(activeTool === 'eraser' || activeTool === 'restore') && (
                 <>
                   {/* Brush Size */}
-                  <div className="space-y-1.5 border-t border-slate-105/40 dark:border-slate-900/60 pt-2.5">
+                  <div className="space-y-1.5 border-t border-slate-100/40 dark:border-slate-900/60 pt-2.5">
                     <div className="flex items-center justify-between text-[11.5px] font-sans">
                       <span className="text-slate-700 dark:text-slate-300 font-bold">{t.brushSizeTitle}</span>
                       <span className="text-[#ff1a40] font-mono font-black text-xs">{brushSize}px</span>
@@ -975,13 +975,13 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
 
             {/* Presets and Global color key selector */}
             <div className="space-y-2 border-t border-slate-100 dark:border-slate-900 pt-3">
-              <span className="block text-[11px] font-black text-slate-750 dark:text-slate-300 mb-1.5">
+              <span className="block text-[11px] font-black text-slate-700 dark:text-slate-300 mb-1.5">
                 {t.globalChromaTitle}
               </span>
               <div className="flex flex-wrap gap-1.5">
                 <button 
                   onClick={() => erasePickedChromaGlobally(255, 255, 255)}
-                  className="px-2 py-1 text-[9.5px] font-bold rounded bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 border border-slate-250/20 active:scale-95 cursor-pointer"
+                  className="px-2 py-1 text-[9.5px] font-bold rounded bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 border border-slate-300/20 active:scale-95 cursor-pointer"
                 >
                   🟢 {locale === 'ar' ? "تفريغ الأبيض" : "Clear White"}
                 </button>
@@ -1008,7 +1008,7 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
                 className={`w-full flex items-center justify-center gap-1.5 p-2 rounded-xl border text-[10.5px] transition font-bold cursor-pointer mt-1 ${
                   activeTool === 'colorPicker'
                     ? 'border-[#ff1a40] bg-[#ff1a40]/5 text-[#ff1a40]'
-                    : 'border-dashed border-slate-300 dark:border-slate-850 bg-transparent text-slate-700 dark:text-slate-300 hover:bg-slate-50'
+                    : 'border-dashed border-slate-300 dark:border-slate-800 bg-transparent text-slate-700 dark:text-slate-300 hover:bg-slate-50'
                 }`}
               >
                 <Pipette className="w-3.5 h-3.5 text-[#ff1a40]" />
@@ -1016,12 +1016,12 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
               </button>
 
               {pickedChromaColor && (
-                <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-900/60 p-2 rounded-xl mt-1 text-[10px] sm:text-[11px] border border-slate-150 dark:border-slate-900">
+                <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-900/60 p-2 rounded-xl mt-1 text-[10px] sm:text-[11px] border border-slate-200 dark:border-slate-900">
                   <div 
                     className="w-5 h-5 rounded border border-slate-200" 
                     style={{ backgroundColor: `rgb(${pickedChromaColor.r}, ${pickedChromaColor.g}, ${pickedChromaColor.b})` }}
                   />
-                  <div className="flex-1 font-mono text-slate-650 dark:text-slate-350">
+                  <div className="flex-1 font-mono text-slate-600 dark:text-slate-400">
                     rgb({pickedChromaColor.r},{pickedChromaColor.g},{pickedChromaColor.b})
                   </div>
                   <button 
@@ -1039,7 +1039,7 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
 
             {/* Compose Backdrops */}
             <div className="space-y-2 border-t border-slate-100 dark:border-slate-900 pt-3">
-              <span className="block text-[11px] font-black text-slate-750 dark:text-slate-300 mb-1.5">
+              <span className="block text-[11px] font-black text-slate-700 dark:text-slate-300 mb-1.5">
                 {t.bgPreviewTitle}
               </span>
               
@@ -1049,7 +1049,7 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
                   className={`py-1.5 text-[9.5px] font-bold rounded border transition-all cursor-pointer ${
                     bgType === 'transparent'
                       ? 'border-[#ff1a40] bg-[#ff1a40]/5 text-[#ff1a40]'
-                      : 'border-slate-205 dark:border-slate-9a0 bg-slate-50 text-slate-650 dark:text-slate-400'
+                      : 'border-slate-200 dark:border-slate-9a0 bg-slate-50 text-slate-600 dark:text-slate-400'
                   }`}
                 >
                   {locale === 'ar' ? "شفاف" : "Transparent"}
@@ -1059,7 +1059,7 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
                   className={`py-1.5 text-[9.5px] font-bold rounded border transition-all cursor-pointer ${
                     bgType === 'solid'
                       ? 'border-[#ff1a40] bg-[#ff1a40]/5 text-[#ff1a40]'
-                      : 'border-slate-205 dark:border-slate-9a0 bg-slate-50 text-slate-650 dark:text-slate-400'
+                      : 'border-slate-200 dark:border-slate-9a0 bg-slate-50 text-slate-600 dark:text-slate-400'
                   }`}
                 >
                   {locale === 'ar' ? "لون مصمت" : "Color"}
@@ -1069,7 +1069,7 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
                   className={`py-1.5 text-[9.5px] font-bold rounded border transition-all cursor-pointer ${
                     bgType === 'image'
                       ? 'border-[#ff1a40] bg-[#ff1a40]/5 text-[#ff1a40]'
-                      : 'border-slate-205 dark:border-slate-9a0 bg-slate-50 text-slate-650 dark:text-slate-400'
+                      : 'border-slate-200 dark:border-slate-9a0 bg-slate-50 text-slate-600 dark:text-slate-400'
                   }`}
                 >
                   {locale === 'ar' ? "دمج خلفية" : "Composition"}
@@ -1078,8 +1078,8 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
 
               {/* Compose color picker and file choose dialog panel depending on selector */}
               {bgType === 'solid' && (
-                <div className="flex items-center gap-1.5 mt-2 bg-slate-50 dark:bg-slate-900 p-1.5 rounded-xl border border-slate-150 dark:border-slate-900">
-                  <Palette className="w-3.5 h-3.5 text-slate-450" />
+                <div className="flex items-center gap-1.5 mt-2 bg-slate-50 dark:bg-slate-900 p-1.5 rounded-xl border border-slate-200 dark:border-slate-900">
+                  <Palette className="w-3.5 h-3.5 text-slate-400" />
                   <input 
                     type="color" 
                     value={bgSolidColor}
@@ -1090,7 +1090,7 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
                     type="text" 
                     value={bgSolidColor}
                     onChange={(e) => setBgSolidColor(e.target.value)}
-                    className="flex-1 text-[10px] font-mono text-center bg-transparent border-0 text-slate-700 dark:text-slate-350 focus:ring-0 focus:outline-none"
+                    className="flex-1 text-[10px] font-mono text-center bg-transparent border-0 text-slate-700 dark:text-slate-400 focus:ring-0 focus:outline-none"
                   />
                 </div>
               )}
@@ -1127,7 +1127,7 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
             </div>
 
             {/* Quick Tips */}
-            <div className="bg-rose-500/5 border border-rose-500/10 dark:border-rose-950/20 rounded-xl p-3 text-[10px] leading-relaxed text-slate-650 dark:text-slate-400">
+            <div className="bg-rose-500/5 border border-rose-500/10 dark:border-rose-950/20 rounded-xl p-3 text-[10px] leading-relaxed text-slate-600 dark:text-slate-400">
               <span className="font-bold text-[#ff1a40] block mb-1">ℹ️ {locale === 'ar' ? "تلميح ذكي:" : "Smart Tip:"}</span>
               {locale === 'ar' 
                 ? "لإزالة الكتل الكبيرة تفضل باستخدام زر (الإزالة التلقائية)، بينما الممحاة السحرية ممتازة لحذف الفراغات والتجاويف في الثياب والمنتجات."
@@ -1145,7 +1145,7 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
               <div className="flex items-center gap-1.5">
                 <button
                   onClick={handleUploadAnother}
-                  className="flex items-center gap-1 text-[11px] font-bold text-slate-755 dark:text-slate-300 hover:text-[#ff1a40] border border-slate-200 dark:border-slate-900 bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 px-3 py-1.5 rounded-xl cursor-pointer transition-all"
+                  className="flex items-center gap-1 text-[11px] font-bold text-slate-700 dark:text-slate-300 hover:text-[#ff1a40] border border-slate-200 dark:border-slate-900 bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 px-3 py-1.5 rounded-xl cursor-pointer transition-all"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   <span>{locale === 'ar' ? "اختيار صورة أخرى" : "Process Another File"}</span>
@@ -1161,7 +1161,7 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
                 <button
                   onClick={handleUndo}
                   disabled={undoStack.length <= 1}
-                  className="p-1.5 sm:px-3 sm:py-1.5 flex items-center gap-1 text-[11px] rounded-xl font-bold border border-slate-200 dark:border-slate-900 bg-slate-50 dark:bg-slate-905 text-slate-700 dark:text-slate-300 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                  className="p-1.5 sm:px-3 sm:py-1.5 flex items-center gap-1 text-[11px] rounded-xl font-bold border border-slate-200 dark:border-slate-900 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
                   title={t.undoBtn}
                 >
                   <Undo2 className="w-3.5 h-3.5" />
@@ -1171,14 +1171,14 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
                 <button
                   onClick={handleRedo}
                   disabled={redoStack.length === 0}
-                  className="p-1.5 sm:px-3 sm:py-1.5 flex items-center gap-1 text-[11px] rounded-xl font-bold border border-slate-200 dark:border-slate-900 bg-slate-50 dark:bg-slate-905 text-slate-700 dark:text-slate-300 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                  className="p-1.5 sm:px-3 sm:py-1.5 flex items-center gap-1 text-[11px] rounded-xl font-bold border border-slate-200 dark:border-slate-900 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
                   title={t.redoBtn}
                 >
                   <Redo2 className="w-3.5 h-3.5" />
                   <span className="hidden sm:inline">{t.redoBtn}</span>
                 </button>
 
-                <span className="text-slate-200 dark:text-slate-850">|</span>
+                <span className="text-slate-200 dark:text-slate-800">|</span>
 
                 {/* Reset entire work */}
                 <button
@@ -1200,7 +1200,7 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
                 >
                   <ZoomOut className="w-3.5 h-3.5" />
                 </button>
-                <span className="text-[10px] font-mono font-bold text-slate-600 dark:text-slate-450 min-w-[40px] text-center">
+                <span className="text-[10px] font-mono font-bold text-slate-600 dark:text-slate-400 min-w-[40px] text-center">
                   {Math.round(zoomLevel * 100)}%
                 </span>
                 <button 
@@ -1293,12 +1293,12 @@ export default function BackgroundRemoverPage({ locale }: BackgroundRemoverPageP
             </div>
 
             {/* Informational Help Sheet */}
-            <div className="bg-slate-50 dark:bg-slate-900 border border-slate-205/30 dark:border-slate-850 rounded-2xl p-4 sm:p-5 font-sans mt-2">
+            <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200/30 dark:border-slate-800 rounded-2xl p-4 sm:p-5 font-sans mt-2">
               <h3 className="text-xs sm:text-[13px] font-black text-slate-800 dark:text-white flex items-center gap-1.5 mb-3">
                 <Sliders className="w-4 h-4 text-[#ff1a40]" />
                 <span>{t.howToUseTitle}</span>
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-[10.5px] sm:text-[11.5px] leading-relaxed text-slate-655 dark:text-slate-400">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-[10.5px] sm:text-[11.5px] leading-relaxed text-slate-600 dark:text-slate-400">
                 <p>{t.step1}</p>
                 <p>{t.step2}</p>
                 <p>{t.step3}</p>

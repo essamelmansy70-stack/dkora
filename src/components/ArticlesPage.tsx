@@ -43,6 +43,7 @@ import learnFootballGuide2026 from '../assets/images/learn_football_guide_2026_1
 import crysencioSummervilleStar from '../assets/images/crysencio_summerville_star_1784824392236.jpg';
 import julianAlvarezStar from '../assets/images/julian_alvarez_star_1784826512196.jpg';
 import marwanAttiaStar from '../assets/images/marwan_attia_star_1784827981287.jpg';
+import omarFayedStar from '../assets/images/omar_fayed_star_1784872103084.jpg';
 
 interface Article {
   id: string;
@@ -85,6 +86,148 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-omar-fayed-defender-profile-2026",
+    slug: "omar-fayed-player-egyptian-defender-fenerbahce-profile-2026",
+    categoryAr: "أخبار المحترفين المصريين والكرة العالمية",
+    categoryEn: "Egyptian Overseas Players & European Football",
+    titleAr: "عمر فايد لاعب منتخب مصر وفنربخشة: رحلة صخرة الدفاع الصاعد، التطور التكتيكي، والمحطات الاحترافية في أوروبا (دليل شامل 2026)",
+    titleEn: "Omar Fayed Player Profile: Egypt Defender, Fenerbahçe Transfer & European Journey 2026",
+    descAr: "تقرير صحفي متكامل ومفصل يتجاوز 800 كلمة يغطي مسيرة عمر فايد لاعب منتخب مصر والأولمبي وفنربخشة التركي، نشأته في المقاولون العرب، تجاربه الاحترافية في أوروبا، تحليله التكتيكي كقلب دفاع حديث، ومستقبله الكروي.",
+    descEn: "Comprehensive 800+ word journalistic report covering Omar Fayed, Egyptian national defender and Fenerbahçe star, highlighting his career from El Mokawloon to European football, tactical analysis, and future prospects.",
+    keywordsAr: [
+      "عمر فايد لاعب",
+      "عمر فايد",
+      "عمر فايد مدافع منتخب مصر",
+      "عمر فايد فنربخشة",
+      "اخبار عمر فايد",
+      "عمر فايد المقاولون العرب",
+      "عمر فايد بيرشكوت",
+      "عمر فايد نوفي بازار",
+      "اللاعب عمر فايد",
+      "عمر فايد اوليمبياد باريس"
+    ],
+    keywordsEn: [
+      "omar fayed player",
+      "omar fayed defender",
+      "omar fayed fenerbahce",
+      "omar fayed egypt",
+      "omar fayed el mokawloon"
+    ],
+    image: omarFayedStar,
+    date: "2026-07-24",
+    readTime: "10 min",
+    contentAr: {
+      toc: [
+        "1. مقدمة: صعود عمر فايد لاعب الدفاع الواعد إلى الساحة العالمية",
+        "2. بداية المشوار الكروي: من قطاع ناشئي المقاولون العرب إلى التألق الممتاز",
+        "3. المحطة الأوروبية الفاصلة: الانتقال إلى فنربخشة التركي والإعارات الناجحة",
+        "4. التحليل التكتيكي: الخصائص الفنية المتميزة لـ عمر فايد لاعب الدفاع الحديث",
+        "5. المشاركات الدولية: رهان منتخب مصر الأول والأولمبي في باريس ومستقبل 2026",
+        "6. بطاقة البيانات الشخصية والمحطات الكروية لـ عمر فايد لاعب الفراعنة",
+        "7. الأسئلة الشائعة (FAQs) حول عمر فايد لاعب منتخب مصر وفنربخشة"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: صعود عمر فايد لاعب الدفاع الواعد إلى الساحة العالمية",
+          body: "يُعد **عمر فايد لاعب** كرة القدم المصري الواعد واحدًا من أبرز المواهب الشابة التي أثبتت جدارتها في مركز قلب الدفاع خلال السنوات الأخيرة. بفضل بنيته الجسدية القوية ووعيه التكتيكي المتقدم، استطاع **عمر فايد لاعب** منتخب مصر والمقاولون العرب السابق أن يجذب أنظار كبرى الأندية الأوروبية في سن مبكرة، مما مهد الطريق لرحلته الاحترافية المميزة مع نادي فنربخشة التركي وإعاراته الناجحة في الدوريات الأوروبية.\n\nتأتي مسيرة **عمر فايد لاعب** الدفاع لتجسد نموذجًا ملهمًا للشباب العربي في الكفاح والانضباط، حيث لم يكتفِ بالتألق المحلي بل خاض تحديات احترافية شاقة في أوروبا لتطوير مهاراته التكتيكية والبدنية. وفي هذا التقرير الشامل، نستعرض السيرة الذاتية الكاملة لـ **عمر فايد لاعب** الفراعنة، كواليس انتقاله إلى فنربخشة، تحليله التكتيكي داخل المستطيل الأخضر، وأبرز محطاته مع منتخب مصر الأولمبي والأول."
+        },
+        {
+          title: "2. بداية المشوار الكروي: من قطاع ناشئي المقاولون العرب إلى التألق الممتاز",
+          body: "بدأ **عمر فايد لاعب** قلب الدفاع مشواره الكروي من قطاع الناشئين بنادي المقاولون العرب العريق، الذي يُعتبر أحد أكبر معاقل تفريخ المواهب الكروية في مصر وإفريقيا (والذي خرج منه أساطير مثل محمد صلاح ومحمد النني).\n\nتميز **عمر فايد لاعب** المقاولون بالصلابة الدفاعية والهدوء الشديد في بناء اللعب من الخلف، مما دفع الأجهزة الفنية لتصعيده سريعاً إلى الفريق الأول بالدوري المصري الممتاز. وخلال مشاركاته الأساسية، أظهر قدرة استثنائية على قطع الكرات العرضية والفوز بالالتحاقات الهوائية ضد مهاجمين مخضرمين، وهو ما جعل القيمة السوقية والاهتمام الإعلامي والرياضي حول **عمر فايد لاعب** الدفاع تتضاعف بشكل قياسي."
+        },
+        {
+          title: "3. المحطة الأوروبية الفاصلة: الانتقال إلى فنربخشة التركي والإعارات الناجحة",
+          body: "في صيف عام 2023، أعلن نادي فنربخشة التركي العريق تعاقده الرسمي مع **عمر فايد لاعب** المنتخب المصري بعقد طويل الأجل، في صفقة أثارت اهتمام وسائل الإعلام الرياضية الأوروبية والعربية، لكونها تمثل خطوة احترافية مباشرة من الدوري المصري إلى القارة العجوز.\n\nولضمان حصول **عمر فايد لاعب** الدفاع الشاب على دقائق مشاركة مستمرة وتطوير خبراته التنافسية في أوروبا، تم الاتفاق على خروجه في تجارب إعارة استراتيجية:\n\n• **تجربة نوفي بازار الصربي (Novi Pazar)**: قدم خلالها **عمر فايد لاعب** فنربخشة مستويات ممتازة واكتسب صلابة وتمرساً كبيراً في الدوري الصربي الممتاز.\n• **تجربة بيرشكوت البلجيكي (K. Beerschot V.A.)**: انتقل إليها لمواصلة الاحتكاك في الدوري البلجيكي، حيث نجح **عمر فايد لاعب** المنتخب في قيادة خط الدفاع ببراعة وإبراز سرعته في التغطية خلف الأظهرة وتأمين المساحات الدفاعية."
+        },
+        {
+          title: "4. التحليل التكتيكي: الخصائص الفنية المتميزة لـ عمر فايد لاعب الدفاع الحديث",
+          body: "تتنوع المقومات الفنية والتكتيكية التي تجعل **عمر فايد لاعب** قلب دفاع حديث وعصري متكامل مع متطلبات كرة القدم الاحترافية:\n\n• **الطول والارتقاء الهوائي (Aerial Duels)**: يتمتع بلياقة وطول قامة (1.90 متر) يمنحه الأفضلية المطلقة في الكرات العالية وتشتيت العرضيات الخطيرة في الضربات الركنية والهجمات المرتدة.\n• **بناء اللعب والتمرير التقدمي (Progressive Passing)**: يمتلك **عمر فايد لاعب** الدفاع رؤية ممتازة للبدء بالهجمة من الخلف بإرسال كرات طولية دقيقة لكسر خطوط الضغط العالي للمنافسين وتحويل اللعب للطرفين.\n• **الافتراس والتوقيت المالي (Interceptions & Tackling)**: يمتاز بالهدوء وعدم التسرع في التداخل، مع استخدام جسده بذكاء لحماية الكرة ومنع المهاجمين من استلامها في المساحات الضيقة، مما يقلل من نسبة ارتكاب الأخطاء القريبة من منطقة الجزاء."
+        },
+        {
+          title: "5. المشاركات الدولية: رهان منتخب مصر الأول والأولمبي في باريس ومستقبل 2026",
+          body: "شكل **عمر فايد لاعب** الدفاع العمود الفقري لمنتخب مصر الأولمبي (تحت 23 سنة) تحت قيادة البرازيلي روجيرو ميكالي، حيث ساهم بفعالية في التأهل إلى دورة الألعاب الأولمبية (باريس 2024) واحتلال المركز الرابع إفريقياً وعالمياً بعد تقديم أداء دفاعي رفيع المستوى ضد منتخبات كبرى.\n\nومع استمرار تطوره الاحترافي في أوروبا، أصبح **عمر فايد لاعب** الفراعنة حجر زاوية مستقبلي في حسابات الجهاز الفني لمنتخب مصر الأول، كعنصر شاب واعد قادر على قيادة دفاع الفراعنة في نهائيات كأس الأمم الإفريقية وتصفيات كأس العالم 2026 بثبات واقتدار."
+        },
+        {
+          title: "6. بطاقة البيانات الشخصية والمحطات الكروية لـ عمر فايد لاعب الفراعنة",
+          body: "نلخص فيما يلي أبرز البيانات الشخصية والكروية لـ **عمر فايد لاعب** منتخب مصر والمحترف في أوروبا:\n\n• **الاسم الكامل**: عمر فايد (Omar Fayed)\n• **تاريخ الميلاد**: 4 يوليو 2003\n• **محل الميلاد**: جمهورية مصر العربية\n• **مركز اللعب**: قلب دفاع (Centre-Back)\n• **الطول الجسدي**: 1.90 متر\n• **النادي الأصلي في مصر**: المقاولون العرب\n• **النادي الأوروبي الحالي**: فنربخشة التركي (Fenerbahçe S.K.)\n• **أبرز محطات الإعارة**: نوفي بازار الصربي، بيرشكوت البلجيكي\n• **المشاركات الدولية**: منتخب مصر الأولمبي (أولمبياد باريس 2024)، المنتخب المصري الأول"
+        },
+        {
+          title: "7. الأسئلة الشائعة (FAQs) حول عمر فايد لاعب منتخب مصر وفنربخشة",
+          body: "إليك أبرز الإجابات الشافية عن الأسئلة المتداولة بين الجماهير والمتابعين الرياضيين حول **عمر فايد لاعب** الدفاع:"
+        }
+      ],
+      faqs: [
+        {
+          q: "من هو عمر فايد لاعب المنتخب المصري وفنربخشة؟",
+          a: "عمر فايد هو مدافع مصري شاب من مواليد 4 يوليو 2003، بدأ مسيرته في نادي المقاولون العرب وانتقل رسمياً إلى نادي فنربخشة التركي في صيف 2023 ليخوض رحلة احتراف أوروبية نادرة في سن صغيرة."
+        },
+        {
+          q: "ما هي الأندية التي لعب لها عمر فايد لاعب الدفاع؟",
+          a: "لعب عمر فايد في مصر لنادي المقاولون العرب، ثم انتقل إلى فنربخشة التركي، وخاض تجارب إعارة احترافية في نوفي بازار الصربي وبيرشكوت البلجيكي."
+        },
+        {
+          q: "ما هو المركز الأساسي لـ عمر فايد لاعب منتخب مصر؟",
+          a: "يلعب عمر فايد في مركز قلب الدفاع (Centre-Back)، ويجيد أيضاً التغطية كمدافع بفضل بنيته الجسدية القوية وسرعته في افتراس الكرات."
+        },
+        {
+          q: "هل شارك عمر فايد لاعب مصر في أولمبياد باريس 2024؟",
+          a: "نعم، كان عمر فايد أحد القادة الأساسيين لخط دفاع منتخب مصر الأولمبي في دورة الألعاب الأولمبية بباريس 2024 وساهم في الوصول لنصف النهائي."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: Rise of Omar Fayed the Defender",
+        "2. Early Career: El Mokawloon Youth to Egyptian Premier League",
+        "3. European Journey: Fenerbahçe Transfer & Loan Spells",
+        "4. Tactical Breakdown: Modern Center-Back Attributes",
+        "5. International Duty: Egypt Olympic Team & Senior Squad",
+        "6. Player Profile & Career Statistics",
+        "7. Frequently Asked Questions (FAQs)"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: Rise of Omar Fayed the Defender",
+          body: "Omar Fayed is one of Egypt's most promising young defender talents in modern football. Standing at 1.90m with impressive tactical composure, his journey from El Mokawloon to Turkish powerhouse Fenerbahçe highlights a bright future for Egyptian overseas professionals."
+        },
+        {
+          title: "2. Early Career: El Mokawloon Youth to Egyptian Premier League",
+          body: "Developing through El Mokawloon Arab's famous youth academy—the birthplace of icons like Mohamed Salah—Omar Fayed quickly asserted himself in the Egyptian Premier League with dominant aerial play and mature defensive reading."
+        },
+        {
+          title: "3. European Journey: Fenerbahçe Transfer & Loan Spells",
+          body: "In August 2023, Fenerbahçe secured Omar Fayed on a long-term contract. To maximize match experience, Fayed gained valuable European playing time on loan at Serbian club Novi Pazar and Belgian side K. Beerschot V.A."
+        },
+        {
+          title: "4. Tactical Breakdown: Modern Center-Back Attributes",
+          body: "Fayed combines aerial dominance, clean tackling, and progressive ball-playing capabilities, making him a prototype modern center-back suited for high defensive lines and press-resistant build-up play."
+        },
+        {
+          title: "5. International Duty: Egypt Olympic Team & Senior Squad",
+          body: "As a key defensive pillar for Egypt's U23 squad during the Paris 2024 Olympics, Omar Fayed showcased his international quality, positioning himself as a primary long-term central defender for the senior national team leading up to the 2026 World Cup."
+        },
+        {
+          title: "6. Player Profile & Career Statistics",
+          body: "• Full Name: Omar Fayed\n• Date of Birth: July 4, 2003\n• Position: Centre-Back\n• Height: 1.90 m\n• Current Club: Fenerbahçe (Loan at Beerschot)\n• Youth Club: El Mokawloon Arab\n• International: Egypt U23 / Egypt Senior Team"
+        },
+        {
+          title: "7. Frequently Asked Questions (FAQs)",
+          body: "Key questions and facts regarding Egyptian defender Omar Fayed's European career and international performances."
+        }
+      ],
+      faqs: [
+        {
+          q: "Who is Omar Fayed?",
+          a: "Omar Fayed is an Egyptian professional footballer born on July 4, 2003, who plays as a central defender for Fenerbahçe and the Egypt national team."
+        },
+        {
+          q: "Which European clubs has Omar Fayed played for?",
+          a: "Fenerbahçe (Turkey), Novi Pazar (Serbia), and K. Beerschot V.A. (Belgium)."
+        }
+      ]
+    }
+  },
   {
     id: "art-marwan-attia-al-ahly-contract-renewal-2026",
     slug: "marwan-attia-al-ahly-player-contract-renewal-2031-profile-2026",

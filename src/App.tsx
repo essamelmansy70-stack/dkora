@@ -809,7 +809,7 @@ export default function App() {
           ? "bg-[#030712]/90 border-slate-800 text-white" 
           : "bg-white/90 border-slate-200/80 text-slate-900"
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3">
           
           {/* Logo & Brand Identity */}
           <div 
@@ -849,48 +849,6 @@ export default function App() {
                 {lang === "ar" ? "منصة الأخبار واختبارات الكرة الشاملة" : "World Cup Football News & Interactive Hub"}
               </p>
             </div>
-          </div>
-
-          {/* Navigation Bar Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-1.5 p-1 bg-slate-100 dark:bg-slate-900/90 rounded-2xl border border-slate-200/80 dark:border-slate-800">
-            <button
-              onClick={() => { handleTabChange("quiz"); playInteractionSound(); }}
-              aria-label={lang === "ar" ? "الانتقال إلى اختبار المونديال" : "Switch to World Cup Quiz"}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition-all flex items-center gap-1.5 cursor-pointer ${
-                activeTab === "quiz"
-                  ? "bg-[#ff1a40] text-white shadow-md shadow-rose-500/20"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800/60"
-              }`}
-            >
-              <Trophy className="w-3.5 h-3.5" />
-              <span>{lang === "ar" ? "اختبار المونديال" : "World Cup Quiz"}</span>
-            </button>
-
-            <button
-              onClick={() => { handleTabChange("blog"); playInteractionSound(); }}
-              aria-label={lang === "ar" ? "الانتقال إلى المقالات والأخبار الرياضية" : "Switch to Football Articles"}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition-all flex items-center gap-1.5 cursor-pointer ${
-                activeTab === "blog"
-                  ? "bg-[#ff1a40] text-white shadow-md shadow-rose-500/20"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800/60"
-              }`}
-            >
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>{lang === "ar" ? "المقالات الرياضية" : "Articles & Guides"}</span>
-            </button>
-
-            <button
-              onClick={() => { handleTabChange("bg-remover"); playInteractionSound(); }}
-              aria-label={lang === "ar" ? "الانتقال إلى الأدوات الذكية" : "Switch to AI Tools"}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition-all flex items-center gap-1.5 cursor-pointer ${
-                activeTab === "bg-remover" || activeTab === "cropper" || activeTab === "svg-converter" || activeTab === "veo-video"
-                  ? "bg-[#ff1a40] text-white shadow-md shadow-rose-500/20"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-800/60"
-              }`}
-            >
-              <Zap className="w-3.5 h-3.5 text-amber-400" />
-              <span>{lang === "ar" ? "الأدوات الذكية" : "AI Tools"}</span>
-            </button>
           </div>
 
           {/* Language Switcher */}

@@ -8731,6 +8731,10 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                 <img 
                   src={selectedArticle.image} 
                   alt={isRtl ? selectedArticle.titleAr : selectedArticle.titleEn}
+                  width="800"
+                  height="450"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                   onError={(e) => { e.currentTarget.src = "/logo.jpg"; }}
@@ -9110,6 +9114,10 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                   <img 
                     src={featuredArticle.image} 
                     alt={isRtl ? featuredArticle.titleAr : featuredArticle.titleEn}
+                    width="800"
+                    height="450"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     referrerPolicy="no-referrer"
                     onError={(e) => { e.currentTarget.src = "/logo.jpg"; }}
@@ -9171,6 +9179,10 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                       <img 
                         src={art.image} 
                         alt={isRtl ? art.titleAr : art.titleEn} 
+                        width="600"
+                        height="338"
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500"
                         referrerPolicy="no-referrer"
                         onError={(e) => { e.currentTarget.src = "/logo.jpg"; }}

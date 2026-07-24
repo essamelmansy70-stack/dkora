@@ -32,6 +32,12 @@ export default function Header({
               <img 
                 src={dkoraLogo} 
                 alt="dkora" 
+                width="48"
+                height="48"
+                loading="eager"
+                // @ts-ignore
+                fetchPriority="high"
+                decoding="async"
                 className="w-full h-full object-cover select-none transition-transform duration-300 group-hover:scale-105"
                 referrerPolicy="no-referrer"
                 onError={(e) => {

@@ -822,6 +822,12 @@ export default function App() {
                 <img 
                   src={dkoraLogo} 
                   alt="dkora" 
+                  width="48"
+                  height="48"
+                  loading="eager"
+                  // @ts-ignore
+                  fetchPriority="high"
+                  decoding="async"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
@@ -850,6 +856,7 @@ export default function App() {
           <div className="flex flex-wrap items-center justify-center gap-1.5 p-1 bg-slate-100 dark:bg-slate-900/90 rounded-2xl border border-slate-200/80 dark:border-slate-800">
             <button
               onClick={() => { handleTabChange("quiz"); playInteractionSound(); }}
+              aria-label={lang === "ar" ? "الانتقال إلى اختبار المونديال" : "Switch to World Cup Quiz"}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition-all flex items-center gap-1.5 cursor-pointer ${
                 activeTab === "quiz"
                   ? "bg-[#ff1a40] text-white shadow-md shadow-rose-500/20"
@@ -862,6 +869,7 @@ export default function App() {
 
             <button
               onClick={() => { handleTabChange("blog"); playInteractionSound(); }}
+              aria-label={lang === "ar" ? "الانتقال إلى المقالات والأخبار الرياضية" : "Switch to Football Articles"}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition-all flex items-center gap-1.5 cursor-pointer ${
                 activeTab === "blog"
                   ? "bg-[#ff1a40] text-white shadow-md shadow-rose-500/20"
@@ -874,6 +882,7 @@ export default function App() {
 
             <button
               onClick={() => { handleTabChange("bg-remover"); playInteractionSound(); }}
+              aria-label={lang === "ar" ? "الانتقال إلى الأدوات الذكية" : "Switch to AI Tools"}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition-all flex items-center gap-1.5 cursor-pointer ${
                 activeTab === "bg-remover" || activeTab === "cropper" || activeTab === "svg-converter" || activeTab === "veo-video"
                   ? "bg-[#ff1a40] text-white shadow-md shadow-rose-500/20"
@@ -890,6 +899,7 @@ export default function App() {
             <button
               id="lang-toggle-btn"
               onClick={() => handleLanguageChange(lang === "ar" ? "en" : "ar")}
+              aria-label={lang === "ar" ? "تغيير لغة الموقع إلى الإنجليزية" : "Change website language to Arabic"}
               className="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 hover:bg-rose-50 dark:hover:bg-rose-950/40 hover:border-rose-300 text-xs font-black flex items-center gap-1.5 cursor-pointer shadow-xs transition-all active:scale-95 text-slate-800 dark:text-slate-200"
             >
               <Globe className="w-3.5 h-3.5 text-[#ff1a40]" />

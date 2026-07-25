@@ -8879,7 +8879,6 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
-                  referrerPolicy="no-referrer"
                   onError={(e) => {
                     const target = e.currentTarget;
                     if (!target.dataset.failed) {
@@ -9268,7 +9267,6 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    referrerPolicy="no-referrer"
                     onError={(e) => {
                       if (!e.currentTarget.dataset.failed) {
                         e.currentTarget.dataset.failed = "true";
@@ -9338,7 +9336,6 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                         loading="lazy"
                         decoding="async"
                         className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500"
-                        referrerPolicy="no-referrer"
                         onError={(e) => {
                           if (!e.currentTarget.dataset.failed) {
                             e.currentTarget.dataset.failed = "true";

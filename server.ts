@@ -221,8 +221,11 @@ async function startServer() {
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
-  // Always serve static files from the "public" directory directly to prevent broken images
+  // Always serve static files directly to prevent broken images
   app.use(express.static(path.join(rootDir, "public")));
+  app.use("/src/assets", express.static(path.join(rootDir, "src/assets")));
+  app.use("/assets", express.static(path.join(rootDir, "dist/assets")));
+  app.use("/assets", express.static(path.join(rootDir, "src/assets")));
 
   // API Route: Combine user base64 photo with their matching players using Gemini
   app.post("/api/match-photo", async (req, res) => {
@@ -333,11 +336,24 @@ The output must be a single beautifully synthesized natural photograph, aspect r
       appType: "spa",
     });
 
+    // Mount Vite middleware FIRST so asset requests (images, JS, CSS, fonts) are handled cleanly
+    app.use(vite.middlewares);
+
     // Intercept standard page load requests to inject dynamic SEO headers for bots/sharers
     app.get("*", async (req, res, next) => {
       const url = req.originalUrl;
+      const cleanPath = req.path;
+
       // Skip API routes, statics, and direct asset files
-      if (url.startsWith("/api") || url.includes(".") || req.headers.accept?.includes("application/json")) {
+      if (
+        cleanPath.startsWith("/api") ||
+        cleanPath.startsWith("/@") ||
+        cleanPath.startsWith("/src") ||
+        cleanPath.startsWith("/node_modules") ||
+        cleanPath.startsWith("/assets") ||
+        cleanPath.match(/\.(jpg|jpeg|png|gif|svg|webp|ico|css|js|map|woff2?|json|ttf|eot)$/i) ||
+        req.headers.accept?.includes("application/json")
+      ) {
         return next();
       }
 
@@ -348,11 +364,9 @@ The output must be a single beautifully synthesized natural photograph, aspect r
         html = replaceAllSeoMeta(html, seo);
         res.status(200).set({ "Content-Type": "text/html" }).end(html);
       } catch (e) {
-        vite.middlewares(req, res, next);
+        next(e);
       }
     });
-
-    app.use(vite.middlewares);
   } else {
     console.log("Starting server in PRODUCTION mode.");
     const distPath = path.join(rootDir, "dist");
@@ -371,8 +385,18 @@ The output must be a single beautifully synthesized natural photograph, aspect r
         }
       }
     }));
+
+    app.use(express.static(path.join(rootDir, "public")));
     
-    app.get("*", (req, res) => {
+    app.get("*", (req, res, next) => {
+      const cleanPath = req.path;
+      if (
+        cleanPath.startsWith("/api") ||
+        cleanPath.match(/\.(jpg|jpeg|png|gif|svg|webp|ico|css|js|map|woff2?|json|ttf|eot)$/i)
+      ) {
+        return next();
+      }
+
       try {
         let html = fs.readFileSync(path.join(distPath, "index.html"), "utf-8");
         const seo = getSeoMetaData(req);

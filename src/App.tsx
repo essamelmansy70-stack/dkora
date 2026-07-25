@@ -1703,7 +1703,6 @@ export default function App() {
                     <img
                       src={veo3VideoGenerationGuide}
                       alt="Google Veo 3 Video Generator"
-                      referrerPolicy="no-referrer"
                       className="w-full h-full object-cover group-hover:scale-105 duration-500 transition-transform"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />

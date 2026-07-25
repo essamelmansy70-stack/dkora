@@ -830,9 +830,10 @@ export default function App() {
                   decoding="async"
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   onError={(e) => {
-                    if (!e.currentTarget.dataset.failed) {
-                      e.currentTarget.dataset.failed = "true";
-                      e.currentTarget.src = "/logo.jpg";
+                    const target = e.currentTarget;
+                    if (!target.dataset.failed) {
+                      target.dataset.failed = "1";
+                      target.src = "/logo.jpg";
                     }
                   }}
                 />
@@ -906,25 +907,27 @@ export default function App() {
 
                 {/* Hero Banner Image - Highly Optimized for PageSpeed */}
                 <div className="w-full max-w-lg mx-auto rounded-3xl overflow-hidden border border-slate-200/60 shadow-lg bg-slate-100 relative aspect-[16/7]">
-                  <picture>
-                    <source srcSet={heroWorldCupLegends} type="image/jpeg" />
-                    <img
-                      src={heroWorldCupLegends}
-                      alt={lang === "ar" ? "اكتشف شبيهك من أساطير كأس العالم" : "Discover your World Cup Legend Match"}
-                      width="400"
-                      height="223"
-                      {...({ fetchPriority: "high" } as any)}
-                      loading="eager"
-                      decoding="async"
-                      className="w-full h-auto object-cover max-h-56"
-                      onError={(e) => {
-                        if (!e.currentTarget.dataset.failed) {
-                          e.currentTarget.dataset.failed = "true";
-                          e.currentTarget.src = "/hero_world_cup_legends.jpg";
-                        }
-                      }}
-                    />
-                  </picture>
+                  <img
+                    src={heroWorldCupLegends}
+                    alt={lang === "ar" ? "اكتشف شبيهك من أساطير كأس العالم" : "Discover your World Cup Legend Match"}
+                    width="400"
+                    height="223"
+                    // @ts-ignore
+                    fetchPriority="high"
+                    loading="eager"
+                    decoding="async"
+                    className="w-full h-full object-cover max-h-56"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (!target.dataset.failed) {
+                        target.dataset.failed = "1";
+                        target.src = "/hero_world_cup_legends.jpg";
+                      } else if (target.dataset.failed === "1") {
+                        target.dataset.failed = "2";
+                        target.src = "/logo.jpg";
+                      }
+                    }}
+                  />
                 </div>
 
                 {/* Info Badges */}

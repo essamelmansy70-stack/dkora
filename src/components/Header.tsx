@@ -40,9 +40,10 @@ export default function Header({
                 decoding="async"
                 className="w-full h-full object-cover select-none transition-transform duration-300 group-hover:scale-105"
                 onError={(e) => {
-                  if (!e.currentTarget.dataset.failed) {
-                    e.currentTarget.dataset.failed = "true";
-                    e.currentTarget.src = "/logo.jpg";
+                  const target = e.currentTarget;
+                  if (!target.dataset.failed) {
+                    target.dataset.failed = "1";
+                    target.src = "/logo.jpg";
                   }
                 }}
               />

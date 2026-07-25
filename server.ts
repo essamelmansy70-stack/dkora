@@ -203,6 +203,17 @@ async function startServer() {
   const app = express();
   const PORT = 3000;
 
+  // Enable CORS for all origins, static assets, and API requests
+  app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization");
+    if (req.method === "OPTIONS") {
+      return res.sendStatus(200);
+    }
+    next();
+  });
+
   // Enable gzip compression to decrease download payloads and improve FCP
   app.use(compression());
 

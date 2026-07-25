@@ -1125,12 +1125,11 @@ export default function App() {
                           src={`/${finalPlayer.id}.jpg`} 
                           alt={lang === "ar" ? finalPlayer.nameAr : finalPlayer.nameEn}
                           className="w-full h-full object-cover"
-                          referrerPolicy="no-referrer"
-                          crossOrigin="anonymous"
                           onError={(e) => {
-                            if (!e.currentTarget.dataset.failed) {
-                              e.currentTarget.dataset.failed = "true";
-                              e.currentTarget.src = "/logo.jpg";
+                            const target = e.currentTarget;
+                            if (!target.dataset.failed) {
+                              target.dataset.failed = "1";
+                              target.src = "/logo.jpg";
                             }
                           }}
                         />
@@ -1469,7 +1468,7 @@ export default function App() {
                                   : "border-slate-200 bg-white text-slate-500 hover:border-slate-400 hover:bg-slate-100"
                               }`}
                             >
-                              <img src={`/${p.id}.jpg`} alt={p.nameEn} className="w-8 h-8 rounded-full object-cover mb-1 shrink-0" referrerPolicy="no-referrer" crossOrigin="anonymous" onError={(e) => { if (!e.currentTarget.dataset.failed) { e.currentTarget.dataset.failed = "true"; e.currentTarget.src = "/logo.jpg"; } }}/>
+                              <img src={`/${p.id}.jpg`} alt={p.nameEn} className="w-8 h-8 rounded-full object-cover mb-1 shrink-0" onError={(e) => { const target = e.currentTarget; if (!target.dataset.failed) { target.dataset.failed = "1"; target.src = "/logo.jpg"; } }}/>
                               <span className="text-[10px] leading-tight block truncate w-full">{lang === "ar" ? p.nameAr : p.nameEn}</span>
                               {selectedRivalId === p.id && <span className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-red-600" />}
                             </button>
@@ -1564,12 +1563,11 @@ export default function App() {
                                   src={`/${selectedRivalId}.jpg`}
                                   alt={PLAYER_PROFILES.find(p => p.id === selectedRivalId)?.nameEn || "Rival"}
                                   className="w-full h-full object-cover"
-                                  referrerPolicy="no-referrer"
-                                  crossOrigin="anonymous"
                                   onError={(e) => {
-                                    if (!e.currentTarget.dataset.failed) {
-                                      e.currentTarget.dataset.failed = "true";
-                                      e.currentTarget.src = "/logo.jpg";
+                                    const target = e.currentTarget;
+                                    if (!target.dataset.failed) {
+                                      target.dataset.failed = "1";
+                                      target.src = "/logo.jpg";
                                     }
                                   }}
                                 />

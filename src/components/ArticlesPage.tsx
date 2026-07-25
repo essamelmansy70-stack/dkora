@@ -8881,9 +8881,10 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                   className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
-                    if (!e.currentTarget.dataset.failed) {
-                      e.currentTarget.dataset.failed = "true";
-                      e.currentTarget.src = "/logo.jpg";
+                    const target = e.currentTarget;
+                    if (!target.dataset.failed) {
+                      target.dataset.failed = "1";
+                      target.src = "/logo.jpg";
                     }
                   }}
                 />

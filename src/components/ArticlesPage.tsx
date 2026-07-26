@@ -45,6 +45,7 @@ import julianAlvarezStar from '../assets/images/julian_alvarez_star_178482651219
 import marwanAttiaStar from '../assets/images/marwan_attia_star_1784827981287.jpg';
 import omarFayedStar from '../assets/images/omar_fayed_star_1784872103084.jpg';
 import haaisamHassanEgyptStar from '../assets/images/haaisam_hassan_egypt_star_1784947720000.jpg';
+import shurootKoratAlQadamImage from '../assets/images/shuroot_korat_al_qadam_2026.jpg';
 
 interface Article {
   id: string;
@@ -87,6 +88,187 @@ interface Article {
 }
 
 const ARTICLES_DATA: Article[] = [
+  {
+    id: "art-shuroot-korat-al-qadam-guide-2026",
+    slug: "shuroot-korat-al-qadam-official-laws-guide-2026",
+    categoryAr: "قوانين وأحكام الرياضة",
+    categoryEn: "Sports Laws & Regulations",
+    titleAr: "شروط كرة القدم الرسمية: الدليل الشامل لقوانين اللعبة والمواصفات المعتمدة (تحديث 2026)",
+    titleEn: "Official Football Rules and Conditions: Comprehensive Guide to IFAB Laws and Specifications (2026 Update)",
+    descAr: "دليل صحفي وتحليلي شامل يتجاوز 800 كلمة يتناول كافة شروط كرة القدم القانونية، مواصفات الملعب، التجهيزات، عدد اللاعبين، أحكام التسلل والإنذارات، وتطبيقات تقنية الفيديو وفق أحدث تعديلات مجلس الاتحاد الدولي (IFAB).",
+    descEn: "Comprehensive 800+ word analytical guide covering all official football laws, pitch specifications, equipment, player rules, offside regulations, and VAR protocols as mandated by IFAB and FIFA.",
+    keywordsAr: [
+      "شروط كرة القدم",
+      "قوانين كرة القدم",
+      "شروط لعب كرة القدم",
+      "شروط ملعب كرة القدم",
+      "شروط عدد لاعبين كرة القدم",
+      "شروط مباراة كرة القدم",
+      "شروط التسلل في كرة القدم",
+      "قوانين الفيفا كرة القدم",
+      "قانون كرة القدم IFAB",
+      "معدات شروط كرة القدم"
+    ],
+    keywordsEn: [
+      "football rules and conditions",
+      "official football laws",
+      "ifab football rules",
+      "football pitch conditions",
+      "fifa regulations 2026"
+    ],
+    image: shurootKoratAlQadamImage,
+    date: "2026-07-25",
+    readTime: "10 min",
+    contentAr: {
+      toc: [
+        "1. مقدمة: مفهوم شروط كرة القدم وأهميتها القانونية والتنظيمية",
+        "2. شروط ملعب كرة القدم والأبعاد القانونية المعتمدة من FIFA",
+        "3. شروط الكرة ومواصفات الضغط والوزن الرسمي",
+        "4. شروط عدد اللاعبين والتبديلات وقوائم المباريات",
+        "5. شروط معدات اللاعبين والسلامة الشخصية داخل الملعب",
+        "6. شروط طاقم التحكيم وتقنية الفيديو (VAR) والقرارات الانضباطية",
+        "7. شروط وقوانين الأخطاء، التسلل، وركلات الترجيح",
+        "8. جدول ملخص لأهم شروط كرة القدم الأساسية",
+        "9. الأسئلة الشائعة (FAQs) حول شروط كرة القدم"
+      ],
+      sections: [
+        {
+          title: "1. مقدمة: مفهوم شروط كرة القدم وأهميتها القانونية والتنظيمية",
+          body: "تُمثل **شروط كرة القدم** الهيكل الأساسي والدستور التنظيمي الذي يضمن نزاهة اللعبة وسلاسة المنافسة بين الفرق في البطولات المحلية والدولية. تُحدد هذه الشروط والقوانين الرسمية من قبل مجلس الاتحاد الدولي لكرة القدم (IFAB) بالتنسيق المباشر مع الاتحاد الدولي لكرة القدم (FIFA)، وتُطبق بصارمة في كافة المباريات الرسمية حول العالم.\n\nإن الالتزام الدقيق بـ **شروط كرة القدم** لا يقتصر فقط على الجوانب الميدانية المتعلقة بأسلوب اللعب وحركات اللاعبين، بل يمتد لشمل المواصفات الهندسية للملاعب، معايير المعدات، أعداد البدلاء، والضوابط الأخلاقية والانضباطية. وفي هذا الدليل الشامل والمفصل الذي يتجاوز 800 كلمة، نستعرض كافة **شروط كرة القدم** الحديثة وفق أحدث التعديلات التشريعية لعام 2026."
+        },
+        {
+          title: "2. شروط ملعب كرة القدم والأبعاد القانونية المعتمدة من FIFA",
+          body: "تفرض اللوائح الدولية **شروط كرة القدم** المعتمدة فيما يتعلق بأرضية الملعب وتخطيطه الهندسي لضمان توفير بيئة عادلة وآمنة للتنافس الكروي. تشمل أهم شروط ملعب كرة القدم المقاييس التالية:\n\n- **أبعاد الملعب الإجمالية:** يجب أن يكون الملعب مستطيل الشكل، بطول يترواح بين 90 إلى 120 متراً، وعرض يترواح بين 45 إلى 90 متراً. أما في المباريات الدولية الرسمية، فتُلزم **شروط كرة القدم** بإن يكون الطول بين 105 متراً والعرض 68 متراً بالضبط.\n- **خطوط الملعب والعشب:** يُغطى الملعب بعشب طبيعي أو صناعي معتمد، وتُرسم جميع الخطوط بلون أبيض واضح بسُمك لا يتجاوز 12 سم. يضم الملعب خطي التماس، خطي المرمى، خط منتصف الملعب، ودائرة المنتصف بنصف قطر 9.15 متراً.\n- **منطقة الجزاء والعمق:** تقع منطقة الجزاء أمام كل مرمى على مسافة 16.5 متراً من خط المرمى، وتتضمن نقطة الجزاء على بعد 11 متراً (12 ياردة) من منتصف المرمى.\n- **مواصفات المرمى:** يتكون المرمى من قائمين رأسيين وعارضة أفقية بطول 7.32 متراً (8 ياردة) وارتفاع 2.44 متراً (8 أقدام)، ويجب أن تُثبت القوائم بصلابة في الأرض لضمان سلامة اللاعبين."
+        },
+        {
+          title: "3. شروط الكرة ومواصفات الضغط والوزن الرسمي",
+          body: "تُحدد المادة الثانية من قانون اللعبة **شروط كرة القدم** الخاصة بالكرة المستعملة في المباريات الرسمية، والتي ينبغي أن تستوفي المعايير التالية قبل انطلاق الصفيرة الأولى:\n\n1. **الشكل والمادة:** يجب أن تكون الكرة كروية تماماً ومصنوعة من الجلد أو أي مادة مناسبة معتمدة من الفيفا لا تشكل خطراً على اللاعبين.\n2. **المحيط الرسمي:** يتراوح محيط الكرة بين 68 سم و70 سم (المقاس رقم 5 للمحترفين).\n3. **الوزن عند بداية المباراة:** ينبغي أن يكون وزن الكرة بين 410 جرامات و450 جراماً عند الانطلاق.\n4. **ضغط الهواء الداخلي:** يتراوح ضغط الجو داخل الكرة بين 0.6 و1.1 ضغط جوي (Atmosphere) عند مستوى سطح البحر.\n\nتتطلب **شروط كرة القدم** فحص الكرات من قبل حكم المباراة قبل البدء وتوفير كرات بديلة مطابقة لنفس المواصفات على جوانب الملعب."
+        },
+        {
+          title: "4. شروط عدد اللاعبين والتبديلات وقوائم المباريات",
+          body: "تُعد الضوابط المتعلقة بأعداد اللاعبين من أهم **شروط كرة القدم** التي تحكم سير أي مواجهة كروية:\n\n- **عدد اللاعبين الأساسيين:** تُقام المباراة بين فريقين يتكون كل منهما من 11 لاعباً كحد أقصى، يكون أحدهم حارساً للمرمى. ولا يجوز إقامة أو استكمال المباراة إذا كان عدد لاعبي أحد الفريقين أقل من 7 لاعبين.\n- **قوانين التبديلات:** أصبحت **شروط كرة القدم** الحديثة تسمح بإجراء 5 تبديلات رسمية لكل فريق خلال الوقت الأصلي للمباراة (تُنفذ عبر 3 توقفات كحد أقصى لمنع إهدار الوقت)، مع إمكانية إضافة تبديل سادس في الشوطين الإضافيين عند الحاجة.\n- **قائمة المباراة (Escort & Bench):** يُسمح بقيد ما بين 12 إلى 15 لاعباً بديلاً على مقاعد البدلاء حسب لوائح البطولة المعتمدة."
+        },
+        {
+          title: "5. شروط معدات اللاعبين والسلامة الشخصية داخل الملعب",
+          body: "تُشدد **شروط كرة القدم** على ضرورة ارتداء معدات آمنة ومطابقة للمواصفات لمنع الإصابات الرياضية وحماية السلامة الجسدية للاعبين:\n\n- **القميص الرياضي (Jersey):** قميص ذو أكمام يحمل رقماً واضحاً ومميزاً على الظهر، ويجب أن تتكامل ألوان قمصان الفريقين لتجنب الالتباس مع طاقم التحكيم.\n- **السراويل والجوارب:** سراويل قصيرة (Shorts) وجوارب طويلة تضمن تغطية الواقي بالكامل.\n- **واقي الساقين (Shin Guards):** يُعتبر واقي الساقين شراطاً إجبارياً ضمن **شروط كرة القدم** الأساسية، ويجب أن يكون مصنوعاً من مادة مناسبة تقدم حماية حقيقية للقصبة.\n- **الأحذية الرياضية:** أحذية كرة قدم مجهزة بسدادات (Studs) ملائمة لطبقة عشب الملعب دون أن تكون حادة أو خطرة.\n- **حظر الملحقات الخطرة:** يُمنع منعاً باتاً ارتداء الخواتم، القلائد، السلاسل، والساعات أو أي مجوهرات قد تسبب أذى للاعب أو المنافسين."
+        },
+        {
+          title: "6. شروط طاقم التحكيم وتقنية الفيديو (VAR) والقرارات الانضباطية",
+          body: "تُدار المباراة بواسطة طاقم تحكيم متكامل يسهر على تطبيق **شروط كرة القدم** وقوانينها الرسمية:\n\n1. **حكم ساحة رئيسي:** يمتلك السلطة المطلقة لإدارة المباراة، احتساب الأخطاء، وإشهار البطاقات الصفراء والحمراء.\n2. **حكام مساعدون (حكام الراية):** حكمان على خطوط التماس لمساعدة الحكم في احتساب التسلل، رميات التماس، والركنيات.\n3. **الحكم الرابع:** يتولى تنظيم التبديلات، متابعة منطقة التدريب، ومراقبة الوقت البديل.\n4. **تقنية الفيديو (VAR):** أصبحت تقنية الفار شرطاً أساسياً في المباريات الاحترافية لمراجعة أربعة حالات حاسمة فقط: (الأهداف وصحتها، ركلات الجزاء، البطاقات الحمراء المباشرة، وتحديد هوية اللاعب المخالف)."
+        },
+        {
+          title: "7. شروط وقوانين الأخطاء، التسلل، وركلات الترجيح",
+          body: "تشتمل **شروط كرة القدم** على أحكام دقيقة تنظم الاحتكاكات الميدانية ومخالفات قواعد اللعب:\n\n- **شرط التسلل (Offside):** يُعتبر اللاعب في موقف تسلل إذا كان أقرب إلى خط مرمى المنافس من الكرة وثاني أخر لاعب من الفريق المنافس في لحظة تمرير الكرة له، بشرط أن يكون متداخلًا في اللعب أو مستفيداً من موقعه.\n- **الإنذارات والطرد:** يُمنح الكارت الأصفر للمخالفات التكتيكية أو السلوك غير الرياضي، بينما يُشطب اللاعب بالكارت الأحمر في حالات الخشنونة الزائدة، منع هدف محقق باليد، أو الاعتداء اللفظي والجسدي.\n- **شروط ركلات الترجيح:** تُنفذ من نقطة الجزاء (11 متراً)، ويجب أن يظل حارس المرمى ملامساً لخط المرمى بقدم واحدة على الأقل لحظة تسديد الكرة."
+        },
+        {
+          title: "8. جدول ملخص لأهم شروط كرة القدم الأساسية",
+          body: "فيما يلي بطاقة شاملة تُخصائص **شروط كرة القدم** والمواصفات الرسمية المعتمدة:",
+          points: [
+            "أبعاد الملعب الدولي: الطول 105 م × العرض 68 م",
+            "وزن الكرة الرسمي: من 410 إلى 450 جراماً",
+            "محيط الكرة المقاس 5: من 68 إلى 70 سم",
+            "عدد اللاعبين الأساسيين: 11 لاعباً لكل فريق (شامل حارس المرمى)",
+            "الحد الأدنى للاعبين لاستكمال المباراة: 7 لاعبين",
+            "عدد التبديلات الرسمية: 5 تبديلات في 3 توقفات",
+            "ارتفاع وعرض المرمى: العرض 7.32 م × الارتفاع 2.44 م",
+            "مسافة نقطة الجزاء: 11 متراً من منتصف المرمى",
+            "مدة المباراة الرسمية: 90 دقيقة مقسمة على شوطين (45 دقيقة لكل شوط)"
+          ]
+        },
+        {
+          title: "9. الأسئلة الشائعة (FAQs) حول شروط كرة القدم",
+          body: "نستعرض فيما يلي إجابات وافية ومباشرة لأبرز الأسئلة المتداولة حول **شروط كرة القدم** والقوانين المنظمة للعبة:"
+        }
+      ],
+      faqs: [
+        {
+          q: "ما هي شروط كرة القدم الأساسية لإنطلاق المباراة؟",
+          a: "تشمل شروط كرة القدم الأساسية وجود ملعبي معتمد بأبعاد رسمية، كرة مطابقة للمواصفات، طاقم تحكيم، وفريقين يتكون كل منهما من 11 لاعباً كحد أقصى ولا يقل عن 7 لاعبين."
+        },
+        {
+          q: "ما هي شروط التسلل في قانون كرة القدم؟",
+          a: "يكون اللاعب متسللاً إذا كان بجسده (باستثناء اليدين والذراعين) أقرب لمرمى المنافس من الكرة وثاني آخر مدافع لحظة خروج الكرة من زميله، وكان مشاركاً في اللعب أو مؤثراً على المنافس."
+        },
+        {
+          q: "كم عدد التبديلات المسموح بها وفق شروط كرة القدم الحديثة؟",
+          a: "يُسمح حالياً بإجراء 5 تبديلات لكل فريق في المباريات الرسمية تُنفذ خلال 3 توقفات فقط أثناء سير اللعب لتجنب تعطيل المباراة."
+        },
+        {
+          q: "هل يُسمح بركوب أي مجوهرات أو إكسسوارات أثناء المباراة؟",
+          a: "لا، تفرض شروط كرة القدم حظراً تاماً على ارتداء الخواتم، السلاسل، والساعات أو الأساور لضمان سلامة جميع اللاعبين داخل المستطيل الأخضر."
+        }
+      ]
+    },
+    contentEn: {
+      toc: [
+        "1. Introduction: Official Football Rules & Regulatory Standards",
+        "2. Pitch Specifications & Dimensions",
+        "3. Ball Requirements & Pressure Standards",
+        "4. Number of Players & Substitution Regulations",
+        "5. Player Equipment & Safety Rules",
+        "6. Match Officials & VAR Protocol",
+        "7. Offside & Disciplinary Laws",
+        "8. Key Football Specifications Summary Table",
+        "9. Frequently Asked Questions (FAQs)"
+      ],
+      sections: [
+        {
+          title: "1. Introduction: Official Football Rules & Regulatory Standards",
+          body: "Official football rules and conditions governed by the International Football Association Board (IFAB) and FIFA ensure fair play, safety, and operational consistency worldwide. From pitch dimensions to VAR protocols, adhering to these standard laws guarantees the integrity of competitive matches."
+        },
+        {
+          title: "2. Pitch Specifications & Dimensions",
+          body: "International football pitch standards require a length of 105 meters and a width of 68 meters. The goal measures 7.32m wide by 2.44m high, with penalty spots positioned exactly 11 meters from the goal line."
+        },
+        {
+          title: "3. Ball Requirements & Pressure Standards",
+          body: "A standard size 5 match ball must have a circumference between 68-70 cm, a weight of 410-450 grams at kickoff, and a pressure of 0.6 to 1.1 atmospheres."
+        },
+        {
+          title: "4. Number of Players & Substitution Regulations",
+          body: "Matches are played between two teams of 11 players each (including the goalkeeper). A team must have at least 7 players to start or continue a match. Up to 5 substitutions are allowed across 3 stoppage windows."
+        },
+        {
+          title: "5. Player Equipment & Safety Rules",
+          body: "Mandatory equipment includes a jersey with sleeves, shorts, socks, footwear, and shin guards. All jewelry and hazardous items are strictly prohibited."
+        },
+        {
+          title: "6. Match Officials & VAR Protocol",
+          body: "Games are officiated by a main referee, two assistant referees, a fourth official, and Video Assistant Referees (VAR) for clear goal, penalty, red card, or mistaken identity reviews."
+        },
+        {
+          title: "7. Offside & Disciplinary Laws",
+          body: "The offside rule penalizes players positioned closer to the opponent's goal line than the ball and the second-last opponent when the ball is played to them, if actively involved in play."
+        },
+        {
+          title: "8. Key Football Specifications Summary Table",
+          body: "Official FIFA match standards and equipment parameters summarized for quick reference.",
+          points: [
+            "Pitch Dimensions: 105m x 68m (International Standard)",
+            "Ball Weight: 410g - 450g",
+            "Ball Circumference: 68cm - 70cm",
+            "Players per Team: 11 (Minimum 7 to play)",
+            "Allowed Substitutions: 5 subs in 3 windows",
+            "Goal Size: 7.32m x 2.44m"
+          ]
+        },
+        {
+          title: "9. Frequently Asked Questions (FAQs)",
+          body: "Answers to common questions regarding official IFAB and FIFA football rules."
+        }
+      ],
+      faqs: [
+        {
+          q: "What are the core conditions for starting a football match?",
+          a: "A regulation pitch, approved match ball, certified referee team, and two teams of 11 players (minimum 7 players each)."
+        },
+        {
+          q: "How many substitutions are allowed in official football matches?",
+          a: "5 substitutions per team allowed within 3 stoppage opportunities during regulation time."
+        }
+      ]
+    }
+  },
   {
     id: "art-haaisam-hassan-egypt-national-team-2026",
     slug: "haaisam-hassan-egypt-national-team-profile-2026",

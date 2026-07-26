@@ -30,8 +30,8 @@ import {
 } from "lucide-react";
 
 import veo3VideoGenerationGuide from "./assets/images/veo3_video_generation_guide_1782439141821.jpg";
-import dkoraLogo from "./assets/images/dkora_new_logo_1784777171618.jpg";
-import heroWorldCupLegends from "./assets/images/hero_world_cup_legends_1784429970300.jpg";
+import dkoraLogo from "./assets/images/dkora_logo_1784947604429.jpg";
+import heroWorldCupLegends from "./assets/images/hero_world_cup_1784947623586.jpg";
 
 import { Question, PlayerProfile } from "./types";
 import { QUESTION_BANK, PLAYER_PROFILES } from "./data";
@@ -46,14 +46,14 @@ import { translations } from "./translations";
 // UI translation dictionary
 const uiTranslations = {
   ar: {
-    title: "من يشبهك من لاعبي المونديال؟",
+    title: "اختبار من تشبه من اللاعبين؟ | اكتشف توأمك الرياضي الآن!",
     badge: "مستكشف الشخصية الكروية الكبرى",
     tagline: "تحديث ٢٠٢٦ • متجدد كلياً ومجاني للجميع",
     subtitle: "WORLD CUP PLAYER MATCH",
     heroBadge: "الاختبار الرياضي الأكثر شعبية وتحديثاً لعام ٢٠٢٦",
-    heroHeadline1: "اكتشف شبيهك من",
-    heroHeadline2: "أساطير كأس العالم!",
-    heroDesc: "هل أنت العبقري الموهوب الذي لا تتكرر لمساته، أم المحرك القوي ذو الإرادة الحديدية، أم الصاروخ الطموح؟ أجب عن أسئلتنا التكتيكية المبتكرة وحلل شخصيتك الرياضية الآن!",
+    heroHeadline1: "اختبار من تشبه من اللاعبين؟",
+    heroHeadline2: "اكتشف توأمك الرياضي الآن!",
+    heroDesc: "هل تساءلت يوماً أي لاعب كرة قدم يشبه شخصيتك وأسلوب لعبك؟ خض تجربة اختبار من تشبه من اللاعبين عبر أسئلة ممتعة ودقيقة، واكتشف هل أنت مثل ميسي، رونالدو، أم صلاح!",
     card1Title: "متجدد كلياً وذكي",
     card1Desc: "أسئلة عشوائية وسيناريوهات فنية ممتازة في كل محاولة",
     card2Title: "مجاني للجميع دائماً",
@@ -804,31 +804,30 @@ export default function App() {
       </div>
 
       {/* Global Bilingual Header - Ultra Sleek Sports Media Navigation Bar */}
-      <header className={`sticky top-0 z-50 w-full backdrop-blur-xl border-b transition-all duration-300 shadow-sm ${
+      <header className={`sticky top-0 z-50 w-full backdrop-blur-xl border-b transition-all duration-300 shadow-xs ${
         activeTab === "blog" 
           ? "bg-[#030712]/90 border-slate-800 text-white" 
-          : "bg-white/90 border-slate-200/80 text-slate-900"
+          : "bg-white/95 border-slate-200/80 text-slate-900"
       }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between gap-4">
           
           {/* Logo & Brand Identity */}
           <div 
             onClick={() => { handleTabChange("quiz"); playInteractionSound(); }}
-            className="flex items-center gap-3 cursor-pointer group select-none"
+            className="flex items-center gap-3 cursor-pointer group select-none shrink-0"
           >
             <div className="relative shrink-0">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-[#ff1a40] to-[#e11d48] rounded-2xl blur-xs opacity-80 group-hover:opacity-100 transition duration-300"></div>
-              <div className="relative w-11 h-11 bg-slate-950 rounded-2xl overflow-hidden p-1 flex items-center justify-center border border-slate-800 shadow-md">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 bg-slate-950 rounded-xl overflow-hidden p-0.5 flex items-center justify-center border border-slate-800 shadow-sm group-hover:border-rose-500 transition-colors">
                 <img 
                   src={dkoraLogo} 
                   alt="dkora" 
-                  width="48"
-                  height="48"
+                  width="44"
+                  height="44"
                   loading="eager"
                   // @ts-ignore
                   fetchPriority="high"
                   decoding="async"
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
                   onError={(e) => {
                     const target = e.currentTarget;
                     if (!target.dataset.failed) {
@@ -841,33 +840,81 @@ export default function App() {
             </div>
 
             <div className="flex flex-col">
-              <div className="flex items-center gap-2">
-                <span className="text-lg font-black tracking-tight font-sans">
-                  d<span className="text-[#ff1a40]">kora</span>
+              <div className="flex items-center gap-1.5">
+                <span className="text-lg font-extrabold tracking-tight font-sans">
+                  d<span className="text-rose-600">kora</span>
                 </span>
-                <span className="px-2 py-0.5 text-[9px] font-black rounded-full bg-rose-500/10 text-[#ff1a40] border border-rose-500/20 uppercase tracking-widest">
+                <span className="px-1.5 py-0.2 text-[9px] font-bold rounded-md bg-rose-50 text-rose-600 border border-rose-200 uppercase">
                   2026
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
-                {lang === "ar" ? "منصة الأخبار واختبارات الكرة الشاملة" : "World Cup Football News & Interactive Hub"}
+              <p className="text-[10px] text-slate-500 font-medium hidden sm:block">
+                {lang === "ar" ? "منصة الكرة والأخبار الرياضية" : "World Cup Football Portal"}
               </p>
             </div>
           </div>
 
-          {/* Language Switcher */}
+          {/* Center Main Navigation Tabs */}
+          <nav className="hidden md:flex items-center gap-1 bg-slate-100/80 dark:bg-slate-900/80 p-1 rounded-xl border border-slate-200/60 dark:border-slate-800">
+            <button
+              onClick={() => handleTabChange("quiz")}
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                activeTab === "quiz"
+                  ? "bg-white dark:bg-slate-800 text-rose-600 dark:text-rose-400 shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              }`}
+            >
+              <Trophy className="w-3.5 h-3.5" />
+              <span>{lang === "ar" ? "اختبار الشخصية" : "Player Match"}</span>
+            </button>
+
+            <button
+              onClick={() => handleTabChange("blog")}
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                activeTab === "blog"
+                  ? "bg-white dark:bg-slate-800 text-rose-600 dark:text-rose-400 shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              }`}
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>{lang === "ar" ? "المقالات والتحليلات" : "Articles & Analysis"}</span>
+            </button>
+          </nav>
+
+          {/* Right Controls / Language Switcher */}
           <div className="flex items-center gap-2">
             <button
               id="lang-toggle-btn"
               onClick={() => handleLanguageChange(lang === "ar" ? "en" : "ar")}
               aria-label={lang === "ar" ? "تغيير لغة الموقع إلى الإنجليزية" : "Change website language to Arabic"}
-              className="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 hover:bg-rose-50 dark:hover:bg-rose-950/40 hover:border-rose-300 text-xs font-black flex items-center gap-1.5 cursor-pointer shadow-xs transition-all active:scale-95 text-slate-800 dark:text-slate-200"
+              className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 hover:bg-rose-50 dark:hover:bg-rose-950/40 hover:border-rose-300 text-xs font-bold flex items-center gap-1.5 cursor-pointer shadow-2xs transition-all active:scale-95 text-slate-800 dark:text-slate-200"
             >
-              <Globe className="w-3.5 h-3.5 text-[#ff1a40]" />
-              <span>{lang === "ar" ? "English 🇬🇧" : "العربية 🇸🇦"}</span>
+              <Globe className="w-3.5 h-3.5 text-rose-600" />
+              <span>{lang === "ar" ? "English" : "العربية"}</span>
             </button>
           </div>
 
+        </div>
+
+        {/* Mobile Navigation Row */}
+        <div className="md:hidden flex items-center justify-center gap-1 px-4 pb-2 pt-1 border-t border-slate-100 dark:border-slate-800/60 text-xs">
+          <button
+            onClick={() => handleTabChange("quiz")}
+            className={`px-3 py-1 rounded-md font-bold transition-colors ${
+              activeTab === "quiz" ? "bg-rose-50 text-rose-600" : "text-slate-600"
+            }`}
+          >
+            {lang === "ar" ? "الاختبار" : "Quiz"}
+          </button>
+          <span className="text-slate-300">•</span>
+          <button
+            onClick={() => handleTabChange("blog")}
+            className={`px-3 py-1 rounded-md font-bold transition-colors ${
+              activeTab === "blog" ? "bg-rose-50 text-rose-600" : "text-slate-600"
+            }`}
+          >
+            {lang === "ar" ? "المقالات" : "Articles"}
+          </button>
         </div>
       </header>
 
@@ -881,42 +928,58 @@ export default function App() {
         
         {/* TAB 1: FOOTBALL PERSONALITY QUIZ FLOW */}
         {activeTab === "quiz" && (
-          <div className="w-full max-w-2xl mx-auto flex flex-col items-center">
+          <div className="w-full max-w-3xl mx-auto flex flex-col items-center">
             
-            {/* SCREEN 1: SPLASH SCREEN (METADATA REVAMPED - NO '40+ QUESTIONS TABS') */}
+            {/* SCREEN 1: SPLASH / HERO SCREEN (SIMPLE & PROFESSIONAL) */}
             {activeScreen === "start" && (
-              <div className="w-full text-center space-y-8 animate-fade-in py-4">
+              <div className="w-full space-y-10 animate-fade-in py-2">
                 
-                <div className="space-y-4">
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-50 text-red-600 border border-red-100 text-xs font-bold shadow-sm">
-                    <Flame className="w-4 h-4 text-red-500 animate-pulse" />
-                    {t.heroBadge}
+                {/* Hero Header Unit */}
+                <div className="text-center space-y-4 max-w-2xl mx-auto">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 text-rose-600 border border-rose-100 text-xs font-bold">
+                    <Flame className="w-3.5 h-3.5 text-rose-500" />
+                    <span>{t.heroBadge}</span>
                   </div>
                   
-                  <h2 className="text-3xl sm:text-5xl font-black text-slate-900 leading-tight">
-                    {t.heroHeadline1} <br />
-                    <span className="bg-gradient-to-r from-[#03071c] via-red-600 to-red-700 bg-clip-text text-transparent relative drop-shadow-sm">
+                  <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-slate-900 leading-tight tracking-tight">
+                    {t.heroHeadline1}{" "}
+                    <span className="text-rose-600">
                       {t.heroHeadline2}
                     </span>
-                  </h2>
+                  </h1>
                   
-                  <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed font-semibold">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium max-w-xl mx-auto">
                     {t.heroDesc}
                   </p>
+
+                  {/* Primary Call to Action Button */}
+                  <div className="pt-2">
+                    <button
+                      id="btn-start-quiz-match"
+                      onClick={initializeQuiz}
+                      className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-rose-600 hover:bg-rose-700 text-white text-base font-extrabold rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer w-full sm:w-auto"
+                    >
+                      <Trophy className="w-5 h-5 text-amber-300" />
+                      <span>{t.startBtn}</span>
+                    </button>
+                    <p className="text-[11px] text-slate-400 mt-2 font-medium">
+                      {t.startNote}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Hero Banner Image - Highly Optimized for PageSpeed */}
-                <div className="w-full max-w-lg mx-auto rounded-3xl overflow-hidden border border-slate-200/60 shadow-lg bg-slate-100 relative aspect-[16/7]">
+                {/* Hero Feature Banner Card */}
+                <div className="w-full rounded-2xl overflow-hidden border border-slate-200 bg-slate-900 relative shadow-sm aspect-[21/9]">
                   <img
                     src={heroWorldCupLegends}
                     alt={lang === "ar" ? "اكتشف شبيهك من أساطير كأس العالم" : "Discover your World Cup Legend Match"}
-                    width="400"
-                    height="223"
+                    width="600"
+                    height="257"
                     // @ts-ignore
                     fetchPriority="high"
                     loading="eager"
                     decoding="async"
-                    className="w-full h-full object-cover max-h-56"
+                    className="w-full h-full object-cover opacity-90"
                     onError={(e) => {
                       const target = e.currentTarget;
                       if (!target.dataset.failed) {
@@ -928,39 +991,103 @@ export default function App() {
                       }
                     }}
                   />
-                </div>
-
-                {/* Info Badges */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto text-justify">
-                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-1.5">
-                    <h4 className="font-extrabold text-red-600 text-xs sm:text-sm">⚡ {t.card1Title}</h4>
-                    <p className="text-[11px] sm:text-xs text-slate-500 font-semibold">{t.card1Desc}</p>
-                  </div>
-                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-1.5">
-                    <h4 className="font-extrabold text-[#03071c] text-xs sm:text-sm">🛡️ {t.card2Title}</h4>
-                    <p className="text-[11px] sm:text-xs text-slate-500 font-semibold">{t.card2Desc}</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-4 sm:p-6">
+                    <p className="text-xs sm:text-sm text-white font-bold drop-shadow-sm">
+                      {lang === "ar" 
+                        ? "🏆 تحليل شامل لشخصيتك الرياضية ومطابقة دقيقة مع عمالقة الكرة العالمية" 
+                        : "🏆 Psychometric sports matching engine for World Cup football legends"}
+                    </p>
                   </div>
                 </div>
 
-                {/* Primary Action Trigger */}
-                <div className="pt-6">
-                  <button
-                    id="btn-start-quiz-match"
-                    onClick={initializeQuiz}
-                    className="group relative px-8 py-4 w-full sm:w-auto bg-gradient-to-r from-red-600 to-red-700 outline-none hover:opacity-95 text-white text-base sm:text-lg font-black rounded-2xl shadow-[0_4px_20px_rgba(239,68,68,0.25)] transition-all duration-350 transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer flex items-center justify-center gap-3 mx-auto"
-                  >
-                    <span>{t.startBtn}</span>
-                    <Trophy className="w-5 h-5 text-white transition-transform group-hover:rotate-12" />
-                    
-                    <span className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-red-500 to-white opacity-20 blur-sm group-hover:opacity-30 transition-all pointer-events-none" />
-                  </button>
-                  
-                  <p className="text-[10px] sm:text-xs text-slate-400 mt-4 max-w-sm mx-auto leading-relaxed">
-                    {t.startNote}
-                  </p>
+                {/* Key Advantages Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-start">
+                  <div className="p-4 bg-slate-50/80 border border-slate-200/80 rounded-xl space-y-1.5">
+                    <div className="w-8 h-8 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-sm">
+                      ⚡
+                    </div>
+                    <h3 className="font-extrabold text-slate-900 text-xs sm:text-sm">{t.card1Title}</h3>
+                    <p className="text-[11px] text-slate-500 font-medium leading-relaxed">{t.card1Desc}</p>
+                  </div>
+
+                  <div className="p-4 bg-slate-50/80 border border-slate-200/80 rounded-xl space-y-1.5">
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm">
+                      🛡️
+                    </div>
+                    <h3 className="font-extrabold text-slate-900 text-xs sm:text-sm">{t.card2Title}</h3>
+                    <p className="text-[11px] text-slate-500 font-medium leading-relaxed">{t.card2Desc}</p>
+                  </div>
+
+                  <div className="p-4 bg-slate-50/80 border border-slate-200/80 rounded-xl space-y-1.5">
+                    <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-sm">
+                      🎴
+                    </div>
+                    <h3 className="font-extrabold text-slate-900 text-xs sm:text-sm">
+                      {lang === "ar" ? "بطاقة قابلة للمشاركة" : "Shareable Player Card"}
+                    </h3>
+                    <p className="text-[11px] text-slate-500 font-medium leading-relaxed">
+                      {lang === "ar" ? "احصل على بطاقة أسطورتك مصممة للتحميل والمشاركة مع أصدقائك" : "Download custom high-res player stats card for social media"}
+                    </p>
+                  </div>
                 </div>
 
+                {/* Quick Articles Preview Teaser Block */}
+                <div className="pt-4 border-t border-slate-200/80 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-base sm:text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                      <BookOpen className="w-4 h-4 text-rose-600" />
+                      <span>{lang === "ar" ? "أحدث المقالات والتقارير الرياضية" : "Latest Sports Articles & Reports"}</span>
+                    </h2>
 
+                    <button
+                      onClick={() => handleTabChange("blog")}
+                      className="text-xs font-bold text-rose-600 hover:text-rose-700 flex items-center gap-1 cursor-pointer"
+                    >
+                      <span>{lang === "ar" ? "عرض جميع المقالات" : "View All Articles"}</span>
+                      {isRtl ? <ArrowLeft className="w-3.5 h-3.5" /> : <ArrowRight className="w-3.5 h-3.5" />}
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div 
+                      onClick={() => handleTabChange("blog")}
+                      className="p-4 bg-white border border-slate-200 hover:border-rose-400 rounded-xl cursor-pointer transition-all hover:shadow-xs group space-y-2"
+                    >
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-rose-50 text-rose-600 inline-block">
+                        {lang === "ar" ? "أخبار المحترفين" : "Egyptian Overseas"}
+                      </span>
+                      <h3 className="text-xs sm:text-sm font-extrabold text-slate-900 group-hover:text-rose-600 transition-colors line-clamp-2">
+                        {lang === "ar" 
+                          ? "هيثم حسن ومنتخب مصر: موهبة الدوري الإسباني، القدرات التكتيكية، وحقيقة الانضمام لكأس العالم 2026"
+                          : "Haaisam Hassan and Egypt National Team: Spanish League Talent & 2026 World Cup Outlook"}
+                      </h3>
+                      <p className="text-[11px] text-slate-500 line-clamp-2 leading-relaxed">
+                        {lang === "ar"
+                          ? "تقرير صحفي متكامل يحلل مسيرة هيثم حسن مع ريال أوفيدو وسبورتينغ خيخون وفرص انضمامه لمنتخب الفراعنة تحت قيادة حسام حسن."
+                          : "Detailed report analyzing Haaisam Hassan's career in Spain and potential integration into Egypt's squad."}
+                      </p>
+                    </div>
+
+                    <div 
+                      onClick={() => handleTabChange("blog")}
+                      className="p-4 bg-white border border-slate-200 hover:border-rose-400 rounded-xl cursor-pointer transition-all hover:shadow-xs group space-y-2"
+                    >
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-600 inline-block">
+                        {lang === "ar" ? "المحترفون بالخارج" : "European Football"}
+                      </span>
+                      <h3 className="text-xs sm:text-sm font-extrabold text-slate-900 group-hover:text-rose-600 transition-colors line-clamp-2">
+                        {lang === "ar"
+                          ? "عمر فايد: صخرة الدفاع المصرية الشابة ورحلة التطور في أوروبا لعام 2026"
+                          : "Omar Fayed: Egyptian Defender Profile & European Development in 2026"}
+                      </h3>
+                      <p className="text-[11px] text-slate-500 line-clamp-2 leading-relaxed">
+                        {lang === "ar"
+                          ? "تحليل شامل لمستويات المدافع الشاب عمر فايد والتطور البدني والتكتيكي في خط دفاع منتخب مصر."
+                          : "Comprehensive analysis of young defender Omar Fayed's development and tactical capabilities."}
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
               </div>
             )}

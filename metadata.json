@@ -1,6 +1,6 @@
 {
   "name": "Football World Cup Player Quiz",
-  "description": "من يشبهك من لاعبي المونديال؟ - اختبار شخصية تفاعلي غني بالأسئلة الرياضية المتنوعة والتحليلات الدقيقة بدون تكاليف خادم.",
+  "description": "هل تساءلت يوماً أي لاعب كرة قدم يشبه شخصيتك وأسلوب لعبك؟ خض تجربة اختبار من تشبه من اللاعبين عبر أسئلة ممتعة ودقيقة، واكتشف هل أنت مثل ميسي، رونالدو، أم صلاح!",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

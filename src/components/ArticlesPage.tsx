@@ -9231,7 +9231,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                     const target = e.currentTarget;
                     if (!target.dataset.failed) {
                       target.dataset.failed = "1";
-                      target.src = "/logo.jpg";
+                      target.src = "/hero_world_cup_legends.jpg";
                     }
                   }}
                 />
@@ -9618,7 +9618,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                     onError={(e) => {
                       if (!e.currentTarget.dataset.failed) {
                         e.currentTarget.dataset.failed = "true";
-                        e.currentTarget.src = "/logo.jpg";
+                        e.currentTarget.src = "/hero_world_cup_legends.jpg";
                       }
                     }}
                   />
@@ -9687,7 +9687,7 @@ export default function ArticlesPage({ locale, t }: ArticlesPageProps) {
                         onError={(e) => {
                           if (!e.currentTarget.dataset.failed) {
                             e.currentTarget.dataset.failed = "true";
-                            e.currentTarget.src = "/logo.jpg";
+                            e.currentTarget.src = "/hero_world_cup_legends.jpg";
                           }
                         }}
                       />

@@ -22,18 +22,21 @@ export default defineConfig(() => {
         },
         output: {
           manualChunks(id) {
-            // Split third-party vendor dependencies
+            // Split third-party vendor dependencies to reduce initial JS payload
             if (id.includes('node_modules')) {
               if (id.includes('react') || id.includes('react-dom') || id.includes('scheduler')) {
-                return 'vendor-react';
+                return 'vendor-core';
               }
               if (id.includes('lucide-react')) {
                 return 'vendor-icons';
               }
-              if (id.includes('cropperjs')) {
-                return 'vendor-cropper';
+              if (id.includes('motion')) {
+                return 'vendor-motion';
               }
-              return 'vendor-deps';
+              if (id.includes('cropperjs') || id.includes('html2canvas')) {
+                return 'vendor-tools';
+              }
+              return 'vendor-utils';
             }
           }
         }

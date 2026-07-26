@@ -775,10 +775,12 @@ export default function App() {
   // Build full translations including legal block which is fetched from translations.ts
   const appTranslations = {
     ar: {
+      ...translations.ar,
       ...uiTranslations.ar,
       legal: translations.ar.legal,
     },
     en: {
+      ...translations.en,
       ...uiTranslations.en,
       legal: translations.en.legal,
     }

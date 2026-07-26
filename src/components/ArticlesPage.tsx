@@ -89,6 +89,179 @@ interface Article {
 
 const ARTICLES_DATA: Article[] = [
   {
+    id: "art-yan-diomande-position-tactical-analysis-2026",
+    slug: "yan-diomande-position-tactical-analysis-2026",
+    categoryAr: "تحليل تكتيكي",
+    categoryEn: "Tactical Analysis",
+    titleAr: "يان ديوماندي مركزه وأسلوب لعبه: الدليل الشامل لتألق النجم الصاعد في 2026",
+    titleEn: "Yan Diomande Position & Playing Style: Comprehensive Tactical Analysis 2026",
+    descAr: "دليل شامل ومفصل يتناول يان ديوماندي مركزه الأساسي في أرضية الملعب، وأدواره التكتيكية، ومرونته الهجومية والدفاعية، مع تحليل دقيق لأسلوب لعبه وأرقامه المميزة.",
+    descEn: "Full tactical guide analyzing Yan Diomande position, playing style, main attributes, and versatility across offensive and defensive roles in 2026.",
+    keywordsAr: [
+      "يان ديوماندي مركزه",
+      "مركز يان ديوماندي",
+      "يان ديوماندي لاعب كرة قدم",
+      "تحليل تكتيكي يان ديوماندي",
+      "مهارات يان ديوماندي"
+    ],
+    keywordsEn: [
+      "Yan Diomande position",
+      "Yan Diomande tactical analysis",
+      "Yan Diomande playing style",
+      "Yan Diomande profile 2026",
+      "Yan Diomande stats and skills"
+    ],
+    image: "/yan_diomande_position_2026.jpg",
+    date: "2026-07-26",
+    readTime: "6 min",
+    isHtml: true,
+    htmlBodyAr: `<div class="article-content-wrapper rtl text-right font-sans text-slate-200 leading-relaxed" style="direction: rtl; text-align: right;">
+  <div class="hero-box bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8 shadow-xl">
+    <span class="inline-block bg-emerald-500/20 text-emerald-400 font-bold text-sm px-4 py-1.5 rounded-full mb-3">تحليل تكتيكي حائل • 2026</span>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-4 leading-tight">يان ديوماندي مركزه وأسلوب لعبه: التحليل التكتيكي الشامل للموهبة الصاعدة</h1>
+    <p class="text-slate-300 text-lg leading-relaxed mb-4">
+      يتساءل المتابعون والجماهير الرياضية بانتظام عن <strong>يان ديوماندي مركزه</strong> في تشكيلة الفريق، وكيف يستطيع تقديم هذا الأداء التكتيكي الاستثنائي الذي يلفت أنظار الكشافين والأندية الكبرى. يُعد يان ديوماندي من الأسماء البارزة التي فرضت نفسها في الساحة الكروية بفضل قدرته الفائقة على شغل أكثر من مركز داخل المستطيل الأخضر بكفاءة عالية. في هذا المقال الشامل المتوافق مع أحدث معايير محركات البحث لعام 2026، سنستعرض بالتفصيل كل ما يتعلق بـ <strong>يان ديوماندي مركزه</strong> الأصلي، وأدواره المركبة في التشكيلات المختلفة، وخصائصه الفنية والبدنية.
+    </p>
+    <div class="my-6 rounded-xl overflow-hidden border border-slate-700 shadow-2xl">
+      <img src="/yan_diomande_position_2026.jpg" alt="يان ديوماندي مركزه وأسلوب لعبه التكتيكي" class="w-full h-auto object-cover" />
+      <div class="bg-slate-950 p-3 text-center text-xs text-slate-400">تحليل تكتيكي ورسم بياني يشرح يان ديوماندي مركزه وأدواره الهجومية والدفاعية على أرضية الملعب</div>
+    </div>
+  </div>
+
+  <div class="summary-card bg-slate-800/80 border border-emerald-500/30 rounded-2xl p-6 mb-8">
+    <h2 class="text-2xl font-bold text-emerald-400 mb-4 flex items-center gap-2">
+      <span class="w-3 h-3 bg-emerald-400 rounded-full inline-block"></span>
+      ملخص البطاقة التكتيكية: يان ديوماندي مركزه وبياناته
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-200">
+      <div class="bg-slate-900/90 p-3.5 rounded-xl border border-slate-700/60">
+        <span class="text-slate-400 block mb-1">المركز الرئيسي:</span>
+        <strong class="text-white text-base">جناح هجومي / صانع ألعاب طرفي (Winger / Attack Midfielder)</strong>
+      </div>
+      <div class="bg-slate-900/90 p-3.5 rounded-xl border border-slate-700/60">
+        <span class="text-slate-400 block mb-1">المراكز الثانوية:</span>
+        <strong class="text-white text-base">مهاجم ثاني، ظهير هجومي (Wing-Back)</strong>
+      </div>
+      <div class="bg-slate-900/90 p-3.5 rounded-xl border border-slate-700/60">
+        <span class="text-slate-400 block mb-1">القدم المفضلة:</span>
+        <strong class="text-white text-base">اليمنى (مع إجادة اللعب باليسرى)</strong>
+      </div>
+      <div class="bg-slate-900/90 p-3.5 rounded-xl border border-slate-700/60">
+        <span class="text-slate-400 block mb-1">أبرز المزايا التكتيكية:</span>
+        <strong class="text-white text-base">السرعة الانفجارية، المراوغة الفردية، والضغط العالي</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="space-y-8 text-slate-200">
+    <section>
+      <h2 class="text-2xl font-bold text-white mb-3 border-r-4 border-emerald-500 pr-3">1. يان ديوماندي مركزه الأساسي في أرضية الملعب</h2>
+      <p class="mb-4 leading-relaxed">
+        عند تحليل <strong>يان ديوماندي مركزه</strong> الأبرز، نجد أن اللاعب يتألق بشكل مباشر في مركز الجناح الهجومي (Inverted Winger)، حيث يستغل خط التماس لبناء الهجمات، ثم التوغل سريعاً نحو العمق لإطلاق التسديدات أو صناعة التمريرات الحاسمة للمهاجم الصريح.
+      </p>
+      <p class="leading-relaxed">
+        لا يقتصر حضور اللاعب على جانب واحد؛ إذ يتنقل بحرية بين الجناح الأيمن والجناح الأيسر حسب متطلبات المباراة. هذه المرونة تجعل من الصعب على مدافعي الخصم فرض رقابة فردية صارمة عليه، حيث يغير إيقاع اللعب بسرعة فائقة بين الخطوط.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-white mb-3 border-r-4 border-emerald-500 pr-3">2. الأدوار التكتيكية والتحركات بدون كرة</h2>
+      <p class="mb-4 leading-relaxed">
+        ما يميز <strong>يان ديوماندي مركزه</strong> ليس فقط توقعه عند امتلاك الكرة، بل التحركات الذكية التي يقوم بها بدون كرة (Off-ball Movement). فهو يمتلك حسّاً كروياً عالياً يتيح له قراءة المساحات الخالية خلف خط دفاع الخصم.
+      </p>
+      <ul class="list-disc list-inside space-y-2 bg-slate-900/60 p-4 rounded-xl border border-slate-800 text-slate-300">
+        <li><strong>القطع نحو العمق (Half-Spaces):</strong> يستغل المساحات النصفية لبناء الخطورة وتفريغ المساحة للظهير المتقدم.</li>
+        <li><strong>المساندة الدفاعية والضغط العالي:</strong> يلتزم بالارتداد السريع لاستعادة الكرة فور فقدانها، مما يجعله خياراً مثالياً لمنظومات الضغط العكسي (Gegenpressing).</li>
+        <li><strong>صناعة الفارق في المواجهات الفردية (1v1):</strong> يتفوق بنسبة عالية في المراوغات الناجحة والتغلب على المدافعين بالسرعة والتغيير المفاجئ للاتجاه.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-white mb-3 border-r-4 border-emerald-500 pr-3">3. كيف يخدم يان ديوماندي مركزه التشكيلات الحديثة 2026؟</h2>
+      <p class="mb-4 leading-relaxed">
+        في التكتيك الكروي الحديث لعام 2026، تُفضل الأندية الأجنحة الشاملة التي تجمع بين المهارة الهجومية والقدرة البدنية العالية. ينطبق هذا المفهوم تماماً على <strong>يان ديوماندي مركزه</strong>، حيث يمنح المدرب خيارات متعددة داخل اللقاء الواحد دون الحاجة لإجراء تبديلات:
+      </p>
+      <div class="space-y-3">
+        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+          <h3 class="text-lg font-bold text-emerald-400 mb-1">خطة 4-3-3:</h3>
+          <p class="text-sm text-slate-300">يلعب كجناح صريح يستغل العرضيات السريعة والتوغل المباشر، متكاملاً مع صانع الألعاب والظهير.</p>
+        </div>
+        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+          <h3 class="text-lg font-bold text-emerald-400 mb-1">خطة 4-2-3-1:</h3>
+          <p class="text-sm text-slate-300">يشارك كأحد الثلاثي الهجومي خلف المهاجم، مع الحرية الكاملة للتبادل مع لاعب الوسط المهاجم.</p>
+        </div>
+        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+          <h3 class="text-lg font-bold text-emerald-400 mb-1">خطة 3-5-2:</h3>
+          <p class="text-sm text-slate-300">يستطيع شغل مركز الظهير الجناح (Wing-back) بفضل معدله البدني المرتفع وقدرته على تغطية الرواق بالكامل.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-white mb-3 border-r-4 border-emerald-500 pr-3">4. المقومات الفنية والبدنية للاعب</h2>
+      <p class="mb-4 leading-relaxed">
+        إن نجاح <strong>يان ديوماندي مركزه</strong> يعتمد على مقومات متوازنة تجعله لاعباً متكاملاً. تتلخص هذه الخصائص في:
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+          <h4 class="font-bold text-white mb-1">1. التسارع والسرعة القصوى</h4>
+          <p class="text-xs text-slate-400">قدرة ممتازة على التحول السريع من السكون إلى أقصى سرعة في ثوانٍ معدودة.</p>
+        </div>
+        <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+          <h4 class="font-bold text-white mb-1">2. الرؤية وصناعة اللعب</h4>
+          <p class="text-xs text-slate-400">تمريرات بينية حاسمة تكسر التكتلات الدفاعية في الأوقات الحارجة.</p>
+        </div>
+        <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+          <h4 class="font-bold text-white mb-1">3. اللياقة والقدرة البدنية</h4>
+          <p class="text-xs text-slate-400">القدرة على الركض المتواصل طوال 90 دقيقة بنفس كفاءة الأداء والمجهود.</p>
+        </div>
+        <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+          <h4 class="font-bold text-white mb-1">4. الدقة في التسديد</h4>
+          <p class="text-xs text-slate-400">إنهاء الهجمات ببراعة سواء بالقدم القوية أو الضعيفة أمام المرمى.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-white mb-3 border-r-4 border-emerald-500 pr-3">5. أسئلة شائعة حول يان ديوماندي مركزه (FAQ)</h2>
+      <div class="space-y-4">
+        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+          <h3 class="font-bold text-emerald-400 text-base mb-2">ما هو يان ديوماندي مركزه الأساسي في الملعب؟</h3>
+          <p class="text-sm text-slate-300">المركز الأساسي لـ يان ديوماندي هو الجناح الهجومي (Winger)، مع إمكانية اللعب كصانع ألعاب أو مهاجم ثاني حسب متطلبات المدرب والتكتيك.</p>
+        </div>
+        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+          <h3 class="font-bold text-emerald-400 text-base mb-2">هل يستطيع يان ديوماندي اللعب في مركز الظهير؟</h3>
+          <p class="text-sm text-slate-300">نعم، بفضل مرونته التكتيكية وقدراته الدفاعية والبدنية العالية، يمكنه شغل مركز الظهير الجناح (Wing-back) بفاعلية كبيرة.</p>
+        </div>
+        <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+          <h3 class="font-bold text-emerald-400 text-base mb-2">ما الذي يجعل يان ديوماندي مكسباً تكتيكياً لأي فريق؟</h3>
+          <p class="text-sm text-slate-300">يمتلك اللاعب المزيج الفردي النادر بين السرعة الانفجارية، والمراوغة العالية، والالتزام الدفاعي الشديد، مما يجعله لاعباً عصرياً متكاملاً.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-slate-900/90 border border-emerald-500/30 p-6 rounded-2xl mt-8">
+      <h2 class="text-xl font-bold text-white mb-2">خاتمة التحليل التكتيكي</h2>
+      <p class="text-slate-300 leading-relaxed">
+        في الختام، يتبين لنا أن <strong>يان ديوماندي مركزه</strong> يمثل نموذجاً لللاعب العصري المتعدد المهام، والذي يجمع بين المهارة الاستعراضية والانضباط التكتيكي العالي. مع استمرار تطوره الكروي في عام 2026، من المتوقع أن يواصل اللاعب تقديم أدوار استثنائية تؤهله للتربع على عرش أفضل الأجنحة في الدوريات العالمية. تابعوا منصة دكورة الرياضية لمزيد من التحليلات التكتيكية وأخبار نجوم كرة القدم أولاً بأول.
+      </p>
+    </section>
+  </div>
+</div>`,
+    htmlBodyEn: `<div class="article-content-wrapper ltr text-left font-sans text-slate-200 leading-relaxed">
+  <div class="hero-box bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-8 shadow-xl">
+    <span class="inline-block bg-emerald-500/20 text-emerald-400 font-bold text-sm px-4 py-1.5 rounded-full mb-3">Tactical Analysis • 2026</span>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-4 leading-tight">Yan Diomande Position & Playing Style: Comprehensive 2026 Tactical Breakdown</h1>
+    <p class="text-slate-300 text-lg leading-relaxed mb-4">
+      Football analysts and fans regularly ask about <strong>Yan Diomande position</strong> and how he seamlessly adapts across multiple tactical roles on the pitch. This comprehensive guide breaks down his primary position, tactical adaptability, physical attributes, and key strengths in 2026.
+    </p>
+    <div class="my-6 rounded-xl overflow-hidden border border-slate-700 shadow-2xl">
+      <img src="/yan_diomande_position_2026.jpg" alt="Yan Diomande position and tactical role" class="w-full h-auto object-cover" />
+    </div>
+  </div>
+</div>`
+  },
+  {
     id: "art-best-home-treadmill-folding-review-2026",
     slug: "best-home-treadmill-folding-review-specs",
     categoryAr: "مراجعات العتاد الرياضي",

@@ -35,7 +35,7 @@ export const Newsletter: React.FC<NewsletterProps> = ({ isDarkMode }) => {
         </h2>
 
         <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
-          احصل على أحدث مقارنات العُدد، أكواد الخصم الحصرية لأمازون وجوميا ونون، وأدلة التشطيب الفنية أولاً بأول.
+          احصل على أحدث مقارنات العُدد، أكواد الخصم الحصرية لأمازون، وأدلة التشطيب الفنية أولاً بأول.
         </p>
 
         {subscribed ? (

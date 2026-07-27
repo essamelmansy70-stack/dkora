@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   X,
   Star,
@@ -46,7 +46,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 }) => {
   if (!product) return null;
 
-  const [activeImage, setActiveImage] = useState(product.mainImage);
+  const [activeImage, setActiveImage] = useState(product ? product.mainImage : "");
+
+  useEffect(() => {
+    if (product) {
+      setActiveImage(product.mainImage);
+    }
+  }, [product]);
   const [copiedLink, setCopiedLink] = useState(false);
   const canonicalProductUrl = createProductUrl(product);
 
@@ -270,51 +276,19 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <span className="text-[10px] text-slate-500 dark:text-slate-400">تحديث لحظي لروابط الشراء</span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <div>
                   {product.amazonUrl && (
                     <a
                       href={product.amazonUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs flex flex-col items-center justify-center transition-all shadow-md text-center"
+                      className="w-full p-3.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-sm flex items-center justify-between transition-all shadow-md text-center"
                     >
-                      <span className="flex items-center gap-1">
-                        شراء من أمازون <ExternalLink className="w-3.5 h-3.5" />
+                      <span className="flex items-center gap-1.5">
+                        شراء الموديل الأصلي من أمازون <ExternalLink className="w-4 h-4" />
                       </span>
-                      <span className="text-xs font-mono font-extrabold mt-0.5">
+                      <span className="text-sm font-mono font-black bg-slate-950/10 px-3 py-1 rounded-lg">
                         {getPrice(product.priceAmazon)}
-                      </span>
-                    </a>
-                  )}
-
-                  {product.jumiaUrl && (
-                    <a
-                      href={product.jumiaUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-black text-xs flex flex-col items-center justify-center transition-all shadow-md text-center"
-                    >
-                      <span className="flex items-center gap-1">
-                        شراء من جوميا <ExternalLink className="w-3.5 h-3.5" />
-                      </span>
-                      <span className="text-xs font-mono font-extrabold mt-0.5">
-                        {getPrice(product.priceJumia)}
-                      </span>
-                    </a>
-                  )}
-
-                  {product.noonUrl && (
-                    <a
-                      href={product.noonUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 rounded-xl bg-yellow-400 hover:bg-yellow-500 text-slate-950 font-black text-xs flex flex-col items-center justify-center transition-all shadow-md text-center"
-                    >
-                      <span className="flex items-center gap-1">
-                        شراء من نون <ExternalLink className="w-3.5 h-3.5" />
-                      </span>
-                      <span className="text-xs font-mono font-extrabold mt-0.5">
-                        {getPrice(product.priceNoon)}
                       </span>
                     </a>
                   )}

@@ -155,18 +155,15 @@ export const PRODUCTS: Product[] = [
     mainImage: "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=80",
     gallery: [
       "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=800&q=80"
     ],
     rating: 4.9,
     reviewCount: 342,
     editorScore: 9.8,
     priceAmazon: 8450,
-    priceJumia: 8690,
-    priceNoon: 8500,
     currency: "EGP",
     amazonUrl: "https://amazon.eg/dp/B0182EEYDE?tag=dkora-21",
-    jumiaUrl: "https://jumia.com.eg/dewalt-dcd791d2?aff_id=dkora",
-    noonUrl: "https://noon.com/egypt-ar/dewalt-drill-20v?code=dkora",
     isTopPick: true,
     isEditorChoice: true,
     pros: [
@@ -207,18 +204,16 @@ export const PRODUCTS: Product[] = [
     modelNumber: "S04CG",
     mainImage: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80",
     gallery: [
-      "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
     ],
     rating: 4.8,
     reviewCount: 189,
     editorScore: 9.6,
     priceAmazon: 6200,
-    priceJumia: 6450,
-    priceNoon: 6300,
     currency: "EGP",
     amazonUrl: "https://amazon.eg/dp/B08LGR33X1?tag=dkora-21",
-    jumiaUrl: "https://jumia.com.eg/huepar-s04cg?aff_id=dkora",
-    noonUrl: "https://noon.com/egypt-ar/huepar-laser-s04cg?code=dkora",
     isTopPick: true,
     isBestValue: true,
     pros: [
@@ -258,18 +253,16 @@ export const PRODUCTS: Product[] = [
     modelNumber: "GWS 750-115",
     mainImage: "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=800&q=80",
     gallery: [
-      "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
     ],
     rating: 4.7,
     reviewCount: 215,
     editorScore: 9.2,
     priceAmazon: 2850,
-    priceJumia: 2990,
-    priceNoon: 2890,
     currency: "EGP",
     amazonUrl: "https://amazon.eg/dp/B01E2O3K80?tag=dkora-21",
-    jumiaUrl: "https://jumia.com.eg/bosch-gws-750?aff_id=dkora",
-    noonUrl: "https://noon.com/egypt-ar/bosch-grinder-750w?code=dkora",
     isBestValue: true,
     pros: [
       "مقبض رفيع جداً ومريح للقبضة مع تقليل الاهتزاز أثناء القطع",
@@ -306,18 +299,16 @@ export const PRODUCTS: Product[] = [
     modelNumber: "YRM200",
     mainImage: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80",
     gallery: [
-      "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=80"
     ],
     rating: 4.9,
     reviewCount: 96,
     editorScore: 9.7,
     priceAmazon: 12500,
-    priceJumia: 12900,
-    priceNoon: 12600,
     currency: "EGP",
     amazonUrl: "https://amazon.eg/dp/B09YALE200?tag=dkora-21",
-    jumiaUrl: "https://jumia.com.eg/yale-smart-lock?aff_id=dkora",
-    noonUrl: "https://noon.com/egypt-ar/yale-yrm200-lock?code=dkora",
     isTopPick: true,
     pros: [
       "5 طرق فتح: بصمة الأصبع، الرقم السري، بطاقة RFID، تطبيق الهاتف، ومفتاح طوارئ",
@@ -354,18 +345,16 @@ export const PRODUCTS: Product[] = [
     modelNumber: "TAT10101",
     mainImage: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
     gallery: [
-      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=800&q=80"
     ],
     rating: 4.6,
     reviewCount: 140,
     editorScore: 9.1,
     priceAmazon: 9800,
-    priceJumia: 10200,
-    priceNoon: 9950,
     currency: "EGP",
     amazonUrl: "https://amazon.eg/dp/B08TOTAL50?tag=dkora-21",
-    jumiaUrl: "https://jumia.com.eg/total-air-compressor-50l?aff_id=dkora",
-    noonUrl: "https://noon.com/egypt-ar/total-compressor-50l?code=dkora",
     isBestValue: true,
     pros: [
       "خزان فولاذي سعة 50 لتر يستوعب ضغط هواء مستمر لورش الدهان والدباسة",
@@ -402,18 +391,16 @@ export const PRODUCTS: Product[] = [
     modelNumber: "Fenomastic Hygiene",
     mainImage: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=800&q=80",
     gallery: [
-      "https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=80"
     ],
     rating: 4.9,
     reviewCount: 310,
     editorScore: 9.9,
     priceAmazon: 1850,
-    priceJumia: 1900,
-    priceNoon: 1870,
     currency: "EGP",
     amazonUrl: "https://amazon.eg/dp/B08JOTUN01?tag=dkora-21",
-    jumiaUrl: "https://jumia.com.eg/jotun-fenomastic?aff_id=dkora",
-    noonUrl: "https://noon.com/egypt-ar/jotun-paint-hygiene?code=dkora",
     isTopPick: true,
     isEditorChoice: true,
     pros: [
@@ -523,28 +510,28 @@ export const DEALS: Deal[] = [
     productId: "p-huepar-s04cg-3d",
     productTitle: "ميزان ليزر 16 خط أخضر Huepar S04CG + شاشة LCD",
     image: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80",
-    store: "noon",
+    store: "amazon",
     originalPrice: 7200,
     dealPrice: 6300,
     currency: "EGP",
     discountPercent: 12,
-    couponCode: "DKORANOON",
+    couponCode: "AMAZONLASER",
     expiresIn: "عرض محدد الكمية",
-    url: "https://noon.com/egypt-ar/huepar-laser-s04cg?code=dkora"
+    url: "https://amazon.eg/dp/B08X3K22LV?tag=dkora-21"
   },
   {
     id: "deal-3",
     productId: "p-yale-yrm200-smart-lock",
     productTitle: "قفل باب ذكي Yale YRM200 بالبصمة والواي فاي",
     image: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=600&q=80",
-    store: "jumia",
+    store: "amazon",
     originalPrice: 14500,
     dealPrice: 12500,
     currency: "EGP",
     discountPercent: 13,
-    couponCode: "JUMIASECURITY",
+    couponCode: "AMAZONLOCK",
     expiresIn: "خصم الجمعة البيضاء",
-    url: "https://jumia.com.eg/yale-smart-lock?aff_id=dkora"
+    url: "https://amazon.eg/dp/B08Y4M8849?tag=dkora-21"
   }
 ];
 
@@ -798,8 +785,8 @@ export const FAQS_DATA = [
     answer: "يقوم فريقنا الهندسي والفني بشراء واختبار الملاحظات والأدوات في ظروف عمل حقيقية داخل الورش والمواقع. نوصي فقط بالمنتجات التي تثبت جدارتها واعتماديتها بغض النظر عن العمولة."
   },
   {
-    question: "هل تختلف الأسعار عند الشراء عبر روابط أمازون أو جوميا في موقعكم؟",
-    answer: "لا إطلاقاً! تشتري المنتج بنفس السعر الأصلي المعلن في المتاجر (وقد تحصل على خصم إضافي باستخدام كود الخصم الخاص بنا). نحصل فقط على عمولة تسويق بسيطة من المتجر لدعم استمرار مراجعاتنا الميدانية."
+    question: "هل تختلف الأسعار عند الشراء عبر روابط أمازون في موقعكم؟",
+    answer: "لا إطلاقاً! تشتري المنتج بنفس السعر الأصلي المعلن في متجر أمازون (وقد تحصل على خصم إضافي باستخدام كود الخصم الخاص بنا). نحصل فقط على عمولة تسويق بسيطة من أمازون لدعم استمرار مراجعاتنا الميدانية."
   },
   {
     question: "ما الفرق بين المحركات العادية ومحركات Brushless في العدد الكهربائية؟",

@@ -49,12 +49,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [newImage, setNewImage] = useState(
     "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=80"
   );
+  const [newImage2, setNewImage2] = useState("");
+  const [newImage3, setNewImage3] = useState("");
   const [newPriceAmazon, setNewPriceAmazon] = useState(5500);
-  const [newPriceJumia, setNewPriceJumia] = useState(5650);
-  const [newPriceNoon, setNewPriceNoon] = useState(5600);
   const [newAmazonUrl, setNewAmazonUrl] = useState("");
-  const [newJumiaUrl, setNewJumiaUrl] = useState("");
-  const [newNoonUrl, setNewNoonUrl] = useState("");
   const [newSummary, setNewSummary] = useState("");
   const [newTarget, setNewTarget] = useState("");
   const [newPro, setNewPro] = useState("");
@@ -74,12 +72,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
     setNewModel("DCD-2026");
     setNewCategory("cat-electric-tools");
     setNewImage("https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=80");
+    setNewImage2("");
+    setNewImage3("");
     setNewPriceAmazon(5500);
-    setNewPriceJumia(5650);
-    setNewPriceNoon(5600);
     setNewAmazonUrl("");
-    setNewJumiaUrl("");
-    setNewNoonUrl("");
     setNewSummary("");
     setNewTarget("");
     setNewPro("");
@@ -93,12 +89,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
     setNewModel(product.modelNumber);
     setNewCategory(product.categoryId);
     setNewImage(product.mainImage);
+    setNewImage2(product.gallery?.[1] || "");
+    setNewImage3(product.gallery?.[2] || "");
     setNewPriceAmazon(product.priceAmazon || 0);
-    setNewPriceJumia(product.priceJumia || 0);
-    setNewPriceNoon(product.priceNoon || 0);
     setNewAmazonUrl(product.amazonUrl || "");
-    setNewJumiaUrl(product.jumiaUrl || "");
-    setNewNoonUrl(product.noonUrl || "");
     setNewSummary(product.summary || "");
     setNewTarget(product.targetAudience || "");
     setNewPro(product.pros?.[0] || "");
@@ -109,6 +103,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const handleCreateProduct = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newTitleAr.trim()) return;
+
+    const galleryImages = [newImage.trim(), newImage2.trim(), newImage3.trim()].filter(Boolean);
 
     if (editingProductId) {
       // Edit existing product
@@ -123,13 +119,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             categoryId: newCategory,
             brandName: newBrandName,
             modelNumber: newModel,
-            mainImage: newImage,
+            mainImage: newImage.trim(),
+            gallery: galleryImages.length > 0 ? galleryImages : [newImage.trim()],
             priceAmazon: Number(newPriceAmazon),
-            priceJumia: Number(newPriceJumia),
-            priceNoon: Number(newPriceNoon),
             amazonUrl: newAmazonUrl.trim() || "https://amazon.eg",
-            jumiaUrl: newJumiaUrl.trim() || "https://jumia.com.eg",
-            noonUrl: newNoonUrl.trim() || "https://noon.com",
             summary: newSummary || p.summary,
             targetAudience: newTarget || p.targetAudience,
             pros: newPro ? [newPro] : p.pros,
@@ -157,18 +150,14 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       brandId: "b-dewalt",
       brandName: newBrandName,
       modelNumber: newModel,
-      mainImage: newImage,
-      gallery: [newImage],
+      mainImage: newImage.trim(),
+      gallery: galleryImages.length > 0 ? galleryImages : [newImage.trim()],
       rating: 5.0,
       reviewCount: 1,
       editorScore: 9.5,
       priceAmazon: Number(newPriceAmazon),
-      priceJumia: Number(newPriceJumia),
-      priceNoon: Number(newPriceNoon),
       currency: "EGP",
       amazonUrl: newAmazonUrl.trim() || "https://amazon.eg",
-      jumiaUrl: newJumiaUrl.trim() || "https://jumia.com.eg",
-      noonUrl: newNoonUrl.trim() || "https://noon.com",
       isTopPick: true,
       pros: [newPro || "خامات متينة فائقة الجودة"],
       cons: [newCon || "السعر مرتفع نسبيًا"],
@@ -423,22 +412,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 }`}
               />
             </div>
-
-            <div>
-              <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>سعر جوميا (ج.م):</label>
-              <input
-                type="number"
-                value={newPriceJumia}
-                onChange={(e) => setNewPriceJumia(Number(e.target.value))}
-                className={`w-full p-2.5 rounded-xl border ${
-                  isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
-                }`}
-              />
-            </div>
           </div>
 
           {/* Affiliate Links Inputs */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs pt-2 border-t border-slate-200 dark:border-slate-800">
+          <div className="grid grid-cols-1 gap-4 text-xs pt-2 border-t border-slate-200 dark:border-slate-800">
             <div>
               <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>رابط الأفيليت (أمازون):</label>
               <input
@@ -451,44 +428,45 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 }`}
               />
             </div>
-
-            <div>
-              <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>رابط الأفيليت (جوميا):</label>
-              <input
-                type="url"
-                placeholder="https://jumia.com.eg/catalog/?affiliate=your-id"
-                value={newJumiaUrl}
-                onChange={(e) => setNewJumiaUrl(e.target.value)}
-                className={`w-full p-2.5 rounded-xl border ${
-                  isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
-                }`}
-              />
-            </div>
-
-            <div>
-              <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>رابط الأفيليت (نون):</label>
-              <input
-                type="url"
-                placeholder="https://noon.com/product/example?code=your-code"
-                value={newNoonUrl}
-                onChange={(e) => setNewNoonUrl(e.target.value)}
-                className={`w-full p-2.5 rounded-xl border ${
-                  isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
-                }`}
-              />
-            </div>
           </div>
 
-          <div className="text-xs">
-            <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>رابط صورة المنتج (URL):</label>
-            <input
-              type="text"
-              value={newImage}
-              onChange={(e) => setNewImage(e.target.value)}
-              className={`w-full p-2.5 rounded-xl border ${
-                isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
-              }`}
-            />
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div>
+              <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>الصورة الرئيسية (URL):</label>
+              <input
+                type="text"
+                placeholder="https://..."
+                value={newImage}
+                onChange={(e) => setNewImage(e.target.value)}
+                className={`w-full p-2.5 rounded-xl border ${
+                  isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
+                }`}
+              />
+            </div>
+            <div>
+              <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>الصورة الثانية (URL - اختياري):</label>
+              <input
+                type="text"
+                placeholder="https://..."
+                value={newImage2}
+                onChange={(e) => setNewImage2(e.target.value)}
+                className={`w-full p-2.5 rounded-xl border ${
+                  isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
+                }`}
+              />
+            </div>
+            <div>
+              <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>الصورة الثالثة (URL - اختياري):</label>
+              <input
+                type="text"
+                placeholder="https://..."
+                value={newImage3}
+                onChange={(e) => setNewImage3(e.target.value)}
+                className={`w-full p-2.5 rounded-xl border ${
+                  isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
+                }`}
+              />
+            </div>
           </div>
 
           <div className="text-xs">

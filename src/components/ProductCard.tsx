@@ -54,19 +54,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   const amazonPriceFormatted = getPrice(product.priceAmazon);
-  const jumiaPriceFormatted = getPrice(product.priceJumia);
-  const noonPriceFormatted = getPrice(product.priceNoon);
-
-  // Find lowest price store
-  const pricesArr = [
-    { name: "أمازون", price: product.priceAmazon, url: product.amazonUrl, color: "bg-amber-500" },
-    { name: "جوميا", price: product.priceJumia, url: product.jumiaUrl, color: "bg-orange-500" },
-    { name: "نون", price: product.priceNoon, url: product.noonUrl, color: "bg-yellow-400" },
-  ].filter((p) => p.price && p.price > 0);
-
-  const bestPriceStore = pricesArr.length > 0
-    ? pricesArr.reduce((prev, curr) => ((curr.price || 0) < (prev.price || 0) ? curr : prev))
-    : null;
 
   return (
     <div
@@ -191,57 +178,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           isDarkMode ? "border-slate-800/60 bg-slate-950/40" : "border-slate-200 bg-slate-50"
         }`}
       >
-        {/* Price Offers Row */}
-        <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
-          <span className="text-slate-500 dark:text-slate-400 font-bold flex items-center gap-1">
-            <ShoppingBag className="w-3.5 h-3.5 text-amber-500" />
-            أفضل سعر حالي:
-          </span>
-
-          <div className="flex items-center gap-2">
-            {bestPriceStore && (
-              <span className="bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 font-black px-2.5 py-0.5 rounded-lg text-xs">
-                {bestPriceStore.name}: {getPrice(bestPriceStore.price)}
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* Store Affiliate Direct Buttons */}
-        <div className="grid grid-cols-3 gap-2">
+        {/* Store Affiliate Direct Button (Amazon Only) */}
+        <div>
           {product.amazonUrl && (
             <a
               href={product.amazonUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="py-2 px-1 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-[11px] flex flex-col items-center justify-center transition-all shadow-md shadow-amber-500/10 text-center"
+              className="w-full py-3 px-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs sm:text-sm flex items-center justify-between transition-all shadow-md shadow-amber-500/10 text-center"
             >
-              <span>أمازون</span>
-              <span className="text-[10px] font-mono opacity-90">{amazonPriceFormatted}</span>
-            </a>
-          )}
-
-          {product.jumiaUrl && (
-            <a
-              href={product.jumiaUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="py-2 px-1 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-black text-[11px] flex flex-col items-center justify-center transition-all shadow-md text-center"
-            >
-              <span>جوميا</span>
-              <span className="text-[10px] font-mono opacity-90">{jumiaPriceFormatted}</span>
-            </a>
-          )}
-
-          {product.noonUrl && (
-            <a
-              href={product.noonUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="py-2 px-1 rounded-xl bg-yellow-400 hover:bg-yellow-500 text-slate-950 font-black text-[11px] flex flex-col items-center justify-center transition-all shadow-md text-center"
-            >
-              <span>نون</span>
-              <span className="text-[10px] font-mono opacity-90">{noonPriceFormatted}</span>
+              <span className="flex items-center gap-1.5">
+                <ShoppingBag className="w-4 h-4" />
+                شراء من أمازون
+              </span>
+              <span className="font-mono text-xs font-black bg-slate-950/10 px-2 py-0.5 rounded-lg">
+                {amazonPriceFormatted}
+              </span>
             </a>
           )}
         </div>

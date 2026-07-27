@@ -32,10 +32,10 @@ export const DealsView: React.FC<DealsViewProps> = ({ deals, currency, isDarkMod
           أقوى العروض والخصومات اليومية
         </span>
         <h1 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
-          أكواد خصم وتخفيضات المتاجر الكبرى
+          أكواد خصم وتخفيضات أمازون الحصرية
         </h1>
         <p className="text-slate-500 text-sm">
-          تحديث مستمر لأحدث خصومات العُدد والأدوات والديكور على أمازون وجوميا ونون.
+          تحديث مستمر لأحدث خصومات العُدد والأدوات والديكور على موقع أمازون.
         </p>
       </div>
 

@@ -25,7 +25,7 @@ export interface SpecItem {
 }
 
 export interface PriceInfo {
-  store: 'amazon' | 'jumia' | 'noon';
+  store: 'amazon';
   storeNameAr: string;
   price: number;
   currency: Currency;
@@ -62,12 +62,8 @@ export interface Product {
   reviewCount: number;
   editorScore: number; // out of 10
   priceAmazon?: number;
-  priceJumia?: number;
-  priceNoon?: number;
   currency: Currency;
   amazonUrl: string;
-  jumiaUrl: string;
-  noonUrl: string;
   isTopPick?: boolean;
   isBestValue?: boolean;
   isEditorChoice?: boolean;
@@ -121,7 +117,7 @@ export interface Deal {
   productId: string;
   productTitle: string;
   image: string;
-  store: 'amazon' | 'jumia' | 'noon';
+  store: 'amazon';
   originalPrice: number;
   dealPrice: number;
   currency: Currency;

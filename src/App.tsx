@@ -456,9 +456,6 @@ export default function App() {
               )}
             </section>
 
-            {/* Flash Deals View */}
-            <DealsView deals={deals} currency={currency} isDarkMode={isDarkMode} />
-
             {/* Articles Blog View */}
             <ArticlesView articles={articles} isDarkMode={isDarkMode} />
 

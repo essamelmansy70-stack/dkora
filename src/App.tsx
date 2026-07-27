@@ -24,7 +24,7 @@ import {
   ARTICLES
 } from "./data/mockData";
 import { createProductSlug, createProductUrl, findProductByQueryParam } from "./utils/seo";
-import { Product, Currency } from "./types";
+import { Product, Currency, Article } from "./types";
 import { Filter, Sparkles, Award, ShoppingBag, Layers, SearchX } from "lucide-react";
 
 export default function App() {
@@ -161,6 +161,12 @@ export default function App() {
       const catId = path.replace("/category/", "").trim();
       setSelectedCategory(catId);
       setActiveView("home");
+      if (typeof window !== "undefined") {
+        setTimeout(() => {
+          const el = document.getElementById("products-section");
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
     } else if (path === "/comparisons" || params.get("view") === "comparisons") {
       setActiveView("comparisons");
     } else if (path === "/deals" || params.get("view") === "deals") {
@@ -216,6 +222,24 @@ export default function App() {
     if (catId !== undefined) setSelectedCategory(catId);
     if (art !== undefined) setSelectedArticle(art);
     if (prod !== undefined) setDetailProduct(prod);
+  };
+
+  // Helper for selecting category, switching to home view, updating URL, and scrolling to products
+  const handleCategorySelect = (catId: string | null) => {
+    setSelectedCategory(catId);
+    setActiveView("home");
+    const targetUrl = catId ? `/category/${catId}` : "/";
+    if (typeof window !== "undefined") {
+      if (window.location.pathname !== targetUrl) {
+        window.history.pushState({}, "", targetUrl);
+      }
+      setTimeout(() => {
+        const el = document.getElementById("products-section");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 50);
+    }
   };
 
   // Sync document title and canonical tag
@@ -363,12 +387,12 @@ export default function App() {
             <CategoryGrid
               categories={categories}
               selectedCategory={selectedCategory}
-              onSelectCategory={(catId) => setSelectedCategory(catId)}
+              onSelectCategory={handleCategorySelect}
               isDarkMode={isDarkMode}
             />
 
             {/* Main Products Listing Section (Wirecutter Style) */}
-            <section className="space-y-6">
+            <section id="products-section" className="space-y-6 pt-2 scroll-mt-24">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
                 <div>
                   <div className="flex items-center gap-2">
@@ -452,10 +476,7 @@ export default function App() {
             <CategoryGrid
               categories={categories}
               selectedCategory={selectedCategory}
-              onSelectCategory={(catId) => {
-                setSelectedCategory(catId);
-                setActiveView("home");
-              }}
+              onSelectCategory={handleCategorySelect}
               isDarkMode={isDarkMode}
             />
           </div>
@@ -504,10 +525,7 @@ export default function App() {
           <SitemapView
             products={products}
             onSelectProduct={(prod) => setDetailProduct(prod)}
-            onSelectCategory={(catId) => {
-              setSelectedCategory(catId);
-              setActiveView("home");
-            }}
+            onSelectCategory={handleCategorySelect}
             onNavigateToView={(view) => setActiveView(view)}
             isDarkMode={isDarkMode}
           />
@@ -543,7 +561,7 @@ export default function App() {
 
       {/* Footer */}
       <Footer
-        onSelectCategory={(catId) => setSelectedCategory(catId)}
+        onSelectCategory={handleCategorySelect}
         setActiveView={setActiveView}
         isDarkMode={isDarkMode}
         showAdminButton={showAdminButton}

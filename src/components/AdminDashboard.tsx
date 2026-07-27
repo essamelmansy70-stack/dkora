@@ -47,6 +47,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [newPriceAmazon, setNewPriceAmazon] = useState(5500);
   const [newPriceJumia, setNewPriceJumia] = useState(5650);
   const [newPriceNoon, setNewPriceNoon] = useState(5600);
+  const [newAmazonUrl, setNewAmazonUrl] = useState("");
+  const [newJumiaUrl, setNewJumiaUrl] = useState("");
+  const [newNoonUrl, setNewNoonUrl] = useState("");
   const [newSummary, setNewSummary] = useState("");
   const [newTarget, setNewTarget] = useState("");
   const [newPro, setNewPro] = useState("");
@@ -75,9 +78,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       priceJumia: Number(newPriceJumia),
       priceNoon: Number(newPriceNoon),
       currency: "EGP",
-      amazonUrl: "https://amazon.eg",
-      jumiaUrl: "https://jumia.com.eg",
-      noonUrl: "https://noon.com",
+      amazonUrl: newAmazonUrl.trim() || "https://amazon.eg",
+      jumiaUrl: newJumiaUrl.trim() || "https://jumia.com.eg",
+      noonUrl: newNoonUrl.trim() || "https://noon.com",
       isTopPick: true,
       pros: [newPro || "خامات متينة فائقة الجودة"],
       cons: [newCon || "السعر مرتفع نسبيًا"],
@@ -311,6 +314,48 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                 type="number"
                 value={newPriceJumia}
                 onChange={(e) => setNewPriceJumia(Number(e.target.value))}
+                className={`w-full p-2.5 rounded-xl border ${
+                  isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
+                }`}
+              />
+            </div>
+          </div>
+
+          {/* Affiliate Links Inputs */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs pt-2 border-t border-slate-200 dark:border-slate-800">
+            <div>
+              <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>رابط الأفيليت (أمازون):</label>
+              <input
+                type="url"
+                placeholder="https://amazon.eg/dp/example?tag=your-tag"
+                value={newAmazonUrl}
+                onChange={(e) => setNewAmazonUrl(e.target.value)}
+                className={`w-full p-2.5 rounded-xl border ${
+                  isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
+                }`}
+              />
+            </div>
+
+            <div>
+              <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>رابط الأفيليت (جوميا):</label>
+              <input
+                type="url"
+                placeholder="https://jumia.com.eg/catalog/?affiliate=your-id"
+                value={newJumiaUrl}
+                onChange={(e) => setNewJumiaUrl(e.target.value)}
+                className={`w-full p-2.5 rounded-xl border ${
+                  isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
+                }`}
+              />
+            </div>
+
+            <div>
+              <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>رابط الأفيليت (نون):</label>
+              <input
+                type="url"
+                placeholder="https://noon.com/product/example?code=your-code"
+                value={newNoonUrl}
+                onChange={(e) => setNewNoonUrl(e.target.value)}
                 className={`w-full p-2.5 rounded-xl border ${
                   isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
                 }`}

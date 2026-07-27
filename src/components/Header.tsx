@@ -32,6 +32,7 @@ interface HeaderProps {
   setCurrency: (c: Currency) => void;
   isAdmin: boolean;
   setIsAdmin: (val: boolean) => void;
+  showAdminButton?: boolean;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -47,6 +48,7 @@ export const Header: React.FC<HeaderProps> = ({
   setCurrency,
   isAdmin,
   setIsAdmin,
+  showAdminButton = false,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -202,23 +204,25 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Action Controls */}
         <div className="flex items-center gap-2">
-          {/* Admin Dashboard shortcut */}
-          <button
-            onClick={() => {
-              setIsAdmin(!isAdmin);
-              if (!isAdmin) setActiveView("admin");
-            }}
-            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border flex items-center gap-1.5 ${
-              isAdmin
-                ? "bg-amber-500 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20"
-                : isDarkMode
-                ? "bg-slate-800/80 text-slate-300 border-slate-700 hover:border-amber-500/50"
-                : "bg-slate-100 text-slate-800 border-slate-300 hover:border-amber-500"
-            }`}
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>{isAdmin ? "لوحة التحكم (نشطة)" : "دخول الإدارة"}</span>
-          </button>
+          {/* Admin Dashboard shortcut (Hidden by default unless accessed via secret link or unlocked) */}
+          {(showAdminButton || isAdmin) && (
+            <button
+              onClick={() => {
+                setIsAdmin(!isAdmin);
+                if (!isAdmin) setActiveView("admin");
+              }}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border flex items-center gap-1.5 ${
+                isAdmin
+                  ? "bg-amber-500 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20"
+                  : isDarkMode
+                  ? "bg-slate-800/80 text-slate-300 border-slate-700 hover:border-amber-500/50"
+                  : "bg-slate-100 text-slate-800 border-slate-300 hover:border-amber-500"
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{isAdmin ? "لوحة التحكم (نشطة)" : "دخول الإدارة"}</span>
+            </button>
+          )}
 
           {/* Theme Toggle */}
           <button
@@ -362,17 +366,19 @@ export const Header: React.FC<HeaderProps> = ({
               <span>خريطة الموقع</span>
             </button>
 
-            <button
-              onClick={() => {
-                setIsAdmin(!isAdmin);
-                if (!isAdmin) setActiveView("admin");
-                setMobileMenuOpen(false);
-              }}
-              className="p-3 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-600 dark:text-amber-400 text-right flex items-center gap-2"
-            >
-              <Sparkles className="w-4 h-4" />
-              <span>لوحة التحكم</span>
-            </button>
+            {(showAdminButton || isAdmin) && (
+              <button
+                onClick={() => {
+                  setIsAdmin(!isAdmin);
+                  if (!isAdmin) setActiveView("admin");
+                  setMobileMenuOpen(false);
+                }}
+                className="p-3 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-600 dark:text-amber-400 text-right flex items-center gap-2"
+              >
+                <Sparkles className="w-4 h-4" />
+                <span>لوحة التحكم</span>
+              </button>
+            )}
           </div>
         </div>
       )}

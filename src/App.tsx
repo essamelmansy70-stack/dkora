@@ -33,6 +33,26 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [currency, setCurrency] = useState<Currency>("EGP");
   const [isAdmin, setIsAdmin] = useState(false);
+  const [showAdminButton, setShowAdminButton] = useState(false);
+
+  // Check secret URL param or saved local key on load
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const urlView = params.get("view");
+      const isAdminQuery = params.has("admin") || params.has("secret") || urlView === "admin";
+      const isSavedUnlocked = localStorage.getItem("dkora_admin_unlocked") === "true";
+
+      if (isAdminQuery || isSavedUnlocked) {
+        setShowAdminButton(true);
+        localStorage.setItem("dkora_admin_unlocked", "true");
+        if (urlView === "admin" || params.get("admin") === "true") {
+          setActiveView("admin");
+          setIsAdmin(true);
+        }
+      }
+    }
+  }, []);
 
   // Dynamic state arrays
   const [products, setProducts] = useState<Product[]>(PRODUCTS);
@@ -104,6 +124,7 @@ export default function App() {
         setCurrency={setCurrency}
         isAdmin={isAdmin}
         setIsAdmin={setIsAdmin}
+        showAdminButton={showAdminButton}
       />
 
       {/* Main Container */}
@@ -297,6 +318,7 @@ export default function App() {
         onSelectCategory={(catId) => setSelectedCategory(catId)}
         setActiveView={setActiveView}
         isDarkMode={isDarkMode}
+        showAdminButton={showAdminButton}
       />
     </div>
   );

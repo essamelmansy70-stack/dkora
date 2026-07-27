@@ -6,9 +6,10 @@ interface FooterProps {
   onSelectCategory: (id: string | null) => void;
   setActiveView: (view: string) => void;
   isDarkMode: boolean;
+  showAdminButton?: boolean;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView, isDarkMode }) => {
+export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView, isDarkMode, showAdminButton = false }) => {
   return (
     <footer
       className={`border-t transition-colors ${
@@ -121,11 +122,13 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
                   • ملف sitemap.xml المباشر ↗
                 </a>
               </li>
-              <li>
-                <button onClick={() => setActiveView("admin")} className="hover:text-amber-400">
-                  • لوحة التحكم للإدارة
-                </button>
-              </li>
+              {showAdminButton && (
+                <li>
+                  <button onClick={() => setActiveView("admin")} className="hover:text-amber-400">
+                    • لوحة التحكم للإدارة
+                  </button>
+                </li>
+              )}
             </ul>
           </div>
         </div>

@@ -1,0 +1,135 @@
+import React, { useState } from "react";
+import { BookOpen, Calendar, Clock, User, ArrowRight, Tag, ChevronLeft } from "lucide-react";
+import { Article } from "../types";
+
+interface ArticlesViewProps {
+  articles: Article[];
+  isDarkMode: boolean;
+}
+
+export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, isDarkMode }) => {
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+
+  if (selectedArticle) {
+    return (
+      <div className="max-w-4xl mx-auto my-8 space-y-6">
+        <button
+          onClick={() => setSelectedArticle(null)}
+          className="flex items-center gap-2 text-xs font-bold text-amber-500 bg-amber-500/10 px-4 py-2 rounded-xl border border-amber-500/30 hover:bg-amber-500/20"
+        >
+          <ArrowRight className="w-4 h-4" />
+          <span>العودة لجميع المقالات والدروس</span>
+        </button>
+
+        <article
+          className={`rounded-3xl border overflow-hidden p-6 sm:p-10 space-y-6 ${
+            isDarkMode ? "bg-slate-900 border-slate-800 text-slate-100" : "bg-white border-slate-200 text-slate-900"
+          }`}
+        >
+          <div className="space-y-3">
+            <span className="bg-amber-500/10 text-amber-500 border border-amber-500/30 text-xs font-bold px-3 py-1 rounded-full">
+              {selectedArticle.category}
+            </span>
+
+            <h1 className="text-3xl sm:text-4xl font-black leading-tight text-slate-900 dark:text-white">
+              {selectedArticle.title}
+            </h1>
+
+            <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 border-b border-slate-800 pb-4">
+              <span className="flex items-center gap-1.5 font-bold text-slate-200">
+                <User className="w-4 h-4 text-amber-400" />
+                {selectedArticle.author}
+              </span>
+              <span>•</span>
+              <span className="flex items-center gap-1">
+                <Calendar className="w-4 h-4 text-slate-500" />
+                {selectedArticle.date}
+              </span>
+              <span>•</span>
+              <span className="flex items-center gap-1">
+                <Clock className="w-4 h-4 text-slate-500" />
+                وقت القراءة: {selectedArticle.readTime}
+              </span>
+            </div>
+          </div>
+
+          <div className="h-80 rounded-2xl overflow-hidden border border-slate-800">
+            <img src={selectedArticle.coverImage} alt={selectedArticle.title} className="w-full h-full object-cover" />
+          </div>
+
+          <div className="prose prose-invert max-w-none text-slate-300 leading-relaxed space-y-4 text-sm sm:text-base">
+            <p className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 font-medium text-amber-300">
+              {selectedArticle.excerpt}
+            </p>
+            <p>{selectedArticle.content}</p>
+          </div>
+
+          <div className="pt-6 border-t border-slate-800 flex flex-wrap gap-2">
+            {selectedArticle.tags.map((t, idx) => (
+              <span key={idx} className="bg-slate-950 text-slate-300 px-3 py-1 rounded-lg text-xs font-mono border border-slate-800">
+                #{t}
+              </span>
+            ))}
+          </div>
+        </article>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-8 my-8">
+      {/* Title */}
+      <div className="text-center max-w-3xl mx-auto space-y-2">
+        <span className="inline-flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 text-amber-500 text-xs font-bold px-3 py-1 rounded-full">
+          <BookOpen className="w-3.5 h-3.5" />
+          مدونة 'ديكورا' والدروس الفنية
+        </span>
+        <h1 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
+          مقالات متخصصة وشروحات صيانة وتنقيب
+        </h1>
+        <p className="text-slate-500 text-sm">
+          أسرار الورش والتشطيبات الهندسية من خبراء المهنة لمساعدتك في اتخاذ أفضل القرارات.
+        </p>
+      </div>
+
+      {/* Articles Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {articles.map((art) => (
+          <div
+            key={art.id}
+            onClick={() => setSelectedArticle(art)}
+            className={`rounded-3xl border overflow-hidden p-6 space-y-4 cursor-pointer transition-all hover:shadow-2xl hover:border-amber-500/50 group flex flex-col justify-between ${
+              isDarkMode ? "bg-slate-900 border-slate-800 text-slate-100" : "bg-white border-slate-200 text-slate-900 shadow-md"
+            }`}
+          >
+            <div className="space-y-3">
+              <div className="h-48 rounded-2xl overflow-hidden bg-slate-950 border border-slate-800">
+                <img src={art.coverImage} alt={art.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+
+              <div className="flex items-center justify-between text-xs text-slate-400">
+                <span className="bg-amber-500/10 text-amber-500 border border-amber-500/30 px-2.5 py-0.5 rounded font-bold">
+                  {art.category}
+                </span>
+                <span>{art.date}</span>
+              </div>
+
+              <h3 className="font-extrabold text-lg group-hover:text-amber-500 transition-colors leading-snug">
+                {art.title}
+              </h3>
+
+              <p className="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+                {art.excerpt}
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-slate-800 flex items-center justify-between text-xs font-bold text-amber-500">
+              <span>اقرأ المقال الكامل</span>
+              <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};

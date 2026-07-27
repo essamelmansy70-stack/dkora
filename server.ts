@@ -223,21 +223,22 @@ async function startServer() {
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
   // Dynamic Robots.txt Route
-  app.get("/robots.txt", (req, res) => {
+  app.get(["/robots.txt", "/robots"], (req, res) => {
     const protocol = req.headers["x-forwarded-proto"] || req.protocol || "https";
-    const host = req.get("host") || "dkora.app";
+    const host = req.get("host") || "dkora.online";
     const content = `User-agent: *
 Allow: /
 
 Sitemap: ${protocol}://${host}/sitemap.xml
 `;
     res.setHeader("Content-Type", "text/plain; charset=utf-8");
+    res.setHeader("X-Content-Type-Options", "nosniff");
     res.setHeader("Cache-Control", "public, max-age=3600");
-    res.send(content);
+    res.status(200).send(content);
   });
 
   // Dynamic Sitemap.xml Route - Automatically updates with every request and data change
-  app.get("/sitemap.xml", (req, res) => {
+  app.get(["/sitemap.xml", "/sitemap", "/sitemap_index.xml"], (req, res) => {
     const protocol = req.headers["x-forwarded-proto"] || req.protocol || "https";
     const host = req.get("host") || "dkora.online";
     const baseUrl = `${protocol}://${host}`;
@@ -319,8 +320,9 @@ Sitemap: ${protocol}://${host}/sitemap.xml
     xml += `</urlset>`;
 
     res.setHeader("Content-Type", "application/xml; charset=utf-8");
+    res.setHeader("X-Content-Type-Options", "nosniff");
     res.setHeader("Cache-Control", "public, max-age=360, s-maxage=360");
-    res.send(xml);
+    res.status(200).send(xml);
   });
 
   // Always serve static files directly from public directory
@@ -443,14 +445,16 @@ The output must be a single beautifully synthesized natural photograph, aspect r
       const url = req.originalUrl;
       const cleanPath = req.path;
 
-      // Skip API routes, statics, and direct asset files
+      // Skip API routes, statics, sitemaps, robots, and direct asset files
       if (
         cleanPath.startsWith("/api") ||
+        cleanPath.startsWith("/sitemap") ||
+        cleanPath.startsWith("/robots") ||
         cleanPath.startsWith("/@") ||
         cleanPath.startsWith("/src") ||
         cleanPath.startsWith("/node_modules") ||
         cleanPath.startsWith("/assets") ||
-        cleanPath.match(/\.(jpg|jpeg|png|gif|svg|webp|ico|css|js|map|woff2?|json|ttf|eot)$/i) ||
+        cleanPath.match(/\.(jpg|jpeg|png|gif|svg|webp|ico|css|js|map|woff2?|json|ttf|eot|xml|txt)$/i) ||
         req.headers.accept?.includes("application/json")
       ) {
         return next();
@@ -491,7 +495,9 @@ The output must be a single beautifully synthesized natural photograph, aspect r
       const cleanPath = req.path;
       if (
         cleanPath.startsWith("/api") ||
-        cleanPath.match(/\.(jpg|jpeg|png|gif|svg|webp|ico|css|js|map|woff2?|json|ttf|eot)$/i)
+        cleanPath.startsWith("/sitemap") ||
+        cleanPath.startsWith("/robots") ||
+        cleanPath.match(/\.(jpg|jpeg|png|gif|svg|webp|ico|css|js|map|woff2?|json|ttf|eot|xml|txt)$/i)
       ) {
         return next();
       }

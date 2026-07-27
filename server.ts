@@ -19,6 +19,13 @@ const rootDir = typeof __dirname !== "undefined"
 
 const ARTICLES_SEO = [
   {
+    slug: "bosch-small-angle-grinder-review",
+    titleAr: "مراجعة شاملة: صاروخ بوش صغير (Bosch Small Angle Grinder) | ديكورا Dkora",
+    titleEn: "Bosch Small Angle Grinder In-Depth Review | Dkora",
+    descAr: "تُعتبر شركة بوش (Bosch) واحدة من ألمع العلامات التجارية في الأدوات والعدد. مراجعة شاملة لصاروخ بوش الصغير، التصميم، الأداء، وسائل الأمان، والأسعار.",
+    descEn: "Comprehensive review of the Bosch Small Angle Grinder covering design, power, safety features, pros, cons, and Amazon buy links."
+  },
+  {
     slug: "marwan-attia-al-ahly-player-contract-renewal-2031-profile-2026",
     titleAr: "مروان عطية لاعب الاهلي: كواليس تجديد العقد حتى 2031، تحصين القلعة الحمراء، وتحليل أداء 'رئة' وسط المارد الأحمر | dkora",
     titleEn: "Marwan Attia Al Ahly Player: Contract Renewal to 2031, Salary Upgrade & Midfield Engine Analysis 2026 | dkora",
@@ -160,11 +167,17 @@ function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
     description = "مقالات وشروحات فنية من خبراء الصيانة والديكور لمساعدتك في اختيار الأداة المناسبة.";
     canonicalUrl = `${baseUrl}/?article=all`;
   } else if (articleSlug) {
-    const art = ARTICLES_SEO.find(a => a.slug === articleSlug);
-    if (art) {
-      title = art.titleAr;
-      description = art.descAr;
-      canonicalUrl = `${baseUrl}/?article=${art.slug}`;
+    const artSeo = ARTICLES_SEO.find(a => a.slug === articleSlug);
+    const artMock = ARTICLES.find(a => a.slug === articleSlug || a.id === articleSlug);
+    if (artSeo) {
+      title = artSeo.titleAr;
+      description = artSeo.descAr;
+      canonicalUrl = `${baseUrl}/?article=${artSeo.slug}`;
+    } else if (artMock) {
+      title = `${artMock.title} | ديكورا Dkora`;
+      description = artMock.excerpt;
+      image = artMock.coverImage || image;
+      canonicalUrl = `${baseUrl}/?article=${artMock.slug}`;
     }
   }
 

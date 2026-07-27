@@ -67,7 +67,14 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, isDarkMode
             }`}>
               {selectedArticle.excerpt}
             </p>
-            <p>{selectedArticle.content}</p>
+            {selectedArticle.content.includes("<") ? (
+              <div
+                className="space-y-4 text-sm sm:text-base leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: selectedArticle.content }}
+              />
+            ) : (
+              <p>{selectedArticle.content}</p>
+            )}
           </div>
 
           <div className={`pt-6 border-t flex flex-wrap gap-2 ${isDarkMode ? "border-slate-800" : "border-slate-200"}`}>

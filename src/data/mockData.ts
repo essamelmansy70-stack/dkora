@@ -550,6 +550,74 @@ export const DEALS: Deal[] = [
 
 export const ARTICLES: Article[] = [
   {
+    id: "art-bosch-small-angle-grinder-review",
+    title: "مراجعة شاملة: صاروخ بوش صغير (Bosch Small Angle Grinder)",
+    slug: "bosch-small-angle-grinder-review",
+    category: "العدد الكهربائية",
+    readTime: "6 دقائق",
+    date: "2026-03-10",
+    author: "فريق التحرير الفني - ديكورا Dkora",
+    coverImage: "/bosch_grinder.jpg",
+    excerpt: "تُعتبر شركة بوش (Bosch) واحدة من ألمع وأفضل العلامات التجارية العالمية في مجال الأدوات والعدد الكهربائية، وتتمتع أجهزتها بسمعة ممتازة من حيث الاعتمادية، الجودة، والعمر الافتراضي الطويل.",
+    content: `<div class="article-container space-y-6">
+      <p>تُعتبر شركة <strong>بوش (Bosch)</strong> واحدة من ألمع وأفضل العلامات التجارية العالمية في مجال الأدوات والعدد الكهربائية، وتتمتع أجهزتها بسمعة ممتازة من حيث الاعتمادية، الجودة، والعمر الافتراضي الطويل. إذا كنت تبحث عن <strong>صاروخ بوش صغير</strong> مناسب للأعمال المنزلية أو الورش الاحترافية، فهذه المراجعة ستوضح لك كل ما تحتاج معرفته.</p>
+
+      <div class="my-6 text-center">
+        <a href='https://postimg.cc/LqzXq2Gs' target='_blank' rel='noopener noreferrer'><img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src='/bosch_grinder.jpg' alt='صاروخ بوش صغير'></a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">1. التصميم والحجم (Design & Ergonomics)</h2>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>المقاس والأقراص:</strong> يأتي الصاروخ الصغير عادةً متوافقاً مع أقراص بمقاس <strong>4.5 بوصة (115 مم)</strong> أو <strong>5 بوصات (125 مم)</strong>، وهو الحجم المثالي للتحكم الكامل أثناء العمل.</li>
+        <li><strong>الوزن وسهولة الاستخدام:</strong> خفيف الوزن وذو هيكل مدمج (Compact Design)، مما يجعله سهل الحمل والعمل به لفترات طويلة دون الشعور بالإجهاد.</li>
+        <li><strong>المقبض الجانبي:</strong> يضمن المقبض إمكانية التثبيت بوضعين (يمين/يسار) لتوفير أقصى درجات الثبات والراحة أثناء القطع أو التجليخ.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">2. الأداء والكتلة العضلية (Performance & Power)</h2>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>قوة المحرك:</strong> يأتي <strong>صاروخ بوش الصغير</strong> بمحركات تتراوح قدرتها غالباً بين <strong>670 واط إلى 900 واط</strong> (بحسب الموديل)، مما يمنحه سرعة دوران عالية (تصل إلى 11,000 دورة في الدقيقة).</li>
+        <li><strong>الكفاءة في العمل:</strong> ممتاز لقطع المعادن، السيراميك، الطوب، وإزالة الصدأ أو التجليخ والتشطيب في الأماكن الضيقة التي يصعب الوصول إليها بالتصوارخ الكبيرة.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">3. وسائل الأمان والسلامة (Safety Features)</h2>
+      <p>تتميز أجهزة بوش دائماً باهتمامها البالغ بعوامل الأمان:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>واقي الحماية (Protective Guard):</strong> واقي معدني مقاوم للدوران لمنع تناثر الشرار أو الأجزاء المكسورة تجاه المستخدم.</li>
+        <li><strong>مفتاح الأمان (Safety Switch):</strong> يمنع التشغيل المفاجئ للأداة لتجنب الحوادث.</li>
+        <li><strong>نظام التبريد المباشر:</strong> يشتمل على فتحات تهوية مصممة خصيصاً لحماية المحرك من الأتربة وتبريده بفعالية عند العمل لفترات طويلة.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">4. مميزات صاروخ بوش الصغير</h2>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>متانة وجودة تصنيع العالية:</strong> خامات خارجية وقواعد تروس من الألومنيوم المقوى لضمان أطول عمر افتراضي.</li>
+        <li><strong>مرونة التحكم:</strong> سهولة تغيير الأقراص بفضل زر قفل المحور (Spindle Lock).</li>
+        <li><strong>سهولة التخزين:</strong> لا يشغل مساحة كبيرة في صندوق العدة.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">5. السلبيات أو النقاط الواجب مراعاتها</h2>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>غير مخصص للأعمال الثقيلة جداً:</strong> نظراً لكونه <strong>صاروخ بوش صغير</strong>، فهو غير مخصص لقطع الخرسانة السميكة أو الجدران الكبيرة لمسافات طويلة، بل للأعمال المتوسطة والدقيقة.</li>
+        <li><strong>السعر:</strong> قد يكون سعره أعلى قليلاً مقارنة بالماركات الاقتصادية الأخرى، لكنه يقدم مقابل ذلك جودة وعمراً أطول بكثير.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">الخلاصة والتقييم النهائي</h2>
+      <p>إذا كنت تبحث عن أداة اعتمادية وقوية تجمع بين <strong>الخفة، الأمان، والأداء الممتاز</strong>، فإن اقتناء <strong>صاروخ بوش صغير</strong> يعد استثماراً ممتازاً للورش والأعمال المنزلية على حد سواء.</p>
+      
+      <p class="font-bold my-3 text-lg">التقييم العام: <span class="text-amber-500 font-extrabold">⭐⭐⭐⭐⭐ (4.7 من 5)</span></p>
+
+      <div class="my-8 p-6 text-center bg-amber-500/10 border border-amber-500/30 rounded-2xl space-y-4">
+        <h3 class="text-lg font-bold text-amber-600 dark:text-amber-400">هل تريد الشراء بـ أفضل سعر؟</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300">يمكنك الاطلاع على السعر والخصومات المتاحة حالياً عبر هذا الرابط:</p>
+        <div>
+          <a href="https://link.amazon/B02lgmCxx" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3 rounded-xl transition-colors shadow-lg hover:shadow-red-600/30 text-sm sm:text-base" target="_blank" rel="nofollow sponsored">
+            شراء صاروخ بوش صغير الآن من أمازون
+          </a>
+        </div>
+      </div>
+    </div>`,
+    tags: ["بوش", "Bosch", "صاروخ", "صاروخ بوش صغير", "أدوات كهربائية", "أمازون"]
+  },
+  {
     id: "art-1",
     title: "كيف تختار ماكينة اللحام الإنفرتر المناسبة للورشة المنزلية؟",
     slug: "how-to-choose-inverter-welding-machine",

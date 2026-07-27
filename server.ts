@@ -239,11 +239,11 @@ Sitemap: ${protocol}://${host}/sitemap.xml
   // Dynamic Sitemap.xml Route - Automatically updates with every request and data change
   app.get("/sitemap.xml", (req, res) => {
     const protocol = req.headers["x-forwarded-proto"] || req.protocol || "https";
-    const host = req.get("host") || "dkora.app";
+    const host = req.get("host") || "dkora.online";
     const baseUrl = `${protocol}://${host}`;
     const currentDate = new Date().toISOString().split("T")[0];
 
-    const urls: Array<{ loc: string; lastmod: string; changefreq: string; priority: string }> = [
+    const rawUrls: Array<{ loc: string; lastmod: string; changefreq: string; priority: string }> = [
       { loc: `${baseUrl}/`, lastmod: currentDate, changefreq: "daily", priority: "1.0" },
       { loc: `${baseUrl}/?view=categories`, lastmod: currentDate, changefreq: "weekly", priority: "0.9" },
       { loc: `${baseUrl}/?view=comparisons`, lastmod: currentDate, changefreq: "weekly", priority: "0.9" },
@@ -294,15 +294,22 @@ Sitemap: ${protocol}://${host}/sitemap.xml
       })),
     ];
 
-    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-    xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n`;
-    xml += `        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n`;
-    xml += `        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9\n`;
-    xml += `        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">\n`;
+    // Remove duplicates
+    const urlMap = new Map<string, { loc: string; lastmod: string; changefreq: string; priority: string }>();
+    rawUrls.forEach((item) => {
+      if (!urlMap.has(item.loc)) {
+        urlMap.set(item.loc, item);
+      }
+    });
 
-    urls.forEach((u) => {
+    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+    xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+    urlMap.forEach((u) => {
+      // Escape & as &amp; to strictly comply with XML standards
+      const cleanLoc = u.loc.replace(/&/g, "&amp;");
       xml += `  <url>\n`;
-      xml += `    <loc>${u.loc}</loc>\n`;
+      xml += `    <loc>${cleanLoc}</loc>\n`;
       xml += `    <lastmod>${u.lastmod}</lastmod>\n`;
       xml += `    <changefreq>${u.changefreq}</changefreq>\n`;
       xml += `    <priority>${u.priority}</priority>\n`;
@@ -312,7 +319,7 @@ Sitemap: ${protocol}://${host}/sitemap.xml
     xml += `</urlset>`;
 
     res.setHeader("Content-Type", "application/xml; charset=utf-8");
-    res.setHeader("Cache-Control", "public, max-age=60, s-maxage=60");
+    res.setHeader("Cache-Control", "public, max-age=360, s-maxage=360");
     res.send(xml);
   });
 

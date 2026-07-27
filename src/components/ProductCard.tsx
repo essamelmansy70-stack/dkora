@@ -233,33 +233,34 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         {/* Details & Compare Actions */}
-        <div className="flex items-center gap-2 pt-2">
+        <div className="flex flex-wrap items-center gap-2 pt-2">
           <button
             onClick={() => onSelectProduct(product)}
-            className={`flex-1 py-2.5 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 border transition-all ${
+            className={`flex-1 min-w-[140px] py-2.5 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 border transition-all ${
               isDarkMode
                 ? "bg-slate-800 hover:bg-slate-700 text-white border-slate-700"
                 : "bg-slate-900 hover:bg-slate-800 text-white border-slate-900 shadow-md"
             }`}
           >
-            <Eye className="w-4 h-4 text-amber-400" />
-            <span>عرض المراجعة الكاملة والمواصفات</span>
+            <Eye className="w-4 h-4 text-amber-400 shrink-0" />
+            <span className="truncate">المراجعة والمواصفات</span>
           </button>
 
           {onEditProduct && (
             <button
               onClick={() => onEditProduct(product)}
-              className="p-2.5 rounded-xl border bg-amber-500 hover:bg-amber-600 text-slate-950 border-amber-400 transition-colors shadow-sm"
+              className="py-2.5 px-3 rounded-xl border bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs border-amber-400 transition-colors shadow-sm flex items-center gap-1.5 shrink-0"
               title="تعديل بيانات وسعر هذا المنتج"
             >
               <Edit2 className="w-4 h-4" />
+              <span>تعديل</span>
             </button>
           )}
 
           {onCompareSelect && (
             <button
               onClick={() => onCompareSelect(product)}
-              className={`p-2.5 rounded-xl border transition-colors ${
+              className={`p-2.5 rounded-xl border transition-colors shrink-0 ${
                 isDarkMode
                   ? "bg-slate-800/80 hover:bg-amber-500/20 text-slate-300 border-slate-700"
                   : "bg-white hover:bg-amber-50 text-slate-700 border-slate-300 shadow-sm"

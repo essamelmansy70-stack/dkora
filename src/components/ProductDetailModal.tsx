@@ -98,18 +98,18 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         dir="rtl"
       >
         {/* Modal Header Bar */}
-        <div className={`p-4 sm:p-6 border-b flex items-center justify-between gap-4 shrink-0 ${
+        <div className={`p-3 sm:p-6 border-b flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 shrink-0 ${
           isDarkMode ? "border-slate-800/80 bg-slate-950 text-white" : "border-slate-200 bg-slate-100 text-slate-900"
         }`}>
-          <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-            <span>الرئيسية</span>
-            <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-amber-600 dark:text-amber-400 font-bold">{product.brandName}</span>
-            <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-slate-800 dark:text-slate-200 line-clamp-1">{product.titleAr}</span>
+          <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 max-w-full overflow-hidden">
+            <span className="shrink-0">الرئيسية</span>
+            <ChevronRight className="w-3.5 h-3.5 shrink-0" />
+            <span className="text-amber-600 dark:text-amber-400 font-bold shrink-0">{product.brandName}</span>
+            <ChevronRight className="w-3.5 h-3.5 shrink-0" />
+            <span className="text-slate-800 dark:text-slate-200 truncate">{product.titleAr}</span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             {onEditProduct && (
               <button
                 onClick={() => {
@@ -134,7 +134,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               title="عرض Schema.org JSON-LD الموجه لمحركات البحث"
             >
               <Code2 className="w-4 h-4" />
-              <span className="hidden sm:inline">SEO Schema Data</span>
+              <span>SEO Schema</span>
             </button>
 
             <button

@@ -48,7 +48,7 @@ export const Header: React.FC<HeaderProps> = ({
   setCurrency,
   isAdmin,
   setIsAdmin,
-  showAdminButton = false,
+  showAdminButton = true,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -61,28 +61,28 @@ export const Header: React.FC<HeaderProps> = ({
       }`}
     >
       {/* Main Nav Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
         {/* Brand Logo */}
         <button
           onClick={() => {
             setActiveView("home");
             setSelectedCategory(null);
           }}
-          className="flex items-center gap-3 group text-right focus:outline-none"
+          className="flex items-center gap-2 sm:gap-3 group text-right focus:outline-none shrink-0"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
-            <Wrench className="w-6 h-6 stroke-[2.5]" />
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
+            <Wrench className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]" />
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-black text-2xl tracking-tight text-slate-900 dark:text-white">
+              <span className="font-black text-xl sm:text-2xl tracking-tight text-slate-900 dark:text-white">
                 ديكورا
               </span>
-              <span className="text-xs bg-amber-500/20 text-amber-500 border border-amber-500/30 px-1.5 py-0.5 rounded font-mono font-bold">
+              <span className="text-[10px] sm:text-xs bg-amber-500/20 text-amber-500 border border-amber-500/30 px-1.5 py-0.5 rounded font-mono font-bold">
                 Dkora
               </span>
             </div>
-            <p className="text-[10px] text-slate-400 font-medium tracking-wide">
+            <p className="text-[9px] sm:text-[10px] text-slate-400 font-medium tracking-wide">
               دليل العدد والأدوات والديكور
             </p>
           </div>
@@ -249,6 +249,97 @@ export const Header: React.FC<HeaderProps> = ({
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
+      </div>
+
+      {/* Mobile Horizontal Quick Nav Bar (Always visible on mobile without needing drawer) */}
+      <div className="lg:hidden border-t overflow-x-auto py-2 px-3 flex items-center gap-2 text-xs font-bold no-scrollbar scroll-smooth">
+        <button
+          onClick={() => {
+            setActiveView("home");
+            setSelectedCategory(null);
+          }}
+          className={`px-3 py-1.5 rounded-lg whitespace-nowrap flex items-center gap-1.5 shrink-0 transition-colors ${
+            activeView === "home" && !selectedCategory
+              ? "bg-amber-500 text-slate-950 font-black shadow-sm"
+              : isDarkMode
+              ? "bg-slate-900/80 text-slate-300 border border-slate-800"
+              : "bg-slate-100 text-slate-700 border border-slate-200"
+          }`}
+        >
+          <Compass className="w-3.5 h-3.5 text-amber-500" />
+          <span>الرئيسية</span>
+        </button>
+
+        <button
+          onClick={() => setActiveView("categories")}
+          className={`px-3 py-1.5 rounded-lg whitespace-nowrap flex items-center gap-1.5 shrink-0 transition-colors ${
+            activeView === "categories" || selectedCategory
+              ? "bg-amber-500 text-slate-950 font-black shadow-sm"
+              : isDarkMode
+              ? "bg-slate-900/80 text-slate-300 border border-slate-800"
+              : "bg-slate-100 text-slate-700 border border-slate-200"
+          }`}
+        >
+          <Layers className="w-3.5 h-3.5 text-amber-500" />
+          <span>التصنيفات</span>
+        </button>
+
+        <button
+          onClick={() => setActiveView("comparisons")}
+          className={`px-3 py-1.5 rounded-lg whitespace-nowrap flex items-center gap-1.5 shrink-0 transition-colors ${
+            activeView === "comparisons"
+              ? "bg-amber-500 text-slate-950 font-black shadow-sm"
+              : isDarkMode
+              ? "bg-slate-900/80 text-slate-300 border border-slate-800"
+              : "bg-slate-100 text-slate-700 border border-slate-200"
+          }`}
+        >
+          <SlidersHorizontal className="w-3.5 h-3.5 text-amber-500" />
+          <span>المقارنات</span>
+        </button>
+
+        <button
+          onClick={() => setActiveView("deals")}
+          className={`px-3 py-1.5 rounded-lg whitespace-nowrap flex items-center gap-1.5 shrink-0 transition-colors ${
+            activeView === "deals"
+              ? "bg-amber-500 text-slate-950 font-black shadow-sm"
+              : isDarkMode
+              ? "bg-slate-900/80 text-slate-300 border border-slate-800"
+              : "bg-slate-100 text-slate-700 border border-slate-200"
+          }`}
+        >
+          <Tag className="w-3.5 h-3.5 text-orange-500" />
+          <span>العروض</span>
+        </button>
+
+        <button
+          onClick={() => setActiveView("articles")}
+          className={`px-3 py-1.5 rounded-lg whitespace-nowrap flex items-center gap-1.5 shrink-0 transition-colors ${
+            activeView === "articles"
+              ? "bg-amber-500 text-slate-950 font-black shadow-sm"
+              : isDarkMode
+              ? "bg-slate-900/80 text-slate-300 border border-slate-800"
+              : "bg-slate-100 text-slate-700 border border-slate-200"
+          }`}
+        >
+          <BookOpen className="w-3.5 h-3.5 text-amber-500" />
+          <span>المقالات</span>
+        </button>
+
+        <button
+          onClick={() => {
+            setIsAdmin(true);
+            setActiveView("admin");
+          }}
+          className={`px-3 py-1.5 rounded-lg whitespace-nowrap flex items-center gap-1.5 shrink-0 transition-colors ${
+            activeView === "admin"
+              ? "bg-amber-500 text-slate-950 font-black shadow-sm"
+              : "bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/40"
+          }`}
+        >
+          <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+          <span>لوحة التحكم وتعديل المنتجات</span>
+        </button>
       </div>
 
       {/* Mobile Drawer Menu */}

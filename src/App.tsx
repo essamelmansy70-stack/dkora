@@ -33,7 +33,7 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [currency, setCurrency] = useState<Currency>("EGP");
   const [isAdmin, setIsAdmin] = useState(false);
-  const [showAdminButton, setShowAdminButton] = useState(false);
+  const [showAdminButton, setShowAdminButton] = useState(true);
 
   // Check secret URL param or saved local key on load
   useEffect(() => {

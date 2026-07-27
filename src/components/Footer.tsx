@@ -9,7 +9,7 @@ interface FooterProps {
   showAdminButton?: boolean;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView, isDarkMode, showAdminButton = false }) => {
+export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView, isDarkMode, showAdminButton = true }) => {
   return (
     <footer
       className={`border-t transition-colors ${

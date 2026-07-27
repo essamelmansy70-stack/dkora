@@ -267,53 +267,59 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         <div className={`rounded-3xl border overflow-hidden shadow-lg ${
           isDarkMode ? "bg-slate-950 text-white border-slate-800" : "bg-white text-slate-900 border-slate-200"
         }`}>
-          <table className="w-full text-right text-xs">
-            <thead className={`border-b font-extrabold ${
-              isDarkMode ? "bg-slate-900 border-slate-800 text-amber-400" : "bg-slate-100 border-slate-200 text-amber-700"
-            }`}>
-              <tr>
-                <th className="p-3.5">المنتج والموديل</th>
-                <th className="p-3.5">العلامة</th>
-                <th className="p-3.5">التقييم</th>
-                <th className="p-3.5">سعر أمازون</th>
-                <th className="p-3.5">الإجراءات</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((p) => (
-                <tr key={p.id} className={`border-b ${
-                  isDarkMode ? "border-slate-800/60 hover:bg-slate-900/40" : "border-slate-100 hover:bg-slate-50"
-                }`}>
-                  <td className="p-3.5 flex items-center gap-3">
-                    <img src={p.mainImage} alt={p.titleAr} className="w-10 h-10 rounded-lg object-cover border border-slate-300 dark:border-slate-700" />
-                    <div>
-                      <span className={`font-bold block ${isDarkMode ? "text-slate-100" : "text-slate-900"}`}>{p.titleAr}</span>
-                      <span className="text-[10px] text-slate-400">{p.modelNumber}</span>
-                    </div>
-                  </td>
-                  <td className="p-3.5 font-bold text-amber-600 dark:text-amber-400">{p.brandName}</td>
-                  <td className="p-3.5 font-mono text-emerald-600 dark:text-emerald-400">{p.editorScore} / 10</td>
-                  <td className="p-3.5 font-mono">{p.priceAmazon?.toLocaleString()} ج.م</td>
-                  <td className="p-3.5 flex items-center gap-1.5">
-                    <button
-                      onClick={() => handleStartEditProduct(p)}
-                      className="p-1.5 rounded-lg bg-amber-500/20 text-amber-600 dark:text-amber-400 hover:bg-amber-500/40"
-                      title="تعديل المنتج"
-                    >
-                      <Edit2 className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={() => handleDeleteProduct(p.id)}
-                      className="p-1.5 rounded-lg bg-rose-500/20 text-rose-600 dark:text-rose-400 hover:bg-rose-500/40"
-                      title="حذف"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="w-full text-right text-xs min-w-[600px]">
+              <thead className={`border-b font-extrabold ${
+                isDarkMode ? "bg-slate-900 border-slate-800 text-amber-400" : "bg-slate-100 border-slate-200 text-amber-700"
+              }`}>
+                <tr>
+                  <th className="p-3.5">المنتج والموديل</th>
+                  <th className="p-3.5">العلامة</th>
+                  <th className="p-3.5">التقييم</th>
+                  <th className="p-3.5">سعر أمازون</th>
+                  <th className="p-3.5">الإجراءات والتعديل</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {products.map((p) => (
+                  <tr key={p.id} className={`border-b ${
+                    isDarkMode ? "border-slate-800/60 hover:bg-slate-900/40" : "border-slate-100 hover:bg-slate-50"
+                  }`}>
+                    <td className="p-3.5 flex items-center gap-3">
+                      <img src={p.mainImage} alt={p.titleAr} className="w-10 h-10 rounded-lg object-cover border border-slate-300 dark:border-slate-700 shrink-0" />
+                      <div>
+                        <span className={`font-bold block ${isDarkMode ? "text-slate-100" : "text-slate-900"}`}>{p.titleAr}</span>
+                        <span className="text-[10px] text-slate-400">{p.modelNumber}</span>
+                      </div>
+                    </td>
+                    <td className="p-3.5 font-bold text-amber-600 dark:text-amber-400 whitespace-nowrap">{p.brandName}</td>
+                    <td className="p-3.5 font-mono text-emerald-600 dark:text-emerald-400 whitespace-nowrap">{p.editorScore} / 10</td>
+                    <td className="p-3.5 font-mono whitespace-nowrap">{p.priceAmazon?.toLocaleString()} ج.م</td>
+                    <td className="p-3.5 whitespace-nowrap">
+                      <div className="flex items-center gap-1.5">
+                        <button
+                          onClick={() => handleStartEditProduct(p)}
+                          className="px-2.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs flex items-center gap-1 shadow-sm transition-colors"
+                          title="تعديل المنتج"
+                        >
+                          <Edit2 className="w-3.5 h-3.5" />
+                          <span>تعديل</span>
+                        </button>
+                        <button
+                          onClick={() => handleDeleteProduct(p.id)}
+                          className="px-2.5 py-1.5 rounded-lg bg-rose-500/20 text-rose-600 dark:text-rose-400 hover:bg-rose-500/40 font-bold text-xs flex items-center gap-1 transition-colors"
+                          title="حذف"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                          <span>حذف</span>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
 

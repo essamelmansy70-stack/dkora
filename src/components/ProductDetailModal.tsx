@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { Product, Currency, UserReview } from "../types";
 import { REVIEWS_SAMPLE } from "../data/mockData";
+import { createProductUrl } from "../utils/seo";
 
 interface ProductDetailModalProps {
   product: Product | null;
@@ -47,9 +48,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
   const [activeImage, setActiveImage] = useState(product.mainImage);
   const [copiedLink, setCopiedLink] = useState(false);
-  const canonicalProductUrl = typeof window !== "undefined"
-    ? `${window.location.origin}/?product=${product.id}`
-    : `https://dkora.online/?product=${product.id}`;
+  const canonicalProductUrl = createProductUrl(product);
 
   const handleCopyProductLink = () => {
     navigator.clipboard.writeText(canonicalProductUrl);

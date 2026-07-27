@@ -16,6 +16,7 @@ import {
   Check
 } from "lucide-react";
 import { Product, Currency } from "../types";
+import { createProductUrl } from "../utils/seo";
 
 interface ProductCardProps {
   product: Product;
@@ -38,7 +39,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   const handleCopyLink = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const url = typeof window !== "undefined" ? `${window.location.origin}/?product=${product.id}` : `https://dkora.online/?product=${product.id}`;
+    const url = createProductUrl(product);
     navigator.clipboard.writeText(url);
     setCopiedLink(true);
     setTimeout(() => setCopiedLink(false), 2000);

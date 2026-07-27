@@ -23,6 +23,7 @@ import {
   DEALS,
   ARTICLES
 } from "./data/mockData";
+import { createProductSlug, createProductUrl, findProductByQueryParam } from "./utils/seo";
 import { Product, Currency } from "./types";
 import { Filter, Sparkles, Award, ShoppingBag, Layers, SearchX } from "lucide-react";
 
@@ -113,14 +114,10 @@ export default function App() {
   useEffect(() => {
     if (typeof window !== "undefined" && products.length > 0) {
       const params = new URLSearchParams(window.location.search);
-      const targetProdId = params.get("product") || params.get("p");
-      if (targetProdId) {
-        const found = products.find(
-          (item) =>
-            item.id === targetProdId ||
-            String(item.id) === String(targetProdId) ||
-            item.titleEn?.toLowerCase() === targetProdId.toLowerCase()
-        );
+      const targetProdId = params.get("product") || params.get("p") || params.get("slug");
+      const keywordParam = params.get("keyword") || params.get("q");
+      if (targetProdId || keywordParam) {
+        const found = findProductByQueryParam(products, targetProdId, keywordParam);
         if (found) {
           setDetailProduct(found);
         }
@@ -141,12 +138,13 @@ export default function App() {
 
     if (detailProduct) {
       document.title = `${detailProduct.titleAr} - ${detailProduct.brandName} | ديكورا Dkora`;
-      const directUrl = `${window.location.origin}/?product=${detailProduct.id}`;
+      const directUrl = createProductUrl(detailProduct);
       canonicalEl.href = directUrl;
 
       const currentUrl = new URL(window.location.href);
-      if (currentUrl.searchParams.get("product") !== detailProduct.id) {
-        currentUrl.searchParams.set("product", detailProduct.id);
+      const expectedParam = `${detailProduct.id}-${createProductSlug(detailProduct)}`;
+      if (currentUrl.searchParams.get("product") !== expectedParam) {
+        currentUrl.searchParams.set("product", expectedParam);
         window.history.pushState({ product: detailProduct.id }, "", currentUrl.toString());
       }
     } else {

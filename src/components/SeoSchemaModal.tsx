@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { X, Code2, Copy, Check, ShieldCheck, Search } from "lucide-react";
 import { Product } from "../types";
+import { createProductUrl } from "../utils/seo";
 
 interface SeoSchemaModalProps {
   product: Product | null;
@@ -18,7 +19,7 @@ export const SeoSchemaModal: React.FC<SeoSchemaModalProps> = ({
   const [copied, setCopied] = useState(false);
 
   const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://dkora.online";
-  const canonicalUrl = `${baseUrl}/?product=${product.id}`;
+  const canonicalUrl = createProductUrl(product, baseUrl);
 
   // Generate Schema.org Product JSON-LD
   const productSchemaJson = {

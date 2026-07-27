@@ -6,6 +6,7 @@ import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
 import compression from "compression";
 import { CATEGORIES, PRODUCTS, ARTICLES, DEALS, BUYING_GUIDES } from "./src/data/mockData";
+import { createProductSlug, createProductUrl, findProductByQueryParam } from "./src/utils/seo";
 
 // Load environment variables
 dotenv.config();
@@ -114,7 +115,8 @@ function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
   let lang = req.query.lang as string;
   const articleSlug = req.query.article as string;
   const view = req.query.view as string;
-  const productId = (req.query.product || req.query.p) as string;
+  const productId = (req.query.product || req.query.p || req.query.slug || req.query.keyword) as string;
+  const keywordParam = req.query.keyword as string;
 
   const protocol = req.headers["x-forwarded-proto"] || req.protocol || "https";
   const host = req.get("host") || "dkora.online";
@@ -129,13 +131,13 @@ function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
   let image = `${baseUrl}/og-image.jpg`;
   let canonicalUrl = `${baseUrl}${req.originalUrl || "/"}`;
 
-  if (productId && Array.isArray(storedProductsList)) {
-    const p = storedProductsList.find((item: any) => item.id === productId || String(item.id) === String(productId));
+  if ((productId || keywordParam) && Array.isArray(storedProductsList)) {
+    const p = findProductByQueryParam(storedProductsList, productId, keywordParam);
     if (p) {
       title = `${p.titleAr} - ${p.brandName} (${p.modelNumber || ""}) | مراجعة وسعر ديكورا Dkora`;
-      description = `${p.summaryAr || p.descriptionAr || p.titleAr} - تعرف على المواصفات الفنية والتقييم وأسعار الشراء المباشرة على منصة ديكورا.`;
+      description = `${p.summary || p.titleAr} - تعرف على المواصفات الفنية والتقييم وأسعار الشراء المباشرة على منصة ديكورا.`;
       image = p.mainImage || image;
-      canonicalUrl = `${baseUrl}/?product=${p.id}`;
+      canonicalUrl = createProductUrl(p, baseUrl);
     }
   } else if (view === "sitemap") {
     title = "خريطة الموقع التفاعلية (Dynamic XML Sitemap) | ديكورا Dkora";
@@ -318,7 +320,7 @@ Sitemap: ${protocol}://${host}/sitemap.xml
       })),
 
       ...getStoredProducts().map((prod: any) => ({
-        loc: `${baseUrl}/?product=${prod.id}`,
+        loc: createProductUrl(prod, baseUrl),
         lastmod: currentDate,
         changefreq: "weekly",
         priority: "0.80",

@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { CATEGORIES, PRODUCTS, ARTICLES, DEALS, BUYING_GUIDES } from "../data/mockData";
 import { Product } from "../types";
+import { createProductSlug, createProductUrl, findProductByQueryParam } from "../utils/seo";
 
 interface SitemapViewProps {
   products?: Product[];
@@ -130,15 +131,19 @@ export const SitemapView: React.FC<SitemapViewProps> = ({
     })),
 
     // Products
-    ...productsList.map((prod) => ({
-      loc: `${baseUrl}/?product=${prod.id}`,
-      path: `/?product=${prod.id}`,
-      title: `مراجعة: ${prod.titleAr} - ${prod.brandName}`,
-      type: "product" as const,
-      priority: "0.8",
-      changefreq: "weekly",
-      lastmod: currentDate,
-    })),
+    ...productsList.map((prod) => {
+      const fullUrl = createProductUrl(prod, baseUrl);
+      const relativePath = fullUrl.replace(baseUrl, "");
+      return {
+        loc: fullUrl,
+        path: relativePath,
+        title: `مراجعة: ${prod.titleAr} - ${prod.brandName}`,
+        type: "product" as const,
+        priority: "0.8",
+        changefreq: "weekly",
+        lastmod: currentDate,
+      };
+    }),
 
     // Articles
     ...ARTICLES.map((art) => ({
@@ -242,8 +247,8 @@ export const SitemapView: React.FC<SitemapViewProps> = ({
       const catId = item.path.replace("/?category=", "");
       onSelectCategory(catId);
     } else if (item.type === "product") {
-      const prodId = item.path.replace("/?product=", "");
-      const prod = PRODUCTS.find((p) => p.id === prodId);
+      const paramVal = item.path.replace("/?product=", "");
+      const prod = findProductByQueryParam(productsList, paramVal);
       if (prod) onSelectProduct(prod);
     } else if (item.type === "page") {
       if (item.path === "/") onNavigateToView("home");

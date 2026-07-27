@@ -36,7 +36,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 }) => {
   const [adminTab, setAdminTab] = useState<"products" | "add_product" | "stats">("products");
 
-  // Add Product Form State
+  // Edit or Add Product State
+  const [editingProductId, setEditingProductId] = useState<string | null>(null);
   const [newTitleAr, setNewTitleAr] = useState("");
   const [newBrandName, setNewBrandName] = useState("DeWalt");
   const [newModel, setNewModel] = useState("DCD-2026");
@@ -56,10 +57,86 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [newCon, setNewCon] = useState("");
   const [saveSuccess, setSaveSuccess] = useState(false);
 
+  const resetForm = () => {
+    setEditingProductId(null);
+    setNewTitleAr("");
+    setNewBrandName("DeWalt");
+    setNewModel("DCD-2026");
+    setNewCategory("cat-electric-tools");
+    setNewImage("https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=80");
+    setNewPriceAmazon(5500);
+    setNewPriceJumia(5650);
+    setNewPriceNoon(5600);
+    setNewAmazonUrl("");
+    setNewJumiaUrl("");
+    setNewNoonUrl("");
+    setNewSummary("");
+    setNewTarget("");
+    setNewPro("");
+    setNewCon("");
+  };
+
+  const handleStartEditProduct = (product: Product) => {
+    setEditingProductId(product.id);
+    setNewTitleAr(product.titleAr);
+    setNewBrandName(product.brandName);
+    setNewModel(product.modelNumber);
+    setNewCategory(product.categoryId);
+    setNewImage(product.mainImage);
+    setNewPriceAmazon(product.priceAmazon || 0);
+    setNewPriceJumia(product.priceJumia || 0);
+    setNewPriceNoon(product.priceNoon || 0);
+    setNewAmazonUrl(product.amazonUrl || "");
+    setNewJumiaUrl(product.jumiaUrl || "");
+    setNewNoonUrl(product.noonUrl || "");
+    setNewSummary(product.summary || "");
+    setNewTarget(product.targetAudience || "");
+    setNewPro(product.pros?.[0] || "");
+    setNewCon(product.cons?.[0] || "");
+    setAdminTab("add_product");
+  };
+
   const handleCreateProduct = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newTitleAr.trim()) return;
 
+    if (editingProductId) {
+      // Edit existing product
+      setProducts((prev) =>
+        prev.map((p) => {
+          if (p.id !== editingProductId) return p;
+          return {
+            ...p,
+            titleAr: newTitleAr.trim(),
+            titleEn: newTitleAr.trim(),
+            slug: newTitleAr.trim().toLowerCase().replace(/\s+/g, "-"),
+            categoryId: newCategory,
+            brandName: newBrandName,
+            modelNumber: newModel,
+            mainImage: newImage,
+            priceAmazon: Number(newPriceAmazon),
+            priceJumia: Number(newPriceJumia),
+            priceNoon: Number(newPriceNoon),
+            amazonUrl: newAmazonUrl.trim() || "https://amazon.eg",
+            jumiaUrl: newJumiaUrl.trim() || "https://jumia.com.eg",
+            noonUrl: newNoonUrl.trim() || "https://noon.com",
+            summary: newSummary || p.summary,
+            targetAudience: newTarget || p.targetAudience,
+            pros: newPro ? [newPro] : p.pros,
+            cons: newCon ? [newCon] : p.cons,
+          };
+        })
+      );
+      setSaveSuccess(true);
+      setTimeout(() => {
+        setSaveSuccess(false);
+        resetForm();
+        setAdminTab("products");
+      }, 1500);
+      return;
+    }
+
+    // Create new product
     const created: Product = {
       id: "p-" + Date.now(),
       titleAr: newTitleAr.trim(),
@@ -98,11 +175,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
     setProducts([created, ...products]);
     setSaveSuccess(true);
-    setNewTitleAr("");
-    setNewSummary("");
-    setNewTarget("");
     setTimeout(() => {
       setSaveSuccess(false);
+      resetForm();
       setAdminTab("products");
     }, 1500);
   };
@@ -207,7 +282,14 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                   <td className="p-3.5 font-bold text-amber-600 dark:text-amber-400">{p.brandName}</td>
                   <td className="p-3.5 font-mono text-emerald-600 dark:text-emerald-400">{p.editorScore} / 10</td>
                   <td className="p-3.5 font-mono">{p.priceAmazon?.toLocaleString()} ج.م</td>
-                  <td className="p-3.5">
+                  <td className="p-3.5 flex items-center gap-1.5">
+                    <button
+                      onClick={() => handleStartEditProduct(p)}
+                      className="p-1.5 rounded-lg bg-amber-500/20 text-amber-600 dark:text-amber-400 hover:bg-amber-500/40"
+                      title="تعديل المنتج"
+                    >
+                      <Edit2 className="w-4 h-4" />
+                    </button>
                     <button
                       onClick={() => handleDeleteProduct(p.id)}
                       className="p-1.5 rounded-lg bg-rose-500/20 text-rose-600 dark:text-rose-400 hover:bg-rose-500/40"
@@ -223,7 +305,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         </div>
       )}
 
-      {/* ADD PRODUCT TAB */}
+      {/* ADD / EDIT PRODUCT TAB */}
       {adminTab === "add_product" && (
         <form
           onSubmit={handleCreateProduct}
@@ -231,11 +313,27 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             isDarkMode ? "bg-slate-900 border-slate-800 text-slate-100" : "bg-white border-slate-200 text-slate-900 shadow-md"
           }`}
         >
-          <h2 className="text-lg font-black text-amber-600 dark:text-amber-500">إضافة مراجعة منتج جديد وقسيمة تسويق بالعمولة</h2>
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-black text-amber-600 dark:text-amber-500">
+              {editingProductId ? "تعديل بيانات المنتج والمراجعة" : "إضافة مراجعة منتج جديد وقسيمة تسويق بالعمولة"}
+            </h2>
+            {editingProductId && (
+              <button
+                type="button"
+                onClick={() => {
+                  resetForm();
+                  setAdminTab("products");
+                }}
+                className="px-3 py-1.5 rounded-lg bg-slate-500/20 text-slate-400 hover:bg-slate-500/30 text-xs font-bold"
+              >
+                إلغاء التعديل
+              </button>
+            )}
+          </div>
 
           {saveSuccess && (
             <div className="p-3 rounded-xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-xs font-bold">
-              تم حفظ المنتج الجديد بنجاح وإضافته للكتالوج!
+              {editingProductId ? "تم تعديل بيانات المنتج بنجاح!" : "تم حفظ المنتج الجديد بنجاح وإضافته للكتالوج!"}
             </div>
           )}
 
@@ -393,7 +491,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             className="w-full py-3 rounded-xl bg-amber-500 text-slate-950 font-black text-xs flex items-center justify-center gap-2 shadow-lg"
           >
             <Check className="w-4 h-4" />
-            <span>حفظ ونشر المراجعة على الموقع</span>
+            <span>{editingProductId ? "تحديث بيانات المنتج والمراجعة" : "حفظ ونشر المراجعة على الموقع"}</span>
           </button>
         </form>
       )}

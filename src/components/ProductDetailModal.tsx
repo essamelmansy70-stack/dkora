@@ -16,7 +16,10 @@ import {
   Send,
   SlidersHorizontal,
   ThumbsUp,
-  Edit2
+  Edit2,
+  Copy,
+  Check,
+  Link
 } from "lucide-react";
 import { Product, Currency, UserReview } from "../types";
 import { REVIEWS_SAMPLE } from "../data/mockData";
@@ -43,6 +46,16 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   if (!product) return null;
 
   const [activeImage, setActiveImage] = useState(product.mainImage);
+  const [copiedLink, setCopiedLink] = useState(false);
+  const canonicalProductUrl = typeof window !== "undefined"
+    ? `${window.location.origin}/?product=${product.id}`
+    : `https://dkora.online/?product=${product.id}`;
+
+  const handleCopyProductLink = () => {
+    navigator.clipboard.writeText(canonicalProductUrl);
+    setCopiedLink(true);
+    setTimeout(() => setCopiedLink(false), 2500);
+  };
   const [activeTab, setActiveTab] = useState<"review" | "specs" | "offers" | "reviews">("review");
 
   // User reviews state
@@ -151,7 +164,30 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         </div>
 
         {/* Modal Main Scrollable Content */}
-        <div className="p-4 sm:p-8 overflow-y-auto space-y-8">
+        <div className="p-4 sm:p-8 overflow-y-auto space-y-6">
+          {/* Canonical Direct Indexing Link Banner */}
+          <div className={`p-3.5 sm:p-4 rounded-2xl border flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 text-xs ${
+            isDarkMode ? "bg-slate-900/90 border-amber-500/30 text-slate-200" : "bg-amber-50/80 border-amber-300/80 text-slate-800"
+          }`}>
+            <div className="flex items-center gap-2 font-bold overflow-hidden min-w-0">
+              <Link className="w-4 h-4 text-amber-500 shrink-0" />
+              <span className="shrink-0 text-amber-600 dark:text-amber-400 font-extrabold">رابط المنتج المخصص للأرشفة (Canonical URL):</span>
+              <span className="font-mono text-[11px] truncate text-slate-600 dark:text-slate-300 select-all">{canonicalProductUrl}</span>
+            </div>
+            <button
+              onClick={handleCopyProductLink}
+              className={`px-3 py-1.5 rounded-xl font-bold flex items-center gap-1.5 transition-all shrink-0 ${
+                copiedLink
+                  ? "bg-emerald-500 text-slate-950 font-black shadow-sm"
+                  : "bg-amber-500 hover:bg-amber-600 text-slate-950 font-black shadow-sm"
+              }`}
+              title="نسخ الرابط المباشر للمنتج"
+            >
+              {copiedLink ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+              <span>{copiedLink ? "تم النسخ بنجاح!" : "نسخ الرابط المباشر"}</span>
+            </button>
+          </div>
+
           {/* Top Hero Product Info Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Gallery Section */}

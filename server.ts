@@ -110,59 +110,67 @@ const ARTICLES_SEO = [
   }
 ];
 
-function getSeoMetaData(req: express.Request) {
+function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
   let lang = req.query.lang as string;
   const articleSlug = req.query.article as string;
   const view = req.query.view as string;
+  const productId = (req.query.product || req.query.p) as string;
+
+  const protocol = req.headers["x-forwarded-proto"] || req.protocol || "https";
+  const host = req.get("host") || "dkora.online";
+  const baseUrl = `${protocol}://${host}`;
 
   if (lang !== "en" && lang !== "ar") {
     lang = "ar";
   }
 
-  let title = "من يشبهك من لاعبي المونديال؟ | اختبار شخصية كرة القدم التفاعلي";
-  let description = "اكتشف أي من أساطير كرة القدم العالمية يماثل شخصيتك وأسلوبك الرياضي في الملعب من خلال اختبار تفاعلي فائق وممتع متجدد باستمرار.";
+  let title = "ديكورا Dkora - دليل مراجعات وتوصيات العدد والأدوات ومستلزمات الديكور";
+  let description = "دليل الشراء الشامل لأفضل العدد الكهربائية واليدوية وأدوات الديكور، مراجعات محايدة، أسعار أمازون وجوميا، ومقارنة المواصفات الفنية.";
+  let image = `${baseUrl}/og-image.jpg`;
+  let canonicalUrl = `${baseUrl}${req.originalUrl || "/"}`;
 
-  if (lang === "en") {
-    title = "Which World Cup Player Are You? | Interactive Football Personality Quiz";
-    description = "Discover your soccer match from world cup legends! A fun, highly-interactive football personality test analyzing your style and skill.";
-  }
-
-  if (view === "sitemap") {
-    if (lang === "ar") {
-      title = "خريطة الموقع المونديالي التفاعلي | dkora";
-      description = "تصفح خريطة الموقع الكاملة وجميع الصفحات والمقالات والتحليلات الخاصة بمنصة مونديال كأس العالم ٢٠٢٦.";
-    } else {
-      title = "Mondial Interactive Sitemap | dkora";
-      description = "Explore with one click all pages, articles, and utilities of the Mondial platform. Fully optimized for instant crawling.";
+  if (productId && Array.isArray(storedProductsList)) {
+    const p = storedProductsList.find((item: any) => item.id === productId || String(item.id) === String(productId));
+    if (p) {
+      title = `${p.titleAr} - ${p.brandName} (${p.modelNumber || ""}) | مراجعة وسعر ديكورا Dkora`;
+      description = `${p.summaryAr || p.descriptionAr || p.titleAr} - تعرف على المواصفات الفنية والتقييم وأسعار الشراء المباشرة على منصة ديكورا.`;
+      image = p.mainImage || image;
+      canonicalUrl = `${baseUrl}/?product=${p.id}`;
     }
-  } else if (view === "blog") {
-    if (lang === "ar") {
-      title = "المقالات الرياضية والتحليلات التكتيكية | مونديال ٢٠٢٦";
-      description = "اقرأ أحدث المقالات الرياضية الترند والتحليلات الكروية وتوقعات الذكاء الاصطناعي لبطل مونديال ٢٠٢٦.";
-    } else {
-      title = "Sports Articles & Tactical Analytics | Mondial 2026";
-      description = "Read the latest trending sports articles, tactical soccer analytics, and AI predictions for the 2026 World Cup.";
-    }
-  }
-
-  if (articleSlug) {
+  } else if (view === "sitemap") {
+    title = "خريطة الموقع التفاعلية (Dynamic XML Sitemap) | ديكورا Dkora";
+    description = "تصفح جميع روابط المنتجات والتصنيفات والمقالات المحدثة تلقائياً في دليل ديكورا Dkora.";
+    canonicalUrl = `${baseUrl}/?view=sitemap`;
+  } else if (view === "categories") {
+    title = "تصنيفات العدد والأدوات والديكور | ديكورا Dkora";
+    description = "استكشف جميع تصنيفات الشنيور، الصاروخ، العدد اليدوية، وأدوات الديكور مع الأسعار والتقييمات.";
+    canonicalUrl = `${baseUrl}/?view=categories`;
+  } else if (view === "comparisons") {
+    title = "أداة مقارنة العدد والأدوات الفنية جنباً إلى جنب | ديكورا Dkora";
+    description = "قارن بين مواصفات وأسعار أفضل ماركات العدد مثل ديوالت، بوش، وماكيتا بسهولة.";
+    canonicalUrl = `${baseUrl}/?view=comparisons`;
+  } else if (view === "deals") {
+    title = "أحدث عروض وكوبونات خصم العدد والأدوات | ديكورا Dkora";
+    description = "تصفح أحدث الخصومات وأكواد التخفيض الحصرية للعدد الكهربائية والديكور في مصر والخليج.";
+    canonicalUrl = `${baseUrl}/?view=deals`;
+  } else if (view === "articles") {
+    title = "مدونة ديكورا - دروس الصيانة ودليل اختيار العدد | Dkora";
+    description = "مقالات وشروحات فنية من خبراء الصيانة والديكور لمساعدتك في اختيار الأداة المناسبة.";
+    canonicalUrl = `${baseUrl}/?article=all`;
+  } else if (articleSlug) {
     const art = ARTICLES_SEO.find(a => a.slug === articleSlug);
     if (art) {
-      if (lang === "ar") {
-        title = art.titleAr;
-        description = art.descAr;
-      } else {
-        title = art.titleEn;
-        description = art.descEn;
-      }
+      title = art.titleAr;
+      description = art.descAr;
+      canonicalUrl = `${baseUrl}/?article=${art.slug}`;
     }
   }
 
   const dir = lang === "ar" ? "rtl" : "ltr";
-  return { title, description, lang, dir };
+  return { title, description, image, canonicalUrl, lang, dir };
 }
 
-function replaceAllSeoMeta(html: string, seo: { title: string, description: string, lang: string, dir: string }) {
+function replaceAllSeoMeta(html: string, seo: { title: string; description: string; image?: string; canonicalUrl?: string; lang: string; dir: string }) {
   let modified = html;
 
   // 1. replace html tag properties
@@ -175,17 +183,27 @@ function replaceAllSeoMeta(html: string, seo: { title: string, description: stri
   modified = modified.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>/gi, `<meta name="description" content="${seo.description}" />`);
   modified = modified.replace(/<meta\s+content="[^"]*"\s+name="description"\s*\/?>/gi, `<meta name="description" content="${seo.description}" />`);
 
-  // 4. replace og:title
+  // 4. replace og:title & og:description
   modified = modified.replace(/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/gi, `<meta property="og:title" content="${seo.title}" />`);
-
-  // 5. replace og:description
   modified = modified.replace(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/gi, `<meta property="og:description" content="${seo.description}" />`);
 
-  // 6. replace twitter:title
-  modified = modified.replace(/<meta\s+property="twitter:title"\s+content="[^"]*"\s*\/?>/gi, `<meta property="twitter:title" content="${seo.title}" />`);
+  // 5. replace or insert og:image
+  if (seo.image) {
+    if (modified.includes('property="og:image"')) {
+      modified = modified.replace(/<meta\s+property="og:image"\s+content="[^"]*"\s*\/?>/gi, `<meta property="og:image" content="${seo.image}" />`);
+    } else {
+      modified = modified.replace("</head>", `  <meta property="og:image" content="${seo.image}" />\n</head>`);
+    }
+  }
 
-  // 7. replace twitter:description
-  modified = modified.replace(/<meta\s+property="twitter:description"\s+content="[^"]*"\s*\/?>/gi, `<meta property="twitter:description" content="${seo.description}" />`);
+  // 6. replace or insert link canonical
+  if (seo.canonicalUrl) {
+    if (modified.includes('rel="canonical"')) {
+      modified = modified.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/gi, `<link rel="canonical" href="${seo.canonicalUrl}" />`);
+    } else {
+      modified = modified.replace("</head>", `  <link rel="canonical" href="${seo.canonicalUrl}" />\n</head>`);
+    }
+  }
 
   return modified;
 }
@@ -503,7 +521,7 @@ The output must be a single beautifully synthesized natural photograph, aspect r
       try {
         let html = fs.readFileSync(path.resolve(process.cwd(), "index.html"), "utf-8");
         html = await vite.transformIndexHtml(url, html);
-        const seo = getSeoMetaData(req);
+        const seo = getSeoMetaData(req, getStoredProducts());
         html = replaceAllSeoMeta(html, seo);
         res.status(200).set({ "Content-Type": "text/html" }).end(html);
       } catch (e) {
@@ -544,7 +562,7 @@ The output must be a single beautifully synthesized natural photograph, aspect r
 
       try {
         let html = fs.readFileSync(path.join(distPath, "index.html"), "utf-8");
-        const seo = getSeoMetaData(req);
+        const seo = getSeoMetaData(req, getStoredProducts());
         html = replaceAllSeoMeta(html, seo);
         
         // Inline index CSS if present to eliminate render-blocking CSS requests completely

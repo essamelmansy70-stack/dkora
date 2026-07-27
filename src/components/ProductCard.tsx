@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Star,
   Award,
@@ -10,7 +10,10 @@ import {
   ArrowRight,
   Eye,
   SlidersHorizontal,
-  Edit2
+  Edit2,
+  Share2,
+  Copy,
+  Check
 } from "lucide-react";
 import { Product, Currency } from "../types";
 
@@ -31,6 +34,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   onEditProduct,
   isDarkMode,
 }) => {
+  const [copiedLink, setCopiedLink] = useState(false);
+
+  const handleCopyLink = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const url = typeof window !== "undefined" ? `${window.location.origin}/?product=${product.id}` : `https://dkora.online/?product=${product.id}`;
+    navigator.clipboard.writeText(url);
+    setCopiedLink(true);
+    setTimeout(() => setCopiedLink(false), 2000);
+  };
+
   // Convert prices based on currency selection
   const getPrice = (baseEgp: number | undefined) => {
     if (!baseEgp) return null;
@@ -256,6 +269,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               <span>تعديل</span>
             </button>
           )}
+
+          <button
+            onClick={handleCopyLink}
+            className={`p-2.5 rounded-xl border transition-colors shrink-0 ${
+              copiedLink
+                ? "bg-emerald-500 text-slate-950 border-emerald-400 font-bold"
+                : isDarkMode
+                ? "bg-slate-800/80 hover:bg-slate-700 text-slate-300 border-slate-700"
+                : "bg-white hover:bg-slate-100 text-slate-700 border-slate-300 shadow-sm"
+            }`}
+            title={copiedLink ? "تم نسخ رابط المنتج المباشر!" : "نسخ رابط المنتج المباشر للأرشفة والمشاركة"}
+          >
+            {copiedLink ? <Check className="w-4 h-4 text-slate-950" /> : <Share2 className="w-4 h-4 text-amber-500" />}
+          </button>
 
           {onCompareSelect && (
             <button

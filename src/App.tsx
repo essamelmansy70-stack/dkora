@@ -109,6 +109,58 @@ export default function App() {
   const [schemaProduct, setSchemaProduct] = useState<Product | null>(null);
   const [editingProductTarget, setEditingProductTarget] = useState<Product | null>(null);
 
+  // Deep Link URL Detection for Canonical Product Page Loading
+  useEffect(() => {
+    if (typeof window !== "undefined" && products.length > 0) {
+      const params = new URLSearchParams(window.location.search);
+      const targetProdId = params.get("product") || params.get("p");
+      if (targetProdId) {
+        const found = products.find(
+          (item) =>
+            item.id === targetProdId ||
+            String(item.id) === String(targetProdId) ||
+            item.titleEn?.toLowerCase() === targetProdId.toLowerCase()
+        );
+        if (found) {
+          setDetailProduct(found);
+        }
+      }
+    }
+  }, [products]);
+
+  // Sync document title, canonical link tag, and browser URL bar on product detail state changes
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let canonicalEl = document.querySelector<HTMLLinkElement>("link[rel='canonical']");
+    if (!canonicalEl) {
+      canonicalEl = document.createElement("link");
+      canonicalEl.rel = "canonical";
+      document.head.appendChild(canonicalEl);
+    }
+
+    if (detailProduct) {
+      document.title = `${detailProduct.titleAr} - ${detailProduct.brandName} | ديكورا Dkora`;
+      const directUrl = `${window.location.origin}/?product=${detailProduct.id}`;
+      canonicalEl.href = directUrl;
+
+      const currentUrl = new URL(window.location.href);
+      if (currentUrl.searchParams.get("product") !== detailProduct.id) {
+        currentUrl.searchParams.set("product", detailProduct.id);
+        window.history.pushState({ product: detailProduct.id }, "", currentUrl.toString());
+      }
+    } else {
+      document.title = "ديكورا Dkora - دليل مراجعات وتوصيات العدد والأدوات ومستلزمات الديكور";
+      canonicalEl.href = `${window.location.origin}/`;
+
+      const currentUrl = new URL(window.location.href);
+      if (currentUrl.searchParams.has("product")) {
+        currentUrl.searchParams.delete("product");
+        window.history.pushState({}, "", currentUrl.pathname + (currentUrl.search ? currentUrl.search : ""));
+      }
+    }
+  }, [detailProduct]);
+
   const handleEditProduct = (prod: Product) => {
     setEditingProductTarget(prod);
     setActiveView("admin");
@@ -340,6 +392,7 @@ export default function App() {
         {/* VIEW 7: DYNAMIC INTERACTIVE SITEMAP */}
         {activeView === "sitemap" && (
           <SitemapView
+            products={products}
             onSelectProduct={(prod) => setDetailProduct(prod)}
             onSelectCategory={(catId) => {
               setSelectedCategory(catId);

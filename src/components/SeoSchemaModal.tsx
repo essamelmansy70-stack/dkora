@@ -17,10 +17,15 @@ export const SeoSchemaModal: React.FC<SeoSchemaModalProps> = ({
 
   const [copied, setCopied] = useState(false);
 
+  const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://dkora.online";
+  const canonicalUrl = `${baseUrl}/?product=${product.id}`;
+
   // Generate Schema.org Product JSON-LD
   const productSchemaJson = {
     "@context": "https://schema.org/",
     "@type": "Product",
+    "url": canonicalUrl,
+    "mainEntityOfPage": canonicalUrl,
     "name": product.titleAr,
     "image": [product.mainImage, ...(product.gallery || [])],
     "description": product.summary,

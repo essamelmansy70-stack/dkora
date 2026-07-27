@@ -23,6 +23,7 @@ import { CATEGORIES, PRODUCTS, ARTICLES, DEALS, BUYING_GUIDES } from "../data/mo
 import { Product } from "../types";
 
 interface SitemapViewProps {
+  products?: Product[];
   onSelectProduct: (product: Product) => void;
   onSelectCategory: (categoryId: string) => void;
   onNavigateToView: (view: string) => void;
@@ -41,6 +42,7 @@ export interface SitemapUrl {
 }
 
 export const SitemapView: React.FC<SitemapViewProps> = ({
+  products,
   onSelectProduct,
   onSelectCategory,
   onNavigateToView,
@@ -52,6 +54,8 @@ export const SitemapView: React.FC<SitemapViewProps> = ({
   const [showXmlModal, setShowXmlModal] = useState(false);
   const [lastUpdated, setLastUpdated] = useState<string>(new Date().toISOString());
   const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const productsList = products && products.length > 0 ? products : PRODUCTS;
 
   const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://dkora.app";
   const currentDate = new Date().toISOString().split("T")[0];
@@ -126,7 +130,7 @@ export const SitemapView: React.FC<SitemapViewProps> = ({
     })),
 
     // Products
-    ...PRODUCTS.map((prod) => ({
+    ...productsList.map((prod) => ({
       loc: `${baseUrl}/?product=${prod.id}`,
       path: `/?product=${prod.id}`,
       title: `مراجعة: ${prod.titleAr} - ${prod.brandName}`,

@@ -19,6 +19,13 @@ const rootDir = typeof __dirname !== "undefined"
 
 const ARTICLES_SEO = [
   {
+    slug: "smart-door-lock-review-2026",
+    titleAr: "مراجعة شاملة: قفل باب ذكي بنظام تحكم وصول وكهربائي HTB | ديكورا Dkora",
+    titleEn: "HTB Smart Door Lock Access Control System Review 2026 | Dkora",
+    descAr: "مراجعة متعمقة ومستقلة لـ قفل باب ذكي بنظام تحكم وصول وكهربائي HTB بالبصمة والرمز السري والواي فاي، المواصفات الفنية ورابط الشراء المباشر من أمازون.",
+    descEn: "Comprehensive in-depth review of the HTB smart door lock access control electric system covering biometric fingerprint, Wi-Fi remote access, pros, cons, and Amazon buy links."
+  },
+  {
     slug: "bosch-small-angle-grinder-review",
     titleAr: "مراجعة شاملة: صاروخ بوش صغير (Bosch Small Angle Grinder) | ديكورا Dkora",
     titleEn: "Bosch Small Angle Grinder In-Depth Review | Dkora",

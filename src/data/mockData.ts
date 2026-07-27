@@ -550,6 +550,126 @@ export const DEALS: Deal[] = [
 
 export const ARTICLES: Article[] = [
   {
+    id: "art-smart-door-lock-review-2026",
+    title: "مراجعة شاملة: قفل باب ذكي بنظام تحكم وصول وكهربائي HTB - المواصفات، الطرق والأسعار 2026",
+    slug: "smart-door-lock-review-2026",
+    category: "الأقفال والحماية",
+    readTime: "7 دقائق",
+    date: "2026-07-27",
+    author: "فريق التحرير الفني - ديكورا Dkora",
+    coverImage: "https://i.postimg.cc/5XGp3YbR/image.jpg",
+    excerpt: "مراجعة متعمقة ومستقلة لـ قفل باب ذكي بنظام تحكم وصول وكهربائي HTB بالبصمة، الرقم السري، الواي فاي، وتطبيق الموبايل مع المواصفات الفنية ورابط الشراء المباشر عبر أمازون.",
+    content: `<div class="article-container space-y-6">
+      <p>أصبحت أقفال الأبواب التقليدية والمفاتيح النحاسية شيئاً من الماضي؛ حيث أحدث وجود <strong>قفل باب ذكي بنظام تحكم وصول وكهربائي HTB</strong> متطور ثورة حقيقية في مفهوم الأمان والراحة للمنازل الحديثة، الشقق السكنية، الفنادق، والمكاتب في عام 2026. إذا كنت تبحث عن حماية منزلية قصوى مع الاستغناء التام عن حمل المفاتيح أو القلق من ضياعها، فهذا المقال يقدم لك مراجعة شاملة وتقييماً تفصيلياً لـ <strong>قفل باب ذكي بنظام تحكم وصول وكهربائي HTB</strong> المتاح عبر متجر أمازون.</p>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B0aQFeDdd' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src='https://i.postimg.cc/5XGp3YbR/image.jpg' alt='قفل باب ذكي بنظام تحكم وصول وكهربائي HTB' referrerpolicy='no-referrer' onError={(e) => { (e.target as HTMLImageElement).src = "https://postimg.cc/5XGp3YbR"; }} />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">ما هو قفل الباب الذكي ولماذا تحتاجه في 2026؟</h2>
+      <p>الـ <strong>قفل باب ذكي</strong> هو جهاز أمان إلكتروني يحل محل مقبض وقفل الباب التقليدي. يتيح لك القفل التحكم الكامل في دخول وخروج الأشخاص إلى منزلك أو مكتبك بمرونة عالية وأمان مشفر. سواء كنت ترغب في فتح الباب بواسطة بصمة أصبعك، أو عن طريق تطبيق الهاتف الذكي أثناء تواجدك خارج المنزل، فإن اقتناء <strong>قفل باب ذكي</strong> يمنحك راحة بال لا مثيل لها.</p>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">1. طرق الفتح المتعددة (5 طرق في قفل واحد)</h2>
+      <p>يتميز هذا الـ <strong>قفل باب ذكي</strong> بتوفير 5 وسائل فتح مختلفة لضمان ألا تظل عالقاً خارج المنزل تحت أي ظرف:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>بصمة الأصبع البيومترية (Fingerprint):</strong> مستشعر بيومتري فائق السرعة يستجيب في أقل من 0.3 ثانية بدقة 99.8%.</li>
+        <li><strong>تطبيق الهاتف الذكي (WiFi / Tuya / Smart Life):</strong> فتح وغلق الباب عن بعد عبر الواي فاي ومتابعة سجل الدخول الفوري.</li>
+        <li><strong>الرمز السري (Passcode):</strong> لوحة مفاتيح لمسية تدعم خاصية الرمز العشوائي المانع للتلصص (Anti-Peep PIN Code).</li>
+        <li><strong>الكروت الذكية (RFID / IC Cards):</strong> كروت مدمجة ومثالية للأطفال وكبار السن لفتح الباب بمجرد التلميس.</li>
+        <li><strong>المفتاح الميكانيكي التقليدي:</strong> مفتاحين عاديين مع القفل لحالات الطوارئ القصوى.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">2. الأمان، التشفير، والتنبيهات اللحظية</h2>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>إنذار السرقة والعبث:</strong> يصدر القفل جرس إنذار مرتفع الصوت مع إرسال إشعار فوري لهاتفك عند محاولة فتح الباب بطريقة خاطئة عدة مرات.</li>
+        <li><strong>خاصية القفل الأوتوماتيكي (Auto-Lock):</strong> يغلق الباب تلقائياً بمجرد إغلاقه بعد عدد محدد من الثواني لتجنب نسيان الباب مفتوحاً.</li>
+        <li><strong>إعطاء صلاحيات مؤقتة (Temporary Passcode):</strong> إمكانية إنشاء كلمة سر مؤقتة تنتهي بعد وقت محدد للضيوف أو عمال الصيانة.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">3. عمر البطارية ومصدر الطاقة الاضطراري</h2>
+      <p>يعمل الـ <strong>قفل باب ذكي</strong> بواسطة 4 بطاريات من نوع AAA، والتي تدوم لفترة تشغيل تصل إلى 10 - 12 شهراً بناءً على معدل الاستخدام اليومي. وفي حالة نفاد البطاريات بالكامل:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li>يحتوي القفل على <strong>منفذ Micro-USB / Type-C خارجي</strong> للطوارئ، مما يمكنك من توصيل باور بانك لتشغيل القفل وفتحه فوراً.</li>
+        <li>يُرسل التطبيق إشعارات تحذيرية متكررة قبل أسابيع من نفاد الشحنة كإنذار مبكر لتغيير البطاريات.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">4. الجدول التقني للمواصفات الفنية</h2>
+      <div class="overflow-x-auto my-4">
+        <table class="w-full text-sm text-right border-collapse border border-slate-300 dark:border-slate-700">
+          <thead>
+            <tr class="bg-amber-500/20 text-amber-800 dark:text-amber-300">
+              <th class="p-3 border border-slate-300 dark:border-slate-700 font-bold">الخاصية</th>
+              <th class="p-3 border border-slate-300 dark:border-slate-700 font-bold">المواصفات والتفاصيل</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">اسم المنتج</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">قفل باب ذكي بالبصمة والرمز والواي فاي (Smart Lock)</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">مادة التصنيع</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">سبائك الألومنيوم والفولاذ المقاوم للصدمات والعوامل الجوية</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">سمك الباب المناسب</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">من 35 مم إلى 90 مم (مناسب للأبواب الخشبية والحديدية والألوميتال)</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">سعة المستخدمين</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">حتى 100 بصمة أصبع + 100 كلمة سر + 100 كارت RFID</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">الاتصال اللاسلكي</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">Wi-Fi 2.4GHz / Bluetooth / Tuya Smart / Smart Life App</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">5. المميزات والعيوب الرئيسية</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+        <div class="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl space-y-2">
+          <h3 class="font-bold text-emerald-600 dark:text-emerald-400">الإيجابيات (Pros):</h3>
+          <ul class="list-disc list-inside text-xs sm:text-sm space-y-1 text-slate-700 dark:text-slate-300">
+            <li>استجابة بصمة فورية ودقيقة جداً.</li>
+            <li>تحكم كامل من أي مكان بالكون عبر الواي فاي.</li>
+            <li>سهل التركيب والاستبدال للقفل القديم.</li>
+            <li>خامات تصنيع قوية وشكل فاخر يعزز مظهر الباب.</li>
+          </ul>
+        </div>
+        <div class="p-4 bg-rose-500/10 border border-rose-500/30 rounded-2xl space-y-2">
+          <h3 class="font-bold text-rose-600 dark:text-rose-400">السلبيات (Cons):</h3>
+          <ul class="list-disc list-inside text-xs sm:text-sm space-y-1 text-slate-700 dark:text-slate-300">
+            <li>يحتاج بطاريات نوعية ممتازة لمنع التسريب.</li>
+            <li>يتطلب شبكة واي فاي 2.4GHz عند الإعداد أول مرة.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">الخلاصة ورأي فريق التحرير</h2>
+      <p>يعتبر هذا الـ <strong>قفل باب ذكي</strong> حلاً مثالياً وعصرياً يجمع بين <strong>الأمان العالي، المتانة، وسهولة الاستخدام</strong>. إذا كنت ترغب في تحويل باب منزلك إلى بوابة ذكية وآمنة تناسب متطلبات عام 2026، فإن شراء هذا القفل يمثل خياراً رائعاً واستثماراً متميزاً في حماية عائلتك وممتلكاتك.</p>
+
+      <p class="font-bold my-3 text-lg">التقييم الشامل: <span class="text-amber-500 font-extrabold">⭐⭐⭐⭐⭐ (4.9 من 5)</span></p>
+
+      <div class="my-8 p-6 text-center bg-amber-500/10 border border-amber-500/30 rounded-2xl space-y-4 shadow-xl">
+        <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400">احصل على قفل باب ذكي بأفضل سعر على أمازون</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300">يمكنك مراجعة السعر الحالي، الخصومات المتوفرة، وتفاصيل الشحن الفوري عبر الرابط التالي:</p>
+        <div>
+          <a href="https://link.amazon/B0aQFeDdd" class="inline-block bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-8 py-4 rounded-xl transition-transform transform hover:scale-105 shadow-xl text-base sm:text-lg" target="_blank" rel="nofollow sponsored">
+            🛒 اضغط هنا لشراء قفل باب ذكي الآن من أمازون
+          </a>
+        </div>
+        <p class="text-xs text-slate-400 mt-2">
+          * إفصاح التسويق بالعمولة (Affiliate Disclosure): بالضغط على رابط الشراء، قد نحصل على عمولة بسيطة من أمازون دون أي تكلفة إضافية عليك.
+        </p>
+      </div>
+    </div>`,
+    tags: ["قفل باب ذكي", "أقفال ذكية", "أمازون", "بصمة", "واي فاي", "أمان المنازل", "Smart Lock"]
+  },
+  {
     id: "art-bosch-small-angle-grinder-review",
     title: "مراجعة شاملة: صاروخ بوش صغير (Bosch Small Angle Grinder)",
     slug: "bosch-small-angle-grinder-review",

@@ -557,14 +557,14 @@ export const ARTICLES: Article[] = [
     readTime: "7 دقائق",
     date: "2026-07-27",
     author: "فريق التحرير الفني - ديكورا Dkora",
-    coverImage: "https://i.postimg.cc/5XGp3YbR/image.jpg",
+    coverImage: "https://i.postimg.cc/bvYMqkMp/61Vi-Vbuo-KL-AC-SY300-SX300-QL70-ML2.jpg",
     excerpt: "مراجعة متعمقة ومستقلة لـ قفل باب ذكي بنظام تحكم وصول وكهربائي HTB بالبصمة، الرقم السري، الواي فاي، وتطبيق الموبايل مع المواصفات الفنية ورابط الشراء المباشر عبر أمازون.",
     content: `<div class="article-container space-y-6">
       <p>أصبحت أقفال الأبواب التقليدية والمفاتيح النحاسية شيئاً من الماضي؛ حيث أحدث وجود <strong>قفل باب ذكي بنظام تحكم وصول وكهربائي HTB</strong> متطور ثورة حقيقية في مفهوم الأمان والراحة للمنازل الحديثة، الشقق السكنية، الفنادق، والمكاتب في عام 2026. إذا كنت تبحث عن حماية منزلية قصوى مع الاستغناء التام عن حمل المفاتيح أو القلق من ضياعها، فهذا المقال يقدم لك مراجعة شاملة وتقييماً تفصيلياً لـ <strong>قفل باب ذكي بنظام تحكم وصول وكهربائي HTB</strong> المتاح عبر متجر أمازون.</p>
 
       <div class="my-6 text-center">
         <a href='https://link.amazon/B0aQFeDdd' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
-          <img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src='https://i.postimg.cc/5XGp3YbR/image.jpg' alt='قفل باب ذكي بنظام تحكم وصول وكهربائي HTB' referrerpolicy='no-referrer' onError={(e) => { (e.target as HTMLImageElement).src = "https://postimg.cc/5XGp3YbR"; }} />
+          <img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src='https://i.postimg.cc/bvYMqkMp/61Vi-Vbuo-KL-AC-SY300-SX300-QL70-ML2.jpg' alt='قفل باب ذكي بنظام تحكم وصول وكهربائي HTB' referrerpolicy='no-referrer' />
         </a>
       </div>
 

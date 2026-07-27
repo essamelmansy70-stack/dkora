@@ -21,7 +21,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
         {/* Top Footer Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand Info */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-1 space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-slate-950 font-black shadow-lg">
                 <Wrench className="w-6 h-6 stroke-[2.5]" />
@@ -35,17 +35,90 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
             </div>
 
             <p className="text-xs leading-relaxed text-slate-400">
-              المنصة العربية المعتمدة الأولى لمراجعات ومقارنات العُدد الكهربائية، الأدوات اليدوية، تجهيزات الورش، ومستلزمات الديكور والتشطيب مع مقارنة أسعار لحظية بين أمازون، جوميا، ونون.
+              المنصة العربية المعتمدة لمراجعات العُدد والأدوات والتسويق بالعمولة.
             </p>
+          </div>
 
-            <div className="p-3 rounded-2xl bg-slate-900 border border-slate-800 text-[11px] text-slate-300 space-y-1">
-              <span className="text-amber-400 font-bold block flex items-center gap-1">
-                <ShieldCheck className="w-3.5 h-3.5" /> إخلاء مسؤولية التسويق بالعمولة (Affiliate Disclosure):
-              </span>
-              <p className="text-slate-400 leading-snug">
-                موقع 'ديكورا' يتشارك مع برامج التسويق بالعمولة (Amazon Associates, Jumia Affiliate, Noon). قد نحصل على عمولة بسيطة عند الشراء من خلال روابطنا دون أي زيادة في السعر عليك.
-              </p>
-            </div>
+          {/* Legal Pages Column for AdSense */}
+          <div className="space-y-3">
+            <h4 className="font-extrabold text-white text-sm border-b border-slate-800 pb-2">الصفحات القانونية (AdSense)</h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <a
+                  href="/privacy"
+                  onClick={(e) => {
+                    if (!e.ctrlKey && !e.metaKey) {
+                      e.preventDefault();
+                      setActiveView("privacy");
+                      if (typeof window !== "undefined") window.history.pushState({}, "", "/privacy");
+                    }
+                  }}
+                  className="hover:text-amber-400 block font-bold text-slate-200"
+                >
+                  • سياسة الخصوصية
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/terms"
+                  onClick={(e) => {
+                    if (!e.ctrlKey && !e.metaKey) {
+                      e.preventDefault();
+                      setActiveView("terms");
+                      if (typeof window !== "undefined") window.history.pushState({}, "", "/terms");
+                    }
+                  }}
+                  className="hover:text-amber-400 block font-bold text-slate-200"
+                >
+                  • الشروط والأحكام
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/about"
+                  onClick={(e) => {
+                    if (!e.ctrlKey && !e.metaKey) {
+                      e.preventDefault();
+                      setActiveView("about");
+                      if (typeof window !== "undefined") window.history.pushState({}, "", "/about");
+                    }
+                  }}
+                  className="hover:text-amber-400 block font-bold text-slate-200"
+                >
+                  • من نحن (عن المنصة)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/contact"
+                  onClick={(e) => {
+                    if (!e.ctrlKey && !e.metaKey) {
+                      e.preventDefault();
+                      setActiveView("contact");
+                      if (typeof window !== "undefined") window.history.pushState({}, "", "/contact");
+                    }
+                  }}
+                  className="hover:text-amber-400 block font-bold text-slate-200"
+                >
+                  • اتصل بنا ومعلومات النشر
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/disclaimer"
+                  onClick={(e) => {
+                    if (!e.ctrlKey && !e.metaKey) {
+                      e.preventDefault();
+                      setActiveView("disclaimer");
+                      if (typeof window !== "undefined") window.history.pushState({}, "", "/disclaimer");
+                    }
+                  }}
+                  className="hover:text-amber-400 block font-bold text-slate-200"
+                >
+                  • إخلاء المسؤولية وإفصاح العمولات
+                </a>
+              </li>
+            </ul>
           </div>
 
           {/* Quick Categories Column 1 */}

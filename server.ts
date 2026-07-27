@@ -145,6 +145,16 @@ function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
     view = "sitemap";
   } else if (rawPath === "/admin") {
     view = "admin";
+  } else if (rawPath === "/privacy") {
+    view = "privacy";
+  } else if (rawPath === "/terms") {
+    view = "terms";
+  } else if (rawPath === "/about") {
+    view = "about";
+  } else if (rawPath === "/contact") {
+    view = "contact";
+  } else if (rawPath === "/disclaimer") {
+    view = "disclaimer";
   }
 
   const protocol = req.headers["x-forwarded-proto"] || req.protocol || "https";
@@ -188,6 +198,26 @@ function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
     title = "مدونة ديكورا - دروس الصيانة ودليل اختيار العدد | Dkora";
     description = "مقالات وشروحات فنية من خبراء الصيانة والديكور لمساعدتك في اختيار الأداة المناسبة.";
     canonicalUrl = `${baseUrl}/articles`;
+  } else if (view === "privacy") {
+    title = "سياسة الخصوصية وسرية البيانات | منصة ديكورا Dkora";
+    description = "سياسة الخصوصية وسرية البيانات ومعايير الشفافية الخاصة بمنصة ديكورا ومتطلبات AdSense.";
+    canonicalUrl = `${baseUrl}/privacy`;
+  } else if (view === "terms") {
+    title = "الشروط والأحكام وسياسة الاستخدام | منصة ديكورا Dkora";
+    description = "الشروط والأحكام لاتفاقية استخدام منصة ديكورا للعدد والأدوات والتسويق بالعمولة.";
+    canonicalUrl = `${baseUrl}/terms`;
+  } else if (view === "about") {
+    title = "من نحن - عن منصة ديكورا Dkora لدليل العدد والأدوات";
+    description = "تعرف على منصة ديكورا، رسالتنا، ومنهجية اختبار وتقييم المعدات والأدوات والعدد الكهربائية.";
+    canonicalUrl = `${baseUrl}/about`;
+  } else if (view === "contact") {
+    title = "اتصل بنا ومعلومات هيئة التحرير | منصة ديكورا Dkora";
+    description = "تواصل مع فريق عمل وإدارة منصة ديكورا للاستفسارات والاقتراحات والشراكات الرسمية.";
+    canonicalUrl = `${baseUrl}/contact`;
+  } else if (view === "disclaimer") {
+    title = "إخلاء المسؤولية وإفصاح التسويق بالعمولة | منصة ديكورا Dkora";
+    description = "إفصاح التسويق بالعمولة والأمان الفني لتقييمات العدد والأدوات الكهربائية واليدوية على ديكورا.";
+    canonicalUrl = `${baseUrl}/disclaimer`;
   } else if (articleSlug) {
     const artSeo = ARTICLES_SEO.find(a => a.slug === articleSlug);
     const artMock = ARTICLES.find(a => a.slug === articleSlug || a.id === articleSlug);

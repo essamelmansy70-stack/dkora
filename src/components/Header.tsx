@@ -245,6 +245,27 @@ export const Header: React.FC<HeaderProps> = ({
             <Globe className="w-4 h-4 text-emerald-400" />
             <span>خريطة الموقع</span>
           </a>
+
+          <a
+            href="/privacy"
+            onClick={(e) => {
+              if (!e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                setActiveView("privacy");
+                if (typeof window !== "undefined") window.history.pushState({}, "", "/privacy");
+              }
+            }}
+            className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
+              ["privacy", "terms", "about", "contact", "disclaimer"].includes(activeView)
+                ? "bg-amber-500/15 text-amber-500 border border-amber-500/30"
+                : isDarkMode
+                ? "text-slate-400 hover:text-amber-400 hover:bg-slate-800/40"
+                : "text-slate-600 hover:text-amber-600 hover:bg-slate-100"
+            }`}
+          >
+            <ShieldCheck className="w-4 h-4 text-amber-500" />
+            <span>السياسات والخصوصية</span>
+          </a>
         </nav>
 
         {/* Action Controls */}
@@ -533,6 +554,21 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Globe className="w-4 h-4 text-emerald-400" />
               <span>خريطة الموقع</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setActiveView("privacy");
+                setMobileMenuOpen(false);
+              }}
+              className={`p-3 rounded-xl border text-right flex items-center gap-2 ${
+                isDarkMode
+                  ? "bg-slate-900 border-slate-800 text-slate-100 hover:bg-slate-800"
+                  : "bg-slate-100 border-slate-200 text-slate-800 hover:bg-slate-200"
+              }`}
+            >
+              <ShieldCheck className="w-4 h-4 text-amber-500" />
+              <span>سياسة الخصوصية</span>
             </button>
 
             {(showAdminButton || isAdmin) && (

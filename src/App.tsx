@@ -5,7 +5,7 @@ import { CategoryGrid } from "./components/CategoryGrid";
 import { ProductCard } from "./components/ProductCard";
 import { ProductDetailModal } from "./components/ProductDetailModal";
 import { ComparisonView } from "./components/ComparisonView";
-import { BuyingGuidesView } from "./components/BuyingGuidesView";
+import { LegalView, LegalPageType } from "./components/LegalView";
 import { DealsView } from "./components/DealsView";
 import { ArticlesView } from "./components/ArticlesView";
 import { AdminDashboard } from "./components/AdminDashboard";
@@ -167,6 +167,16 @@ export default function App() {
       setActiveView("deals");
     } else if (path === "/sitemap" || params.get("view") === "sitemap") {
       setActiveView("sitemap");
+    } else if (path === "/privacy" || params.get("view") === "privacy") {
+      setActiveView("privacy");
+    } else if (path === "/terms" || params.get("view") === "terms") {
+      setActiveView("terms");
+    } else if (path === "/about" || params.get("view") === "about") {
+      setActiveView("about");
+    } else if (path === "/contact" || params.get("view") === "contact") {
+      setActiveView("contact");
+    } else if (path === "/disclaimer" || params.get("view") === "disclaimer") {
+      setActiveView("disclaimer");
     } else if (path === "/admin" || params.get("view") === "admin") {
       setActiveView("admin");
       setIsAdmin(true);
@@ -248,6 +258,21 @@ export default function App() {
     } else if (activeView === "sitemap") {
       document.title = "خريطة الموقع التفاعلية (Dynamic XML Sitemap) | ديكورا Dkora";
       canonicalEl.href = `${window.location.origin}/sitemap`;
+    } else if (activeView === "privacy") {
+      document.title = "سياسة الخصوصية وسرية البيانات | منصة ديكورا Dkora";
+      canonicalEl.href = `${window.location.origin}/privacy`;
+    } else if (activeView === "terms") {
+      document.title = "الشروط والأحكام وسياسة الاستخدام | منصة ديكورا Dkora";
+      canonicalEl.href = `${window.location.origin}/terms`;
+    } else if (activeView === "about") {
+      document.title = "من نحن - عن منصة ديكورا Dkora لدليل العدد والأدوات";
+      canonicalEl.href = `${window.location.origin}/about`;
+    } else if (activeView === "contact") {
+      document.title = "اتصل بنا ومعلومات هيئة التحرير | منصة ديكورا Dkora";
+      canonicalEl.href = `${window.location.origin}/contact`;
+    } else if (activeView === "disclaimer") {
+      document.title = "إخلاء المسؤولية وإفصاح التسويق بالعمولة | منصة ديكورا Dkora";
+      canonicalEl.href = `${window.location.origin}/disclaimer`;
     } else {
       document.title = "ديكورا Dkora - دليلك الشامل لعدد ولوازم ديكورات احترافية";
       canonicalEl.href = `${window.location.origin}/`;
@@ -339,14 +364,6 @@ export default function App() {
               categories={categories}
               selectedCategory={selectedCategory}
               onSelectCategory={(catId) => setSelectedCategory(catId)}
-              isDarkMode={isDarkMode}
-            />
-
-            {/* Buying Guides Feature Banner */}
-            <BuyingGuidesView
-              guides={buyingGuides}
-              products={products}
-              onSelectProduct={(prod) => setDetailProduct(prod)}
               isDarkMode={isDarkMode}
             />
 
@@ -492,6 +509,15 @@ export default function App() {
               setActiveView("home");
             }}
             onNavigateToView={(view) => setActiveView(view)}
+            isDarkMode={isDarkMode}
+          />
+        )}
+
+        {/* VIEW 8: LEGAL PAGES (AdSense Compliant) */}
+        {["privacy", "terms", "about", "contact", "disclaimer"].includes(activeView) && (
+          <LegalView
+            page={activeView as LegalPageType}
+            onNavigate={(p) => navigateToPage(`/${p}`, p)}
             isDarkMode={isDarkMode}
           />
         )}

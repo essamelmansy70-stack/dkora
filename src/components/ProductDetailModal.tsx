@@ -15,7 +15,8 @@ import {
   ChevronRight,
   Send,
   SlidersHorizontal,
-  ThumbsUp
+  ThumbsUp,
+  Edit2
 } from "lucide-react";
 import { Product, Currency, UserReview } from "../types";
 import { REVIEWS_SAMPLE } from "../data/mockData";
@@ -27,6 +28,7 @@ interface ProductDetailModalProps {
   onOpenSchema: (product: Product) => void;
   onCompareSelect: (product: Product) => void;
   isDarkMode: boolean;
+  onEditProduct?: (product: Product) => void;
 }
 
 export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
@@ -36,6 +38,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   onOpenSchema,
   onCompareSelect,
   isDarkMode,
+  onEditProduct,
 }) => {
   if (!product) return null;
 
@@ -107,6 +110,20 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           </div>
 
           <div className="flex items-center gap-2">
+            {onEditProduct && (
+              <button
+                onClick={() => {
+                  onEditProduct(product);
+                  onClose();
+                }}
+                className="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-md transition-colors"
+                title="تعديل بيانات وسعر هذا المنتج"
+              >
+                <Edit2 className="w-4 h-4" />
+                <span>تعديل المنتج</span>
+              </button>
+            )}
+
             <button
               onClick={() => onOpenSchema(product)}
               className={`px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center gap-1.5 transition-colors ${

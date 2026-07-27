@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Sparkles,
   Plus,
@@ -25,6 +25,7 @@ interface AdminDashboardProps {
   articles: Article[];
   isDarkMode: boolean;
   onProductAdded?: () => void;
+  editingProductTarget?: Product | null;
 }
 
 export const AdminDashboard: React.FC<AdminDashboardProps> = ({
@@ -35,6 +36,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   articles,
   isDarkMode,
   onProductAdded,
+  editingProductTarget,
 }) => {
   const [adminTab, setAdminTab] = useState<"products" | "add_product" | "stats">("products");
 
@@ -58,6 +60,12 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const [newPro, setNewPro] = useState("");
   const [newCon, setNewCon] = useState("");
   const [saveSuccess, setSaveSuccess] = useState(false);
+
+  useEffect(() => {
+    if (editingProductTarget) {
+      handleStartEditProduct(editingProductTarget);
+    }
+  }, [editingProductTarget]);
 
   const resetForm = () => {
     setEditingProductId(null);

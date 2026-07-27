@@ -107,6 +107,12 @@ export default function App() {
   // Modals
   const [detailProduct, setDetailProduct] = useState<Product | null>(null);
   const [schemaProduct, setSchemaProduct] = useState<Product | null>(null);
+  const [editingProductTarget, setEditingProductTarget] = useState<Product | null>(null);
+
+  const handleEditProduct = (prod: Product) => {
+    setEditingProductTarget(prod);
+    setActiveView("admin");
+  };
 
   // Sorting and Filtering
   const [sortBy, setSortBy] = useState<"score" | "rating" | "priceAsc" | "priceDesc">("score");
@@ -256,6 +262,7 @@ export default function App() {
                       currency={currency}
                       onSelectProduct={(prod) => setDetailProduct(prod)}
                       onCompareSelect={() => setActiveView("comparisons")}
+                      onEditProduct={handleEditProduct}
                       isDarkMode={isDarkMode}
                     />
                   ))}
@@ -321,9 +328,11 @@ export default function App() {
             deals={deals}
             articles={articles}
             isDarkMode={isDarkMode}
+            editingProductTarget={editingProductTarget}
             onProductAdded={() => {
               setSelectedCategory(null);
               setSearchQuery("");
+              setEditingProductTarget(null);
             }}
           />
         )}
@@ -349,6 +358,7 @@ export default function App() {
         currency={currency}
         onOpenSchema={(prod) => setSchemaProduct(prod)}
         onCompareSelect={() => setActiveView("comparisons")}
+        onEditProduct={handleEditProduct}
         isDarkMode={isDarkMode}
       />
 

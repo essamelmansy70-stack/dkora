@@ -9,7 +9,8 @@ import {
   Sparkles,
   ArrowRight,
   Eye,
-  SlidersHorizontal
+  SlidersHorizontal,
+  Edit2
 } from "lucide-react";
 import { Product, Currency } from "../types";
 
@@ -18,6 +19,7 @@ interface ProductCardProps {
   currency: Currency;
   onSelectProduct: (product: Product) => void;
   onCompareSelect?: (product: Product) => void;
+  onEditProduct?: (product: Product) => void;
   isDarkMode: boolean;
 }
 
@@ -26,6 +28,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   currency,
   onSelectProduct,
   onCompareSelect,
+  onEditProduct,
   isDarkMode,
 }) => {
   // Convert prices based on currency selection
@@ -242,6 +245,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <Eye className="w-4 h-4 text-amber-400" />
             <span>عرض المراجعة الكاملة والمواصفات</span>
           </button>
+
+          {onEditProduct && (
+            <button
+              onClick={() => onEditProduct(product)}
+              className="p-2.5 rounded-xl border bg-amber-500 hover:bg-amber-600 text-slate-950 border-amber-400 transition-colors shadow-sm"
+              title="تعديل بيانات وسعر هذا المنتج"
+            >
+              <Edit2 className="w-4 h-4" />
+            </button>
+          )}
 
           {onCompareSelect && (
             <button

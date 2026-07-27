@@ -148,7 +148,7 @@ export default function App() {
         window.history.pushState({ product: detailProduct.id }, "", currentUrl.toString());
       }
     } else {
-      document.title = "ديكورا Dkora - دليل مراجعات وتوصيات العدد والأدوات ومستلزمات الديكور";
+      document.title = "ديكورا Dkora - دليلك الشامل لعدد ولوازم ديكورات احترافية";
       canonicalEl.href = `${window.location.origin}/`;
 
       const currentUrl = new URL(window.location.href);

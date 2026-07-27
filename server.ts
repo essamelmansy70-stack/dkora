@@ -126,8 +126,8 @@ function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
     lang = "ar";
   }
 
-  let title = "ديكورا Dkora - دليل مراجعات وتوصيات العدد والأدوات ومستلزمات الديكور";
-  let description = "دليل الشراء الشامل لأفضل العدد الكهربائية واليدوية وأدوات الديكور، مراجعات محايدة، أسعار أمازون وجوميا، ومقارنة المواصفات الفنية.";
+  let title = "ديكورا Dkora - دليلك الشامل لعدد ولوازم ديكورات احترافية";
+  let description = "دليلك الشامل لعدد ولوازم ديكورات احترافية";
   let image = `${baseUrl}/og-image.jpg`;
   let canonicalUrl = `${baseUrl}${req.originalUrl || "/"}`;
 

@@ -54,8 +54,50 @@ export default function App() {
     }
   }, []);
 
-  // Dynamic state arrays
-  const [products, setProducts] = useState<Product[]>(PRODUCTS);
+  // Dynamic state arrays with Server API & LocalStorage Persistence
+  const [products, setProducts] = useState<Product[]>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("dkora_custom_products");
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch (e) {
+          console.error("Failed to load saved products", e);
+        }
+      }
+    }
+    return PRODUCTS;
+  });
+
+  // Fetch products from server on mount
+  useEffect(() => {
+    fetch("/api/products")
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setProducts(data);
+          localStorage.setItem("dkora_custom_products", JSON.stringify(data));
+        }
+      })
+      .catch((err) => console.log("Serving offline or fallback mode:", err));
+  }, []);
+
+  // Sync products to Server and LocalStorage when modified
+  const handleSetProducts = (action: React.SetStateAction<Product[]>) => {
+    setProducts((prev) => {
+      const updated = typeof action === "function" ? action(prev) : action;
+      if (typeof window !== "undefined") {
+        localStorage.setItem("dkora_custom_products", JSON.stringify(updated));
+      }
+      fetch("/api/products", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updated),
+      }).catch((err) => console.error("Error syncing to server:", err));
+      return updated;
+    });
+  };
+
   const [categories] = useState(CATEGORIES);
   const [comparisons] = useState(COMPARISONS);
   const [buyingGuides] = useState(BUYING_GUIDES);
@@ -274,11 +316,15 @@ export default function App() {
         {activeView === "admin" && (
           <AdminDashboard
             products={products}
-            setProducts={setProducts}
+            setProducts={handleSetProducts}
             categories={categories}
             deals={deals}
             articles={articles}
             isDarkMode={isDarkMode}
+            onProductAdded={() => {
+              setSelectedCategory(null);
+              setSearchQuery("");
+            }}
           />
         )}
 

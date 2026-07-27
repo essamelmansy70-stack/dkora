@@ -24,6 +24,7 @@ interface AdminDashboardProps {
   deals: Deal[];
   articles: Article[];
   isDarkMode: boolean;
+  onProductAdded?: () => void;
 }
 
 export const AdminDashboard: React.FC<AdminDashboardProps> = ({
@@ -33,6 +34,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   deals,
   articles,
   isDarkMode,
+  onProductAdded,
 }) => {
   const [adminTab, setAdminTab] = useState<"products" | "add_product" | "stats">("products");
 
@@ -128,6 +130,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         })
       );
       setSaveSuccess(true);
+      onProductAdded?.();
       setTimeout(() => {
         setSaveSuccess(false);
         resetForm();
@@ -175,6 +178,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
     setProducts([created, ...products]);
     setSaveSuccess(true);
+    onProductAdded?.();
     setTimeout(() => {
       setSaveSuccess(false);
       resetForm();

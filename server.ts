@@ -222,6 +222,46 @@ async function startServer() {
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
+  // Persistence helpers for custom products
+  const CUSTOM_PRODUCTS_FILE = path.join(rootDir, "custom_products.json");
+
+  function getStoredProducts() {
+    try {
+      if (fs.existsSync(CUSTOM_PRODUCTS_FILE)) {
+        const data = fs.readFileSync(CUSTOM_PRODUCTS_FILE, "utf-8");
+        const parsed = JSON.parse(data);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch (err) {
+      console.error("Error reading custom_products.json", err);
+    }
+    return PRODUCTS;
+  }
+
+  function saveStoredProducts(productsList: any[]) {
+    try {
+      fs.writeFileSync(CUSTOM_PRODUCTS_FILE, JSON.stringify(productsList, null, 2), "utf-8");
+    } catch (err) {
+      console.error("Error writing custom_products.json", err);
+    }
+  }
+
+  // API Endpoints for Products
+  app.get("/api/products", (req, res) => {
+    res.json(getStoredProducts());
+  });
+
+  app.post("/api/products", (req, res) => {
+    const productsList = req.body;
+    if (Array.isArray(productsList)) {
+      saveStoredProducts(productsList);
+      return res.json({ success: true, count: productsList.length });
+    }
+    res.status(400).json({ error: "Invalid data format" });
+  });
+
   // Dynamic Robots.txt Route
   app.get(["/robots.txt", "/robots"], (req, res) => {
     const protocol = req.headers["x-forwarded-proto"] || req.protocol || "https";
@@ -259,7 +299,7 @@ Sitemap: ${protocol}://${host}/sitemap.xml
         priority: "0.85",
       })),
 
-      ...PRODUCTS.map((prod) => ({
+      ...getStoredProducts().map((prod: any) => ({
         loc: `${baseUrl}/?product=${prod.id}`,
         lastmod: currentDate,
         changefreq: "weekly",

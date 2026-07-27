@@ -63,10 +63,15 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Main Nav Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
         {/* Brand Logo */}
-        <button
-          onClick={() => {
-            setActiveView("home");
-            setSelectedCategory(null);
+        <a
+          href="/"
+          onClick={(e) => {
+            if (!e.ctrlKey && !e.metaKey) {
+              e.preventDefault();
+              setActiveView("home");
+              setSelectedCategory(null);
+              if (typeof window !== "undefined") window.history.pushState({}, "", "/");
+            }
           }}
           className="flex items-center gap-2 sm:gap-3 group text-right focus:outline-none shrink-0"
         >
@@ -86,7 +91,7 @@ export const Header: React.FC<HeaderProps> = ({
               دليل العدد والأدوات والديكور
             </p>
           </div>
-        </button>
+        </a>
 
         {/* Desktop Quick Search Bar */}
         <div className="hidden md:flex flex-1 max-w-md relative">
@@ -114,10 +119,15 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Navigation Items */}
         <nav className="hidden lg:flex items-center gap-1 text-sm font-bold">
-          <button
-            onClick={() => {
-              setActiveView("home");
-              setSelectedCategory(null);
+          <a
+            href="/"
+            onClick={(e) => {
+              if (!e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                setActiveView("home");
+                setSelectedCategory(null);
+                if (typeof window !== "undefined") window.history.pushState({}, "", "/");
+              }
             }}
             className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
               activeView === "home" && !selectedCategory
@@ -129,10 +139,17 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <Compass className="w-4 h-4" />
             <span>الرئيسية</span>
-          </button>
+          </a>
 
-          <button
-            onClick={() => setActiveView("categories")}
+          <a
+            href="/categories"
+            onClick={(e) => {
+              if (!e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                setActiveView("categories");
+                if (typeof window !== "undefined") window.history.pushState({}, "", "/categories");
+              }
+            }}
             className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
               activeView === "categories" || selectedCategory
                 ? "bg-amber-500/15 text-amber-500 border border-amber-500/30"
@@ -143,10 +160,17 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <Layers className="w-4 h-4" />
             <span>التصنيفات (12)</span>
-          </button>
+          </a>
 
-          <button
-            onClick={() => setActiveView("comparisons")}
+          <a
+            href="/comparisons"
+            onClick={(e) => {
+              if (!e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                setActiveView("comparisons");
+                if (typeof window !== "undefined") window.history.pushState({}, "", "/comparisons");
+              }
+            }}
             className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
               activeView === "comparisons"
                 ? "bg-amber-500/15 text-amber-500 border border-amber-500/30"
@@ -157,10 +181,17 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <SlidersHorizontal className="w-4 h-4" />
             <span>المقارنات</span>
-          </button>
+          </a>
 
-          <button
-            onClick={() => setActiveView("deals")}
+          <a
+            href="/deals"
+            onClick={(e) => {
+              if (!e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                setActiveView("deals");
+                if (typeof window !== "undefined") window.history.pushState({}, "", "/deals");
+              }
+            }}
             className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
               activeView === "deals"
                 ? "bg-amber-500/15 text-amber-500 border border-amber-500/30"
@@ -171,10 +202,17 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <Tag className="w-4 h-4 text-orange-500" />
             <span>العروض والخصومات</span>
-          </button>
+          </a>
 
-          <button
-            onClick={() => setActiveView("articles")}
+          <a
+            href="/articles"
+            onClick={(e) => {
+              if (!e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                setActiveView("articles");
+                if (typeof window !== "undefined") window.history.pushState({}, "", "/articles");
+              }
+            }}
             className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
               activeView === "articles"
                 ? "bg-amber-500/15 text-amber-500 border border-amber-500/30"
@@ -185,10 +223,17 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <BookOpen className="w-4 h-4" />
             <span>المقالات</span>
-          </button>
+          </a>
 
-          <button
-            onClick={() => setActiveView("sitemap")}
+          <a
+            href="/sitemap"
+            onClick={(e) => {
+              if (!e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                setActiveView("sitemap");
+                if (typeof window !== "undefined") window.history.pushState({}, "", "/sitemap");
+              }
+            }}
             className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
               activeView === "sitemap"
                 ? "bg-amber-500/15 text-amber-500 border border-amber-500/30"
@@ -199,7 +244,7 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <Globe className="w-4 h-4 text-emerald-400" />
             <span>خريطة الموقع</span>
-          </button>
+          </a>
         </nav>
 
         {/* Action Controls */}
@@ -253,10 +298,15 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Horizontal Quick Nav Bar (Always visible on mobile without needing drawer) */}
       <div className="lg:hidden border-t overflow-x-auto py-2 px-3 flex items-center gap-2 text-xs font-bold no-scrollbar scroll-smooth">
-        <button
-          onClick={() => {
-            setActiveView("home");
-            setSelectedCategory(null);
+        <a
+          href="/"
+          onClick={(e) => {
+            if (!e.ctrlKey && !e.metaKey) {
+              e.preventDefault();
+              setActiveView("home");
+              setSelectedCategory(null);
+              if (typeof window !== "undefined") window.history.pushState({}, "", "/");
+            }
           }}
           className={`px-3 py-1.5 rounded-lg whitespace-nowrap flex items-center gap-1.5 shrink-0 transition-colors ${
             activeView === "home" && !selectedCategory
@@ -268,10 +318,17 @@ export const Header: React.FC<HeaderProps> = ({
         >
           <Compass className="w-3.5 h-3.5 text-amber-500" />
           <span>الرئيسية</span>
-        </button>
+        </a>
 
-        <button
-          onClick={() => setActiveView("categories")}
+        <a
+          href="/categories"
+          onClick={(e) => {
+            if (!e.ctrlKey && !e.metaKey) {
+              e.preventDefault();
+              setActiveView("categories");
+              if (typeof window !== "undefined") window.history.pushState({}, "", "/categories");
+            }
+          }}
           className={`px-3 py-1.5 rounded-lg whitespace-nowrap flex items-center gap-1.5 shrink-0 transition-colors ${
             activeView === "categories" || selectedCategory
               ? "bg-amber-500 text-slate-950 font-black shadow-sm"
@@ -282,10 +339,17 @@ export const Header: React.FC<HeaderProps> = ({
         >
           <Layers className="w-3.5 h-3.5 text-amber-500" />
           <span>التصنيفات</span>
-        </button>
+        </a>
 
-        <button
-          onClick={() => setActiveView("comparisons")}
+        <a
+          href="/comparisons"
+          onClick={(e) => {
+            if (!e.ctrlKey && !e.metaKey) {
+              e.preventDefault();
+              setActiveView("comparisons");
+              if (typeof window !== "undefined") window.history.pushState({}, "", "/comparisons");
+            }
+          }}
           className={`px-3 py-1.5 rounded-lg whitespace-nowrap flex items-center gap-1.5 shrink-0 transition-colors ${
             activeView === "comparisons"
               ? "bg-amber-500 text-slate-950 font-black shadow-sm"
@@ -296,10 +360,17 @@ export const Header: React.FC<HeaderProps> = ({
         >
           <SlidersHorizontal className="w-3.5 h-3.5 text-amber-500" />
           <span>المقارنات</span>
-        </button>
+        </a>
 
-        <button
-          onClick={() => setActiveView("deals")}
+        <a
+          href="/deals"
+          onClick={(e) => {
+            if (!e.ctrlKey && !e.metaKey) {
+              e.preventDefault();
+              setActiveView("deals");
+              if (typeof window !== "undefined") window.history.pushState({}, "", "/deals");
+            }
+          }}
           className={`px-3 py-1.5 rounded-lg whitespace-nowrap flex items-center gap-1.5 shrink-0 transition-colors ${
             activeView === "deals"
               ? "bg-amber-500 text-slate-950 font-black shadow-sm"
@@ -310,10 +381,17 @@ export const Header: React.FC<HeaderProps> = ({
         >
           <Tag className="w-3.5 h-3.5 text-orange-500" />
           <span>العروض</span>
-        </button>
+        </a>
 
-        <button
-          onClick={() => setActiveView("articles")}
+        <a
+          href="/articles"
+          onClick={(e) => {
+            if (!e.ctrlKey && !e.metaKey) {
+              e.preventDefault();
+              setActiveView("articles");
+              if (typeof window !== "undefined") window.history.pushState({}, "", "/articles");
+            }
+          }}
           className={`px-3 py-1.5 rounded-lg whitespace-nowrap flex items-center gap-1.5 shrink-0 transition-colors ${
             activeView === "articles"
               ? "bg-amber-500 text-slate-950 font-black shadow-sm"
@@ -324,7 +402,7 @@ export const Header: React.FC<HeaderProps> = ({
         >
           <BookOpen className="w-3.5 h-3.5 text-amber-500" />
           <span>المقالات</span>
-        </button>
+        </a>
 
         <button
           onClick={() => {

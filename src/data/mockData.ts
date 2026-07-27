@@ -563,7 +563,7 @@ export const ARTICLES: Article[] = [
       <p>تُعتبر شركة <strong>بوش (Bosch)</strong> واحدة من ألمع وأفضل العلامات التجارية العالمية في مجال الأدوات والعدد الكهربائية، وتتمتع أجهزتها بسمعة ممتازة من حيث الاعتمادية، الجودة، والعمر الافتراضي الطويل. إذا كنت تبحث عن <strong>صاروخ بوش صغير</strong> مناسب للأعمال المنزلية أو الورش الاحترافية، فهذه المراجعة ستوضح لك كل ما تحتاج معرفته.</p>
 
       <div class="my-6 text-center">
-        <a href='https://postimg.cc/LqzXq2Gs' target='_blank' rel='noopener noreferrer'><img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src='/bosch_grinder.jpg' alt='صاروخ بوش صغير'></a>
+        <a href='https://postimg.cc/LqzXq2Gs' target='_blank' rel='noopener noreferrer'><img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src='/bosch_grinder.jpg' alt='صاروخ بوش صغير' referrerpolicy='no-referrer' onerror="this.onerror=null;this.src='https://i.postimg.cc/LqzXq2Gs/61Zr-XB5LBk-L-AC-SY300-SX300-QL70-ML2.jpg';" /></a>
       </div>
 
       <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">1. التصميم والحجم (Design & Ergonomics)</h2>

@@ -54,15 +54,20 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
             <ul className="space-y-2 text-xs">
               {CATEGORIES.slice(0, 6).map((cat) => (
                 <li key={cat.id}>
-                  <button
-                    onClick={() => {
-                      onSelectCategory(cat.id);
-                      setActiveView("home");
+                  <a
+                    href={`/category/${cat.id}`}
+                    onClick={(e) => {
+                      if (!e.ctrlKey && !e.metaKey) {
+                        e.preventDefault();
+                        onSelectCategory(cat.id);
+                        setActiveView("home");
+                        if (typeof window !== "undefined") window.history.pushState({}, "", `/category/${cat.id}`);
+                      }
                     }}
-                    className="hover:text-amber-400 transition-colors text-right"
+                    className="hover:text-amber-400 transition-colors text-right block"
                   >
                     • {cat.nameAr}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -74,15 +79,20 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
             <ul className="space-y-2 text-xs">
               {CATEGORIES.slice(6, 12).map((cat) => (
                 <li key={cat.id}>
-                  <button
-                    onClick={() => {
-                      onSelectCategory(cat.id);
-                      setActiveView("home");
+                  <a
+                    href={`/category/${cat.id}`}
+                    onClick={(e) => {
+                      if (!e.ctrlKey && !e.metaKey) {
+                        e.preventDefault();
+                        onSelectCategory(cat.id);
+                        setActiveView("home");
+                        if (typeof window !== "undefined") window.history.pushState({}, "", `/category/${cat.id}`);
+                      }
                     }}
-                    className="hover:text-amber-400 transition-colors text-right"
+                    className="hover:text-amber-400 transition-colors text-right block"
                   >
                     • {cat.nameAr}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -93,24 +103,64 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
             <h4 className="font-extrabold text-white text-sm border-b border-slate-800 pb-2">روابط سريعة والأرشفة</h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => setActiveView("comparisons")} className="hover:text-amber-400">
+                <a
+                  href="/comparisons"
+                  onClick={(e) => {
+                    if (!e.ctrlKey && !e.metaKey) {
+                      e.preventDefault();
+                      setActiveView("comparisons");
+                      if (typeof window !== "undefined") window.history.pushState({}, "", "/comparisons");
+                    }
+                  }}
+                  className="hover:text-amber-400 block"
+                >
                   • أداة المقارنات المباشرة
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setActiveView("deals")} className="hover:text-amber-400">
+                <a
+                  href="/deals"
+                  onClick={(e) => {
+                    if (!e.ctrlKey && !e.metaKey) {
+                      e.preventDefault();
+                      setActiveView("deals");
+                      if (typeof window !== "undefined") window.history.pushState({}, "", "/deals");
+                    }
+                  }}
+                  className="hover:text-amber-400 block"
+                >
                   • أكواد الخصم والعروض
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setActiveView("articles")} className="hover:text-amber-400">
+                <a
+                  href="/articles"
+                  onClick={(e) => {
+                    if (!e.ctrlKey && !e.metaKey) {
+                      e.preventDefault();
+                      setActiveView("articles");
+                      if (typeof window !== "undefined") window.history.pushState({}, "", "/articles");
+                    }
+                  }}
+                  className="hover:text-amber-400 block"
+                >
                   • مقالات ودروس الصيانة
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setActiveView("sitemap")} className="hover:text-amber-400 flex items-center gap-1">
+                <a
+                  href="/sitemap"
+                  onClick={(e) => {
+                    if (!e.ctrlKey && !e.metaKey) {
+                      e.preventDefault();
+                      setActiveView("sitemap");
+                      if (typeof window !== "undefined") window.history.pushState({}, "", "/sitemap");
+                    }
+                  }}
+                  className="hover:text-amber-400 flex items-center gap-1"
+                >
                   • خريطة الموقع (Sitemap)
-                </button>
+                </a>
               </li>
               <li>
                 <a
@@ -124,9 +174,19 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
               </li>
               {showAdminButton && (
                 <li>
-                  <button onClick={() => setActiveView("admin")} className="hover:text-amber-400">
+                  <a
+                    href="/admin"
+                    onClick={(e) => {
+                      if (!e.ctrlKey && !e.metaKey) {
+                        e.preventDefault();
+                        setActiveView("admin");
+                        if (typeof window !== "undefined") window.history.pushState({}, "", "/admin");
+                      }
+                    }}
+                    className="hover:text-amber-400 block"
+                  >
                     • لوحة التحكم للإدارة
-                  </button>
+                  </a>
                 </li>
               )}
             </ul>

@@ -74,8 +74,8 @@ export const SitemapView: React.FC<SitemapViewProps> = ({
       lastmod: currentDate,
     },
     {
-      loc: `${baseUrl}/?view=categories`,
-      path: "/?view=categories",
+      loc: `${baseUrl}/categories`,
+      path: "/categories",
       title: "دليل التصنيفات الـ 12 الرئيسية للعدد والديكور",
       type: "page",
       priority: "0.9",
@@ -83,8 +83,8 @@ export const SitemapView: React.FC<SitemapViewProps> = ({
       lastmod: currentDate,
     },
     {
-      loc: `${baseUrl}/?view=comparisons`,
-      path: "/?view=comparisons",
+      loc: `${baseUrl}/comparisons`,
+      path: "/comparisons",
       title: "أداة مقارنة المنتجات والعدد الفنية جنباً إلى جنب",
       type: "page",
       priority: "0.9",
@@ -92,8 +92,8 @@ export const SitemapView: React.FC<SitemapViewProps> = ({
       lastmod: currentDate,
     },
     {
-      loc: `${baseUrl}/?view=deals`,
-      path: "/?view=deals",
+      loc: `${baseUrl}/deals`,
+      path: "/deals",
       title: "قسم الكوبونات وأكواد الخصم العاجلة من المتاجر الكبرى",
       type: "page",
       priority: "0.9",
@@ -101,8 +101,8 @@ export const SitemapView: React.FC<SitemapViewProps> = ({
       lastmod: currentDate,
     },
     {
-      loc: `${baseUrl}/?view=articles`,
-      path: "/?view=articles",
+      loc: `${baseUrl}/articles`,
+      path: "/articles",
       title: "مدونة دروس الصيانة والديكور والتحليلات الفنية",
       type: "page",
       priority: "0.8",
@@ -110,8 +110,8 @@ export const SitemapView: React.FC<SitemapViewProps> = ({
       lastmod: currentDate,
     },
     {
-      loc: `${baseUrl}/?view=sitemap`,
-      path: "/?view=sitemap",
+      loc: `${baseUrl}/sitemap`,
+      path: "/sitemap",
       title: "خريطة الموقع التفاعلية (Dynamic XML Sitemap Index)",
       type: "page",
       priority: "0.7",
@@ -121,8 +121,8 @@ export const SitemapView: React.FC<SitemapViewProps> = ({
 
     // Categories
     ...CATEGORIES.map((cat) => ({
-      loc: `${baseUrl}/?category=${cat.id}`,
-      path: `/?category=${cat.id}`,
+      loc: `${baseUrl}/category/${cat.id}`,
+      path: `/category/${cat.id}`,
       title: `قسم: ${cat.nameAr} (${cat.nameEn})`,
       type: "category" as const,
       priority: "0.85",
@@ -132,8 +132,8 @@ export const SitemapView: React.FC<SitemapViewProps> = ({
 
     // Products
     ...productsList.map((prod) => {
-      const fullUrl = createProductUrl(prod, baseUrl);
-      const relativePath = fullUrl.replace(baseUrl, "");
+      const fullUrl = `${baseUrl}/product/${prod.id}-${createProductSlug(prod)}`;
+      const relativePath = `/product/${prod.id}-${createProductSlug(prod)}`;
       return {
         loc: fullUrl,
         path: relativePath,
@@ -147,8 +147,8 @@ export const SitemapView: React.FC<SitemapViewProps> = ({
 
     // Articles
     ...ARTICLES.map((art) => ({
-      loc: `${baseUrl}/?article=${art.slug}`,
-      path: `/?article=${art.slug}`,
+      loc: `${baseUrl}/article/${art.slug}`,
+      path: `/article/${art.slug}`,
       title: `مقال: ${art.title}`,
       type: "article" as const,
       priority: "0.75",

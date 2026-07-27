@@ -74,12 +74,22 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
         {categories.map((cat) => {
           const isSelected = selectedCategory === cat.id;
+          const targetUrl = isSelected ? "/" : `/category/${cat.id}`;
 
           return (
-            <div
+            <a
               key={cat.id}
-              onClick={() => onSelectCategory(isSelected ? null : cat.id)}
-              className={`group relative p-4 rounded-2xl border transition-all cursor-pointer text-right flex flex-col justify-between overflow-hidden ${
+              href={targetUrl}
+              onClick={(e) => {
+                if (!e.ctrlKey && !e.metaKey) {
+                  e.preventDefault();
+                  onSelectCategory(isSelected ? null : cat.id);
+                  if (typeof window !== "undefined") {
+                    window.history.pushState({}, "", targetUrl);
+                  }
+                }
+              }}
+              className={`group relative p-4 rounded-2xl border transition-all cursor-pointer text-right flex flex-col justify-between overflow-hidden block ${
                 isSelected
                   ? "bg-amber-500 text-slate-950 border-amber-400 shadow-xl shadow-amber-500/20 transform -translate-y-1"
                   : isDarkMode
@@ -120,7 +130,7 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({
                   }`}
                 />
               </div>
-            </div>
+            </a>
           );
         })}
       </div>

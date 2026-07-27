@@ -120,10 +120,32 @@ const ARTICLES_SEO = [
 
 function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
   let lang = req.query.lang as string;
-  const articleSlug = req.query.article as string;
-  const view = req.query.view as string;
-  const productId = (req.query.product || req.query.p || req.query.slug || req.query.keyword) as string;
+  const rawPath = req.path || "";
+
+  let articleSlug = (req.query.article as string) || "";
+  let view = (req.query.view as string) || "";
+  let productId = ((req.query.product || req.query.p || req.query.slug || req.query.keyword) as string) || "";
   const keywordParam = req.query.keyword as string;
+
+  if (rawPath.startsWith("/article/")) {
+    articleSlug = rawPath.replace("/article/", "").trim();
+  } else if (rawPath === "/articles") {
+    view = "articles";
+  } else if (rawPath.startsWith("/product/")) {
+    productId = rawPath.replace("/product/", "").trim();
+  } else if (rawPath === "/categories") {
+    view = "categories";
+  } else if (rawPath.startsWith("/category/")) {
+    view = "categories";
+  } else if (rawPath === "/comparisons") {
+    view = "comparisons";
+  } else if (rawPath === "/deals") {
+    view = "deals";
+  } else if (rawPath === "/sitemap") {
+    view = "sitemap";
+  } else if (rawPath === "/admin") {
+    view = "admin";
+  }
 
   const protocol = req.headers["x-forwarded-proto"] || req.protocol || "https";
   const host = req.get("host") || "dkora.online";
@@ -144,40 +166,40 @@ function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
       title = `${p.titleAr} - ${p.brandName} (${p.modelNumber || ""}) | مراجعة وسعر ديكورا Dkora`;
       description = `${p.summary || p.titleAr} - تعرف على المواصفات الفنية والتقييم وأسعار الشراء المباشرة على منصة ديكورا.`;
       image = p.mainImage || image;
-      canonicalUrl = createProductUrl(p, baseUrl);
+      canonicalUrl = `${baseUrl}/product/${p.id}-${createProductSlug(p)}`;
     }
   } else if (view === "sitemap") {
     title = "خريطة الموقع التفاعلية (Dynamic XML Sitemap) | ديكورا Dkora";
     description = "تصفح جميع روابط المنتجات والتصنيفات والمقالات المحدثة تلقائياً في دليل ديكورا Dkora.";
-    canonicalUrl = `${baseUrl}/?view=sitemap`;
+    canonicalUrl = `${baseUrl}/sitemap`;
   } else if (view === "categories") {
     title = "تصنيفات العدد والأدوات والديكور | ديكورا Dkora";
     description = "استكشف جميع تصنيفات الشنيور، الصاروخ، العدد اليدوية، وأدوات الديكور مع الأسعار والتقييمات.";
-    canonicalUrl = `${baseUrl}/?view=categories`;
+    canonicalUrl = `${baseUrl}/categories`;
   } else if (view === "comparisons") {
     title = "أداة مقارنة العدد والأدوات الفنية جنباً إلى جنب | ديكورا Dkora";
     description = "قارن بين مواصفات وأسعار أفضل ماركات العدد مثل ديوالت، بوش، وماكيتا بسهولة.";
-    canonicalUrl = `${baseUrl}/?view=comparisons`;
+    canonicalUrl = `${baseUrl}/comparisons`;
   } else if (view === "deals") {
     title = "أحدث عروض وكوبونات خصم العدد والأدوات | ديكورا Dkora";
     description = "تصفح أحدث الخصومات وأكواد التخفيض الحصرية للعدد الكهربائية والديكور في مصر والخليج.";
-    canonicalUrl = `${baseUrl}/?view=deals`;
+    canonicalUrl = `${baseUrl}/deals`;
   } else if (view === "articles") {
     title = "مدونة ديكورا - دروس الصيانة ودليل اختيار العدد | Dkora";
     description = "مقالات وشروحات فنية من خبراء الصيانة والديكور لمساعدتك في اختيار الأداة المناسبة.";
-    canonicalUrl = `${baseUrl}/?article=all`;
+    canonicalUrl = `${baseUrl}/articles`;
   } else if (articleSlug) {
     const artSeo = ARTICLES_SEO.find(a => a.slug === articleSlug);
     const artMock = ARTICLES.find(a => a.slug === articleSlug || a.id === articleSlug);
     if (artSeo) {
       title = artSeo.titleAr;
       description = artSeo.descAr;
-      canonicalUrl = `${baseUrl}/?article=${artSeo.slug}`;
+      canonicalUrl = `${baseUrl}/article/${artSeo.slug}`;
     } else if (artMock) {
       title = `${artMock.title} | ديكورا Dkora`;
       description = artMock.excerpt;
       image = artMock.coverImage || image;
-      canonicalUrl = `${baseUrl}/?article=${artMock.slug}`;
+      canonicalUrl = `${baseUrl}/article/${artMock.slug}`;
     }
   }
 
@@ -250,6 +272,9 @@ async function startServer() {
 
   // Enable gzip compression to decrease download payloads and improve FCP
   app.use(compression());
+
+  // Serve static files from public directory at root level
+  app.use(express.static(path.join(rootDir, "public")));
 
   // Increase body size limits for base64 image uploads
   app.use(express.json({ limit: "50mb" }));

@@ -16,7 +16,7 @@ import {
   Check
 } from "lucide-react";
 import { Product, Currency } from "../types";
-import { createProductUrl } from "../utils/seo";
+import { createProductUrl, createProductSlug } from "../utils/seo";
 
 interface ProductCardProps {
   product: Product;
@@ -248,8 +248,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
         {/* Details & Compare Actions */}
         <div className="flex flex-wrap items-center gap-2 pt-2">
-          <button
-            onClick={() => onSelectProduct(product)}
+          <a
+            href={`/product/${product.id}-${createProductSlug(product)}`}
+            onClick={(e) => {
+              if (!e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                onSelectProduct(product);
+                if (typeof window !== "undefined") {
+                  window.history.pushState({ product: product.id }, "", `/product/${product.id}-${createProductSlug(product)}`);
+                }
+              }
+            }}
             className={`flex-1 min-w-[140px] py-2.5 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 border transition-all ${
               isDarkMode
                 ? "bg-slate-800 hover:bg-slate-700 text-white border-slate-700"
@@ -258,7 +267,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           >
             <Eye className="w-4 h-4 text-amber-400 shrink-0" />
             <span className="truncate">المراجعة والمواصفات</span>
-          </button>
+          </a>
 
           {onEditProduct && (
             <button

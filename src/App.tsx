@@ -110,22 +110,105 @@ export default function App() {
   const [schemaProduct, setSchemaProduct] = useState<Product | null>(null);
   const [editingProductTarget, setEditingProductTarget] = useState<Product | null>(null);
 
-  // Deep Link URL Detection for Canonical Product Page Loading
-  useEffect(() => {
-    if (typeof window !== "undefined" && products.length > 0) {
-      const params = new URLSearchParams(window.location.search);
-      const targetProdId = params.get("product") || params.get("p") || params.get("slug");
-      const keywordParam = params.get("keyword") || params.get("q");
-      if (targetProdId || keywordParam) {
-        const found = findProductByQueryParam(products, targetProdId, keywordParam);
-        if (found) {
-          setDetailProduct(found);
-        }
+  // Articles state for independent routing
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+
+  // Parse location pathname & search to set state accordingly
+  const syncStateFromUrl = () => {
+    if (typeof window === "undefined") return;
+
+    const path = window.location.pathname;
+    const params = new URLSearchParams(window.location.search);
+
+    // 1. Article Page Route (/article/:slug or ?article=:slug)
+    const articleParam = params.get("article");
+    if (path.startsWith("/article/") || (articleParam && articleParam !== "all")) {
+      const slug = path.startsWith("/article/") ? path.replace("/article/", "").trim() : articleParam;
+      const foundArt = articles.find((a) => a.slug === slug || a.id === slug);
+      if (foundArt) {
+        setSelectedArticle(foundArt);
+        setActiveView("articles");
+        return;
       }
     }
-  }, [products]);
 
-  // Sync document title, canonical link tag, and browser URL bar on product detail state changes
+    // 2. Articles List Route (/articles or ?article=all or ?view=articles)
+    if (path === "/articles" || articleParam === "all" || params.get("view") === "articles") {
+      setActiveView("articles");
+      setSelectedArticle(null);
+      return;
+    }
+
+    // 3. Product Page Route (/product/:id-slug or ?product=:id)
+    const prodParam = params.get("product") || params.get("p") || params.get("slug");
+    const keywordParam = params.get("keyword") || params.get("q");
+    if (path.startsWith("/product/") || prodParam || keywordParam) {
+      const targetId = path.startsWith("/product/") ? path.replace("/product/", "").trim() : prodParam;
+      if (targetId || keywordParam) {
+        const foundProd = findProductByQueryParam(products, targetId || "", keywordParam || "");
+        if (foundProd) {
+          setDetailProduct(foundProd);
+        }
+      }
+    } else {
+      setDetailProduct(null);
+    }
+
+    // 4. View Routes
+    if (path === "/categories" || params.get("view") === "categories") {
+      setActiveView("categories");
+    } else if (path.startsWith("/category/")) {
+      const catId = path.replace("/category/", "").trim();
+      setSelectedCategory(catId);
+      setActiveView("home");
+    } else if (path === "/comparisons" || params.get("view") === "comparisons") {
+      setActiveView("comparisons");
+    } else if (path === "/deals" || params.get("view") === "deals") {
+      setActiveView("deals");
+    } else if (path === "/sitemap" || params.get("view") === "sitemap") {
+      setActiveView("sitemap");
+    } else if (path === "/admin" || params.get("view") === "admin") {
+      setActiveView("admin");
+      setIsAdmin(true);
+    } else if (path === "/") {
+      if (!params.get("view") && !params.get("product")) {
+        setActiveView("home");
+      }
+    }
+  };
+
+  // Sync state on mount & handle browser Back/Forward navigation (popstate)
+  useEffect(() => {
+    syncStateFromUrl();
+
+    const handlePopState = () => {
+      syncStateFromUrl();
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, [products, articles]);
+
+  // Navigate helper to update browser URL bar cleanly as an independent page
+  const navigateToPage = (
+    path: string,
+    targetView?: string,
+    catId?: string | null,
+    art?: Article | null,
+    prod?: Product | null
+  ) => {
+    if (typeof window !== "undefined") {
+      if (window.location.pathname !== path) {
+        window.history.pushState({}, "", path);
+      }
+    }
+    if (targetView !== undefined) setActiveView(targetView);
+    if (catId !== undefined) setSelectedCategory(catId);
+    if (art !== undefined) setSelectedArticle(art);
+    if (prod !== undefined) setDetailProduct(prod);
+  };
+
+  // Sync document title and canonical tag
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -138,26 +221,38 @@ export default function App() {
 
     if (detailProduct) {
       document.title = `${detailProduct.titleAr} - ${detailProduct.brandName} | ديكورا Dkora`;
-      const directUrl = createProductUrl(detailProduct);
-      canonicalEl.href = directUrl;
-
-      const currentUrl = new URL(window.location.href);
-      const expectedParam = `${detailProduct.id}-${createProductSlug(detailProduct)}`;
-      if (currentUrl.searchParams.get("product") !== expectedParam) {
-        currentUrl.searchParams.set("product", expectedParam);
-        window.history.pushState({ product: detailProduct.id }, "", currentUrl.toString());
+      const expectedUrl = `${window.location.origin}/product/${detailProduct.id}-${createProductSlug(detailProduct)}`;
+      canonicalEl.href = expectedUrl;
+      if (window.location.pathname !== `/product/${detailProduct.id}-${createProductSlug(detailProduct)}`) {
+        window.history.pushState({ product: detailProduct.id }, "", expectedUrl);
       }
+    } else if (selectedArticle) {
+      document.title = `${selectedArticle.title} | ديكورا Dkora`;
+      const expectedUrl = `${window.location.origin}/article/${selectedArticle.slug}`;
+      canonicalEl.href = expectedUrl;
+      if (window.location.pathname !== `/article/${selectedArticle.slug}`) {
+        window.history.pushState({ article: selectedArticle.slug }, "", expectedUrl);
+      }
+    } else if (activeView === "articles") {
+      document.title = "مدونة ديكورا - دروس الصيانة ودليل اختيار العدد | Dkora";
+      canonicalEl.href = `${window.location.origin}/articles`;
+    } else if (activeView === "categories") {
+      document.title = "تصنيفات العدد والأدوات والديكور | ديكورا Dkora";
+      canonicalEl.href = `${window.location.origin}/categories`;
+    } else if (activeView === "comparisons") {
+      document.title = "أداة مقارنة العدد والأدوات الفنية جنباً إلى جنب | ديكورا Dkora";
+      canonicalEl.href = `${window.location.origin}/comparisons`;
+    } else if (activeView === "deals") {
+      document.title = "أحدث عروض وكوبونات خصم العدد والأدوات | ديكورا Dkora";
+      canonicalEl.href = `${window.location.origin}/deals`;
+    } else if (activeView === "sitemap") {
+      document.title = "خريطة الموقع التفاعلية (Dynamic XML Sitemap) | ديكورا Dkora";
+      canonicalEl.href = `${window.location.origin}/sitemap`;
     } else {
       document.title = "ديكورا Dkora - دليلك الشامل لعدد ولوازم ديكورات احترافية";
       canonicalEl.href = `${window.location.origin}/`;
-
-      const currentUrl = new URL(window.location.href);
-      if (currentUrl.searchParams.has("product")) {
-        currentUrl.searchParams.delete("product");
-        window.history.pushState({}, "", currentUrl.pathname + (currentUrl.search ? currentUrl.search : ""));
-      }
     }
-  }, [detailProduct]);
+  }, [detailProduct, selectedArticle, activeView]);
 
   const handleEditProduct = (prod: Product) => {
     setEditingProductTarget(prod);

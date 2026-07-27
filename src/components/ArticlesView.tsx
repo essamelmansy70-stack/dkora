@@ -5,21 +5,50 @@ import { Article } from "../types";
 interface ArticlesViewProps {
   articles: Article[];
   isDarkMode: boolean;
+  selectedArticle?: Article | null;
+  onSelectArticle?: (article: Article | null) => void;
 }
 
-export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, isDarkMode }) => {
-  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+export const ArticlesView: React.FC<ArticlesViewProps> = ({
+  articles,
+  isDarkMode,
+  selectedArticle: propSelectedArticle,
+  onSelectArticle: propOnSelectArticle
+}) => {
+  const [internalSelected, setInternalSelected] = useState<Article | null>(null);
+  
+  const currentArticle = propSelectedArticle !== undefined ? propSelectedArticle : internalSelected;
 
-  if (selectedArticle) {
+  const handleSelect = (art: Article | null) => {
+    if (propOnSelectArticle) {
+      propOnSelectArticle(art);
+    } else {
+      setInternalSelected(art);
+      if (typeof window !== "undefined") {
+        if (art) {
+          const url = `/article/${art.slug}`;
+          window.history.pushState({ article: art.slug }, "", url);
+        } else {
+          window.history.pushState({}, "", "/articles");
+        }
+      }
+    }
+  };
+
+  if (currentArticle) {
     return (
       <div className="max-w-4xl mx-auto my-8 space-y-6">
-        <button
-          onClick={() => setSelectedArticle(null)}
-          className="flex items-center gap-2 text-xs font-bold text-amber-500 bg-amber-500/10 px-4 py-2 rounded-xl border border-amber-500/30 hover:bg-amber-500/20"
+        <a
+          href="/articles"
+          onClick={(e) => {
+            e.preventDefault();
+            handleSelect(null);
+          }}
+          className="inline-flex items-center gap-2 text-xs font-bold text-amber-500 bg-amber-500/10 px-4 py-2 rounded-xl border border-amber-500/30 hover:bg-amber-500/20 transition-colors"
         >
           <ArrowRight className="w-4 h-4" />
           <span>العودة لجميع المقالات والدروس</span>
-        </button>
+        </a>
 
         <article
           className={`rounded-3xl border overflow-hidden p-6 sm:p-10 space-y-6 ${
@@ -28,11 +57,11 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, isDarkMode
         >
           <div className="space-y-3">
             <span className="bg-amber-500/10 text-amber-500 border border-amber-500/30 text-xs font-bold px-3 py-1 rounded-full">
-              {selectedArticle.category}
+              {currentArticle.category}
             </span>
 
             <h1 className="text-3xl sm:text-4xl font-black leading-tight text-slate-900 dark:text-white">
-              {selectedArticle.title}
+              {currentArticle.title}
             </h1>
 
             <div className={`flex flex-wrap items-center gap-4 text-xs border-b pb-4 ${
@@ -40,23 +69,34 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, isDarkMode
             }`}>
               <span className={`flex items-center gap-1.5 font-bold ${isDarkMode ? "text-slate-200" : "text-slate-800"}`}>
                 <User className="w-4 h-4 text-amber-500" />
-                {selectedArticle.author}
+                {currentArticle.author}
               </span>
               <span>•</span>
               <span className="flex items-center gap-1">
                 <Calendar className="w-4 h-4 text-slate-500" />
-                {selectedArticle.date}
+                {currentArticle.date}
               </span>
               <span>•</span>
               <span className="flex items-center gap-1">
                 <Clock className="w-4 h-4 text-slate-500" />
-                وقت القراءة: {selectedArticle.readTime}
+                وقت القراءة: {currentArticle.readTime}
               </span>
             </div>
           </div>
 
           <div className="h-80 rounded-2xl overflow-hidden border border-slate-300 dark:border-slate-800">
-            <img src={selectedArticle.coverImage} alt={selectedArticle.title} className="w-full h-full object-cover" />
+            <img
+              src={currentArticle.coverImage}
+              alt={currentArticle.title}
+              referrerPolicy="no-referrer"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                if (!target.src.includes('postimg')) {
+                  target.src = 'https://i.postimg.cc/LqzXq2Gs/61Zr-XB5LBk-L-AC-SY300-SX300-QL70-ML2.jpg';
+                }
+              }}
+              className="w-full h-full object-cover"
+            />
           </div>
 
           <div className={`max-w-none leading-relaxed space-y-4 text-sm sm:text-base ${
@@ -65,20 +105,20 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, isDarkMode
             <p className={`p-4 rounded-2xl border font-medium ${
               isDarkMode ? "bg-amber-500/10 border-amber-500/20 text-amber-300" : "bg-amber-50 border-amber-200 text-amber-900"
             }`}>
-              {selectedArticle.excerpt}
+              {currentArticle.excerpt}
             </p>
-            {selectedArticle.content.includes("<") ? (
+            {currentArticle.content.includes("<") ? (
               <div
                 className="space-y-4 text-sm sm:text-base leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: selectedArticle.content }}
+                dangerouslySetInnerHTML={{ __html: currentArticle.content }}
               />
             ) : (
-              <p>{selectedArticle.content}</p>
+              <p>{currentArticle.content}</p>
             )}
           </div>
 
           <div className={`pt-6 border-t flex flex-wrap gap-2 ${isDarkMode ? "border-slate-800" : "border-slate-200"}`}>
-            {selectedArticle.tags.map((t, idx) => (
+            {currentArticle.tags.map((t, idx) => (
               <span key={idx} className={`px-3 py-1 rounded-lg text-xs font-mono border ${
                 isDarkMode ? "bg-slate-950 text-slate-300 border-slate-800" : "bg-slate-100 text-slate-700 border-slate-200"
               }`}>
@@ -110,16 +150,33 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, isDarkMode
       {/* Articles Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {articles.map((art) => (
-          <div
+          <a
             key={art.id}
-            onClick={() => setSelectedArticle(art)}
-            className={`rounded-3xl border overflow-hidden p-6 space-y-4 cursor-pointer transition-all hover:shadow-2xl hover:border-amber-500/50 group flex flex-col justify-between ${
+            href={`/article/${art.slug}`}
+            onClick={(e) => {
+              if (!e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                handleSelect(art);
+              }
+            }}
+            className={`rounded-3xl border overflow-hidden p-6 space-y-4 cursor-pointer transition-all hover:shadow-2xl hover:border-amber-500/50 group flex flex-col justify-between block ${
               isDarkMode ? "bg-slate-900 border-slate-800 text-slate-100" : "bg-white border-slate-200 text-slate-900 shadow-md"
             }`}
           >
             <div className="space-y-3">
               <div className="h-48 rounded-2xl overflow-hidden bg-slate-950 border border-slate-800">
-                <img src={art.coverImage} alt={art.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img
+                  src={art.coverImage}
+                  alt={art.title}
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    if (!target.src.includes('postimg')) {
+                      target.src = 'https://i.postimg.cc/LqzXq2Gs/61Zr-XB5LBk-L-AC-SY300-SX300-QL70-ML2.jpg';
+                    }
+                  }}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
 
               <div className="flex items-center justify-between text-xs text-slate-400">
@@ -144,7 +201,7 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, isDarkMode
               <span>اقرأ المقال الكامل</span>
               <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>

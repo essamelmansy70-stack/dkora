@@ -76,14 +76,18 @@ export const DealsView: React.FC<DealsViewProps> = ({ deals, currency, isDarkMod
 
               {/* Coupon Box */}
               {deal.couponCode && (
-                <div className="p-3 rounded-2xl bg-slate-950 border border-amber-500/30 flex items-center justify-between gap-2 text-xs">
+                <div className={`p-3 rounded-2xl border flex items-center justify-between gap-2 text-xs ${
+                  isDarkMode ? "bg-slate-950 border-amber-500/30" : "bg-amber-50 border-amber-300"
+                }`}>
                   <div>
-                    <span className="text-[10px] text-slate-400 block">كود الخصم الحصري:</span>
-                    <strong className="font-mono text-amber-400 font-extrabold text-sm">{deal.couponCode}</strong>
+                    <span className={`text-[10px] block ${isDarkMode ? "text-slate-400" : "text-slate-600"}`}>
+                      كود الخصم الحصري:
+                    </span>
+                    <strong className="font-mono text-amber-600 dark:text-amber-400 font-extrabold text-sm">{deal.couponCode}</strong>
                   </div>
                   <button
                     onClick={() => handleCopyCode(deal.couponCode!)}
-                    className="p-2 rounded-xl bg-amber-500 text-slate-950 hover:bg-amber-400 font-bold flex items-center gap-1 text-[11px] transition-colors"
+                    className="p-2 rounded-xl bg-amber-500 text-slate-950 hover:bg-amber-400 font-bold flex items-center gap-1 text-[11px] transition-colors shadow-sm"
                   >
                     {copiedCode === deal.couponCode ? (
                       <>

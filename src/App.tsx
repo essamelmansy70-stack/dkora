@@ -9,6 +9,7 @@ import { BuyingGuidesView } from "./components/BuyingGuidesView";
 import { DealsView } from "./components/DealsView";
 import { ArticlesView } from "./components/ArticlesView";
 import { AdminDashboard } from "./components/AdminDashboard";
+import { SitemapView } from "./components/SitemapView";
 import { SeoSchemaModal } from "./components/SeoSchemaModal";
 import { FaqSection } from "./components/FaqSection";
 import { Newsletter } from "./components/Newsletter";
@@ -256,6 +257,19 @@ export default function App() {
             categories={categories}
             deals={deals}
             articles={articles}
+            isDarkMode={isDarkMode}
+          />
+        )}
+
+        {/* VIEW 7: DYNAMIC INTERACTIVE SITEMAP */}
+        {activeView === "sitemap" && (
+          <SitemapView
+            onSelectProduct={(prod) => setDetailProduct(prod)}
+            onSelectCategory={(catId) => {
+              setSelectedCategory(catId);
+              setActiveView("home");
+            }}
+            onNavigateToView={(view) => setActiveView(view)}
             isDarkMode={isDarkMode}
           />
         )}

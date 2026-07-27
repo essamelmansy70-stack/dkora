@@ -51,7 +51,11 @@ export const Newsletter: React.FC<NewsletterProps> = ({ isDarkMode }) => {
               placeholder="اكتب بريدك الإلكتروني..."
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 px-4 py-3 rounded-2xl border text-xs sm:text-sm bg-slate-900 border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className={`flex-1 px-4 py-3 rounded-2xl border text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 ${
+                isDarkMode
+                  ? "bg-slate-900 border-slate-700 text-white placeholder-slate-400"
+                  : "bg-white border-amber-300 text-slate-900 placeholder-slate-500 shadow-sm"
+              }`}
             />
             <button
               type="submit"

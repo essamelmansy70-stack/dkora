@@ -150,35 +150,75 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
 
         {/* Trust & Affiliate Features Grid */}
         <div className="pt-6 border-t border-slate-800/50 grid grid-cols-2 md:grid-cols-4 gap-4 text-right">
-          <div className="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/40 border border-slate-800/60">
-            <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+          <div
+            className={`flex items-center gap-3 p-3 rounded-2xl border ${
+              isDarkMode
+                ? "bg-slate-900/40 border-slate-800/60"
+                : "bg-white/80 border-slate-200 shadow-sm"
+            }`}
+          >
+            <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
             <div>
-              <p className="text-xs font-bold text-slate-200">مراجعات حيادية</p>
-              <p className="text-[10px] text-slate-400">تجارب ميدانية في الورش</p>
+              <p className={`text-xs font-bold ${isDarkMode ? "text-slate-200" : "text-slate-900"}`}>
+                مراجعات حيادية
+              </p>
+              <p className={`text-[10px] ${isDarkMode ? "text-slate-400" : "text-slate-600"}`}>
+                تجارب ميدانية في الورش
+              </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/40 border border-slate-800/60">
-            <ShoppingCart className="w-5 h-5 text-amber-400 shrink-0" />
+          <div
+            className={`flex items-center gap-3 p-3 rounded-2xl border ${
+              isDarkMode
+                ? "bg-slate-900/40 border-slate-800/60"
+                : "bg-white/80 border-slate-200 shadow-sm"
+            }`}
+          >
+            <ShoppingCart className="w-5 h-5 text-amber-500 shrink-0" />
             <div>
-              <p className="text-xs font-bold text-slate-200">مقارنة الأسعار</p>
-              <p className="text-[10px] text-slate-400">أمازون، جوميا، ونون</p>
+              <p className={`text-xs font-bold ${isDarkMode ? "text-slate-200" : "text-slate-900"}`}>
+                مقارنة الأسعار
+              </p>
+              <p className={`text-[10px] ${isDarkMode ? "text-slate-400" : "text-slate-600"}`}>
+                أمازون، جوميا، ونون
+              </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/40 border border-slate-800/60">
-            <ShieldAlert className="w-5 h-5 text-orange-400 shrink-0" />
+          <div
+            className={`flex items-center gap-3 p-3 rounded-2xl border ${
+              isDarkMode
+                ? "bg-slate-900/40 border-slate-800/60"
+                : "bg-white/80 border-slate-200 shadow-sm"
+            }`}
+          >
+            <ShieldAlert className="w-5 h-5 text-orange-500 shrink-0" />
             <div>
-              <p className="text-xs font-bold text-slate-200">كشف العيوب بوضوح</p>
-              <p className="text-[10px] text-slate-400">لا نتردد في ذكر السلبيات</p>
+              <p className={`text-xs font-bold ${isDarkMode ? "text-slate-200" : "text-slate-900"}`}>
+                كشف العيوب بوضوح
+              </p>
+              <p className={`text-[10px] ${isDarkMode ? "text-slate-400" : "text-slate-600"}`}>
+                لا نتردد في ذكر السلبيات
+              </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/40 border border-slate-800/60">
+          <div
+            className={`flex items-center gap-3 p-3 rounded-2xl border ${
+              isDarkMode
+                ? "bg-slate-900/40 border-slate-800/60"
+                : "bg-white/80 border-slate-200 shadow-sm"
+            }`}
+          >
             <Award className="w-5 h-5 text-amber-500 shrink-0" />
             <div>
-              <p className="text-xs font-bold text-slate-200">معيار Wirecutter</p>
-              <p className="text-[10px] text-slate-400">دقة متناهية في التقييم</p>
+              <p className={`text-xs font-bold ${isDarkMode ? "text-slate-200" : "text-slate-900"}`}>
+                معيار Wirecutter
+              </p>
+              <p className={`text-[10px] ${isDarkMode ? "text-slate-400" : "text-slate-600"}`}>
+                دقة متناهية في التقييم
+              </p>
             </div>
           </div>
         </div>

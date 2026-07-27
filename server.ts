@@ -5,6 +5,7 @@ import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
 import compression from "compression";
+import { CATEGORIES, PRODUCTS, ARTICLES, DEALS, BUYING_GUIDES } from "./src/data/mockData";
 
 // Load environment variables
 dotenv.config();
@@ -220,6 +221,100 @@ async function startServer() {
   // Increase body size limits for base64 image uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
+
+  // Dynamic Robots.txt Route
+  app.get("/robots.txt", (req, res) => {
+    const protocol = req.headers["x-forwarded-proto"] || req.protocol || "https";
+    const host = req.get("host") || "dkora.app";
+    const content = `User-agent: *
+Allow: /
+
+Sitemap: ${protocol}://${host}/sitemap.xml
+`;
+    res.setHeader("Content-Type", "text/plain; charset=utf-8");
+    res.setHeader("Cache-Control", "public, max-age=3600");
+    res.send(content);
+  });
+
+  // Dynamic Sitemap.xml Route - Automatically updates with every request and data change
+  app.get("/sitemap.xml", (req, res) => {
+    const protocol = req.headers["x-forwarded-proto"] || req.protocol || "https";
+    const host = req.get("host") || "dkora.app";
+    const baseUrl = `${protocol}://${host}`;
+    const currentDate = new Date().toISOString().split("T")[0];
+
+    const urls: Array<{ loc: string; lastmod: string; changefreq: string; priority: string }> = [
+      { loc: `${baseUrl}/`, lastmod: currentDate, changefreq: "daily", priority: "1.0" },
+      { loc: `${baseUrl}/?view=categories`, lastmod: currentDate, changefreq: "weekly", priority: "0.9" },
+      { loc: `${baseUrl}/?view=comparisons`, lastmod: currentDate, changefreq: "weekly", priority: "0.9" },
+      { loc: `${baseUrl}/?view=deals`, lastmod: currentDate, changefreq: "daily", priority: "0.9" },
+      { loc: `${baseUrl}/?view=articles`, lastmod: currentDate, changefreq: "weekly", priority: "0.8" },
+      { loc: `${baseUrl}/?view=sitemap`, lastmod: currentDate, changefreq: "always", priority: "0.7" },
+
+      ...CATEGORIES.map((cat) => ({
+        loc: `${baseUrl}/?category=${cat.id}`,
+        lastmod: currentDate,
+        changefreq: "weekly",
+        priority: "0.85",
+      })),
+
+      ...PRODUCTS.map((prod) => ({
+        loc: `${baseUrl}/?product=${prod.id}`,
+        lastmod: currentDate,
+        changefreq: "weekly",
+        priority: "0.80",
+      })),
+
+      ...ARTICLES.map((art) => ({
+        loc: `${baseUrl}/?article=${art.slug}`,
+        lastmod: art.date || currentDate,
+        changefreq: "monthly",
+        priority: "0.75",
+      })),
+
+      ...ARTICLES_SEO.map((art) => ({
+        loc: `${baseUrl}/?article=${art.slug}`,
+        lastmod: currentDate,
+        changefreq: "weekly",
+        priority: "0.75",
+      })),
+
+      ...DEALS.map((deal) => ({
+        loc: `${baseUrl}/?deal=${deal.id}`,
+        lastmod: currentDate,
+        changefreq: "daily",
+        priority: "0.80",
+      })),
+
+      ...BUYING_GUIDES.map((guide) => ({
+        loc: `${baseUrl}/?guide=${guide.id}`,
+        lastmod: currentDate,
+        changefreq: "monthly",
+        priority: "0.80",
+      })),
+    ];
+
+    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+    xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n`;
+    xml += `        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n`;
+    xml += `        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9\n`;
+    xml += `        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">\n`;
+
+    urls.forEach((u) => {
+      xml += `  <url>\n`;
+      xml += `    <loc>${u.loc}</loc>\n`;
+      xml += `    <lastmod>${u.lastmod}</lastmod>\n`;
+      xml += `    <changefreq>${u.changefreq}</changefreq>\n`;
+      xml += `    <priority>${u.priority}</priority>\n`;
+      xml += `  </url>\n`;
+    });
+
+    xml += `</urlset>`;
+
+    res.setHeader("Content-Type", "application/xml; charset=utf-8");
+    res.setHeader("Cache-Control", "public, max-age=60, s-maxage=60");
+    res.send(xml);
+  });
 
   // Always serve static files directly from public directory
   app.use(express.static(path.join(rootDir, "public")));

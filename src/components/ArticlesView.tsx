@@ -35,9 +35,11 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, isDarkMode
               {selectedArticle.title}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 border-b border-slate-800 pb-4">
-              <span className="flex items-center gap-1.5 font-bold text-slate-200">
-                <User className="w-4 h-4 text-amber-400" />
+            <div className={`flex flex-wrap items-center gap-4 text-xs border-b pb-4 ${
+              isDarkMode ? "text-slate-400 border-slate-800" : "text-slate-500 border-slate-200"
+            }`}>
+              <span className={`flex items-center gap-1.5 font-bold ${isDarkMode ? "text-slate-200" : "text-slate-800"}`}>
+                <User className="w-4 h-4 text-amber-500" />
                 {selectedArticle.author}
               </span>
               <span>•</span>
@@ -53,20 +55,26 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, isDarkMode
             </div>
           </div>
 
-          <div className="h-80 rounded-2xl overflow-hidden border border-slate-800">
+          <div className="h-80 rounded-2xl overflow-hidden border border-slate-300 dark:border-slate-800">
             <img src={selectedArticle.coverImage} alt={selectedArticle.title} className="w-full h-full object-cover" />
           </div>
 
-          <div className="prose prose-invert max-w-none text-slate-300 leading-relaxed space-y-4 text-sm sm:text-base">
-            <p className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 font-medium text-amber-300">
+          <div className={`max-w-none leading-relaxed space-y-4 text-sm sm:text-base ${
+            isDarkMode ? "text-slate-300" : "text-slate-800"
+          }`}>
+            <p className={`p-4 rounded-2xl border font-medium ${
+              isDarkMode ? "bg-amber-500/10 border-amber-500/20 text-amber-300" : "bg-amber-50 border-amber-200 text-amber-900"
+            }`}>
               {selectedArticle.excerpt}
             </p>
             <p>{selectedArticle.content}</p>
           </div>
 
-          <div className="pt-6 border-t border-slate-800 flex flex-wrap gap-2">
+          <div className={`pt-6 border-t flex flex-wrap gap-2 ${isDarkMode ? "border-slate-800" : "border-slate-200"}`}>
             {selectedArticle.tags.map((t, idx) => (
-              <span key={idx} className="bg-slate-950 text-slate-300 px-3 py-1 rounded-lg text-xs font-mono border border-slate-800">
+              <span key={idx} className={`px-3 py-1 rounded-lg text-xs font-mono border ${
+                isDarkMode ? "bg-slate-950 text-slate-300 border-slate-800" : "bg-slate-100 text-slate-700 border-slate-200"
+              }`}>
                 #{t}
               </span>
             ))}
@@ -118,12 +126,14 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({ articles, isDarkMode
                 {art.title}
               </h3>
 
-              <p className="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              <p className={`text-xs line-clamp-3 leading-relaxed ${isDarkMode ? "text-slate-400" : "text-slate-600"}`}>
                 {art.excerpt}
               </p>
             </div>
 
-            <div className="pt-4 border-t border-slate-800 flex items-center justify-between text-xs font-bold text-amber-500">
+            <div className={`pt-4 border-t flex items-center justify-between text-xs font-bold text-amber-600 dark:text-amber-500 ${
+              isDarkMode ? "border-slate-800" : "border-slate-100"
+            }`}>
               <span>اقرأ المقال الكامل</span>
               <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             </div>

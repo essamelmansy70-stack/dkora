@@ -132,9 +132,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </p>
 
           {/* Who is this for? (لمن يناسب؟) */}
-          <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-xs">
-            <strong className="text-amber-500 block mb-0.5 font-bold">لمن يناسب هذا المنتج؟</strong>
-            <p className="text-slate-700 dark:text-slate-300 leading-normal line-clamp-2">
+          <div
+            className={`p-3 rounded-2xl border text-xs ${
+              isDarkMode ? "bg-amber-500/10 border-amber-500/20" : "bg-amber-500/10 border-amber-500/30"
+            }`}
+          >
+            <strong className="text-amber-600 dark:text-amber-500 block mb-0.5 font-bold">
+              لمن يناسب هذا المنتج؟
+            </strong>
+            <p className="text-slate-800 dark:text-slate-300 leading-normal line-clamp-2">
               {product.targetAudience}
             </p>
           </div>
@@ -142,19 +148,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {/* Quick Pros/Cons Preview */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
             <div className="space-y-1">
-              <span className="font-bold text-emerald-400 flex items-center gap-1">
+              <span className="font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
                 <CheckCircle2 className="w-3.5 h-3.5" /> أهم المزايا:
               </span>
-              <p className="text-slate-600 dark:text-slate-300 line-clamp-2">
+              <p className="text-slate-700 dark:text-slate-300 line-clamp-2">
                 • {product.pros[0]}
               </p>
             </div>
 
             <div className="space-y-1">
-              <span className="font-bold text-rose-400 flex items-center gap-1">
+              <span className="font-bold text-rose-600 dark:text-rose-400 flex items-center gap-1">
                 <XCircle className="w-3.5 h-3.5" /> العيب الأبرز:
               </span>
-              <p className="text-slate-600 dark:text-slate-300 line-clamp-2">
+              <p className="text-slate-700 dark:text-slate-300 line-clamp-2">
                 • {product.cons[0]}
               </p>
             </div>
@@ -163,17 +169,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       </div>
 
       {/* Affiliate Buy & Price Comparison Footer */}
-      <div className="p-5 sm:p-6 border-t border-slate-800/60 bg-slate-950/40 space-y-3">
+      <div
+        className={`p-5 sm:p-6 border-t space-y-3 ${
+          isDarkMode ? "border-slate-800/60 bg-slate-950/40" : "border-slate-200 bg-slate-50"
+        }`}
+      >
         {/* Price Offers Row */}
         <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
-          <span className="text-slate-400 font-bold flex items-center gap-1">
+          <span className="text-slate-500 dark:text-slate-400 font-bold flex items-center gap-1">
             <ShoppingBag className="w-3.5 h-3.5 text-amber-500" />
             أفضل سعر حالي:
           </span>
 
           <div className="flex items-center gap-2">
             {bestPriceStore && (
-              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-black px-2.5 py-0.5 rounded-lg text-xs">
+              <span className="bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 font-black px-2.5 py-0.5 rounded-lg text-xs">
                 {bestPriceStore.name}: {getPrice(bestPriceStore.price)}
               </span>
             )}
@@ -223,7 +233,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div className="flex items-center gap-2 pt-2">
           <button
             onClick={() => onSelectProduct(product)}
-            className="flex-1 py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs flex items-center justify-center gap-2 border border-slate-700 transition-all"
+            className={`flex-1 py-2.5 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 border transition-all ${
+              isDarkMode
+                ? "bg-slate-800 hover:bg-slate-700 text-white border-slate-700"
+                : "bg-slate-900 hover:bg-slate-800 text-white border-slate-900 shadow-md"
+            }`}
           >
             <Eye className="w-4 h-4 text-amber-400" />
             <span>عرض المراجعة الكاملة والمواصفات</span>
@@ -232,10 +246,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {onCompareSelect && (
             <button
               onClick={() => onCompareSelect(product)}
-              className="p-2.5 rounded-xl bg-slate-800/80 hover:bg-amber-500/20 hover:text-amber-400 border border-slate-700 text-slate-300"
+              className={`p-2.5 rounded-xl border transition-colors ${
+                isDarkMode
+                  ? "bg-slate-800/80 hover:bg-amber-500/20 text-slate-300 border-slate-700"
+                  : "bg-white hover:bg-amber-50 text-slate-700 border-slate-300 shadow-sm"
+              }`}
               title="إضافة للمقارنة"
             >
-              <SlidersHorizontal className="w-4 h-4" />
+              <SlidersHorizontal className="w-4 h-4 text-amber-500" />
             </button>
           )}
         </div>

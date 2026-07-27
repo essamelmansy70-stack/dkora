@@ -14,7 +14,8 @@ import {
   BookOpen,
   ShoppingBag,
   Compass,
-  DollarSign
+  DollarSign,
+  Globe
 } from "lucide-react";
 import { Currency } from "../types";
 
@@ -57,37 +58,6 @@ export const Header: React.FC<HeaderProps> = ({
           : "bg-white/95 border-slate-200 text-slate-900 shadow-sm"
       }`}
     >
-      {/* Top Disclosure & Currency Bar */}
-      <div className="bg-gradient-to-r from-amber-600 via-amber-500 to-orange-500 text-slate-950 px-4 py-1.5 text-xs font-bold flex items-center justify-between shadow-inner">
-        <div className="flex items-center gap-2 max-w-7xl mx-auto w-full justify-between">
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-slate-950" />
-            <span>موقع مراجع حقيقي 100% | اختبارات ميدانية مستقلة للعدد والأدوات والديكور</span>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <div className="hidden md:flex items-center gap-1.5 opacity-90 text-[11px]">
-              <ShoppingBag className="w-3.5 h-3.5" />
-              <span>مقارنة أسعار أمازون • جوميا • نون</span>
-            </div>
-
-            {/* Currency Switcher */}
-            <div className="flex items-center gap-1 bg-slate-950/20 px-2 py-0.5 rounded-md text-white font-mono">
-              <DollarSign className="w-3 h-3 text-amber-300" />
-              <select
-                value={currency}
-                onChange={(e) => setCurrency(e.target.value as Currency)}
-                className="bg-transparent text-xs font-bold focus:outline-none text-slate-950 cursor-pointer"
-              >
-                <option value="EGP" className="bg-slate-900 text-white">ج.م (مصر)</option>
-                <option value="SAR" className="bg-slate-900 text-white">ر.س (السعودية)</option>
-                <option value="USD" className="bg-slate-900 text-white">$ (USD)</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Nav Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         {/* Brand Logo */}
@@ -150,7 +120,9 @@ export const Header: React.FC<HeaderProps> = ({
             className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
               activeView === "home" && !selectedCategory
                 ? "bg-amber-500/15 text-amber-500 border border-amber-500/30"
-                : "text-slate-400 hover:text-amber-400 hover:bg-slate-800/40"
+                : isDarkMode
+                ? "text-slate-400 hover:text-amber-400 hover:bg-slate-800/40"
+                : "text-slate-600 hover:text-amber-600 hover:bg-slate-100"
             }`}
           >
             <Compass className="w-4 h-4" />
@@ -162,7 +134,9 @@ export const Header: React.FC<HeaderProps> = ({
             className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
               activeView === "categories" || selectedCategory
                 ? "bg-amber-500/15 text-amber-500 border border-amber-500/30"
-                : "text-slate-400 hover:text-amber-400 hover:bg-slate-800/40"
+                : isDarkMode
+                ? "text-slate-400 hover:text-amber-400 hover:bg-slate-800/40"
+                : "text-slate-600 hover:text-amber-600 hover:bg-slate-100"
             }`}
           >
             <Layers className="w-4 h-4" />
@@ -174,7 +148,9 @@ export const Header: React.FC<HeaderProps> = ({
             className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
               activeView === "comparisons"
                 ? "bg-amber-500/15 text-amber-500 border border-amber-500/30"
-                : "text-slate-400 hover:text-amber-400 hover:bg-slate-800/40"
+                : isDarkMode
+                ? "text-slate-400 hover:text-amber-400 hover:bg-slate-800/40"
+                : "text-slate-600 hover:text-amber-600 hover:bg-slate-100"
             }`}
           >
             <SlidersHorizontal className="w-4 h-4" />
@@ -186,10 +162,12 @@ export const Header: React.FC<HeaderProps> = ({
             className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
               activeView === "deals"
                 ? "bg-amber-500/15 text-amber-500 border border-amber-500/30"
-                : "text-slate-400 hover:text-amber-400 hover:bg-slate-800/40"
+                : isDarkMode
+                ? "text-slate-400 hover:text-amber-400 hover:bg-slate-800/40"
+                : "text-slate-600 hover:text-amber-600 hover:bg-slate-100"
             }`}
           >
-            <Tag className="w-4 h-4 text-orange-400" />
+            <Tag className="w-4 h-4 text-orange-500" />
             <span>العروض والخصومات</span>
           </button>
 
@@ -198,11 +176,27 @@ export const Header: React.FC<HeaderProps> = ({
             className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
               activeView === "articles"
                 ? "bg-amber-500/15 text-amber-500 border border-amber-500/30"
-                : "text-slate-400 hover:text-amber-400 hover:bg-slate-800/40"
+                : isDarkMode
+                ? "text-slate-400 hover:text-amber-400 hover:bg-slate-800/40"
+                : "text-slate-600 hover:text-amber-600 hover:bg-slate-100"
             }`}
           >
             <BookOpen className="w-4 h-4" />
             <span>المقالات</span>
+          </button>
+
+          <button
+            onClick={() => setActiveView("sitemap")}
+            className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
+              activeView === "sitemap"
+                ? "bg-amber-500/15 text-amber-500 border border-amber-500/30"
+                : isDarkMode
+                ? "text-slate-400 hover:text-amber-400 hover:bg-slate-800/40"
+                : "text-slate-600 hover:text-amber-600 hover:bg-slate-100"
+            }`}
+          >
+            <Globe className="w-4 h-4 text-emerald-400" />
+            <span>خريطة الموقع</span>
           </button>
         </nav>
 
@@ -217,7 +211,9 @@ export const Header: React.FC<HeaderProps> = ({
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border flex items-center gap-1.5 ${
               isAdmin
                 ? "bg-amber-500 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20"
-                : "bg-slate-800/80 text-slate-300 border-slate-700 hover:border-amber-500/50"
+                : isDarkMode
+                ? "bg-slate-800/80 text-slate-300 border-slate-700 hover:border-amber-500/50"
+                : "bg-slate-100 text-slate-800 border-slate-300 hover:border-amber-500"
             }`}
           >
             <Sparkles className="w-3.5 h-3.5" />
@@ -230,7 +226,7 @@ export const Header: React.FC<HeaderProps> = ({
             className={`p-2 rounded-xl transition-colors border ${
               isDarkMode
                 ? "bg-slate-900 border-slate-800 text-amber-400 hover:bg-slate-800"
-                : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"
+                : "bg-amber-100 border-amber-300 text-amber-900 hover:bg-amber-200"
             }`}
             title="تغيير المظهر"
           >
@@ -240,7 +236,11 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-xl bg-slate-800/80 text-slate-300 border border-slate-700"
+            className={`lg:hidden p-2 rounded-xl border ${
+              isDarkMode
+                ? "bg-slate-800/80 text-slate-300 border-slate-700"
+                : "bg-slate-100 text-slate-800 border-slate-300"
+            }`}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -251,7 +251,7 @@ export const Header: React.FC<HeaderProps> = ({
       {mobileMenuOpen && (
         <div
           className={`lg:hidden border-t p-4 space-y-3 ${
-            isDarkMode ? "bg-slate-950 border-slate-800" : "bg-white border-slate-200"
+            isDarkMode ? "bg-slate-950 border-slate-800 text-slate-100" : "bg-white border-slate-200 text-slate-900"
           }`}
         >
           {/* Mobile Search */}
@@ -261,7 +261,11 @@ export const Header: React.FC<HeaderProps> = ({
               placeholder="ابحث عن منتج أو فئة..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pr-9 pl-3 py-2 rounded-xl text-xs border bg-slate-900 border-slate-800 text-white"
+              className={`w-full pr-9 pl-3 py-2 rounded-xl text-xs border ${
+                isDarkMode
+                  ? "bg-slate-900 border-slate-800 text-white placeholder-slate-500"
+                  : "bg-slate-100 border-slate-300 text-slate-900 placeholder-slate-400"
+              }`}
             />
             <Search className="w-4 h-4 absolute right-3 top-2.5 text-slate-400" />
           </div>
@@ -273,9 +277,13 @@ export const Header: React.FC<HeaderProps> = ({
                 setSelectedCategory(null);
                 setMobileMenuOpen(false);
               }}
-              className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-right flex items-center gap-2"
+              className={`p-3 rounded-xl border text-right flex items-center gap-2 ${
+                isDarkMode
+                  ? "bg-slate-900 border-slate-800 text-slate-100 hover:bg-slate-800"
+                  : "bg-slate-100 border-slate-200 text-slate-800 hover:bg-slate-200"
+              }`}
             >
-              <Compass className="w-4 h-4 text-amber-400" />
+              <Compass className="w-4 h-4 text-amber-500" />
               <span>الرئيسية</span>
             </button>
 
@@ -284,9 +292,13 @@ export const Header: React.FC<HeaderProps> = ({
                 setActiveView("categories");
                 setMobileMenuOpen(false);
               }}
-              className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-right flex items-center gap-2"
+              className={`p-3 rounded-xl border text-right flex items-center gap-2 ${
+                isDarkMode
+                  ? "bg-slate-900 border-slate-800 text-slate-100 hover:bg-slate-800"
+                  : "bg-slate-100 border-slate-200 text-slate-800 hover:bg-slate-200"
+              }`}
             >
-              <Layers className="w-4 h-4 text-amber-400" />
+              <Layers className="w-4 h-4 text-amber-500" />
               <span>التصنيفات</span>
             </button>
 
@@ -295,9 +307,13 @@ export const Header: React.FC<HeaderProps> = ({
                 setActiveView("comparisons");
                 setMobileMenuOpen(false);
               }}
-              className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-right flex items-center gap-2"
+              className={`p-3 rounded-xl border text-right flex items-center gap-2 ${
+                isDarkMode
+                  ? "bg-slate-900 border-slate-800 text-slate-100 hover:bg-slate-800"
+                  : "bg-slate-100 border-slate-200 text-slate-800 hover:bg-slate-200"
+              }`}
             >
-              <SlidersHorizontal className="w-4 h-4 text-amber-400" />
+              <SlidersHorizontal className="w-4 h-4 text-amber-500" />
               <span>المقارنات</span>
             </button>
 
@@ -306,9 +322,13 @@ export const Header: React.FC<HeaderProps> = ({
                 setActiveView("deals");
                 setMobileMenuOpen(false);
               }}
-              className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-right flex items-center gap-2"
+              className={`p-3 rounded-xl border text-right flex items-center gap-2 ${
+                isDarkMode
+                  ? "bg-slate-900 border-slate-800 text-slate-100 hover:bg-slate-800"
+                  : "bg-slate-100 border-slate-200 text-slate-800 hover:bg-slate-200"
+              }`}
             >
-              <Tag className="w-4 h-4 text-orange-400" />
+              <Tag className="w-4 h-4 text-orange-500" />
               <span>العروض والخصومات</span>
             </button>
 
@@ -317,10 +337,29 @@ export const Header: React.FC<HeaderProps> = ({
                 setActiveView("articles");
                 setMobileMenuOpen(false);
               }}
-              className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-right flex items-center gap-2"
+              className={`p-3 rounded-xl border text-right flex items-center gap-2 ${
+                isDarkMode
+                  ? "bg-slate-900 border-slate-800 text-slate-100 hover:bg-slate-800"
+                  : "bg-slate-100 border-slate-200 text-slate-800 hover:bg-slate-200"
+              }`}
             >
-              <BookOpen className="w-4 h-4 text-amber-400" />
+              <BookOpen className="w-4 h-4 text-amber-500" />
               <span>المقالات</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setActiveView("sitemap");
+                setMobileMenuOpen(false);
+              }}
+              className={`p-3 rounded-xl border text-right flex items-center gap-2 ${
+                isDarkMode
+                  ? "bg-slate-900 border-slate-800 text-slate-100 hover:bg-slate-800"
+                  : "bg-slate-100 border-slate-200 text-slate-800 hover:bg-slate-200"
+              }`}
+            >
+              <Globe className="w-4 h-4 text-emerald-400" />
+              <span>خريطة الموقع</span>
             </button>
 
             <button
@@ -329,7 +368,7 @@ export const Header: React.FC<HeaderProps> = ({
                 if (!isAdmin) setActiveView("admin");
                 setMobileMenuOpen(false);
               }}
-              className="p-3 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 text-right flex items-center gap-2"
+              className="p-3 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-600 dark:text-amber-400 text-right flex items-center gap-2"
             >
               <Sparkles className="w-4 h-4" />
               <span>لوحة التحكم</span>

@@ -63,23 +63,27 @@ export const BuyingGuidesView: React.FC<BuyingGuidesViewProps> = ({
                     {guide.title}
                   </h2>
 
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                  <p className={`text-sm leading-relaxed ${isDarkMode ? "text-slate-400" : "text-slate-600"}`}>
                     {guide.subtitle}
                   </p>
 
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed bg-slate-950 p-4 rounded-xl border border-slate-800">
+                  <p className={`text-xs sm:text-sm leading-relaxed p-4 rounded-xl border ${
+                    isDarkMode ? "bg-slate-950 text-slate-300 border-slate-800" : "bg-slate-50 text-slate-700 border-slate-200"
+                  }`}>
                     {guide.introduction}
                   </p>
                 </div>
               </div>
 
               {/* Buying Advice Bullet points */}
-              <div className="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-xs sm:text-sm space-y-2">
-                <h3 className="font-extrabold text-amber-500 flex items-center gap-2">
+              <div className={`p-5 rounded-2xl border text-xs sm:text-sm space-y-2 ${
+                isDarkMode ? "bg-amber-500/10 border-amber-500/20" : "bg-amber-50 border-amber-200"
+              }`}>
+                <h3 className="font-extrabold text-amber-600 dark:text-amber-500 flex items-center gap-2">
                   <Award className="w-4 h-4" />
                   قواعد ذهبية قبل الشراء في هذه الفئة:
                 </h3>
-                <ul className="space-y-1.5 text-slate-200">
+                <ul className={`space-y-1.5 ${isDarkMode ? "text-slate-200" : "text-slate-800"}`}>
                   {guide.buyingAdvice.map((adv, idx) => (
                     <li key={idx} className="flex items-start gap-2">
                       <span className="text-amber-500 font-bold">♦</span>
@@ -92,19 +96,21 @@ export const BuyingGuidesView: React.FC<BuyingGuidesViewProps> = ({
               {/* Featured Pick Products Cards inside guide */}
               {topProds.length > 0 && (
                 <div className="space-y-3 pt-2">
-                  <h4 className="font-extrabold text-sm text-slate-300">الترشيحات الفائزة في هذا الدليل:</h4>
+                  <h4 className={`font-extrabold text-sm ${isDarkMode ? "text-slate-300" : "text-slate-700"}`}>الترشيحات الفائزة في هذا الدليل:</h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {topProds.map((prod) => (
                       <div
                         key={prod.id}
                         onClick={() => onSelectProduct(prod)}
-                        className="p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-amber-500/50 cursor-pointer transition-all flex items-center justify-between gap-3"
+                        className={`p-4 rounded-2xl border hover:border-amber-500/50 cursor-pointer transition-all flex items-center justify-between gap-3 ${
+                          isDarkMode ? "bg-slate-950 border-slate-800" : "bg-slate-50 border-slate-200 shadow-sm"
+                        }`}
                       >
                         <div className="flex items-center gap-3">
-                          <img src={prod.mainImage} alt={prod.titleAr} className="w-14 h-14 rounded-xl object-cover border border-slate-800" />
+                          <img src={prod.mainImage} alt={prod.titleAr} className="w-14 h-14 rounded-xl object-cover border border-slate-300 dark:border-slate-800" />
                           <div>
-                            <h5 className="font-bold text-xs sm:text-sm text-slate-100 line-clamp-1">{prod.titleAr}</h5>
-                            <p className="text-amber-400 text-xs font-mono font-bold mt-0.5">تقييم: {prod.editorScore} / 10</p>
+                            <h5 className={`font-bold text-xs sm:text-sm line-clamp-1 ${isDarkMode ? "text-slate-100" : "text-slate-900"}`}>{prod.titleAr}</h5>
+                            <p className="text-amber-600 dark:text-amber-400 text-xs font-mono font-bold mt-0.5">تقييم: {prod.editorScore} / 10</p>
                           </div>
                         </div>
                         <ChevronLeft className="w-5 h-5 text-amber-500" />

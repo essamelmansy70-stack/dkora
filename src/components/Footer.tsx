@@ -89,7 +89,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
 
           {/* Navigation & Legal */}
           <div className="space-y-3">
-            <h4 className="font-extrabold text-white text-sm border-b border-slate-800 pb-2">روابط سريعة</h4>
+            <h4 className="font-extrabold text-white text-sm border-b border-slate-800 pb-2">روابط سريعة والأرشفة</h4>
             <ul className="space-y-2 text-xs">
               <li>
                 <button onClick={() => setActiveView("comparisons")} className="hover:text-amber-400">
@@ -105,6 +105,21 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
                 <button onClick={() => setActiveView("articles")} className="hover:text-amber-400">
                   • مقالات ودروس الصيانة
                 </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveView("sitemap")} className="hover:text-amber-400 flex items-center gap-1">
+                  • خريطة الموقع (Sitemap)
+                </button>
+              </li>
+              <li>
+                <a
+                  href="/sitemap.xml"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-amber-400 text-emerald-400 flex items-center gap-1"
+                >
+                  • ملف sitemap.xml المباشر ↗
+                </a>
               </li>
               <li>
                 <button onClick={() => setActiveView("admin")} className="hover:text-amber-400">

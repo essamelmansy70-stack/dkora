@@ -52,11 +52,13 @@ export const ComparisonView: React.FC<ComparisonViewProps> = ({
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-xs font-bold text-amber-500 mb-2">المنتج الأول (الجانب الأيمن):</label>
+            <label className="block text-xs font-bold text-amber-600 dark:text-amber-500 mb-2">المنتج الأول (الجانب الأيمن):</label>
             <select
               value={selectedP1}
               onChange={(e) => setSelectedP1(e.target.value)}
-              className="w-full p-3 rounded-2xl bg-slate-950 border border-slate-800 text-white font-bold text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className={`w-full p-3 rounded-2xl border font-bold text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 ${
+                isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
+              }`}
             >
               {products.map((p) => (
                 <option key={p.id} value={p.id}>
@@ -67,11 +69,13 @@ export const ComparisonView: React.FC<ComparisonViewProps> = ({
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-amber-500 mb-2">المنتج الثاني (الجانب الأيسر):</label>
+            <label className="block text-xs font-bold text-amber-600 dark:text-amber-500 mb-2">المنتج الثاني (الجانب الأيسر):</label>
             <select
               value={selectedP2}
               onChange={(e) => setSelectedP2(e.target.value)}
-              className="w-full p-3 rounded-2xl bg-slate-950 border border-slate-800 text-white font-bold text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className={`w-full p-3 rounded-2xl border font-bold text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 ${
+                isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
+              }`}
             >
               {products.map((p) => (
                 <option key={p.id} value={p.id}>
@@ -90,27 +94,33 @@ export const ComparisonView: React.FC<ComparisonViewProps> = ({
             isDarkMode ? "bg-slate-900 border-slate-800 text-slate-100" : "bg-white border-slate-200 text-slate-900"
           }`}
         >
-          <div className="grid grid-cols-12 border-b border-slate-800 bg-slate-950 text-white p-6 gap-4 text-center">
+          <div className={`grid grid-cols-12 border-b p-6 gap-4 text-center ${
+            isDarkMode ? "border-slate-800 bg-slate-950 text-white" : "border-slate-200 bg-slate-100 text-slate-900"
+          }`}>
             <div className="col-span-6 space-y-3">
               <span className="bg-amber-500 text-slate-950 text-xs font-black px-2.5 py-0.5 rounded-full">
                 المنتج الأول
               </span>
-              <img src={p1.mainImage} alt={p1.titleAr} className="w-32 h-32 object-cover rounded-2xl mx-auto border border-slate-800" />
-              <h3 className="font-extrabold text-base sm:text-lg text-slate-100">{p1.titleAr}</h3>
-              <p className="text-amber-400 font-mono font-bold text-xs">تقييم المحرر: {p1.editorScore} / 10</p>
-              <div className="text-xs font-bold bg-slate-900 p-2 rounded-xl text-slate-300">
+              <img src={p1.mainImage} alt={p1.titleAr} className="w-32 h-32 object-cover rounded-2xl mx-auto border border-slate-300 dark:border-slate-800" />
+              <h3 className={`font-extrabold text-base sm:text-lg ${isDarkMode ? "text-slate-100" : "text-slate-900"}`}>{p1.titleAr}</h3>
+              <p className="text-amber-600 dark:text-amber-400 font-mono font-bold text-xs">تقييم المحرر: {p1.editorScore} / 10</p>
+              <div className={`text-xs font-bold p-2 rounded-xl ${
+                isDarkMode ? "bg-slate-900 text-slate-300" : "bg-white text-slate-800 shadow-sm border border-slate-200"
+              }`}>
                 أقل سعر: {getPrice(p1.priceAmazon)}
               </div>
             </div>
 
-            <div className="col-span-6 space-y-3 border-r border-slate-800">
+            <div className={`col-span-6 space-y-3 border-r ${isDarkMode ? "border-slate-800" : "border-slate-200"}`}>
               <span className="bg-amber-500 text-slate-950 text-xs font-black px-2.5 py-0.5 rounded-full">
                 المنتج الثاني
               </span>
-              <img src={p2.mainImage} alt={p2.titleAr} className="w-32 h-32 object-cover rounded-2xl mx-auto border border-slate-800" />
-              <h3 className="font-extrabold text-base sm:text-lg text-slate-100">{p2.titleAr}</h3>
-              <p className="text-amber-400 font-mono font-bold text-xs">تقييم المحرر: {p2.editorScore} / 10</p>
-              <div className="text-xs font-bold bg-slate-900 p-2 rounded-xl text-slate-300">
+              <img src={p2.mainImage} alt={p2.titleAr} className="w-32 h-32 object-cover rounded-2xl mx-auto border border-slate-300 dark:border-slate-800" />
+              <h3 className={`font-extrabold text-base sm:text-lg ${isDarkMode ? "text-slate-100" : "text-slate-900"}`}>{p2.titleAr}</h3>
+              <p className="text-amber-600 dark:text-amber-400 font-mono font-bold text-xs">تقييم المحرر: {p2.editorScore} / 10</p>
+              <div className={`text-xs font-bold p-2 rounded-xl ${
+                isDarkMode ? "bg-slate-900 text-slate-300" : "bg-white text-slate-800 shadow-sm border border-slate-200"
+              }`}>
                 أقل سعر: {getPrice(p2.priceAmazon)}
               </div>
             </div>
@@ -118,12 +128,12 @@ export const ComparisonView: React.FC<ComparisonViewProps> = ({
 
           {/* Winner Banner */}
           <div className="p-4 bg-gradient-to-r from-amber-500/20 via-amber-500/10 to-orange-500/20 text-center border-b border-slate-800 text-xs sm:text-sm">
-            <strong className="text-amber-400 font-extrabold text-base block mb-1">
+            <strong className="text-amber-600 dark:text-amber-400 font-extrabold text-base block mb-1">
               🏆 الفائز بتوصية "ديكورا": {p1.editorScore >= p2.editorScore ? p1.titleAr : p2.titleAr}
             </strong>
-            <p className="text-slate-300 max-w-2xl mx-auto">
+            <p className="text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
               بناءً على نتائج الاختيارات الميدانية في الورش والعزم والتحمل، نوصي بشراء{" "}
-              <span className="text-amber-400 font-bold">
+              <span className="text-amber-600 dark:text-amber-400 font-bold">
                 {p1.editorScore >= p2.editorScore ? p1.brandName : p2.brandName}
               </span>{" "}
               لأدائه المتفوق.
@@ -134,8 +144,8 @@ export const ComparisonView: React.FC<ComparisonViewProps> = ({
           <div className="p-6 space-y-6 text-xs sm:text-sm">
             <div className="grid grid-cols-2 gap-4">
               <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30">
-                <h4 className="font-bold text-emerald-400 mb-2">مميزات {p1.brandName}:</h4>
-                <ul className="space-y-1 text-slate-300">
+                <h4 className="font-bold text-emerald-700 dark:text-emerald-400 mb-2">مميزات {p1.brandName}:</h4>
+                <ul className={`space-y-1 ${isDarkMode ? "text-slate-300" : "text-slate-800"}`}>
                   {p1.pros.map((pr, idx) => (
                     <li key={idx}>✓ {pr}</li>
                   ))}
@@ -143,8 +153,8 @@ export const ComparisonView: React.FC<ComparisonViewProps> = ({
               </div>
 
               <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30">
-                <h4 className="font-bold text-emerald-400 mb-2">مميزات {p2.brandName}:</h4>
-                <ul className="space-y-1 text-slate-300">
+                <h4 className="font-bold text-emerald-700 dark:text-emerald-400 mb-2">مميزات {p2.brandName}:</h4>
+                <ul className={`space-y-1 ${isDarkMode ? "text-slate-300" : "text-slate-800"}`}>
                   {p2.pros.map((pr, idx) => (
                     <li key={idx}>✓ {pr}</li>
                   ))}

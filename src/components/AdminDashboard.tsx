@@ -113,7 +113,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   return (
     <div className="space-y-8 my-8">
       {/* Header */}
-      <div className="flex items-center justify-between p-6 rounded-3xl bg-slate-950 text-white border border-slate-800">
+      <div className={`flex items-center justify-between p-6 rounded-3xl border ${
+        isDarkMode ? "bg-slate-950 text-white border-slate-800" : "bg-white text-slate-900 border-slate-200 shadow-md"
+      }`}>
         <div>
           <span className="bg-amber-500 text-slate-950 text-xs font-black px-3 py-1 rounded-full mb-2 inline-block">
             لوحة الإدارة والإشراف - Dkora Admin Panel
@@ -131,11 +133,15 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-2 border-b border-slate-800 pb-2 text-xs font-bold">
+      <div className={`flex gap-2 border-b pb-2 text-xs font-bold ${isDarkMode ? "border-slate-800" : "border-slate-200"}`}>
         <button
           onClick={() => setAdminTab("products")}
           className={`px-4 py-2 rounded-xl transition-all ${
-            adminTab === "products" ? "bg-amber-500 text-slate-950" : "bg-slate-900 text-slate-300"
+            adminTab === "products"
+              ? "bg-amber-500 text-slate-950"
+              : isDarkMode
+              ? "bg-slate-900 text-slate-300 hover:bg-slate-800"
+              : "bg-slate-100 text-slate-700 hover:bg-slate-200"
           }`}
         >
           قائمة المنتجات ({products.length})
@@ -143,7 +149,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         <button
           onClick={() => setAdminTab("add_product")}
           className={`px-4 py-2 rounded-xl transition-all ${
-            adminTab === "add_product" ? "bg-amber-500 text-slate-950" : "bg-slate-900 text-slate-300"
+            adminTab === "add_product"
+              ? "bg-amber-500 text-slate-950"
+              : isDarkMode
+              ? "bg-slate-900 text-slate-300 hover:bg-slate-800"
+              : "bg-slate-100 text-slate-700 hover:bg-slate-200"
           }`}
         >
           + إضافة منتج ومراجعة
@@ -151,7 +161,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         <button
           onClick={() => setAdminTab("stats")}
           className={`px-4 py-2 rounded-xl transition-all ${
-            adminTab === "stats" ? "bg-amber-500 text-slate-950" : "bg-slate-900 text-slate-300"
+            adminTab === "stats"
+              ? "bg-amber-500 text-slate-950"
+              : isDarkMode
+              ? "bg-slate-900 text-slate-300 hover:bg-slate-800"
+              : "bg-slate-100 text-slate-700 hover:bg-slate-200"
           }`}
         >
           إحصائيات الأرباح والمشاهدات
@@ -160,9 +174,13 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
       {/* LIST PRODUCTS TAB */}
       {adminTab === "products" && (
-        <div className="rounded-3xl border overflow-hidden bg-slate-950 text-white border-slate-800">
+        <div className={`rounded-3xl border overflow-hidden shadow-lg ${
+          isDarkMode ? "bg-slate-950 text-white border-slate-800" : "bg-white text-slate-900 border-slate-200"
+        }`}>
           <table className="w-full text-right text-xs">
-            <thead className="bg-slate-900 border-b border-slate-800 text-amber-400 font-extrabold">
+            <thead className={`border-b font-extrabold ${
+              isDarkMode ? "bg-slate-900 border-slate-800 text-amber-400" : "bg-slate-100 border-slate-200 text-amber-700"
+            }`}>
               <tr>
                 <th className="p-3.5">المنتج والموديل</th>
                 <th className="p-3.5">العلامة</th>
@@ -173,21 +191,23 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             </thead>
             <tbody>
               {products.map((p) => (
-                <tr key={p.id} className="border-b border-slate-800/60 hover:bg-slate-900/40">
+                <tr key={p.id} className={`border-b ${
+                  isDarkMode ? "border-slate-800/60 hover:bg-slate-900/40" : "border-slate-100 hover:bg-slate-50"
+                }`}>
                   <td className="p-3.5 flex items-center gap-3">
-                    <img src={p.mainImage} alt={p.titleAr} className="w-10 h-10 rounded-lg object-cover border border-slate-700" />
+                    <img src={p.mainImage} alt={p.titleAr} className="w-10 h-10 rounded-lg object-cover border border-slate-300 dark:border-slate-700" />
                     <div>
-                      <span className="font-bold block text-slate-100">{p.titleAr}</span>
+                      <span className={`font-bold block ${isDarkMode ? "text-slate-100" : "text-slate-900"}`}>{p.titleAr}</span>
                       <span className="text-[10px] text-slate-400">{p.modelNumber}</span>
                     </div>
                   </td>
-                  <td className="p-3.5 font-bold text-amber-400">{p.brandName}</td>
-                  <td className="p-3.5 font-mono text-emerald-400">{p.editorScore} / 10</td>
+                  <td className="p-3.5 font-bold text-amber-600 dark:text-amber-400">{p.brandName}</td>
+                  <td className="p-3.5 font-mono text-emerald-600 dark:text-emerald-400">{p.editorScore} / 10</td>
                   <td className="p-3.5 font-mono">{p.priceAmazon?.toLocaleString()} ج.م</td>
                   <td className="p-3.5">
                     <button
                       onClick={() => handleDeleteProduct(p.id)}
-                      className="p-1.5 rounded-lg bg-rose-500/20 text-rose-400 hover:bg-rose-500/40"
+                      className="p-1.5 rounded-lg bg-rose-500/20 text-rose-600 dark:text-rose-400 hover:bg-rose-500/40"
                       title="حذف"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -205,57 +225,65 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         <form
           onSubmit={handleCreateProduct}
           className={`p-6 sm:p-8 rounded-3xl border space-y-4 ${
-            isDarkMode ? "bg-slate-900 border-slate-800 text-slate-100" : "bg-white border-slate-200 text-slate-900"
+            isDarkMode ? "bg-slate-900 border-slate-800 text-slate-100" : "bg-white border-slate-200 text-slate-900 shadow-md"
           }`}
         >
-          <h2 className="text-lg font-black text-amber-500">إضافة مراجعة منتج جديد وقسيمة تسويق بالعمولة</h2>
+          <h2 className="text-lg font-black text-amber-600 dark:text-amber-500">إضافة مراجعة منتج جديد وقسيمة تسويق بالعمولة</h2>
 
           {saveSuccess && (
-            <div className="p-3 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold">
+            <div className="p-3 rounded-xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-xs font-bold">
               تم حفظ المنتج الجديد بنجاح وإضافته للكتالوج!
             </div>
           )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
             <div>
-              <label className="block font-bold text-slate-400 mb-1">اسم المنتج بالعربية:</label>
+              <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>اسم المنتج بالعربية:</label>
               <input
                 type="text"
                 required
                 placeholder="مثال: شنيور هيلتي بوش 800 واط"
                 value={newTitleAr}
                 onChange={(e) => setNewTitleAr(e.target.value)}
-                className="w-full p-2.5 rounded-xl border bg-slate-950 border-slate-800 text-white"
+                className={`w-full p-2.5 rounded-xl border ${
+                  isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
+                }`}
               />
             </div>
 
             <div>
-              <label className="block font-bold text-slate-400 mb-1">اسم الشركة / الماركة:</label>
+              <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>اسم الشركة / الماركة:</label>
               <input
                 type="text"
                 required
                 value={newBrandName}
                 onChange={(e) => setNewBrandName(e.target.value)}
-                className="w-full p-2.5 rounded-xl border bg-slate-950 border-slate-800 text-white"
+                className={`w-full p-2.5 rounded-xl border ${
+                  isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
+                }`}
               />
             </div>
 
             <div>
-              <label className="block font-bold text-slate-400 mb-1">رقم الموديل:</label>
+              <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>رقم الموديل:</label>
               <input
                 type="text"
                 value={newModel}
                 onChange={(e) => setNewModel(e.target.value)}
-                className="w-full p-2.5 rounded-xl border bg-slate-950 border-slate-800 text-white"
+                className={`w-full p-2.5 rounded-xl border ${
+                  isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
+                }`}
               />
             </div>
 
             <div>
-              <label className="block font-bold text-slate-400 mb-1">التصنيف:</label>
+              <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>التصنيف:</label>
               <select
                 value={newCategory}
                 onChange={(e) => setNewCategory(e.target.value)}
-                className="w-full p-2.5 rounded-xl border bg-slate-950 border-slate-800 text-white font-bold"
+                className={`w-full p-2.5 rounded-xl border font-bold ${
+                  isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
+                }`}
               >
                 {categories.map((c) => (
                   <option key={c.id} value={c.id}>
@@ -266,44 +294,52 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             </div>
 
             <div>
-              <label className="block font-bold text-slate-400 mb-1">سعر أمازون (ج.م):</label>
+              <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>سعر أمازون (ج.م):</label>
               <input
                 type="number"
                 value={newPriceAmazon}
                 onChange={(e) => setNewPriceAmazon(Number(e.target.value))}
-                className="w-full p-2.5 rounded-xl border bg-slate-950 border-slate-800 text-white"
+                className={`w-full p-2.5 rounded-xl border ${
+                  isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
+                }`}
               />
             </div>
 
             <div>
-              <label className="block font-bold text-slate-400 mb-1">سعر جوميا (ج.م):</label>
+              <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>سعر جوميا (ج.م):</label>
               <input
                 type="number"
                 value={newPriceJumia}
                 onChange={(e) => setNewPriceJumia(Number(e.target.value))}
-                className="w-full p-2.5 rounded-xl border bg-slate-950 border-slate-800 text-white"
+                className={`w-full p-2.5 rounded-xl border ${
+                  isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
+                }`}
               />
             </div>
           </div>
 
           <div className="text-xs">
-            <label className="block font-bold text-slate-400 mb-1">رابط صورة المنتج (URL):</label>
+            <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>رابط صورة المنتج (URL):</label>
             <input
               type="text"
               value={newImage}
               onChange={(e) => setNewImage(e.target.value)}
-              className="w-full p-2.5 rounded-xl border bg-slate-950 border-slate-800 text-white"
+              className={`w-full p-2.5 rounded-xl border ${
+                isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
+              }`}
             />
           </div>
 
           <div className="text-xs">
-            <label className="block font-bold text-slate-400 mb-1">ملخص المراجعة الفنية:</label>
+            <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>ملخص المراجعة الفنية:</label>
             <textarea
               rows={2}
               value={newSummary}
               onChange={(e) => setNewSummary(e.target.value)}
               placeholder="اكتب خلاصة تقييم المحرر الفني..."
-              className="w-full p-2.5 rounded-xl border bg-slate-950 border-slate-800 text-white"
+              className={`w-full p-2.5 rounded-xl border ${
+                isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-slate-50 border-slate-300 text-slate-900"
+              }`}
             />
           </div>
 
@@ -320,30 +356,36 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
       {/* STATS TAB */}
       {adminTab === "stats" && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-3xl bg-slate-950 border border-slate-800 text-white space-y-2">
-            <div className="flex items-center justify-between text-xs text-slate-400">
+          <div className={`p-6 rounded-3xl border space-y-2 ${
+            isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-white border-slate-200 text-slate-900 shadow-md"
+          }`}>
+            <div className={`flex items-center justify-between text-xs ${isDarkMode ? "text-slate-400" : "text-slate-500"}`}>
               <span>إجمالي النقرات على وروابط أمازون</span>
-              <TrendingUp className="w-4 h-4 text-emerald-400" />
+              <TrendingUp className="w-4 h-4 text-emerald-500" />
             </div>
-            <p className="text-3xl font-black font-mono text-emerald-400">14,290 نقرة</p>
+            <p className="text-3xl font-black font-mono text-emerald-600 dark:text-emerald-400">14,290 نقرة</p>
             <p className="text-[10px] text-slate-500">تحويل مباشر للمتاجر الكبرى</p>
           </div>
 
-          <div className="p-6 rounded-3xl bg-slate-950 border border-slate-800 text-white space-y-2">
-            <div className="flex items-center justify-between text-xs text-slate-400">
+          <div className={`p-6 rounded-3xl border space-y-2 ${
+            isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-white border-slate-200 text-slate-900 shadow-md"
+          }`}>
+            <div className={`flex items-center justify-between text-xs ${isDarkMode ? "text-slate-400" : "text-slate-500"}`}>
               <span>المراجعات المنشورة</span>
-              <BarChart3 className="w-4 h-4 text-amber-400" />
+              <BarChart3 className="w-4 h-4 text-amber-500" />
             </div>
-            <p className="text-3xl font-black font-mono text-amber-400">{products.length} منتج</p>
+            <p className="text-3xl font-black font-mono text-amber-600 dark:text-amber-400">{products.length} منتج</p>
             <p className="text-[10px] text-slate-500">في 12 تصنيف رئيسي</p>
           </div>
 
-          <div className="p-6 rounded-3xl bg-slate-950 border border-slate-800 text-white space-y-2">
-            <div className="flex items-center justify-between text-xs text-slate-400">
+          <div className={`p-6 rounded-3xl border space-y-2 ${
+            isDarkMode ? "bg-slate-950 border-slate-800 text-white" : "bg-white border-slate-200 text-slate-900 shadow-md"
+          }`}>
+            <div className={`flex items-center justify-between text-xs ${isDarkMode ? "text-slate-400" : "text-slate-500"}`}>
               <span>الأرباح التقديرية هذا الشهر</span>
-              <DollarSign className="w-4 h-4 text-orange-400" />
+              <DollarSign className="w-4 h-4 text-orange-500" />
             </div>
-            <p className="text-3xl font-black font-mono text-orange-400">$1,850</p>
+            <p className="text-3xl font-black font-mono text-orange-600 dark:text-orange-400">$1,850</p>
             <p className="text-[10px] text-slate-500">عمولات التسويق بالعمولة (Affiliate)</p>
           </div>
         </div>

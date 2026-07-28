@@ -1,5 +1,5 @@
 import React from "react";
-import { Search, Sparkles, CheckCircle2, ShoppingCart, ShieldAlert, Award, ChevronLeft } from "lucide-react";
+import { CheckCircle2, ShoppingCart, ShieldAlert, Award } from "lucide-react";
 import { Product } from "../types";
 
 interface HeroSearchProps {
@@ -11,30 +11,8 @@ interface HeroSearchProps {
 }
 
 export const HeroSearch: React.FC<HeroSearchProps> = ({
-  searchQuery,
-  setSearchQuery,
-  products,
-  onSelectProduct,
   isDarkMode
 }) => {
-  const trendingTags = [
-    "شنيور 20V بطارية",
-    "ميزان ليزر 3D أخضر",
-    "قفل باب ذكي بالبصمة",
-    "صاروخ قطعية بوش 750W",
-    "كمبروسر هواء 50 لتر",
-    "دهان مقاوم للرطوبة"
-  ];
-
-  const matchedProducts = searchQuery.trim().length >= 2
-    ? products.filter(
-        (p) =>
-          p.titleAr.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          p.tags.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase())) ||
-          p.brandName.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    : [];
-
   return (
     <div
       className={`relative overflow-hidden rounded-3xl border my-6 p-6 sm:p-12 transition-all ${
@@ -51,102 +29,20 @@ export const HeroSearch: React.FC<HeroSearchProps> = ({
         {/* Badge */}
         <div className="inline-flex items-center gap-2 bg-amber-500/15 border border-amber-500/30 text-amber-500 text-xs sm:text-sm font-extrabold px-4 py-1.5 rounded-full shadow-sm">
           <Award className="w-4 h-4" />
-          <span>المنصة الأولى المعتمدة لمراجعات العُدد والديكور والمقارنات 2026</span>
+          <span>منصة مراجعات المنتجات المستقلة ومقارنة المواصفات 2026</span>
         </div>
 
         {/* Main Headline */}
         <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-slate-900 dark:text-white">
-          اختر عُدتك وأدواتك بثقة{" "}
+          مراجعات تفصيلية ومقارنات فنية{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500">
-            بناءً على تجارب ميدانية حقيقية
+            لتتخذ قرار الشراء الأنسب بثقة
           </span>
         </h1>
 
         <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
-          نختبر العدد الكهربائية واليدوية، أدوات الورش، ومواد الديكور مع تقديم مقارنة أسعار لحظية بين{" "}
-          <strong className="text-amber-500">أمازون، جوميا، ونون</strong> لنضمن لك الجودة وأفضل سعر.
+          نختبر المنتجات والعدد والأدوات بموضوعية تامة، ونطرح المميزات والعيوب بوضوح مع مقالات مراجعة شاملة ومقارنات مباشرة ومستمرة بين جميع الطرازات.
         </p>
-
-        {/* Search Input Box with Autocomplete */}
-        <div className="relative max-w-2xl mx-auto">
-          <div className="relative flex items-center">
-            <input
-              type="text"
-              placeholder="ما الذي تبحث عنه؟ (مثال: أفضل شنيور، ميزان ليزر، قفل ذكي...)"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className={`w-full pr-12 pl-4 py-4 rounded-2xl text-sm sm:text-base border font-medium shadow-xl transition-all focus:outline-none focus:ring-2 focus:ring-amber-500 ${
-                isDarkMode
-                  ? "bg-slate-900/95 border-slate-700 text-slate-100 placeholder-slate-400"
-                  : "bg-white border-slate-300 text-slate-900 placeholder-slate-400"
-              }`}
-            />
-            <Search className="w-5 h-5 absolute right-4 text-amber-500 pointer-events-none" />
-          </div>
-
-          {/* Search Dropdown Results */}
-          {matchedProducts.length > 0 && (
-            <div
-              className={`absolute top-full left-0 right-0 mt-2 z-50 rounded-2xl border shadow-2xl p-2 max-h-80 overflow-y-auto text-right ${
-                isDarkMode ? "bg-slate-900 border-slate-700" : "bg-white border-slate-200"
-              }`}
-            >
-              <div className="text-[11px] font-bold text-slate-400 px-3 py-1 border-b border-slate-800 mb-1">
-                نتائج البحث السريع ({matchedProducts.length})
-              </div>
-              {matchedProducts.map((p) => (
-                <div
-                  key={p.id}
-                  onClick={() => {
-                    onSelectProduct(p);
-                    setSearchQuery("");
-                  }}
-                  className={`p-3 rounded-xl border border-transparent hover:border-amber-500/40 cursor-pointer transition-all flex items-center justify-between gap-3 ${
-                    isDarkMode ? "hover:bg-slate-800/80" : "hover:bg-amber-50"
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <img
-                      src={p.mainImage}
-                      alt={p.titleAr}
-                      className="w-10 h-10 rounded-lg object-cover border border-slate-700"
-                    />
-                    <div>
-                      <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white line-clamp-1">
-                        {p.titleAr}
-                      </h4>
-                      <p className="text-[11px] text-amber-500 font-semibold">
-                        تقييم المحرر: {p.editorScore} / 10 • {p.brandName}
-                      </p>
-                    </div>
-                  </div>
-                  <ChevronLeft className="w-4 h-4 text-slate-400" />
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Trending Tags */}
-        <div className="flex flex-wrap items-center justify-center gap-2 pt-2 text-xs">
-          <span className="text-slate-400 font-bold flex items-center gap-1">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            الأكثر بحثاً:
-          </span>
-          {trendingTags.map((tag) => (
-            <button
-              key={tag}
-              onClick={() => setSearchQuery(tag)}
-              className={`px-3 py-1 rounded-full border text-xs font-semibold transition-all hover:border-amber-500 hover:text-amber-500 ${
-                isDarkMode
-                  ? "bg-slate-900/80 border-slate-800 text-slate-300"
-                  : "bg-white border-slate-200 text-slate-700"
-              }`}
-            >
-              {tag}
-            </button>
-          ))}
-        </div>
 
         {/* Trust & Affiliate Features Grid */}
         <div className="pt-6 border-t border-slate-800/50 grid grid-cols-2 md:grid-cols-4 gap-4 text-right">

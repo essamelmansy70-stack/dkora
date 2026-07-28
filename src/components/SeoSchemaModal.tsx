@@ -14,9 +14,9 @@ export const SeoSchemaModal: React.FC<SeoSchemaModalProps> = ({
   onClose,
   isDarkMode,
 }) => {
-  if (!product) return null;
-
   const [copied, setCopied] = useState(false);
+
+  if (!product) return null;
 
   const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://dkora.online";
   const canonicalUrl = createProductUrl(product, baseUrl);

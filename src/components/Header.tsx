@@ -7,15 +7,8 @@ import {
   Menu,
   X,
   SlidersHorizontal,
-  Layers,
-  Sparkles,
-  ShieldCheck,
-  Tag,
   BookOpen,
-  ShoppingBag,
-  Compass,
-  DollarSign,
-  Globe
+  Compass
 } from "lucide-react";
 import { Currency } from "../types";
 
@@ -88,7 +81,7 @@ export const Header: React.FC<HeaderProps> = ({
               </span>
             </div>
             <p className="text-[9px] sm:text-[10px] text-slate-400 font-medium tracking-wide">
-              دليل العدد والأدوات والديكور
+              منصة المراجعات المستقلة ومقارنة المنتجات
             </p>
           </div>
         </a>
@@ -97,7 +90,7 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="hidden md:flex flex-1 max-w-md relative">
           <input
             type="text"
-            placeholder="ابحث عن شنيور، ميزان ليزر، قفل ذكي، دهان..."
+            placeholder="ابحث عن مراجعة منتج، شنيور، ماكينة رش دهانات..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className={`w-full pr-10 pl-4 py-2 rounded-xl text-xs sm:text-sm border transition-all focus:outline-none focus:ring-2 focus:ring-amber-500/50 ${
@@ -138,28 +131,28 @@ export const Header: React.FC<HeaderProps> = ({
             }`}
           >
             <Compass className="w-4 h-4" />
-            <span>الرئيسية</span>
+            <span>مراجعات المنتجات</span>
           </a>
 
           <a
-            href="/categories"
+            href="/articles"
             onClick={(e) => {
               if (!e.ctrlKey && !e.metaKey) {
                 e.preventDefault();
-                setActiveView("categories");
-                if (typeof window !== "undefined") window.history.pushState({}, "", "/categories");
+                setActiveView("articles");
+                if (typeof window !== "undefined") window.history.pushState({}, "", "/articles");
               }
             }}
             className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
-              activeView === "categories" || selectedCategory
+              activeView === "articles"
                 ? "bg-amber-500/15 text-amber-500 border border-amber-500/30"
                 : isDarkMode
                 ? "text-slate-400 hover:text-amber-400 hover:bg-slate-800/40"
                 : "text-slate-600 hover:text-amber-600 hover:bg-slate-100"
             }`}
           >
-            <Layers className="w-4 h-4" />
-            <span>التصنيفات (12)</span>
+            <BookOpen className="w-4 h-4 text-amber-500" />
+            <span>مقالات المراجعات الشاملة</span>
           </a>
 
           <a
@@ -180,116 +173,13 @@ export const Header: React.FC<HeaderProps> = ({
             }`}
           >
             <SlidersHorizontal className="w-4 h-4" />
-            <span>المقارنات</span>
+            <span>مقارنات المنتجات</span>
           </a>
 
-          <a
-            href="/deals"
-            onClick={(e) => {
-              if (!e.ctrlKey && !e.metaKey) {
-                e.preventDefault();
-                setActiveView("deals");
-                if (typeof window !== "undefined") window.history.pushState({}, "", "/deals");
-              }
-            }}
-            className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
-              activeView === "deals"
-                ? "bg-amber-500/15 text-amber-500 border border-amber-500/30"
-                : isDarkMode
-                ? "text-slate-400 hover:text-amber-400 hover:bg-slate-800/40"
-                : "text-slate-600 hover:text-amber-600 hover:bg-slate-100"
-            }`}
-          >
-            <Tag className="w-4 h-4 text-orange-500" />
-            <span>العروض والخصومات</span>
-          </a>
-
-          <a
-            href="/articles"
-            onClick={(e) => {
-              if (!e.ctrlKey && !e.metaKey) {
-                e.preventDefault();
-                setActiveView("articles");
-                if (typeof window !== "undefined") window.history.pushState({}, "", "/articles");
-              }
-            }}
-            className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
-              activeView === "articles"
-                ? "bg-amber-500/15 text-amber-500 border border-amber-500/30"
-                : isDarkMode
-                ? "text-slate-400 hover:text-amber-400 hover:bg-slate-800/40"
-                : "text-slate-600 hover:text-amber-600 hover:bg-slate-100"
-            }`}
-          >
-            <BookOpen className="w-4 h-4" />
-            <span>المقالات</span>
-          </a>
-
-          <a
-            href="/sitemap"
-            onClick={(e) => {
-              if (!e.ctrlKey && !e.metaKey) {
-                e.preventDefault();
-                setActiveView("sitemap");
-                if (typeof window !== "undefined") window.history.pushState({}, "", "/sitemap");
-              }
-            }}
-            className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
-              activeView === "sitemap"
-                ? "bg-amber-500/15 text-amber-500 border border-amber-500/30"
-                : isDarkMode
-                ? "text-slate-400 hover:text-amber-400 hover:bg-slate-800/40"
-                : "text-slate-600 hover:text-amber-600 hover:bg-slate-100"
-            }`}
-          >
-            <Globe className="w-4 h-4 text-emerald-400" />
-            <span>خريطة الموقع</span>
-          </a>
-
-          <a
-            href="/privacy"
-            onClick={(e) => {
-              if (!e.ctrlKey && !e.metaKey) {
-                e.preventDefault();
-                setActiveView("privacy");
-                if (typeof window !== "undefined") window.history.pushState({}, "", "/privacy");
-              }
-            }}
-            className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
-              ["privacy", "terms", "about", "contact", "disclaimer"].includes(activeView)
-                ? "bg-amber-500/15 text-amber-500 border border-amber-500/30"
-                : isDarkMode
-                ? "text-slate-400 hover:text-amber-400 hover:bg-slate-800/40"
-                : "text-slate-600 hover:text-amber-600 hover:bg-slate-100"
-            }`}
-          >
-            <ShieldCheck className="w-4 h-4 text-amber-500" />
-            <span>السياسات والخصوصية</span>
-          </a>
         </nav>
 
         {/* Action Controls */}
         <div className="flex items-center gap-2">
-          {/* Admin Dashboard shortcut (Hidden by default unless accessed via secret link or unlocked) */}
-          {(showAdminButton || isAdmin) && (
-            <button
-              onClick={() => {
-                setIsAdmin(!isAdmin);
-                if (!isAdmin) setActiveView("admin");
-              }}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border flex items-center gap-1.5 ${
-                isAdmin
-                  ? "bg-amber-500 text-slate-950 border-amber-400 shadow-md shadow-amber-500/20"
-                  : isDarkMode
-                  ? "bg-slate-800/80 text-slate-300 border-slate-700 hover:border-amber-500/50"
-                  : "bg-slate-100 text-slate-800 border-slate-300 hover:border-amber-500"
-              }`}
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>{isAdmin ? "لوحة التحكم (نشطة)" : "دخول الإدارة"}</span>
-            </button>
-          )}
-
           {/* Theme Toggle */}
           <button
             onClick={() => setIsDarkMode(!isDarkMode)}
@@ -317,7 +207,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* Mobile Horizontal Quick Nav Bar (Always visible on mobile without needing drawer) */}
+      {/* Mobile Horizontal Quick Nav Bar */}
       <div className="lg:hidden border-t overflow-x-auto py-2 px-3 flex items-center gap-2 text-xs font-bold no-scrollbar scroll-smooth">
         <a
           href="/"
@@ -338,28 +228,28 @@ export const Header: React.FC<HeaderProps> = ({
           }`}
         >
           <Compass className="w-3.5 h-3.5 text-amber-500" />
-          <span>الرئيسية</span>
+          <span>مراجعات المنتجات</span>
         </a>
 
         <a
-          href="/categories"
+          href="/articles"
           onClick={(e) => {
             if (!e.ctrlKey && !e.metaKey) {
               e.preventDefault();
-              setActiveView("categories");
-              if (typeof window !== "undefined") window.history.pushState({}, "", "/categories");
+              setActiveView("articles");
+              if (typeof window !== "undefined") window.history.pushState({}, "", "/articles");
             }
           }}
           className={`px-3 py-1.5 rounded-lg whitespace-nowrap flex items-center gap-1.5 shrink-0 transition-colors ${
-            activeView === "categories" || selectedCategory
+            activeView === "articles"
               ? "bg-amber-500 text-slate-950 font-black shadow-sm"
               : isDarkMode
               ? "bg-slate-900/80 text-slate-300 border border-slate-800"
               : "bg-slate-100 text-slate-700 border border-slate-200"
           }`}
         >
-          <Layers className="w-3.5 h-3.5 text-amber-500" />
-          <span>التصنيفات</span>
+          <BookOpen className="w-3.5 h-3.5 text-amber-500" />
+          <span>مقالات المراجعات</span>
         </a>
 
         <a
@@ -382,63 +272,6 @@ export const Header: React.FC<HeaderProps> = ({
           <SlidersHorizontal className="w-3.5 h-3.5 text-amber-500" />
           <span>المقارنات</span>
         </a>
-
-        <a
-          href="/deals"
-          onClick={(e) => {
-            if (!e.ctrlKey && !e.metaKey) {
-              e.preventDefault();
-              setActiveView("deals");
-              if (typeof window !== "undefined") window.history.pushState({}, "", "/deals");
-            }
-          }}
-          className={`px-3 py-1.5 rounded-lg whitespace-nowrap flex items-center gap-1.5 shrink-0 transition-colors ${
-            activeView === "deals"
-              ? "bg-amber-500 text-slate-950 font-black shadow-sm"
-              : isDarkMode
-              ? "bg-slate-900/80 text-slate-300 border border-slate-800"
-              : "bg-slate-100 text-slate-700 border border-slate-200"
-          }`}
-        >
-          <Tag className="w-3.5 h-3.5 text-orange-500" />
-          <span>العروض</span>
-        </a>
-
-        <a
-          href="/articles"
-          onClick={(e) => {
-            if (!e.ctrlKey && !e.metaKey) {
-              e.preventDefault();
-              setActiveView("articles");
-              if (typeof window !== "undefined") window.history.pushState({}, "", "/articles");
-            }
-          }}
-          className={`px-3 py-1.5 rounded-lg whitespace-nowrap flex items-center gap-1.5 shrink-0 transition-colors ${
-            activeView === "articles"
-              ? "bg-amber-500 text-slate-950 font-black shadow-sm"
-              : isDarkMode
-              ? "bg-slate-900/80 text-slate-300 border border-slate-800"
-              : "bg-slate-100 text-slate-700 border border-slate-200"
-          }`}
-        >
-          <BookOpen className="w-3.5 h-3.5 text-amber-500" />
-          <span>المقالات</span>
-        </a>
-
-        <button
-          onClick={() => {
-            setIsAdmin(true);
-            setActiveView("admin");
-          }}
-          className={`px-3 py-1.5 rounded-lg whitespace-nowrap flex items-center gap-1.5 shrink-0 transition-colors ${
-            activeView === "admin"
-              ? "bg-amber-500 text-slate-950 font-black shadow-sm"
-              : "bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/40"
-          }`}
-        >
-          <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-          <span>لوحة التحكم وتعديل المنتجات</span>
-        </button>
       </div>
 
       {/* Mobile Drawer Menu */}
@@ -452,7 +285,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="relative mb-3">
             <input
               type="text"
-              placeholder="ابحث عن منتج أو فئة..."
+              placeholder="ابحث عن مراجعة منتج..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className={`w-full pr-9 pl-3 py-2 rounded-xl text-xs border ${
@@ -478,52 +311,7 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               <Compass className="w-4 h-4 text-amber-500" />
-              <span>الرئيسية</span>
-            </button>
-
-            <button
-              onClick={() => {
-                setActiveView("categories");
-                setMobileMenuOpen(false);
-              }}
-              className={`p-3 rounded-xl border text-right flex items-center gap-2 ${
-                isDarkMode
-                  ? "bg-slate-900 border-slate-800 text-slate-100 hover:bg-slate-800"
-                  : "bg-slate-100 border-slate-200 text-slate-800 hover:bg-slate-200"
-              }`}
-            >
-              <Layers className="w-4 h-4 text-amber-500" />
-              <span>التصنيفات</span>
-            </button>
-
-            <button
-              onClick={() => {
-                setActiveView("comparisons");
-                setMobileMenuOpen(false);
-              }}
-              className={`p-3 rounded-xl border text-right flex items-center gap-2 ${
-                isDarkMode
-                  ? "bg-slate-900 border-slate-800 text-slate-100 hover:bg-slate-800"
-                  : "bg-slate-100 border-slate-200 text-slate-800 hover:bg-slate-200"
-              }`}
-            >
-              <SlidersHorizontal className="w-4 h-4 text-amber-500" />
-              <span>المقارنات</span>
-            </button>
-
-            <button
-              onClick={() => {
-                setActiveView("deals");
-                setMobileMenuOpen(false);
-              }}
-              className={`p-3 rounded-xl border text-right flex items-center gap-2 ${
-                isDarkMode
-                  ? "bg-slate-900 border-slate-800 text-slate-100 hover:bg-slate-800"
-                  : "bg-slate-100 border-slate-200 text-slate-800 hover:bg-slate-200"
-              }`}
-            >
-              <Tag className="w-4 h-4 text-orange-500" />
-              <span>العروض والخصومات</span>
+              <span>مراجعات المنتجات</span>
             </button>
 
             <button
@@ -538,12 +326,12 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               <BookOpen className="w-4 h-4 text-amber-500" />
-              <span>المقالات</span>
+              <span>مقالات المراجعات</span>
             </button>
 
             <button
               onClick={() => {
-                setActiveView("sitemap");
+                setActiveView("comparisons");
                 setMobileMenuOpen(false);
               }}
               className={`p-3 rounded-xl border text-right flex items-center gap-2 ${
@@ -552,38 +340,9 @@ export const Header: React.FC<HeaderProps> = ({
                   : "bg-slate-100 border-slate-200 text-slate-800 hover:bg-slate-200"
               }`}
             >
-              <Globe className="w-4 h-4 text-emerald-400" />
-              <span>خريطة الموقع</span>
+              <SlidersHorizontal className="w-4 h-4 text-amber-500" />
+              <span>مقارنات المنتجات</span>
             </button>
-
-            <button
-              onClick={() => {
-                setActiveView("privacy");
-                setMobileMenuOpen(false);
-              }}
-              className={`p-3 rounded-xl border text-right flex items-center gap-2 ${
-                isDarkMode
-                  ? "bg-slate-900 border-slate-800 text-slate-100 hover:bg-slate-800"
-                  : "bg-slate-100 border-slate-200 text-slate-800 hover:bg-slate-200"
-              }`}
-            >
-              <ShieldCheck className="w-4 h-4 text-amber-500" />
-              <span>سياسة الخصوصية</span>
-            </button>
-
-            {(showAdminButton || isAdmin) && (
-              <button
-                onClick={() => {
-                  setIsAdmin(!isAdmin);
-                  if (!isAdmin) setActiveView("admin");
-                  setMobileMenuOpen(false);
-                }}
-                className="p-3 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-600 dark:text-amber-400 text-right flex items-center gap-2"
-              >
-                <Sparkles className="w-4 h-4" />
-                <span>لوحة التحكم</span>
-              </button>
-            )}
           </div>
         </div>
       )}

@@ -187,7 +187,7 @@ export default function App() {
 
     // 4. View Routes
     if (path === "/categories" || params.get("view") === "categories") {
-      setActiveView("categories");
+      setActiveView("home");
     } else if (path.startsWith("/category/")) {
       const catId = path.replace("/category/", "").trim();
       setSelectedCategory(catId);
@@ -201,7 +201,7 @@ export default function App() {
     } else if (path === "/comparisons" || params.get("view") === "comparisons") {
       setActiveView("comparisons");
     } else if (path === "/deals" || params.get("view") === "deals") {
-      setActiveView("deals");
+      setActiveView("home");
     } else if (path === "/sitemap" || params.get("view") === "sitemap") {
       setActiveView("sitemap");
     } else if (path === "/privacy" || params.get("view") === "privacy") {
@@ -411,14 +411,6 @@ export default function App() {
               setSearchQuery={setSearchQuery}
               products={products}
               onSelectProduct={(prod) => setDetailProduct(prod)}
-              isDarkMode={isDarkMode}
-            />
-
-            {/* 12 Categories Grid */}
-            <CategoryGrid
-              categories={categories}
-              selectedCategory={selectedCategory}
-              onSelectCategory={handleCategorySelect}
               isDarkMode={isDarkMode}
             />
 

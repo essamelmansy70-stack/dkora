@@ -1,6 +1,5 @@
 import React from "react";
-import { Wrench, ShieldCheck, Heart, ExternalLink, Layers, ShoppingBag } from "lucide-react";
-import { CATEGORIES } from "../data/mockData";
+import { Wrench } from "lucide-react";
 
 interface FooterProps {
   onSelectCategory: (id: string | null) => void;
@@ -19,9 +18,9 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
         {/* Top Footer Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand Info */}
-          <div className="lg:col-span-1 space-y-4">
+          <div className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-slate-950 font-black shadow-lg">
                 <Wrench className="w-6 h-6 stroke-[2.5]" />
@@ -35,13 +34,66 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
             </div>
 
             <p className="text-xs leading-relaxed text-slate-400">
-              المنصة العربية المعتمدة لمراجعات العُدد والأدوات والتسويق بالعمولة.
+              المنصة المستقلة المتخصصة حصرياً في تقديم مراجعات المنتجات الشاملة، مقالات التقييم الفني، ومقارنة المواصفات لتوجيه القرارات الشرائية بثقة.
             </p>
           </div>
 
-          {/* Legal Pages Column for AdSense */}
+          {/* Quick Navigation Column */}
           <div className="space-y-3">
-            <h4 className="font-extrabold text-white text-sm border-b border-slate-800 pb-2">الصفحات القانونية (AdSense)</h4>
+            <h4 className="font-extrabold text-white text-sm border-b border-slate-800 pb-2">أقسام الموقع والمراجعات</h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <a
+                  href="/"
+                  onClick={(e) => {
+                    if (!e.ctrlKey && !e.metaKey) {
+                      e.preventDefault();
+                      onSelectCategory(null);
+                      setActiveView("home");
+                      if (typeof window !== "undefined") window.history.pushState({}, "", "/");
+                    }
+                  }}
+                  className="hover:text-amber-400 block font-bold text-slate-200"
+                >
+                  • الرئيسية (أحدث مراجعات المنتجات)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/articles"
+                  onClick={(e) => {
+                    if (!e.ctrlKey && !e.metaKey) {
+                      e.preventDefault();
+                      setActiveView("articles");
+                      if (typeof window !== "undefined") window.history.pushState({}, "", "/articles");
+                    }
+                  }}
+                  className="hover:text-amber-400 block font-bold text-amber-400"
+                >
+                  • مقالات المراجعات الشاملة
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/comparisons"
+                  onClick={(e) => {
+                    if (!e.ctrlKey && !e.metaKey) {
+                      e.preventDefault();
+                      setActiveView("comparisons");
+                      if (typeof window !== "undefined") window.history.pushState({}, "", "/comparisons");
+                    }
+                  }}
+                  className="hover:text-amber-400 block font-bold text-amber-400"
+                >
+                  • أداة مقارنات المنتجات والمواصفات
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Legal Pages Column (Positioned cleanly at bottom of pages) */}
+          <div className="space-y-3">
+            <h4 className="font-extrabold text-white text-sm border-b border-slate-800 pb-2">الصفحات القانونية والسياسات</h4>
             <ul className="space-y-2 text-xs">
               <li>
                 <a
@@ -55,7 +107,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
                   }}
                   className="hover:text-amber-400 block font-bold text-slate-200"
                 >
-                  • سياسة الخصوصية
+                  • سياسة الخصوصية وسرية البيانات
                 </a>
               </li>
               <li>
@@ -70,7 +122,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
                   }}
                   className="hover:text-amber-400 block font-bold text-slate-200"
                 >
-                  • الشروط والأحكام
+                  • الشروط والأحكام وقواعد الاستخدام
                 </a>
               </li>
               <li>
@@ -85,7 +137,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
                   }}
                   className="hover:text-amber-400 block font-bold text-slate-200"
                 >
-                  • من نحن (عن المنصة)
+                  • من نحن (عن منصة ديكورا)
                 </a>
               </li>
               <li>
@@ -100,7 +152,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
                   }}
                   className="hover:text-amber-400 block font-bold text-slate-200"
                 >
-                  • اتصل بنا ومعلومات النشر
+                  • اتصل بنا وهيئة التحرير
                 </a>
               </li>
               <li>
@@ -115,153 +167,9 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
                   }}
                   className="hover:text-amber-400 block font-bold text-slate-200"
                 >
-                  • إخلاء المسؤولية وإفصاح العمولات
+                  • إخلاء المسؤولية ومعايير المراجعة المستقلة
                 </a>
               </li>
-            </ul>
-          </div>
-
-          {/* Quick Categories Column 1 */}
-          <div className="space-y-3">
-            <h4 className="font-extrabold text-white text-sm border-b border-slate-800 pb-2">أقسام العُدد والأدوات</h4>
-            <ul className="space-y-2 text-xs">
-              {CATEGORIES.slice(0, 6).map((cat) => (
-                <li key={cat.id}>
-                  <a
-                    href={`/category/${cat.id}`}
-                    onClick={(e) => {
-                      if (!e.ctrlKey && !e.metaKey) {
-                        e.preventDefault();
-                        onSelectCategory(cat.id);
-                        setActiveView("home");
-                        if (typeof window !== "undefined") window.history.pushState({}, "", `/category/${cat.id}`);
-                      }
-                    }}
-                    className="hover:text-amber-400 transition-colors text-right block"
-                  >
-                    • {cat.nameAr}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Quick Categories Column 2 */}
-          <div className="space-y-3">
-            <h4 className="font-extrabold text-white text-sm border-b border-slate-800 pb-2">الديكور والحماية</h4>
-            <ul className="space-y-2 text-xs">
-              {CATEGORIES.slice(6, 12).map((cat) => (
-                <li key={cat.id}>
-                  <a
-                    href={`/category/${cat.id}`}
-                    onClick={(e) => {
-                      if (!e.ctrlKey && !e.metaKey) {
-                        e.preventDefault();
-                        onSelectCategory(cat.id);
-                        setActiveView("home");
-                        if (typeof window !== "undefined") window.history.pushState({}, "", `/category/${cat.id}`);
-                      }
-                    }}
-                    className="hover:text-amber-400 transition-colors text-right block"
-                  >
-                    • {cat.nameAr}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Navigation & Legal */}
-          <div className="space-y-3">
-            <h4 className="font-extrabold text-white text-sm border-b border-slate-800 pb-2">روابط سريعة والأرشفة</h4>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <a
-                  href="/comparisons"
-                  onClick={(e) => {
-                    if (!e.ctrlKey && !e.metaKey) {
-                      e.preventDefault();
-                      setActiveView("comparisons");
-                      if (typeof window !== "undefined") window.history.pushState({}, "", "/comparisons");
-                    }
-                  }}
-                  className="hover:text-amber-400 block"
-                >
-                  • أداة المقارنات المباشرة
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/deals"
-                  onClick={(e) => {
-                    if (!e.ctrlKey && !e.metaKey) {
-                      e.preventDefault();
-                      setActiveView("deals");
-                      if (typeof window !== "undefined") window.history.pushState({}, "", "/deals");
-                    }
-                  }}
-                  className="hover:text-amber-400 block"
-                >
-                  • أكواد الخصم والعروض
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/articles"
-                  onClick={(e) => {
-                    if (!e.ctrlKey && !e.metaKey) {
-                      e.preventDefault();
-                      setActiveView("articles");
-                      if (typeof window !== "undefined") window.history.pushState({}, "", "/articles");
-                    }
-                  }}
-                  className="hover:text-amber-400 block"
-                >
-                  • مقالات ودروس الصيانة
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/sitemap"
-                  onClick={(e) => {
-                    if (!e.ctrlKey && !e.metaKey) {
-                      e.preventDefault();
-                      setActiveView("sitemap");
-                      if (typeof window !== "undefined") window.history.pushState({}, "", "/sitemap");
-                    }
-                  }}
-                  className="hover:text-amber-400 flex items-center gap-1"
-                >
-                  • خريطة الموقع (Sitemap)
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/sitemap.xml"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-amber-400 text-emerald-400 flex items-center gap-1"
-                >
-                  • ملف sitemap.xml المباشر ↗
-                </a>
-              </li>
-              {showAdminButton && (
-                <li>
-                  <a
-                    href="/admin"
-                    onClick={(e) => {
-                      if (!e.ctrlKey && !e.metaKey) {
-                        e.preventDefault();
-                        setActiveView("admin");
-                        if (typeof window !== "undefined") window.history.pushState({}, "", "/admin");
-                      }
-                    }}
-                    className="hover:text-amber-400 block"
-                  >
-                    • لوحة التحكم للإدارة
-                  </a>
-                </li>
-              )}
             </ul>
           </div>
         </div>

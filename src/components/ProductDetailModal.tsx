@@ -44,16 +44,27 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   isDarkMode,
   onEditProduct,
 }) => {
-  if (!product) return null;
-
   const [activeImage, setActiveImage] = useState(product ? product.mainImage : "");
+  const [copiedLink, setCopiedLink] = useState(false);
+  const [activeTab, setActiveTab] = useState<"review" | "specs" | "offers" | "reviews">("review");
+  const [reviewsList, setReviewsList] = useState<UserReview[]>(
+    product ? REVIEWS_SAMPLE.filter((r) => r.productId === product.id) : []
+  );
+  const [newReviewerName, setNewReviewerName] = useState("");
+  const [newReviewerRole, setNewReviewerRole] = useState("");
+  const [newRating, setNewRating] = useState(5);
+  const [newComment, setNewComment] = useState("");
+  const [reviewSubmittedMsg, setReviewSubmittedMsg] = useState(false);
 
   useEffect(() => {
     if (product) {
       setActiveImage(product.mainImage);
+      setReviewsList(REVIEWS_SAMPLE.filter((r) => r.productId === product.id));
     }
   }, [product]);
-  const [copiedLink, setCopiedLink] = useState(false);
+
+  if (!product) return null;
+
   const canonicalProductUrl = createProductUrl(product);
 
   const handleCopyProductLink = () => {
@@ -61,17 +72,6 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
     setCopiedLink(true);
     setTimeout(() => setCopiedLink(false), 2500);
   };
-  const [activeTab, setActiveTab] = useState<"review" | "specs" | "offers" | "reviews">("review");
-
-  // User reviews state
-  const [reviewsList, setReviewsList] = useState<UserReview[]>(
-    REVIEWS_SAMPLE.filter((r) => r.productId === product.id)
-  );
-  const [newReviewerName, setNewReviewerName] = useState("");
-  const [newReviewerRole, setNewReviewerRole] = useState("");
-  const [newRating, setNewRating] = useState(5);
-  const [newComment, setNewComment] = useState("");
-  const [reviewSubmittedMsg, setReviewSubmittedMsg] = useState(false);
 
   const getPrice = (baseEgp: number | undefined) => {
     if (!baseEgp) return "غير متوفر حالياً";

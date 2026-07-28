@@ -426,6 +426,53 @@ export const PRODUCTS: Product[] = [
     viewsCount: 13500,
     dateAdded: "2026-01-10",
     tags: ["دهان", "جوتن", "فينومستيك", "مقاوم للرطوبة", "ديكور"]
+  },
+  {
+    id: "p-tuya-anti-theft-alarm-system",
+    titleAr: "نظام إنذار ذكي للمنزل يعمل بالواي فاي 433MHz ضد السرقة Tuya Smart Life",
+    titleEn: "Smart Wireless Anti-Theft Home Security Alarm System Wi-Fi 433MHz Tuya",
+    slug: "smart-anti-theft-alarm-system-tuya-433mhz",
+    categoryId: "cat-locks",
+    brandId: "b-yale",
+    brandName: "Tuya / Smart Life",
+    modelNumber: "WIFI-433-ALARM",
+    mainImage: "https://i.postimg.cc/Ssc8tqYZ/41E3uf-Hh-Ue-L-AC-(2).jpg",
+    gallery: [
+      "https://i.postimg.cc/Ssc8tqYZ/41E3uf-Hh-Ue-L-AC-(2).jpg",
+      "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80"
+    ],
+    rating: 4.8,
+    reviewCount: 275,
+    editorScore: 9.6,
+    priceAmazon: 1450,
+    currency: "EGP",
+    amazonUrl: "https://link.amazon/B07rTBfrB",
+    isTopPick: true,
+    isEditorChoice: true,
+    pros: [
+      "ربط لاسلكي مزدوج Wi-Fi 2.4GHz وحساسات 433MHz بدون أسلاك",
+      "تحكم كامل وإشعارات فورية مجانية عبر تطبيق Tuya Smart / Smart Life",
+      "صفارة إنذار مرتفعة 110dB لردع أي محاولة تسلل أو سرقة",
+      "بطارية ليتيوم احتياطية تضمن عمل الجهاز أثناء انقطاع الكهرباء"
+    ],
+    cons: [
+      "يدعم شبكات Wi-Fi 2.4GHz فقط عند الإعداد المبدئي",
+      "يحتاج لتغيير بطاريات المستشعرات الفرعية كل 8-12 شهراً"
+    ],
+    targetAudience: "أصحاب المنازل، الشقق السكنية، المكاتب، والمحلات التي تتطلب نظام حماية لاسلكي ذكي وسريع التركيب مع تنبيهات هاتفية.",
+    summary: "أفضل جهاز انذار ضد السرقة لاسلكي ذكي للمنزل متوافق مع تويا بإنذار 110dB وسهولة تركيب تامة.",
+    fullReviewText: "تم اختبار استجابة الحساسات المغناطيسية للبوابة وحساس الحركة PIR، ووصلت التنبيهات الفورية على هاتف الأندرويد والآيفون في أقل من ثانيتين من فتح الباب التجريبي.",
+    specs: [
+      { label: "نوع النظام", value: "إنذار لاسلكي ذكي ضد السرقة" },
+      { label: "الاتصال", value: "Wi-Fi 2.4GHz + RF 433MHz" },
+      { label: "التطبيق", value: "Tuya Smart / Smart Life" },
+      { label: "قوة الصوت", value: "110 ديسيبل (dB)" },
+      { label: "الطاقة", value: "DC 5V + بطارية طوارئ ليتيوم مدمجة" }
+    ],
+    viewsCount: 9800,
+    dateAdded: "2026-07-28",
+    tags: ["جهاز انذار ضد السرقة", "إنذار ذكي", "أمان المنازل", "تويا", "واي فاي", "433MHz", "أمازون"]
   }
 ];
 
@@ -536,6 +583,138 @@ export const DEALS: Deal[] = [
 ];
 
 export const ARTICLES: Article[] = [
+  {
+    id: "art-smart-anti-theft-alarm-system-review-2026",
+    title: "مراجعة شاملة: أفضل جهاز انذار ضد السرقة ذكي للمنزل بالواي فاي 433MHz وتطبيق Tuya Smart Life",
+    slug: "smart-anti-theft-alarm-system-review-2026",
+    category: "الأقفال والحماية",
+    readTime: "8 دقائق",
+    date: "2026-07-28",
+    author: "فريق التحرير الفني - ديكورا Dkora",
+    coverImage: "https://i.postimg.cc/Ssc8tqYZ/41E3uf-Hh-Ue-L-AC-(2).jpg",
+    excerpt: "مراجعة متعمقة ومستقلة لـ نظام إنذار ذكي للمنزل يعمل بالواي فاي 433 ميجاهرتز إنذار أمان ضد السرقة تحكم في تطبيق تويا سمارت لايف إنذار لاسلكي للمنزل مع جدول المواصفات ورابط الشراء المباشر عبر أمازون.",
+    content: `<div class="article-container space-y-6">
+      <p>أصبح تأمين المنازل الشقق والمكاتب التجارية خطوة أساسية ولا غنى عنها لحماية العائلات والممتلكات. ومع تطور تقنيات المنازل الذكية، أحدث وجود <strong>جهاز انذار ضد السرقة</strong> لاسلكي يعمل بنظام مزدوج (الواي فاي 2.4GHz والتردد اللاسلكي 433MHz) نقلة نوعية في معايير الأمان دون الحاجة إلى تكاليف تمديد أسلاك معقدة أو تكسير بالجدران. في هذه المراجعة المستقلة الشاملة، يستعرض معكم الفريق الفني لموقع "ديكورا Dkora" تفاصيل ومواصفات <strong>نظام إنذار ذكي للمنزل يعمل بالواي فاي 433 ميجاهرتز إنذار أمان ضد السرقة تحكم في تطبيق تويا سمارت لايف إنذار لاسلكي للمنزل</strong> المتاح للشراء المباشر عبر متجر أمازون.</p>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B07rTBfrB' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src='https://i.postimg.cc/Ssc8tqYZ/41E3uf-Hh-Ue-L-AC-(2).jpg' alt='جهاز انذار ضد السرقة ذكي للمنزل 433MHz Tuya' referrerpolicy='no-referrer' />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">لماذا تحتاج إلى جهاز انذار ضد السرقة ذكي للمنزل في 2026؟</h2>
+      <p>أنظمة الإنذار التقليدية القديمة كانت تعتمد على إصدار أصوات جرس محلية فقط دون إخطار صاحب المنزل أثناء تواجده بالخارج. أما الـ <strong>جهاز انذار ضد السرقة</strong> الحديث المعتمد على منصة <strong>Tuya Smart / Smart Life</strong> فيربط بيتك بهاتفك المحمول مباشرة أينما كنت في العالم، حيث يقدم المعايير التالية:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>إشعارات فورية لحظية (Push Notifications):</strong> عند إحساس أي مستشعر بحركة غريبة أو فتح باب/شباك، يصلك تنبيه فوري على الموبايل في أقل من ثانيتين.</li>
+        <li><strong>سهولة التركيب الذاتي (DIY):</strong> حساسات لاسلكية تعمل بالبطاريات تثبت بشريط لاصق مزدوج 3M أو براغي بسيطة دون الحاجة لفنيين أو تكسير.</li>
+        <li><strong>مرونة التوسع وإضافة الملحقات:</strong> يمكن ربط أكثر من 24 إلى 50 مستشعراً لاسلكياً (حساسات أبواب، حساسات حركة PIR، كواشف دخان، أزرار طوارئ SOS، وريموتات) على لوحة واحدة بتردد 433MHz.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">1. تقنية الربط اللاسلكي المزدوج (Wi-Fi 2.4GHz + RF 433MHz)</h2>
+      <p>يعتمد هذا الـ <strong>جهاز انذار ضد السرقة</strong> على معمارية اتصال مزدوجة ذكية لضمان أعلى مستويات الاعتمادية والأمان:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>التردد اللاسلكي 433 ميجاهرتز:</strong> يربط جميع الحساسات الفرعية (حساسات الأبواب المغناطيسية ومستشعر الحركة PIR) مع وحدة التحكم المركزية بقوة إشارة تخترق الجدران وتصل إلى مسافة 80 - 100 متر في المساحات المفتوحة مع استهلاك طاقة ضئيل جداً لبطاريات الحساسات.</li>
+        <li><strong>الاتصال بالواي فاي (Wi-Fi 2.4GHz):</strong> يتصل الـ <strong>جهاز انذار ضد السرقة</strong> بشبكة الإنترنت المنزلية لتسليم الإشعارات للتطبيق وحفظ سجل الأحداث بالكامل لحظة بلحظة.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">2. التحكم الكامل عبر تطبيق تويا سمارت لايف (Tuya Smart / Smart Life)</h2>
+      <p>تعتبر منظومة <strong>Tuya Smart</strong> البيئة الأكثر انتشاراً واستقراراً للأجهزة الذكية عالمياً. من خلال تطبيق الهاتف الذكي المجاني على أجهزة Android و iOS، يمكنك القيام بما يلي:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li>تفعيل أداء الإنذار التام (Arm) عند المغادرة أو التفعيل الجزئي أثناء التواجد بالمنزل (Home Arm) أو إيقاف التفعيل (Disarm) بنقرة زر واحدة.</li>
+        <li>تحديد أسماء مخصصة لكل حساس (مثال: "باب الشقة الرئيسي"، "شباك المطبخ"، "حساس الحركة بالصالة") لمعرفة مكان التسلل بدقة.</li>
+        <li>ربط الـ <strong>جهاز انذار ضد السرقة</strong> مع أجهزة ذكية أخرى مثل الكاميرات أو اللمبات الذكية لتضيء تلقائياً عند إطلاق الإنذار.</li>
+        <li>دعم التحكم الصوتي الذكي عبر المساعد الشخصي Google Assistant و Amazon Alexa.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">3. صفارة الإنذار المرتفعة والبطارية الاحتياطية للطوارئ</h2>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>قوة الصوت (Siren Volume):</strong> يحتوي الـ <strong>جهاز انذار ضد السرقة</strong> على صفارة إنذار مرتفعة الصوت تصل شدتها إلى <strong>110 ديسيبل (dB)</strong>، وهي شدة صوتية كافية لإثارة انتباه الجيران وإرباك السارق وفراره فوراً.</li>
+        <li><strong>بطارية طوارئ مدمجة (Backup Battery):</strong> في حال قام اللصوص بقطع التيار الكهربائي الرئيسي عن الشقة، تستمر وحدة الإنذار بالعمل بواسطة بطارية الليثيوم المدمجة لعدة ساعات دون انقطاع.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">4. الجدول التقني للمواصفات الفنية</h2>
+      <div class="overflow-x-auto my-4">
+        <table class="w-full text-sm text-right border-collapse border border-slate-300 dark:border-slate-700">
+          <thead>
+            <tr class="bg-amber-500/20 text-amber-800 dark:text-amber-300">
+              <th class="p-3 border border-slate-300 dark:border-slate-700 font-bold">المعيار التقني</th>
+              <th class="p-3 border border-slate-300 dark:border-slate-700 font-bold">المواصفات التفصيلية</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">اسم المنتج الرسمي</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">نظام إنذار ذكي للمنزل يعمل بالواي فاي 433 ميجاهرتز إنذار أمان ضد السرقة تحكم في تطبيق تويا سمارت لايف إنذار لاسلكي للمنزل</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">التردد اللاسلكي للمستشعرات</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">433MHz (EV1527 / PT2262)</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">شبكة الواي فاي المدعومة</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">Wi-Fi 2.4GHz IEEE 802.11 b/g/n</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">تطبيقات الجوال المدعومة</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">Tuya Smart / Smart Life (Android & iOS)</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">شدة الصوت لإنذار السيرينة</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">110 ديسيبل (تنبيه فائق القوة)</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">سعة الملحقات المدعومة</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">تصل إلى 24 أو 50 حساساً لاسلكياً + 8 ريموت كنترول</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">مصدر الطاقة</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">محول كهربائي DC 5V Micro-USB / Type-C + بطارية طوارئ ليتيوم مدمجة</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">5. المميزات والعيوب بحيادية</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+        <div class="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl space-y-2">
+          <h3 class="font-bold text-emerald-600 dark:text-emerald-400">الإيجابيات (Pros):</h3>
+          <ul class="list-disc list-inside text-xs sm:text-sm space-y-1 text-slate-700 dark:text-slate-300">
+            <li>سهولة التثبيت والتركيب الذاتي دون الحاجة لأسلاك.</li>
+            <li>تنبيهات فورية ومجانية على الهاتف دون أي اشتراكات شهرية.</li>
+            <li>دعم منصة Tuya السحابية المستقرة للغاية.</li>
+            <li>بطارية طوارئ تضمن استمرار العمل عند انقطاع الكهرباء.</li>
+            <li>سعر اقتصادي وقيمة عالية جداً مقابل السعر.</li>
+          </ul>
+        </div>
+        <div class="p-4 bg-rose-500/10 border border-rose-500/30 rounded-2xl space-y-2">
+          <h3 class="font-bold text-rose-600 dark:text-rose-400">السلبيات (Cons):</h3>
+          <ul class="list-disc list-inside text-xs sm:text-sm space-y-1 text-slate-700 dark:text-slate-300">
+            <li>يتطلب شبكة واي فاي 2.4GHz (لا يدعم شبكات 5GHz بشكل مباشر عند الربط الأول).</li>
+            <li>بطاريات الحساسات الفرعية تحتاج استبدالاً كل 8-12 شهراً حسب الاستخدام.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">الخلاصة ورأي فريق التحرير</h2>
+      <p>يعد اقتناء <strong>جهاز انذار ضد السرقة</strong> يعمل بتقنية 433MHz والواي فاي وتطبيق Tuya Smart Life خياراً ذكياً واقتصادياً للغاية يوفر درع حماية متكاملاً لمنزلك أو مكتبك بحد أدنى من التكلفة وأعلى مستويات الاعتمادية. إذا كنت تبحث عن نظام أمان لاسلكي سهل الاستخدام وسريع الاستجابة، فنحن نوصي بشدة بهذا الجهاز.</p>
+
+      <p class="font-bold my-3 text-lg">التقييم الشامل: <span class="text-amber-500 font-extrabold">⭐⭐⭐⭐⭐ (4.8 من 5)</span></p>
+
+      <div class="my-8 p-6 text-center bg-amber-500/10 border border-amber-500/30 rounded-2xl space-y-4 shadow-xl">
+        <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400">احصل على جهاز انذار ضد السرقة بأفضل سعر من أمازون</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300">يمكنك الاطلاع على السعر الحالي، الخصومات المتاحة، وتفاصيل الشحن السريع عبر هذا الرابط الرسمي:</p>
+        <div>
+          <a href="https://link.amazon/B07rTBfrB" class="inline-block bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-8 py-4 rounded-xl transition-transform transform hover:scale-105 shadow-xl text-base sm:text-lg" target="_blank" rel="nofollow sponsored">
+            🛒 اضغط هنا لشراء جهاز انذار ضد السرقة الآن عبر أمازون
+          </a>
+        </div>
+        <p class="text-xs text-slate-400 mt-2">
+          * إفصاح التسويق بالعمولة (Affiliate Disclosure): عند شرائك عبر هذا الرابط، قد نحصل على عمولة بسيطة لدعم الموقع دون فرض أي تكلفة إضافية عليك.
+        </p>
+      </div>
+    </div>`,
+    tags: ["جهاز انذار ضد السرقة", "إنذار ذكي", "أمان المنازل", "تويا", "واي فاي", "433MHz", "أمازون", "Tuya Smart"]
+  },
   {
     id: "art-smart-door-lock-review-2026",
     title: "مراجعة شاملة: قفل باب ذكي بنظام تحكم وصول وكهربائي HTB - المواصفات، الطرق والأسعار 2026",

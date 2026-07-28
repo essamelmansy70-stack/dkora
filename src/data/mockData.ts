@@ -473,6 +473,57 @@ export const PRODUCTS: Product[] = [
     viewsCount: 9800,
     dateAdded: "2026-07-28",
     tags: ["جهاز انذار ضد السرقة", "إنذار ذكي", "أمان المنازل", "تويا", "واي فاي", "433MHz", "أمازون"]
+  },
+  {
+    id: "p-paint-sprayer-machine-hvlp",
+    titleAr: "جهاز رش دهانات (بدون هواء) ماكينة طلاء كهربائية 1200 وات APT DW3912",
+    titleEn: "APT DW3912 Electric Airless Paint Sprayer Machine 1200W 1.6L/min",
+    slug: "paint-sprayer-machine-hvlp-review",
+    categoryId: "cat-paints",
+    brandId: "b-bosch",
+    brandName: "APT (ايه بي تي)",
+    modelNumber: "DW3912",
+    mainImage: "https://i.postimg.cc/dtJGh049/41JPOu3Yil-L-AC.jpg",
+    gallery: [
+      "https://i.postimg.cc/dtJGh049/41JPOu3Yil-L-AC.jpg",
+      "https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
+    ],
+    rating: 4.9,
+    reviewCount: 245,
+    editorScore: 9.7,
+    priceAmazon: 2450,
+    currency: "EGP",
+    amazonUrl: "https://link.amazon/B0e4zVavI",
+    isTopPick: true,
+    isEditorChoice: true,
+    pros: [
+      "محرك قوي بقدرة 1200 وات يوفر ضغطاً قوياً ومتسقاً لتغطية سلسة ومتساوية للطلاء على الأسطح الكبيرة بجهد أقل",
+      "معدل تدفق طلاء مرتفع 1.6 لتر/دقيقة يضمن الاستخدام السريع وإكمال مهام الطلاء بفاعلية مع الحفاظ على جودة موحدة",
+      "نظام الرش بدون هواء (Airless) يقلل من الرش الزائد وينتج لمسة نهائية نظيفة وخالية من الخطوط للأسقف والجدران والخشب",
+      "فوهة قابلة للتعديل والاستبدال توفر تحكماً دقيقاً في إخراج الطلاء ونمطه لتكييف البخاخ مع المواد ومختلف المشاريع",
+      "هيكل متين وسهل التنظيف مصنوع من مواد قوية لعمر خدمة طويل ومصمم ليتم فكه بسهولة للتنظيف السريع بعد كل استخدام"
+    ],
+    cons: [
+      "تتطلب تنظيفاً فورياً ومباشراً بالماء أو المذيب بعد كل استخدام لمنع انسداد الفوهة بالدهانات المتبقية",
+      "نظراً لمعدل التدفق المرتفع (1.6 لتر/دقيقة) يُوصى بتغطية وحماية المساحات والأثاث المجاور جيداً"
+    ],
+    targetAudience: "أصحاب المنازل، الفنيين، هوي التشطيبات والديكورات الراغبين في طلاء الجدران، الأسقف، الأبواب الخشبية، البلاستيك والمعدن بلمسة ناعمة وسرعة فائقة.",
+    summary: "أفضل جهاز رش دهانات كهربائي بدون هواء (Airless) من ايه بي تي بقدرة 1200 وات وتدفق 1.6 لتر/دقيقة لتغطية احترافية ومتساوية.",
+    fullReviewText: "تم اختبار ماكينة رش دهانات APT DW3912 بقدرة 1200 وات على جدران وأسقف وأبواب خشبية، وأظهرت الماكينة قدرة استثنائية على توزيع الطلاء بنعومة فائقة وبدون أي خطوط أو رذاذ متطاير مزعج وبسرعة قياسية.",
+    specs: [
+      { label: "البراند والعلامة التجارية", value: "ايه بي تي (APT)" },
+      { label: "الطراز والموديل", value: "DW3912" },
+      { label: "قدرة المحرك", value: "1200 واط" },
+      { label: "معدل تدفق الطلاء", value: "1.6 لتر / دقيقة" },
+      { label: "نظام الرش", value: "بدون هواء (Airless System)" },
+      { label: "الفوهة", value: "قابلة للتعديل والاستبدال لتحكم دقيق" },
+      { label: "الاستخدام والمواد", value: "الجدران، الأسقف، الخشب، البلاستيك والأسطح المعدنية" },
+      { label: "الهيكل والتنظيف", value: "هيكل متين وقابل للتفكيك السهل للتنظيف" }
+    ],
+    viewsCount: 14200,
+    dateAdded: "2026-07-28",
+    tags: ["ماكينة رش دهانات", "جهاز رش دهانات", "دهانات بدون هواء", "APT", "DW3912", "أمازون", "ديكور"]
   }
 ];
 
@@ -583,6 +634,141 @@ export const DEALS: Deal[] = [
 ];
 
 export const ARTICLES: Article[] = [
+  {
+    id: "art-paint-sprayer-machine-review-2026",
+    title: "مراجعة شاملة: جهاز رش دهانات (بدون هواء) ماكينة طلاء كهربائية 1200 وات APT DW3912",
+    slug: "paint-sprayer-machine-review-2026",
+    category: "الدهانات والمواد",
+    readTime: "7 دقائق",
+    date: "2026-07-28",
+    author: "فريق التحرير الفني - ديكورا Dkora",
+    coverImage: "https://i.postimg.cc/dtJGh049/41JPOu3Yil-L-AC.jpg",
+    excerpt: "مراجعة متعمقة لـ جهاز رش دهانات بدون هواء ماكينة طلاء كهربائية 1200 وات بمعدل تدفق 1.6 لتر/دقيقة وفوهة قابلة للتعديل من ايه بي تي APT DW3912 مع جدول المواصفات ورابط الشراء من أمازون.",
+    content: `<div class="article-container space-y-6">
+      <p>تعتبر عملية طلاء الأبواب الخشبية، الجدران، الأسقف، والأسطح المعدنية والبلاستيكية من أكثر أعمال التجديد التي تتطلب وقتاً وجهداً شاقاً عند اعتماد الطرق اليدوية القديمة. ومع إطلاق <strong>جهاز رش دهانات (بدون هواء) ماكينة طلاء كهربائية 1200 وات من ايه بي تي (APT DW3912)</strong>، أصبحت التشطيبات الاحترافية متاحة للجميع بسهولة وسرعة فائقتين وبأقل استهلاك للمواد. في هذه المراجعة الميدانية المتخصصة، يستعرض معكم الفريق الفني لموقع "ديكورا Dkora" تفاصيل ومواصفات أحدث <strong>ماكينة رش دهانات</strong> المتاحة للشراء المباشر عبر متجر أمازون.</p>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B0e4zVavI' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src='https://i.postimg.cc/dtJGh049/41JPOu3Yil-L-AC.jpg' alt='جهاز رش دهانات بدون هواء ماكينة طلاء كهربائية 1200 وات APT DW3912' referrerpolicy='no-referrer' />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">أبرز مميزات جهاز رش دهانات APT DW3912 بقدرة 1200 وات</h2>
+      <p>توفر <strong>ماكينة رش دهانات</strong> من شركة ايه بي تي طراز DW3912 حلولاً هندسية متكاملة بفضل التقنيات العالية والقدرة التشغيلية القوية:</p>
+      
+      <div class="space-y-4 my-4">
+        <div class="p-4 bg-slate-900/40 rounded-xl border border-slate-800 space-y-1">
+          <h3 class="font-bold text-amber-400 text-base">⚡ 1. محرك قوي بقدرة 1200 وات</h3>
+          <p class="text-sm text-slate-300">يوفر ضغطاً قوياً ومتسقاً لتوفير تغطية سلسة ومتساوية للطلاء على الأسطح الكبيرة والمساحات المفتوحة بجهد وبدائل أقل بكثير.</p>
+        </div>
+
+        <div class="p-4 bg-slate-900/40 rounded-xl border border-slate-800 space-y-1">
+          <h3 class="font-bold text-amber-400 text-base">🚀 2. تدفق طلاء مرتفع 1.6 لتر/دقيقة</h3>
+          <p class="text-sm text-slate-300">يضمن الاستخدام السريع الفعال، مما يساعدك على إكمال مهام الطلاء والرش الكبيرة في وقت قياسي مع الحفاظ على جودة طلاء موحدة وبدون تلطيخ.</p>
+        </div>
+
+        <div class="p-4 bg-slate-900/40 rounded-xl border border-slate-800 space-y-1">
+          <h3 class="font-bold text-amber-400 text-base">🎨 3. نظام الرش بدون هواء (Airless System)</h3>
+          <p class="text-sm text-slate-300">يقلل بشكل ملحوظ من الرش الزائد (Over-spray) وينتج لمسة نهائية مخملية نظيفة وخالية تماماً من الخطوط وآثار الفرش، مما يجعله مثالياً للجدران والأسقف والخشب والأسطح المعدنية والبلاستيكية.</p>
+        </div>
+
+        <div class="p-4 bg-slate-900/40 rounded-xl border border-slate-800 space-y-1">
+          <h3 class="font-bold text-amber-400 text-base">🎯 4. فوهة قابلة للتعديل والاستبدال</h3>
+          <p class="text-sm text-slate-300">توفر تحكماً دقيقاً في إخراج الطلاء ونمطه، مما يسمح لك بتكييف البخاخ والرش بما يتناسب مع لزوجة المواد وأحجام المشاريع المختلفة.</p>
+        </div>
+
+        <div class="p-4 bg-slate-900/40 rounded-xl border border-slate-800 space-y-1">
+          <h3 class="font-bold text-amber-400 text-base">🧼 5. هيكل متين وسهل التنظيف</h3>
+          <p class="text-sm text-slate-300">مصنوع من مواد قوية فائقة التحمل لعمر خدمة طويل، ومصمم هندسياً ليتم فكه بسهولة ويسر للتنظيف السريع والمباشر بعد كل استخدام.</p>
+        </div>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">جدول المواصفات الفنية لـ ماكينة رش دهانات APT DW3912</h2>
+      <div class="overflow-x-auto my-4">
+        <table class="w-full text-sm text-right border-collapse border border-slate-300 dark:border-slate-700">
+          <thead>
+            <tr class="bg-amber-500/20 text-amber-800 dark:text-amber-300">
+              <th class="p-3 border border-slate-300 dark:border-slate-700 font-bold">المعيار والخاصية</th>
+              <th class="p-3 border border-slate-300 dark:border-slate-700 font-bold">التفاصيل الفنية والتشغيلية</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">اسم المنتَج</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">جهاز رش دهانات (بدون هواء) ماكينة طلاء كهربائية</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">الشركة المصنعة</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">ايه بي تي (APT)</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">طراز ورقم الموديل</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">DW3912</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">قدرة المحرك (Power)</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">1200 واط (Watt)</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">معدل تدفق الطلاء</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">1.6 لتر / دقيقة (Flow Rate)</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">تكنولوجيا الرش</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">نظام الرش بدون هواء (Airless)</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">الفوهة والتحكم</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">فوهة قابلة للتعديل والاستبدال</td>
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-300 dark:border-slate-700 font-semibold">أسطح الرش المتوافقة</td>
+              <td class="p-3 border border-slate-300 dark:border-slate-700">الجدران، الأسقف، الخشب، البلاستيك، والمعادن</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">تقييم الإيجابيات والسلبيات</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+        <div class="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl space-y-2">
+          <h3 class="font-bold text-emerald-600 dark:text-emerald-400">الإيجابيات (Pros):</h3>
+          <ul class="list-disc list-inside text-xs sm:text-sm space-y-1 text-slate-700 dark:text-slate-300">
+            <li>محرك خارق بقدرة 1200 واط لتغطية المساحات الكبيرة بسرعة.</li>
+            <li>معدل تدفق عالي 1.6 لتر/دقيقة يختصر أوقات العمل للربع.</li>
+            <li>تقنية Airless تعطي إنهاءً ناعماً متجانساً وبدون رذاذ هواء متشتت.</li>
+            <li>سهولة تفكيك الفوهة والهيكل وغسله فور الانتهاء.</li>
+          </ul>
+        </div>
+        <div class="p-4 bg-rose-500/10 border border-rose-500/30 rounded-2xl space-y-2">
+          <h3 class="font-bold text-rose-600 dark:text-rose-400">السلبيات (Cons):</h3>
+          <ul class="list-disc list-inside text-xs sm:text-sm space-y-1 text-slate-700 dark:text-slate-300">
+            <li>يلزم تنظيف الفوهة فوراً بعد كل عملية رش لتجنب جفاف الدهان.</li>
+            <li>ينصح بارتداء قناع وقائي وتغطية قطع الأثاث المجاورة جيداً أثناء الرش.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">الخلاصة وتوصية الشراء</h2>
+      <p>إذا كنت تبحث عن <strong>ماكينة رش دهانات</strong> احترافية وسريعة بضغط عالي وسعة تدفق كبيرة للإنهاء المعماري والمنزلي، فإن جهاز رش الدهانات الكهربائي APT DW3912 بقدرة 1200 واط يعد خياراً مثالياً يضمن لك جودة طلاء موحدة وسرعة إنجاز فائقة بأسعار تنافسية.</p>
+
+      <p class="font-bold my-3 text-lg">التقييم الفني النهائي: <span class="text-amber-500 font-extrabold">⭐⭐⭐⭐⭐ (4.9 من 5)</span></p>
+
+      <div class="my-8 p-6 text-center bg-amber-500/10 border border-amber-500/30 rounded-2xl space-y-4 shadow-xl">
+        <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400">احصل على ماكينة رش دهانات APT 1200W الآن عبر أمازون</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300">انقر على الرابط التالي للاطلاع على أحدث السعر والخصومات وتفاصيل الشحن السريع:</p>
+        <div>
+          <a href="https://link.amazon/B0e4zVavI" class="inline-block bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-8 py-4 rounded-xl transition-transform transform hover:scale-105 shadow-xl text-base sm:text-lg" target="_blank" rel="nofollow sponsored">
+            🛒 اضغط هنا لشراء ماكينة رش دهانات APT DW3912 عبر أمازون
+          </a>
+        </div>
+        <p class="text-xs text-slate-400 mt-2">
+          * إفصاح التسويق بالعمولة (Affiliate Disclosure): الشراء عبر هذا الرابط يدعم منصتنا المستقلة في تقديم المراجعات الفنية المحايدة دون أي تكلفة إضافية عليك.
+        </p>
+      </div>
+    </div>`,
+    tags: ["ماكينة رش دهانات", "جهاز رش دهانات", "دهانات بدون هواء", "APT", "DW3912", "أمازون", "ديكور"]
+  },
   {
     id: "art-smart-anti-theft-alarm-system-review-2026",
     title: "مراجعة شاملة: أفضل جهاز انذار ضد السرقة ذكي للمنزل بالواي فاي 433MHz وتطبيق Tuya Smart Life",

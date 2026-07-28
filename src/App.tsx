@@ -39,18 +39,31 @@ export default function App() {
   // Check secret URL param or saved local key on load
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search);
-      const urlView = params.get("view");
-      const isAdminQuery = params.has("admin") || params.has("secret") || urlView === "admin";
-      const isSavedUnlocked = localStorage.getItem("dkora_admin_unlocked") === "true";
-
-      if (isAdminQuery || isSavedUnlocked) {
-        setShowAdminButton(true);
-        localStorage.setItem("dkora_admin_unlocked", "true");
-        if (urlView === "admin" || params.get("admin") === "true") {
-          setActiveView("admin");
-          setIsAdmin(true);
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const urlView = params.get("view");
+        const isAdminQuery = params.has("admin") || params.has("secret") || urlView === "admin";
+        let isSavedUnlocked = false;
+        try {
+          isSavedUnlocked = localStorage.getItem("dkora_admin_unlocked") === "true";
+        } catch (e) {
+          console.warn("Storage restricted in incognito mode", e);
         }
+
+        if (isAdminQuery || isSavedUnlocked) {
+          setShowAdminButton(true);
+          try {
+            localStorage.setItem("dkora_admin_unlocked", "true");
+          } catch (e) {
+            console.warn("Storage write restricted in incognito mode", e);
+          }
+          if (urlView === "admin" || params.get("admin") === "true") {
+            setActiveView("admin");
+            setIsAdmin(true);
+          }
+        }
+      } catch (e) {
+        console.warn("URL params parsing error", e);
       }
     }
   }, []);
@@ -58,13 +71,16 @@ export default function App() {
   // Dynamic state arrays with Server API & LocalStorage Persistence
   const [products, setProducts] = useState<Product[]>(() => {
     if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("dkora_custom_products");
-      if (saved) {
-        try {
-          return JSON.parse(saved);
-        } catch (e) {
-          console.error("Failed to load saved products", e);
+      try {
+        const saved = localStorage.getItem("dkora_custom_products");
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            return parsed;
+          }
         }
+      } catch (e) {
+        console.warn("LocalStorage blocked or unavailable in incognito mode:", e);
       }
     }
     return PRODUCTS;
@@ -77,7 +93,11 @@ export default function App() {
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
           setProducts(data);
-          localStorage.setItem("dkora_custom_products", JSON.stringify(data));
+          try {
+            localStorage.setItem("dkora_custom_products", JSON.stringify(data));
+          } catch (e) {
+            console.warn("LocalStorage write blocked in incognito mode:", e);
+          }
         }
       })
       .catch((err) => console.log("Serving offline or fallback mode:", err));
@@ -85,18 +105,29 @@ export default function App() {
 
   // Sync products to Server and LocalStorage when modified
   const handleSetProducts = (action: React.SetStateAction<Product[]>) => {
+    let updatedList: Product[] = [];
     setProducts((prev) => {
-      const updated = typeof action === "function" ? action(prev) : action;
+      updatedList = typeof action === "function" ? action(prev) : action;
       if (typeof window !== "undefined") {
-        localStorage.setItem("dkora_custom_products", JSON.stringify(updated));
+        try {
+          localStorage.setItem("dkora_custom_products", JSON.stringify(updatedList));
+        } catch (e) {
+          console.warn("LocalStorage write blocked in incognito mode:", e);
+        }
       }
+      return updatedList;
+    });
+
+    if (updatedList && updatedList.length > 0) {
       fetch("/api/products", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updated),
-      }).catch((err) => console.error("Error syncing to server:", err));
-      return updated;
-    });
+        body: JSON.stringify(updatedList),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log("Products synced to server:", data))
+        .catch((err) => console.error("Error syncing to server:", err));
+    }
   };
 
   const [categories] = useState(CATEGORIES);

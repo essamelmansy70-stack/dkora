@@ -321,18 +321,39 @@ async function startServer() {
   const CUSTOM_PRODUCTS_FILE = path.join(rootDir, "custom_products.json");
 
   function getStoredProducts() {
+    let customList: any[] = [];
     try {
       if (fs.existsSync(CUSTOM_PRODUCTS_FILE)) {
         const data = fs.readFileSync(CUSTOM_PRODUCTS_FILE, "utf-8");
         const parsed = JSON.parse(data);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
+          customList = parsed;
         }
       }
     } catch (err) {
       console.error("Error reading custom_products.json", err);
     }
-    return PRODUCTS;
+
+    if (customList.length === 0) {
+      return PRODUCTS;
+    }
+
+    // Merge PRODUCTS with custom_products.json so built-in PRODUCTS are preserved
+    // and custom or modified products override or get appended
+    const mergedMap = new Map<string, any>();
+    PRODUCTS.forEach((p) => {
+      if (p && p.id) {
+        mergedMap.set(p.id, p);
+      }
+    });
+
+    customList.forEach((p) => {
+      if (p && p.id) {
+        mergedMap.set(p.id, p);
+      }
+    });
+
+    return Array.from(mergedMap.values());
   }
 
   function saveStoredProducts(productsList: any[]) {

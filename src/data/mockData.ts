@@ -232,6 +232,79 @@ export const PRODUCTS: Product[] = [
     tags: ["خزنة رقمية منزلية", "خزنة منزلية", "سيفتي تك", "Safety Tech", "خزنة", "أقفال وحماية", "GN40 BLS", "خزنة رقمية"]
   },
   {
+    id: "p-manual-nail-gun",
+    titleAr: "مسدس مسامير يدوي محمول لتثبيت المسامير المعدنية على الخرسانة والجدران الصلبة (35×6 سم)",
+    titleEn: "Manual Steel Nail Rivet Gun Portable Wall Fastening Tool (35x6 cm)",
+    slug: "manual-steel-nail-gun-portable",
+    categoryId: "cat-hand-tools",
+    brandId: "b-total",
+    brandName: "أداة تثبيت المسامير المحمولة",
+    modelNumber: "MN-RIVET-35",
+    mainImage: "https://i.postimg.cc/tJmPcttR/51vas-Icf-IYL.jpg",
+    gallery: [
+      "https://i.postimg.cc/tJmPcttR/51vas-Icf-IYL.jpg",
+      "https://i.postimg.cc/tgh3g6pp/4156iy-Bgt-KL.jpg"
+    ],
+    rating: 4.8,
+    reviewCount: 124,
+    editorScore: 9.6,
+    priceAmazon: 850,
+    currency: "EGP",
+    amazonUrl: "https://link.amazon/B04siMqb4",
+    isTopPick: true,
+    isEditorChoice: true,
+    isBestValue: true,
+    pros: [
+      "تثبيت قوي وسريع للمسامير توفر الأداة قوة ضغط عالية تتيح إدخال المسامير داخل الجدران الصلبة بسهولة ودون الحاجة لأدوات كهربائية",
+      "مناسبة لعدة أنواع من الأسطح تعمل بكفاءة على الطوب، الخرسانة، الإسمنت، والألواح الصلبة مما يجعلها مثالية للاستخدام المنزلي والمهني",
+      "تصميم مريح لسهولة التحكم مزودة بمقبض مضاد للانزلاق يوفر قبضة ثابتة، ويقلل من الإجهاد أثناء الاستخدام لفترات طويلة",
+      "مواد تصنيع عالية الجودة مصنوعة من هيكل معدني قوي يتحمل ضغط الاستخدام المتكرر ويضمن عمرًا طويلًا للأداة",
+      "مرفقة بـ 10 مسامير مجانية جاهزة للاستخدام تساعدك على البدء فورًا دون الحاجة لشراء ملحقات إضافية",
+      "متعددة الاستعمالات وتلائم مختلف الاحتياجات مثالية لتعليق الصور والرفوف والمرايا واللوحات وأعمال الصيانة المنزلية الخفيفة",
+      "سهلة الاستخدام حتى للمبتدئين تعتمد على آلية ضغط بسيطة وتثبيت مباشر بدون ارتداد",
+      "حجم مناسب (35×6 سم) ووزن خفيف يلائم الاستخدام المنزلي والمهني وسهلة الحمل والتخزين"
+    ],
+    cons: [
+      "يتطلب استخدام مسامير صلب مخصصة لضمان قوة الدفع المثالية",
+      "يُنصح بارتداء نظارة حماية أثناء التثبيت على الجدران الخرسانية الصلبة جداً"
+    ],
+    targetAudience: "أصحاب المنازل، الفنيين، وعشاق أعمال الصيانة والديكور الراغبين في 'مسدس مسامير يدويه' يعمل على الخرسانة والطوب بسرعة ودون الحاجة لاستخدام الشنيور أو توصيلات الكهرباء.",
+    summary: "أداة تثبيت المسامير المعدنية المحمولة (مسدس مسامير يدويه) هي الحل الذكي والعملي لكل من يرغب في تعليق الأدوات أو تثبيت القطع المختلفة على الحائط دون الحاجة إلى معدات كهربائية أو أدوات معقدة بسعر ممتاز 850 ج.م.",
+    fullReviewText: `مراجعة شاملة وتجربة ميدانية لـ مسدس مسامير يدويه (أداة تثبيت المسامير المعدنية المحمولة):
+
+أداة تثبيت المسامير المعدنية المحمولة هي الحل الذكي والعملي لكل من يرغب في تعليق الأدوات أو تثبيت القطع المختلفة على الحائط دون الحاجة إلى معدات كهربائية أو أدوات معقدة. تأتي هذه الأداة بتصميم مريح وسهل الاستخدام، مما يجعلها مناسبة للاستخدام المنزلي والمهني على حد سواء. تم تصنيعها بجودة عالية لتتحمل العمل على الأسطح الصلبة مثل الطوب، الخرسانة، الإسمنت، والألواح الصلبة، وتساعدك في تركيب المسامير بسرعة وسهولة دون مجهود كبير.
+
+### 1. قوة التثبيت وجودة التصنيع
+تتميز الأداة بهيكل قوي مصنوع من مواد معدنية عالية التحمل لضمان عمر افتراضي طويل، بالإضافة إلى مقبض مريح مضاد للانزلاق يوفر ثباتًا أثناء الاستخدام. تعمل الآلة بتقنية بسيطة تعتمد على ضغط اليد لتوليد قوة دقيقة تسمح بإطلاق المسمار داخل السطح بثبات وبدون ارتداد. كما تأتي مع 10 مسامير معدنية مجانية لتسهيل بدء الاستخدام فورًا دون الحاجة لشراء إضافات.
+
+### 2. مجالات الاستخدام المتعددة
+هذه الأداة تعتبر مثالية لتثبيت الرفوف والخطافات، وتعليق الصور والمرايا، وتثبيت لوحات الكهرباء، وأعمال الصيانة المنزلية المختلفة. حجمها الصغير (35 سم الطول × 6 سم العرض) يجعلها سهلة الحمل والتخزين، ويمكن الاحتفاظ بها داخل صندوق الأدوات للاستعمال الفوري في أي وقت.
+
+### 3. طريقة الاستخدام الخطوة بخطوة:
+1. اختر المكان المناسب للتثبيت وحدد نقطة وضع المسمار.
+2. ضع المسمار داخل الفتحة الأمامية للأداة.
+3. وجه مقدمة المسدس بشكل مستقيم نحو الحائط أو السطح المراد تثبيته.
+4. اضغط بقوة للأمام لإطلاق المسمار وتثبيته محكماً.`,
+    specs: [
+      { label: "نوع الأداة", value: "مسدس مسامير يدوي محمول لثقب الخرسانة" },
+      { label: "الكلمة المفتاحية", value: "مسدس مسامير يدويه" },
+      { label: "أبعاد المنتج", value: "35 سم الطول × 6 سم العرض" },
+      { label: "اللون", value: "أحمر في أسود" },
+      { label: "الخامة", value: "هيكل معدني قوي عالي التحمل" },
+      { label: "عدد المثبتات", value: "1 أداة تثبيت" },
+      { label: "النمط", value: "سادة" },
+      { label: "الأسطح المدعومة", value: "الخرسانة – الطوب – الإسمنت – الألواح الصلبة" },
+      { label: "المكونات المرفقة", value: "10 مسامير معدنية مجانية جاهزة للاستخدام" },
+      { label: "المقبض", value: "تصميم مريح مضاد للانزلاق" },
+      { label: "الاستخدامات", value: "تثبيت الرفوف، الصور، المرايا، اللوحات، والصيانة المنزلية" },
+      { label: "السعر", value: "850 ج.م" },
+      { label: "رابط الشراء", value: "متوفر على أمازون (https://link.amazon/B04siMqb4)" }
+    ],
+    viewsCount: 9400,
+    dateAdded: "2026-03-28",
+    tags: ["مسدس مسامير يدويه", "مسدس مسامير", "أدوات يدوية", "تثبيت مسامير", "خرسانة", "مسدس تثبيت"]
+  },
+  {
     id: "p-huepar-s04cg-3d",
     titleAr: "ميزان ليزر 3D أخضر 16 خط Huepar S04CG الديجيتال بالبلوتوث",
     titleEn: "Huepar S04CG 16 Lines 3D Green Floor Laser Level",
@@ -579,6 +652,114 @@ export const DEALS: Deal[] = [
 ];
 
 export const ARTICLES: Article[] = [
+  {
+    id: "art-manual-nail-gun-review",
+    title: "مراجعة شاملة: مسدس مسامير يدويه محمول لتثبيت المسامير على الخرسانة والجدران الصلبة",
+    slug: "manual-steel-nail-gun-portable-review",
+    category: "العدد اليدوية",
+    readTime: "5 دقائق",
+    date: "2026-03-28",
+    author: "فريق المراجعات الفنية - ديكورا Dkora",
+    coverImage: "https://i.postimg.cc/tJmPcttR/51vas-Icf-IYL.jpg",
+    excerpt: "مراجعة تفصيلية وتجربة استخدام ميدانية لـ مسدس مسامير يدويه محمول يعمل على الخرسانة والجدران الصلبة بدون كهرباء، مع استعراض المواصفات، طريقة الاستخدام، ورابط الشراء من أمازون.",
+    content: `<div class="article-container space-y-6">
+      <p>أصبح التثبيت المباشر على الحوائط الخرسانية والأسمنتية أسهل بكثير دون الحاجة إلى توصيلات كهربائية أو استخدام الشنيور الثقيل والضوضاء المزعجة، وذلك بفضل **مسدس مسامير يدويه** (أداة تثبيت المسامير المعدنية المحمولة). في هذه المراجعة الشاملة، نستعرض معكم كافة التفاصيل الفنية، المميزات، طريقة الاستخدام، وتقييم الأداء لهذه الأداة العملية المصنوعة من المعدن الصلب بسعر 850 ج.م والمتاحة للشراء مباشرة عبر متجر أمازون.</p>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B04siMqb4' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/tJmPcttR/51vas-Icf-IYL.jpg" alt="مسدس مسامير يدويه محمول للتثبيت على الخرسانة" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">1. قوة التثبيت العالية والآلية الهندسية</h2>
+      <p>تعتمد أداة تثبيت المسامير المعدنية المحمولة على آلية دفع ميكانيكية متطورة تتيح لك إنجاز أعمال التثبيت بسرعة ودقة عالية:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>تثبيت قوي وسريع للمسامير:</strong> توفر الأداة قوة ضغط عالية تسمح بإدخال المسامير داخل الجدران الصلبة بسهولة ودون الحاجة لأدوات كهربائية.</li>
+        <li><strong>آلية تشغيل بدون ارتداد:</strong> تعتمد الآلة على تقنية بسيطة تعتمد على ضغط اليد لتوليد قوة دقيقة تسمح بإطلاق المسمار داخل السطح بثبات وبدون ارتداد.</li>
+        <li><strong>مرفقة بـ 10 مسامير مجانية:</strong> تأتي الأداة جاهزة للاستخدام مع 10 مسامير معدنية تساعدك على البدء فورًا دون الحاجة لشراء ملحقات إضافية.</li>
+      </ul>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B04siMqb4' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/tgh3g6pp/4156iy-Bgt-KL.jpg" alt="مسدس مسامير يدوي - أبعاد المنتج ومكونات العلبة" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">2. الأسطح المدعومة والتطبيقات العملية</h2>
+      <p>تتميز الأداة بمرونة فائقة تجعلها تلائم مختلف المهام والأسطح الصلبة بكل سهولة:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>مناسبة لعدة أنواع من الأسطح:</strong> تعمل بكفاءة على الطوب، الخرسانة، الإسمنت، والألواح الصلبة مما يجعلها مثالية للاستخدام المنزلي والمهني.</li>
+        <li><strong>تصميم مريح لسهولة التحكم:</strong> مزودة بمقبض مضاد للانزلاق يوفر قبضة ثابتة، ويقلل من الإجهاد أثناء الاستخدام لفترات طويلة.</li>
+        <li><strong>مواد تصنيع عالية الجودة:</strong> مصنوعة من هيكل معدني قوي يتحمل ضغط الاستخدام المتكرر ويضمن عمرًا طويلًا للأداة، مع تناسق ألوان مميز باللونين الأحمر والأسود.</li>
+        <li><strong>متعددة الاستعمالات وتلائم مختلف الاحتياجات:</strong> مثالية لتعليق الصور والرفوف والمرايا واللوحات وتثبيت مجاري الكهرباء وأعمال الصيانة المنزلية الخفيفة.</li>
+        <li><strong>سهلة الحمل والتخزين:</strong> بأبعاد (35 سم الطول × 6 سم العرض) وحجم مناسب ووزن خفيف يلائم الاستخدام المنزلي والمهني.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">3. طريقة الاستخدام الخطوة بخطوة</h2>
+      <p>تتميز الأداة بسهولة استخدامها حتى للمبتدئين عبر الاتباع البسيط لهذه الخطوات:</p>
+      <ol class="list-decimal list-inside space-y-2 pr-4 font-semibold text-slate-800 dark:text-slate-200">
+        <li>اختر المكان المناسب للتثبيت وحدد نقطة وضع المسمار.</li>
+        <li>ضع المسمار داخل الفتحة الأمامية للأداة.</li>
+        <li>وجه مقدمة المسدس بشكل مستقيم نحو الحائط أو السطح المراد تثبيته.</li>
+        <li>اضغط بقوة للأمام لإطلاق المسمار داخل السطح بثبات محكم.</li>
+      </ol>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">جدول المواصفات التقنية الفنية للمنتج</h2>
+      <div class="overflow-x-auto my-4">
+        <table class="w-full text-xs sm:text-sm text-right border-collapse border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+          <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800 w-1/3">اسم المنتج / الكلمة المفتاحية</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">مسدس مسامير يدويه (أداة تثبيت المسامير المعدنية المحمولة)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">أبعاد المنتج</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">35 سم الطول × 6 سم العرض</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">اللون والخامة</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">أحمر في أسود - هيكل معدني ثقيل عالي الجودة</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">عدد المثبتات والنمط</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">1 مثبت رئيسي - نمط سادة احترافي</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">الأسطح المتوافقة</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">الطوب، الخرسانة، الإسمنت، الألواح الصلبة</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">المرفقات والملحقات</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">تأتي مع 10 مسامير معدنية مجانية جاهزة للاستخدام</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">السعر ورابط الشراء</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">850 ج.م على متجر أمازون</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">الخلاصة ورأي فريق التحرير</h2>
+      <p>إذا كنت تبحث عن **مسدس مسامير يدويه** يوفر لك تثبيتاً خرسانياً متيناً وسريعاً بدون استخدام الشنيور المزعج أو أسلاك الكهرباء، فإن هذه الأداة المحمولة تمنحك أفضل أداء عملي واقتصادي بسعر 850 ج.م مع 10 مسامير مجانية.</p>
+
+      <p class="font-bold my-3 text-lg">التقييم الشامل: <span class="text-amber-500 font-extrabold">⭐⭐⭐⭐⭐ (4.8 من 5)</span></p>
+
+      <div class="my-8 p-6 text-center bg-amber-500/10 border border-amber-500/30 rounded-2xl space-y-4 shadow-xl">
+        <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400">احصل على مسدس مسامير يدويه بأفضل سعر على أمازون</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300">السعر الحالي: 850 ج.م مع 10 مسامير مجانية عبر هذا الرابط المباشر:</p>
+        <div>
+          <a href="https://link.amazon/B04siMqb4" class="inline-block bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-8 py-4 rounded-xl transition-transform transform hover:scale-105 shadow-xl text-base sm:text-lg" target="_blank" rel="nofollow sponsored">
+            🛒 اضغط هنا لشراء مسدس مسامير يدويه من أمازون
+          </a>
+        </div>
+        <p class="text-xs text-slate-400 mt-2">
+          * إفصاح التسويق بالعمولة (Affiliate Disclosure): بالضغط على رابط الشراء، قد نحصل على عمولة بسيطة من أمازون دون أي تكلفة إضافية عليك.
+        </p>
+      </div>
+    </div>`,
+    tags: ["مسدس مسامير يدويه", "مسدس مسامير", "أدوات يدوية", "تثبيت مسامير", "خرسانة", "أمازون"]
+  },
   {
     id: "art-safetytech-gn40-bls-review",
     title: "مراجعة شاملة: أفضل خزنة رقمية منزلية مع شاشة وإنذار ومصادقة ثنائية Safety Tech GN40 BLS",
@@ -1181,6 +1362,18 @@ export const ARTICLES: Article[] = [
 ];
 
 export const REVIEWS_SAMPLE: UserReview[] = [
+  {
+    id: "rev-4",
+    productId: "p-manual-nail-gun",
+    userName: "م. حسام الدين عبد المجيد",
+    userRole: "فني تشطيبات وديكور",
+    rating: 5,
+    date: "2026-03-20",
+    title: "مسدس مسامير يدويه ممتاز ووفر عليا وقت الشنيور والكهربا",
+    comment: "الأداة ممتازة جداً في تثبيت مجاري السلك والرفوف على الحوائط الخرسانية بضغطة واحدة وبدون دوشة الشنيور. المسامير العشرة المرفقة خامتهم صلبة ورائعة.",
+    helpfulCount: 22,
+    verifiedPurchase: true
+  },
   {
     id: "rev-3",
     productId: "p-safetytech-gn40-bls",

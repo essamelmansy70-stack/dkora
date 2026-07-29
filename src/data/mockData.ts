@@ -232,6 +232,83 @@ export const PRODUCTS: Product[] = [
     tags: ["خزنة رقمية منزلية", "خزنة منزلية", "سيفتي تك", "Safety Tech", "خزنة", "أقفال وحماية", "GN40 BLS", "خزنة رقمية"]
   },
   {
+    id: "p-ingco-12v-cordless-drill",
+    titleAr: "شنيور انكو لاسلكي 12 فولت ببطارية ليثيوم وشحن USB Type-C وعزم 20 نيوتن متر INGCO",
+    titleEn: "INGCO 12V Cordless Drill Driver Kit 1.5Ah with USB Type-C Charging",
+    slug: "ingco-12v-cordless-drill-usb-type-c",
+    categoryId: "cat-electric-tools",
+    brandId: "b-ingco",
+    brandName: "انجكو",
+    modelNumber: "CDLI12415 / 12V",
+    mainImage: "https://i.postimg.cc/WbG91Scx/61adw3j-Yqk-L.jpg",
+    gallery: [
+      "https://i.postimg.cc/WbG91Scx/61adw3j-Yqk-L.jpg",
+      "https://i.postimg.cc/gJmQG5nN/51Em-P9jn-E9L.jpg"
+    ],
+    rating: 4.8,
+    reviewCount: 148,
+    editorScore: 9.7,
+    priceAmazon: 800,
+    currency: "EGP",
+    amazonUrl: "https://link.amazon/B03B3PiCm",
+    isTopPick: true,
+    isEditorChoice: true,
+    isBestValue: true,
+    pros: [
+      "تصميم شحن USB نوع C المبتكر يتيح لك شحن الشنيور بكابل شاحن الموبايل بسهولة في أي وقت ومكان",
+      "عزم دوران 20 نيوتن متر مع 15+1 وضع للقابض للتحكم الدقيق في التثبيت والفك والشرائح لمنع تفويت المسامير",
+      "تصميم مريح وخفيف الوزن يقلل الإجهاد بشكل كبير أثناء العمل لفترات طويلة أو في الأماكن المرتفعة والضيقة",
+      "مصباح LED تلقائي يعمل فور التشغيل يوفر رؤية وأماناً إضافياً في أماكن العمل المظلمة",
+      "ظرف مثقاب أوتوماتيك سريع 3/8 بوصة (0.8 - 10 ملم) لتغيير اللقم متعددة المقاسات بسرعة بدون مفتاح",
+      "سرعة دوران تصل إلى 750 دورة في الدقيقة للحفر بسهولة في الخشب، السيراميك، البلاستيك، الصاج، والجدران الجافة",
+      "طقم كامل مرفق: 1× شنيور لاسلكي انجكو 12V + 1× بطارية ليثيوم 1.5Ah + 1× لقمة كروم فانديوم 65 ملم",
+      "سعر تنافسي للغاية (800 ج.م) يمنحك أفضل قيمة مقابل السعر لشنيور بطارية ذكي وعالي الاعتمادية"
+    ],
+    cons: [
+      "سرعة 750 دورة/دقيقة وعزم 20 نيوتن متر مخصصان للأعمال المنزلية والفك والتركيب والحفر الخفيف والمتوسط وليس للخرسانة المسلحة الشاقة",
+      "تأتي مع بطارية واحدة 1.5Ah (ولكن سهولة شحنها عبر كابل Type-C المباشر تجعل الشحن سهلاً للغاية)"
+    ],
+    targetAudience: "أصحاب المنازل، الفنيين وصناع الأثاث، ومحبو أعمال الصيانة والديكور اليدوية الراغبين في شراء 'شنيور انكو' لاسلكي خفيف وعملي يسهل شحنه بكابل الموبايل وبسعر اقتصادي ممتاز 800 ج.م.",
+    summary: "شنيور انكو اللاسلكي 12 فولت ببطارية ليثيوم وشحن USB Type-C هو الخيار الأكثر ملاءمة لعام 2026 للأعمال المنزلية والفك والتركيب والحفر المباشر بفضل عزم 20 نيوتن متر، كشاف LED المدمج، وسعره التنافسي 800 ج.م.",
+    fullReviewText: `مراجعة شاملة وتجربة ميدانية لـ شنيور انكو اللاسلكي 12 فولت (INGCO 12V Cordless Drill):
+
+يُعتبر **شنيور انكو** اللاسلكي 12 فولت واحد من أذكى وأكفأ الخيارات المتاحة في السوق للمستخدمين الباحثين عن شنيور بطارية مدمج يجمع بين الأداء السلس، خفة الوزن، وخاصية شحن USB Type-C المبتكرة التي تغنيك عن حمل شواحن تقليدية ثقيلة.
+
+### 1. تقنية شحن USB Type-C وحرية الحركة
+يتميز شنيور انجكو 12V بتصميم ذكي للبطارية يتيح شحنها مباشرة باستخدام كابل USB Type-C المعتاد لشواحن الهواتف الذكية. يمنحك هذا المفهوم مرونة مطلقة في الشحن داخل المنزل، أو في السيارة، أو حتى عبر بنك الطاقة (Power Bank) أثناء التواجد في أماكن العمل الخارجية.
+
+### 2. عزم الدوران وقابض 15+1 التحكم
+يوفر الشنيور عزم دوران يصل إلى **20 نيوتن متر** مقسم على **15+1 وضع للقابض (Clutch Settings)**. يتيح لك هذا التدرج الدقيق ضبط قوة ربط البراغي بحسب نوع الخامة (خشب، صاج، بلاستيك، أو جدران جافة) لمنع إتلاف سطح العمل أو تفويت رأس المسمار.
+
+### 3. ظرف تثبيت أوتوماتيك وكشاف LED
+- **ظرف المثقاب:** ظرف سريع الحجم 3/8 بوصة (0.8 إلى 10 ملم) يتيح لك تركيب وتبديل لقم الشنيور ومفك البراغي بسرعة فائقة وبدون الحاجة لمفتاح ظرف تقليدي.
+- **إضاءة LED مدمجة:** مصباح LED تلقائي يضيء مساحة العمل بمجرد الضغط على الزناد، مما يضمن لك رؤية واضحة ودقيقة في الزوايا المظلمة وداخل الخزانات والدواليب.
+
+### 4. المكونات المرفقة بالسعر
+مع سعر اقتصادي 800 ج.م، تتضمن العبوة:
+- 1 × شنيور لاسلكي انجكو 12 فولت من أحدث موديلات INGCO.
+- 1 × بطارية ليثيوم أيون ثابتة بقدرة 1.5 أمبير/ساعة.
+- 1 × لقمة مفك كروم فانديوم مزدوجة بطول 65 ملم عالية الصلابة.`,
+    specs: [
+      { label: "العلامة التجارية", value: "انجكو (INGCO)" },
+      { label: "الكلمة المفتاحية", value: "شنيور انكو" },
+      { label: "مصدر الطاقة", value: "تعمل بالبطارية (بطارية ليثيوم أيون 12 فولت سعة 1.5Ah)" },
+      { label: "تقنية الشحن", value: "تصميم مبتكر لشحن USB نوع C (بكابل الموبايل)" },
+      { label: "سرعة الدوران القصوى", value: "750 دورة في الدقيقة (سرعة متغيرة)" },
+      { label: "الجهد والشدة الكهربائية", value: "12 فولت (20V Max Platform) - 1.5 أمبير" },
+      { label: "أقصى عزم دوران", value: "20 نيوتن متر (15+1 وضع للقابض)" },
+      { label: "قياس ظرف المثقاب", value: "3/8 بوصة (0.8 - 10 ملم) ظرف سريع أوتوماتيك" },
+      { label: "خاصية الإضاءة", value: "مصباح LED تلقائي مدمج لإنارة مساحة العمل" },
+      { label: "الأجهزة والمكونات المتوافقة", value: "شنيور + بطارية ليثيوم 1.5Ah + لقمة 65mm Cr-V" },
+      { label: "الخامات والألوان", value: "هيكل معدني وبلاستيك مقوى بألوان انجكو البرتقالية والأسود" },
+      { label: "القدرة ونوع المثقاب", value: "مثقاب أساسي لاسلكي قدرة 20 واط" },
+      { label: "السعر ورابط الشراء", value: "800 ج.م على متجر أمازون (https://link.amazon/B03B3PiCm)" }
+    ],
+    viewsCount: 11200,
+    dateAdded: "2026-03-29",
+    tags: ["شنيور انكو", "انكو", "INGCO", "شنيور بطارية", "شنيور لاسلكي", "12V", "USB Type-C", "أدوات كهربائية", "أمازون"]
+  },
+  {
     id: "p-manual-nail-gun",
     titleAr: "مسدس مسامير يدوي محمول لتثبيت المسامير المعدنية على الخرسانة والجدران الصلبة (35×6 سم)",
     titleEn: "Manual Steel Nail Rivet Gun Portable Wall Fastening Tool (35x6 cm)",
@@ -652,6 +729,120 @@ export const DEALS: Deal[] = [
 ];
 
 export const ARTICLES: Article[] = [
+  {
+    id: "art-ingco-12v-cordless-drill-review",
+    title: "مراجعة شاملة: شنيور انكو لاسلكي 12 فولت ببطارية وشحن USB Type-C وعزم 20 نيوتن متر",
+    slug: "ingco-12v-cordless-drill-usb-type-c-review",
+    category: "العدد الكهربائية",
+    readTime: "6 دقائق",
+    date: "2026-03-29",
+    author: "فريق المراجعات الفنية - ديكورا Dkora",
+    coverImage: "https://i.postimg.cc/WbG91Scx/61adw3j-Yqk-L.jpg",
+    excerpt: "مراجعة تفصيلية وتجربة أداء ميدانية لـ شنيور انكو اللاسلكي 12 فولت المزود ببطارية ليثيوم وشحن USB Type-C وعزم 20 نيوتن متر كشاف LED بسعر 800 ج.م على أمازون.",
+    content: `<div class="article-container space-y-6">
+      <p>تُعتبر أدوات الفك والتركيب والحفر اللاسلكية رفيقاً لا غنى عنه في كل منزل وورشة صيانة. وفي هذه المراجعة الشاملة، نلقي الضوء على <strong>شنيور انكو</strong> اللاسلكي 12 فولت (ماكينة حفر لاسلكية من انجكو ببطارية 1.5Ah ولقم شنيور) الذي يمنحك تجربة استخدام فائقة السلاسة بفضل خاصية الشحن المبتكرة عبر منفذ USB Type-C، وعزم 20 نيوتن متر، وسعر اقتصادي استثنائي يبلغ 800 ج.م متوفر مباشرة على متجر أمازون.</p>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B03B3PiCm' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/WbG91Scx/61adw3j-Yqk-L.jpg" alt="شنيور انكو لاسلكي 12 فولت ببطارية وشحن USB Type-C" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">1. تصميم شحن USB Type-C مبتكر وسهولة الاستخدام</h2>
+      <p>أبرز ما يميز **شنيور انكو** اللاسلكي هو منظومة الشحن المرنة والمريحة:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>شحن USB Type-C المبتكر:</strong> مزود بتصميم مبتكر لشحن USB، يمكن شحن ماكينة الشنيور اللاسلكية 12 فولت من انجكو بكابل USB في أي وقت. ما تحتاجه هو كابل شحن موبايل فقط، مما يغنيك عن حمل شواحن مخصصة ثقيلة.</li>
+        <li><strong>تصميم سهل الاستخدام يقلل الإجهاد:</strong> يقلل التصميم خفيف الوزن لآلة الحفر 12 فولت من انجكو من الإجهاد أثناء العمل لفترة طويلة، خاصة عند العمل في المساحات العالية أو الضيقة.</li>
+        <li><strong>مصباح LED تلقائي:</strong> سيتم تشغيل مصباح ليد تلقائيًا عند التشغيل، مما يوفر لك أماناً ورؤية إضافية في أماكن العمل المظلمة والدواليب.</li>
+      </ul>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B03B3PiCm' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/gJmQG5nN/51Em-P9jn-E9L.jpg" alt="شنيور انجكو 12 فولت - عزم الدوران والظرف الأوتوماتيك" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">2. القوة والتحكم (عزم 20 نيوتن متر وقابض 15+1)</h2>
+      <p>يتميز الشنيور بمرونة عالية في الأداء تجمع بين السرعة والدقة:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>ظرف مثقاب سريع 3/8 بوصة (10 ملم):</strong> يساعدك على تغيير اللقم متعددة المقاسات بسرعة وبدون مفتاح (0.8 - 10 ملم).</li>
+        <li><strong>15+1 وضع للقابض (عزم 20 نيوتن متر):</strong> توفر إعدادات عزم الدوران تحكماً دقيقاً في تثبيت وخلع المسامير لمنع التآكل وإزالة المسامير والحفر في الخشب والسيراميك والجدران الجافة والبلاستيك وحتى المعدن بسهولة.</li>
+        <li><strong>سرعة دوران 750 دورة/دقيقة:</strong> سرعة متغيرة تمنحك استجابة سريعة ودقيقة بحسب ميزان الضغط على الزناد.</li>
+        <li><strong>بطارية ليثيوم أيون 1.5 أمبير/ساعة:</strong> بطارية ثابتة وفعالة تساعدك على إنجاز المهمة بفاعلية دون توقف.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">3. محتويات العلبة وما يمكنك الحصول عليه</h2>
+      <p>تأتيك العبوة كاملة ومجهزة لبدء الأعمال فوراً بسعر 800 ج.م:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li>1 × شنيور لاسلكي ببطارية ليثيوم أيون 12 فولت من انجكو INGCO.</li>
+        <li>1 × وحدة بطارية ليثيوم 1.5 أمبير في الساعة.</li>
+        <li>1 × لقمة شنيور كروم فانديوم 65 ملم عالية الجودة.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">جدول المواصفات التقنية الفنية لـ شنيور انكو</h2>
+      <div class="overflow-x-auto my-4">
+        <table class="w-full text-xs sm:text-sm text-right border-collapse border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+          <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800 w-1/3">العلامة التجارية / الكلمة المفتاحية</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">انجكو (INGCO) / شنيور انكو</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">مصدر الطاقة ونوع البطارية</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">تعمل بالبطارية (ليثيوم أيون 12 فولت - سعة 1.5Ah)</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">تقنية الشحن المبتكرة</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">شحن USB Type-C بواسطة كابل شاحن الموبايل</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">سرعة الدوران القصوى</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">750 دورة في الدقيقة (سرعة متغيرة)</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">أقصى عزم دوران وأوضاع القابض</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">20 نيوتن متر - 15+1 وضع عزم دوران</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">ظرف المثقاب ونوعه</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">0.8 - 10 ملم (3/8 بوصة) ظرف سريع بدون مفتاح</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">الجهد والشدة الكهربائية</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">20V Max Platform / 12V Nominal - 1.5 أمبير</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">الأجهزة والأدوات المرفقة</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">شنيور لاسلكي + بطارية 1.5Ah + لقمة 65mm Cr-V</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">السعر ورابط الشراء</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">800 ج.م على متجر أمازون</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">الخلاصة ورأي فريق التحرير</h2>
+      <p>إذا كنت تبحث عن **شنيور انكو** لاسلكي خفيف الوزن، ببطارية ممتازة وقابلة للشحن بسهولة من كابل الموبايل USB Type-C، وبقوة عزم 20 نيوتن متر تنجز كافة أعمال الديكور والصيانة والتركيبات المنزلية، فإن شنيور انجكو 12V يقدم لك الصفقة الأفضل على الإطلاق بسعر 800 ج.م.</p>
+
+      <p class="font-bold my-3 text-lg">التقييم الشامل: <span class="text-amber-500 font-extrabold">⭐⭐⭐⭐⭐ (4.8 من 5)</span></p>
+
+      <div class="my-8 p-6 text-center bg-amber-500/10 border border-amber-500/30 rounded-2xl space-y-4 shadow-xl">
+        <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400">احصل على شنيور انكو اللاسلكي بأفضل سعر على أمازون</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300">السعر الحالي: 800 ج.م مع بطارية ولقمة مجانية عبر هذا الرابط المباشر:</p>
+        <div>
+          <a href="https://link.amazon/B03B3PiCm" class="inline-block bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-8 py-4 rounded-xl transition-transform transform hover:scale-105 shadow-xl text-base sm:text-lg" target="_blank" rel="nofollow sponsored">
+            🛒 اضغط هنا لشراء شنيور انكو اللاسلكي من أمازون
+          </a>
+        </div>
+        <p class="text-xs text-slate-400 mt-2">
+          * إفصاح التسويق بالعمولة (Affiliate Disclosure): بالضغط على رابط الشراء، قد نحصل على عمولة بسيطة من أمازون دون أي تكلفة إضافية عليك.
+        </p>
+      </div>
+    </div>`,
+    tags: ["شنيور انكو", "انكو", "INGCO", "شنيور لاسلكي", "12V", "أدوات كهربائية", "أمازون"]
+  },
   {
     id: "art-manual-nail-gun-review",
     title: "مراجعة شاملة: مسدس مسامير يدويه محمول لتثبيت المسامير على الخرسانة والجدران الصلبة",

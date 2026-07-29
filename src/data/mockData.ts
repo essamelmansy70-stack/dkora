@@ -133,6 +133,7 @@ export const CATEGORIES: Category[] = [
 ];
 
 export const BRANDS: Brand[] = [
+  { id: "b-safetytech", name: "Safety Tech", country: "مصر", logoText: "SAFETY TECH", description: "العلامة المصرية الرائدة في صناعة الخزن الرقمية المنزلية وأنظمة الأمان والإنذار المتطورة." },
   { id: "b-bosch", name: "Bosch", country: "ألمانيا", logoText: "BOSCH", description: "الرائد العالمي في حلول العُدد والتقنيات الهندسية." },
   { id: "b-dewalt", name: "DeWalt", country: "أمريكا", logoText: "DEWALT", description: "علامة العُدد الشاقة المفضلة للمقاولين والمشروعات الضخمة." },
   { id: "b-makita", name: "Makita", country: "اليابان", logoText: "MAKITA", description: "الدقة والابتكار الياباني في المحركات والأدوات اللاسلكية." },
@@ -144,54 +145,91 @@ export const BRANDS: Brand[] = [
 
 export const PRODUCTS: Product[] = [
   {
-    id: "p-dewalt-dcd791d2",
-    titleAr: "شنيور بوش/ديوالت 20 فولت كربونات للاسلكي المزدوج Dewalt DCD791D2",
-    titleEn: "DeWalt DCD791D2 20V MAX XR Brushless Drill Kit",
-    slug: "dewalt-dcd791d2-20v-brushless-drill",
-    categoryId: "cat-electric-tools",
-    brandId: "b-dewalt",
-    brandName: "DeWalt",
-    modelNumber: "DCD791D2",
-    mainImage: "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=80",
+    id: "p-safetytech-gn40-bls",
+    titleAr: "خزنة رقمية منزلية مع شاشة + جهاز إنذار قوي + خاصية المصادقة الثنائية سيفتي تك GN40 BLS (40×38×38 سم)",
+    titleEn: "Safety Tech GN40 BLS Home Digital Safe with Screen, Loud Alarm & Dual Authentication (40x38x38 cm)",
+    slug: "safety-tech-gn40-bls-digital-home-safe",
+    categoryId: "cat-locks",
+    brandId: "b-safetytech",
+    brandName: "Safety Tech",
+    modelNumber: "GN40 BLS",
+    mainImage: "https://i.postimg.cc/d3V3dF9x/71n-Ayo-Vw-O2L-AC-SL1200.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=800&q=80"
+      "https://i.postimg.cc/d3V3dF9x/71n-Ayo-Vw-O2L-AC-SL1200.jpg",
+      "https://i.postimg.cc/26mVkhLW/71f1b-RWx-N-L-AC-SL1200.jpg"
     ],
-    rating: 4.9,
-    reviewCount: 342,
+    rating: 5.0,
+    reviewCount: 2,
     editorScore: 9.8,
-    priceAmazon: 8450,
+    priceAmazon: 5995,
     currency: "EGP",
-    amazonUrl: "https://amazon.eg/dp/B0182EEYDE?tag=dkora-21",
+    amazonUrl: "https://link.amazon/B0bz4Tk7G",
     isTopPick: true,
     isEditorChoice: true,
+    isBestValue: true,
     pros: [
-      "محرك Brushless بدون فرش كربونية يعطي عمر أطول بـ 57%",
-      "إضاءة LED فائقة مع 3 أوضاع سطوع مختلفة لإنارة زوايا العمل الضيقة",
-      "وزن خفيف مقارنة بقوة العزم العالية (70 نيوتن متر)",
-      "بطاريتان ليتيوم 2.0 أمبير مع شاحن سريع وحقيبة قماشية مقواة"
+      "نظام مصادقة ثنائية مزدوجة فائق الأمان (كلمة مرور + مفتاح رئيسي أو مفتاح رئيسي + مفتاح طوارئ)",
+      "جهاز إنذار صوتي قوي جداً بـ 2 نظام (إنذار مبكر عند محاولة الفتح أو 3 محاولات خطأ للرمز)",
+      "نظام إغلاق مزدوج بـ 3 ألسنة صلبة لإحكام الغلق ضد محاولات السرقة والكسر",
+      "شاشة إلكترونية مزودة بخاصية إخفاء الرقم السري لمنع التجسس",
+      "إمكانية تسجيل 2 رقم سري مستقلين (كل رقم مكون من 3 إلى 8 أرقام)",
+      "2 كالون كمبيوتر مع 2 مفتاح لكل كالون (إجمالي 4 مفاتيح مرفقة)",
+      "2 رف داخلي متحرك يوفر 3 مساحات تخزين واسعة ومنظمة",
+      "مرونة تثبيت متكاملة: 4 فتحات ظهر + 4 فتحات قاعدة مع مرفق 4 مسامير صلبة للتثبيت الشاق",
+      "مرفق مع الخزنة 4 بطاريات AA بالإضافة إلى جهاز بطارية طوارئ خارجي"
     ],
     cons: [
-      "السعر مرتفع نسبيًا للاستخدام الخفيف المتردد",
-      "لا يحتوي على وضع الشاكوش للخرسانة الصلبة (يركز على الحديد والخشب والفك)"
+      "يلزم حفظ مفاتيح الطوارئ وجهاز البطارية الخارجي في مكان آمن منفصل خارج الخزنة",
+      "الوزن حوالي 17 كجم، وتعتمد أقصى حماية لها على التثبيت الجيد بالمسامير الصلبة المرفقة"
     ],
-    targetAudience: "الفنيون المحترفون، أصحاب الورش الاحترافية، وعشاق الأعمال اليدوية المقاولين الذين يبحثون عن اعتمادية قصوى تحرّك المشروعات اليومية.",
-    summary: "يعتبر ديوالت DCD791D2 أفضل شنيور بطارية شاق في الأسواق لعام 2026 بفضل محركه الفولاذي المطور وتقنية العزم المزدوجة التي تتيح لك العمل لساعات متواصلة دون سخونة.",
-    fullReviewText: "اخضعنا شنيور DeWalt DCD791D2 لاختبارات ميدانية مكثفة شملت ثقب ألواح الخشب الزان بعمق 40 مم وتثبيت مئات البراغي في الهياكل المعدنية. أظهر الشنيور استجابة مذهلة في السرعة الأولى والثانية بفضل صندوق التروس المعدني الكامل. كما تميز بنظام السلاسة الفائقة في الزناد والتحكم بالعزم مع 15 درحة تعديل.",
+    targetAudience: "أصحاب المنازل والمكاتب والشركات والمحلات الراغبين في شراء 'خزنة رقمية منزلية' متينة تجمع بين الأمان الفولاذي، شاشة التحكم الذكية، والإنذار الصوتي المباشر لحفظ المستندات والأموال والمجوهرات.",
+    summary: "تُعتبر الخزنة الرقمية المنزلية Safety Tech GN40 BLS الخيار الرقمي الأول والأكثر أماناً لعام 2026 بفضل نظام المصادقة الثنائية، شاشة التحكم الذكية، جهاز الإنذار المبكر القوي، و3 ألسنة غلق صلبة مع إمكانية التثبيت المحكم بالحائط أو داخل الدولاب.",
+    fullReviewText: `مراجعة شاملة وتقييم ميداني للخزنة الرقمية المنزلية Safety Tech GN40 BLS:
+
+إذا كنت تبحث عن **خزنة رقمية منزلية** توفر أعلى معايير الحماية والأمان لحفظ مستنداتك الهامة، أموالك، والمجوهرات، فإن خزنة سيفتي تك (Safety Tech) موديل GN40 BLS تعتبر واحدة من أفضل الخيارات المتاحة في السوق بفضل التصنيع المصري المتين والتقنيات الأمنية الحديثة.
+
+### 1. تقنية المصادقة الثنائية وأنظمة الفتح
+تأتي الخزنة بنظام مصادقة مزدوجة يضمن عدم إمكانية فتحها إلا من خلال الخطوات المعتمدة:
+1. **المفتاح الرئيسي مع مفتاح الطوارئ** (للفتح اليدوي في حالات الطوارئ أو نفاد الشحنة).
+2. **المفتاح الرئيسي مع الرقم السري** (للاستخدام اليومي السريع).
+تسمح اللوحة الإلكترونية بتسجيل **2 رقم سري مستقل** (تتراوح طول كلمة المرور بين 3 إلى 8 أرقام)، وتتميز الشاشة بـ **خاصية إخفاء الرقم السري** لمنع تتبع أرقامك من أي شخص يقف بجوارك.
+
+### 2. نظام الإنذار الصوتي المزدوج والحماية الميكانيكية
+تم تزويد الخزنة بـ **جهاز إنذار صوتي قوي جداً ضد السرقة** يعمل بنظامين أمنيين:
+- **خاصية الإنذار المبكر:** ينطلق صوت إنذار عالي جداً عند محاولة تحريك الخزنة أو ضربها أو فتحها قسرياً.
+- **إنذار المحاولات الخاطئة:** يتم تفعيل الإنذار فور إدخال الرقم السري بشكل خاطئ 3 مرات متتالية.
+ميكانيكياً، تتميز الخزنة بنظام **إغلاق مزدوج بـ 3 لسان صلب** مصنوعة من الفولاذ الثقيل لإحكام الغلق وضمان عدم فك الباب، بالإضافة إلى 2 كالون كمبيوتر عالي الجودة مع 2 مفتاح لكل كالون.
+
+### 3. الأبعاد، السعة الداخلية، والتثبيت
+- **الأبعاد الخارجية:** 40 سم ارتفاع × 38 سم عرض × 38 سم عمق.
+- **التخزين الداخلي:** تحتوي الخزنة على **2 رف داخلي متحرك** مما يمنحك 3 مساحات تخزين منفصلة لتنظيم الملفات والأغراض الثمينة.
+- **نظام التثبيت:** رغم أن وزنها يبلغ حوالي 17 كجم، إلا أنها لا تعتمد على الوزن الفعلي فقط؛ بل تأتي مزودة بـ **4 فتحات تثبيت على الظهر + 4 فتحات تثبيت من القاعدة**، ومرفق معها **4 مسامير صلبة** لربطها بقوة فائقة بالحائط أو الأرضية الخرسانية أو داخل دولاب الملابس.
+
+### 4. الملحقات المتوفرة داخل العلبة
+- 4 مسامير صلبة مخصصة للتثبيت الشاق.
+- 4 بطاريات AA أصلية لتشغيل اللوحة الرقمية.
+- جهاز بطارية طوارئ خارجي يوصل بالخزنة من الخارج في حال نفاد البطاريات الداخلية ولم تكن المفاتيح بحوزتك.
+- 4 مفاتيح كمبيوتر (مفتاحين لكل كالون).`,
     specs: [
-      { label: "الجهد الكهربائي", value: "20 فولت MAX" },
-      { label: "نوع المحرك", value: "Brushless (بدون فحمات)" },
-      { label: "أقصى عزم دوران", value: "70 نيوتن.متر" },
-      { label: "السرعة بدون حمل", value: "0 - 550 / 0 - 2000 دورة/دقيقة" },
-      { label: "ظرف الشنيور", value: "13 مم معدني أوتوماتيك" },
-      { label: "سعة البطارية", value: "2.0 أمبير/ساعة (بطاريتان مرفقتان)" },
-      { label: "الوزن", value: "1.5 كجم فقط" }
+      { label: "نوع القفل", value: "قفل برمز إلكتروني + 2 كالون كمبيوتر" },
+      { label: "المصادقة", value: "خاصية المصادقة الثنائية المزدوجة" },
+      { label: "نظام الإنذار", value: "جهاز إنذار صوتي قوي بـ 2 نظام (إنذار مبكر + 3 أخطاء)" },
+      { label: "الأبعاد (إرتفاع × عرض × عمق)", value: "40 سم × 38 سم × 38 سم" },
+      { label: "ألسنة الغلق", value: "نظام إغلاق مزدوج بـ 3 لسان صلب فولاذي" },
+      { label: "التقسيم الداخلي", value: "2 رف متحرك (3 مساحات للتخزين)" },
+      { label: "فتحات التثبيت", value: "4 فتحات ظهر + 4 فتحات قاعدة (مرفق 4 مسامير صلبة)" },
+      { label: "إخفاء الرقم السري", value: "مدعوم بشاشة التحكم باللمس" },
+      { label: "الأرقام السرية", value: "إمكانية تسجيل 2 رقم سري (من 3 إلى 8 أرقام)" },
+      { label: "التغذية والبطاريات", value: "4 بطاريات AA + مرفق جهاز بطارية طوارئ خارجي" },
+      { label: "المفاتيح المرفقة", value: "2 كالون كمبيوتر (4 مفاتيح إجمالاً)" },
+      { label: "العلامة والمنشأ", value: "سيفتي تك Safety Tech - صنع في مصر" },
+      { label: "رقم الموديل / ASIN", value: "GN40 BLS / B0DLV4WGWS" },
+      { label: "تقييم المستخدمين", value: "5.0 من 5 نجوم (2 مراجعات)" },
+      { label: "الوزن", value: "17 كجم تقريباً (مع تثبيت مسامير صلبة)" }
     ],
-    competitorIds: ["p-bosch-gsb-180-li"],
-    viewsCount: 14200,
-    dateAdded: "2026-01-15",
-    tags: ["شنيور", "ديوالت", "بطارية", "20V", "أفضل شنيور"]
+    viewsCount: 8900,
+    dateAdded: "2026-03-25",
+    tags: ["خزنة رقمية منزلية", "خزنة منزلية", "سيفتي تك", "Safety Tech", "خزنة", "أقفال وحماية", "GN40 BLS", "خزنة رقمية"]
   },
   {
     id: "p-huepar-s04cg-3d",
@@ -289,52 +327,6 @@ export const PRODUCTS: Product[] = [
     tags: ["صاروخ", "بوش", "قطعية", "حدادة", "4.5 بوصة"]
   },
   {
-    id: "p-yale-yrm200-smart-lock",
-    titleAr: "قفل باب ذكي بالبصمة والواي فاي والكرت Yale YRM200 Smart Lock",
-    titleEn: "Yale YRM200 Biometric Smart Digital Door Lock",
-    slug: "yale-yrm200-biometric-smart-lock",
-    categoryId: "cat-locks",
-    brandId: "b-yale",
-    brandName: "Yale",
-    modelNumber: "YRM200",
-    mainImage: "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80",
-    gallery: [
-      "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=80"
-    ],
-    rating: 4.9,
-    reviewCount: 96,
-    editorScore: 9.7,
-    priceAmazon: 12500,
-    currency: "EGP",
-    amazonUrl: "https://amazon.eg/dp/B09YALE200?tag=dkora-21",
-    isTopPick: true,
-    pros: [
-      "5 طرق فتح: بصمة الأصبع، الرقم السري، بطاقة RFID، تطبيق الهاتف، ومفتاح طوارئ",
-      "قلب مورتس ثلاثي الألسنة مصنوع من الفولاذ المصلد المقاوم للكسر والقص",
-      "إنذار لمحاولات التسلل أو إدخال البصمة الخاطئة عدة مرات",
-      "توليد كلمة سر مؤقتة للضيوف والعمال تعمل لمرة واحدة أو لفترة المحددة"
-    ],
-    cons: [
-      "يتطلب فني متخصص للتركيب على الأبواب الخشبية أو المصفحة القديمة",
-      "يحتاج بطاريات AA عالية الجودة وتغييرها كل 10 إلى 12 شهرًا"
-    ],
-    targetAudience: "أصحاب الشقق الحديثة، الفيلات، الشقق الفندقية، والمكاتب الراغبة في حماية قصوى ومظهر عصري.",
-    summary: "قفل ييل YRM200 يجمع بين الأمان البريطاني الفولاذي والذكاء الاصطناعي لاستشعار البصمة الحيوية في 0.2 ثانية فقط.",
-    fullReviewText: "يعتبر قفل Yale الذكي خيار الحماية الأول منافسة لأحدث أقفال الأبواب الإلكترونية. تم تجربة استجابة حساس البصمة السيراميكي ومقارنته بالرطوبة والغبار، واستطاع الفتح الفوري في كافة الظروف.",
-    specs: [
-      { label: "وسائل الفتح", value: "بصمة + رمز سر + كارت + تطبيق + مفتاح" },
-      { label: "سعة البصمات", value: "100 بصمة أوردة حيوية" },
-      { label: "نوع الباب المناسب", value: "أبواب خشبية ومصفحة بسُمك 40-100 مم" },
-      { label: "مصدر الطاقة", value: "4 بطاريات قلم AA + منفذ Type-C للطوارئ" },
-      { label: "الاتصال", value: "Wi-Fi + Bluetooth عبر تطبيق Yale Access" }
-    ],
-    viewsCount: 7400,
-    dateAdded: "2026-03-01",
-    tags: ["قفل ذكي", "بصمة", "ييل", "أمان", "أبواب"]
-  },
-  {
     id: "p-total-tat10101-compressor",
     titleAr: "كمبروسر هواء توتال 50 لتر 2 حصان سيور Total TAT10101 Air Compressor",
     titleEn: "Total TAT10101 50L 2HP Belt Drive Air Compressor",
@@ -379,53 +371,6 @@ export const PRODUCTS: Product[] = [
     viewsCount: 8100,
     dateAdded: "2026-02-10",
     tags: ["كمبروسر", "توتال", "هواء", "ورش", "دهان"]
-  },
-  {
-    id: "p-jotun-fenomastic-paint",
-    titleAr: "دهان جوتن فينومستيك صحي مقاوم للرطوبة والبكتيريا Jotun Fenomastic",
-    titleEn: "Jotun Fenomastic Hygiene Anti-Bacterial Interior Paint",
-    slug: "jotun-fenomastic-hygiene-interior-paint",
-    categoryId: "cat-paints",
-    brandId: "b-bosch", // placeholder for paint brand
-    brandName: "Jotun",
-    modelNumber: "Fenomastic Hygiene",
-    mainImage: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=800&q=80",
-    gallery: [
-      "https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=80"
-    ],
-    rating: 4.9,
-    reviewCount: 310,
-    editorScore: 9.9,
-    priceAmazon: 1850,
-    currency: "EGP",
-    amazonUrl: "https://amazon.eg/dp/B08JOTUN01?tag=dkora-21",
-    isTopPick: true,
-    isEditorChoice: true,
-    pros: [
-      "قابل للغسيل الشديد وتكرار التنظيف بالماء والصابون دون فقدان اللون أو اللمعان",
-      "تقنية مضادة للفطريات والعفن والنعش الحوائطي في المطابخ والحمامات",
-      "عديم الرائحة تقريباً وصديق للبيئة مع انبعاثات مركبات عضوية متطايرة شبه معدومة VOC",
-      "تغطية فائقة تخفي عيوب المحارة والسيوت مع لمسة حريرية مطفأة راقية"
-    ],
-    cons: [
-      "يحتاج لوجهين أو ثلاثة للحصول على أقصى درجة ثبات للون الحريري",
-      "أغلى من الدهانات البلاستيكية التقليدية العادية"
-    ],
-    targetAudience: "المنازل العصرية، غرف الأطفال، المطابخ، المستشفيات، والمطاعم التي تتطلب نظافة مستمرة وحوائط مقاومة للبقع.",
-    summary: "دهان جوتن فينومستيك هو الملك بلا منازع لدهانات الحوائط الداخلية في 2026 بفضل قابليته الغسيل التام ومقاومته للرطوبة والبقع الصعبة.",
-    fullReviewText: "تم اختبار جوتن فينومستيك ضد بقع القهوة، الشوكولاتة، وأقلام الألوان. مسحة واحدة بقطعة قماش مبللة أعادت الحائط ناصعاً تماماً دون أي كشط في الطبقة العلوية.",
-    specs: [
-      { label: "نوع الدهان", value: "أكريليك نقي مائي صحي" },
-      { label: "اللمعة", value: "حريري (Silk) / مطفي راقي" },
-      { label: "التغطية", value: "10-12 متر مربع / لتر لكل وجه" },
-      { label: "الجفاف للوجه الثاني", value: "2 إلى 4 ساعات" },
-      { label: "سعة العبوة", value: "9 لتر (جالون) أو 18 لتر" }
-    ],
-    viewsCount: 13500,
-    dateAdded: "2026-01-10",
-    tags: ["دهان", "جوتن", "فينومستيك", "مقاوم للرطوبة", "ديكور"]
   },
   {
     id: "p-tuya-anti-theft-alarm-system",
@@ -634,6 +579,124 @@ export const DEALS: Deal[] = [
 ];
 
 export const ARTICLES: Article[] = [
+  {
+    id: "art-safetytech-gn40-bls-review",
+    title: "مراجعة شاملة: أفضل خزنة رقمية منزلية مع شاشة وإنذار ومصادقة ثنائية Safety Tech GN40 BLS",
+    slug: "safety-tech-gn40-bls-digital-home-safe-review",
+    category: "الأقفال والحماية",
+    readTime: "7 دقائق",
+    date: "2026-03-25",
+    author: "فريق المراجعات الأمنية - ديكورا Dkora",
+    coverImage: "https://i.postimg.cc/d3V3dF9x/71n-Ayo-Vw-O2L-AC-SL1200.jpg",
+    excerpt: "مراجعة متعمقة وتجربة أمان حقيقية لـ خزنة رقمية منزلية سيفتي تك GN40 BLS المزودة بشاشة لمس، جهاز إنذار صوتي ضد السرقة، ومصادقة مزدوجة مع إمكانية التثبيت المحكم.",
+    content: `<div class="article-container space-y-6">
+      <p>تُعد **الخزنة الرقمية المنزلية** الاستثمار الأمني الأكثر أهمية لحماية المستندات الهامة، المبالغ المالية، والقطع الثمينة من السرقة أو التلصص. وفي هذه المراجعة التفصيلية، نستعرض معكم مواصفات مميزة وميدانية لأحدث **خزنة رقمية منزلية مع شاشة + جهاز إنذار قوي + خاصية المصادقة الثنائية من سيفتي تك (Safety Tech)** موديل GN40 BLS المتاحة حالياً على متجر أمازون.</p>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B0bz4Tk7G' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/d3V3dF9x/71n-Ayo-Vw-O2L-AC-SL1200.jpg" alt="خزنة رقمية منزلية سيفتي تك GN40 BLS" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">1. تقنية المصادقة الثنائية وخاصية إخفاء الرقم السري</h2>
+      <p>تتميز الخزنة بنظام فتح مزدوج ذكي يمنع الوصول غير المصرح به بأعلى كفاءة أمنية:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>طريقة الفتح الأولى:</strong> المفتاح الرئيسي مع مفتاح الطوارئ (للفتح اليدوي الآمن).</li>
+        <li><strong>طريقة الفتح الثانية:</strong> المفتاح الرئيسي مع الرقم السري (للفتح اليومي السريع).</li>
+        <li><strong>تسجيل أرقام سرية متعددة:</strong> إمكانية تسجيل 2 رقم سري مستقلين (كل رقم مكون من 3 إلى 8 أرقام).</li>
+        <li><strong>شاشة إلكترونية مزودة بإخفاء الرقم:</strong> تتيح لك إدخال كلمة المرور مع إخفائها تماماً لحماية خصوصيتك من أي شخص مجاور.</li>
+      </ul>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B0bz4Tk7G' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/26mVkhLW/71f1b-RWx-N-L-AC-SL1200.jpg" alt="خزنة رقمية منزلية Safety Tech الظهر وفتحات التثبيت والرفوف" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">2. جهاز إنذار صوتي قوي جداً بـ 2 نظام وقفل فولاذي مزدوج</h2>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>خاصية الإنذار المبكر:</strong> ينطلق صوت إنذار مرتفع جداً تلقائياً عند محاولة فتح الخزانة أو تحريكها وضربها بقوة.</li>
+        <li><strong>إنذار إدخال خاطئ 3 مرات:</strong> يتم تفعيل جهاز الإنذار المسموع فور إدخال الرقم السري بشكل خاطئ لثلاث مرات متتالية.</li>
+        <li><strong>نظام إغلاق بـ 3 ألسنة صلبة:</strong> إغلاق مزدوج محكم بـ 3 ألسنة صلبة مقواة للوقاية من الكسر والخلع.</li>
+        <li><strong>2 كالون كمبيوتر:</strong> مرفق مع كل كالون كمبيوتر 2 مفتاح أصلي (4 مفاتيح إجمالاً).</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">3. الأبعاد والتقسيم الداخلي والتثبيت الشاق بالمسامير الصلبة</h2>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>المقاس والأبعاد:</strong> 40 سم إرتفاع × 38 سم عرض × 38 سم عمق.</li>
+        <li><strong>مساحة التخزين:</strong> تحتوي على 2 رف داخلي متحرك تمنحك 3 مساحات للتخزين الواسع والمنظم.</li>
+        <li><strong>مرونة التثبيت:</strong> مصممة بـ 4 فتحات تثبيت على ظهر الخزنة و4 فتحات تثبيت من القاعدة ومرفق معها 4 مسامير صلبة لتثبيتها بصلابة مطلقة داخل الدولاب أو على الأرضية والجدار الخرساني.</li>
+        <li><strong>التغذية والطوارئ:</strong> تأتي مع 4 بطاريات AA لتشغيل الخزنة بالإضافة إلى جهاز بطارية طوارئ خارجي لشحن اللوحة إلكترونياً إذا نفدت البطاريات.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">جدول المواصفات الفنية التقنية للخزنة</h2>
+      <div class="overflow-x-auto my-4">
+        <table class="w-full text-xs sm:text-sm text-right border-collapse border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+          <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800 w-1/3">العلامة التجارية والشركة المصنعة</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">سيفتي تك (Safety Tech) - صنع في مصر</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">رقم الموديل / القطعة</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">GN40 BLS</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">الرمز الخاص بأمازون (ASIN)</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">B0DLV4WGWS</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">المقاس والأبعاد</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">40 سم ارتفاع × 38 سم عرض × 38 سم عمق</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">نوع القفل والمصادقة</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">قفل برمز إلكتروني + مصادقة مزدوجة + 2 كالون كمبيوتر</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">نظام الإنذار</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">صوتي مسموع قوي جداً (إنذار مبكر + 3 أخطاء بالرمز)</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">ألسنة الغلق</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">نظام إغلاق مزدوج بـ 3 لسان صلب فولاذي</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">المكونات المضمنة بالعروة</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">4 مسامير صلبة للتثبيت + 4 بطاريات AA + جهاز بطارية طوارئ خارجي + 4 مفاتيح كمبيوتر</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">الوزن والتركيب</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">17 كجم تقريباً، يثبت على الحائط أو على الأرض أو داخل الدولاب</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">تقييم المستخدمين والسعر</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">5.0 من 5 نجوم (مراجعتان مؤكدتان) • 5995 ج.م</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">الخلاصة وتوصية فريق التحرير</h2>
+      <p>إذا كنت تبحث عن <strong>خزنة رقمية منزلية</strong> قوية، تجمع بين المتانة الفولاذية، شاشة التحكم باللمس، الإنذار الصوتي المباشر ضد السرقة، والمصادقة المزدوجة بسعر ممتاز 5995 ج.م، فإن **Safety Tech GN40 BLS** هي التوصية الأولى لفريق التحرير لعام 2026.</p>
+
+      <p class="font-bold my-3 text-lg">التقييم الشامل: <span class="text-amber-500 font-extrabold">⭐⭐⭐⭐⭐ (5.0 من 5)</span></p>
+
+      <div class="my-8 p-6 text-center bg-amber-500/10 border border-amber-500/30 rounded-2xl space-y-4 shadow-xl">
+        <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400">احصل على خزنة رقمية منزلية سيفتي تك بأفضل سعر على أمازون</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300">السعر الحالي: 5995 ج.م مع إمكانية الشحن الفوري عبر هذا الرابط:</p>
+        <div>
+          <a href="https://link.amazon/B0bz4Tk7G" class="inline-block bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-8 py-4 rounded-xl transition-transform transform hover:scale-105 shadow-xl text-base sm:text-lg" target="_blank" rel="nofollow sponsored">
+            🛒 اضغط هنا لشراء خزنة رقمية منزلية سيفتي تك GN40 BLS من أمازون
+          </a>
+        </div>
+        <p class="text-xs text-slate-400 mt-2">
+          * إفصاح التسويق بالعمولة (Affiliate Disclosure): بالضغط على رابط الشراء، قد نحصل على عمولة بسيطة من أمازون دون أي تكلفة إضافية عليك.
+        </p>
+      </div>
+    </div>`,
+    tags: ["خزنة رقمية منزلية", "خزنة منزلية", "سيفتي تك", "Safety Tech", "أقفال وحماية", "أمازون", "GN40 BLS"]
+  },
   {
     id: "art-paint-sprayer-machine-review-2026",
     title: "مراجعة شاملة: جهاز رش دهانات (بدون هواء) ماكينة طلاء كهربائية 1200 وات APT DW3912",
@@ -1119,15 +1182,15 @@ export const ARTICLES: Article[] = [
 
 export const REVIEWS_SAMPLE: UserReview[] = [
   {
-    id: "rev-1",
-    productId: "p-dewalt-dcd791d2",
-    userName: "الأسطى محمود الجارحي",
-    userRole: "صانع أثاث ومقاول ديكور",
+    id: "rev-3",
+    productId: "p-safetytech-gn40-bls",
+    userName: "م. طارق العريان",
+    userRole: "مشتري ممتلكات ومستثمر عقاري",
     rating: 5,
-    date: "2026-03-02",
-    title: "أفضل شنيور اشتريته في حياتي المهنية",
-    comment: "الشنيور خفيف جداً في الإيد والبطارية بتقعد معايا يومين شغل متواصل في تركيب المطابخ. إضاءة كشاف الليد 3 درجات بتنقذني في شغل الدواليب المظلمة.",
-    helpfulCount: 42,
+    date: "2026-03-15",
+    title: "خزنة رقمية منزلية فائقة الأمان والإنذار صوت عالي جداً",
+    comment: "اشتريت الخزنة لحفظ الأوراق والمبالغ المالية بالمنزل. الخزنة ممتازة جداً والمصادقة المزدوجة بالرمز والمفتاح بتدي راحة بال بالغة. الإنذار صوته شديد ومسموع في كامل الشقة عند الاهتزاز أو إدخال رمز خاطئ.",
+    helpfulCount: 18,
     verifiedPurchase: true
   },
   {

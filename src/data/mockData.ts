@@ -232,6 +232,84 @@ export const PRODUCTS: Product[] = [
     tags: ["خزنة رقمية منزلية", "خزنة منزلية", "سيفتي تك", "Safety Tech", "خزنة", "أقفال وحماية", "GN40 BLS", "خزنة رقمية"]
   },
   {
+    id: "p-electric-car-jack-2in1",
+    titleAr: "كوريك عربيه كهرباء هيدروليكي 2 في 1 حمولة 5 طن مع منفاخ إطارات رقمي 12V",
+    titleEn: "2-in-1 5 Ton 12V Electric Hydraulic Car Jack with Digital Tire Inflator Pump (Max Height 450mm)",
+    slug: "electric-hydraulic-car-jack-5-ton-digital-inflator",
+    categoryId: "cat-electric-tools",
+    brandId: "b-generic",
+    brandName: "جينيريك 2في1",
+    modelNumber: "2-in-1 Electric Jack 5T 12V",
+    mainImage: "https://i.postimg.cc/2ywQz0RK/71a-Bn-GA-Eb-L.jpg",
+    gallery: [
+      "https://i.postimg.cc/2ywQz0RK/71a-Bn-GA-Eb-L.jpg",
+      "https://i.postimg.cc/GmQNpTy0/71NA50We7y-L.jpg"
+    ],
+    rating: 4.9,
+    reviewCount: 162,
+    editorScore: 9.8,
+    priceAmazon: 7182,
+    currency: "EGP",
+    amazonUrl: "https://link.amazon/B00lRvVeF",
+    isTopPick: true,
+    isEditorChoice: true,
+    isBestValue: true,
+    pros: [
+      "رافعة هيدروليكية كهربائية قوية ومحمولة تعمل بجهد 12 فولت ترفع المركبات حمولة حتى 5 طن في أقل من دقيقتين دون مجهود بدني",
+      "مضخة نفخ إطارات رقمية مدمجة مع مقياس ديجيتال وميزة الإيقاف التلقائي بمجرد الوصول لضغط الإطارات المحدد Target PSI",
+      "ارتفاع رفع أقصى يصل إلى 450 ملم ملائم لجميع السيارات السيدان، وسيارات الدفع الرباعي SUV، والشاحنات، وسيارات الترفيه RV",
+      "نظام أمان وثبات مضاعف يتوقف تلقائياً عند أقصى ارتفاع أو الحمل الزائد، مع آلية قفل ذاتي تمنع السقوط حتى عند انقطاع الكهرباء",
+      "مصدر طاقة ثنائي مزدوج يمكن تشغيله بواسطة ولاعة سجائر السيارة 12V أو مباشرة عبر مشابك بطارية السيارة مع سلك طويل يصل لكافة الإطارات",
+      "قضيب ضغط صلب مصنوع من سبيكة فولاذية شديدة التحمل ومحرك تيار مستمر DC مشحم بشكل دائم يوفر طاقة كافية واعتمادية عالية",
+      "مدمج ومحمول بوزن 4000 غرام يسهل تخزينه في شنطة السيارة لاستعماله الفوري في حالات الطوارئ على الطرق السريعة",
+      "إضاءة ليد تلقائية توفر أماناً ورؤية واضحة جداً أثناء رفع السيارة وتغيير الإطار في الظلام"
+    ],
+    cons: [
+      "يجب وضع الكوريك على سطح مستوي وثابت لضمان أقصى أمان وثبات أثناء عملية الرفع",
+      "يعمل بمصدر كهرباء 12V من السيارة (تأكد من إحكام توصيل المشابك بالبطارية أو الولاعة)"
+    ],
+    targetAudience: "أصحاب السيارات، سيارات الدفع الرباعي SUV، والشاحنات الباحثين عن 'كوريك عربيه كهرباء' هيدروليكي رقمي 2 في 1 يقدم أماناً فائقاً وسرعة في رفع السيارة ونفخ الإطارات في حالات الطوارئ على الطريق.",
+    summary: "كوريك عربيه كهرباء هيدروليكي 2 في 1 حمولة 5 طن 12 فولت مع منفاخ إطارات رقمي هو الخيار الأول لعام 2026 لأمان ورخاء قائد المركبة. يضمن رفع السيارة حتى 450 ملم في أقل من دقيقتين مع مقياس ديجيتال ومشبك بطارية وولاعة بسعر 7,182 ج.م من أمازون.",
+    fullReviewText: `مراجعة شاملة وتجربة ميدانية لـ كوريك عربيه كهرباء هيدروليكي 2 في 1 حمولة 5 طن (2-in-1 Smart Electric Hydraulic Car Jack):
+
+يعتبر **كوريك عربيه كهرباء** الهيدروليكي الرقمي 2 في 1 الحل التكنولوجي الذكي والعملي لكل سائق يرغب في التخلص من عناء الكوريك اليدوي التقليدي الشاق والمخاطر المصاحبة لرفع السيارة على الطرق السريعة.
+
+### 1. الأداء وقوة الرفع الهيدروليكي
+تم تصميم الكوريك الهيدروليكي بقدرة رفع فائقة تصل إلى **5 طن** (مناسب تماماً لمركبات من 3 إلى 5 طن)، حيث يستطيع رفع سيارات السيدان، الدفع الرباعي (SUV)، الشاحنات الصغرى، وسيارة الترفيه (RV) إلى أقصى ارتفاع **450 ملم (45 سم)** في أقل من **دقيقتين فقط** دون الحاجة لبذل أي مجهود بدني.
+
+### 2. مضخة نفخ الإطارات الرقمية والمقياس الذكي
+الأداة مزودة بمضخة كمبروسر رقمية مدمجة لنفخ الإطارات تحتوي على **شاشة ديجيتال لمراقبة الضغط**. تتيح لك تحديد ضغط الهواء المطلوبة (Target PSI) وسيقوم الجهاز بالإيقاف التلقائي بمجرد الوصول للضغط المحدد لضمان حماية الإطار من النفخ الزائد.
+
+### 3. ثبات وأمان مضاعف
+- **قضيب ضغط من سبيكة الصلب:** هيكل ستيل شديد التحمل يمنح ثباتاً مطلقاً أثناء الرفع.
+- **محرك DC مشحم دائم:** يوفر طاقة ثابتة ومستمرة دون سخونة.
+- **إيقاف أوتوماتيكي عند الحمل الزائد:** يتوقف الجهاز فور الوصول لأقصى ارتفاع أو عند تجاوز الحمل المسموح.
+- **آلية القفل الذاتي (Self-locking):** تمنع الرافعة من السقوط وتحافظ على ثبات الارتفاع حتى في حال فصل التيار الكهربائي نهائياً.
+
+### 4. مصدر طاقة مزدوج وسهولة الاستخدام
+تأتي الرافعة بسلك كهربائي طويل يصل إلى جميع زوايا وإطارات السيارة، ويمكن تغذيته بالطاقة بطريقتين:
+1. عن طريق **ولاعة سجائر السيارة 12V**.
+2. مباشرة من **بطارية السيارة 12V** باستخدام المشابك المرفقة.`,
+    specs: [
+      { label: "نوع المنتج", value: "كوريك عربيه كهرباء هيدروليكي 2 في 1 مع مضخة نفخ رقمية" },
+      { label: "الكلمة المفتاحية", value: "كوريك عربيه كهرباء" },
+      { label: "سعة التحميل القسوى", value: "5 طن (مناسب لرفع مركبات 3 إلى 5 طن)" },
+      { label: "أقصى ارتفاع للرفع", value: "450 ملم (45 سم)" },
+      { label: "نوع خدمة المركبة", value: "سيارة سيدان، سيارة رياضية متعددة الاستخدامات SUV، شاحنة، RV" },
+      { label: "الخامة وتصنيع الهيكل", value: "سبيكة صلب عالية التحمل مع قضيب ضغط ستيل محمي" },
+      { label: "العلامة التجارية واللون", value: "جينيريك (Generic 2-in-1) - ألوان متعددة" },
+      { label: "وزن السلعة", value: "4000 غرام (4 كجم)" },
+      { label: "مضخة الهواء المدمجة", value: "منفاخ ديجيتال مع مقياس رقمي وإيقاف تلقائي لضغط الإطارات" },
+      { label: "مصدر الطاقة", value: "ثنائي الاتجاه: ولاعة سجائر السيارة 12V أو مشابك بطارية السيارة" },
+      { label: "مزايا الأمان", value: "إيقاف تلقائي عند الارتفاع الأقصى + قفل ذاتي ضد السقوط" },
+      { label: "محتويات العلبة", value: "الكوريك الهيدروليكي 2في1، مشابك بطارية، وصلة ولاعة، وسلك طويل" },
+      { label: "السعر ورابط الشراء", value: "7,182 ج.م على متجر أمازون (https://link.amazon/B00lRvVeF)" }
+    ],
+    viewsCount: 15300,
+    dateAdded: "2026-03-30",
+    tags: ["كوريك عربيه كهرباء", "كوريك كهرباء", "كوريك هيدروليكي", "منفاخ سيارات", "كوريك 5 طن", "أكسسوارات سيارات", "أمازون"]
+  },
+  {
     id: "p-ingco-12v-cordless-drill",
     titleAr: "شنيور انكو لاسلكي 12 فولت ببطارية ليثيوم وشحن USB Type-C وعزم 20 نيوتن متر INGCO",
     titleEn: "INGCO 12V Cordless Drill Driver Kit 1.5Ah with USB Type-C Charging",
@@ -729,6 +807,111 @@ export const DEALS: Deal[] = [
 ];
 
 export const ARTICLES: Article[] = [
+  {
+    id: "art-electric-car-jack-2in1-review",
+    title: "مراجعة شاملة: كوريك عربيه كهرباء هيدروليكي 2 في 1 حمولة 5 طن مع منفاخ إطارات رقمي 12V",
+    slug: "electric-hydraulic-car-jack-5-ton-digital-inflator-review",
+    category: "العدد الكهربائية",
+    readTime: "7 دقائق",
+    date: "2026-03-30",
+    author: "فريق المراجعات الفنية - ديكورا Dkora",
+    coverImage: "https://i.postimg.cc/2ywQz0RK/71a-Bn-GA-Eb-L.jpg",
+    excerpt: "مراجعة تفصيلية وتجربة ميدانية متوافقة مع قواعد السيو 2026 لـ كوريك عربيه كهرباء هيدروليكي رقمي 2 في 1 حمولة 5 طن مع مضخة نفخ إطارات ديجيتال ومقياس ضغط بسعر 7,182 ج.م على أمازون.",
+    content: `<div class="article-container space-y-6">
+      <p>يواجه السائقون على الطرق السريعة ومختلف الرحلات تحديات مفاجئة تتعلق بتعطل الإطارات، والتي غالباً ما تتطلب عناءً شاقاً لرفع المركبة باستخدام الرافعات اليدوية القديمة. وفي هذه المراجعة المتوافقة مع معايير السيو لعام 2026، نستعرض لكم جهاز <strong>كوريك عربيه كهرباء</strong> الهيدروليكي الرقمي 2 في 1 بحمولة 5 طن و 12 فولت والمزود بمضخة نفخ إطارات ديجيتال ومقياس شاشة رقمي مدمج بسعر 7,182 ج.م والمتوفر على أمازون.</p>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B00lRvVeF' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/2ywQz0RK/71a-Bn-GA-Eb-L.jpg" alt="كوريك عربيه كهرباء هيدروليكي 2 في 1 حمولة 5 طن" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">1. قوة الرفع الهيدروليكي وسرعة الإنجاز (5 طن)</h2>
+      <p>يتميز الكوريك الكهربائي بقدرات رفع فائقة تناسب جميع فئات السيارات وتوفر أقصى درجات الراحة:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>رفع سريع في أقل من دقيقتين:</strong> الرافعة الهيدروليكية الكهربائية تعمل بجهد 12V، ويمكنها رفع المركبات الثقيلة ذات الوزن 3 إلى 5 طن في أقل من دقيقتين بلمسة زر واحدة.</li>
+        <li><strong>أقصى ارتفاع 450 ملم:</strong> يصل الارتفاع النهائي للرافعة إلى 450 ملم (45 سم)، مما يضمن لك مسافة كافية لتغيير الإطارات بكل أريحية.</li>
+        <li><strong>توافق شامل مع السيارات:</strong> تتوافق الرافعة مع سيارات السيدان، وسيارات الدفع الرباعي (SUV)، والسيارات متعددة الأغراض، وشاحنات النقل الخفيف، وسيارات الترفيه (RV).</li>
+      </ul>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B00lRvVeF' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/GmQNpTy0/71NA50We7y-L.jpg" alt="منفاخ الإطارات الرقمي والمقياس الديجيتال المدمج في الكوريك الكهربائي" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">2. مضخة نفخ الإطارات الرقمية والمقياس المدمج</h2>
+      <p>لا يقتصر الجهاز على رفع المركبة فحسب، بل يعمل أيضاً ككمبروسر هوائي رقمي ذكي:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>مقياس رقمي مدمج:</strong> مقياس مدمج مريح يسمح لك بالتحكم في ضغط الإطارات رقمياً عبر الشاشة ومتابعة القراءة بدقة عالية.</li>
+        <li><strong>فصل تلقائي عند الضغط المطلوب:</strong> يمكنك تحديد ضغط الهواء المستهدف للإطار وسيتوقف الجهاز عن النفخ تلقائياً بمجرد الوصول إليه.</li>
+        <li><strong>مصدر طاقة ثنائي الاتجاه:</strong> يمكن تشغيل الجهاز من خلال منفذ ولاعة السجائر 12V أو ربطه مباشرة ببطارية السيارة باستخدام المشابك المرفقة، مع سلك طويل يصل إلى كافة إطارات المركبة.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">3. أعلى معايير الأمان والثبات أثناء العمل</h2>
+      <p>حرصت جهة التصنيع على تطبيق منظومة أمان متكاملة لحماية السائق والسيارة:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>قضيب ضغط ستيل شديد التحمل:</strong> مصمم من سبيكة صلب تتميز بقدرة تحمل فائقة وقوة ثبات متزنة.</li>
+        <li><strong>محرك تيار مستمر DC مشحم بشكل دائم:</strong> يوفر طاقة هيدروليكية كافية ومستقرة جداً.</li>
+        <li><strong>إيقاف تلقائي ومانع للسقوط:</strong> يتوقف الكوريك تلقائياً عند الوصول للارتفاع الأقصى أو عند الأحمال الزائدة. كما يحافظ جهاز القفل الذاتي على ثبات الارتفاع حتى في حالة انقطاع الكهرباء تماماً.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">جدول المواصفات التقنية الفنية للمنتج</h2>
+      <div class="overflow-x-auto my-4">
+        <table class="w-full text-xs sm:text-sm text-right border-collapse border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+          <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800 w-1/3">اسم المنتج / الكلمة المفتاحية</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">كوريك عربيه كهرباء هيدروليكي 2 في 1 حمولة 5 طن (الكلمة المفتاحية: كوريك عربيه كهرباء)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">سعة التحميل الأقصى</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">5 طن (مناسب للسيارات 3 إلى 5 طن)</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">الارتفاع الأقصى للرفع</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">450 ملم (45 سم)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">نوع المركبات المدعومة</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">سيارات السيدان، الدفع الرباعي SUV، الشاحنات الصغرى، مركبات RV</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">مصدر الطاقة والمقبس</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">12V عبر ولاعة السيارة أو مشابك البطارية مباشرة</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">الخامات المكونة والوزن</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">سبيكة صلب عالية الصلابة - وزن السلعة 4000 غرام (4 كجم)</td>
+            </tr>
+            <tr class="bg-slate-50 dark:bg-slate-900/50">
+              <td class="p-3 font-bold text-amber-600 dark:text-amber-400 border-l border-slate-200 dark:border-slate-800">السعر ورابط الشراء</td>
+              <td class="p-3 text-slate-800 dark:text-slate-200 font-semibold">7,182 ج.م على متجر أمازون</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">الخلاصة ورأي فريق التحرير</h2>
+      <p>يُمثل اقتناء **كوريك عربيه كهرباء** هيدروليكي 2 في 1 حمولة 5 طن استثماراً حقيقياً في سلامتك وراحتك على الطريق. بفضل ميزة الرفع في دقيقتين، والمنفاخ الرقمي المدمج وقفل الأمان الذاتي بسعر 7,182 ج.م، فهو أحد أهم ملحقات السيارات التي ينصح باقتنائها لعام 2026.</p>
+
+      <p class="font-bold my-3 text-lg">التقييم الشامل: <span class="text-amber-500 font-extrabold">⭐⭐⭐⭐⭐ (4.9 من 5)</span></p>
+
+      <div class="my-8 p-6 text-center bg-amber-500/10 border border-amber-500/30 rounded-2xl space-y-4 shadow-xl">
+        <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400">احصل على كوريك عربيه كهرباء هيدروليكي 2 في 1 بأفضل سعر من أمازون</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300">السعر الحالي: 7,182 ج.م مع التوصيل عبر أمازون من الرابط المباشر:</p>
+        <div>
+          <a href="https://link.amazon/B00lRvVeF" class="inline-block bg-amber-500 hover:bg-amber-600 text-slate-950 font-black px-8 py-4 rounded-xl transition-transform transform hover:scale-105 shadow-xl text-base sm:text-lg" target="_blank" rel="nofollow sponsored">
+            🛒 اضغط هنا لشراء كوريك عربيه كهرباء من أمازون
+          </a>
+        </div>
+        <p class="text-xs text-slate-400 mt-2">
+          * إفصاح التسويق بالعمولة (Affiliate Disclosure): بالضغط على رابط الشراء، قد نحصل على عمولة بسيطة من أمازون دون أي تكلفة إضافية عليك.
+        </p>
+      </div>
+    </div>`,
+    tags: ["كوريك عربيه كهرباء", "كوريك كهرباء", "كوريك هيدروليكي", "منفاخ سيارة", "أكسسوارات سيارات", "أمازون"]
+  },
   {
     id: "art-ingco-12v-cordless-drill-review",
     title: "مراجعة شاملة: شنيور انكو لاسلكي 12 فولت ببطارية وشحن USB Type-C وعزم 20 نيوتن متر",

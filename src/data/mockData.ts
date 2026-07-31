@@ -755,6 +755,70 @@ export const PRODUCTS: Product[] = [
     viewsCount: 13400,
     dateAdded: "2026-03-30",
     tags: ["كمبروسر دهان توتال", "كمبروسر دهان", "توتال", "Total Tools", "بخاخ طلاء", "رش دهانات", "TT5006", "أمازون"]
+  },
+  {
+    id: "p-max-jackhammer-1800w-h0811",
+    titleAr: "ماكس هيلتي كهربائي 1800 وات 6 كيلو موديل H0811 للتكسير الشديد في الخرسانة مع حقيبة صلبة",
+    titleEn: "MAX 1800W 6KG Electric Demolition Jack Hammer H0811 for Concrete Breaking with Storage Case",
+    slug: "max-electric-demolition-hammer-1800w-6kg-h0811",
+    categoryId: "cat-electric-tools",
+    brandId: "b-generic",
+    brandName: "ماكس - MAX",
+    modelNumber: "H0811 | ASIN: B03WjTKPy",
+    mainImage: "https://i.postimg.cc/8C4jNtCv/61Wh8y9Dsg-L.jpg",
+    gallery: [
+      "https://i.postimg.cc/8C4jNtCv/61Wh8y9Dsg-L.jpg",
+      "https://i.postimg.cc/hGcfkHKn/61u7z-H1j-Ox-L.jpg"
+    ],
+    rating: 4.9,
+    reviewCount: 145,
+    editorScore: 9.7,
+    priceAmazon: 2850,
+    currency: "EGP",
+    amazonUrl: "https://link.amazon/B03WjTKPy",
+    isTopPick: true,
+    isEditorChoice: true,
+    isBestValue: true,
+    pros: [
+      "محرك كهربائي خارق بقدرة 1800 واط يوفر قوة طرق هائلة 6 كيلو لإنجاز أعمال الهدم والتكسير الخرساني الصعب بدون إجهاد",
+      "معدل ضربات مرتفع يصل إلى 3900 ضربة في الدقيقة (3900 BPM) يمنحك سرعة اختراق فائقة وتفتيت سريع للأرضيات والحوائط",
+      "هيكل معدني صلب مدمج بنظام تثبيت رباعي المسامير الفولاذية لضمان الثبات التام ومنع التفكك في ظروف التكسير الشاقة",
+      "حقيبة حمل وتخزين صلبة مقاومة للصدمات باللون الأخضر لحماية الجهاز وسهولة التنقل بين مواقع العمل والورش",
+      "مقبض مريح مصمم خصيصاً للاستخدام المطول وتخفيف الاهتزازات المرتدة على يد وعضلات الفني"
+    ],
+    cons: [
+      "مخصص للتكسير والتفتيت فقط بدون خاصية الدوران أو الثقب الدوار (Demolition Breaker Only)",
+      "يتطلب مصدر كهرباء ثابت جهد 220 فولت وتيار 16 أمبير للاستفادة الكاملة من الطاقة القصوى 1800 واط"
+    ],
+    targetAudience: "الفنيون والمقاولون وصنايعية التشطيبات وأصحاب الورش الراغبون في هيلتي تكسير خرسانة قوي بسعر اقتصادي 2,850 ج.م.",
+    summary: `إذا كنت تبحث عن هيلتي تكسير احترافي يضمن لك التغلب على أعتى الأسطح الخرسانية والمباني دون إنفاق مبالغ طائلة، فإن هيلتي تكسير ماكس MAX موديل H0811 بقوة 1800 واط ووزن 6 كيلو هو الخيار الأمثل لعام 2026 بسعر 2,850 ج.م على أمازون مصر.`,
+    fullReviewText: `إذا كنت تبحث عن **هيلتي تكسير** احترافي يضمن لك التغلب على أعتى الأسطح الخرسانية والمباني دون إنفاق مبالغ طائلة، فإن هيلتي تكسير ماكس MAX موديل H0811 بقوة 1800 واط ووزن 6 كيلو هو الخيار الأمثل لعام 2026.
+
+يأتي الجهاز بمحرك كهربائي عالي الكفاءة يولد قوة طرق تبلغ 6 كيلو ومعدل ضربات يصل إلى 3900 ضربة في الدقيقة، مما يجعله أداة هدم وتكسير مثالية لإزالة سيراميك الأرضيات والحوائط، وتكسير القواعد الخرسانية، وفتح الشنايش في المباني.
+
+### 1. قوة المحرك والأداء في التكسير الشاق
+يمتلك هيلتي تكسير ماكس محركاً كهربائياً بقدرة 1800 واط ويعمل على جهد 220 فولت وشبكة 50 هرتز بتيار 16 أمبير، مما يضمن تدفقاً مستقراً للطاقة وطرقاً خرسانياً متواصلاً بسعة طرق 6 كيلو تكسر أعتى طبقات الأسمنت والمباني.
+
+### 2. سرعة الطرق والإنتاجية الميدانية
+مع سرعة دوران وطرق تصل إلى 3900 ضربة في الدقيقة وعزم دوران 6 نيوتن مترات، يوفر الجهاز إنتاجية عالية في مواقع البناء والتشطيب، حيث يقلل الزمن المطلوب لتكسير الأرضيات أو تجهيز مسارات السباكة والكهرباء بمقدار النصف مقارنة بالطرق اليدوي.
+
+### 3. المتانة والحقيبة المرفقة
+يتميز الموديل H0811 بتجميع معدني صلب بأربعة مسامير تثبيت أساسية لمنع أي خلل أثناء الاهتزاز الشديد. تضمن الحقيبة الصلبة باللون الأخضر الحفاظ على الهيلتي والأزاميل المرفقة من الغبار والصدمات أثناء التنقل.`,
+    specs: [
+      { label: "نوع الأداة والكلمة المفتاحية", value: "هيلتي تكسير كهربائي (Demolition Hammer)" },
+      { label: "العلامة التجارية والموديل", value: "ماكس MAX | الموديل H0811" },
+      { label: "قوة المحرك والكهرباء", value: "1800 واط | 220 فولت - 50 هرتز (16 أمبير)" },
+      { label: "قوة الطرق والوزن", value: "6 كيلو طرق / وزن 6 كجم" },
+      { label: "معدل الطرق والسرعة", value: "3900 ضربة / دورة في الدقيقة (3900 BPM)" },
+      { label: "أقصى عزم دوران", value: "6 نيوتن مترات" },
+      { label: "نمط التشغيل", value: "تكسير وهدم خرسانة ومباني فقط (بدون دوران)" },
+      { label: "المميزات المدمجة", value: "تصميم متين بـ 4 مسامير تثبيت، مقبض مريح ممتص للصدمات" },
+      { label: "الملحقات المرفقة", value: "حقيبة تخزين ونقل صلبة باللون الأخضر + أزاميل تكسير" },
+      { label: "السعر ورابط أمازون", value: "2,850 ج.م على متجر أمازون مصر (https://link.amazon/B03WjTKPy)" }
+    ],
+    viewsCount: 15800,
+    dateAdded: "2026-03-31",
+    tags: ["هيلتي تكسير", "هيلتي تكسير ماكس", "هيلتي كهربائي", "ماكس 1800 واط", "H0811", "تكسير خرسانة", "أمازون"]
   }
 ];
 
@@ -865,6 +929,75 @@ export const DEALS: Deal[] = [
 ];
 
 export const ARTICLES: Article[] = [
+  {
+    id: "art-max-jackhammer-1800w-h0811-review",
+    title: "مراجعة شاملة 2026: ماكس هيلتي تكسير كهربائي 1800 وات 6 كيلو (H0811) للتكسير الشديد",
+    slug: "max-demolition-hammer-1800w-h0811-review",
+    category: "العدد الكهربائية",
+    readTime: "7 دقائق",
+    date: "2026-03-31",
+    author: "فريق المراجعات الفنية - ديكورا Dkora",
+    coverImage: "https://i.postimg.cc/8C4jNtCv/61Wh8y9Dsg-L.jpg",
+    excerpt: "مراجعة تفصيلية وتجربة ميدانية متوافقة مع معايير السيو لعام 2026 لـ هيلتي تكسير ماكس بقدرة 1800 واط وقوة طرق 6 كيلو وموديل H0811 بسعر 2,850 ج.م على أمازون مصر.",
+    content: `<div class="article-container space-y-6">
+      <p>تُعد عمليات التكسير والهدم في أعمال البناء والتشطيبات من أكثر المهام الميدانية التي تتطلب عُدة كهربائية شاقة قادرة على تفتيت الصخور والخرسانات بدون أعطال مفاجئة. وفي هذه المراجعة التفصيلية المتوافقة مع قواعد السيو لعام 2026، نلقي الضوء على <strong>هيلتي تكسير</strong> ماكس MAX الكهربائي (موديل H0811 بقدرة 1800 وات وقوة طرق 6 كيلو)، والذي يمثل الصفقة الأكثر جاذبية للعمال والصنايعية بسعر 2,850 ج.م على أمازون مصر.</p>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B03WjTKPy' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img loading="lazy" decoding="async" width="800" height="533" class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/8C4jNtCv/61Wh8y9Dsg-L.jpg" alt="هيلتي تكسير ماكس 1800 وات 6 كيلو موديل H0811" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">1. محرك شاق بقدرة 1800 واط وقوة طرق 6 كيلو</h2>
+      <p>يأتي هيلتي تكسير ماكس مجهزاً بمحرك كهربائي قوي يعمل بنظام 220 فولت وشدة تيار 16 أمبير، حيث يولد طاقة هدم وطرق تبلغ 6 كيلو جول. تتيح لك هذه القوة تفتيت الصخور، الجدران الخرسانية، وحوائط الطوب الأحمر بسرعة فائقة.</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>معدل طرق مرتفع:</strong> يصل إلى 3900 ضربة في الدقيقة (3900 BPM)، مما يختصر وقت التكسير بنسبة 50%.</li>
+        <li><strong>نظام تكسير مخصص:</strong> صُمم الجهاز خصيصاً للتكسير فقط (Demolition Breaker)، مما يركز كل طاقة المحرك 1800 واط في الاتجاه الطولي دون تشتيتها في دوران المثقاب.</li>
+        <li><strong>أقصى عزم دوران:</strong> 6 نيوتن مترات تضمن اختراق السيراميك والخرسانة المسلحة بسهولة.</li>
+      </ul>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B03WjTKPy' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img loading="lazy" decoding="async" width="800" height="533" class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/hGcfkHKn/61u7z-H1j-Ox-L.jpg" alt="حقيبة حمل صلبة وهيكل متين لجهاز هيلتي تكسير ماكس H0811" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">2. المتانة الفولاذية والمقبض المريح</h2>
+      <p>تم مراعاة الظروف الميدانية القاسية عند تصميم الموديل H0811:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>نظام تثبيت رباعي المسامير:</strong> هيكل معدني مقوى ممسوك بأربعة مسامير صلبة لضمان تماسك أجزاء المحرك ومنع أي اهتزازات جانبية مسببة للأعطال.</li>
+        <li><strong>مقبض مريح ممتص للصدمات:</strong> يساعد الفني على التحكم التام بالجهاز وتقليل الإجهاد الناجم عن الطرق المستمر.</li>
+        <li><strong>حقيبة تخزين صلبة باللون الأخضر:</strong> تحمي الهيلتي ومحتوياته أثناء التنقل والعمل في مواقع مختلفة.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">3. المواصفات التقنية لـ هيلتي تكسير ماكس H0811</h2>
+      <div class="overflow-x-auto my-4">
+        <table class="w-full text-right border-collapse border border-slate-200 dark:border-slate-800 text-sm">
+          <tbody>
+            <tr class="bg-slate-100 dark:bg-slate-900"><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">الكلمة المفتاحية ونوع المنتج</td><td class="p-3 border border-slate-200 dark:border-slate-800">هيلتي تكسير كهربائي (Demolition Hammer)</td></tr>
+            <tr><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">الماركة والموديل</td><td class="p-3 border border-slate-200 dark:border-slate-800">عام / ماكس MAX - موديل H0811</td></tr>
+            <tr class="bg-slate-100 dark:bg-slate-900"><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">قوة المحرك والكهرباء</td><td class="p-3 border border-slate-200 dark:border-slate-800">1800 واط | 220 فولت - 50 هرتز - 16 أمبير</td></tr>
+            <tr><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">قوة الطرق والوزن</td><td class="p-3 border border-slate-200 dark:border-slate-800">6 كيلو جول طرق / وزن 6 كجم</td></tr>
+            <tr class="bg-slate-100 dark:bg-slate-900"><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">معدل الطرق والسرعة</td><td class="p-3 border border-slate-200 dark:border-slate-800">3900 ضربة في الدقيقة (3900 BPM)</td></tr>
+            <tr><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">اللون والملحقات</td><td class="p-3 border border-slate-200 dark:border-slate-800">أزرق فيروزي / أخضر + حقيبة حمل صلبة خضراء</td></tr>
+            <tr class="bg-slate-100 dark:bg-slate-900"><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">السعر ورابط الشراء</td><td class="p-3 border border-slate-200 dark:border-slate-800"><a href="https://link.amazon/B03WjTKPy" target="_blank" rel="nofollow sponsored" class="text-amber-500 font-bold underline">2,850 ج.م على أمازون مصر</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">4. خلاصة تقييم فريق ديكورا Dkora</h2>
+      <p>إذا كنت بحاجة إلى <strong>هيلتي تكسير</strong> قوي يعتمد عليه في مهام التفتيت والهدم الخرساني بسعر اقتصادي ممتاز جداً مقارنة بالمواصفات العالية (1800 واط و6 كيلو طرق)، فإن ماكس H0811 يقدم المعادلة الأقوى في السوق المصري لعام 2026.</p>
+
+      <div class="my-8 text-center bg-slate-100 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+        <h3 class="text-lg font-bold mb-2">هل تريد شراء هيلتي تكسير ماكس 1800 واط الأصلي؟</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">احصل عليه الآن بخصم مميز وسعر 2,850 ج.م مع الشحن السريع وحقيبة التخزين المرفقة.</p>
+        <a href="https://link.amazon/B03WjTKPy" target="_blank" rel="nofollow sponsored" class="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black rounded-xl transition-colors shadow-lg">
+          <span>شراء الآن من أمازون مصر (2,850 ج.م)</span>
+        </a>
+      </div>
+    </div>`,
+    tags: ["هيلتي تكسير", "هيلتي تكسير ماكس", "تكسير خرسانة", "ماكس H0811", "أمازون", "عدد كهربائية"]
+  },
   {
     id: "art-total-paint-sprayer-550w-review",
     title: "مراجعة شاملة 2026: كمبروسر دهان توتال 550 وات HVLP بقاعدة أرضية (TT5006)",

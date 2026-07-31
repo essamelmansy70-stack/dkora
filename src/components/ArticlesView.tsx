@@ -88,6 +88,10 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({
             <img
               src={currentArticle.coverImage}
               alt={currentArticle.title}
+              loading="eager"
+              decoding="async"
+              width={800}
+              height={320}
               referrerPolicy="no-referrer"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
@@ -168,6 +172,10 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({
                 <img
                   src={art.coverImage}
                   alt={art.title}
+                  loading="lazy"
+                  decoding="async"
+                  width={400}
+                  height={192}
                   referrerPolicy="no-referrer"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;

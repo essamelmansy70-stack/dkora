@@ -69,6 +69,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <img
             src={product.mainImage}
             alt={product.titleAr}
+            loading="lazy"
+            decoding="async"
+            width={400}
+            height={256}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
@@ -224,16 +228,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {onEditProduct && (
             <button
               onClick={() => onEditProduct(product)}
+              aria-label={`تعديل بيانات وسعر ${product.titleAr}`}
               className="py-2.5 px-3 rounded-xl border bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs border-amber-400 transition-colors shadow-sm flex items-center gap-1.5 shrink-0"
               title="تعديل بيانات وسعر هذا المنتج"
             >
-              <Edit2 className="w-4 h-4" />
+              <Edit2 className="w-4 h-4" aria-hidden="true" />
               <span>تعديل</span>
             </button>
           )}
 
           <button
             onClick={handleCopyLink}
+            aria-label={`مشاركة رابط ${product.titleAr}`}
             className={`p-2.5 rounded-xl border transition-colors shrink-0 ${
               copiedLink
                 ? "bg-emerald-500 text-slate-950 border-emerald-400 font-bold"
@@ -243,12 +249,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             }`}
             title={copiedLink ? "تم نسخ رابط المنتج المباشر!" : "نسخ رابط المنتج المباشر للأرشفة والمشاركة"}
           >
-            {copiedLink ? <Check className="w-4 h-4 text-slate-950" /> : <Share2 className="w-4 h-4 text-amber-500" />}
+            {copiedLink ? <Check className="w-4 h-4 text-slate-950" aria-hidden="true" /> : <Share2 className="w-4 h-4 text-amber-500" aria-hidden="true" />}
           </button>
 
           {onCompareSelect && (
             <button
               onClick={() => onCompareSelect(product)}
+              aria-label={`إضافة ${product.titleAr} لقائمة المقارنة`}
               className={`p-2.5 rounded-xl border transition-colors shrink-0 ${
                 isDarkMode
                   ? "bg-slate-800/80 hover:bg-amber-500/20 text-slate-300 border-slate-700"
@@ -256,7 +263,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               }`}
               title="إضافة للمقارنة"
             >
-              <SlidersHorizontal className="w-4 h-4 text-amber-500" />
+              <SlidersHorizontal className="w-4 h-4 text-amber-500" aria-hidden="true" />
             </button>
           )}
         </div>

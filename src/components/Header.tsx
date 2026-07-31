@@ -93,16 +93,18 @@ export const Header: React.FC<HeaderProps> = ({
             placeholder="ابحث عن مراجعة منتج، شنيور، ماكينة رش دهانات..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            aria-label="البحث عن منتج أو مراجعة"
             className={`w-full pr-10 pl-4 py-2 rounded-xl text-xs sm:text-sm border transition-all focus:outline-none focus:ring-2 focus:ring-amber-500/50 ${
               isDarkMode
                 ? "bg-slate-900 border-slate-800 text-slate-100 placeholder-slate-500"
                 : "bg-slate-100 border-slate-300 text-slate-900 placeholder-slate-400"
             }`}
           />
-          <Search className="w-4 h-4 absolute right-3 top-3 text-slate-400" />
+          <Search className="w-4 h-4 absolute right-3 top-3 text-slate-400" aria-hidden="true" />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
+              aria-label="مسح حقل البحث"
               className="absolute left-3 top-2.5 text-xs text-slate-400 hover:text-amber-500"
             >
               ✕
@@ -111,7 +113,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Navigation Items */}
-        <nav className="hidden lg:flex items-center gap-1 text-sm font-bold">
+        <nav className="hidden lg:flex items-center gap-1 text-sm font-bold" aria-label="التنقل الرئيسي">
           <a
             href="/"
             onClick={(e) => {
@@ -130,7 +132,7 @@ export const Header: React.FC<HeaderProps> = ({
                 : "text-slate-600 hover:text-amber-600 hover:bg-slate-100"
             }`}
           >
-            <Compass className="w-4 h-4" />
+            <Compass className="w-4 h-4" aria-hidden="true" />
             <span>مراجعات المنتجات</span>
           </a>
 
@@ -151,7 +153,7 @@ export const Header: React.FC<HeaderProps> = ({
                 : "text-slate-600 hover:text-amber-600 hover:bg-slate-100"
             }`}
           >
-            <BookOpen className="w-4 h-4 text-amber-500" />
+            <BookOpen className="w-4 h-4 text-amber-500" aria-hidden="true" />
             <span>مقالات المراجعات الشاملة</span>
           </a>
 
@@ -172,7 +174,7 @@ export const Header: React.FC<HeaderProps> = ({
                 : "text-slate-600 hover:text-amber-600 hover:bg-slate-100"
             }`}
           >
-            <SlidersHorizontal className="w-4 h-4" />
+            <SlidersHorizontal className="w-4 h-4" aria-hidden="true" />
             <span>مقارنات المنتجات</span>
           </a>
 
@@ -183,6 +185,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Theme Toggle */}
           <button
             onClick={() => setIsDarkMode(!isDarkMode)}
+            aria-label={isDarkMode ? "التحويل إلى المظهر الفاتح" : "التحويل إلى المظهر المظلم"}
             className={`p-2 rounded-xl transition-colors border ${
               isDarkMode
                 ? "bg-slate-900 border-slate-800 text-amber-400 hover:bg-slate-800"
@@ -190,19 +193,20 @@ export const Header: React.FC<HeaderProps> = ({
             }`}
             title="تغيير المظهر"
           >
-            {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            {isDarkMode ? <Sun className="w-4 h-4" aria-hidden="true" /> : <Moon className="w-4 h-4" aria-hidden="true" />}
           </button>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "إغلاق القائمة الجانبية" : "فتح القائمة الجانبية"}
             className={`lg:hidden p-2 rounded-xl border ${
               isDarkMode
                 ? "bg-slate-800/80 text-slate-300 border-slate-700"
                 : "bg-slate-100 text-slate-800 border-slate-300"
             }`}
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-5 h-5" aria-hidden="true" /> : <Menu className="w-5 h-5" aria-hidden="true" />}
           </button>
         </div>
       </div>

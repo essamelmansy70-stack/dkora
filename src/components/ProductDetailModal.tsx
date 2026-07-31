@@ -134,16 +134,18 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   onEditProduct(product);
                   onClose();
                 }}
+                aria-label={`تعديل بيانات وسعر ${product.titleAr}`}
                 className="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs flex items-center gap-1.5 shadow-md transition-colors"
                 title="تعديل بيانات وسعر هذا المنتج"
               >
-                <Edit2 className="w-4 h-4" />
+                <Edit2 className="w-4 h-4" aria-hidden="true" />
                 <span>تعديل المنتج</span>
               </button>
             )}
 
             <button
               onClick={() => onOpenSchema(product)}
+              aria-label="عرض بيانات SEO Schema للمحتوى"
               className={`px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center gap-1.5 transition-colors ${
                 isDarkMode
                   ? "bg-slate-800 hover:bg-slate-700 text-amber-400 border-slate-700"
@@ -151,19 +153,20 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               }`}
               title="عرض Schema.org JSON-LD الموجه لمحركات البحث"
             >
-              <Code2 className="w-4 h-4" />
+              <Code2 className="w-4 h-4" aria-hidden="true" />
               <span>SEO Schema</span>
             </button>
 
             <button
               onClick={onClose}
+              aria-label="إغلاق النافذة المنبثقة"
               className={`p-2 rounded-xl border transition-colors ${
                 isDarkMode
                   ? "bg-slate-800 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 border-slate-700"
                   : "bg-slate-200 hover:bg-rose-100 text-slate-600 hover:text-rose-600 border-slate-300"
               }`}
             >
-              <X className="w-5 h-5" />
+              <X className="w-5 h-5" aria-hidden="true" />
             </button>
           </div>
         </div>
@@ -175,12 +178,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             isDarkMode ? "bg-slate-900/90 border-amber-500/30 text-slate-200" : "bg-amber-50/80 border-amber-300/80 text-slate-800"
           }`}>
             <div className="flex items-center gap-2 font-bold overflow-hidden min-w-0">
-              <Link className="w-4 h-4 text-amber-500 shrink-0" />
+              <Link className="w-4 h-4 text-amber-500 shrink-0" aria-hidden="true" />
               <span className="shrink-0 text-amber-600 dark:text-amber-400 font-extrabold">رابط المنتج المخصص للأرشفة (Canonical URL):</span>
               <span className="font-mono text-[11px] truncate text-slate-600 dark:text-slate-300 select-all">{canonicalProductUrl}</span>
             </div>
             <button
               onClick={handleCopyProductLink}
+              aria-label="نسخ رابط المنتج المباشر"
               className={`px-3 py-1.5 rounded-xl font-bold flex items-center gap-1.5 transition-all shrink-0 ${
                 copiedLink
                   ? "bg-emerald-500 text-slate-950 font-black shadow-sm"
@@ -188,7 +192,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               }`}
               title="نسخ الرابط المباشر للمنتج"
             >
-              {copiedLink ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+              {copiedLink ? <Check className="w-4 h-4" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
               <span>{copiedLink ? "تم النسخ بنجاح!" : "نسخ الرابط المباشر"}</span>
             </button>
           </div>
@@ -203,6 +207,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 <img
                   src={activeImage}
                   alt={product.titleAr}
+                  loading="eager"
+                  decoding="async"
+                  width={600}
+                  height={400}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute top-3 right-3 bg-amber-500 text-slate-950 font-extrabold text-xs px-3 py-1 rounded-full shadow-lg">
@@ -217,7 +225,11 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     <img
                       key={idx}
                       src={img}
-                      alt="Thumbnail"
+                      alt={`صورة مصغرة رقم ${idx + 1} لـ ${product.titleAr}`}
+                      loading="lazy"
+                      decoding="async"
+                      width={64}
+                      height={64}
                       onClick={() => setActiveImage(img)}
                       className={`w-16 h-16 rounded-xl object-cover cursor-pointer border-2 transition-all ${
                         activeImage === img

@@ -880,7 +880,7 @@ export const ARTICLES: Article[] = [
 
       <div class="my-6 text-center">
         <a href='https://link.amazon/B0iKfMbfw' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
-          <img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/XJ7FS8Gn/61Esz9e32YL.jpg" alt="كمبروسر دهان توتال 550 وات HVLP موديل TT5006" />
+          <img loading="lazy" decoding="async" width="800" height="533" class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/XJ7FS8Gn/61Esz9e32YL.jpg" alt="كمبروسر دهان توتال 550 وات HVLP موديل TT5006" />
         </a>
       </div>
 
@@ -894,7 +894,7 @@ export const ARTICLES: Article[] = [
 
       <div class="my-6 text-center">
         <a href='https://link.amazon/B0iKfMbfw' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
-          <img class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/RCYtywvD/51tua-Ypms-DL.jpg" alt="رش دهانات وتغطية ناعمة باستخدام كمبروسر دهان توتال" />
+          <img loading="lazy" decoding="async" width="800" height="533" class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/RCYtywvD/51tua-Ypms-DL.jpg" alt="رش دهانات وتغطية ناعمة باستخدام كمبروسر دهان توتال" />
         </a>
       </div>
 

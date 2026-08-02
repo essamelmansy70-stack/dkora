@@ -68,8 +68,22 @@ export const Header: React.FC<HeaderProps> = ({
           }}
           className="flex items-center gap-2 sm:gap-3 group text-right focus:outline-none shrink-0"
         >
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
-            <Wrench className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]" />
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl overflow-hidden bg-slate-900 border border-amber-500/40 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform shrink-0">
+            <img
+              src="/logo.jpg"
+              alt="شعار ديكورا Dkora"
+              loading="eager"
+              decoding="async"
+              width={40}
+              height={40}
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                // Fallback icon if image is missing
+                const target = e.target as HTMLImageElement;
+                target.style.display = "none";
+              }}
+            />
           </div>
           <div>
             <div className="flex items-center gap-1.5">

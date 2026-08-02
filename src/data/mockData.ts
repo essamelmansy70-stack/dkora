@@ -819,6 +819,60 @@ export const PRODUCTS: Product[] = [
     viewsCount: 15800,
     dateAdded: "2026-03-31",
     tags: ["هيلتي تكسير", "هيلتي تكسير ماكس", "هيلتي كهربائي", "ماكس 1800 واط", "H0811", "تكسير خرسانة", "أمازون"]
+  },
+  {
+    id: "p-pintar-paint-roller-b091j544fh",
+    titleAr: "أداة طلاء دوارة وروله دهانات للمنزل الذكية من بينتار (Pintar Facil) مع خزان داخلي وعصا تمديد",
+    titleEn: "Pintar Facil Smart Paint Roller Tool Set for Home Painting",
+    slug: "pintar-facil-smart-paint-roller-b091j544fh",
+    categoryId: "cat-electric-tools",
+    brandId: "b-generic",
+    brandName: "بينتار فيسل - Pintar Facil",
+    modelNumber: "ASIN: B091J544FH",
+    mainImage: "https://i.postimg.cc/44Psqptc/41Bf-V6ju-y-L.jpg",
+    gallery: [
+      "https://i.postimg.cc/44Psqptc/41Bf-V6ju-y-L.jpg",
+      "https://i.postimg.cc/GtXRD1rB/41Pec7g55TL.jpg"
+    ],
+    rating: 4.2,
+    reviewCount: 85,
+    editorScore: 8.8,
+    priceAmazon: 286,
+    currency: "EGP",
+    amazonUrl: "https://link.amazon/B0cLj6LB0",
+    isTopPick: true,
+    isEditorChoice: false,
+    isBestValue: true,
+    pros: [
+      "تصميم مبتكر برول دهانات ذكية تحتوي على خزان داخلي لإعادة التعبئة المباشرة بدون قطرات أو هدر للدهان",
+      "تغطية متساوية وسريعة للحوائط والجدران والأسقف بجهد أقل وزمن إنجاز قياسي",
+      "تأتي مع ملحقات متكاملة تشمل أداة طلاء الزوايا الحادة وإبريق صب وسينية إسناد وعصا تمديد",
+      "سهلة التنظيف والغسيل بالماء الجاري بعد الاستخدام لإعادة استخدامها مرات عديدة",
+      "سعر اقتصادي جداً (286 ج.م) يتيح لك تجديد دهان المنزل بنفسك (DIY) وتوفير تكاليف المصنعية"
+    ],
+    cons: [
+      "يُفضل تخفيف الدهانات الزيتية أو الثقيلة جلياً بالماء أو المذيب المناسب لضمان تدفق سلس عبر الألياف الدقيقة",
+      "تتطلب غسل الخزان والألياف جيداً فور الانتهاء مباشرة لمنع جفاف الطلاء داخل الخزان"
+    ],
+    targetAudience: "أصحاب المنازل وهواة التجديد الذاتي (DIY) والراغبون في شراء أفضل روله دهانات اقتصادية وعملية بسعر 286 ج.م.",
+    summary: "إذا كنت تبحث عن أفضل روله دهانات ذكية للمنزل تجعل عملية طلاء الحوائط والأسقف سهلة ونظيفة بدون تسييل أو اتساخ للأرضيات، فإن أداة الطلاء الدوارة من بينتار (Pintar Facil) هي الخيار المثالي لعام 2026 بسعر 286 ج.م على أمازون مصر.",
+    fullReviewText: `إذا كنت تبحث عن **روله دهانات** ذكية وعملية تمكنك من طلاء الحوائط وتجديد غرف المنزل بنفسك بدون الحاجة للاستعانة بفنيين أو إنفاق مبالغ كبيرة، فإن أداة الطلاء الدوارة بينتار (Pintar Facil) هي الحل الابتكاري الأفضل لعام 2026.
+
+تتميز هذه الرولة المبتكرة بوجود خزان داخلي سهل التعبئة بسعة ممتازة يضمن توزيع الطلاء بالتساوي عبر طبقة الألياف الدقيقة (Microfiber) أثناء التدوير، مما يمنع قطرات الدهان المتساقطة على السجاد والأرضيات تماماً.
+
+تأتي المجموعة كاملة بملحقات ذكية لتغطية جميع زوايا الحائط والحواف الضيقة والأركان الحادة، بالإضافة إلى مقبض قابل للربط بعصا التمديد للوصول للأماكن المرتفعة والأسقف بسهولة متناهية.`,
+    specs: [
+      { label: "نوع الأداة والكلمة المفتاحية", value: "روله دهانات ذكية بخزان داخلي (Smart Paint Roller Tool)" },
+      { label: "العلامة التجارية والمصنع", value: "بينتار فيسل (Pintar Facil)" },
+      { label: "الوزن والأبعاد", value: "750 جرام | 20 × 25 × 20 سم" },
+      { label: "اللون ونوع الفراشي", value: "متعدد الألوان / رمادي | فراشي دهان اسطوانية ألياف دقيقة" },
+      { label: "الملحقات والوحدات", value: "رول دهان رئيسي + أداة حواف وزوايا + إبريق صب + صينية + عصا تمديد" },
+      { label: "تصنيف المبيعات وأرقام التعريف", value: "#39 في Paint Rollers | ASIN: B091J544FH" },
+      { label: "السعر ورابط الشراء", value: "286 ج.م على متجر أمازون مصر (https://link.amazon/B0cLj6LB0)" }
+    ],
+    viewsCount: 11200,
+    dateAdded: "2026-04-01",
+    tags: ["روله دهانات", "رولة دهانات", "رول دهان بينتار", "Pintar Facil", "أدوات دهان", "طلاء منازل", "أمازون"]
   }
 ];
 
@@ -929,6 +983,75 @@ export const DEALS: Deal[] = [
 ];
 
 export const ARTICLES: Article[] = [
+  {
+    id: "art-pintar-paint-roller-b091j544fh-review",
+    title: "مراجعة شاملة 2026: أفضل روله دهانات ذكية للمنزل بخزان داخلي من بينتار (Pintar Facil)",
+    slug: "pintar-smart-paint-roller-review",
+    category: "مستلزمات التشطيب والديكور",
+    readTime: "6 دقائق",
+    date: "2026-04-01",
+    author: "فريق المراجعات الفنية - ديكورا Dkora",
+    coverImage: "https://i.postimg.cc/44Psqptc/41Bf-V6ju-y-L.jpg",
+    excerpt: "مراجعة تفصيلية وتجربة استعراض متوافقة مع معايير السيو لعام 2026 لأفضل روله دهانات ذكية للمنزل من بينتار (Pintar Facil) بخزان قابل للتعبئة بسعر 286 ج.م على أمازون مصر.",
+    content: `<div class="article-container space-y-6">
+      <p>تُعد عملية تجديد طلاء الجدران والأسقف في المنازل من أكثر مشاريع التحسين الذاتي (DIY) شعبية، إلا أن المعاناة التقليدية مع اتساخ الأرضيات وتنسيب البوية وتكرار غمس الرول في السطل تجعل المهمة مرهقة. وفي هذه المراجعة الميدانية المحدثة لعام 2026 المتوافقة مع معايير محركات البحث، نراجع عن قرب <strong>روله دهانات</strong> بينتار الذكية (Pintar Facil Smart Paint Roller) ذات الخزان المدمج، والتي تُعد أداة طلاء منزلية متكاملة بسعر اقتصادي للغاية 286 ج.م على أمازون مصر.</p>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B0cLj6LB0' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img loading="lazy" decoding="async" width="800" height="533" class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/44Psqptc/41Bf-V6ju-y-L.jpg" alt="روله دهانات بينتار الذكية للمنزل بخزان قابل للتعبئة" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">1. تصميم مبتكر مع خزان دهان داخلي يمنع التسريب والتنقيط</h2>
+      <p>تعتمد <strong>روله دهانات</strong> بينتار على تقنية التغذية الداخلية المستمرة، حيث تحتوي أسطوانة الطلاء على خزان داخلي محكم الإغلاق يتم تعبئته مباشرة باستخدام إبريق الصب المرفق. يتم تدفق الطلاء بسلاسة وتوازن من الداخل إلى ألياف الميكروفايبر الدقيقة (Microfiber) الخارجية أثناء تدحرج الرول على الجدار.</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>بدون تنقيط أو تساقط:</strong> تضمن نسيجية الميكروفايبر امتصاص الطلاء وعدم تساقط أي قطرات على السجاد والأرضيات.</li>
+        <li><strong>تغطية متجانسة وبدون تكتل:</strong> تمنحك الرولة طبقة دهان ناعمة ومستوية على جدران الخرسانة والمحارة والجبس بورد.</li>
+        <li><strong>سرعة إنجاز استثنائية:</strong> تغطي مساحات شاسعة من الغرفة في وقت قياسي دون الحاجة للتوقف المستمر لغمس الرولة في الصينية.</li>
+      </ul>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B0cLj6LB0' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img loading="lazy" decoding="async" width="800" height="533" class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/GtXRD1rB/41Pec7g55TL.jpg" alt="طقم ملحقات روله دهانات بينتار للزوايا والأسقف" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">2. طقم ملحقات كامل للزوايا والأسقف والعصا التلسكوبية</h2>
+      <p>لا تقتصر الميزة في هذه المجموعة على الرولة الرئيسية فقط، بل تأتي مع حزمة ملحقات متكاملة تسهل الوصول للأماكن الصعبة:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>أداة طلاء الزوايا والحواف (Edger Roller):</strong> رولة صغيرة مخصصة للطلاء بدقة حول مفاتيح الكهرباء، حواف الأبواب والشبابيك، والزوايا الضيقة.</li>
+        <li><strong>أداة الأركان الحادة (Corner Cutter):</strong> وسادة مثلثة مصممة لدهان التقاء الجدران والأسقف بدون تشويه.</li>
+        <li><strong>إبريق صب وصينية استراحة:</strong> لإعادة التعبئة بسهولة وحفظ الأدوات أثناء الاستراحة.</li>
+        <li><strong>إمكانية تركيب عصا التمديد:</strong> يحتوي المقبض على مقبس لتركيب عصا تمديد للوصول للأسقف العالية بدون سلم.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">3. المواصفات الفنية لـ روله دهانات بينتار (Pintar Facil)</h2>
+      <div class="overflow-x-auto my-4">
+        <table class="w-full text-right border-collapse border border-slate-200 dark:border-slate-800 text-sm">
+          <tbody>
+            <tr class="bg-slate-100 dark:bg-slate-900"><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">الكلمة المفتاحية ونوع المنتج</td><td class="p-3 border border-slate-200 dark:border-slate-800">روله دهانات ذكية للمنزل (Smart Paint Roller Tool)</td></tr>
+            <tr><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">الشركة المصنعة والعلامة التجارية</td><td class="p-3 border border-slate-200 dark:border-slate-800">بينتار فيسل (Pintar Facil)</td></tr>
+            <tr class="bg-slate-100 dark:bg-slate-900"><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">الوزن والأبعاد</td><td class="p-3 border border-slate-200 dark:border-slate-800">750 جرام | 20 × 25 × 20 سم</td></tr>
+            <tr><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">اللون والخامات</td><td class="p-3 border border-slate-200 dark:border-slate-800">رمادي / متعدد الألوان | ألياف ميكروفايبر + بلاستيك مقوى</td></tr>
+            <tr class="bg-slate-100 dark:bg-slate-900"><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">التصنيف والأرقام التخصصية</td><td class="p-3 border border-slate-200 dark:border-slate-800">المركز #39 في تصنيف Paint Rollers على أمازون | ASIN: B091J544FH</td></tr>
+            <tr><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">السعر ورابط الشراء MBL</td><td class="p-3 border border-slate-200 dark:border-slate-800"><a href="https://link.amazon/B0cLj6LB0" target="_blank" rel="nofollow sponsored" class="text-amber-500 font-bold underline">286 ج.م على أمازون مصر</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">4. خلاصة رأي خبراء التقييم في ديكورا Dkora</h2>
+      <p>تُعتبر <strong>روله دهانات</strong> بينتار الذكية الاستثمار المنزلي الأنسب لكل من يرغب في تغيير ديكور ودهان الغرف بنفسه بسرعة ونظافة تامة. بسعرها الاقتصادي (286 ج.م)، توفر عليك مئات الجنيهات من تكاليف مصنعية الطلاء العادية وتمنحك نتائج جمالية رائعة.</p>
+
+      <div class="my-8 text-center bg-slate-100 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+        <h3 class="text-lg font-bold mb-2">هل تريد شراء روله دهانات بينتار الذكية للمنزل الآن؟</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">احصل على الطقم الكامل برابط مباشر وسعر أصلاني 286 ج.م مع الشحن السريع عبر أمازون مصر.</p>
+        <a href="https://link.amazon/B0cLj6LB0" target="_blank" rel="nofollow sponsored" class="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black rounded-xl transition-colors shadow-lg">
+          <span>شراء الآن من أمازون مصر (286 ج.م)</span>
+        </a>
+      </div>
+    </div>`,
+    tags: ["روله دهانات", "رولة دهانات", "رول دهان بينتار", "Pintar Facil", "أدوات دهان", "طلاء منازل", "أمازون"]
+  },
   {
     id: "art-max-jackhammer-1800w-h0811-review",
     title: "مراجعة شاملة 2026: ماكس هيلتي تكسير كهربائي 1800 وات 6 كيلو (H0811) للتكسير الشديد",

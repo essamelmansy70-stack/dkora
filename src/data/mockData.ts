@@ -873,6 +873,62 @@ export const PRODUCTS: Product[] = [
     viewsCount: 11200,
     dateAdded: "2026-04-01",
     tags: ["روله دهانات", "رولة دهانات", "رول دهان بينتار", "Pintar Facil", "أدوات دهان", "طلاء منازل", "أمازون"]
+  },
+  {
+    id: "p-ingco-paint-sprayer-20v-csgli20042",
+    titleAr: "انجكو مسدس رش كهرباء ولاسلكي 20 فولت (CSGLI20042) لزوجة 120Din-s مع خزان 1000 مل وبطارية وشاحن",
+    titleEn: "INGCO 20V Cordless Electric Paint Sprayer Gun CSGLI20042 with 2.0Ah Battery & Charger",
+    slug: "ingco-cordless-paint-sprayer-20v-csgli20042",
+    categoryId: "cat-electric-tools",
+    brandId: "b-ingco",
+    brandName: "انجكو - INGCO",
+    modelNumber: "CSGLI20042 | ASIN: B0GHP4SZL1",
+    mainImage: "https://i.postimg.cc/XYsPrB1C/71Ebic6Kwv-L.jpg",
+    gallery: [
+      "https://i.postimg.cc/XYsPrB1C/71Ebic6Kwv-L.jpg",
+      "https://i.postimg.cc/sgj8f4mW/71i-To-xi2LL.jpg"
+    ],
+    rating: 4.6,
+    reviewCount: 48,
+    editorScore: 9.4,
+    priceAmazon: 2550,
+    currency: "EGP",
+    amazonUrl: "https://link.amazon/B0guAF2Kz",
+    isTopPick: true,
+    isEditorChoice: true,
+    isBestValue: false,
+    pros: [
+      "حرية حركة مطلقة بفضل نظام الرش اللاسلكي ببطارية ليثيوم 20 فولت سعة 2.0 أمبير/ساعة وشاحن سريع أصلي مرفق",
+      "تحمل عالي للزوجة الدهانات حتى 120 Din-s مما يسمح برش مختلف أنواع البويات والورنيش واللاكيه والدهانات الثقيلة والخفيفة",
+      "خزان كبير بسعة 1000 ملليلتر مع معدل تدفق قابل للتعديل من 0 إلى 800 مل/دقيقة لتنفيذ المشاريع الكبيرة بسرعة قياسية",
+      "مزود بوظيفة نفخ مدمجة لطرد الأتربة وتجفيف الأسطح قبل الرش، وإبرة تنظيف ذكية لمنع انسداد الفوهات",
+      "يأتي بـ 3 فوهات قياسية (1.5 مم / 2.0 مم / 2.5 مم) و3 أنماط رش (أفقي بيضاوي، عمودي بيضاوي، ومستدير) لرش الجدران والأثاث والأسوار"
+    ],
+    cons: [
+      "يستحسن اقتناء بطارية 20V إضافية عند التخطيط لمشاريع طلاء خارجية ضخمة ومستمرة لعدة ساعات",
+      "الوزن البالغ 2.27 كجم عند تعبئة الخزان بالكامل يتطلب المسك الجيد بالمقبض المريح أثناء الطلاء الدقيق"
+    ],
+    targetAudience: "الفنيون والصنايعية وأصحاب المنازل الراغبون في اقتناء مسدس رش كهرباء لاسلكي احترافي وعالي القوة بسعر 2,550 ج.م.",
+    summary: "إذا كنت تبحث عن أفضل مسدس رش كهرباء لاسلكي يمنحك حرية الحركة الكاملة بدون أسلاك وبأداء رش محترف وسعة خزان 1000 مل، فإن مسدس انجكو INGCO موديل CSGLI20042 هو الخيار الأول لعام 2026 بسعر 2,550 ج.م على أمازون مصر.",
+    fullReviewText: `إذا كنت تبحث عن **مسدس رش كهرباء** احترافي لاسلكي يحررك من قيود الأسلاك والمقابس الكهربائية ويوفر لك قوة رش متكافئة لطلاء الأثاث والحوائط والأسوار، فإن مسدس رش انجكو CSGLI20042 بقدرة 20 فولت هو أحد أفضل الخيارات المتاحة لعام 2026.
+
+يتميز هذا الجهاز بخزان كبير بسعة 1000 ملليلتر، ومعدل تدفق قابل للتعديل يصل إلى 800 مل/دقيقة، بالإضافة إلى قدرته على التعامل مع لزوجة عالية تصل إلى 120 Din-s، مما يضمن رشاً ناعماً ومتجانساً لجميع أنواع البويات الزيتية والمائية دون تسييل.
+
+يأتي المسدس مجهزاً ببطارية 2.0 أمبير/ساعة وشاحن سريع، إلى جانب 3 فوهات مختلفة و3 أنماط رش ممتازة وخاصية نفخ الغبار قبل الطلاء لضمان أفضل التصاق للدهان.`,
+    specs: [
+      { label: "نوع الأداة والكلمة المفتاحية", value: "مسدس رش كهرباء لاسلكي (Cordless Paint Sprayer)" },
+      { label: "العلامة التجارية والموديل", value: "انجكو INGCO | موديل CSGLI20042" },
+      { label: "مصدر الطاقة والبطارية", value: "بطارية ليثيوم 20 فولت (2.0Ah) + شاحن أصلي مدمج" },
+      { label: "سعة الخزان وتدفق الرش", value: "1000 ملليلتر (1 لتر) | معدل تدفق 0-800 مل/دقيقة" },
+      { label: "تحمل اللزوجة", value: "حتى 120 Din-s لضمان رش سلس متكافئ" },
+      { label: "مقاسات الفوهات وأوضاع الرش", value: "3 فوهات (1.5 مم / 2.0 مم / 2.5 مم) | 3 أوضاع (أفقي، عمودي، مستدير)" },
+      { label: "الميزات المدمجة والملحقات", value: "خاصية نفخ وتنظيف مدمجة + إبرة تسليك + بطارية وشاحن" },
+      { label: "تصنيف المبيعات والتعريف", value: "#60 في Paint Sprayers | ASIN: B0GHP4SZL1" },
+      { label: "السعر ورابط أمازون مصر", value: "2,550 ج.م على متجر أمازون مصر (https://link.amazon/B0guAF2Kz)" }
+    ],
+    viewsCount: 16400,
+    dateAdded: "2026-04-02",
+    tags: ["مسدس رش كهرباء", "مسدس رش انجكو", "مسدس رش لاسلكي", "INGCO 20V", "CSGLI20042", "أدوات دهان", "أمازون"]
   }
 ];
 
@@ -983,6 +1039,76 @@ export const DEALS: Deal[] = [
 ];
 
 export const ARTICLES: Article[] = [
+  {
+    id: "art-ingco-cordless-paint-sprayer-csgli20042-review",
+    title: "مراجعة شاملة 2026: انجكو مسدس رش كهرباء لاسلكي 20 فولت (CSGLI20042) لطلاء الأسوار والأثاث",
+    slug: "ingco-cordless-paint-sprayer-csgli20042-review",
+    category: "العدد الكهربائية",
+    readTime: "7 دقائق",
+    date: "2026-04-02",
+    author: "فريق المراجعات الفنية - ديكورا Dkora",
+    coverImage: "https://i.postimg.cc/XYsPrB1C/71Ebic6Kwv-L.jpg",
+    excerpt: "مراجعة تفصيلية وتجربة استعراض متوافقة مع معايير السيو لعام 2026 لأفضل مسدس رش كهرباء لاسلكي 20 فولت من انجكو INGCO بخزان 1000 مل ولزوجة 120 Din-s بسعر 2,550 ج.م على أمازون مصر.",
+    content: `<div class="article-container space-y-6">
+      <p>تطورت أدوات الطلاء والتشطيبات المنزلية في الأعوام الأخيرة بشكل كبير، وأصبح اقتناء <strong>مسدس رش كهرباء</strong> لاسلكي يمثل الحل الأحدث والأسرع لإنجاز أعمال الطلاء بدون التعثر في أسلاك الكهرباء المزعجة أو الحاجة لكابلات تمديد طويلة. وفي هذه المراجعة التفصيلية المحدثة لعام 2026 والمتوافقة تماماً مع قواعد السيو ومحركات البحث، نراجع مسدس رش الطلاء اللاسلكي انجكو INGCO موديل CSGLI20042 بقدرة 20 فولت بسعر 2,550 ج.م المتاح على متجر أمازون مصر.</p>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B0guAF2Kz' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img loading="lazy" decoding="async" width="800" height="533" class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/XYsPrB1C/71Ebic6Kwv-L.jpg" alt="مسدس رش كهرباء لاسلكي 20 فولت من انجكو موديل CSGLI20042" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">1. قوة رش لاسلكية ببطارية 20V وتحمل لزوجة حتى 120 Din-s</h2>
+      <p>يتميز <strong>مسدس رش كهرباء</strong> انجكو بجمعه بين حرية الرش اللاسلكي والقدرة الفائقة على التعامل مع مختلف كثافات الطلاء البلاستيكية والزيتية والورنيش واللاكيه حتى لزوجة 120 Din-s بدقة عالية وبدون انسداد.</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>حرية حركة كاملة:</strong> مزود ببطارية ليثيوم 2.0 أمبير/ساعة بجهد 20 فولت وشاحن سريع أصلي لتنفيذ عمليات الطلاء في المناطق الخارجية كالأسوار والحدائق.</li>
+        <li><strong>خزان كبير سعة 1000 ملليلتر:</strong> يتسع لكميات كبيرة من الطلاء مما يقلل عدد مرات إعادة التعبئة أثناء العمل.</li>
+        <li><strong>معدل تدفق قابل للتعديل:</strong> يمكنك التحكم في إخراج الطلاء من 0 إلى 800 مل/دقيقة عبر مقبض تحكم دقيق ليلائم مختلف المساحات والأسطح.</li>
+      </ul>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B0guAF2Kz' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img loading="lazy" decoding="async" width="800" height="533" class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/sgj8f4mW/71i-To-xi2LL.jpg" alt="فوهات متعددة المقاسات ومكونات مسدس رش كهرباء انجكو اللاسلكي" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">2. وظائف النفخ الذكي و3 فوهات وأوضاع رش متعدده</h2>
+      <p>تمنحك الهندسة المتطورة في مسدس رش انجكو سهولة في الاستخدام والصيانة الميدانية:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>خاصية النفخ وإزالة الأتربة:</strong> تعمل وظيفة النفخ المدمجة على تنظيف السطح وتطير الأتربة قبل بدء الرش لضمان أقصى درجات الالتصاق للدهان.</li>
+        <li><strong>3 فوهات نحاسية (1.5 مم / 2.0 مم / 2.5 مم):</strong> تتيح لك التبديل بين الرش الدقيق للأثاث والخزائن، أو الرش الواسع للجدران والأسوار.</li>
+        <li><strong>3 أنماط رش احترافية:</strong> وضع بيضاوي أفقي، بيضاوي عمودي، ونمط مستدير لتغطية كافة الزوايا والحواف.</li>
+        <li><strong>إبرة تنظيف ذكية:</strong> مرفقة مع الجهاز لإزالة أي بواقي طلاء وتأمين النظافة التامة فور الانتهاء.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">3. المواصفات الفنية لـ مسدس رش كهرباء انجكو CSGLI20042</h2>
+      <div class="overflow-x-auto my-4">
+        <table class="w-full text-right border-collapse border border-slate-200 dark:border-slate-800 text-sm">
+          <tbody>
+            <tr class="bg-slate-100 dark:bg-slate-900"><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">الكلمة المفتاحية ونوع الجهاز</td><td class="p-3 border border-slate-200 dark:border-slate-800">مسدس رش كهرباء لاسلكي (Cordless Paint Sprayer)</td></tr>
+            <tr><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">العلامة التجارية والموديل</td><td class="p-3 border border-slate-200 dark:border-slate-800">انجكو INGCO | الموديل CSGLI20042</td></tr>
+            <tr class="bg-slate-100 dark:bg-slate-900"><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">البطارية الشاحن والوزن</td><td class="p-3 border border-slate-200 dark:border-slate-800">بطارية ليثيوم 20V (2.0Ah) + شاحن | الوزن 2.27 كجم</td></tr>
+            <tr><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">سعة الخزان والتدفق</td><td class="p-3 border border-slate-200 dark:border-slate-800">1000 ملليلتر | معدل تدفق 0-800 مل/دقيقة</td></tr>
+            <tr class="bg-slate-100 dark:bg-slate-900"><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">اللزوجة والفوهات MBL</td><td class="p-3 border border-slate-200 dark:border-slate-800">حتى 120 Din-s | 3 فوهات (1.5مم / 2.0مم / 2.5مم)</td></tr>
+            <tr><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">التصنيف والـ ASIN</td><td class="p-3 border border-slate-200 dark:border-slate-800">المركز #60 في Paint Sprayers | ASIN: B0GHP4SZL1</td></tr>
+            <tr class="bg-slate-100 dark:bg-slate-900"><td class="p-3 font-bold border border-slate-200 dark:border-slate-800">السعر ورابط الشراء MBL</td><td class="p-3 border border-slate-200 dark:border-slate-800"><a href="https://link.amazon/B0guAF2Kz" target="_blank" rel="nofollow sponsored" class="text-amber-500 font-bold underline">2,550 ج.م على أمازون مصر</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">4. التقييم النهائي وخلاصة رأي خبراء ديكورا Dkora</h2>
+      <p>إذا كنت بحاجة إلى شراء <strong>مسدس رش كهرباء</strong> لاسلكي يمنحك قوة رش ممتازة وسعة 1000 مل مع حرية التنقل في مختلف أماكن البناء والورش بدون كابلات، فإن انجكو CSGLI20042 يعتبر أفضل قيمة مقابل السعر لعام 2026 بسعر 2,550 ج.م على أمازون مصر.</p>
+
+      <div class="my-8 text-center bg-slate-100 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+        <h3 class="text-lg font-bold mb-2">هل تريد شراء مسدس رش كهرباء انجكو 20V اللاسلكي الأصلي؟</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">احصل عليه الآن بخصم مميز وسعر 2,550 ج.م شامل البطارية 2.0Ah والشاحن والفوهات عبر أمازون مصر.</p>
+        <a href="https://link.amazon/B0guAF2Kz" target="_blank" rel="nofollow sponsored" class="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-black rounded-xl transition-colors shadow-lg">
+          <span>شراء الآن من أمازون مصر (2,550 ج.م)</span>
+        </a>
+      </div>
+    </div>`,
+    tags: ["مسدس رش كهرباء", "مسدس رش انجكو", "مسدس رش لاسلكي", "INGCO 20V", "CSGLI20042", "أدوات دهان", "أمازون"]
+  },
   {
     id: "art-pintar-paint-roller-b091j544fh-review",
     title: "مراجعة شاملة 2026: أفضل روله دهانات ذكية للمنزل بخزان داخلي من بينتار (Pintar Facil)",

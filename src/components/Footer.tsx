@@ -88,6 +88,16 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
                   • أداة مقارنات المنتجات والمواصفات
                 </a>
               </li>
+              <li className="pt-1 border-t border-slate-800/80">
+                <a
+                  href="https://qrytube.com"
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  className="hover:text-amber-300 block font-black text-amber-400 flex items-center gap-1.5"
+                >
+                  <span>🛠️ دليل صنايعية مصر (qrytube.com)</span>
+                </a>
+              </li>
             </ul>
           </div>
 

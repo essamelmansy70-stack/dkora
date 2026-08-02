@@ -14,6 +14,7 @@ import { SeoSchemaModal } from "./components/SeoSchemaModal";
 import { FaqSection } from "./components/FaqSection";
 import { Newsletter } from "./components/Newsletter";
 import { Footer } from "./components/Footer";
+import { SanaieyaAdBanner } from "./components/SanaieyaAdBanner";
 
 import {
   CATEGORIES,
@@ -463,18 +464,41 @@ export default function App() {
                   </button>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                  {filteredProducts.map((p) => (
-                    <ProductCard
-                      key={p.id}
-                      product={p}
-                      currency={currency}
-                      onSelectProduct={(prod) => setDetailProduct(prod)}
-                      onCompareSelect={() => setActiveView("comparisons")}
-                      onEditProduct={handleEditProduct}
-                      isDarkMode={isDarkMode}
-                    />
-                  ))}
+                <div className="space-y-8">
+                  {/* First row / chunk of products */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                    {filteredProducts.slice(0, 3).map((p) => (
+                      <ProductCard
+                        key={p.id}
+                        product={p}
+                        currency={currency}
+                        onSelectProduct={(prod) => setDetailProduct(prod)}
+                        onCompareSelect={() => setActiveView("comparisons")}
+                        onEditProduct={handleEditProduct}
+                        isDarkMode={isDarkMode}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Mid-Page Promotional Banner for دليل صنايعية مصر */}
+                  <SanaieyaAdBanner isDarkMode={isDarkMode} />
+
+                  {/* Remaining products if more than 3 */}
+                  {filteredProducts.length > 3 && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                      {filteredProducts.slice(3).map((p) => (
+                        <ProductCard
+                          key={p.id}
+                          product={p}
+                          currency={currency}
+                          onSelectProduct={(prod) => setDetailProduct(prod)}
+                          onCompareSelect={() => setActiveView("comparisons")}
+                          onEditProduct={handleEditProduct}
+                          isDarkMode={isDarkMode}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
             </section>

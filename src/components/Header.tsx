@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Hammer,
   Wrench,
   Search,
   Sun,
@@ -44,6 +45,7 @@ export const Header: React.FC<HeaderProps> = ({
   showAdminButton = true,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [logoError, setLogoError] = useState(false);
 
   return (
     <header
@@ -68,22 +70,24 @@ export const Header: React.FC<HeaderProps> = ({
           }}
           className="flex items-center gap-2 sm:gap-3 group text-right focus:outline-none shrink-0"
         >
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl overflow-hidden bg-slate-900 border border-amber-500/40 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform shrink-0">
-            <img
-              src="/logo.jpg"
-              alt="شعار ديكورا Dkora"
-              loading="eager"
-              decoding="async"
-              width={40}
-              height={40}
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                // Fallback icon if image is missing
-                const target = e.target as HTMLImageElement;
-                target.style.display = "none";
-              }}
-            />
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl overflow-hidden bg-slate-950 border border-amber-500/40 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform shrink-0">
+            {!logoError ? (
+              <img
+                src="/logo.png"
+                alt="شعار ديكورا Dkora"
+                loading="eager"
+                decoding="async"
+                width={40}
+                height={40}
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover"
+                onError={() => setLogoError(true)}
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 flex items-center justify-center">
+                <Hammer className="w-5 h-5 text-slate-950 stroke-[2.5]" />
+              </div>
+            )}
           </div>
           <div>
             <div className="flex items-center gap-1.5">

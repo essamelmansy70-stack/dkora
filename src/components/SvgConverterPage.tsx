@@ -408,8 +408,10 @@ export default function SvgConverterPage({ locale, t }: SvgConverterPageProps) {
               {/* StrokeWidth setup and Algorithm Toggle */}
               <div className="grid grid-cols-2 gap-4 pt-2.5">
                 <div className="flex flex-col gap-1">
-                  <span className="text-[10px] text-slate-500 font-bold">{locale === 'ar' ? 'سمك الخطوط (فيكتور)' : 'Vector Stroke'}</span>
+                  <label htmlFor="svg-strokewidth-select" className="text-[10px] text-slate-500 font-bold">{locale === 'ar' ? 'سمك الخطوط (فيكتور)' : 'Vector Stroke'}</label>
                   <select 
+                    id="svg-strokewidth-select"
+                    aria-label={locale === 'ar' ? 'سمك الخطوط (فيكتور)' : 'Vector Stroke'}
                     value={strokewidth}
                     onChange={(e) => setStrokewidth(Number(e.target.value))}
                     className="p-1.5 text-xs bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-lg text-slate-700 dark:text-slate-300"

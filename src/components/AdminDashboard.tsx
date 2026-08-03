@@ -385,8 +385,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             </div>
 
             <div>
-              <label className={`block font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>التصنيف:</label>
+              <label htmlFor="admin-category-select" className={`block font-bold mb-1 ${isDarkMode ? "text-slate-300" : "text-slate-700"}`}>التصنيف:</label>
               <select
+                id="admin-category-select"
+                aria-label="اختيار التصنيف"
                 value={newCategory}
                 onChange={(e) => setNewCategory(e.target.value)}
                 className={`w-full p-2.5 rounded-xl border font-bold ${

@@ -432,9 +432,13 @@ export default function App() {
 
                 {/* Sort dropdown */}
                 <div className="flex items-center gap-2 text-xs font-bold">
-                  <Filter className="w-4 h-4 text-amber-500" />
-                  <span className="text-slate-400">ترتيب حسب:</span>
+                  <Filter className="w-4 h-4 text-amber-500" aria-hidden="true" />
+                  <label htmlFor="sort-products-select" className="text-slate-400">
+                    ترتيب حسب:
+                  </label>
                   <select
+                    id="sort-products-select"
+                    aria-label="ترتيب المنتجات حسب"
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as any)}
                     className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-amber-400 text-xs font-bold focus:outline-none"
@@ -467,7 +471,7 @@ export default function App() {
                 <div className="space-y-8">
                   {/* First row / chunk of products */}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                    {filteredProducts.slice(0, 3).map((p) => (
+                    {filteredProducts.slice(0, 3).map((p, idx) => (
                       <ProductCard
                         key={p.id}
                         product={p}
@@ -476,6 +480,7 @@ export default function App() {
                         onCompareSelect={() => setActiveView("comparisons")}
                         onEditProduct={handleEditProduct}
                         isDarkMode={isDarkMode}
+                        isPriorityImage={idx < 3}
                       />
                     ))}
                   </div>

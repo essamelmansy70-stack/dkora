@@ -143,10 +143,10 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({
           <BookOpen className="w-3.5 h-3.5" />
           مدونة 'ديكورا' والدروس الفنية
         </span>
-        <h1 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
+        <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
           مقالات متخصصة وشروحات صيانة وتنقيب
-        </h1>
-        <p className="text-slate-500 text-sm">
+        </h2>
+        <p className="text-slate-600 dark:text-slate-300 text-sm">
           أسرار الورش والتشطيبات الهندسية من خبراء المهنة لمساعدتك في اتخاذ أفضل القرارات.
         </p>
       </div>
@@ -198,7 +198,7 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({
                 {art.title}
               </h3>
 
-              <p className={`text-xs line-clamp-3 leading-relaxed ${isDarkMode ? "text-slate-400" : "text-slate-600"}`}>
+              <p className={`text-xs line-clamp-3 leading-relaxed ${isDarkMode ? "text-slate-300" : "text-slate-700"}`}>
                 {art.excerpt}
               </p>
             </div>

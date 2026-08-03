@@ -517,8 +517,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   </div>
 
                   <div>
-                    <label className={`block text-xs font-bold mb-1 ${isDarkMode ? "text-slate-400" : "text-slate-700"}`}>التقييم بالنجوم:</label>
+                    <label htmlFor="review-rating-select" className={`block text-xs font-bold mb-1 ${isDarkMode ? "text-slate-300" : "text-slate-700"}`}>التقييم بالنجوم:</label>
                     <select
+                      id="review-rating-select"
+                      aria-label="التقييم بالنجوم"
                       value={newRating}
                       onChange={(e) => setNewRating(Number(e.target.value))}
                       className={`px-3 py-2 rounded-xl border text-amber-600 dark:text-amber-400 text-xs font-bold focus:outline-none ${

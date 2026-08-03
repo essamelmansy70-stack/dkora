@@ -52,8 +52,12 @@ export const ComparisonView: React.FC<ComparisonViewProps> = ({
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-xs font-bold text-amber-600 dark:text-amber-500 mb-2">المنتج الأول (الجانب الأيمن):</label>
+            <label htmlFor="compare-product-1" className="block text-xs font-bold text-amber-700 dark:text-amber-400 mb-2">
+              المنتج الأول (الجانب الأيمن):
+            </label>
             <select
+              id="compare-product-1"
+              aria-label="المنتج الأول للمقارنة"
               value={selectedP1}
               onChange={(e) => setSelectedP1(e.target.value)}
               className={`w-full p-3 rounded-2xl border font-bold text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 ${
@@ -69,8 +73,12 @@ export const ComparisonView: React.FC<ComparisonViewProps> = ({
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-amber-600 dark:text-amber-500 mb-2">المنتج الثاني (الجانب الأيسر):</label>
+            <label htmlFor="compare-product-2" className="block text-xs font-bold text-amber-700 dark:text-amber-400 mb-2">
+              المنتج الثاني (الجانب الأيسر):
+            </label>
             <select
+              id="compare-product-2"
+              aria-label="المنتج الثاني للمقارنة"
               value={selectedP2}
               onChange={(e) => setSelectedP2(e.target.value)}
               className={`w-full p-3 rounded-2xl border font-bold text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 ${

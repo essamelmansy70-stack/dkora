@@ -25,6 +25,7 @@ interface ProductCardProps {
   onCompareSelect?: (product: Product) => void;
   onEditProduct?: (product: Product) => void;
   isDarkMode: boolean;
+  isPriorityImage?: boolean;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
@@ -34,6 +35,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   onCompareSelect,
   onEditProduct,
   isDarkMode,
+  isPriorityImage = false,
 }) => {
   const [copiedLink, setCopiedLink] = useState(false);
 
@@ -69,8 +71,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <img
             src={product.mainImage}
             alt={product.titleAr}
-            loading="lazy"
+            loading={isPriorityImage ? "eager" : "lazy"}
             decoding="async"
+            {...(isPriorityImage ? { fetchPriority: "high" as const } : {})}
             width={400}
             height={256}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
@@ -131,11 +134,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             >
               {product.titleAr}
             </h3>
-            <p className="text-xs text-slate-400 font-mono mt-0.5">موديل: {product.modelNumber}</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5">موديل: {product.modelNumber}</p>
           </div>
 
           {/* Short Summary */}
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2">
+          <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed line-clamp-2">
             {product.summary}
           </p>
 
@@ -145,10 +148,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               isDarkMode ? "bg-amber-500/10 border-amber-500/20" : "bg-amber-500/10 border-amber-500/30"
             }`}
           >
-            <strong className="text-amber-600 dark:text-amber-500 block mb-0.5 font-bold">
+            <strong className="text-amber-700 dark:text-amber-400 block mb-0.5 font-bold">
               لمن يناسب هذا المنتج؟
             </strong>
-            <p className="text-slate-800 dark:text-slate-300 leading-normal line-clamp-2">
+            <p className="text-slate-900 dark:text-slate-200 leading-normal line-clamp-2 font-medium">
               {product.targetAudience}
             </p>
           </div>
@@ -156,19 +159,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {/* Quick Pros/Cons Preview */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
             <div className="space-y-1">
-              <span className="font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+              <span className="font-bold text-emerald-700 dark:text-emerald-400 flex items-center gap-1">
                 <CheckCircle2 className="w-3.5 h-3.5" /> أهم المزايا:
               </span>
-              <p className="text-slate-700 dark:text-slate-300 line-clamp-2">
+              <p className="text-slate-800 dark:text-slate-200 line-clamp-2">
                 • {product.pros[0]}
               </p>
             </div>
 
             <div className="space-y-1">
-              <span className="font-bold text-rose-600 dark:text-rose-400 flex items-center gap-1">
+              <span className="font-bold text-rose-700 dark:text-rose-400 flex items-center gap-1">
                 <XCircle className="w-3.5 h-3.5" /> العيب الأبرز:
               </span>
-              <p className="text-slate-700 dark:text-slate-300 line-clamp-2">
+              <p className="text-slate-800 dark:text-slate-200 line-clamp-2">
                 • {product.cons[0]}
               </p>
             </div>

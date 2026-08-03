@@ -1,5 +1,5 @@
 import React from "react";
-import { Wrench } from "lucide-react";
+import { Hammer } from "lucide-react";
 
 interface FooterProps {
   onSelectCategory: (id: string | null) => void;
@@ -9,6 +9,8 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView, isDarkMode, showAdminButton = true }) => {
+  const [footerLogoError, setFooterLogoError] = React.useState(false);
+
   return (
     <footer
       className={`border-t transition-colors ${
@@ -22,8 +24,19 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, setActiveView,
           {/* Brand Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-slate-950 font-black shadow-lg">
-                <Wrench className="w-6 h-6 stroke-[2.5]" />
+              <div className="w-10 h-10 rounded-xl overflow-hidden bg-slate-950 border border-amber-500/40 flex items-center justify-center text-slate-950 font-black shadow-lg shrink-0">
+                {!footerLogoError ? (
+                  <img
+                    src="/logo.png"
+                    alt="شعار ديكورا"
+                    className="w-full h-full object-cover"
+                    onError={() => setFooterLogoError(true)}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
+                    <Hammer className="w-6 h-6 stroke-[2.5]" />
+                  </div>
+                )}
               </div>
               <div>
                 <span className="font-black text-2xl text-white tracking-tight">ديكورا</span>

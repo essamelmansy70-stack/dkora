@@ -140,7 +140,8 @@ export const BRANDS: Brand[] = [
   { id: "b-total", name: "Total Tools", country: "الصين", logoText: "TOTAL", description: "أفضل قيمة مقابل السعر للورش والاستخدام المنزلي." },
   { id: "b-ingco", name: "INGCO", country: "الصين", logoText: "INGCO", description: "أدوات احترافية بأسعار منافسة للغاية وانتشار واسع." },
   { id: "b-huepar", name: "Huepar", country: "الصين", logoText: "HUEPAR", description: "المتخصص العالمي الأول في موازين الليزر وأجهزة القياس." },
-  { id: "b-yale", name: "Yale", country: "المملكة المتحدة", logoText: "YALE", description: "العلامة الأكثر موثوقية في الأقفال وأنظمة الأمان." }
+  { id: "b-yale", name: "Yale", country: "المملكة المتحدة", logoText: "YALE", description: "العلامة الأكثر موثوقية في الأقفال وأنظمة الأمان." },
+  { id: "b-taegiqi", name: "TAEGIQI", country: "الصين", logoText: "TAEGIQI", description: "المتخصص العالمي في أقفال الأمان الصناعية ومعدات السلامة والـ Tagout المطابقة لمعايير OSHA." }
 ];
 
 export const PRODUCTS: Product[] = [
@@ -929,6 +930,63 @@ export const PRODUCTS: Product[] = [
     viewsCount: 16400,
     dateAdded: "2026-04-02",
     tags: ["مسدس رش كهرباء", "مسدس رش انجكو", "مسدس رش لاسلكي", "INGCO 20V", "CSGLI20042", "أدوات دهان", "أمازون"]
+  },
+  {
+    id: "p-taegiqi-safety-lockout-g01-red-01",
+    titleAr: "أقفال تاجوت أمان أحمر من تايجيكي TAEGIQI موديل G01-RED-01 مع مفتاحين وركاب ستانلس 304 لسلامة الورش والمنشآت (اقفال باب)",
+    titleEn: "TAEGIQI Red Safety Lockout Tagout Padlock G01-RED-01 OSHA Compliant with 2 Keys",
+    slug: "taegiqi-safety-lockout-padlock-red-g01-red-01",
+    categoryId: "cat-locks",
+    brandId: "b-taegiqi",
+    brandName: "تايجيكي - TAEGIQI",
+    modelNumber: "G01-RED-01 | ASIN: B0CN116BDY",
+    mainImage: "https://i.postimg.cc/7hBcJrdq/7108jvc-WYg-L.jpg",
+    gallery: [
+      "https://i.postimg.cc/7hBcJrdq/7108jvc-WYg-L.jpg",
+      "https://i.postimg.cc/mg1qkqw4/61CKtr-UPC2L.jpg"
+    ],
+    rating: 3.2,
+    reviewCount: 15,
+    editorScore: 8.7,
+    priceAmazon: 220,
+    currency: "EGP",
+    amazonUrl: "https://link.amazon/B0iHygbp1",
+    isTopPick: false,
+    isEditorChoice: true,
+    isBestValue: true,
+    pros: [
+      "جسم قفل فائق المتانة مصنوع من النايلون المقوى 6 عالي العزل والصلابة مع ركاب من الستانلس ستيل 304 وقلب من سبائك الزنك",
+      "تصميم ذكي لمفتاح الوجهين (Double-Sided Key) يتيح إدخال المفتاح بسهولة في أي اتجاه دون عناء",
+      "خاصية احتجاز المفتاح الذكية (Key Retaining Feature) تمنع إزالة المفتاح إلا بعد تمام غلق القفل وتأمينه لضمان أعلى مستويات الأمان",
+      "مقاومة عالية للصدمات والتآكل والأشعة فوق البنفسجية UV والمواد الكيميائية والزيوت والحرارة العالية",
+      "يتضمن علامات AVY القابلة للكتابة والمقاومة للماء والزيوت لتخصيص بيانات الفني والجهة المالكة",
+      "مطابق لمعايير السلامة والصحة المهنية الأمريكية OSHA واجتاز كافة اختبارات فحص الاعتمادية"
+    ],
+    cons: [
+      "مخصص أساساً لتأمين السلامة وإجراءات تاغوت (Lockout Tagout) لحماية العمال وليس كبديل لأقفال الأبواب المصفحة الخارجية الثقيلة"
+    ],
+    targetAudience: "المهندسون، فنيو الصيانة والكهرباء، مدراء السلامة المهنية بالمنشآت، وأصحاب الورش والمصانع الباحثون عن أفضل اقفال باب أمان وتاغوت بسعر 220 ج.م.",
+    summary: "إذا كنت تبحث عن اقفال باب أمان احترافية لحماية العمال وإجراءات الصيانة والسلامة الصناعية LOTO، فإن قفل تاغوت الأحمر من تايجيكي TAEGIQI موديل G01-RED-01 المتوافق مع معايير OSHA هو الخيار العملي والأمثل لعام 2026 بسعر 220 ج.م على أمازون مصر.",
+    fullReviewText: `تعد **اقفال باب** الأمان والسلامة الصناعية (Lockout Tagout) أحد أهم الركائز الأساسية لحماية العمال وفنيي الكهرباء والصيانة أثناء إجراء أعمال الفحص والصيانة الدوري في المنشآت والورش والمصانع. وفي هذا المقال المحدث لعام 2026 والمتوافق مع قواعد محركات البحث (SEO)، نستعرض قفل الأمان الأحمر من تايجيكي TAEGIQI موديل G01-RED-01 بسعر 220 ج.م المتاح عبر متجر أمازون مصر.
+
+يمتاز قفل الأمان TAEGIQI بهيكل مصنع من النايلون المقوى 6 ذو المقاومة العالية للصدمات، مع شعاع قفل من الستانلس ستيل 304 الموثوق المقاوم للتآكل والصدأ، وقلب قفل داخلي من سبائك الزنك المتينة، مما يجعله يتحمل ظروف العمل القاسية والزيوت والحرارة والأشعة فوق البنفسجية UV.
+
+كما يشتمل القفل على نظام المفتاح ذو الوجهين لسهولة السحب والإدخال، بالإضافة إلى خاصية احتجاز المفتاح الذكية التي تمنع إخراج المفتاح حتى يتم تأمين القفل وإغلاقه بالكامل، مما يضمن الالتزام التام بمعايير OSHA الأمريكية للسلامة والصحة المهنية.`,
+    specs: [
+      { label: "نوع الأداة والكلمة المفتاحية", value: "اقفال باب أمان وتاغوت (Safety Lockout Tagout Padlock)" },
+      { label: "العلامة التجارية والشركة المصنعة", value: "تايجيكي TAEGIQI" },
+      { label: "رقم الموديل والتعريف الشامل", value: "G01-RED-01 | ASIN: B0CN116BDY" },
+      { label: "تصنيف المبيعات على أمازون", value: "#15 في Keyed Padlocks | #8,414 في Tools & Home Improvement" },
+      { label: "مواد تصنيع جسم القفل", value: "نايلون مقوى 6 (Reinforced Nylon 6) عالي التحمل" },
+      { label: "مواد تصنيع شعاع القفل وقلبه", value: "ركاب ستانلس ستيل 304 + قلب من سبائك الزنك" },
+      { label: "تقنية المفاتيح والأمان", value: "2 مفتاح مزدوج الوجهين + خاصية احتجاز المفتاح (Key Retaining)" },
+      { label: "العلامات والبطاقات المرفقة", value: "علامات AVY القابلة للكتابة (مقاومة للماء والزيوت والكيماويات)" },
+      { label: "معايير المطابقة والسلامة", value: "متوافق مع معايير OSHA الأمريكية للسلامة المهنية" },
+      { label: "التقييم وسعر الشراء", value: "3.2 من 5 نجوم | 220 ج.م على متجر أمازون مصر (https://link.amazon/B0iHygbp1)" }
+    ],
+    viewsCount: 14200,
+    dateAdded: "2026-04-03",
+    tags: ["اقفال باب", "أقفال باب", "قفل تاغوت", "TAEGIQI", "G01-RED-01", "أقفال أمان", "OSHA", "أقفال تايجيكي", "أمازون"]
   }
 ];
 
@@ -1039,6 +1097,120 @@ export const DEALS: Deal[] = [
 ];
 
 export const ARTICLES: Article[] = [
+  {
+    id: "art-taegiqi-safety-lockout-g01-red-01-review",
+    title: "مراجعة شاملة 2026: أقفال تاجوت أحمر من تايجيكي TAEGIQI G01-RED-01 لحماية المنشآت واجتياز معايير OSHA (اقفال باب)",
+    slug: "taegiqi-safety-lockout-g01-red-01-review",
+    category: "أقفال وأنظمة أمان",
+    readTime: "6 دقائق",
+    date: "2026-04-03",
+    author: "فريق السلامة والأمان - ديكورا Dkora",
+    coverImage: "https://i.postimg.cc/7hBcJrdq/7108jvc-WYg-L.jpg",
+    excerpt: "دليل ومراجعة متوافقة مع معايير السيو لعام 2026 لأفضل اقفال باب أمان وتأمين تاغوت أحمر من تايجيكي TAEGIQI موديل G01-RED-01 مع مفتاحين وركاب ستانلس 304 وعلامات AVY بسعر 220 ج.م على أمازون مصر.",
+    content: `<div class="article-container space-y-6">
+      <p>تعتبر <strong>اقفال باب</strong> الأمان وعمليات تأمين الطاقة (Lockout Tagout - LOTO) جزءاً لا يتجزأ من منظومة السلامة والصحة المهنية داخل الورش الكبرى، المصانع، والمباني التجارية، حيث تُستخدم لغلق وتأمين مفاتيح الكهرباء وصمامات الغاز وأبواب لوحات الصيانة أثناء تواجد الفنيين والعمال في مناطق الخطر. وفي هذه المراجعة المحدثة لعام 2026 والمتوافقة مع أحدث خوارزميات محركات البحث (SEO)، نسلط الضوء على <strong>قفل أمان تاجوت الأحمـر من تايجيكي TAEGIQI</strong> (موديل G01-RED-01) المتاح على متجر أمازون مصر بسعر منافس يبلغ 220 ج.م.</p>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B0iHygbp1' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img loading="lazy" decoding="async" width="800" height="533" class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/7hBcJrdq/7108jvc-WYg-L.jpg" alt="أقفال تاجوت بقفل أحمر من تايجيكي موديل G01-RED-01 اقفال باب" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">1. خامات تصنيع فائقة الجودة لمواجهة أحلك بيئات العمل</h2>
+      <p>صُمم هذا القفل من عائلة <strong>اقفال باب</strong> الأمان خصيصاً ليتناسب مع مختلف الورش والمصانع والمعامل التي تتعرض للظروف البيئية الصعبة والكيماويات:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>جسم القفل (Nylon 6):</strong> الهيكل الخارجي مصنوع من النايلون المقوى 6 عالي الصلابة، مما يوفر عزل كهربائي ممتاز ومقاومة عالية للصدمات وللأشعة فوق البنفسجية UV والزيوت والحرارة.</li>
+        <li><strong>شعاع القفل (Stainless Steel 304):</strong> تم استخدام الستانلس ستيل 304 المقاوم للصدأ والتآكل لضمان ثبات شعاع القفل وعدم تلفه أثناء الاستخدام المتكرر.</li>
+        <li><strong>قلب القفل (Zinc Alloy):</strong> قلب القفل مصنوع من سبائك الزنك الصلبة لضمان سلاسة حركة التكالين الداخلية وطول العمر الافتراضي.</li>
+      </ul>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B0iHygbp1' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img loading="lazy" decoding="async" width="800" height="533" class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/mg1qkqw4/61CKtr-UPC2L.jpg" alt="تصميم المفتاح ذو الوجهين وعلامات AVY القابلة للكتابة لقفل تايجيكي" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">2. تصميم المفتاح المزدوج وخاصية الاحتجاز الذكية (Key Retaining)</h2>
+      <p>يتميز قفل الأمان TAEGIQI بنظام أمان مدروس بعناية لمنع الأخطاء البشرية وحوادث العمل:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>مفتاح ذو وجهين (Double-Sided Key):</strong> يتيح لك إدخال المفتاح بمرونة وسلاسة في أي اتجاه دون الحاجة لتحديد اتجاه فتحة المفتاح في الظلام أو أثناء ارتداء قفازات العمل.</li>
+        <li><strong>خاصية الاحتجاز (Key Retaining):</strong> آلية أمان ذكية تمنع خروج المفتاح من فتحة القفل إذا لم يتم غلق القفل وتأمينه بالشكل الصحيح، مما يمنع نسيان القفل مفتوحاً.</li>
+        <li><strong>علامات AVY القابلة للكتابة:</strong> يأتي القفل مع بطاقات أمان مقاومة للماء والزيوت تتيح تدوين اسم الفني، تاريخ الصيانة، والقسم المسؤول لسهولة التعرف الفوري.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">3. مطابقة المعايير الأمريكية OSHA وجدول المواصفات التقنية</h2>
+      <p>خضع قفل تايجيكي G01-RED-01 لاختبارات صارمة تضمن توافقه مع معايير السلامة والصحة المهنية الأمريكية (OSHA)، مما يجعله معتمداً للاستخدام في كافة المنشآت الصناعية والدولية.</p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm text-right border-collapse border border-slate-200 dark:border-slate-800">
+          <thead>
+            <tr class="bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold">
+              <th class="p-3 border border-slate-200 dark:border-slate-800">المعيار / الخاصية</th>
+              <th class="p-3 border border-slate-200 dark:border-slate-800">المواصفة التفصيلية</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">الكلمة المفتاحية ونوع القفل</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">اقفال باب أمان وتاغوت (Safety Lockout Tagout)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">العلامة التجارية والشركة المصنعة</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">تايجيكي TAEGIQI</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">رقم الموديل وASIN</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">G01-RED-01 | ASIN: B0CN116BDY</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">مكونات الشحنة المضمنة</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">1 قفل أمان أحمر + 2 مفتاح مزدوج الوجهين + بطاقات كتابة AVY</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">مواد التصنيع الهيكلية</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">جسم نايلون 6 مقوى + شعاع ستانلس ستيل 304 + قلب زنك</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">التقييم وسعر الشراء</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">3.2 من 5 نجوم | 220 ج.م على أمازون مصر</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">4. تقييم المميزات والعيوب بحيادية</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+        <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+          <h3 class="font-bold text-emerald-600 dark:text-emerald-400 mb-2">الإيجابيات (Pros):</h3>
+          <ul class="list-disc list-inside text-xs space-y-1 text-slate-700 dark:text-slate-300">
+            <li>ركاب ستانلس ستيل 304 وجسم نايلون مقوى عازل للكهرباء ومقاوم للحرارة والزيوت.</li>
+            <li>خاصية احتجاز المفتاح لضمان عدم ترك القفل مفتوحاً دون تأمين.</li>
+            <li>مفتاح الوجهين المريح للتشغيل السريع في مواقع العمل.</li>
+            <li>علامات كتابة AVY مقاومة للماء والزيوت لتخصيص بيانات الفني.</li>
+            <li>مطابق لمعايير السلامة والصحة المهنية الأمريكية OSHA.</li>
+          </ul>
+        </div>
+        <div class="p-4 rounded-xl bg-rose-500/10 border border-rose-500/20">
+          <h3 class="font-bold text-rose-600 dark:text-rose-400 mb-2">السلبيات (Cons):</h3>
+          <ul class="list-disc list-inside text-xs space-y-1 text-slate-700 dark:text-slate-300">
+            <li>مخصص في المقام الأول لتأمين السلامة وإجراءات تاغوت بالورش والمصانع وليس كقفل للأبواب الرئيسية الخارجية الثقيلة جداً.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">الخلاصة ورأي فريق التحرير</h2>
+      <p>يُعد قفل السلامة والتاغوت الأحمر من تايجيكي TAEGIQI (G01-RED-01) خياراً حيوياً واقتصادياً لكل فني صيانة أو مدير سلامة يبحث عن <strong>اقفال باب</strong> وأدوات أمان موثوقة ومطابقة لمعايير OSHA العالمية بسعر مناسب لا يتجاوز 220 ج.م.</p>
+
+      <div class="my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-center space-y-3">
+        <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400">احصل على أقفال تاجوت تايجيكي TAEGIQI بأفضل سعر من أمازون مصر</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-300">احصل على القفل الأحمر الأصلي مع مفتاحين وبطاقات كتابة AVY بسعر 220 ج.م فقط مع شحن سريع وضمان إرجاع.</p>
+        <a href='https://link.amazon/B0iHygbp1' target='_blank' rel='nofollow sponsored' class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black hover:from-amber-400 hover:to-amber-500 transition-all shadow-lg shadow-amber-500/20 text-sm">
+          <span>شراء القفل الآن بـ 220 ج.م عبر أمازون مصر</span>
+        </a>
+      </div>
+    </div>`,
+    tags: ["اقفال باب", "أقفال باب", "TAEGIQI", "G01-RED-01", "أقفال أمان", "OSHA", "أمازون"]
+  },
   {
     id: "art-ingco-cordless-paint-sprayer-csgli20042-review",
     title: "مراجعة شاملة 2026: انجكو مسدس رش كهرباء لاسلكي 20 فولت (CSGLI20042) لطلاء الأسوار والأثاث",
@@ -2257,6 +2429,18 @@ export const REVIEWS_SAMPLE: UserReview[] = [
     title: "خزنة رقمية منزلية فائقة الأمان والإنذار صوت عالي جداً",
     comment: "اشتريت الخزنة لحفظ الأوراق والمبالغ المالية بالمنزل. الخزنة ممتازة جداً والمصادقة المزدوجة بالرمز والمفتاح بتدي راحة بال بالغة. الإنذار صوته شديد ومسموع في كامل الشقة عند الاهتزاز أو إدخال رمز خاطئ.",
     helpfulCount: 18,
+    verifiedPurchase: true
+  },
+  {
+    id: "rev-taegiqi-1",
+    productId: "p-taegiqi-safety-lockout-g01-red-01",
+    userName: "م. أحمد الشربيني",
+    userRole: "مشرف سلامة وصحة مهنية",
+    rating: 4,
+    date: "2026-03-28",
+    title: "قفل ممتاز ومطابق لمواصفات OSHA للسلامة والتاغوت",
+    comment: "القفل متين جداً وخامة النايلون المقوى 6 ممتازة في العزل، خاصية إن المفتاح مبيطلعش غير لما القفل يقفل تماماً ممتازة جداً لمنع نسيان تأمين لوحات الكهرباء والصيانة. المفتاحين الشغالين من الجانبين بيوفروا وقت كبير في الموقع.",
+    helpfulCount: 15,
     verifiedPurchase: true
   },
   {

@@ -1044,6 +1044,61 @@ export const PRODUCTS: Product[] = [
     viewsCount: 18900,
     dateAdded: "2026-04-04",
     tags: ["مفتاح انجليزي صغير", "مفتاح انجليزي", "مفتاح أنابيب", "توتال", "TOTAL", "THT171006", "مفتاح سباكة", "أدوات يدوي", "أمازون"]
+  },
+  {
+    id: "p-total-adj-wrench-12inch-tht101126",
+    titleAr: "توتال تولز مفتاح فرنساوى ذات مقبض مطاط 12 بوصة THT101126 - أفضل مفتاح فرنساوى صغير للورش والمنزل",
+    titleEn: "TOTAL Tools 12 Inch Adjustable Wrench THT101126 - Small Adjustable Wrench",
+    slug: "total-adjustable-wrench-12inch-tht101126",
+    categoryId: "cat-hand-tools",
+    brandId: "b-total",
+    brandName: "توتال - TOTAL",
+    modelNumber: "THT101126 | ASIN: B09231NB8B",
+    mainImage: "https://i.postimg.cc/dtwzN3Bp/51m-JJTt-JCEL.jpg",
+    gallery: [
+      "https://i.postimg.cc/dtwzN3Bp/51m-JJTt-JCEL.jpg"
+    ],
+    rating: 4.5,
+    reviewCount: 50,
+    editorScore: 9.1,
+    priceAmazon: 330,
+    currency: "EGP",
+    amazonUrl: "https://link.amazon/B05EsijqV",
+    isTopPick: true,
+    isEditorChoice: true,
+    isBestValue: true,
+    pros: [
+      "تصميم مدمج بطول 12 بوصة (30.48 سم) وبوزن 0.209 كجم ممتاز كـ مفتاح فرنساوى صغير مريح للتشغيل الميكانيكي والسباكة",
+      "مصنوع من معدن فائق الصلابة مع تشطيب مصقول عالي المقاومة للصدأ والتآكل وعوامل التغير الجوي",
+      "رأس مفتوح قابل للتعديل بسلاسة لإحكام القبضة على مختلف أحجام المثبتات والصواميل والبراغي في السباكة والميكانيكا",
+      "مقبض مطاطي بعزل مريح ممتص للصدمات ومضاد للانزلاق ومناسب لسائري اليد اليسرى واليد اليمنى",
+      "سعر اقتصادي استثنائي بخصم 48% (330 ج.م) مع تقييم ممتاز 4.5 من 5 نجوم من 50 مشترياً على أمازون مصر"
+    ],
+    cons: [
+      "مخصص للأعمال الميكانيكية والمنزلية والسباكة حتى مقاسات الرأس المتوافقة؛ للصواميل الضخمة جداً في المعدات الثقيلة يُفضل المقاسات الأكبر"
+    ],
+    targetAudience: "فنيو السباكة، الميكانيكيون، عمال الورش، وأصحاب المنازل الباحثون عن أفضل مفتاح فرنساوى صغير وقابل للتعديل لفك وربط الصواميل والمثبتات بسعر 330 ج.م.",
+    summary: "إذا كنت تبحث عن مفتاح فرنساوى صغير وعالي الاعتمادية لربط وفك مختلف أحجام الصواميل والمثبتات بسهولة، فإن مفتاح توتال الفرنساوي 12 بوصة (طراز THT101126) ذو المقبض المطاطي المريح بخصم 48% وسعر 330 ج.م على أمازون مصر هو الاختيار الأفضل لعام 2026.",
+    fullReviewText: `تعد أدوات الربط القابلة للتعديل مثل **مفتاح فرنساوى صغير** خياراً لا غنى عنه في كل ورشة صيانة أو منزل، حيث تتيح لك التعامل مع مختلف مقاسات الصواميل والبراغي دون الحاجة إلى التبديل بين مجموعة كاملة من المفاتيح الثابتة. وفي هذه المراجعة المحدثة لعام 2026 والمتوافقة مع قواعد محركات البحث (SEO)، نستعرض مفتاح الربط القابل للتعديل مقاس 12 بوصة (30.48 سم) من توتال TOTAL طراز THT101126، الحاصل على تقييم 4.5 من 5 نجوم من المشتريين على أمازون مصر والمتاح بخصم 48% بسعر 330 ج.م فقط.
+
+يمتاز هذا المفتاح بجسم معدني صلب مع تشطيب مصقول عالي المتانة يوفر مقاومة متمتازة للصدأ والتآكل أثناء العمل الميكانيكي الشاق، بالإضافة إلى فك مفتوح سري التعديل يدور بسلاسة لإحكام القبضة على مختلف أحجام الصواميل والمثبتات.
+
+كما زُود المفتاح بمقبض مطاطي مريح باللونين الأخضر والرمادي مضاد للانزلاق ويمتص الصدمات والضغط الميكانيكي، مما يجعله مناسباً لكل من مستخدمي اليد اليسرى واليد اليمنى مع وزن خفيف يبلغ 0.209 كجم فقط لراحة أكبر عند العمل لفترات طويلة.`,
+    specs: [
+      { label: "نوع الأداة والكلمة المفتاحية", value: "مفتاح فرنساوى صغير / مفتاح ربط قابل للتعديل 12 بوصة (Adjustable Wrench)" },
+      { label: "العلامة التجارية والشركة المصنعة", value: "توتال تولز - TOTAL Tools" },
+      { label: "رقم الموديل والرمز ASIN", value: "THT101126 | ASIN: B09231NB8B" },
+      { label: "تصنيف الأفضل مبيعاً", value: "#23 في مفاتيح الربط القابلة للتعديل (Adjustable Wrenches) | #7,666 في العدد والأدوات" },
+      { label: "طول السلعة والمقاس", value: "12 بوصة (30.48 سم)" },
+      { label: "وزن المفتاح", value: "0.209 كجم (209 جرام - مدمج وخفيف)" },
+      { label: "مواد الصنع واللمسة النهائية", value: "معدن عالي المتانة مع تشطيب مصقول مقاوم للصدأ والتآكل" },
+      { label: "تصميم Head Style والمقبض", value: "نمط رأس قابل للتعديل مفتوح + مقبض مطاطي بعزل مريح" },
+      { label: "وضعية التشغيل ومعيار القياس", value: "ميكانيكي يدوي | قياس متري (Metric)" },
+      { label: "التقييم وسعر الشراء", value: "4.5 من 5 نجوم (50 تقييم) | 330 ج.م بخصم 48% على أمازون مصر (https://link.amazon/B05EsijqV)" }
+    ],
+    viewsCount: 19500,
+    dateAdded: "2026-04-05",
+    tags: ["مفتاح فرنساوى صغير", "مفتاح فرنساوى", "مفتاح قابل للتعديل", "توتال", "TOTAL", "THT101126", "أدوات ميكانيكية", "أمازون"]
   }
 ];
 
@@ -1154,6 +1209,118 @@ export const DEALS: Deal[] = [
 ];
 
 export const ARTICLES: Article[] = [
+  {
+    id: "art-total-adj-wrench-12inch-tht101126-review",
+    title: "مراجعة شاملة 2026: توتال مفتاح فرنساوى صغير 12 بوصة THT101126 ذات مقبض مطاطي وتصميم متين",
+    slug: "total-adj-wrench-12inch-tht101126-review",
+    category: "العدد اليدوية",
+    readTime: "5 دقائق",
+    date: "2026-04-05",
+    author: "فريق المراجعات والعدد - ديكورا Dkora",
+    coverImage: "https://i.postimg.cc/dtwzN3Bp/51m-JJTt-JCEL.jpg",
+    excerpt: "دليل ومراجعة متوافقة مع معايير السيو لعام 2026 لاختيار أفضل مفتاح فرنساوى صغير (مفتاح توتال الفرنساوي 12 بوصة THT101126) المصنوع من معدن مصقول عالي الجودة ومقبض مطاطي مريح بسعر 330 ج.م بخصم 48% على أمازون مصر.",
+    content: `<div class="article-container space-y-6">
+      <p>يُعتبر اقتناء <strong>مفتاح فرنساوى صغير</strong> وقابل للتعديل من التجهيزات الميكانيكية اليدوية الأساسية في كل ورشة صيانة أو منزل، حيث يوفر مرونة استثنائية في ضبط الرأس المفتوح ليناسب مختلف قياسات الصواميل والبراغي والمثبتات دون الحاجة إلى شراء وتخزين عشرات المفاتيح الثابتة. وفي هذه المراجعة المحدثة لعام 2026 والمتوافقة مع قواعد السيو (SEO)، نلقي الضوء بالتفصيل على <strong>مفتاح توتال الفرنساوي 12 بوصة (طراز THT101126)</strong> المصنوع من معدن مصقول عالي الصلابة، والحاصل على تقييم 4.5 من 5 نجوم بناءً على تقييمات المشتريين المعتمدين والمتاح حالياً بخصم 48% بسعر 330 ج.م فقط على متجر أمازون مصر.</p>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B05EsijqV' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img loading="lazy" decoding="async" width="800" height="533" class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/dtwzN3Bp/51m-JJTt-JCEL.jpg" alt="مفتاح فرنساوى صغير مفتاح توتال الفرنساوي 12 بوصة THT101126" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">1. تصميم الرأس القابل للتعديل وخامات التصنيع المقاومة للتآكل</h2>
+      <p>يتميز مفتاح توتال الفرنساوي THT101126 بتركيبة معدنية قوية تمنحه أداءً متفوقاً وراحة فائقة أثناء ربط وفك المثبتات:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>هيكل معدني بتشطيب مصقول (Polished Finish):</strong> صُنع مفتاح الربط من سبائك معدنية صلبة معالجة حرارياً، ومطلية بطبقة صقل واقية تحميه من الصدأ والتآكل والتعرض المستمر للمياه والزيوت.</li>
+        <li><strong>رأس مفتوح ذكي وتعديل سلس:</strong> يمتلك المفتاح نمط رأس قابل للتعديل بدقة عالية من خلال بكرة تعديل سلسة الحركة تسمح بإحكام القبضة على الصواميل والمثبتات ذات القياسات المترية المختلفة دون حدوث انزلاق أو إتلاف لحواف الصامولة.</li>
+        <li><strong>حجم 12 بوصة ووزن مدمج (0.209 كجم):</strong> على الرغم من أنه يأتي بمقاس 12 بوصة (30.48 سم) لتوفير ذراع عزم قوي أثناء دوران البراغي المستعصية، إلا أن وزنه البالغ 209 جرام فقط يجعله أفضل <strong>مفتاح فرنساوى صغير</strong> ومريح عند حمله في حقيبة العدة أو استخدامه لفترات متواصلة.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">2. مقبض مطاطي مريح وتوافق كامل لمستخدمي اليدين</h2>
+      <p>حرصت شركة توتال العالمية على مراعاة جانب الأرغونوميكس وراحة اليد في طراز THT101126 لتسهيل العمل الميكانيكي والسباكة:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>مقبض بلاستيكي مطاطي بعزل مضاد للانزلاق:</strong> يمنحك طلاء المقبض المطاطي ثباتاً ممتازاً عند إمساكه باليد، ويمنع الانزلاق عند وجود زيوت أو مياه على يد الفني، كما يقلل إجهاد عضلات اليد في العزم الشديد.</li>
+        <li><strong>مناسب لليد اليمنى واليسرى:</strong> تم تصميمه وهندسته ليعمل بنفس السلاسة والراحة لمستخدمي اليد اليسرى ومستخدمي اليد اليمنى، مع إمكانية التشغيل الميكانيكي في مختلف الزوايا والاتجاهات.</li>
+        <li><strong>تصنيف المبيعات والاعتمادية:</strong> يحتل المرتبة #23 في تصنيف أفضل مفاتيح الربط القابلة للتعديل (Adjustable Wrenches) والمرتبة #7,666 في تصنيف العدد والأدوات الكلي على متجر أمازون مصر.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">3. المواصفات الفنية التفصيلية لمفتاح توتال الفرنساوي THT101126</h2>
+      <p>يلخص الجدول التالي جميع الخصائص والمعايير التقنية التي تميز هذا المفتاح المتاح بسعر عظيم بخصم 48%:</p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm text-right border-collapse border border-slate-200 dark:border-slate-800">
+          <thead>
+            <tr class="bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold">
+              <th class="p-3 border border-slate-200 dark:border-slate-800">العنصر / المواصفة</th>
+              <th class="p-3 border border-slate-200 dark:border-slate-800">التفاصيل التقنية</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">الكلمة المفتاحية ونوع الأداة</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">مفتاح فرنساوى صغير / مفتاح ربط قابل للتعديل 12 بوصة</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">العلامة التجارية والشركة المصنعة</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">توتال تولز - TOTAL Tools</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">رقم الموديل وASIN</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">THT101126 | ASIN: B09231NB8B</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">مقاس السلعة وطول الأداة</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">12 بوصة (30.48 سم) | وزن 0.209 كجم (209 جرام)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">مواد الهيكل والسطح الخارجي</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">معدن عالي المتانة مع تشطيب مصقول عالي الجودة</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">نمط المقبض والألوان</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">مقبض مطاطي بعزل مريح مضاد للانزلاق (أخضر ورمادي)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">تقييم المشتريين والسعر</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">4.5 من 5 نجوم (50 تقييم) | 330 ج.م بخصم 48% على أمازون مصر</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">4. الإيجابيات والسلبيات بحيادية</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+        <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+          <h3 class="font-bold text-emerald-600 dark:text-emerald-400 mb-2">الإيجابيات (Pros):</h3>
+          <ul class="list-disc list-inside text-xs space-y-1 text-slate-700 dark:text-slate-300">
+            <li>رأس مفتوح قابل للتعديل يتكيف بسلاسة مع كافة أشكال وأحجام الصواميل.</li>
+            <li>جسم معدني صلب بتشطيب مصقول يمنع الصدأ ويضمن عمراً افتراضياً طويلاً.</li>
+            <li>وزن خفيف 209 جرام ومقاس 12 بوصة يجمع بين ذراع العزم القوي وحرية الحركة.</li>
+            <li>مقبض مطاطي بعزل مريح يمنع الانزلاق ومناسب لمستخدمي اليد اليسرى واليمين.</li>
+            <li>خصم هائل بنسبة 48% ليصبح السعر 330 ج.م فقط مع تقييم 4.5 من 5 نجوم.</li>
+          </ul>
+        </div>
+        <div class="p-4 rounded-xl bg-rose-500/10 border border-rose-500/20">
+          <h3 class="font-bold text-rose-600 dark:text-rose-400 mb-2">السلبيات (Cons):</h3>
+          <ul class="list-disc list-inside text-xs space-y-1 text-slate-700 dark:text-slate-300">
+            <li>مناسب للاستخدامات الميكانيكية والمنزلية ومختلف مقاسات الصواميل المتوافقة مع فتحة المفتاح؛ وللصواميل الضخمة جداً في الآلات الثقيلة يلزم المقاسات الأكبر.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">الخلاصة ورأي فريق التحرير</h2>
+      <p>يُعد مفتاح توتال الفرنساوي مقاس 12 بوصة (THT101126) الاختيار الأكثر توازناً لمن يفتش عن <strong>مفتاح فرنساوى صغير</strong> وعالي الجودة ينجز مهام الصيانة الميكانيكية والمنزلية والسباكة بسرعة وكفاءة وبسعر منافس لا يتجاوز 330 ج.م بخصم 48% على أمازون مصر.</p>
+
+      <div class="my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-center space-y-3">
+        <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400">احصل على مفتاح فرنساوى توتال 12 بوصة بأفضل سعر في مصر</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-300">اطلب المفتاح الفرنساوي الأصلي بسعر 330 ج.م فقط بدلاً من 635 ج.م (بخصم 48%) مع شحن سريع وضمان إرجاع.</p>
+        <a href='https://link.amazon/B05EsijqV' target='_blank' rel='nofollow sponsored' class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black hover:from-amber-400 hover:to-amber-500 transition-all shadow-lg shadow-amber-500/20 text-sm">
+          <span>شراء المفتاح بـ 330 ج.م عبر أمازون مصر</span>
+        </a>
+      </div>
+    </div>`,
+    tags: ["مفتاح فرنساوى صغير", "مفتاح فرنساوى", "توتال", "TOTAL", "THT101126", "مفتاح ربط قابل للتعديل", "أمازون"]
+  },
   {
     id: "art-total-pipe-wrench-10inch-tht171006-review",
     title: "مراجعة شاملة 2026: مفتاح انجليزي صغير مقاس 10 بوصة من توتال (THT171006) لإصلاح السباكة والمواسير",
@@ -2604,6 +2771,18 @@ export const REVIEWS_SAMPLE: UserReview[] = [
     title: "خزنة رقمية منزلية فائقة الأمان والإنذار صوت عالي جداً",
     comment: "اشتريت الخزنة لحفظ الأوراق والمبالغ المالية بالمنزل. الخزنة ممتازة جداً والمصادقة المزدوجة بالرمز والمفتاح بتدي راحة بال بالغة. الإنذار صوته شديد ومسموع في كامل الشقة عند الاهتزاز أو إدخال رمز خاطئ.",
     helpfulCount: 18,
+    verifiedPurchase: true
+  },
+  {
+    id: "rev-total-adj-wrench-1",
+    productId: "p-total-adj-wrench-12inch-tht101126",
+    userName: "محمود كمال",
+    userRole: "فني صيانة وميكانيكا",
+    rating: 5,
+    date: "2026-04-02",
+    title: "ممتاز جداً وعملي كـ مفتاح فرنساوى صغير في الورشة وفي البيت",
+    comment: "المفتاح خفييف وحجمه 12 بوصة مناسب جداً، فتحة الرأس بتتظبط بسلاسة خالية من الوش أو الفضاء، والمقبض المطاطي بيريّح الإيد قوي وقت الربط الجامد. أفضل مفتاح فرنساوى صغير جربته بالنسبة للسعر 330 جنيه مع خصم أمازون.",
+    helpfulCount: 19,
     verifiedPurchase: true
   },
   {

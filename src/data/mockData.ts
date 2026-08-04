@@ -987,6 +987,63 @@ export const PRODUCTS: Product[] = [
     viewsCount: 14200,
     dateAdded: "2026-04-03",
     tags: ["اقفال باب", "أقفال باب", "قفل تاغوت", "TAEGIQI", "G01-RED-01", "أقفال أمان", "OSHA", "أقفال تايجيكي", "أمازون"]
+  },
+  {
+    id: "p-total-pipe-wrench-10inch-tht171006",
+    titleAr: "مفتاح أنابيب 10 بوصة (250 ملم) من توتال TOTAL THT171006 - أفضل مفتاح انجليزي صغير للسباكة والورش",
+    titleEn: "TOTAL Pipe Wrench 10 Inch (250mm) THT171006 - Small Adjustable Pipe Wrench",
+    slug: "total-pipe-wrench-10inch-tht171006",
+    categoryId: "cat-hand-tools",
+    brandId: "b-total",
+    brandName: "توتال - TOTAL",
+    modelNumber: "THT171006 | B0fJe9QZ3",
+    mainImage: "https://i.postimg.cc/SxqVGyYm/717Sq8g64DL.jpg",
+    gallery: [
+      "https://i.postimg.cc/SxqVGyYm/717Sq8g64DL.jpg",
+      "https://i.postimg.cc/KcMNSKnx/61hzyo7ppz-L.jpg"
+    ],
+    rating: 4.4,
+    reviewCount: 244,
+    editorScore: 9.2,
+    priceAmazon: 220,
+    currency: "EGP",
+    amazonUrl: "https://link.amazon/B0fJe9QZ3",
+    isTopPick: true,
+    isEditorChoice: true,
+    isBestValue: true,
+    pros: [
+      "حجم مدمج مقاس 10 بوصة (250 ملم) وبوزن 600 جرام ممتاز للاستخدام كمفتاح انجليزي صغير في الأماكن الضيقة والأنابيب المحشورة",
+      "فك متحرك مصنوع من الفولاذ الكربوني عالي الجودة (High Carbon Steel) المعالج حرارياً بلمسة نهائية سوداء مصقولة مع برشام صلب",
+      "جسم فائق الصلابة مصنوع من حديد الزهر اللين (Ductile Cast Iron) يتحمل عزم الدوران والضغط الشديد دون انثناء",
+      "أقصى قطر تثبيت يصل إلى 34 ملم مع أسنان مسننة بدقة للثبات التام على المواسير والصواميل الدائرية والمضلعة",
+      "مقبض مطاطي مريح باللونين الأخضر والرمادي مضاد للانزلاق ومناسب لمستخدمي اليد اليمنى واليسرى",
+      "سعر اقتصادي ممتاز بخصم 31% (220 ج.م) وحاصل على تقييم 4.4 من 5 نجوم من أكثر من 244 مشترياً على أمازون مصر"
+    ],
+    cons: [
+      "مخصص للأنابيب حتى قطر 34 ملم؛ للمواسير الضخمة جداً فوق 1.5 بوصة يُوصى باستخدام مقاسات 14 أو 18 بوصة"
+    ],
+    targetAudience: "فنيو السباكة والصيانة، عمال الورش، وأصحاب المنازل الباحثون عن أفضل مفتاح انجليزي صغير متين وعالي الاعتمادية لإصلاح المواسير والسباكة بسعر 220 ج.م.",
+    summary: "إذا كنت تبحث عن مفتاح انجليزي صغير عملي ومقاوم للتآكل لإصلاح السباكة والمواسير في المساحات الضيقة، فإن مفتاح أنابيب توتال 10 بوصة (طراز THT171006) المصنوع من حديد الزهر اللين وفولاذ الكربون هو الاختيار الأفضل بخصم 31% وسعر 220 ج.م على أمازون مصر.",
+    fullReviewText: `تُعد السباكة وأعمال تثبيت المواسير والأنابيب من المهام التي تتطلب استخدام **مفتاح انجليزي صغير** يمتاز بقوة القبض والصلابة العالية وسهولة المناورة في الأماكن الضيقة تحت الأحواض وخلف الخزانات. وفي هذه المراجعة المحدثة لعام 2026 والمتوافقة مع معايير السيو (SEO)، نستعرض مفتاح الأنابيب مقاس 10 بوصة (250 ملم) من توتال TOTAL طراز THT171006، الحاصل على تقييم 4.4 من 5 نجوم والمتاح بسعر 220 ج.م بخصم 31% عبر متجر أمازون مصر.
+
+يمتاز مفتاح توتال THT171006 بجسم مصنع من حديد الزهر اللين (Ductile Cast Iron) المصمم لتحمل أقصى درجات الضغط وعزم الدوران، مع فك متحرك مصنوع من الفولاذ الكربوني عالي الجودة والمصقول بطبقة سوداء مقاومة للتآكل والصدأ. يبلغ أقصى قطر تثبيت للمفتاح 34 ملم، مما يجعله مثالي للتعامل مع معظم المواسير المنزلية ووصلات السباكة والصواميل المضلعة.
+
+علاوة على ذلك، يأتي المفتاح بمقبض مطاطي مريح مصمم بعناية باللونين الأخضر والرمادي لامتصاص الصدمات وتقليل إجهاد اليد أثناء العمل، وهو متوافق تماماً مع مستخدمي اليد اليسرى واليد اليمنى على حد سواء.`,
+    specs: [
+      { label: "نوع الأداة والكلمة المفتاحية", value: "مفتاح انجليزي صغير / مفتاح أنابيب ومواسير (Small Pipe Wrench 10 Inch)" },
+      { label: "العلامة التجارية والشركة المصنعة", value: "توتال أدوات - TOTAL Tools" },
+      { label: "رقم الموديل ورمز السلعة", value: "THT171006 | B0fJe9QZ3" },
+      { label: "المقاس والطول الكلي", value: "10 بوصات (250 ملم)" },
+      { label: "أقصى قطر للتثبيت", value: "34 ملم" },
+      { label: "وزن المفتاح", value: "600 جرام (خفيف ومدمج)" },
+      { label: "خامة الفك المتحرك", value: "فولاذ كربوني عالي الجودة مع معالجة سوداء مصقولة وبرشام صلب" },
+      { label: "خامة جسم المفتاح", value: "حديد الزهر اللين (Ductile Cast Iron) المقاوم للكسر" },
+      { label: "تصميم المقبض والألوان", value: "مقبض بلاستيكي مطاطي مريح (أخضر ورمادي) لليد اليمنى واليسرى" },
+      { label: "التقييم وسعر الشراء", value: "4.4 من 5 نجوم (244 تقييم) | 220 ج.م (خصم 31%) على أمازون مصر (https://link.amazon/B0fJe9QZ3)" }
+    ],
+    viewsCount: 18900,
+    dateAdded: "2026-04-04",
+    tags: ["مفتاح انجليزي صغير", "مفتاح انجليزي", "مفتاح أنابيب", "توتال", "TOTAL", "THT171006", "مفتاح سباكة", "أدوات يدوي", "أمازون"]
   }
 ];
 
@@ -1097,6 +1154,124 @@ export const DEALS: Deal[] = [
 ];
 
 export const ARTICLES: Article[] = [
+  {
+    id: "art-total-pipe-wrench-10inch-tht171006-review",
+    title: "مراجعة شاملة 2026: مفتاح انجليزي صغير مقاس 10 بوصة من توتال (THT171006) لإصلاح السباكة والمواسير",
+    slug: "total-pipe-wrench-10inch-tht171006-review",
+    category: "العدد اليدوية",
+    readTime: "5 دقائق",
+    date: "2026-04-04",
+    author: "فريق المراجعات والعدد - ديكورا Dkora",
+    coverImage: "https://i.postimg.cc/SxqVGyYm/717Sq8g64DL.jpg",
+    excerpt: "دليل ومراجعة متوافقة مع معايير السيو لعام 2026 لاختيار أفضل مفتاح انجليزي صغير (مفتاح أنابيب 10 بوصة من توتال THT171006) المصنوع من حديد الزهر اللين وفولاذ الكربون بسعر 220 ج.م بخصم 31% على أمازون مصر.",
+    content: `<div class="article-container space-y-6">
+      <p>يُعتبر اختيار <strong>مفتاح انجليزي صغير</strong> وعالي الاعتمادية من الأساسيات الضرورية في أي ورشة أو منزل، حيث يتطلب التعامل مع وصلات السباكة، المواسير المنزلية، والصواميل المستعصية أداة ذات حجم مدمج يسهل التحكم بها في المساحات الضيقة وتحت الأحواض مع تقديم قوة قبض ثنائية الاتجاه دون انزلاد. وفي هذه المراجعة المحدثة لعام 2026 والمتوافقة مع قواعد السيو (SEO)، نلقي الضوء على <strong>مفتاح الأنابيب مقاس 10 بوصة (250 ملم) من توتال TOTAL (طراز THT171006)</strong> الحاصل على تقييم 4.4 من 5 نجوم بناءً على 244 تقييم حقيقي للمستخدمين والمتاح بسعر 220 ج.م بخصم 31% عبر متجر أمازون مصر.</p>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B0fJe9QZ3' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img loading="lazy" decoding="async" width="800" height="533" class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/SxqVGyYm/717Sq8g64DL.jpg" alt="مفتاح انجليزي صغير مفتاح أنابيب 10 بوصة من توتال THT171006" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">1. تصميم مدمج وخامات تصنيع فائقة التحمل</h2>
+      <p>صُمم مفتاح توتال THT171006 ليكون أفضل <strong>مفتاح انجليزي صغير</strong> يجمع بين خفة الوزن والصلابة الهيكلية العالية:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>جسم من حديد الزهر اللين (Ductile Cast Iron):</strong> يتميز هيكل المفتاح الرئيسي بصناعته من زهر الدكتايل الصلب المقاوم للصدمات والانثناء أثناء الضغط الشديد وعزم الدوران العالي.</li>
+        <li><strong>فك متحرك من فولاذ الكربون (High Carbon Steel):</strong> صُنع الفك المتحرك والترس السريع من الفولاذ الكربوني المعالج حرارياً بلمسة نهائية سوداء مصقولة ومثبتة ببرشام صلب لضمان طول العمر المقاوم للصدأ والتآكل.</li>
+        <li><strong>أقصى فتحة وقدرة تثبيت (34 ملم):</strong> يتيح لك المفتاح الإمساك بالمواسير والأنابيب بمختلف أقطارها حتى 34 ملم بفضل الأسنان المسننة الحادة المصممة للقبض دون الانزلاق.</li>
+      </ul>
+
+      <div class="my-6 text-center">
+        <a href='https://link.amazon/B0fJe9QZ3' target='_blank' rel='nofollow sponsored' class="inline-block hover:opacity-90 transition-opacity">
+          <img loading="lazy" decoding="async" width="800" height="533" class="w-full max-w-xl mx-auto rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 object-cover" src="https://i.postimg.cc/KcMNSKnx/61hzyo7ppz-L.jpg" alt="مقبض مطاطي مريح باللون الأخضر والرمادي لمفتاح أنابيب توتال 10 بوصة" />
+        </a>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">2. مقبض مطاطي مريح وتصميم ثنائي الاستخدام (يمين ويسار)</h2>
+      <p>تدرك شركة توتال أهمية راحة الفني أثناء السباكة والعمل لفترات طويلة، لذا تم تزويد هذا المفتاح بمقبض بلاستيكي مطاطي مضاد للانزلاق باللونين الأخضر والرمادي الشهيرين لماركة TOTAL:</p>
+      <ul class="list-disc list-inside space-y-2 pr-4">
+        <li><strong>مقبض مريح ومضاد للانزلاق:</strong> يقدم طلاء المطاط متانة إضافية وعزلاً مريحاً لليد ويمنع انزلاق المفتاح عند تعرق اليدين أو تلوثهما بالزيوت والمياه.</li>
+        <li><strong>مناسب لليد اليمنى واليسرى:</strong> تم موازنة وزن المفتاح (600 جرام) وهندسة المقبض ليعمل بنفس السلاسة والكفاءة لسائري اليدين اليمنى واليسرى دون إجهاد.</li>
+        <li><strong>نمط رأس مائل ومثني:</strong> يساعد نمط الرأس المثني على زيادة رافعة العزم وسهولة الوصول للصواميل المنزوية خلف الحوائط وتحت أحواض المطبخ.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">3. المواصفات الفنية المعتمدة لمفتاح أنابيب توتال THT171006</h2>
+      <p>يوضح الجدول التالي كافة البيانات والخصائص التقنية لمفتاح الأنابيب مقاس 10 بوصة من توتال المتاح على أمازون مصر:</p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-sm text-right border-collapse border border-slate-200 dark:border-slate-800">
+          <thead>
+            <tr class="bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold">
+              <th class="p-3 border border-slate-200 dark:border-slate-800">الميزة / المعيار</th>
+              <th class="p-3 border border-slate-200 dark:border-slate-800">المواصفات التفصيلية</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">الكلمة المفتاحية ونوع المنتَج</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">مفتاح انجليزي صغير / مفتاح أنابيب 10 بوصة (250 ملم)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">العلامة التجارية والشركة المصنعة</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">توتال - TOTAL Tools</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">رقم الموديل والرمز ASIN</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">THT171006 | B0fJe9QZ3</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">الحجم الكلي وقطر التثبيت الأقصى</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">10 بوصات (250 ملم) | فتحة تثبيت حتى 34 ملم</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">خامات الصنع والوزن</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">جسم حديد زهر لين + فك فولاذ كربوني | الوزن 600 جرام</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">لون الأداة والمقبض</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">أخضر ورمادي مع لمسة نهائية سوداء مصقولة للفك</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold border border-slate-200 dark:border-slate-800">تقييم المشتريين والسعر</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-800">4.4 من 5 نجوم (244 تقييم) | 220 ج.م بخصم 31% على أمازون مصر</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">4. مميزات وعيوب مفتاح توتال THT171006 بحيادية</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+        <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+          <h3 class="font-bold text-emerald-600 dark:text-emerald-400 mb-2">الإيجابيات (Pros):</h3>
+          <ul class="list-disc list-inside text-xs space-y-1 text-slate-700 dark:text-slate-300">
+            <li>حجم 10 بوصة مدمج وخفيف الوزن (600 جرام) يسهل حمله وتخزينه في حقيبة الأدوات.</li>
+            <li>جسم زهر دكتايل متين وفك فولاذ كربوني معالج حرارياً يضمن تحملاً عالياً.</li>
+            <li>قبض محكم على المواسير حتى 34 ملم مع أسنان قوية تثبت دون الانزلاق.</li>
+            <li>مقبض مطاطي مريح لليد باللونين الأخضر والرمادي مناسب لليمنى واليسرى.</li>
+            <li>قيمة عالية جداً مقابل السعر بخصم 31% وتقييم 4.4 من 5 نجوم من 244 تقييم.</li>
+          </ul>
+        </div>
+        <div class="p-4 rounded-xl bg-rose-500/10 border border-rose-500/20">
+          <h3 class="font-bold text-rose-600 dark:text-rose-400 mb-2">السلبيات (Cons):</h3>
+          <ul class="list-disc list-inside text-xs space-y-1 text-slate-700 dark:text-slate-300">
+            <li>محدد بالمواسير والأنابيب بقطر 34 ملم؛ للمواسير الضخمة جداً في خطوط السباكة الرئيسية يُفضل استخدام المقاسات الأكبر مثل 14 أو 18 بوصة.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 class="text-xl font-bold text-amber-600 dark:text-amber-400 mt-6 border-b pb-2 border-slate-200 dark:border-slate-800">الخلاصة ورأي فريق ديكورا Dkora</h2>
+      <p>إذا كنت تبحث عن <strong>مفتاح انجليزي صغير</strong> ومثالي لإصلاح السباكة والتركيبات المنزلية والورش، فإن مفتاح أنابيب توتال مقاس 10 بوصة THT171006 هو أحد أفضل الخيارات المتاحة في السوق المصري لعام 2026 بسعر اقتصادي 220 ج.م بخصم 31% ومواد تصنيع عالية الاعتمادية.</p>
+
+      <div class="my-6 p-6 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-center space-y-3">
+        <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400">اشترِ مفتاح أنابيب توتال 10 بوصة بأفضل سعر من أمازون مصر</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-300">احصل على المفتاح الأصلي بسعر 220 ج.م فقط بدلاً من 320 ج.م (بخصم 31%) مع شحن سريع وضمان إرجاع معتمد.</p>
+        <a href='https://link.amazon/B0fJe9QZ3' target='_blank' rel='nofollow sponsored' class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black hover:from-amber-400 hover:to-amber-500 transition-all shadow-lg shadow-amber-500/20 text-sm">
+          <span>شراء المفتاح بـ 220 ج.م من متجر أمازون مصر</span>
+        </a>
+      </div>
+    </div>`,
+    tags: ["مفتاح انجليزي صغير", "مفتاح انجليزي", "مفتاح أنابيب", "توتال", "TOTAL", "THT171006", "مفتاح سباكة", "أمازون"]
+  },
   {
     id: "art-taegiqi-safety-lockout-g01-red-01-review",
     title: "مراجعة شاملة 2026: أقفال تاجوت أحمر من تايجيكي TAEGIQI G01-RED-01 لحماية المنشآت واجتياز معايير OSHA (اقفال باب)",
@@ -2429,6 +2604,18 @@ export const REVIEWS_SAMPLE: UserReview[] = [
     title: "خزنة رقمية منزلية فائقة الأمان والإنذار صوت عالي جداً",
     comment: "اشتريت الخزنة لحفظ الأوراق والمبالغ المالية بالمنزل. الخزنة ممتازة جداً والمصادقة المزدوجة بالرمز والمفتاح بتدي راحة بال بالغة. الإنذار صوته شديد ومسموع في كامل الشقة عند الاهتزاز أو إدخال رمز خاطئ.",
     helpfulCount: 18,
+    verifiedPurchase: true
+  },
+  {
+    id: "rev-total-pipe-wrench-1",
+    productId: "p-total-pipe-wrench-10inch-tht171006",
+    userName: "أسامة فاروق",
+    userRole: "فني سباكة وصيانة منازل",
+    rating: 5,
+    date: "2026-04-01",
+    title: "أفضل مفتاح انجليزي صغير وجامد جداً للسباكة وتحت الأحواض",
+    comment: "المفتاح خفيف ومسكته ممتازة جداً، الفك خاميته فولاذ قوي ومبيفوتش على المواسير خالص. حجمه 10 بوصة مثالي جداً للاستخدام كمفتاح انجليزي صغير للأماكن الضيقة وتحت حوض المطبخ بدلاً من المفاتيح الكبيرة التقيلة. سعره 220 جنيه ممتاز جداً مع جودة توتال.",
+    helpfulCount: 22,
     verifiedPurchase: true
   },
   {

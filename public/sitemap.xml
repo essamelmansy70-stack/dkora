@@ -1,75 +1,280 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Static Pages -->
   <url>
     <loc>https://dkora.online/</loc>
-    <lastmod>2026-07-26</lastmod>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://dkora.online/?view=categories</loc>
-    <lastmod>2026-07-26</lastmod>
+    <loc>https://dkora.online/categories</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://dkora.online/?view=comparisons</loc>
-    <lastmod>2026-07-26</lastmod>
+    <loc>https://dkora.online/comparisons</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://dkora.online/?view=deals</loc>
-    <lastmod>2026-07-26</lastmod>
+    <loc>https://dkora.online/deals</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://dkora.online/?view=articles</loc>
-    <lastmod>2026-07-26</lastmod>
+    <loc>https://dkora.online/articles</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://dkora.online/?view=sitemap</loc>
-    <lastmod>2026-07-26</lastmod>
+    <loc>https://dkora.online/sitemap</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>always</changefreq>
-    <priority>0.7</priority>
+    <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://dkora.online/?category=shoes</loc>
-    <lastmod>2026-07-26</lastmod>
+    <loc>https://dkora.online/privacy</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/terms</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/about</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/contact</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/disclaimer</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Categories -->
+  <url>
+    <loc>https://dkora.online/category/cat-drills</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://dkora.online/?category=balls</loc>
-    <lastmod>2026-07-26</lastmod>
+    <loc>https://dkora.online/category/cat-grinders</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://dkora.online/?category=jerseys</loc>
-    <lastmod>2026-07-26</lastmod>
+    <loc>https://dkora.online/category/cat-hand-tools</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://dkora.online/?category=shinguards</loc>
-    <lastmod>2026-07-26</lastmod>
+    <loc>https://dkora.online/category/cat-measuring</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://dkora.online/?category=gloves</loc>
-    <lastmod>2026-07-26</lastmod>
+    <loc>https://dkora.online/category/cat-paints</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://dkora.online/?category=fitness</loc>
-    <lastmod>2026-07-26</lastmod>
+    <loc>https://dkora.online/category/cat-decor</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/category/cat-plumbing</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/category/cat-electrical</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/category/cat-safety</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/category/cat-locks</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/category/cat-woodworking</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/category/cat-automotive</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Products & Product Reviews -->
+  <url>
+    <loc>https://dkora.online/product/p-total-adj-wrench-12inch-tht101126-total-adjustable-wrench-12inch-tht101126</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/product/p-total-pipe-wrench-10inch-tht171006-total-pipe-wrench-10inch-tht171006</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/product/p-safetytech-gn40-bls-safety-tech-gn40-bls-digital-home-safe</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/product/p-htb-smart-lock-1-htb-smart-door-lock-access-control</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/product/p-bosch-gws-750-100-bosch-gws-750-100-angle-grinder</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Articles & Blog Reviews -->
+  <url>
+    <loc>https://dkora.online/article/total-adj-wrench-12inch-tht101126-review</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/article/total-pipe-wrench-10inch-tht171006-review</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/article/smart-door-lock-review-2026</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/article/bosch-small-angle-grinder-review</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/article/marwan-attia-al-ahly-player-contract-renewal-2031-profile-2026</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/article/julian-alvarez-barcelona-atletico-madrid-transfer-rumors-profile-2026</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/article/crysencio-summerville-origins-al-hilal-transfer-profile-2026</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/article/learn-football-step-by-step-beginners-guide-2026</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/article/football-stars-cleats-turf-review-amazon-egypt</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/article/how-to-find-world-cup-match-ai</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/article/modern-soccer-tactics-rating-stars</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/article/how-to-blend-face-football-jersey</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/article/ai-predictions-2026-world-cup-champion</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/article/arab-teams-2026-world-cup-prospects</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/article/fastest-wingers-2026-world-cup</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/article/tech-evolution-2026-world-cup-stadiums</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/article/messi-ronaldo-last-dance-2026-world-cup</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
   </url>
 </urlset>

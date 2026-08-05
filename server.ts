@@ -402,14 +402,19 @@ Sitemap: ${protocol}://${host}/sitemap.xml
 
     const rawUrls: Array<{ loc: string; lastmod: string; changefreq: string; priority: string }> = [
       { loc: `${baseUrl}/`, lastmod: currentDate, changefreq: "daily", priority: "1.0" },
-      { loc: `${baseUrl}/?view=categories`, lastmod: currentDate, changefreq: "weekly", priority: "0.9" },
-      { loc: `${baseUrl}/?view=comparisons`, lastmod: currentDate, changefreq: "weekly", priority: "0.9" },
-      { loc: `${baseUrl}/?view=deals`, lastmod: currentDate, changefreq: "daily", priority: "0.9" },
-      { loc: `${baseUrl}/?view=articles`, lastmod: currentDate, changefreq: "weekly", priority: "0.8" },
-      { loc: `${baseUrl}/?view=sitemap`, lastmod: currentDate, changefreq: "always", priority: "0.7" },
+      { loc: `${baseUrl}/categories`, lastmod: currentDate, changefreq: "weekly", priority: "0.9" },
+      { loc: `${baseUrl}/comparisons`, lastmod: currentDate, changefreq: "weekly", priority: "0.9" },
+      { loc: `${baseUrl}/deals`, lastmod: currentDate, changefreq: "daily", priority: "0.9" },
+      { loc: `${baseUrl}/articles`, lastmod: currentDate, changefreq: "weekly", priority: "0.8" },
+      { loc: `${baseUrl}/sitemap`, lastmod: currentDate, changefreq: "always", priority: "0.7" },
+      { loc: `${baseUrl}/privacy`, lastmod: currentDate, changefreq: "monthly", priority: "0.8" },
+      { loc: `${baseUrl}/terms`, lastmod: currentDate, changefreq: "monthly", priority: "0.8" },
+      { loc: `${baseUrl}/about`, lastmod: currentDate, changefreq: "monthly", priority: "0.85" },
+      { loc: `${baseUrl}/contact`, lastmod: currentDate, changefreq: "monthly", priority: "0.85" },
+      { loc: `${baseUrl}/disclaimer`, lastmod: currentDate, changefreq: "monthly", priority: "0.8" },
 
       ...CATEGORIES.map((cat) => ({
-        loc: `${baseUrl}/?category=${cat.id}`,
+        loc: `${baseUrl}/category/${cat.id}`,
         lastmod: currentDate,
         changefreq: "weekly",
         priority: "0.85",
@@ -423,28 +428,28 @@ Sitemap: ${protocol}://${host}/sitemap.xml
       })),
 
       ...ARTICLES.map((art) => ({
-        loc: `${baseUrl}/?article=${art.slug}`,
+        loc: `${baseUrl}/article/${art.slug}`,
         lastmod: art.date || currentDate,
         changefreq: "monthly",
         priority: "0.75",
       })),
 
       ...ARTICLES_SEO.map((art) => ({
-        loc: `${baseUrl}/?article=${art.slug}`,
+        loc: `${baseUrl}/article/${art.slug}`,
         lastmod: currentDate,
         changefreq: "weekly",
         priority: "0.75",
       })),
 
       ...DEALS.map((deal) => ({
-        loc: `${baseUrl}/?deal=${deal.id}`,
+        loc: `${baseUrl}/deals?deal=${deal.id}`,
         lastmod: currentDate,
         changefreq: "daily",
         priority: "0.80",
       })),
 
       ...BUYING_GUIDES.map((guide) => ({
-        loc: `${baseUrl}/?guide=${guide.id}`,
+        loc: `${baseUrl}/articles?guide=${guide.id}`,
         lastmod: currentDate,
         changefreq: "monthly",
         priority: "0.80",

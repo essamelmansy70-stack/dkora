@@ -19,9 +19,11 @@ import {
   Edit2,
   Copy,
   Check,
-  Link
+  Link,
+  BookOpen,
+  ArrowLeft
 } from "lucide-react";
-import { Product, Currency, UserReview } from "../types";
+import { Product, Currency, UserReview, Article } from "../types";
 import { REVIEWS_SAMPLE } from "../data/mockData";
 import { createProductUrl } from "../utils/seo";
 
@@ -29,10 +31,12 @@ interface ProductDetailModalProps {
   product: Product | null;
   onClose: () => void;
   currency: Currency;
-  onOpenSchema: (product: Product) => void;
+  onOpenSchema?: (product: Product) => void;
   onCompareSelect: (product: Product) => void;
   isDarkMode: boolean;
   onEditProduct?: (product: Product) => void;
+  articles?: Article[];
+  onSelectArticle?: (article: Article) => void;
 }
 
 export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
@@ -43,6 +47,8 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   onCompareSelect,
   isDarkMode,
   onEditProduct,
+  articles = [],
+  onSelectArticle,
 }) => {
   const [activeImage, setActiveImage] = useState(product ? product.mainImage : "");
   const [copiedLink, setCopiedLink] = useState(false);
@@ -142,20 +148,6 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 <span>تعديل المنتج</span>
               </button>
             )}
-
-            <button
-              onClick={() => onOpenSchema(product)}
-              aria-label="عرض بيانات SEO Schema للمحتوى"
-              className={`px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center gap-1.5 transition-colors ${
-                isDarkMode
-                  ? "bg-slate-800 hover:bg-slate-700 text-amber-400 border-slate-700"
-                  : "bg-amber-50 hover:bg-amber-100 text-amber-900 border-amber-300"
-              }`}
-              title="عرض Schema.org JSON-LD الموجه لمحركات البحث"
-            >
-              <Code2 className="w-4 h-4" aria-hidden="true" />
-              <span>SEO Schema</span>
-            </button>
 
             <button
               onClick={onClose}
@@ -397,6 +389,79 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   {product.fullReviewText}
                 </p>
               </div>
+
+              {/* Related Articles for this product */}
+              {(() => {
+                const prodBrand = product.brandName.toLowerCase();
+                const prodCat = product.categoryId;
+                const prodTags = product.tags.map(t => t.toLowerCase());
+
+                const relatedArts = articles.filter((art) => {
+                  const artText = (art.title + " " + art.category + " " + art.excerpt + " " + art.tags.join(" ")).toLowerCase();
+                  const matchBrand = prodBrand.length > 2 && artText.includes(prodBrand);
+                  const matchTag = prodTags.some(t => t.length > 2 && artText.includes(t));
+                  const matchCategory =
+                    (prodCat === "cat-locks" || prodCat === "cat-safety") && (art.category.includes("أقفال") || art.category.includes("أمان")) ||
+                    (prodCat === "cat-hand-tools" || prodCat === "cat-plumbing") && (art.category.includes("يدوية") || art.category.includes("سباكة") || art.category.includes("مفاتيح")) ||
+                    (prodCat === "cat-grinders" || prodCat === "cat-drills" || prodCat === "cat-paints") && art.category.includes("كهربائية");
+
+                  return matchBrand || matchTag || matchCategory;
+                }).slice(0, 3);
+
+                if (relatedArts.length === 0) return null;
+
+                return (
+                  <div className={`p-6 rounded-2xl border space-y-4 ${
+                    isDarkMode ? "bg-slate-950/80 border-amber-500/20" : "bg-amber-50/50 border-amber-200"
+                  }`}>
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-base font-black text-amber-600 dark:text-amber-400 flex items-center gap-2">
+                        <BookOpen className="w-5 h-5 text-amber-500" />
+                        مقالات ومراجعات تفصيلية ذات صلة بهذا المنتج
+                      </h3>
+                      <span className="text-xs text-slate-500 font-bold">{relatedArts.length} مقالات مرتبطة</span>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {relatedArts.map((art) => (
+                        <div
+                          key={art.id}
+                          onClick={() => {
+                            if (onSelectArticle) {
+                              onClose();
+                              onSelectArticle(art);
+                            }
+                          }}
+                          className={`p-3.5 rounded-xl border flex flex-col justify-between gap-2 transition-all cursor-pointer group hover:border-amber-500 ${
+                            isDarkMode ? "bg-slate-900 border-slate-800 hover:bg-slate-850" : "bg-white border-slate-200 hover:bg-slate-50 shadow-sm"
+                          }`}
+                        >
+                          <div className="flex items-start gap-3">
+                            <img
+                              src={art.coverImage}
+                              alt={art.title}
+                              className="w-16 h-16 rounded-lg object-cover shrink-0 border border-slate-700"
+                            />
+                            <div className="space-y-1 min-w-0">
+                              <span className="text-[10px] font-bold bg-amber-500/10 text-amber-500 px-2 py-0.5 rounded border border-amber-500/20 inline-block">
+                                {art.category}
+                              </span>
+                              <h4 className="text-xs font-black line-clamp-2 group-hover:text-amber-500 transition-colors leading-snug">
+                                {art.title}
+                              </h4>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center justify-between text-[11px] font-extrabold text-amber-600 dark:text-amber-400 pt-2 border-t border-slate-200 dark:border-slate-800/60 mt-1">
+                            <span>اقرأ المراجعة الشاملة</span>
+                            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
             </div>
           )}
 

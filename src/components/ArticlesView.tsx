@@ -1,19 +1,23 @@
 import React, { useState } from "react";
-import { BookOpen, Calendar, Clock, User, ArrowRight, Tag, ChevronLeft } from "lucide-react";
-import { Article } from "../types";
+import { BookOpen, Calendar, Clock, User, ArrowRight, Tag, ChevronLeft, ShoppingBag, Star, Sparkles } from "lucide-react";
+import { Article, Product } from "../types";
 
 interface ArticlesViewProps {
   articles: Article[];
+  products?: Product[];
   isDarkMode: boolean;
   selectedArticle?: Article | null;
   onSelectArticle?: (article: Article | null) => void;
+  onSelectProduct?: (product: Product) => void;
 }
 
 export const ArticlesView: React.FC<ArticlesViewProps> = ({
   articles,
+  products = [],
   isDarkMode,
   selectedArticle: propSelectedArticle,
-  onSelectArticle: propOnSelectArticle
+  onSelectArticle: propOnSelectArticle,
+  onSelectProduct
 }) => {
   const [internalSelected, setInternalSelected] = useState<Article | null>(null);
   
@@ -131,6 +135,135 @@ export const ArticlesView: React.FC<ArticlesViewProps> = ({
             ))}
           </div>
         </article>
+
+        {/* Related Products for this Article */}
+        {(() => {
+          if (!products || products.length === 0) return null;
+          const artCat = currentArticle.category.toLowerCase();
+          const artTitle = currentArticle.title.toLowerCase();
+          const artTags = currentArticle.tags.map(t => t.toLowerCase());
+
+          const relatedProds = products.filter((prod) => {
+            const prodText = (prod.titleAr + " " + prod.titleEn + " " + prod.brandName + " " + prod.tags.join(" ")).toLowerCase();
+            const matchTag = artTags.some(t => t.length > 2 && prodText.includes(t));
+            const matchTitle = (prod.brandName.length > 2 && artTitle.includes(prod.brandName.toLowerCase())) ||
+              (artTitle.includes("قفل") && (prod.categoryId === "cat-locks" || prod.categoryId === "cat-safety")) ||
+              ((artTitle.includes("مفتاح") || artTitle.includes("سباكة")) && (prod.categoryId === "cat-hand-tools" || prod.categoryId === "cat-plumbing")) ||
+              ((artTitle.includes("رش") || artTitle.includes("طلاء") || artTitle.includes("مسدس")) && prod.categoryId === "cat-paints");
+
+            const matchCat =
+              (artCat.includes("أقفال") || artCat.includes("أمان")) && (prod.categoryId === "cat-locks" || prod.categoryId === "cat-safety") ||
+              (artCat.includes("يدوية") || artCat.includes("سباكة")) && (prod.categoryId === "cat-hand-tools" || prod.categoryId === "cat-plumbing") ||
+              artCat.includes("كهربائية") && (prod.categoryId === "cat-grinders" || prod.categoryId === "cat-drills" || prod.categoryId === "cat-paints");
+
+            return matchTag || matchTitle || matchCat;
+          }).slice(0, 3);
+
+          if (relatedProds.length === 0) return null;
+
+          return (
+            <div className={`p-6 rounded-3xl border space-y-4 ${
+              isDarkMode ? "bg-slate-900 border-slate-800 text-slate-100" : "bg-white border-slate-200 text-slate-900 shadow-lg"
+            }`}>
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-black text-amber-600 dark:text-amber-400 flex items-center gap-2">
+                  <ShoppingBag className="w-5 h-5 text-amber-500" />
+                  منتجات ومعدات ذات صلة بموضوع المقالة
+                </h3>
+                <span className="text-xs font-bold text-slate-500">{relatedProds.length} منتجات مرشحة</span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {relatedProds.map((prod) => (
+                  <div
+                    key={prod.id}
+                    onClick={() => onSelectProduct && onSelectProduct(prod)}
+                    className={`p-4 rounded-2xl border flex flex-col justify-between gap-3 cursor-pointer transition-all hover:border-amber-500 hover:shadow-xl group ${
+                      isDarkMode ? "bg-slate-950 border-slate-800" : "bg-slate-50 border-slate-200"
+                    }`}
+                  >
+                    <div className="space-y-2">
+                      <div className="h-32 rounded-xl overflow-hidden bg-slate-900 border border-slate-800/80 p-2">
+                        <img
+                          src={prod.mainImage}
+                          alt={prod.titleAr}
+                          className="w-full h-full object-contain group-hover:scale-105 transition-transform"
+                        />
+                      </div>
+                      <span className="text-[10px] font-bold text-amber-500 bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/20 inline-block">
+                        {prod.brandName}
+                      </span>
+                      <h4 className="text-xs font-black line-clamp-2 leading-snug group-hover:text-amber-500 transition-colors">
+                        {prod.titleAr}
+                      </h4>
+                    </div>
+
+                    <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs font-bold">
+                      <span className="text-amber-600 dark:text-amber-400 font-extrabold">
+                        {prod.priceAmazon ? `${prod.priceAmazon.toLocaleString()} ج.م` : "سعر مميز"}
+                      </span>
+                      <span className="text-[11px] text-slate-500 flex items-center gap-1 group-hover:text-amber-500 font-bold">
+                        تصفح المنتج
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* Related Articles for this Article */}
+        {(() => {
+          const otherArticles = articles.filter((art) => art.id !== currentArticle.id).slice(0, 3);
+          if (otherArticles.length === 0) return null;
+
+          return (
+            <div className={`p-6 rounded-3xl border space-y-4 ${
+              isDarkMode ? "bg-slate-900/80 border-slate-800" : "bg-slate-50 border-slate-200"
+            }`}>
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-black text-amber-600 dark:text-amber-400 flex items-center gap-2">
+                  <BookOpen className="w-5 h-5 text-amber-500" />
+                  مقالات وشروحات أخرى ذات صلة
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {otherArticles.map((art) => (
+                  <div
+                    key={art.id}
+                    onClick={() => handleSelect(art)}
+                    className={`p-4 rounded-2xl border flex flex-col justify-between gap-3 cursor-pointer transition-all hover:border-amber-500 hover:shadow-lg group ${
+                      isDarkMode ? "bg-slate-950 border-slate-800" : "bg-white border-slate-200"
+                    }`}
+                  >
+                    <div className="space-y-2">
+                      <div className="h-28 rounded-xl overflow-hidden bg-slate-900 border border-slate-800">
+                        <img
+                          src={art.coverImage}
+                          alt={art.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                        />
+                      </div>
+                      <span className="text-[10px] font-bold text-amber-500 bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/20 inline-block">
+                        {art.category}
+                      </span>
+                      <h4 className="text-xs font-black line-clamp-2 leading-snug group-hover:text-amber-500 transition-colors">
+                        {art.title}
+                      </h4>
+                    </div>
+
+                    <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[11px] font-extrabold text-amber-600 dark:text-amber-400">
+                      <span>اقرأ المقال</span>
+                      <ChevronLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
       </div>
     );
   }

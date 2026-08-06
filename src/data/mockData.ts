@@ -450,55 +450,6 @@ export const PRODUCTS: Product[] = [
     tags: ["مسدس مسامير يدويه", "مسدس مسامير", "أدوات يدوية", "تثبيت مسامير", "خرسانة", "مسدس تثبيت"]
   },
   {
-    id: "p-huepar-s04cg-3d",
-    titleAr: "ميزان ليزر 3D أخضر 16 خط Huepar S04CG الديجيتال بالبلوتوث",
-    titleEn: "Huepar S04CG 16 Lines 3D Green Floor Laser Level",
-    slug: "huepar-s04cg-3d-green-laser-level",
-    categoryId: "cat-measuring",
-    brandId: "b-huepar",
-    brandName: "Huepar",
-    modelNumber: "S04CG",
-    mainImage: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80",
-    gallery: [
-      "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80"
-    ],
-    rating: 4.8,
-    reviewCount: 189,
-    editorScore: 9.6,
-    priceAmazon: 6200,
-    currency: "EGP",
-    amazonUrl: "https://amazon.eg/dp/B08LGR33X1?tag=dkora-21",
-    isTopPick: true,
-    isBestValue: true,
-    pros: [
-      "شاشة LCD تعرض نسبة الشحن وزاوية الميل الحالية بالدرجات",
-      "شعاع ليزر أخضر ألماني Osram أسطع بـ 4 أضعاف من الليزر الأحمر",
-      "التحكم الكامل عبر تطبيق الهاتف بالبلوتوث أو الريموت كنترول",
-      "خط أرضي محاذٍ تمامًا للسيراميك والبورسلين بشعاع متدني جداً"
-    ],
-    cons: [
-      "يحتاج معايرة دقيقة عند السقوط القوي من ارتفاع عالي",
-      "الأزرار باللمس قد تحتاج لمنشفة جافة أثناء العمل بغبار المحارة"
-    ],
-    targetAudience: "مهندسو الديكور والتشطيبات، صناع السيراميك والبورسلين، وفنيو الجبس بورد والألوميتال.",
-    summary: "يُعتبر Huepar S04CG الجهاز الثوري الأول المفضل لدى مهندسي الديكور لعام 2026 بفضل شاشة العرض الرقمية وخط البورسلين السفلي الذي يضمن دقة استواء صفر أخطاء.",
-    fullReviewText: "يأتي جهاز هيوبار S04CG بـ 4 طارات ليزرية تمنحك 16 خطاً متقاطعاً في جميع الاتجاهات (360 درجة). تم اختباره في الشدات الخشبية وأعمال إستعدال حوائط البورسلين الكبيرة وأظهر دقة قياس تصل إلى ±2 مم لكل 10 متر.",
-    specs: [
-      { label: "عدد الخطوط", value: "16 خط (4 طارات 360 درجة)" },
-      { label: "لون الشعاع", value: "أخضر Osram ألماني عالي السطوع" },
-      { label: "دقة الاستواء", value: "±2 مم عند 10 متر" },
-      { label: "نطاق الاستواء الذاتي", value: "4 درجات تلقائيًا" },
-      { label: "مسافة العمل", value: "25-40 متر (تصل لـ 60 متر مع الملاقط)" },
-      { label: "مصدر الطاقة", value: "بطارية ليثيوم قابلة للشحن + شاحن Type-C" },
-      { label: "التحكم", value: "تطبيق هاتف + ريموت كنترول + شاشة LCD" }
-    ],
-    viewsCount: 9800,
-    dateAdded: "2026-02-01",
-    tags: ["ميزان ليزر", "هيوبار", "أخضر", "تشطيبات", "3D"]
-  },
-  {
     id: "p-bosch-gws-750",
     titleAr: "صاروخ قطعية وتجليد بوش 4.5 بوصة 750 واط Bosch GWS 750-115",
     titleEn: "Bosch GWS 750-115 Angle Grinder 750W",
@@ -1099,6 +1050,59 @@ export const PRODUCTS: Product[] = [
     viewsCount: 19500,
     dateAdded: "2026-04-05",
     tags: ["مفتاح فرنساوى صغير", "مفتاح فرنساوى", "مفتاح قابل للتعديل", "توتال", "TOTAL", "THT101126", "أدوات ميكانيكية", "أمازون"]
+  },
+  {
+    id: "p-jadever-solid-steel-padlock-60mm-jdpd8460",
+    titleAr: "قفل صلب مضاد للكسر والقص مقاس 60 ملم JDPD8460 من جاديفر (JADEVER)",
+    titleEn: "JADEVER 60mm Solid Steel Anti-Cut Padlock JDPD8460",
+    slug: "jadever-solid-steel-padlock-60mm-jdpd8460",
+    categoryId: "cat-locks",
+    brandId: "b-jadever",
+    brandName: "جاديفر - JADEVER",
+    modelNumber: "JDPD8460 | 60mm",
+    mainImage: "https://i.postimg.cc/mD5sJRt6/31ikvc-I0SXL-AC-SX300-SY300-QL70-ML2.jpg",
+    gallery: [
+      "https://i.postimg.cc/mD5sJRt6/31ikvc-I0SXL-AC-SX300-SY300-QL70-ML2.jpg"
+    ],
+    rating: 4.8,
+    reviewCount: 38,
+    editorScore: 9.3,
+    priceAmazon: 239,
+    currency: "EGP",
+    amazonUrl: "https://link.amazon/B0gTcBLVg",
+    isTopPick: true,
+    isEditorChoice: true,
+    isBestValue: true,
+    pros: [
+      "هيكل صلب 60 ملم مصمت يوفر متانة أمان فائقة ومقاومة عالية للكسر والقص",
+      "تصميم معزز مضاد للقص يمنع العبث والمحاولات العنيفة للدخول القسري",
+      "أسطوانة قفل نحاسية عالية الدقة لضمان تشغيل سلس ومقاوم للصدأ وتراكم الأتربة",
+      "يتضمن 4 مفاتيح صلب عالية المتانة للوصول الموثوق والراحة لجميع أفراد الأسرة أو العاملين",
+      "سعر اقتصادي استثنائي (239 ج.م) مع خامات صلب عالية الاعتمادية لحماية البوابات والخزانات"
+    ],
+    cons: [
+      "ثقيل الوزن نظراً لهيكله الفولاذي الصلب بالكامل مقاس 60 ملم مما يجعله مخصصاً للأماكن الثابتة والأبواب والبوابات"
+    ],
+    targetAudience: "أصحاب المنازل والمستودعات والشركات الباحثون عن قفل صلب مضاد للقص والكسر مقاس 60 ملم بسعر ممتاز 239 ج.م للحماية القصوى للبوابات والخزانات.",
+    summary: "قفل جاديفر JADEVER مقاس 60 ملم المصنوع من الصلب القوي المضاد للقص والكسر بسعر 239 ج.م مزود بـ 4 مفاتيح صلب وأسطوانة نحاسية سلسة، وهو الخيار المثالي لحماية البوابات والخزانات ووحدات التخزين.",
+    fullReviewText: `إذا كنت تبحث عن حماية فائقة وأمان أقصى لبوابات منزلك، مستودعك، أو خزانات الأدوات والممتلكات بسعر اقتصادي 239 ج.م، فإن قفل جاديفر (JADEVER) مقاس 60 ملم طراز JDPD8460 يُعد واحداً من أفضل الأقفال المعدنية الصلبة المضادة للكسر والقص.
+
+يمتاز هذا القفل بهيكل صلب مصمت مقاس 60 ملم مصمم خصيصاً لمقاومة أدوات القطع العنيفة والمحاولات القسرية للكسر، مع أسطوانة داخلية مصنوعة من النحاس الخالص تضمن حركة مفتاح سلسة ومقاومة جبارة للصدأ والتآكل على المدى الطويل سواء في الاستخدامات الداخلية أو الخارجية.
+
+كما يأتي القفل مع 4 مفاتيح صلبة متينة لسهولة المشاركة وتوفير مفاتيح احتياطية موثوقة.`,
+    specs: [
+      { label: "نوع القفل والميزة الخاصة", value: "قفل صلب بمفتاح أسنان / مضاد للقص والكسر" },
+      { label: "العلامة التجارية والشركة المصنعة", value: "جاديفر - JADEVER" },
+      { label: "رقم الموديل والمقاس", value: "JDPD8460 | مقاس 60 ملم" },
+      { label: "أبعاد السلعة", value: "10 × 20 × 37 سم" },
+      { label: "مواد الهيكل والأسطوانة", value: "هيكل من الصلب المقوى المصمت + أسطوانة نحاسية نقية" },
+      { label: "مكونات العبوة والمفاتيح", value: "قفل صلب 60 ملم + 4 مفاتيح صلب" },
+      { label: "الاستخدامات الموصى بها", value: "البوابات، الخزانات، وحدات التخزين، الاستخدام الداخلي والخارجي" },
+      { label: "السعر ورابط الشراء على أمازون", value: "239 ج.م | https://link.amazon/B0gTcBLVg" }
+    ],
+    viewsCount: 12400,
+    dateAdded: "2026-04-06",
+    tags: ["قفل صلب", "جاديفر", "JADEVER", "JDPD8460", "قفل مضاد للكسر", "قفل مضاد للقص", "اقفال باب", "أمازون"]
   }
 ];
 
@@ -1537,6 +1541,47 @@ export const ARTICLES: Article[] = [
           <ul class="list-disc list-inside text-xs space-y-1 text-slate-700 dark:text-slate-300">
             <li>مخصص في المقام الأول لتأمين السلامة وإجراءات تاغوت بالورش والمصانع وليس كقفل للأبواب الرئيسية الخارجية الثقيلة جداً.</li>
           </ul>
+        </div>
+      </div>
+
+      <!-- Related Product / منتج ذو صلة -->
+      <div class="my-8 p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-amber-950/40 text-slate-100 border border-amber-500/40 shadow-xl relative overflow-hidden">
+        <div class="inline-block bg-amber-500 text-slate-950 font-black text-xs px-3 py-1 rounded-lg shadow-md mb-4">
+          🔒 منتج ذو صلة: قفل صلب مضاد للكسر والقص للبوابات والخزانات
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          <div class="md:col-span-4 text-center">
+            <a href="https://link.amazon/B0gTcBLVg" target="_blank" rel="nofollow sponsored" class="inline-block group">
+              <div class="p-3 bg-white/10 dark:bg-black/30 rounded-2xl border border-white/10 group-hover:border-amber-400 transition-all">
+                <img loading="lazy" decoding="async" width="300" height="300" src="https://i.postimg.cc/mD5sJRt6/31ikvc-I0SXL-AC-SX300-SY300-QL70-ML2.jpg" alt="قفل مضاد للكسر مقاس 60 ملم JDPD8460 من جاديفر JADEVER" class="w-full max-w-[220px] mx-auto object-contain rounded-xl transition-transform duration-300 group-hover:scale-105" />
+              </div>
+            </a>
+          </div>
+          
+          <div class="md:col-span-8 space-y-3">
+            <h3 class="text-lg md:text-xl font-black text-amber-400 leading-snug">
+              قفل مضاد للكسر مقاس 60 ملم JDPD8460 من جاديفر (JADEVER)
+            </h3>
+            <p class="text-xs md:text-sm text-slate-200 leading-relaxed">
+              إذا كنت تبحث عن قفل صلب شديد التحمل لحماية البوابات الخارجية، الخزانات، ووحدات التخزين ضد محاولات الكسر والقص العنيفة، فنوصي بـ <strong>قفل جاديفر JADEVER مقاس 60 ملم</strong> المصنوع من الصلب القوي والمزود بأسطوانة نحاسية متينة و4 مفاتيح صلب.
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300 pt-1">
+              <div><strong class="text-amber-400">العلامة التجارية:</strong> جاديفر JADEVER</div>
+              <div><strong class="text-amber-400">الميزة الخاصة:</strong> مضاد للقص والكسر</div>
+              <div><strong class="text-amber-400">نوع القفل:</strong> بمفتاح أسنان (4 مفاتيح صلب)</div>
+              <div><strong class="text-amber-400">السعر الممتاز:</strong> 239 ج.م فقط</div>
+              <div class="sm:col-span-2"><strong class="text-amber-400">الخامة والتشغيل:</strong> هيكل صلب 60 ملم + أسطوانة نحاس | للاستخدام الداخلي والخارجي</div>
+            </div>
+
+            <div class="pt-3">
+              <a href="https://link.amazon/B0gTcBLVg" target="_blank" rel="nofollow sponsored" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs md:text-sm transition-all shadow-lg shadow-amber-500/20">
+                <span>شراء قفل جاديفر الصلب بـ 239 ج.م عبر أمازون</span>
+                <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -2810,15 +2855,15 @@ export const REVIEWS_SAMPLE: UserReview[] = [
     verifiedPurchase: true
   },
   {
-    id: "rev-2",
-    productId: "p-huepar-s04cg-3d",
-    userName: "مهندس إسلام القاضي",
-    userRole: "مهندس مواقع وتأسيس",
+    id: "rev-jadever-1",
+    productId: "p-jadever-solid-steel-padlock-60mm-jdpd8460",
+    userName: "عادل العوضي",
+    userRole: "صاحب مخزن ومبنى تجاري",
     rating: 5,
-    date: "2026-02-18",
-    title: "دقة متناهية وسهولة في تطبيق البورسلين",
-    comment: "الخط السريعي الأخضر واضح جداً حتى في وجود إضاءة الموقع النهارية. شاشة العرض والتحكم بالموبايل بتخليني أظبط الاستواء بنفسي بدون مساعدة.",
-    helpfulCount: 29,
+    date: "2026-04-03",
+    title: "قفل صلب وجامد جداً لبوابة المخزن والحديد ضد الكسر والقص",
+    comment: "اشتريت قفل جاديفر 60 ملم لتأمين البوابة الخارجية للمخزن. القفل محمل وتقيل جداً ومصنوع من صلب متين ومضاد للقص، الأسطوانة النحاسية شغال بمرونة عالية مع المفاتيح الأربعة. منتج ممتاز وسعره 239 جنيه ممتاز جداً على أمازون.",
+    helpfulCount: 17,
     verifiedPurchase: true
   }
 ];

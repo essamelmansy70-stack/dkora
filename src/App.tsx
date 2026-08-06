@@ -548,7 +548,14 @@ export default function App() {
 
         {/* VIEW 5: ARTICLES ONLY */}
         {activeView === "articles" && (
-          <ArticlesView articles={articles} isDarkMode={isDarkMode} />
+          <ArticlesView
+            articles={articles}
+            products={products}
+            isDarkMode={isDarkMode}
+            selectedArticle={selectedArticle}
+            onSelectArticle={setSelectedArticle}
+            onSelectProduct={(prod) => setDetailProduct(prod)}
+          />
         )}
 
         {/* VIEW 6: ADMIN DASHBOARD */}
@@ -598,6 +605,12 @@ export default function App() {
         onOpenSchema={(prod) => setSchemaProduct(prod)}
         onCompareSelect={() => setActiveView("comparisons")}
         onEditProduct={handleEditProduct}
+        articles={articles}
+        onSelectArticle={(art) => {
+          setDetailProduct(null);
+          setActiveView("articles");
+          setSelectedArticle(art);
+        }}
         isDarkMode={isDarkMode}
       />
 

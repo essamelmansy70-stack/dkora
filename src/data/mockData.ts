@@ -133,6 +133,7 @@ export const CATEGORIES: Category[] = [
 ];
 
 export const BRANDS: Brand[] = [
+  { id: "b-fengda", name: "Fengda - فينغدا", country: "الصين", logoText: "FENGDA", description: "المتخصص العالمي الأول في ضواغط الهواء الصامتة ومعدات الرش والديكور والتجميل بالفرشاة الهوائية." },
   { id: "b-safetytech", name: "Safety Tech", country: "مصر", logoText: "SAFETY TECH", description: "العلامة المصرية الرائدة في صناعة الخزن الرقمية المنزلية وأنظمة الأمان والإنذار المتطورة." },
   { id: "b-bosch", name: "Bosch", country: "ألمانيا", logoText: "BOSCH", description: "الرائد العالمي في حلول العُدد والتقنيات الهندسية." },
   { id: "b-dewalt", name: "DeWalt", country: "أمريكا", logoText: "DEWALT", description: "علامة العُدد الشاقة المفضلة للمقاولين والمشروعات الضخمة." },
@@ -862,7 +863,59 @@ export const PRODUCTS: Product[] = [
     viewsCount: 12400,
     dateAdded: "2026-04-06",
     tags: ["قفل صلب", "جاديفر", "JADEVER", "JDPD8460", "قفل مضاد للكسر", "قفل مضاد للقص", "اقفال باب", "أمازون"]
-  }
+  },
+  {
+    id: "p-fengda-airbrush-compressor-as326",
+    titleAr: "فينغدا كمبروسر دهانات صغير احترافي AS-326 من ايليت مع خزان هواء سعة 3 لتر، مراوح تبريد مزدوجة، تشغيل صامت 47 ديسيبل ومصيدة للرطوبة",
+    titleEn: "Fengda Elite AS-326 Professional Mini Airbrush Compressor with 3L Air Tank & Dual Cooling Fans",
+    slug: "fengda-mini-airbrush-compressor-as326",
+    categoryId: "cat-electric-tools",
+    brandId: "b-fengda",
+    brandName: "فينغدا - Fengda",
+    modelNumber: "Elite AS-326",
+    mainImage: "https://i.postimg.cc/xTyc5j1w/61pstw5Da6L.jpg",
+    gallery: [
+      "https://i.postimg.cc/xTyc5j1w/61pstw5Da6L.jpg"
+    ],
+    rating: 4.8,
+    reviewCount: 68,
+    editorScore: 9.6,
+    priceAmazon: 5680,
+    currency: "EGP",
+    amazonUrl: "https://link.amazon/B0aErTHm4",
+    isTopPick: true,
+    isEditorChoice: true,
+    isBestValue: false,
+    pros: [
+      "مزود بخزان هواء سعة 3 لتر يوفر تدفق هواء سلس ومستقر بدون أي نبضات أثناء الرش بالفرشاة الهوائية",
+      "نظام تبريد بمراوح مزدوجة متطورة لتبديد الحرارة ومنع السخونة أثناء التشغيل المتواصل والطويل",
+      "تشغيل فائق الهدوء ومحرك صامت بمستوى ضوضاء 47 ديسيبل فقط مناسب للعمل المنزلي والاستوديوهات وفي المساء",
+      "خاصية التشغيل والإيقاف التلقائي الذكي بناءً على ضغط الخزان لتوفير الطاقة وتقليل تآكل المحرك",
+      "مصيدة رطوبة مدمجة مع منظم ضغط ومقياس ضغط (مانومتر) لضمان هواء جاف ونقي خالي من التكثيف",
+      "تصميم خالي من الزيوت (Oil-Free) بمكبس واحد لا يتطلب أي صيانة زيتية ويمنع تلوث الطلاء"
+    ],
+    cons: [
+      "مخصص للرش بالفرشاة الهوائية (Airbrush) والأعمال الدقيقة والهوايات (فوهات 0.2 - 1.0 ملم)؛ وغير مخصص لرش السيارات أو المساحات الضخمة"
+    ],
+    targetAudience: "صناع المجسمات والنماذج، رسامي البخاخة الهوائية، فناني الديكور والمانيكير/الأظافر، والراغبون في شراء كمبروسر دهانات صغير صامت مع خزان هواء احترافي بسعر 5,680 ج.م.",
+    summary: "أفضل كمبروسر دهانات صغير صامت لعام 2026 من فينغدا (طراز Elite AS-326) مع خزان 3 لتر ومراوح تبريد مزدوجة ومصيدة رطوبة، خيارك الاحترافي الموثوق للرش الدقيق والفرشاة الهوائية بسعر 5,680 ج.م.",
+    fullReviewText: `إذا كنت تبحث عن **كمبروسر دهانات صغير** احترافي وشديد الهدوء يمنحك ضغط هواء مستقر بدون أي اهتزازات أو نبضات لطلاء النماذج، الرسوم الدقيقة بالفرشاة الهوائية (Airbrush)، أو أعمال استوديوهات الأظافر والديكور المنزلي، فإن كمبروسر فينغدا (Fengda Elite AS-326) المزود بخزان هواء سعة 3 لتر ومراوح تبريد مزدوجة هو الخيار المثالي والحل المتكامل لعام 2026.`,
+    specs: [
+      { label: "نوع الأداة والكلمة المفتاحية", value: "كمبروسر دهانات صغير / ضاغط هواء صامت للفرشاة الهوائية" },
+      { label: "العلامة التجارية والموديل", value: "فينغدا (FENGDA) | Elite AS-326" },
+      { label: "سعة خزان الهواء", value: "3 لترات (حاوية ضغط مدمجة)" },
+      { label: "القدرة والجهد الكهربائي", value: "125 واط (1/6 حصان) | 220 فولت | 1.5 أمبير" },
+      { label: "سعة تدفق الهواء", value: "23 لتر لكل دقيقة (23 L/min)" },
+      { label: "مستوى الضوضاء والتشغيل", value: "47 ديسيبل (تشغيل صامت جداً خالي من الزيت Oil-Free)" },
+      { label: "أقصى ضغط تشغيل", value: "90 PSI (حوالي 6 بار)" },
+      { label: "الميزات المدمجة", value: "مراوح تبريد مزدوجة + تشغيل/إيقاف تلقائي + مصيدة رطوبة مع منظم ضغط ومقياس" },
+      { label: "فوهات البخاخة المتوافقة", value: "مناسب لمسدسات Airbrush بفوهات من 0.2 إلى 1.0 ملم" },
+      { label: "السعر ورابط الشراء على أمازون", value: "5,680 ج.م | https://link.amazon/B0aErTHm4" }
+    ],
+    viewsCount: 15400,
+    dateAdded: "2026-04-08",
+    tags: ["كمبروسر دهانات صغير", "كمبروسر صامت", "فينغدا", "FENGDA", "AS-326", "Airbrush", "كمبروسر 3 لتر", "فرشاة هوائية", "أمازون"]
+  },
 ];
 
 export const COMPARISONS: ComparisonItem[] = [
@@ -2536,6 +2589,151 @@ export const ARTICLES: Article[] = [
     excerpt: "تعلم أسرار اختيار ماكينات اللحام الإنفرتر الحديثة خفيفة الوزن، والفرق بين تقنية MMA وMIG وحساب أمبير الشغل الحقيقي.",
     content: "ماكينات اللحام الإنفرتر أحدثت ثورة حقيقية في عالم الورش بالمقارنة مع المحولات التقليدية الثقيلة. تتميز بوزنها الخفيف وسحبها المنخفض للكهرباء مع ثبات القوس الكهربائي عند لحام الحديد والصاج...",
     tags: ["لحام", "إنفرتر", "ورشة", "عدد"]
+  },
+  {
+    id: "art-fengda-as326-mini-compressor-review",
+    title: "مراجعة كمبروسر دهانات صغير فينغدا AS-326: أفضل ضاغط هواء صامت مع خزان 3 لتر لعام 2026",
+    slug: "fengda-mini-paint-compressor-as326-review",
+    category: "أدوات كهربائية",
+    readTime: "7 دقائق",
+    date: "2026-04-08",
+    author: "فريق التحرير والمراجعات",
+    coverImage: "https://i.postimg.cc/xTyc5j1w/61pstw5Da6L.jpg",
+    excerpt: "تجربة ميدانية وشاملة لـ كمبروسر دهانات صغير فينغدا Elite AS-326 قدرة 125 واط مع خزان 3L ومراوح تبريد مزدوجة ومصيدة رطوبة وتشغيل صامت 47dB بسعر 5,680 ج.م.",
+    content: `<div class="article-container space-y-6">
+      <p class="text-lg leading-relaxed font-semibold text-slate-800 dark:text-slate-100">
+        إذا كنت تبحث عن <strong>كمبروسر دهانات صغير</strong> احترافي يضمن لك أداءً فائق الدقة وهدوءاً تاماً أثناء العمل على المشاريع الفنية، طلاء النماذج والمجسمات، أو استخدام الفرشاة الهوائية (Airbrush) في التجميل والديكور، فإن ضاغط الهواء الصغير <strong>فينغدا (Fengda Elite AS-326)</strong> يُعد الاستثمار الأمثل لعام 2026.
+      </p>
+
+      <div class="my-6 p-4 bg-amber-500/10 border-r-4 border-amber-500 rounded-lg">
+        <h3 class="font-bold text-amber-700 dark:text-amber-400 mb-1">💡 ملخص التقييم السريع:</h3>
+        <p class="text-sm text-slate-700 dark:text-slate-200">
+          يمتاز كمبروسر فينغدا AS-326 بوجود <strong>خزان هواء سعة 3 لتر</strong> يمنع نبضات الهواء نهائياً، مع <strong>مراوح تبريد مزدوجة</strong> للعمل الشاق، ومستوى ضوضاء شديد الانخفاض (47 ديسيبل)، مما يجعله أفضل كمبروسر دهانات صغير للفرشاة الهوائية والاستخدام المنزلي.
+        </p>
+      </div>
+
+      <h2 class="text-2xl font-bold text-amber-600 dark:text-amber-400 border-b pb-2 border-slate-200 dark:border-slate-800">لماذا تختار كمبروسر دهانات صغير فينغدا AS-326؟</h2>
+      <p>
+        تتميز ضواغط الهواء الصغير التقليدية بدون خزان بوجود تذبذب ونبض متكرر في ضغط الهواء أثناء الرش، كما أنها تسخن بسرعة عند العمل لفترات طويلة. ولكن طراز فينغدا Elite AS-326 يتغلب على كل هذه المشاكل بفضل تقنياته المتطورة:
+      </p>
+
+      <ul class="list-disc list-inside space-y-3 pr-2 text-slate-700 dark:text-slate-300">
+        <li><strong>خزان هواء سعة 3 لترات:</strong> يعمل كوعاء ضغط يختزن الهواء ويقوم بضخه بسلاسة وثبات مطلق، مما يضمن خروج الطلاء بشكل انسيابي تماماً وبدون أي اهتزاز.</li>
+        <li><strong>مراوح تبريد مزدوجة (Dual Cooling Fans):</strong> تم تزويد المحرك بمروحتين للتبريد الفعال لتبديد الحرارة بسرعة أثناء الجلسات الممتدة، مما يطيل العمر الافتراضي للجهاز.</li>
+        <li><strong>تشغيل هادئ وصامت (47 ديسيبل):</strong> يعمل الجهاز بصفير منخفض جداً يشبه صوت الثلاجة المنزلية، مما يتيح لك استخدامه داخل الغرف والاستوديوهات وفي المساء دون مضايقة الآخرين.</li>
+        <li><strong>نظام تشغيل وإيقاف تلقائي:</strong> ينطفئ المحرك تلقائياً عند وصول الضغط في الخزان إلى الحد المطلوب (4 بار / 57 PSI)، ويعاود التشغيل تلقائياً عند انخفاض الضغط إلى 3 بار.</li>
+        <li><strong>مصيدة رطوبة وفلتر مدمج:</strong> يشتمل على منظم ضغط احترافي مع فلتر لتنقية الهواء من بخار الماء والترسبات، ومزود بمقياس ضغط (مانومتر) دقيق.</li>
+      </ul>
+
+      <div class="my-8 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md">
+        <img src="https://i.postimg.cc/xTyc5j1w/61pstw5Da6L.jpg" alt="كمبروسر دهانات صغير فينغدا AS-326" class="w-full h-auto object-cover max-h-[450px]" />
+        <div class="p-3 bg-slate-100 dark:bg-slate-800 text-center text-xs text-slate-500 dark:text-slate-400">
+          صورة كمبروسر دهانات صغير فينغدا Elite AS-326 مع خزان هواء 3 لتر ومراوح تبريد مزدوجة
+        </div>
+      </div>
+
+      <h2 class="text-2xl font-bold text-amber-600 dark:text-amber-400 border-b pb-2 border-slate-200 dark:border-slate-800">المواصفات الفنية المكتملة لـ كمبروسر فينغدا AS-326</h2>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-right border-collapse border border-slate-200 dark:border-slate-700 rounded-lg">
+          <thead>
+            <tr class="bg-amber-500/10 text-amber-700 dark:text-amber-400">
+              <th class="p-3 border border-slate-200 dark:border-slate-700">المواصفة الفنية</th>
+              <th class="p-3 border border-slate-200 dark:border-slate-700">القيمة والتفاصيل</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 dark:divide-slate-700 text-sm">
+            <tr>
+              <td class="p-3 font-semibold border border-slate-200 dark:border-slate-700">الكلمة المفتاحية والموديل</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-700">كمبروسر دهانات صغير / Fengda Elite AS-326</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold border border-slate-200 dark:border-slate-700">العلامة التجارية والجهد</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-700">فينغدا (FENGDA) | 220 فولت | 1.5 أمبير</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold border border-slate-200 dark:border-slate-700">القدرة الكهربائية والمحرك</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-700">125 واط (1/6 حصان) - خالي من الزيوت (Oil-Free)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold border border-slate-200 dark:border-slate-700">سعة خزان الهواء</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-700">3 لترات (حاوية ضغط مدمجة)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold border border-slate-200 dark:border-slate-700">سعة تدفق الهواء (Flow Rate)</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-700">23 لتر لكل دقيقة (23 L/min)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold border border-slate-200 dark:border-slate-700">مستوى الضوضاء (Noise Level)</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-700">47 ديسيبل (تشغيل صامت جداً)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold border border-slate-200 dark:border-slate-700">الضغط الأقصى والتلقائي</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-700">أقصى ضغط 90 PSI | إيقاف تلقائي عند 4 بار / تشغيل عند 3 بار</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold border border-slate-200 dark:border-slate-700">مقاس فوهات البخاخة المتوافقة</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-700">مناسب لمسدسات Airbrush بفوهات 0.2 - 1.0 ملم</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold border border-slate-200 dark:border-slate-700">السعر والتوافر</td>
+              <td class="p-3 font-bold text-amber-600 border border-slate-200 dark:border-slate-700">5,680 ج.م على متجر أمازون مصر</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-2xl font-bold text-amber-600 dark:text-amber-400 border-b pb-2 border-slate-200 dark:border-slate-800">أبرز الاستخدامات الموصى بها</h2>
+      <p>
+        بفضل تصميمه المدمج ودقته الفائقة، يُستخدم هذا الضاغط الصغير في مجموعة واسعة من التطبيقات الاحترافية والهوايات:
+      </p>
+      <ul class="list-disc list-inside space-y-2 pr-2 text-slate-700 dark:text-slate-300">
+        <li><strong>طلاء المجسمات والنماذج المصغرة:</strong> خيار أساسي لهواة صناعة السيارات والطائرات والمجسمات البلاستيكية والخشبية.</li>
+        <li><strong>الرسم والتلوين بالفرشاة الهوائية (Airbrush):</strong> للوحات الفنية، طلاء الخوذ، الجداريات الصغيرة، والأعمال الاحترافية.</li>
+        <li><strong>استوديوهات الأظافر والتجميل:</strong> طلاء الأظافر بدقة وانسيابية عالية وبدون أي ضوضاء توعج العملاء.</li>
+        <li><strong>تزيين الكيك والحلويات:</strong> بفضل كونه خالياً من الزيوت تماماً (Oil-Free)، يمكن استخدامه بأمان مع ألوان الطعام في المخابز.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-amber-600 dark:text-amber-400 border-b pb-2 border-slate-200 dark:border-slate-800">مميزات وعيوب كمبروسر دهانات صغير فينغدا AS-326</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+        <div class="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl space-y-2">
+          <h4 class="font-bold text-emerald-700 dark:text-emerald-400 text-lg flex items-center gap-2">
+            ✅ المزايا والمميزات:
+          </h4>
+          <ul class="list-disc list-inside space-y-1 text-sm text-slate-700 dark:text-slate-200">
+            <li>خزان هواء 3 لتر لمنع تذبذب ونبضات الهواء تماماً.</li>
+            <li>مراوح تبريد مزدوجة تحمي المحرك من السخونة.</li>
+            <li>تشغيل صامت 47dB مريح جداً للاستخدام المنزلي.</li>
+            <li>إيقاف وتشغيل تلقائي ذكي يحافظ على الطاقة.</li>
+            <li>مصيدة رطوبة وفلتر مدمج مع منظم ضغط ومانومتر.</li>
+            <li>خالي من الزيوت (Oil-Free) ولا يحتاج صيانة معقدة.</li>
+          </ul>
+        </div>
+        <div class="p-4 bg-rose-500/10 border border-rose-500/30 rounded-xl space-y-2">
+          <h4 class="font-bold text-rose-700 dark:text-rose-400 text-lg flex items-center gap-2">
+            ⚠️ السلبيات والقيود:
+          </h4>
+          <ul class="list-disc list-inside space-y-1 text-sm text-slate-700 dark:text-slate-200">
+            <li>مخصص فقط للفرشاة الهوائية والرش الدقيق (فوهات 0.2 - 1.0 ملم)؛ وغير مناسب لمسدسات الرش الكبيرة للسيارات أو المباني.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 class="text-2xl font-bold text-amber-600 dark:text-amber-400 border-b pb-2 border-slate-200 dark:border-slate-800">الرأي النهائي وتوصية الشراء</h2>
+      <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+        إذا كنت تبحث عن <strong>كمبروسر دهانات صغير</strong> يمنحك أعلى أداء واستقرار للهواء مع أقصى راحة في التشغيل الصامت، فإن فينغدا Elite AS-326 هو الخيار الذي يستحق كل جنيه يدفع فيه، ومستعد للعمل معك لسنوات طويلة بأداء ثابت وموثوق.
+      </p>
+
+      <div class="my-8 p-6 text-center bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-amber-500/10 border border-amber-500/30 rounded-2xl space-y-4">
+        <h3 class="text-xl font-bold text-amber-700 dark:text-amber-400">احصل على كمبروسر دهانات صغير فينغدا AS-326 بأفضل سعر في مصر</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300">متوفر حالياً بسعر 5,680 ج.م على متجر أمازون مصر مع شحن سريع وضمان موثوق:</p>
+        <div>
+          <a href="https://link.amazon/B0aErTHm4" class="inline-block bg-amber-600 hover:bg-amber-700 text-white font-bold px-8 py-3.5 rounded-xl transition-all transform hover:scale-105 shadow-lg hover:shadow-amber-600/30 text-base" target="_blank" rel="nofollow sponsored">
+            شراء كمبروسر فينغدا AS-326 الآن من أمازون
+          </a>
+        </div>
+      </div>
+    </div>`,
+    tags: ["كمبروسر دهانات صغير", "كمبروسر صامت", "فينغدا", "FENGDA AS-326", "Airbrush", "كمبروسر 3 لتر", "معدات دهان", "أمازون"]
   },
 ];
 

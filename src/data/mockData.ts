@@ -916,6 +916,56 @@ export const PRODUCTS: Product[] = [
     dateAdded: "2026-04-08",
     tags: ["كمبروسر دهانات صغير", "كمبروسر صامت", "فينغدا", "FENGDA", "AS-326", "Airbrush", "كمبروسر 3 لتر", "فرشاة هوائية", "أمازون"]
   },
+  {
+    id: "p-total-wall-sander-1050w-tws10501",
+    titleAr: "ماكينة صنفرة حوائط توتال تولز 1050 واط 9 بوصة TWS10501 - أفضل ماكينة صنفرة حوائط مع خرطوم شفط الأتربة",
+    titleEn: "TOTAL Tools 1050W 9 Inch Drywall Sander TWS10501",
+    slug: "total-wall-sander-1050w-tws10501",
+    categoryId: "cat-electric-tools",
+    brandId: "b-total",
+    brandName: "توتال - TOTAL",
+    modelNumber: "TWS10501",
+    mainImage: "https://i.postimg.cc/0NrxvhHB/71v-TIDF3x-QL-AC-SL1500.jpg",
+    gallery: [
+      "https://i.postimg.cc/0NrxvhHB/71v-TIDF3x-QL-AC-SL1500.jpg",
+      "https://i.postimg.cc/Yqftz6Wm/71Bz-Cn-Ql1w-L-AC-SL1500.jpg"
+    ],
+    rating: 4.7,
+    reviewCount: 78,
+    editorScore: 9.4,
+    priceAmazon: 4890,
+    currency: "EGP",
+    amazonUrl: "https://link.amazon/B07oYZBTp",
+    isTopPick: true,
+    isEditorChoice: true,
+    isBestValue: true,
+    pros: [
+      "محرك قوي للغاية بقدرة 1050 واط يضمن إنجاز أعمال صنفرة الحوائط والأسقف والجبس بورد في وقت قياسي وبجهد أقل",
+      "سرعة دوران متغيرة من 600 إلى 2300 دورة في الدقيقة للتحكم الكامل حسب طبقة المعجون ونوع السطح",
+      "قرص صنفرة واسع بقطر 215 ملم (9 بوصة) يغطي مساحات كبيرة في المسحة الواحدة مما يضاعف الإنتاجية",
+      "قناة ومخرج شفط غبار بقطر 38 ملم للربط المباشر مع المكنسة وتوفير بيئة عمل صحية ونظيفة خالية من الغبار",
+      "تصميم مريح وتوزيع متوازن للوزن يقلل من إجهاد الذراعين أثناء صنفرة الأسقف والجدران المرتفعة"
+    ],
+    cons: [
+      "تتطلب التوصيل بمكنسة شفط أتربة مناسبة للاستفادة الكاملة من نظام الشفط النظيف أثناء العمل"
+    ],
+    targetAudience: "صناع النقاشة والدهانات، فنيو الجبس بورد والديكور، وأصحاب المنازل الذين يبحثون عن أفضل ماكينة صنفرة حوائط توتال 1050 واط بسعر 4,890 ج.م لإنجاز أعمال الصنفرة بدون غبار.",
+    summary: "أفضل ماكينة صنفرة حوائط لعام 2026 من توتال تولز (طراز TWS10501) بقدرة 1050 واط وسرعة تصل إلى 2300 RPM مع قرص 9 بوصة وفتحة شفط الغبار 38 ملم بسعر 4,890 ج.م.",
+    fullReviewText: `تُعتبر **ماكينة صنفرة حوائط** توتال 1050 واط TWS10501 الحل المثالي والمنقذ لفنيي النقاشة والدهانات وديكورات الجبس بورد. إذا كنت تعاني من مشقة الصنفرة اليدوية التقليدية والغبار الكثيف المنتشر في المكان، فإن هذه الماكينة توفر لك تغطية واسعة بقطر 215 ملم وسرعة تصل إلى 2300 دورة/دقيقة مع إمكانية توصيل خرطوم شفط الغبار لعمل نظيف واحترافي.`,
+    specs: [
+      { label: "نوع الأداة والكلمة المفتاحية", value: "ماكينة صنفرة حوائط / ماكينة صنفرة معجون وجبس بورد" },
+      { label: "العلامة التجارية والموديل", value: "توتال (TOTAL Tools) | TWS10501" },
+      { label: "القدرة والجهد الكهربائي", value: "1050 واط | 230 فولت - 50 هرتز | 3.5 أمبير" },
+      { label: "السرعة الدورانية", value: "متغيرة من 600 إلى 2300 دورة في الدقيقة (RPM)" },
+      { label: "قطر قرص الصنفرة", value: "215 ملم (9 بوصة)" },
+      { label: "قطر خرطوم الغبار", value: "38 ملم (متوافق مع أجهزة شفط الأتربة)" },
+      { label: "المصدر والتشغيل", value: "موصل بسلك كهربائي مباشر" },
+      { label: "السعر ورابط الشراء من أمازون", value: "4,890 ج.م | https://link.amazon/B07oYZBTp" }
+    ],
+    viewsCount: 17200,
+    dateAdded: "2026-04-10",
+    tags: ["ماكينة صنفرة حوائط", "صنفرة توتال", "TWS10501", "TOTAL", "صنفرة معجون", "جبس بورد", "صنفرة 1050 واط", "أمازون"]
+  }
 ];
 
 export const COMPARISONS: ComparisonItem[] = [
@@ -2735,6 +2785,153 @@ export const ARTICLES: Article[] = [
     </div>`,
     tags: ["كمبروسر دهانات صغير", "كمبروسر صامت", "فينغدا", "FENGDA AS-326", "Airbrush", "كمبروسر 3 لتر", "معدات دهان", "أمازون"]
   },
+  {
+    id: "art-total-wall-sander-tws10501-review",
+    title: "مراجعة ماكينة صنفرة حوائط توتال 1050 واط TWS10501: أفضل ماكينة صنفرة معجون وجبس بورد لعام 2026",
+    slug: "total-wall-sander-tws10501-review-2026",
+    category: "أدوات كهربائية",
+    readTime: "8 دقائق",
+    date: "2026-04-10",
+    author: "فريق التحرير والمراجعات",
+    coverImage: "https://i.postimg.cc/0NrxvhHB/71v-TIDF3x-QL-AC-SL1500.jpg",
+    excerpt: "تجربة ومراجعة شاملة لـ ماكينة صنفرة حوائط توتال TWS10501 بقدرة 1050 واط وسرعة 2300RPM وقرص 9 بوصة مع خرطوم شفط غبار 38 ملم بسعر 4,890 ج.م متوافق مع سيو 2026.",
+    content: `<div class="article-container space-y-6">
+      <p class="text-lg leading-relaxed font-semibold text-slate-800 dark:text-slate-100">
+        تُعد مرحلة صنفرة الحوائط والأسقف والجبس بورد من أكثر المراحل استهلاكاً للوقت والجهد في أعمال النقاشة والديكور، ناهيك عن الغبار الناعم الناجم عنها. إذا كنت تبحث عن <strong>ماكينة صنفرة حوائط</strong> احترافية تُنجز المساحات الواسعة في ثوانٍ معدودة وبدون غبار متناثر، فإن ماكينة الصنفرة من <strong>توتال تولز (TOTAL Tools TWS10501)</strong> بقدرة 1050 واط هي الخيار الأول والرائد لعام 2026.
+      </p>
+
+      <div class="my-6 p-4 bg-amber-500/10 border-r-4 border-amber-500 rounded-lg">
+        <h3 class="font-bold text-amber-700 dark:text-amber-400 mb-1">💡 ملخص التقييم السريع:</h3>
+        <p class="text-sm text-slate-700 dark:text-slate-200">
+          تأتي ماكينة صنفرة الحوائط توتال TWS10501 بمحرك قوي <strong>1050 واط</strong> وسرعة دورانية متغيرة حتى <strong>2300 دورة/دقيقة</strong> مع <strong>قرص صنفرة كبير بقطر 215 ملم (9 بوصة)</strong> وفتحة خرطوم شفط أتربة 38 ملم، مما يضمن لك سطوحاً مستوية تماماً كالحرير وبيئة عمل صحية خالية من أتربة الجبس والمعجون بسعر 4,890 ج.م.
+        </p>
+      </div>
+
+      <h2 class="text-2xl font-bold text-amber-600 dark:text-amber-400 border-b pb-2 border-slate-200 dark:border-slate-800">لماذا تشتري ماكينة صنفرة حوائط توتال TWS10501؟</h2>
+      <p>
+        تتميز ماكينة صنفرة الحوائط توتال بالعديد من المزايا التشغيلية والهندسية التي تجعلها تتفوق على طرق الصنفرة التقليدية وعلى المنافسين في السوق المصري:
+      </p>
+
+      <ul class="list-disc list-inside space-y-3 pr-2 text-slate-700 dark:text-slate-300">
+        <li><strong>محرك شاق بقدرة 1050 واط:</strong> يقدم عزم دوران متواصل وقوة إزالة سريعة لطبقات المعجون الزائدة والبروزات في الخرسانة والجبس بدون إجهاد للمحرك.</li>
+        <li><strong>سرعة متغيرة (600 - 2300 دورة/دقيقة):</strong> ميزة التحكم في السرعة تتيح لك الضبط حسب قسوة طبقة المعجون أو التأسيس؛ سرعات منخفضة للصنفرة الناعمة وسرعات عالية للإزالة السريعة.</li>
+        <li><strong>قرص صنفرة كبير 9 بوصة (215 ملم):</strong> مساحة التغطية الواسعة تقلل وقت العمل بالنصف، حيث تمسح مساحات كبرى بلمسات بسيطة.</li>
+        <li><strong>نظام شفط الغبار المدمج (فتحة 38 ملم):</strong> يمكن توصيل الماكينة بخرطوم مكنسة أتربة لشفط الغبار فور تولده من قرص الصنفرة، مما يحمي صحة الفني ويحافظ على نظافة موقع العمل.</li>
+        <li><strong>تصميم مريح وتوزيع مثالي للوزن:</strong> المقابض المطاطية المريحة وتوازن جسم الماكينة يقللان التعب أثناء العمل على الجدران المرتفعة أو الأسقف.</li>
+      </ul>
+
+      <div class="my-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md">
+          <img src="https://i.postimg.cc/0NrxvhHB/71v-TIDF3x-QL-AC-SL1500.jpg" alt="ماكينة صنفرة حوائط توتال TWS10501" class="w-full h-64 object-cover" />
+          <div class="p-2 bg-slate-100 dark:bg-slate-800 text-center text-xs text-slate-500">
+            ماكينة صنفرة حوائط توتال 1050 واط طراز TWS10501
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md">
+          <img src="https://i.postimg.cc/Yqftz6Wm/71Bz-Cn-Ql1w-L-AC-SL1500.jpg" alt="قرص ومكونات ماكينة صنفرة حوائط توتال" class="w-full h-64 object-cover" />
+          <div class="p-2 bg-slate-100 dark:bg-slate-800 text-center text-xs text-slate-500">
+            قرص الصنفرة 9 بوصة (215 ملم) ووصلة شفط الغبار 38 ملم
+          </div>
+        </div>
+      </div>
+
+      <h2 class="text-2xl font-bold text-amber-600 dark:text-amber-400 border-b pb-2 border-slate-200 dark:border-slate-800">المواصفات الفنية المكتملة لـ ماكينة صنفرة الحوائط توتال</h2>
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-right border-collapse border border-slate-200 dark:border-slate-700 rounded-lg">
+          <thead>
+            <tr class="bg-amber-500/10 text-amber-700 dark:text-amber-400">
+              <th class="p-3 border border-slate-200 dark:border-slate-700">المواصفة الفنية</th>
+              <th class="p-3 border border-slate-200 dark:border-slate-700">التفاصيل والقيمة</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 dark:divide-slate-700 text-sm">
+            <tr>
+              <td class="p-3 font-semibold border border-slate-200 dark:border-slate-700">الكلمة المفتاحية والمنتج</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-700">ماكينة صنفرة حوائط / أداة صنفرة جدران وسقف</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold border border-slate-200 dark:border-slate-700">العلامة التجارية والطراز</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-700">توتال تولز (TOTAL Tools) | TWS10501</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold border border-slate-200 dark:border-slate-700">القوة الكهربائية والجهد</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-700">1050 واط | 230 فولت - 50 هرتز | تيار 3.5 أمبير</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold border border-slate-200 dark:border-slate-700">السرعة الدورانية القصوى</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-700">من 600 إلى 2300 دورة في الدقيقة (RPM)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold border border-slate-200 dark:border-slate-700">قطر ورقة وقاعدة الصنفرة</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-700">215 ملم (9 بوصة)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold border border-slate-200 dark:border-slate-700">قطر مخرج خرطوم الغبار</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-700">38 ملم</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold border border-slate-200 dark:border-slate-700">مصدر الطاقة نوع الحبيبات</td>
+              <td class="p-3 border border-slate-200 dark:border-slate-700">موصل بسلك كهربائي | ورق صنفرة حبيبات متوسطة ومختلفة</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold border border-slate-200 dark:border-slate-700">السعر ورابط الشراء</td>
+              <td class="p-3 font-bold text-amber-600 border border-slate-200 dark:border-slate-700">4,890 ج.م على متجر أمازون مصر</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-2xl font-bold text-amber-600 dark:text-amber-400 border-b pb-2 border-slate-200 dark:border-slate-800">أبرز مجالات الاستخدام والتطبيقات</h2>
+      <p>
+        تم تصميم ماكينة صنفرة الحوائط توتال TWS10501 لتخدم فئات متعددة في مجال التشطيبات والبناء:
+      </p>
+      <ul class="list-disc list-inside space-y-2 pr-2 text-slate-700 dark:text-slate-300">
+        <li><strong>صنفرة معجون الحوائط والأسقف:</strong> لتسوية طبقات المعجون قبل إلقاء وجه الدهان النهائي واستبعاد التدرجات.</li>
+        <li><strong>تشطيب ألواح الجبس بورد:</strong> لإخفاء الفواصل والبراغي وصنفرة المعجون الخاص بالفواصل بكل سلاسة.</li>
+        <li><strong>إزالة الدهانات القديمة والشوائب:</strong> لتنظيف وتجهيز الجدران القديمة لإعادة الطلاء والتجديد.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-amber-600 dark:text-amber-400 border-b pb-2 border-slate-200 dark:border-slate-800">مميزات وعيوب ماكينة صنفرة حوائط توتال TWS10501</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+        <div class="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl space-y-2">
+          <h4 class="font-bold text-emerald-700 dark:text-emerald-400 text-lg flex items-center gap-2">
+            ✅ المزايا والايجابيات:
+          </h4>
+          <ul class="list-disc list-inside space-y-1 text-sm text-slate-700 dark:text-slate-200">
+            <li>محرك شديد القوة 1050 واط لإنجاز سريع للأعمال الصعبة.</li>
+            <li>سرعات متعددة تصل إلى 2300 RPM للتحكم الكامل.</li>
+            <li>قرص 9 بوصة (215 ملم) لتغطية مساحات واسعة بجهد أقل.</li>
+            <li>وصلة شفط غبار 38 ملم لبيئة عمل صحية ونظيفة.</li>
+            <li>جودة تصنيع ممتازة وفق معايير شركة توتال العالمية.</li>
+          </ul>
+        </div>
+        <div class="p-4 bg-rose-500/10 border border-rose-500/30 rounded-xl space-y-2">
+          <h4 class="font-bold text-rose-700 dark:text-rose-400 text-lg flex items-center gap-2">
+            ⚠️ العيوب والسلبيات:
+          </h4>
+          <ul class="list-disc list-inside space-y-1 text-sm text-slate-700 dark:text-slate-200">
+            <li>تحتاج لتوصيل مكنسة كهربائية للاستفادة الكاملة من ميزة الشفط.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 class="text-2xl font-bold text-amber-600 dark:text-amber-400 border-b pb-2 border-slate-200 dark:border-slate-800">الخلاصة وتوصية الشراء</h2>
+      <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+        تعتبر <strong>ماكينة صنفرة حوائط توتال 1050 واط TWS10501</strong> الاستثمار الأوفر والأكثر احترافية لكل فني نقاشة أو صاحب منزل يرغب في الحصول على جدران ناعمة تماماً ومجهزة للدهان بأسلوب عصري وسريع وسعر منافس جداً.
+      </p>
+
+      <div class="my-8 p-6 text-center bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-amber-500/10 border border-amber-500/30 rounded-2xl space-y-4">
+        <h3 class="text-xl font-bold text-amber-700 dark:text-amber-400">احصل على ماكينة صنفرة حوائط توتال TWS10501 بأفضل سعر في مصر</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300">سعر المنتج حالياً 4,890 ج.م على متجر أمازون مصر مع خيار الشحن السريع:</p>
+        <div>
+          <a href="https://link.amazon/B07oYZBTp" class="inline-block bg-amber-600 hover:bg-amber-700 text-white font-bold px-8 py-3.5 rounded-xl transition-all transform hover:scale-105 shadow-lg hover:shadow-amber-600/30 text-base" target="_blank" rel="nofollow sponsored">
+            شراء ماكينة صنفرة حوائط توتال من أمازون الآن
+          </a>
+        </div>
+      </div>
+    </div>`,
+    tags: ["ماكينة صنفرة حوائط", "صنفرة توتال", "TWS10501", "TOTAL", "صنفرة معجون", "جبس بورد", "أدوات دهان", "أمازون"]
+  }
 ];
 
 export const REVIEWS_SAMPLE: UserReview[] = [

@@ -18,7 +18,12 @@ import {
   ChevronDown,
   Zap,
   Volume2,
-  VolumeX
+  VolumeX,
+  Plus,
+  Trash2,
+  Edit,
+  X,
+  CheckCircle2
 } from "lucide-react";
 
 // === CONFIGURATION ===
@@ -89,8 +94,7 @@ const playNotificationSound = () => {
 export default function App() {
   const [telegramUrl, setTelegramUrl] = useState(DEFAULT_TELEGRAM_URL);
   const [channelInput, setChannelInput] = useState("nmerfx");
-  const [signals, setSignals] = useState<Signal[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [lastRefreshed, setLastRefreshed] = useState<Date>(new Date());
   const [searchQuery, setSearchQuery] = useState("");
@@ -104,7 +108,41 @@ export default function App() {
     return saved !== "false"; // default to true if not set to 'false'
   });
 
-  const prevSignalsRef = useRef<Signal[]>([]);
+  // Local state signals loading from localStorage
+  const [signals, setSignals] = useState<Signal[]>(() => {
+    const saved = localStorage.getItem("nmer_fx_local_signals");
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      } catch (e) {
+        console.error("Failed to parse local signals", e);
+      }
+    }
+    const fallback = getFallbackSignals();
+    localStorage.setItem("nmer_fx_local_signals", JSON.stringify(fallback));
+    return fallback;
+  });
+
+  const prevSignalsRef = useRef<Signal[]>(signals);
+
+  // Form states for adding and editing
+  const [isAdding, setIsAdding] = useState(false);
+  const [editingSignal, setEditingSignal] = useState<Signal | null>(null);
+  const [formData, setFormData] = useState({
+    pair: "",
+    type: "BUY",
+    entry: "",
+    tp1: "",
+    tp2: "",
+    tp3: "",
+    sl: "",
+    explanation: "",
+    photoUrl: "",
+    status: "ACTIVE"
+  });
 
   // Risk Calculator State
   const [accountBalance, setAccountBalance] = useState(1000);
@@ -112,83 +150,193 @@ export default function App() {
   const [stopLossPips, setStopLossPips] = useState(30);
   const [calculatedLotSize, setCalculatedLotSize] = useState(0.03);
 
-  // Parse channel name from telegram URL
-  const extractChannelName = (url: string) => {
-    try {
-      const cleanUrl = url.trim();
-      const parts = cleanUrl.split("/");
-      return parts[parts.length - 1] || "nmerfx";
-    } catch {
-      return "nmerfx";
-    }
+  // Helper to save signals locally and update state
+  const saveSignalsLocally = (newList: Signal[]) => {
+    localStorage.setItem("nmer_fx_local_signals", JSON.stringify(newList));
+    setSignals(newList);
+    prevSignalsRef.current = newList;
   };
 
-  // Fetch signals from our Express API proxy
-  const fetchSignals = async (channel: string, isInitial = false) => {
+  // Fetch signals locally (Offline/Autonomy simulation)
+  const fetchSignals = async (channel?: string, isInitial = false) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`/api/telegram-signals?channel=${channel}&t=${Date.now()}`);
-      if (!response.ok) {
-        throw new Error("فشل في جلب التوصيات من الخادم. يرجى التحقق من القناة.");
-      }
-      const data = await response.json();
-      if (data.success && Array.isArray(data.signals)) {
-        // Sound Notification logic on incoming signals
-        if (!isInitial && prevSignalsRef.current && prevSignalsRef.current.length > 0) {
-          const hasNewSignal = data.signals.some((sig: any) => {
-            // A brand new signal ID
-            return !prevSignalsRef.current.some((p) => p.id === sig.id);
-          });
-          const hasStatusChange = data.signals.some((sig: any) => {
-            const matchingPrev = prevSignalsRef.current.find((p) => p.id === sig.id);
-            return matchingPrev && matchingPrev.status !== sig.status;
-          });
-
-          if ((hasNewSignal || hasStatusChange) && soundEnabled) {
-            playNotificationSound();
-          }
-        }
-        
-        setSignals(data.signals);
-        prevSignalsRef.current = data.signals;
+      await new Promise((resolve) => setTimeout(resolve, 350)); // smooth user transition
+      const saved = localStorage.getItem("nmer_fx_local_signals");
+      let currentList: Signal[] = [];
+      if (saved) {
+        currentList = JSON.parse(saved);
       } else {
-        throw new Error(data.error || "تنسيق البيانات المستلمة غير صالح.");
+        currentList = getFallbackSignals();
+        localStorage.setItem("nmer_fx_local_signals", JSON.stringify(currentList));
       }
+
+      // Check if new signal was added in other ways to play sound
+      if (!isInitial && prevSignalsRef.current && prevSignalsRef.current.length > 0) {
+        const hasNewSignal = currentList.some((sig: any) => {
+          return !prevSignalsRef.current.some((p) => p.id === sig.id);
+        });
+        const hasStatusChange = currentList.some((sig: any) => {
+          const matchingPrev = prevSignalsRef.current.find((p) => p.id === sig.id);
+          return matchingPrev && matchingPrev.status !== sig.status;
+        });
+
+        if ((hasNewSignal || hasStatusChange) && soundEnabled) {
+          playNotificationSound();
+        }
+      }
+
+      setSignals(currentList);
+      prevSignalsRef.current = currentList;
     } catch (err: any) {
       console.error(err);
-      setError(err.message || "حدث خطأ غير متوقع أثناء الاتصال بقناة التلجرام.");
-      // Fallback placeholder signals so the user instantly sees a beautifully working app
-      const fallback = getFallbackSignals();
-      setSignals(fallback);
-      // Initialize prevSignalsRef on fallback first load
-      if (prevSignalsRef.current.length === 0) {
-        prevSignalsRef.current = fallback;
-      }
+      setError("حدث خطأ أثناء تحميل البيانات المحلية.");
     } finally {
       setLoading(false);
       setLastRefreshed(new Date());
     }
   };
 
-  // Helper to trigger loading of custom channel
+  // Add new signal
+  const handleAddSignal = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.pair || !formData.entry || !formData.sl || !formData.tp1) {
+      alert("الرجاء ملء حقول الاسم وسعر الدخول والهدف الأول ووقف الخسارة.");
+      return;
+    }
+
+    const fresh: Signal = {
+      id: `local-sig-${Date.now()}`,
+      pair: formData.pair.toUpperCase(),
+      type: formData.type as "BUY" | "SELL" | "INFO",
+      entry: formData.entry,
+      tp1: formData.tp1,
+      tp2: formData.tp2,
+      tp3: formData.tp3,
+      sl: formData.sl,
+      status: formData.status as any,
+      explanation: formData.explanation || "تحليل فني وتوصية تداول تم إنشاؤها يدوياً.",
+      date: new Date().toISOString(),
+      views: "1.5K",
+      photoUrl: formData.photoUrl,
+      rawText: `${formData.pair}\nدخول: ${formData.entry}\nهدف: ${formData.tp1}\nستوب: ${formData.sl}`
+    };
+
+    const updated = [fresh, ...signals];
+    saveSignalsLocally(updated);
+    setIsAdding(false);
+    setFormData({
+      pair: "",
+      type: "BUY",
+      entry: "",
+      tp1: "",
+      tp2: "",
+      tp3: "",
+      sl: "",
+      explanation: "",
+      photoUrl: "",
+      status: "ACTIVE"
+    });
+
+    if (soundEnabled) {
+      playNotificationSound();
+    }
+  };
+
+  // Delete signal
+  const handleDeleteSignal = (id: string) => {
+    if (confirm("هل أنت متأكد من حذف هذه التوصية نهائياً؟")) {
+      const updated = signals.filter((s) => s.id !== id);
+      saveSignalsLocally(updated);
+    }
+  };
+
+  // Quick edit status toggle
+  const handleToggleStatus = (id: string, newStatus: string) => {
+    const updated = signals.map((s) => {
+      if (s.id === id) {
+        if (s.status !== newStatus && soundEnabled) {
+          playNotificationSound();
+        }
+        return { ...s, status: newStatus as any };
+      }
+      return s;
+    });
+    saveSignalsLocally(updated);
+  };
+
+  // Open Edit Mode
+  const handleStartEdit = (sig: Signal) => {
+    setEditingSignal(sig);
+    setFormData({
+      pair: sig.pair,
+      type: sig.type,
+      entry: sig.entry,
+      tp1: sig.tp1,
+      tp2: sig.tp2,
+      tp3: sig.tp3,
+      sl: sig.sl,
+      explanation: sig.explanation,
+      photoUrl: sig.photoUrl,
+      status: sig.status
+    });
+    setIsAdding(true);
+  };
+
+  // Save edited signal
+  const handleSaveEdit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingSignal) return;
+
+    const updated = signals.map((s) => {
+      if (s.id === editingSignal.id) {
+        if (s.status !== formData.status && soundEnabled) {
+          playNotificationSound();
+        }
+        return {
+          ...s,
+          pair: formData.pair.toUpperCase(),
+          type: formData.type as any,
+          entry: formData.entry,
+          tp1: formData.tp1,
+          tp2: formData.tp2,
+          tp3: formData.tp3,
+          sl: formData.sl,
+          explanation: formData.explanation,
+          photoUrl: formData.photoUrl,
+          status: formData.status as any
+        };
+      }
+      return s;
+    });
+
+    saveSignalsLocally(updated);
+    setIsAdding(false);
+    setEditingSignal(null);
+    setFormData({
+      pair: "",
+      type: "BUY",
+      entry: "",
+      tp1: "",
+      tp2: "",
+      tp3: "",
+      sl: "",
+      explanation: "",
+      photoUrl: "",
+      status: "ACTIVE"
+    });
+  };
+
+  // Parse channel name helper (dummy placeholder now)
+  const extractChannelName = (url: string) => "nmerfx";
   const handleApplyChannel = () => {
-    const channel = extractChannelName(telegramUrl);
-    setChannelInput(channel);
-    fetchSignals(channel, false);
     setShowConfig(false);
   };
 
-  // Auto-refresh every 5 minutes
+  // Initial load
   useEffect(() => {
-    const channel = extractChannelName(telegramUrl);
-    fetchSignals(channel, true);
-
-    const interval = setInterval(() => {
-      fetchSignals(channel, false);
-    }, 5 * 60 * 1000); // 5 minutes
-
-    return () => clearInterval(interval);
+    fetchSignals(undefined, true);
   }, []);
 
   // Calculate standard forex lot sizes
@@ -247,8 +395,8 @@ export default function App() {
       {/* Top Banner / Ticker */}
       <div className="bg-gradient-to-r from-amber-600 to-amber-500 text-black px-4 py-2 text-center text-xs font-semibold tracking-wide flex justify-between items-center sm:px-8 border-b border-amber-600">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#090d16] animate-pulse"></span>
-          <span>تحديث مباشر كل 5 دقائق</span>
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>لوحة التحكم مستقلة (تم إلغاء ربط تليجرام بنجاح)</span>
         </div>
         <div className="hidden md:flex items-center gap-6">
           <span>الذهب XAUUSD: صاعد</span>
@@ -257,15 +405,9 @@ export default function App() {
           <span>•</span>
           <span>الداوجونز US30: اتجاه هابط</span>
         </div>
-        <a
-          href={telegramUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1 hover:underline text-xs"
-        >
-          <span>قناتنا الرسمية</span>
-          <ExternalLink className="w-3.5 h-3.5" />
-        </a>
+        <div className="flex items-center gap-1 text-xs">
+          <span>تخزين سحابي محلي آمن 💾</span>
+        </div>
       </div>
 
       {/* Main Header */}
@@ -278,17 +420,39 @@ export default function App() {
             <div>
               <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
                 NMER FX Signals Hub
-                <span className="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/20 font-normal">
-                  مباشر
+                <span className="text-[10px] bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded-full border border-amber-500/20 font-normal">
+                  لوحة تحكم ذكية
                 </span>
               </h1>
               <p className="text-xs text-neutral-400">
-                مراقبة وتجميع توصيات التداول الذكية تلقائياً من التلجرام
+                لوحة إدارة وإضافة توصيات التداول الذاتية والتحكم المستقل
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 self-end sm:self-auto">
+          <div className="flex flex-wrap items-center gap-2 self-end sm:self-auto">
+            <button
+              onClick={() => {
+                setIsAdding(!isAdding);
+                setEditingSignal(null);
+                setFormData({
+                  pair: "",
+                  type: "BUY",
+                  entry: "",
+                  tp1: "",
+                  tp2: "",
+                  tp3: "",
+                  sl: "",
+                  explanation: "",
+                  photoUrl: "",
+                  status: "ACTIVE"
+                });
+              }}
+              className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black px-4 py-2.5 rounded-xl font-bold text-sm transition-all shadow-md active:scale-95"
+            >
+              <Plus className="w-4 h-4" />
+              <span>إضافة توصية جديدة</span>
+            </button>
             <button
               onClick={() => {
                 const newVal = !soundEnabled;
@@ -320,12 +484,12 @@ export default function App() {
             <button
               onClick={() => setShowConfig(!showConfig)}
               className="p-2.5 text-neutral-400 hover:text-white bg-[#141f32] rounded-xl transition border border-[#1e2e4a]"
-              title="إعدادات القناة والمنصة"
+              title="إعدادات المنصة"
             >
               <Settings className="w-5 h-5" />
             </button>
             <button
-              onClick={() => fetchSignals(channelInput, false)}
+              onClick={() => fetchSignals()}
               disabled={loading}
               className="flex items-center gap-2 bg-[#141f32] hover:bg-[#1a2942] text-amber-500 hover:text-amber-400 px-4 py-2.5 rounded-xl border border-amber-500/10 hover:border-amber-500/30 font-medium text-sm transition-all shadow-md active:scale-95 disabled:opacity-50"
             >
@@ -344,30 +508,13 @@ export default function App() {
             <div className="flex justify-between items-center">
               <h3 className="font-bold text-amber-500 text-base flex items-center gap-2">
                 <Settings className="w-5 h-5" />
-                إعدادات قناة التلجرام والمنصة
+                إعدادات المنصة المحلية
               </h3>
-              <span className="text-xs text-neutral-400">تغيير مصدر جلب التوصيات والتنبيهات</span>
+              <span className="text-xs text-emerald-400">الوضع المستقل نشط</span>
             </div>
             <p className="text-sm text-neutral-300">
-              قم بإدخال رابط أو معرف قناتك العامة على تلجرام. سيقوم النظام بقراءة المنشورات وتحليلها تلقائياً بالذكاء الاصطناعي وتحويلها إلى كروت ذكية.
+              تلبية لطلبك، تم **إلغاء الربط بقنوات تليجرام** بالكامل وتوجيه المنصة لتعمل في الوضع المستقل الذاتي. يمكنك الآن إضافة وتعديل وحذف الصفقات والتحكم بحالتها ونشر تحليلاتك الفنية بحرية وأمان كامل، مع حفظ كافة تفضيلاتك وتوصياتك تلقائياً في ذاكرة المتصفح المحلية.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <div className="md:col-span-2">
-                <input
-                  type="text"
-                  value={telegramUrl}
-                  onChange={(e) => setTelegramUrl(e.target.value)}
-                  placeholder="مثال: https://t.me/nmerfx"
-                  className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 focus:ring-1 focus:ring-amber-500 rounded-xl px-4 py-3 text-sm text-white placeholder-neutral-500 outline-none transition"
-                />
-              </div>
-              <button
-                onClick={handleApplyChannel}
-                className="bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-xl px-6 py-3 text-sm transition shadow-lg shadow-amber-500/10"
-              >
-                تطبيق وحفظ المصدر
-              </button>
-            </div>
 
             {/* Sound Notification Settings inside Settings Box */}
             <div className="border-t border-[#1a2436]/60 pt-4 mt-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
@@ -444,25 +591,196 @@ export default function App() {
           </div>
 
           <div className="bg-[#0c1322] border border-[#1a2436] p-4 rounded-2xl flex items-center gap-3 shadow-md col-span-2 lg:col-span-1">
-            <div className="bg-[#141f32] text-neutral-300 p-2.5 rounded-xl border border-[#1e2e4a]">
-              <MessageSquare className="w-5 h-5" />
+            <div className="bg-amber-500/10 text-amber-500 p-2.5 rounded-xl border border-amber-500/15">
+              <CheckCircle2 className="w-5 h-5" />
             </div>
             <div className="flex-1 min-w-0">
-              <span className="text-xs text-neutral-400 block">المصدر الحالي</span>
-              <span className="text-sm font-semibold text-white block truncate mt-0.5" title={telegramUrl}>
-                @{channelInput}
+              <span className="text-xs text-neutral-400 block">نمط التشغيل الحالي</span>
+              <span className="text-sm font-semibold text-emerald-400 block truncate mt-0.5">
+                مستقل ذاتي (محلي)
               </span>
             </div>
-            <a
-              href={telegramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-amber-500 hover:text-amber-400"
-            >
-              <ExternalLink className="w-4 h-4" />
-            </a>
           </div>
         </section>
+
+        {/* Local Signal Creation & Editing Form */}
+        {isAdding && (
+          <div className="bg-[#0c1322] border border-amber-500/30 p-6 rounded-2xl shadow-xl space-y-4 animate-fadeIn">
+            <div className="flex justify-between items-center border-b border-[#1a2436] pb-3">
+              <h3 className="font-bold text-amber-500 text-lg flex items-center gap-2">
+                {editingSignal ? <Edit className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+                {editingSignal ? "تعديل التوصية الفنية" : "إنشاء توصية تداول جديدة"}
+              </h3>
+              <button
+                onClick={() => {
+                  setIsAdding(false);
+                  setEditingSignal(null);
+                }}
+                className="text-neutral-400 hover:text-white p-1 rounded-lg hover:bg-[#141f32] transition"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={editingSignal ? handleSaveEdit : handleAddSignal} className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* Pair Name */}
+                <div className="space-y-1">
+                  <label className="text-xs text-neutral-400 block text-right">اسم الأداة الماليّة (الزوج/السلعة) *</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="مثال: USDJPY أو XAUUSD"
+                    value={formData.pair}
+                    onChange={(e) => setFormData({ ...formData, pair: e.target.value })}
+                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
+                  />
+                </div>
+
+                {/* Entry Price */}
+                <div className="space-y-1">
+                  <label className="text-xs text-neutral-400 block text-right">سعر الدخول (Entry Price) *</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="مثال: 157.750"
+                    value={formData.entry}
+                    onChange={(e) => setFormData({ ...formData, entry: e.target.value })}
+                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
+                  />
+                </div>
+
+                {/* Direction (Type) */}
+                <div className="space-y-1">
+                  <label className="text-xs text-neutral-400 block text-right">نوع وتوجّه الصفقة *</label>
+                  <select
+                    value={formData.type}
+                    onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
+                  >
+                    <option value="BUY">BUY (شراء)</option>
+                    <option value="SELL">SELL (بيع)</option>
+                    <option value="INFO">INFO (تحديث / أخبار السوق)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                {/* Target 1 */}
+                <div className="space-y-1">
+                  <label className="text-xs text-neutral-400 block text-right">الهدف الأول (TP1) *</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="مثال: 161.000"
+                    value={formData.tp1}
+                    onChange={(e) => setFormData({ ...formData, tp1: e.target.value })}
+                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
+                  />
+                </div>
+
+                {/* Target 2 */}
+                <div className="space-y-1">
+                  <label className="text-xs text-neutral-400 block text-right">الهدف الثاني (TP2 - اختياري)</label>
+                  <input
+                    type="text"
+                    placeholder="مثال: 162.500"
+                    value={formData.tp2}
+                    onChange={(e) => setFormData({ ...formData, tp2: e.target.value })}
+                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
+                  />
+                </div>
+
+                {/* Target 3 */}
+                <div className="space-y-1">
+                  <label className="text-xs text-neutral-400 block text-right">الهدف الثالث (TP3 - اختياري)</label>
+                  <input
+                    type="text"
+                    placeholder="مثال: 164.000"
+                    value={formData.tp3}
+                    onChange={(e) => setFormData({ ...formData, tp3: e.target.value })}
+                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
+                  />
+                </div>
+
+                {/* Stop Loss */}
+                <div className="space-y-1">
+                  <label className="text-xs text-neutral-400 block text-right">وقف الخسارة (Stop Loss) *</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="مثال: 156.400"
+                    value={formData.sl}
+                    onChange={(e) => setFormData({ ...formData, sl: e.target.value })}
+                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* Photo/Chart URL */}
+                <div className="md:col-span-2 space-y-1">
+                  <label className="text-xs text-neutral-400 block text-right">رابط شارت التحليل (مثال: /1787237745892.png أو رابط خارجي)</label>
+                  <input
+                    type="text"
+                    placeholder="اتركها فارغة لإخفاء صورة الشارت"
+                    value={formData.photoUrl}
+                    onChange={(e) => setFormData({ ...formData, photoUrl: e.target.value })}
+                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
+                  />
+                </div>
+
+                {/* Status */}
+                <div className="space-y-1">
+                  <label className="text-xs text-neutral-400 block text-right">حالة التوصية الحالية</label>
+                  <select
+                    value={formData.status}
+                    onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
+                  >
+                    <option value="ACTIVE">نشطة ومباشرة (ACTIVE)</option>
+                    <option value="TP1 HIT">تحقق الهدف الأول (TP1 HIT)</option>
+                    <option value="TP2 HIT">تحقق الهدف الثاني (TP2 HIT)</option>
+                    <option value="TP3 HIT">تحقق الهدف الأقصى (TP3 HIT)</option>
+                    <option value="SL HIT">ضرب وقف الخسارة (SL HIT)</option>
+                    <option value="CLOSED">مغلقة يدوياً (CLOSED)</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Explanation / Notes */}
+              <div className="space-y-1">
+                <label className="text-xs text-neutral-400 block text-right">الشرح والرؤية الفنية والتحليلية</label>
+                <textarea
+                  rows={3}
+                  placeholder="اكتب هنا تفاصيل التحليل الفني والفرص المتوقعة لهذا الزوج..."
+                  value={formData.explanation}
+                  onChange={(e) => setFormData({ ...formData, explanation: e.target.value })}
+                  className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition resize-none"
+                />
+              </div>
+
+              <div className="flex justify-end gap-2 pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsAdding(false);
+                    setEditingSignal(null);
+                  }}
+                  className="bg-[#141f32] hover:bg-[#1a2942] border border-[#1e2e4a] text-neutral-300 font-semibold rounded-xl px-5 py-2.5 text-sm transition"
+                >
+                  إلغاء
+                </button>
+                <button
+                  type="submit"
+                  className="bg-amber-500 hover:bg-amber-600 text-black font-extrabold rounded-xl px-6 py-2.5 text-sm transition shadow-lg shadow-amber-500/15"
+                >
+                  {editingSignal ? "حفظ التعديلات" : "نشر التوصية فوراً 🚀"}
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
 
         {/* Secondary Block: Layout with Main Dashboard + Lot Calculator */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -698,10 +1016,37 @@ export default function App() {
                           </p>
                         </div>
 
+                        {/* Quick Status Control bar */}
+                        <div className="bg-[#141f32]/30 border border-[#1e2e4a]/50 p-2.5 rounded-xl flex flex-wrap items-center justify-between gap-2">
+                          <span className="text-[11px] text-neutral-400 font-bold">تحديث الحالة السريع:</span>
+                          <div className="flex flex-wrap gap-1">
+                            {[
+                              { code: "ACTIVE", label: "نشطة" },
+                              { code: "TP1 HIT", label: "هدف 1" },
+                              { code: "TP2 HIT", label: "هدف 2" },
+                              { code: "TP3 HIT", label: "هدف 3" },
+                              { code: "SL HIT", label: "ستوب" },
+                              { code: "CLOSED", label: "مغلقة" }
+                            ].map((st) => (
+                              <button
+                                key={st.code}
+                                onClick={() => handleToggleStatus(sig.id, st.code)}
+                                className={`px-2 py-1 rounded text-[10px] font-bold transition-all ${
+                                  sig.status === st.code
+                                    ? "bg-amber-500 text-black shadow-sm"
+                                    : "bg-[#1c2b44] text-neutral-300 hover:bg-[#253958] hover:text-white"
+                                }`}
+                              >
+                                {st.label}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+
                         {/* Actions & Timestamps */}
                         <div className="flex flex-col sm:flex-row gap-3 items-center justify-between pt-2 border-t border-[#1a2436]/40 text-xs text-neutral-500">
                           <span>
-                            تم النشر: {sig.date ? new Date(sig.date).toLocaleString("ar-EG") : "غير محدد"}
+                            تاريخ التوصية: {sig.date ? new Date(sig.date).toLocaleString("ar-EG") : "غير محدد"}
                           </span>
                           
                           <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
@@ -722,16 +1067,25 @@ export default function App() {
                                 </>
                               )}
                             </button>
-                            
-                            <a
-                              href={telegramUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-1 text-xs text-neutral-400 hover:text-white bg-[#141f32] hover:bg-[#1a2942] border border-[#1e2e4a] px-3 py-2 rounded-lg transition"
+
+                            <button
+                              onClick={() => {
+                                handleStartEdit(sig);
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                              }}
+                              className="flex items-center gap-1 text-xs text-amber-500 hover:text-amber-400 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/20 px-3 py-2 rounded-lg transition font-semibold"
                             >
-                              <span>فتح المنشور الأصلي</span>
-                              <ExternalLink className="w-3.5 h-3.5" />
-                            </a>
+                              <Edit className="w-3.5 h-3.5" />
+                              <span>تعديل</span>
+                            </button>
+
+                            <button
+                              onClick={() => handleDeleteSignal(sig.id)}
+                              className="flex items-center gap-1 text-xs text-rose-400 hover:text-rose-300 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 px-3 py-2 rounded-lg transition font-semibold"
+                            >
+                              <Trash2 className="w-3.5 h-3.5" />
+                              <span>حذف</span>
+                            </button>
                           </div>
                         </div>
                       </div>

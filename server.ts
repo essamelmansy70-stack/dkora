@@ -517,6 +517,9 @@ Return ONLY a valid raw JSON array containing exactly the parsed items. Do not w
           const arabicPairsMap: { [key: string]: string } = {
             "الذهب": "XAUUSD (GOLD)",
             "ذهب": "XAUUSD (GOLD)",
+            "الدولار ين": "USDJPY",
+            "دولار ين": "USDJPY",
+            "الين": "USDJPY",
             "الداو": "US30 (Dow Jones)",
             "الداوجونز": "US30 (Dow Jones)",
             "الناسداك": "NAS100 (Nasdaq)",
@@ -576,7 +579,7 @@ Return ONLY a valid raw JSON array containing exactly the parsed items. Do not w
         let tp1 = "";
         let tp2 = "";
         let tp3 = "";
-        const tp1Match = text.match(/(?:tp1|tp\s*1|target\s*1|الهدف\s*الأول|الهدف\s*1|هدف\s*1)\s*:?\s*(\d+(?:\.\d+)?)/i);
+        const tp1Match = text.match(/(?:tp1|tp\s*1|target\s*1|الهدف\s*الأول|الهدف\s*1|هدف\s*1|هدف)\s*:?\s*(\d+(?:\.\d+)?)/i);
         if (tp1Match) tp1 = tp1Match[1];
         const tp2Match = text.match(/(?:tp2|tp\s*2|target\s*2|الهدف\s*الثاني|الهدف\s*2|هدف\s*2)\s*:?\s*(\d+(?:\.\d+)?)/i);
         if (tp2Match) tp2 = tp2Match[1];
@@ -584,7 +587,7 @@ Return ONLY a valid raw JSON array containing exactly the parsed items. Do not w
         if (tp3Match) tp3 = tp3Match[1];
 
         if (!tp1) {
-          const genericTpMatches = [...text.matchAll(/(?:tp|target|take profit|الأهداف|الهدف|الهدف الأول)\s*:?\s*(\d+(?:\.\d+)?)(?:\s*,\s*(\d+(?:\.\d+)?))?(?:\s*,\s*(\d+(?:\.\d+)?))?/gi)];
+          const genericTpMatches = [...text.matchAll(/(?:tp|target|take profit|الأهداف|الهدف|الهدف الأول|هدف)\s*:?\s*(\d+(?:\.\d+)?)(?:\s*,\s*(\d+(?:\.\d+)?))?(?:\s*,\s*(\d+(?:\.\d+)?))?/gi)];
           if (genericTpMatches.length > 0) {
             tp1 = genericTpMatches[0][1] || "";
             tp2 = genericTpMatches[0][2] || "";

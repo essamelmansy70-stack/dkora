@@ -888,6 +888,22 @@ export default function App() {
 function getFallbackSignals(): Signal[] {
   return [
     {
+      id: "f-sig-usdjpy-new",
+      pair: "USDJPY (دولار ين)",
+      type: "BUY",
+      entry: "157.750",
+      tp1: "161.000",
+      tp2: "",
+      tp3: "",
+      sl: "156.400",
+      status: "ACTIVE",
+      explanation: "توصية تداول: شراء دولار أمريكي / ين ياباني (USD/JPY) من سعر الدخول الموضح بناءً على الكسر الإيجابي الموضح بالتحليل الفني في الشارت المرفق.",
+      date: new Date().toISOString(),
+      views: "1.8K",
+      photoUrl: "/1787237745892.png",
+      rawText: "شراء الدولار ين من سعر 157.750\nستوب 156.400\nهدف 161.000"
+    },
+    {
       id: "f-sig-1",
       pair: "XAUUSD (GOLD)",
       type: "BUY",

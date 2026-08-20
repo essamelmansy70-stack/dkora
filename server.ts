@@ -5,6 +5,7 @@ import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
 import compression from "compression";
+import * as cheerio from "cheerio";
 import { CATEGORIES, PRODUCTS, ARTICLES, DEALS, BUYING_GUIDES } from "./src/data/mockData";
 import { createProductSlug, createProductUrl, findProductByQueryParam } from "./src/utils/seo";
 
@@ -363,6 +364,274 @@ async function startServer() {
       console.error("Error writing custom_products.json", err);
     }
   }
+
+  // API Endpoint to fetch and parse Telegram public channel signals
+  app.get("/api/telegram-signals", async (req, res) => {
+    const channelName = (req.query.channel as string) || "nmerfx";
+    const telegramUrl = `https://t.me/s/${channelName}`;
+
+    try {
+      console.log(`Fetching telegram channel preview from: ${telegramUrl}`);
+      const response = await fetch(telegramUrl, {
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch Telegram page: ${response.statusText}`);
+      }
+
+      const html = await response.text();
+      const $ = cheerio.load(html);
+      const rawMessages: { text: string; date: string; views: string; photoUrl: string }[] = [];
+
+      $(".tgme_widget_message").each((i, el) => {
+        const textEl = $(el).find(".tgme_widget_message_text");
+        if (textEl.length) {
+          const text = textEl.text().trim();
+          const date = $(el).find(".tgme_widget_message_date time").attr("datetime") || "";
+          const views = $(el).find(".tgme_widget_message_views").text().trim() || "0";
+          
+          // Try to extract post photo if exists
+          const photoEl = $(el).find(".tgme_widget_message_photo_wrap");
+          let photoUrl = "";
+          if (photoEl.length) {
+            const style = photoEl.attr("style") || "";
+            const match = style.match(/url\(['"]?([^'"]+)['"]?\)/);
+            if (match) {
+              photoUrl = match[1];
+            }
+          }
+
+          rawMessages.push({ text, date, views, photoUrl });
+        }
+      });
+
+      // Keep only the last 15 messages (newest are usually at the bottom of the page in Telegram s/ view)
+      // Since s/ view list has oldest first, let's reverse to get newest first
+      const newestMessages = rawMessages.reverse().slice(0, 15);
+
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (apiKey) {
+        try {
+          console.log("Parsing signals using Gemini AI...");
+          const ai = new GoogleGenAI({
+            apiKey: apiKey,
+            httpOptions: {
+              headers: {
+                "User-Agent": "aistudio-build",
+              },
+            },
+          });
+
+          const prompt = `You are an expert financial market analyst.
+Your task is to analyze these public Telegram channel messages and extract structured trading signals.
+Return a clean JSON array representing each message. The JSON schema for each signal in the array MUST be:
+{
+  "pair": string (the asset name, e.g., "XAUUSD" or "EURUSD" or "BTCUSD" or "US30", in uppercase. If it is general market updates or not a signal, write "MARKET UPDATE"),
+  "type": "BUY" | "SELL" | "BUY LIMIT" | "SELL LIMIT" | "BUY STOP" | "SELL STOP" | "INFO",
+  "entry": string (entry price or range, e.g., "2410.50" or "N/A"),
+  "tp1": string (take profit 1, empty if none),
+  "tp2": string (take profit 2, empty if none),
+  "tp3": string (take profit 3, empty if none),
+  "sl": string (stop loss, empty if none),
+  "status": "ACTIVE" | "TP1 HIT" | "TP2 HIT" | "TP3 HIT" | "SL HIT" | "CLOSED" | "INFO" (analyze the text context of this and neighboring messages to decide status. For general market updates/educational text, write "INFO"),
+  "explanation": string (very elegant and structured brief description of the signal or the update in Arabic, summarizing any additional instructions or observations from the post)
+}
+
+Messages to parse:
+${JSON.stringify(newestMessages.map((m, idx) => ({ index: idx, text: m.text })))}
+
+Return ONLY a valid raw JSON array containing exactly the parsed items. Do not wrap in markdown blocks, do not write backticks, do not write any text outside the JSON array.`;
+
+          const geminiResponse = await ai.models.generateContent({
+            model: "gemini-3.6-flash",
+            contents: prompt,
+            config: {
+              responseMimeType: "application/json",
+            }
+          });
+
+          const parsedJsonText = geminiResponse.text?.trim() || "[]";
+          const parsedSignals = JSON.parse(parsedJsonText);
+
+          if (Array.isArray(parsedSignals)) {
+            const finalSignals = parsedSignals.map((sig: any, idx: number) => {
+              const orig = newestMessages[idx] || { text: "", date: "", views: "0", photoUrl: "" };
+              return {
+                id: `gemini-sig-${idx}-${Date.now()}`,
+                pair: sig.pair || "MARKET UPDATE",
+                type: sig.type || "INFO",
+                entry: sig.entry || "N/A",
+                tp1: sig.tp1 || "",
+                tp2: sig.tp2 || "",
+                tp3: sig.tp3 || "",
+                sl: sig.sl || "",
+                status: sig.status || "INFO",
+                explanation: sig.explanation || "",
+                date: orig.date,
+                views: orig.views,
+                photoUrl: orig.photoUrl,
+                rawText: orig.text
+              };
+            });
+
+            return res.json({
+              success: true,
+              source: "gemini",
+              channel: channelName,
+              signals: finalSignals
+            });
+          }
+        } catch (geminiError) {
+          console.error("Gemini signals parsing failed, falling back to local parsing:", geminiError);
+        }
+      }
+
+      // Fallback local regex parsing
+      console.log("Parsing signals using local fallback engine...");
+      const fallbackSignals = newestMessages.map((m, idx) => {
+        const text = m.text;
+        const upper = text.toUpperCase();
+        
+        // Find trading pairs
+        const pairs = [
+          "EURUSD", "GBPUSD", "USDJPY", "USDCAD", "AUDUSD", "NZDUSD", "USDCHF",
+          "XAUUSD", "GOLD", "BTCUSD", "ETHUSD", "US30", "NAS100", "GER30", "DE30", "OIL", "USOIL"
+        ];
+        
+        let pair = "";
+        for (const p of pairs) {
+          if (upper.includes(p)) {
+            pair = p;
+            if (pair === "GOLD") pair = "XAUUSD (GOLD)";
+            break;
+          }
+        }
+        
+        if (!pair) {
+          const arabicPairsMap: { [key: string]: string } = {
+            "الذهب": "XAUUSD (GOLD)",
+            "ذهب": "XAUUSD (GOLD)",
+            "الداو": "US30 (Dow Jones)",
+            "الداوجونز": "US30 (Dow Jones)",
+            "الناسداك": "NAS100 (Nasdaq)",
+            "اليورو": "EURUSD",
+            "البوند": "GBPUSD"
+          };
+          for (const key of Object.keys(arabicPairsMap)) {
+            if (text.includes(key)) {
+              pair = arabicPairsMap[key];
+              break;
+            }
+          }
+        }
+
+        if (!pair) {
+          return {
+            id: `local-info-${idx}-${Date.now()}`,
+            pair: "تحديث السوق",
+            type: "INFO",
+            entry: "N/A",
+            tp1: "",
+            tp2: "",
+            tp3: "",
+            sl: "",
+            status: "INFO",
+            explanation: text.substring(0, 180) + (text.length > 180 ? "..." : ""),
+            date: m.date,
+            views: m.views,
+            photoUrl: m.photoUrl,
+            rawText: text
+          };
+        }
+
+        let type = "INFO";
+        if (upper.includes("BUY LIMIT")) type = "BUY LIMIT";
+        else if (upper.includes("SELL LIMIT")) type = "SELL LIMIT";
+        else if (upper.includes("BUY STOP")) type = "BUY STOP";
+        else if (upper.includes("SELL STOP")) type = "SELL STOP";
+        else if (upper.includes("BUY") || text.includes("شراء") || text.includes("شراء مباشر")) type = "BUY";
+        else if (upper.includes("SELL") || text.includes("بيع") || text.includes("بيع مباشر")) type = "SELL";
+
+        let entry = "سعر السوق الحالي";
+        const entryRegexes = [
+          /(?:entry|at|@|بسعر|دخول|الدخول|من)\s*:?\s*(\d+(?:\.\d+)?)(?:\s*-\s*(\d+(?:\.\d+)?))?/i,
+          /(?:BUY|SELL|شراء|بيع)\s+(?:GOLD|XAUUSD|EURUSD|US30)?\s*(?:AT|@|بسعر)?\s*(\d+(?:\.\d+)?)/i
+        ];
+        for (const regex of entryRegexes) {
+          const match = text.match(regex);
+          if (match) {
+            entry = match[1] + (match[2] ? ` - ${match[2]}` : "");
+            break;
+          }
+        }
+
+        let tp1 = "";
+        let tp2 = "";
+        let tp3 = "";
+        const tp1Match = text.match(/(?:tp1|tp\s*1|target\s*1|الهدف\s*الأول|الهدف\s*1|هدف\s*1)\s*:?\s*(\d+(?:\.\d+)?)/i);
+        if (tp1Match) tp1 = tp1Match[1];
+        const tp2Match = text.match(/(?:tp2|tp\s*2|target\s*2|الهدف\s*الثاني|الهدف\s*2|هدف\s*2)\s*:?\s*(\d+(?:\.\d+)?)/i);
+        if (tp2Match) tp2 = tp2Match[1];
+        const tp3Match = text.match(/(?:tp3|tp\s*3|target\s*3|الهدف\s*الثالث|الهدف\s*3|هدف\s*3)\s*:?\s*(\d+(?:\.\d+)?)/i);
+        if (tp3Match) tp3 = tp3Match[1];
+
+        if (!tp1) {
+          const genericTpMatches = [...text.matchAll(/(?:tp|target|take profit|الأهداف|الهدف|الهدف الأول)\s*:?\s*(\d+(?:\.\d+)?)(?:\s*,\s*(\d+(?:\.\d+)?))?(?:\s*,\s*(\d+(?:\.\d+)?))?/gi)];
+          if (genericTpMatches.length > 0) {
+            tp1 = genericTpMatches[0][1] || "";
+            tp2 = genericTpMatches[0][2] || "";
+            tp3 = genericTpMatches[0][3] || "";
+          }
+        }
+
+        let sl = "";
+        const slMatch = text.match(/(?:sl|stop|stop\s*loss|ستوب|وقف|وقف\s*الخسارة|الستوب)\s*:?\s*(\d+(?:\.\d+)?)/i);
+        if (slMatch) sl = slMatch[1];
+
+        let status = "ACTIVE";
+        const statusText = text.toLowerCase();
+        if (statusText.includes("hit tp1") || statusText.includes("tp1 hit") || text.includes("الهدف الأول ✅")) status = "TP1 HIT";
+        else if (statusText.includes("hit tp2") || statusText.includes("tp2 hit") || text.includes("الهدف الثاني ✅")) status = "TP2 HIT";
+        else if (statusText.includes("hit tp3") || statusText.includes("tp3 hit") || text.includes("الهدف الثالث ✅")) status = "TP3 HIT";
+        else if (statusText.includes("hit sl") || statusText.includes("sl hit") || text.includes("ضرب الستوب") || text.includes("ضرب وقف الخسارة")) status = "SL HIT";
+        else if (statusText.includes("closed") || statusText.includes("close now") || text.includes("اغلق") || text.includes("إغلاق")) status = "CLOSED";
+
+        return {
+          id: `local-signal-${idx}-${Date.now()}`,
+          pair,
+          type,
+          entry,
+          tp1,
+          tp2,
+          tp3,
+          sl,
+          status,
+          explanation: text.substring(0, 180) + (text.length > 180 ? "..." : ""),
+          date: m.date,
+          views: m.views,
+          photoUrl: m.photoUrl,
+          rawText: text
+        };
+      });
+
+      res.json({
+        success: true,
+        source: "local-parser",
+        channel: channelName,
+        signals: fallbackSignals
+      });
+
+    } catch (error: any) {
+      console.error("Error fetching or parsing Telegram Signals:", error);
+      res.status(500).json({
+        success: false,
+        error: error.message || "Failed to fetch or parse Telegram Signals"
+      });
+    }
+  });
 
   // API Endpoints for Products
   app.get("/api/products", (req, res) => {

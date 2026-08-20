@@ -127,7 +127,7 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
   ar: {
     meta: {
       title: "توصيات فوركس مجانية دقيقة | اربح مع خبراء سوق العملات",
-      brandName: "ديكواFX",
+      brandName: "ديكوراFX",
       subtitle: "المنصة الأكثر دقة وموثوقية لتداول العملات والذهب بوعي واحترافية"
     },
     nav: {
@@ -225,39 +225,39 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
     },
     sitemap: {
       title: "خريطة الموقع الديناميكية (Sitemap)",
-      subtitle: "وصول سهل وفهرسة فورية لكافة صفحات منصة ديكواFX والتوصيات النشطة والسابقة",
+      subtitle: "وصول سهل وفهرسة فورية لكافة صفحات منصة ديكوراFX والتوصيات النشطة والسابقة",
       staticPages: "الصفحات والأقسام الثابتة",
       dynamicSignals: "التوصيات والصفقات الفردية المباشرة",
-      allRights: "كافة الحقوق محفوظة لمنصة ديكواFX لعام 2026."
+      allRights: "كافة الحقوق محفوظة لمنصة ديكوراFX لعام 2026."
     },
     footer: {
-      about: "عن ديكواFX",
+      about: "عن ديكوراFX",
       aboutText: "المنصة العربية الرائدة لتقديم توصيات وتحليلات أسواق المال العالمية والفوركس بدقة متناهية تحت إشراف نخبة من الخبراء والمحللين الفنيين والماليين.",
       links: "روابط قانونية هامة",
       privacy: "سياسة الخصوصية وسرية البيانات",
       terms: "اتفاقية وشروط الاستخدام",
       disclaimer: "إخلاء المسؤولية وتحذير المخاطر",
-      copyright: "ديكواFX © 2026. توصيات فوركس دقيقة وأجندة تفاعلية متقدمة."
+      copyright: "ديكوراFX © 2026. توصيات فوركس دقيقة وأجندة تفاعلية متقدمة."
     },
     legal: {
       privacyTitle: "سياسة الخصوصية وسرية البيانات",
       termsTitle: "شروط واتفاقية الاستخدام",
       disclaimerTitle: "إخلاء المسؤولية وتحذير المخاطر",
       privacyContent: [
-        "نحن في ديكواFX نلتزم بأعلى معايير الحماية والسرية التامة لبياناتك الشخصية وتفضيلاتك التداولية المتنوعة.",
+        "نحن في ديكوراFX نلتزم بأعلى معايير الحماية والسرية التامة لبياناتك الشخصية وتفضيلاتك التداولية المتنوعة.",
         "المنصة تعمل بالكامل محلياً وفي بيئة آمنة لحفظ الصفقات والتفضيلات الشخصية للمستخدم في ذاكرة المتصفح دون نقل بيانات لجهات خارجية.",
         "ملفات تعريف الارتباط تُستخدم بشكل أساسي لتحسين تجربة التصفح وتذكر تفضيلاتك مثل اللغة المفضلة ونمط الإضاءة الحالي.",
         "نحن لا نقوم ببيع أو مشاركة أو تداول أي بيانات خاصة بقرائنا أو زوارنا على الإطلاق."
       ],
       termsContent: [
-        "باستخدامك لمنصة ديكواFX، فإنك توافق التوافق التام على شروط الاستخدام المذكورة في هذه الاتفاقية.",
+        "باستخدامك لمنصة ديكوراFX، فإنك توافق التوافق التام على شروط الاستخدام المذكورة في هذه الاتفاقية.",
         "التوصيات والمعلومات المنشورة هنا هي لأغراض إرشادية وتثقيفية فقط، ولا يجب اعتبارها بأي شكل من الأشكال نصائح مالية مباشرة للاستثمار.",
         "يتحمل المستخدم المسؤولية الكاملة والمنفردة عن استخدام هذه التوصيات وتطبيقها على حسابات التداول الحقيقية الخاصة به.",
         "يحظر تماماً نسخ أو تداول توصياتنا الحصرية لأغراض تجارية دون إذن كتابي مسبق من الإدارة."
       ],
       disclaimerContent: [
         "تداول العملات الأجنبية (الفوركس) وعقود الفروقات ينطوي على مخاطر عالية جداً بسب الرافعة المالية، وقد يؤدي إلى خسارة رأس المال المستثمر بالكامل.",
-        "التحليلات والتوصيات المعروضة في ديكواFX تعبر عن رؤية فنية لخبراء السوق، ولا تضمن بأي حال من الأحوال أرباحاً مستقبلية مؤكدة.",
+        "التحليلات والتوصيات المعروضة في ديكوراFX تعبر عن رؤية فنية لخبراء السوق، ولا تضمن بأي حال من الأحوال أرباحاً مستقبلية مؤكدة.",
         "المنصة وفريق عملها ومحللوها غير مسؤولين عن أي خسائر مادية مباشرة أو غير مباشرة قد يتكبدها المستخدم نتيجة الاعتماد على هذه البيانات.",
         "يرجى دائماً التداول بأموال يمكنك تحمل خسارتها، واستشارة مستشار مالي مستقل قبل اتخاذ قرارات تداول مصيرية."
       ]
@@ -266,7 +266,7 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
   en: {
     meta: {
       title: "Free Accurate Forex Signals | Profit with Currency Market Experts",
-      brandName: "DecouFX",
+      brandName: "DkoraFX",
       subtitle: "The most precise and trusted platform for trading currencies and gold with wisdom and professionalism"
     },
     nav: {
@@ -364,40 +364,40 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
     },
     sitemap: {
       title: "Dynamic Sitemap Directory",
-      subtitle: "Immediate index access to all DecouFX static pages, interactive sections, and live active/historic signals",
+      subtitle: "Immediate index access to all DkoraFX static pages, interactive sections, and live active/historic signals",
       staticPages: "Static Pages & Sections",
       dynamicSignals: "Live Individual Signals & Trades",
-      allRights: "All Rights Reserved for DecouFX © 2026."
+      allRights: "All Rights Reserved for DkoraFX © 2026."
     },
     footer: {
-      about: "About DecouFX",
+      about: "About DkoraFX",
       aboutText: "The leading Arabic financial platform providing top-tier currency trading signals, market breakdowns, and daily analytics under senior expert supervision.",
       links: "Legal Directory Links",
       privacy: "Privacy & Data Policy",
       terms: "Terms of Use Agreement",
       disclaimer: "Risk Warning Disclaimer",
-      copyright: "DecouFX © 2026. Precise Forex recommendations and interactive calendar."
+      copyright: "DkoraFX © 2026. Precise Forex recommendations and interactive calendar."
     },
     legal: {
       privacyTitle: "Privacy & Data Policy",
       termsTitle: "Terms of Use Agreement",
       disclaimerTitle: "Risk Warning Disclaimer",
       privacyContent: [
-        "We at DecouFX respect your absolute privacy and guarantee high confidentiality of your preferences.",
+        "We at DkoraFX respect your absolute privacy and guarantee high confidentiality of your preferences.",
         "This platform runs entirely local-first inside your browser cache. All trading additions, metrics, and risk limits are stored safely on your device.",
         "Cookies are only deployed for standard session persistence, such as keeping your current language and layout mode settings intact.",
         "We never share, trade, or distribute your email or configuration values to any third party."
       ],
       termsContent: [
-        "By accessing and using DecouFX, you agree to comply with all terms and clauses stated in this license.",
+        "By accessing and using DkoraFX, you agree to comply with all terms and clauses stated in this license.",
         "All recommendations, charts, and values are shared for general awareness and educational contexts, never as solid investing calls.",
         "The end-user assumes total responsibility for any execution made on real or demo trading accounts.",
         "Commercial reproduction, redistribution, or scraping of our intellectual signals is strictly forbidden without written permission."
       ],
       disclaimerContent: [
         "Foreign Exchange (Forex) and CFD trading involve high leverage and bring significant risk of total capital loss.",
-        "Technical analysis, trend forecasts, and recommendations on DecouFX express our analyst perspectives and do not promise definite yields.",
-        "DecouFX, its operators, and affiliates reject any liability for physical losses resulting directly or indirectly from utilizing this web dashboard.",
+        "Technical analysis, trend forecasts, and recommendations on DkoraFX express our analyst perspectives and do not promise definite yields.",
+        "DkoraFX, its operators, and affiliates reject any liability for physical losses resulting directly or indirectly from utilizing this web dashboard.",
         "Always trade with capital you can afford to lose, and consult an independent certified financial advisor if needed."
       ]
     }

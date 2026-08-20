@@ -33,7 +33,9 @@ import {
   Share2,
   ArrowRight,
   Map,
-  ShieldAlert
+  ShieldAlert,
+  Lock,
+  Unlock
 } from "lucide-react";
 import { translations } from "./translations";
 import { initialNewsArticles, initialCalendarEvents, NewsArticle, CalendarEvent } from "./data/newsAndCalendar";
@@ -127,6 +129,14 @@ export default function App() {
     const saved = localStorage.getItem("decou_fx_theme");
     return saved === "dark" ? "dark" : "light";
   });
+
+  // Admin Mode Gate State
+  const [isAdmin, setIsAdmin] = useState<boolean>(() => {
+    return localStorage.getItem("dkorafx_is_admin") === "true";
+  });
+  const [adminPasscode, setAdminPasscode] = useState("");
+  const [showAdminModal, setShowAdminModal] = useState(false);
+  const [adminError, setAdminError] = useState("");
 
   // 3. Signals state (local storage backed)
   const [signals, setSignals] = useState<Signal[]>(() => {
@@ -561,6 +571,28 @@ export default function App() {
               >
                 <RefreshCw className={`w-4.5 h-4.5 ${loading ? "animate-spin text-amber-500" : ""}`} />
               </button>
+
+              {/* Admin Mode Toggle */}
+              <button
+                onClick={() => {
+                  if (isAdmin) {
+                    setIsAdmin(false);
+                    localStorage.setItem("dkorafx_is_admin", "false");
+                  } else {
+                    setShowAdminModal(true);
+                    setAdminPasscode("");
+                    setAdminError("");
+                  }
+                }}
+                className={`p-2.5 rounded-xl border transition-all ${
+                  isAdmin 
+                    ? "border-emerald-500/30 bg-emerald-500/5 text-emerald-500 hover:bg-emerald-500/10" 
+                    : "border-slate-200 dark:border-[#1e2e4a] bg-slate-50 dark:bg-[#141f32] hover:bg-slate-100 dark:hover:bg-[#1a2942] text-slate-700 dark:text-neutral-300"
+                }`}
+                title={isAdmin ? (lang === "ar" ? "خروج من وضع الإدارة" : "Exit Admin Mode") : (lang === "ar" ? "دخول الإدارة" : "Admin Login")}
+              >
+                {isAdmin ? <Unlock className="w-4.5 h-4.5 text-emerald-500" /> : <Lock className="w-4.5 h-4.5" />}
+              </button>
             </div>
 
           </div>
@@ -635,17 +667,24 @@ export default function App() {
               </div>
 
               <div className="flex w-full sm:w-auto justify-end gap-2">
-                <button
-                  onClick={() => {
-                    setIsAdding(!isAdding);
-                    setEditingSignal(null);
-                    resetForm();
-                  }}
-                  className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black px-5 py-2.5 rounded-xl font-black text-sm transition-all shadow-md active:scale-95 cursor-pointer w-full sm:w-auto justify-center"
-                >
-                  <Plus className="w-4 h-4" />
-                  <span>{t.form.addNew}</span>
-                </button>
+                {isAdmin ? (
+                  <button
+                    onClick={() => {
+                      setIsAdding(!isAdding);
+                      setEditingSignal(null);
+                      resetForm();
+                    }}
+                    className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black px-5 py-2.5 rounded-xl font-black text-sm transition-all shadow-md active:scale-95 cursor-pointer w-full sm:w-auto justify-center"
+                  >
+                    <Plus className="w-4 h-4" />
+                    <span>{t.form.addNew}</span>
+                  </button>
+                ) : (
+                  <div className="flex items-center gap-2 px-4 py-2.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 rounded-xl text-xs font-bold">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>{lang === "ar" ? "قناة التوصيات المباشرة والنشطة" : "Active Recommendations Live Feed"}</span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -926,33 +965,35 @@ export default function App() {
                             </p>
 
                             {/* Signal Quick status control toggler */}
-                            <div className="bg-slate-50 dark:bg-[#141f32]/20 border border-slate-200/50 dark:border-[#1e2e4a]/50 p-3 rounded-2xl flex flex-wrap items-center justify-between gap-2.5">
-                              <span className="text-[11px] text-slate-500 dark:text-neutral-400 font-black">
-                                {lang === "ar" ? "تعديل الحالة السريع:" : "Quick Status Update:"}
-                              </span>
-                              <div className="flex flex-wrap gap-1">
-                                {[
-                                  { code: "ACTIVE", label: lang === "ar" ? "نشطة" : "Active" },
-                                  { code: "TP1 HIT", label: lang === "ar" ? "هدف 1" : "TP1" },
-                                  { code: "TP2 HIT", label: lang === "ar" ? "هدف 2" : "TP2" },
-                                  { code: "TP3 HIT", label: lang === "ar" ? "هدف 3" : "TP3" },
-                                  { code: "SL HIT", label: lang === "ar" ? "ستوب" : "SL" },
-                                  { code: "CLOSED", label: lang === "ar" ? "مغلقة" : "Closed" }
-                                ].map((st) => (
-                                  <button
-                                    key={st.code}
-                                    onClick={() => handleToggleStatus(sig.id, st.code)}
-                                    className={`px-2.5 py-1 rounded-lg text-[10px] font-black transition-all cursor-pointer ${
-                                      sig.status === st.code
-                                        ? "bg-amber-500 text-black shadow-sm"
-                                        : "bg-slate-100 dark:bg-[#1c2b44] text-slate-700 dark:text-neutral-300 hover:bg-slate-200 dark:hover:bg-[#253958] hover:text-slate-900 dark:hover:text-white"
-                                    }`}
-                                  >
-                                    {st.label}
-                                  </button>
-                                ))}
+                            {isAdmin && (
+                              <div className="bg-slate-50 dark:bg-[#141f32]/20 border border-slate-200/50 dark:border-[#1e2e4a]/50 p-3 rounded-2xl flex flex-wrap items-center justify-between gap-2.5">
+                                <span className="text-[11px] text-slate-500 dark:text-neutral-400 font-black">
+                                  {lang === "ar" ? "تعديل الحالة السريع:" : "Quick Status Update:"}
+                                </span>
+                                <div className="flex flex-wrap gap-1">
+                                  {[
+                                    { code: "ACTIVE", label: lang === "ar" ? "نشطة" : "Active" },
+                                    { code: "TP1 HIT", label: lang === "ar" ? "هدف 1" : "TP1" },
+                                    { code: "TP2 HIT", label: lang === "ar" ? "هدف 2" : "TP2" },
+                                    { code: "TP3 HIT", label: lang === "ar" ? "هدف 3" : "TP3" },
+                                    { code: "SL HIT", label: lang === "ar" ? "ستوب" : "SL" },
+                                    { code: "CLOSED", label: lang === "ar" ? "مغلقة" : "Closed" }
+                                  ].map((st) => (
+                                    <button
+                                      key={st.code}
+                                      onClick={() => handleToggleStatus(sig.id, st.code)}
+                                      className={`px-2.5 py-1 rounded-lg text-[10px] font-black transition-all cursor-pointer ${
+                                        sig.status === st.code
+                                          ? "bg-amber-500 text-black shadow-sm"
+                                          : "bg-slate-100 dark:bg-[#1c2b44] text-slate-700 dark:text-neutral-300 hover:bg-slate-200 dark:hover:bg-[#253958] hover:text-slate-900 dark:hover:text-white"
+                                      }`}
+                                    >
+                                      {st.label}
+                                    </button>
+                                  ))}
+                                </div>
                               </div>
-                            </div>
+                            )}
 
                           </div>
 
@@ -993,22 +1034,26 @@ export default function App() {
                               </button>
 
                               {/* Form edit button */}
-                              <button
-                                onClick={() => handleStartEdit(sig)}
-                                className="p-1.5 text-slate-400 hover:text-amber-500 rounded-lg hover:bg-slate-100 dark:hover:bg-[#141f32] transition cursor-pointer"
-                                title="Edit Signal"
-                              >
-                                <Edit className="w-4 h-4" />
-                              </button>
+                              {isAdmin && (
+                                <button
+                                  onClick={() => handleStartEdit(sig)}
+                                  className="p-1.5 text-slate-400 hover:text-amber-500 rounded-lg hover:bg-slate-100 dark:hover:bg-[#141f32] transition cursor-pointer"
+                                  title="Edit Signal"
+                                >
+                                  <Edit className="w-4 h-4" />
+                                </button>
+                              )}
 
                               {/* Delete button */}
-                              <button
-                                onClick={() => handleDeleteSignal(sig.id)}
-                                className="p-1.5 text-slate-400 hover:text-rose-500 rounded-lg hover:bg-slate-100 dark:hover:bg-[#141f32] transition cursor-pointer"
-                                title="Delete Signal"
-                              >
-                                <Trash2 className="w-4 h-4" />
-                              </button>
+                              {isAdmin && (
+                                <button
+                                  onClick={() => handleDeleteSignal(sig.id)}
+                                  className="p-1.5 text-slate-400 hover:text-rose-500 rounded-lg hover:bg-slate-100 dark:hover:bg-[#141f32] transition cursor-pointer"
+                                  title="Delete Signal"
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                </button>
+                              )}
                             </div>
                           </div>
 
@@ -1267,7 +1312,7 @@ export default function App() {
                   {/* Quick share statistics */}
                   <div className="flex items-center justify-between text-xs text-slate-400 dark:text-neutral-500 pt-4 border-t border-slate-100 dark:border-[#1a2436]/60">
                     <span>{sig.views} {t.signals.views}</span>
-                    <span>DecouFX Pro Analytics Hub © 2026</span>
+                    <span>DkoraFX Pro Analytics Hub © 2026</span>
                   </div>
 
                 </div>
@@ -1653,6 +1698,84 @@ export default function App() {
 
         </div>
       </footer>
+
+      {/* 5. Admin Passcode Modal Gate */}
+      {showAdminModal && (
+        <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fadeIn">
+          <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-6 rounded-3xl w-full max-w-sm shadow-2xl space-y-4">
+            <div className="flex justify-between items-center border-b border-slate-100 dark:border-[#1a2436] pb-3">
+              <h3 className="font-extrabold text-slate-900 dark:text-white text-base flex items-center gap-2">
+                <Lock className="w-5 h-5 text-amber-500" />
+                <span>{lang === "ar" ? "تسجيل دخول الإدارة" : "Admin Login Gate"}</span>
+              </h3>
+              <button
+                onClick={() => setShowAdminModal(false)}
+                className="text-slate-400 hover:text-slate-900 dark:hover:text-white p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-[#141f32]"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed">
+              {lang === "ar" 
+                ? "الرجاء إدخال كلمة مرور الإدارة لتفعيل صلاحيات إضافة وتعديل وحذف التوصيات الحية."
+                : "Please enter the administrative passcode to toggle full-fidelity creation, status modification, and deletion controls."}
+            </p>
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (adminPasscode === "dkora2026") {
+                  setIsAdmin(true);
+                  localStorage.setItem("dkorafx_is_admin", "true");
+                  setShowAdminModal(false);
+                  setAdminPasscode("");
+                  setAdminError("");
+                } else {
+                  setAdminError(lang === "ar" ? "كلمة المرور غير صحيحة! يرجى المحاولة مرة أخرى." : "Invalid passcode! Please try again.");
+                }
+              }}
+              className="space-y-3"
+            >
+              <div className="space-y-1">
+                <label className="text-xs text-slate-500 dark:text-neutral-400 block font-bold">
+                  {lang === "ar" ? "كلمة المرور" : "Passcode"}
+                </label>
+                <input
+                  type="password"
+                  required
+                  placeholder="••••••••"
+                  value={adminPasscode}
+                  onChange={(e) => setAdminPasscode(e.target.value)}
+                  className="w-full bg-slate-50 dark:bg-[#141f32] border border-slate-200 dark:border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-slate-800 dark:text-white text-sm transition text-center tracking-widest font-mono"
+                />
+              </div>
+
+              {adminError && (
+                <p className="text-xs text-rose-500 font-bold text-center">
+                  {adminError}
+                </p>
+              )}
+
+              <div className="flex gap-2 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setShowAdminModal(false)}
+                  className="flex-1 bg-slate-100 dark:bg-[#141f32] hover:bg-slate-200 dark:hover:bg-[#1a2942] border border-slate-200 dark:border-[#1e2e4a] text-slate-700 dark:text-neutral-300 font-bold rounded-xl py-2 text-xs transition"
+                >
+                  {lang === "ar" ? "إلغاء" : "Cancel"}
+                </button>
+                <button
+                  type="submit"
+                  className="flex-1 bg-amber-500 hover:bg-amber-600 text-black font-black rounded-xl py-2 text-xs transition shadow-lg shadow-amber-500/15"
+                >
+                  {lang === "ar" ? "دخول" : "Verify"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
     </div>
   );

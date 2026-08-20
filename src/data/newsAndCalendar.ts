@@ -50,8 +50,8 @@ export const initialNewsArticles: NewsArticle[] = [
     contentEn: "The US Dollar index (DXY) currently resides in a narrow bearish channel on the 4H charts. Keeping prices below 104.20 registers strong seller domination on medium-term charts. Markets anticipate the upcoming US Consumer Price Index (CPI) to provide clear guidance regarding the upcoming Federal Reserve interest rate policy.",
     date: "2026-08-20T06:15:00Z",
     category: "forex",
-    authorAr: "ديكوا للتحليل المالي",
-    authorEn: "Decou Financial Research",
+    authorAr: "ديكورا للتحليل المالي",
+    authorEn: "Dkora Financial Research",
     image: ""
   },
   {
@@ -64,8 +64,8 @@ export const initialNewsArticles: NewsArticle[] = [
     contentEn: "The major currency pair fluctuated in a horizontal pattern with mild bullish tendencies. Bulls successfully holding the daily close above 1.0880 opens paths for further tests near 1.0960. Conversely, breaking below 1.0820 invalidates this bullish momentum.",
     date: "2026-08-19T14:30:00Z",
     category: "forex",
-    authorAr: "فريق تحليل ديكواFX",
-    authorEn: "DecouFX Research Team",
+    authorAr: "فريق تحليل ديكوراFX",
+    authorEn: "DkoraFX Research Team",
     image: ""
   }
 ];

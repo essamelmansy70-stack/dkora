@@ -1,5 +1,5 @@
 {
-  "name": "ديكواFX",
+  "name": "ديكوراFX",
   "description": "منصة توصيات فوركس مجانية دقيقة وتحليلات فنية ممتازة لمستثمري ومتداولي الذهب، العملات الأجنبية، والمؤشرات العالمية مع خبراء سوق المال.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]

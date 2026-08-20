@@ -140,7 +140,7 @@ export default function App() {
 
   // 3. Signals state (local storage backed)
   const [signals, setSignals] = useState<Signal[]>(() => {
-    const saved = localStorage.getItem("decou_fx_local_signals_v2");
+    const saved = localStorage.getItem("decou_fx_local_signals_v4");
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -150,7 +150,7 @@ export default function App() {
       }
     }
     const fallback = getFallbackSignals();
-    localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(fallback));
+    localStorage.setItem("decou_fx_local_signals_v4", JSON.stringify(fallback));
     return fallback;
   });
 
@@ -1797,68 +1797,20 @@ export default function App() {
 function getFallbackSignals(): Signal[] {
   return [
     {
-      id: "f-sig-usdjpy-new",
-      pair: "USDJPY",
-      type: "BUY",
-      entry: "157.750",
-      tp1: "161.000",
-      tp2: "162.500",
-      tp3: "164.000",
-      sl: "156.400",
-      status: "ACTIVE",
-      explanation: "توصية تداول شراء زوج الدولار ين (USD/JPY) من سعر الدخول المذكور، مستهدفاً صعوداً تاريخياً مع اختراق مقاومة هامة واستغلال كسر فني إيجابي واضح على الشارت التوضيحي المرفق.",
-      date: new Date().toISOString(),
-      views: "1.9K",
-      photoUrl: "/1787237745892.png",
-      rawText: "شراء الدولار ين من سعر 157.750\nستوب 156.400\nهدف 161.000"
-    },
-    {
-      id: "f-sig-1",
+      id: "sig-gold-sell-4520",
       pair: "XAUUSD (GOLD)",
-      type: "BUY",
-      entry: "2422.50",
-      tp1: "2430.00",
-      tp2: "2438.00",
-      tp3: "2450.00",
-      sl: "2412.00",
-      status: "ACTIVE",
-      explanation: "ارتداد قوي مرصود بدقة من خط الاتجاه الصاعد اليومي مع اختراق لنموذج العلم الاستمراري. التراجع الحالي فرصة ممتازة للشراء الآمن والالتزام بوقف الخسارة الموضح لحماية الأصول.",
-      date: "2026-08-20T12:30:00.000Z",
-      views: "1.5K",
-      photoUrl: "/1787237745892.png",
-      rawText: "BUY GOLD AT 2422.50 TP1: 2430.00 TP2: 2438.00 SL: 2412.00"
-    },
-    {
-      id: "f-sig-2",
-      pair: "EURUSD",
       type: "SELL",
-      entry: "1.09250",
-      tp1: "1.08900",
-      tp2: "1.08500",
-      tp3: "1.08000",
-      sl: "1.09600",
-      status: "TP1 HIT",
-      explanation: "تراجع مستمر للزوج بعد الفشل في اختراق مستوى المقاومة الهام 1.0950. تم ضرب الهدف الأول عند 1.0890 بنجاح فني تام وننصح بحجز جزء مناسب من الأرباح فوراً ونقل الستوب للدخول.",
-      date: "2026-08-20T10:15:00.000Z",
-      views: "1.1K",
-      photoUrl: "",
-      rawText: "SELL EURUSD AT 1.09250 TP1: 1.08900 SL: 1.09600"
-    },
-    {
-      id: "f-sig-3",
-      pair: "US30 (DOW JONES)",
-      type: "SELL",
-      entry: "39450",
-      tp1: "39200",
-      tp2: "38900",
-      tp3: "38500",
-      sl: "39650",
+      entry: "4520",
+      tp1: "4200",
+      tp2: "",
+      tp3: "",
+      sl: "4550",
       status: "ACTIVE",
-      explanation: "ترقب تصحيحي هابط ومحاولة اختبار لمستويات مقاومة الداو جونز الكبرى قبل استئناف التراجع مجدداً. التداول يرجى أن يكون بحذر شديد وبإدارة مخاطر صارمة.",
-      date: "2026-08-20T08:00:00.000Z",
-      views: "1.7K",
+      explanation: "توصية بيع الذهب (XAU/USD) نظراً لملامسة مستويات قمة تاريخية هامة وبدء ظهور بوادر كسر للاتجاه الصاعد، يرجى الالتزام التام بالهدف ووقف الخسارة لضمان إدارة مخاطر سليمة.",
+      date: new Date().toISOString(),
+      views: "1.2K",
       photoUrl: "",
-      rawText: "SELL US30 AT 39450 TP1: 39200 SL: 39650"
+      rawText: "بيع الذهب من 4520\nستوب 4550\nهدف 4200"
     }
   ];
 }

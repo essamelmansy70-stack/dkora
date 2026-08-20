@@ -1,5 +1,5 @@
-# User-Agent rules for dkora.online
-# Optimized for Image Processing & Background Removal Tools 2026
+# User-Agent rules for dkorafx.com
+# Optimized for DkoraFX Forex Trading Desk & Live Signals 2026
 
 User-agent: *
 Allow: /
@@ -9,4 +9,4 @@ Disallow: /node_modules/
 Disallow: /dist/
 
 # Link to the dynamic sitemap
-Sitemap: https://dkora.online/sitemap.xml
+Sitemap: https://dkorafx.com/sitemap.xml

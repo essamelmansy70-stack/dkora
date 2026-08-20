@@ -320,6 +320,30 @@ async function startServer() {
 
   // Persistence helpers for custom products
   const CUSTOM_PRODUCTS_FILE = path.join(rootDir, "custom_products.json");
+  const CUSTOM_SIGNALS_FILE = path.join(rootDir, "custom_signals.json");
+
+  function getStoredSignals() {
+    try {
+      if (fs.existsSync(CUSTOM_SIGNALS_FILE)) {
+        const data = fs.readFileSync(CUSTOM_SIGNALS_FILE, "utf-8");
+        const parsed = JSON.parse(data);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch (err) {
+      console.error("Error reading custom_signals.json", err);
+    }
+    return [];
+  }
+
+  function saveStoredSignals(signalsList: any[]) {
+    try {
+      fs.writeFileSync(CUSTOM_SIGNALS_FILE, JSON.stringify(signalsList, null, 2), "utf-8");
+    } catch (err) {
+      console.error("Error writing custom_signals.json", err);
+    }
+  }
 
   function getStoredProducts() {
     let customList: any[] = [];
@@ -656,6 +680,20 @@ Return ONLY a valid raw JSON array containing exactly the parsed items. Do not w
       return res.json({ success: true, count: productsList.length });
     }
     res.status(400).json({ error: "Invalid data format" });
+  });
+
+  // API Endpoints for Signals Persistence
+  app.get("/api/signals-persistence", (req, res) => {
+    res.json(getStoredSignals());
+  });
+
+  app.post("/api/signals-persistence", (req, res) => {
+    const signalsList = req.body;
+    if (Array.isArray(signalsList)) {
+      saveStoredSignals(signalsList);
+      return res.json({ success: true, count: signalsList.length });
+    }
+    res.status(400).json({ error: "Invalid signals data format" });
   });
 
   // Dynamic Robots.txt Route

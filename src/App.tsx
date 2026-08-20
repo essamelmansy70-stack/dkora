@@ -283,10 +283,23 @@ export default function App() {
     localStorage.setItem("decou_fx_theme", nextTheme);
   };
 
-  const saveSignalsLocally = (newList: Signal[]) => {
+  const saveSignalsLocally = async (newList: Signal[]) => {
+    // 1. Update state and local storage immediately for real-time smoothness
     localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(newList));
+    localStorage.setItem("decou_fx_local_signals_v4", JSON.stringify(newList));
     setSignals(newList);
     prevSignalsRef.current = newList;
+
+    // 2. Persist to server disk so other visitors see changes immediately
+    try {
+      await fetch("/api/signals-persistence", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newList)
+      });
+    } catch (e) {
+      console.error("Failed to persist signals to server:", e);
+    }
   };
 
   // Sound triggering on simulated network refreshes
@@ -294,10 +307,21 @@ export default function App() {
     setLoading(true);
     setError(null);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 400));
-      const saved = localStorage.getItem("decou_fx_local_signals_v2");
-      let currentList = saved ? JSON.parse(saved) : getFallbackSignals();
+      const response = await fetch("/api/signals-persistence");
+      let currentList = [];
+      if (response.ok) {
+        currentList = await response.json();
+      }
+      
+      if (!Array.isArray(currentList) || currentList.length === 0) {
+        const saved = localStorage.getItem("decou_fx_local_signals_v2") || localStorage.getItem("decou_fx_local_signals_v4");
+        currentList = saved ? JSON.parse(saved) : getFallbackSignals();
+      }
+
       setSignals(currentList);
+      localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(currentList));
+      localStorage.setItem("decou_fx_local_signals_v4", JSON.stringify(currentList));
+      
       if (soundEnabled) {
         playNotificationSound();
       }
@@ -307,6 +331,27 @@ export default function App() {
       setLoading(false);
     }
   };
+
+  // Synchronize on mount to load shared database signals
+  useEffect(() => {
+    const loadInitialSignals = async () => {
+      try {
+        const response = await fetch("/api/signals-persistence");
+        if (response.ok) {
+          const list = await response.json();
+          if (Array.isArray(list) && list.length > 0) {
+            setSignals(list);
+            localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(list));
+            localStorage.setItem("decou_fx_local_signals_v4", JSON.stringify(list));
+            return;
+          }
+        }
+      } catch (e) {
+        console.error("Failed to load initial server signals:", e);
+      }
+    };
+    loadInitialSignals();
+  }, []);
 
   // Add / Create a new Signal
   const handleAddSignalSubmit = (e: React.FormEvent) => {

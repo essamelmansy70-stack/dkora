@@ -158,6 +158,7 @@ export default function App() {
   const [newsArticles] = useState<NewsArticle[]>(initialNewsArticles);
   const [calendarEvents] = useState<CalendarEvent[]>(initialCalendarEvents);
   const [calendarFilter, setCalendarFilter] = useState<'ALL' | 'HIGH' | 'MEDIUM' | 'LOW'>('ALL');
+  const [feedTab, setFeedTab] = useState<'ACTIVE' | 'ARCHIVE'>('ACTIVE');
 
   // Other App States
   const [loading, setLoading] = useState(false);
@@ -448,6 +449,16 @@ export default function App() {
       sig.type.toLowerCase().includes(query)
     );
   });
+
+  // Automatically segment signals: CLOSED or SL HIT statuses go to Archive, others remain Active
+  const activeSignals = filteredSignals.filter(
+    (sig) => sig.status !== "CLOSED" && sig.status !== "SL HIT"
+  );
+  const archivedSignals = filteredSignals.filter(
+    (sig) => sig.status === "CLOSED" || sig.status === "SL HIT"
+  );
+
+  const displaySignals = feedTab === "ACTIVE" ? activeSignals : archivedSignals;
 
   return (
     <div className="min-h-screen font-sans transition-colors duration-300 bg-[#f8f9fa] text-slate-800 dark:bg-[#060b13] dark:text-slate-100 selection:bg-amber-500 selection:text-black">
@@ -843,18 +854,50 @@ export default function App() {
                     <span>{t.signals.title}</span>
                   </h3>
                   <span className="text-xs text-slate-500 dark:text-neutral-400 font-bold">
-                    {filteredSignals.length} {lang === "ar" ? "توصية متاحة" : "signals available"}
+                    {displaySignals.length} {lang === "ar" ? "توصية معروضة" : "signals displayed"}
                   </span>
                 </div>
 
-                {filteredSignals.length === 0 ? (
+                {/* Active / Archive Tab Bar */}
+                <div className="bg-slate-100 dark:bg-[#141f32]/60 p-1.5 rounded-2xl flex gap-1.5 border border-slate-200/50 dark:border-[#1e2e4a]/50">
+                  <button
+                    onClick={() => setFeedTab("ACTIVE")}
+                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                      feedTab === "ACTIVE"
+                        ? "bg-white dark:bg-[#0c1322] text-slate-900 dark:text-white shadow-md border-b-2 border-amber-500"
+                        : "text-slate-500 dark:text-neutral-400 hover:text-slate-900 dark:hover:text-white"
+                    }`}
+                  >
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>{lang === "ar" ? "التوصيات النشطة" : "Active Signals"}</span>
+                    <span className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded-md text-[10px] font-black">
+                      {activeSignals.length}
+                    </span>
+                  </button>
+                  <button
+                    onClick={() => setFeedTab("ARCHIVE")}
+                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                      feedTab === "ARCHIVE"
+                        ? "bg-white dark:bg-[#0c1322] text-slate-900 dark:text-white shadow-md border-b-2 border-amber-500"
+                        : "text-slate-500 dark:text-neutral-400 hover:text-slate-900 dark:hover:text-white"
+                    }`}
+                  >
+                    <span className="w-2 h-2 rounded-full bg-slate-400 dark:bg-slate-500"></span>
+                    <span>{lang === "ar" ? "الأرشيف والمغلقة" : "Signals Archive"}</span>
+                    <span className="bg-slate-200 dark:bg-[#1e2e4a] text-slate-700 dark:text-neutral-300 px-2 py-0.5 rounded-md text-[10px] font-black">
+                      {archivedSignals.length}
+                    </span>
+                  </button>
+                </div>
+
+                {displaySignals.length === 0 ? (
                   <div className="text-center p-12 bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] rounded-2xl">
                     <AlertTriangle className="w-12 h-12 text-amber-500 mx-auto mb-3" />
                     <p className="text-slate-500 dark:text-neutral-400 font-bold">{t.signals.noSignals}</p>
                   </div>
                 ) : (
                   <div className="space-y-6">
-                    {filteredSignals.map((sig) => {
+                    {displaySignals.map((sig) => {
                       const isSell = sig.type === "SELL";
                       const isInfo = sig.type === "INFO";
                       

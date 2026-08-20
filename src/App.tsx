@@ -128,7 +128,7 @@ export default function App() {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`/api/telegram-signals?channel=${channel}`);
+      const response = await fetch(`/api/telegram-signals?channel=${channel}&t=${Date.now()}`);
       if (!response.ok) {
         throw new Error("فشل في جلب التوصيات من الخادم. يرجى التحقق من القناة.");
       }

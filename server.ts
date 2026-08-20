@@ -368,7 +368,7 @@ async function startServer() {
   // API Endpoint to fetch and parse Telegram public channel signals
   app.get("/api/telegram-signals", async (req, res) => {
     const channelName = (req.query.channel as string) || "nmerfx";
-    const telegramUrl = `https://t.me/s/${channelName}`;
+    const telegramUrl = `https://t.me/s/${channelName}?t=${Date.now()}`;
 
     try {
       console.log(`Fetching telegram channel preview from: ${telegramUrl}`);
@@ -459,8 +459,11 @@ Return ONLY a valid raw JSON array containing exactly the parsed items. Do not w
           if (Array.isArray(parsedSignals)) {
             const finalSignals = parsedSignals.map((sig: any, idx: number) => {
               const orig = newestMessages[idx] || { text: "", date: "", views: "0", photoUrl: "" };
+              // Create stable ID using a clean hash of original text content & date to prevent dynamic ID shifts
+              const textHash = orig.text.replace(/[^a-zA-Z0-9\u0600-\u06FF]/g, "").substring(0, 30);
+              const uniqueId = `sig-${textHash}-${orig.date || idx}`;
               return {
-                id: `gemini-sig-${idx}-${Date.now()}`,
+                id: uniqueId,
                 pair: sig.pair || "MARKET UPDATE",
                 type: sig.type || "INFO",
                 entry: sig.entry || "N/A",
@@ -529,8 +532,10 @@ Return ONLY a valid raw JSON array containing exactly the parsed items. Do not w
         }
 
         if (!pair) {
+          const textHash = text.replace(/[^a-zA-Z0-9\u0600-\u06FF]/g, "").substring(0, 30);
+          const uniqueId = `sig-info-${textHash}-${m.date || idx}`;
           return {
-            id: `local-info-${idx}-${Date.now()}`,
+            id: uniqueId,
             pair: "تحديث السوق",
             type: "INFO",
             entry: "N/A",
@@ -599,8 +604,11 @@ Return ONLY a valid raw JSON array containing exactly the parsed items. Do not w
         else if (statusText.includes("hit sl") || statusText.includes("sl hit") || text.includes("ضرب الستوب") || text.includes("ضرب وقف الخسارة")) status = "SL HIT";
         else if (statusText.includes("closed") || statusText.includes("close now") || text.includes("اغلق") || text.includes("إغلاق")) status = "CLOSED";
 
+         // Create stable ID using a clean hash of original text content & date to prevent dynamic ID shifts
+        const textHash = text.replace(/[^a-zA-Z0-9\u0600-\u06FF]/g, "").substring(0, 30);
+        const uniqueId = `sig-${textHash}-${m.date || idx}`;
         return {
-          id: `local-signal-${idx}-${Date.now()}`,
+          id: uniqueId,
           pair,
           type,
           entry,

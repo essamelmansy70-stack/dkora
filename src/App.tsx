@@ -506,17 +506,6 @@ export default function App() {
                 <Calendar className="w-4 h-4" />
                 <span>{t.nav.calendar}</span>
               </button>
-              <button
-                onClick={() => navigateTo("sitemap")}
-                className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${
-                  page === "sitemap"
-                    ? "bg-amber-500/10 text-amber-500 dark:text-amber-400 font-extrabold"
-                    : "text-slate-600 dark:text-neutral-400 hover:bg-slate-100 dark:hover:bg-[#141f32] hover:text-slate-950 dark:hover:text-white"
-                }`}
-              >
-                <Map className="w-4 h-4" />
-                <span>{t.nav.sitemap}</span>
-              </button>
             </div>
 
             {/* Right Control actions */}
@@ -560,16 +549,6 @@ export default function App() {
                 title="Toggle Sounds"
               >
                 {soundEnabled ? <Volume2 className="w-4.5 h-4.5" /> : <VolumeX className="w-4.5 h-4.5" />}
-              </button>
-
-              {/* Refresh */}
-              <button
-                onClick={fetchSignals}
-                disabled={loading}
-                className="p-2.5 rounded-xl border border-slate-200 dark:border-[#1e2e4a] bg-slate-50 dark:bg-[#141f32] hover:bg-slate-100 dark:hover:bg-[#1a2942] text-slate-700 dark:text-neutral-300 transition-all disabled:opacity-50"
-                title="Refresh Desk"
-              >
-                <RefreshCw className={`w-4.5 h-4.5 ${loading ? "animate-spin text-amber-500" : ""}`} />
               </button>
 
               {/* Admin Mode Toggle */}
@@ -621,13 +600,6 @@ export default function App() {
         >
           <Calendar className="w-5 h-5" />
           <span>{t.nav.calendar}</span>
-        </button>
-        <button
-          onClick={() => navigateTo("sitemap")}
-          className={`flex flex-col items-center gap-1 text-[11px] font-bold ${page === "sitemap" ? "text-amber-500" : "text-slate-500"}`}
-        >
-          <Map className="w-5 h-5" />
-          <span>{t.nav.sitemap}</span>
         </button>
       </div>
 
@@ -1656,9 +1628,6 @@ export default function App() {
                 </li>
                 <li>
                   <button onClick={() => navigateTo("calendar")} className="hover:text-amber-500 cursor-pointer">{t.nav.calendar}</button>
-                </li>
-                <li>
-                  <button onClick={() => navigateTo("sitemap")} className="hover:text-amber-500 cursor-pointer">{t.nav.sitemap}</button>
                 </li>
               </ul>
             </div>

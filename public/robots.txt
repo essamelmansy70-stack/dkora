@@ -9,4 +9,4 @@ Disallow: /node_modules/
 Disallow: /dist/
 
 # Link to the dynamic sitemap
-Sitemap: https://dkorafx.com/sitemap.xml
+Sitemap: https://dkora.online/sitemap.xml

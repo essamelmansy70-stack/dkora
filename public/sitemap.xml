@@ -1,44 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Core Static Forex Pages -->
+  <!-- Core Static Forex Pages for dkora.online -->
   <url>
-    <loc>https://dkorafx.com/</loc>
+    <loc>https://dkora.online/</loc>
     <lastmod>2026-08-20</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://dkorafx.com/?page=news</loc>
+    <loc>https://dkora.online/?page=news</loc>
     <lastmod>2026-08-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://dkorafx.com/?page=calendar</loc>
+    <loc>https://dkora.online/?page=calendar</loc>
     <lastmod>2026-08-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://dkorafx.com/?page=sitemap</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://dkorafx.com/?page=privacy</loc>
+    <loc>https://dkora.online/?page=privacy</loc>
     <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
-    <loc>https://dkorafx.com/?page=terms</loc>
+    <loc>https://dkora.online/?page=terms</loc>
     <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
-    <loc>https://dkorafx.com/?page=disclaimer</loc>
+    <loc>https://dkora.online/?page=disclaimer</loc>
     <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>

@@ -23,17 +23,25 @@ import {
   Trash2,
   Edit,
   X,
-  CheckCircle2
+  CheckCircle2,
+  Globe,
+  Sun,
+  Moon,
+  Compass,
+  FileText,
+  Calendar,
+  Share2,
+  ArrowRight,
+  Map,
+  ShieldAlert
 } from "lucide-react";
-
-// === CONFIGURATION ===
-// Easily change your default telegram channel here:
-const DEFAULT_TELEGRAM_URL = "https://t.me/nmerfx";
+import { translations } from "./translations";
+import { initialNewsArticles, initialCalendarEvents, NewsArticle, CalendarEvent } from "./data/newsAndCalendar";
 
 interface Signal {
   id: string;
   pair: string;
-  type: string;
+  type: "BUY" | "SELL" | "INFO";
   entry: string;
   tp1: string;
   tp2: string;
@@ -47,7 +55,7 @@ interface Signal {
   rawText: string;
 }
 
-// Web Audio API Synthesizer for high-fidelity trading chime
+// Sound synthesizer for high-fidelity interactive feedback
 const playNotificationSound = () => {
   try {
     const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
@@ -55,7 +63,6 @@ const playNotificationSound = () => {
     const ctx = new AudioContextClass();
     const now = ctx.currentTime;
     
-    // Low sweet oscillator (warm sine chime)
     const osc1 = ctx.createOscillator();
     const gain1 = ctx.createGain();
     osc1.type = "sine";
@@ -68,7 +75,6 @@ const playNotificationSound = () => {
     osc1.connect(gain1);
     gain1.connect(ctx.destination);
     
-    // High bright oscillator (bell peak)
     const osc2 = ctx.createOscillator();
     const gain2 = ctx.createGain();
     osc2.type = "sine";
@@ -92,48 +98,74 @@ const playNotificationSound = () => {
 };
 
 export default function App() {
-  const [telegramUrl, setTelegramUrl] = useState(DEFAULT_TELEGRAM_URL);
-  const [channelInput, setChannelInput] = useState("nmerfx");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [lastRefreshed, setLastRefreshed] = useState<Date>(new Date());
-  const [searchQuery, setSearchQuery] = useState("");
-  const [statusFilter, setStatusFilter] = useState<string>("ALL");
-  const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [showConfig, setShowConfig] = useState(false);
-  
-  // Sound Notification settings (persisted in localStorage)
-  const [soundEnabled, setSoundEnabled] = useState<boolean>(() => {
-    const saved = localStorage.getItem("sound_notifications_enabled");
-    return saved !== "false"; // default to true if not set to 'false'
+  // 1. Language & Router Sync State
+  const [lang, setLang] = useState<'ar' | 'en'>(() => {
+    const params = new URLSearchParams(window.location.search);
+    const urlLang = params.get("lang");
+    if (urlLang === "en" || urlLang === "ar") return urlLang;
+    const saved = localStorage.getItem("decou_fx_lang");
+    return saved === "en" ? "en" : "ar";
   });
 
-  // Local state signals loading from localStorage
+  const [page, setPage] = useState<string>(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("page") || "home";
+  });
+
+  const [selectedSignalId, setSelectedSignalId] = useState<string | null>(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("id") || null;
+  });
+
+  const [selectedNewsId, setSelectedNewsId] = useState<string | null>(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("newsId") || null;
+  });
+
+  // 2. Premium Light / Dark Theme State
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    const saved = localStorage.getItem("decou_fx_theme");
+    return saved === "dark" ? "dark" : "light";
+  });
+
+  // 3. Signals state (local storage backed)
   const [signals, setSignals] = useState<Signal[]>(() => {
-    const saved = localStorage.getItem("nmer_fx_local_signals");
+    const saved = localStorage.getItem("decou_fx_local_signals_v2");
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
-        }
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
       } catch (e) {
         console.error("Failed to parse local signals", e);
       }
     }
     const fallback = getFallbackSignals();
-    localStorage.setItem("nmer_fx_local_signals", JSON.stringify(fallback));
+    localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(fallback));
     return fallback;
   });
 
-  const prevSignalsRef = useRef<Signal[]>(signals);
+  // 4. Custom News Articles & Calendar Events State (stored locally to allow additions if needed)
+  const [newsArticles] = useState<NewsArticle[]>(initialNewsArticles);
+  const [calendarEvents] = useState<CalendarEvent[]>(initialCalendarEvents);
+  const [calendarFilter, setCalendarFilter] = useState<'ALL' | 'HIGH' | 'MEDIUM' | 'LOW'>('ALL');
 
-  // Form states for adding and editing
+  // Other App States
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [soundEnabled, setSoundEnabled] = useState(() => {
+    const saved = localStorage.getItem("decou_fx_sound");
+    return saved !== "false";
+  });
+  const [showConfig, setShowConfig] = useState(false);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  // Form states for creating & editing signals
   const [isAdding, setIsAdding] = useState(false);
   const [editingSignal, setEditingSignal] = useState<Signal | null>(null);
   const [formData, setFormData] = useState({
     pair: "",
-    type: "BUY",
+    type: "BUY" as "BUY" | "SELL" | "INFO",
     entry: "",
     tp1: "",
     tp2: "",
@@ -141,91 +173,194 @@ export default function App() {
     sl: "",
     explanation: "",
     photoUrl: "",
-    status: "ACTIVE"
+    status: "ACTIVE" as any
   });
 
-  // Risk Calculator State
+  // Risk calculator state
   const [accountBalance, setAccountBalance] = useState(1000);
-  const [riskPercentage, setRiskPercentage] = useState(1);
+  const [riskPercentage, setRiskPercentage] = useState(2);
   const [stopLossPips, setStopLossPips] = useState(30);
-  const [calculatedLotSize, setCalculatedLotSize] = useState(0.03);
+  const [calculatedLotSize, setCalculatedLotSize] = useState(0.02);
 
-  // Helper to save signals locally and update state
+  const prevSignalsRef = useRef<Signal[]>(signals);
+
+  // Synchronize document direction & title dynamically based on language choice
+  useEffect(() => {
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    document.documentElement.lang = lang;
+    document.title = lang === "ar" 
+      ? "توصيات فوركس مجانية دقيقة | اربح مع خبراء سوق العملات" 
+      : "Free Accurate Forex Signals | Profit with Currency Market Experts";
+  }, [lang]);
+
+  // Synchronize dynamic dark / light mode on document root
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (theme === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+  }, [theme]);
+
+  // Sync state transitions back to the browser's URL query string (Copyable/Shareable Links!)
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", lang);
+    url.searchParams.set("page", page);
+    
+    if (selectedSignalId) {
+      url.searchParams.set("id", selectedSignalId);
+    } else {
+      url.searchParams.delete("id");
+    }
+
+    if (selectedNewsId) {
+      url.searchParams.set("newsId", selectedNewsId);
+    } else {
+      url.searchParams.delete("newsId");
+    }
+
+    window.history.pushState({}, "", url.toString());
+  }, [lang, page, selectedSignalId, selectedNewsId]);
+
+  // Listen to browser forward & back button clicks to update state instantly
+  useEffect(() => {
+    const handlePopState = () => {
+      const params = new URLSearchParams(window.location.search);
+      const urlLang = params.get("lang");
+      if (urlLang === "en" || urlLang === "ar") setLang(urlLang);
+      
+      setPage(params.get("page") || "home");
+      setSelectedSignalId(params.get("id") || null);
+      setSelectedNewsId(params.get("newsId") || null);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  // Update proposed Lot sizing based on parameters
+  useEffect(() => {
+    try {
+      const riskAmount = accountBalance * (riskPercentage / 100);
+      // Forex Standard Lot pip calculation helper: riskAmount / (stopLossPips * 10)
+      const lot = riskAmount / (stopLossPips * 10);
+      setCalculatedLotSize(Number(Math.max(0.01, Math.min(100, lot)).toFixed(2)));
+    } catch {
+      setCalculatedLotSize(0.01);
+    }
+  }, [accountBalance, riskPercentage, stopLossPips]);
+
+  // Navigation route controller helper
+  const navigateTo = (targetPage: string, id: string | null = null, newsId: string | null = null) => {
+    setPage(targetPage);
+    setSelectedSignalId(id);
+    setSelectedNewsId(newsId);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const toggleLanguage = () => {
+    const nextLang = lang === "ar" ? "en" : "ar";
+    setLang(nextLang);
+    localStorage.setItem("decou_fx_lang", nextLang);
+  };
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "light" ? "dark" : "light";
+    setTheme(nextTheme);
+    localStorage.setItem("decou_fx_theme", nextTheme);
+  };
+
   const saveSignalsLocally = (newList: Signal[]) => {
-    localStorage.setItem("nmer_fx_local_signals", JSON.stringify(newList));
+    localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(newList));
     setSignals(newList);
     prevSignalsRef.current = newList;
   };
 
-  // Fetch signals locally (Offline/Autonomy simulation)
-  const fetchSignals = async (channel?: string, isInitial = false) => {
+  // Sound triggering on simulated network refreshes
+  const fetchSignals = async () => {
     setLoading(true);
     setError(null);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 350)); // smooth user transition
-      const saved = localStorage.getItem("nmer_fx_local_signals");
-      let currentList: Signal[] = [];
-      if (saved) {
-        currentList = JSON.parse(saved);
-      } else {
-        currentList = getFallbackSignals();
-        localStorage.setItem("nmer_fx_local_signals", JSON.stringify(currentList));
-      }
-
-      // Check if new signal was added in other ways to play sound
-      if (!isInitial && prevSignalsRef.current && prevSignalsRef.current.length > 0) {
-        const hasNewSignal = currentList.some((sig: any) => {
-          return !prevSignalsRef.current.some((p) => p.id === sig.id);
-        });
-        const hasStatusChange = currentList.some((sig: any) => {
-          const matchingPrev = prevSignalsRef.current.find((p) => p.id === sig.id);
-          return matchingPrev && matchingPrev.status !== sig.status;
-        });
-
-        if ((hasNewSignal || hasStatusChange) && soundEnabled) {
-          playNotificationSound();
-        }
-      }
-
+      await new Promise((resolve) => setTimeout(resolve, 400));
+      const saved = localStorage.getItem("decou_fx_local_signals_v2");
+      let currentList = saved ? JSON.parse(saved) : getFallbackSignals();
       setSignals(currentList);
-      prevSignalsRef.current = currentList;
-    } catch (err: any) {
-      console.error(err);
-      setError("حدث خطأ أثناء تحميل البيانات المحلية.");
+      if (soundEnabled) {
+        playNotificationSound();
+      }
+    } catch {
+      setError(lang === "ar" ? "فشل تحديث البيانات." : "Refresh failed.");
     } finally {
       setLoading(false);
-      setLastRefreshed(new Date());
     }
   };
 
-  // Add new signal
-  const handleAddSignal = (e: React.FormEvent) => {
+  // Add / Create a new Signal
+  const handleAddSignalSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.pair || !formData.entry || !formData.sl || !formData.tp1) {
-      alert("الرجاء ملء حقول الاسم وسعر الدخول والهدف الأول ووقف الخسارة.");
+      alert(lang === "ar" ? "الرجاء ملء الحقول الإلزامية." : "Please fill in all required fields.");
       return;
     }
 
     const fresh: Signal = {
-      id: `local-sig-${Date.now()}`,
+      id: `sig-${Date.now()}`,
       pair: formData.pair.toUpperCase(),
-      type: formData.type as "BUY" | "SELL" | "INFO",
+      type: formData.type,
       entry: formData.entry,
       tp1: formData.tp1,
       tp2: formData.tp2,
       tp3: formData.tp3,
       sl: formData.sl,
-      status: formData.status as any,
-      explanation: formData.explanation || "تحليل فني وتوصية تداول تم إنشاؤها يدوياً.",
+      status: formData.status,
+      explanation: formData.explanation || (lang === "ar" ? "تحليل فني للزوج." : "Technical analysis view."),
       date: new Date().toISOString(),
-      views: "1.5K",
+      views: "1.2K",
       photoUrl: formData.photoUrl,
-      rawText: `${formData.pair}\nدخول: ${formData.entry}\nهدف: ${formData.tp1}\nستوب: ${formData.sl}`
+      rawText: `${formData.pair}\nENTRY: ${formData.entry}\nSL: ${formData.sl}\nTP1: ${formData.tp1}`
     };
 
     const updated = [fresh, ...signals];
     saveSignalsLocally(updated);
     setIsAdding(false);
+    resetForm();
+    if (soundEnabled) playNotificationSound();
+  };
+
+  // Edit signal submit
+  const handleEditSignalSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingSignal) return;
+
+    const updated = signals.map((s) => {
+      if (s.id === editingSignal.id) {
+        return {
+          ...s,
+          pair: formData.pair.toUpperCase(),
+          type: formData.type,
+          entry: formData.entry,
+          tp1: formData.tp1,
+          tp2: formData.tp2,
+          tp3: formData.tp3,
+          sl: formData.sl,
+          status: formData.status,
+          explanation: formData.explanation,
+          photoUrl: formData.photoUrl
+        };
+      }
+      return s;
+    });
+
+    saveSignalsLocally(updated);
+    setIsAdding(false);
+    setEditingSignal(null);
+    resetForm();
+    if (soundEnabled) playNotificationSound();
+  };
+
+  const resetForm = () => {
     setFormData({
       pair: "",
       type: "BUY",
@@ -238,35 +373,31 @@ export default function App() {
       photoUrl: "",
       status: "ACTIVE"
     });
-
-    if (soundEnabled) {
-      playNotificationSound();
-    }
   };
 
-  // Delete signal
   const handleDeleteSignal = (id: string) => {
-    if (confirm("هل أنت متأكد من حذف هذه التوصية نهائياً؟")) {
+    const msg = lang === "ar" ? "هل أنت متأكد من حذف هذه التوصية نهائياً؟" : "Are you sure you want to delete this signal?";
+    if (confirm(msg)) {
       const updated = signals.filter((s) => s.id !== id);
       saveSignalsLocally(updated);
+      if (selectedSignalId === id) {
+        setSelectedSignalId(null);
+        setPage("home");
+      }
     }
   };
 
-  // Quick edit status toggle
-  const handleToggleStatus = (id: string, newStatus: string) => {
+  const handleToggleStatus = (id: string, newStatus: any) => {
     const updated = signals.map((s) => {
       if (s.id === id) {
-        if (s.status !== newStatus && soundEnabled) {
-          playNotificationSound();
-        }
-        return { ...s, status: newStatus as any };
+        return { ...s, status: newStatus };
       }
       return s;
     });
     saveSignalsLocally(updated);
+    if (soundEnabled) playNotificationSound();
   };
 
-  // Open Edit Mode
   const handleStartEdit = (sig: Signal) => {
     setEditingSignal(sig);
     setFormData({
@@ -282,978 +413,1267 @@ export default function App() {
       status: sig.status
     });
     setIsAdding(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Save edited signal
-  const handleSaveEdit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!editingSignal) return;
-
-    const updated = signals.map((s) => {
-      if (s.id === editingSignal.id) {
-        if (s.status !== formData.status && soundEnabled) {
-          playNotificationSound();
-        }
-        return {
-          ...s,
-          pair: formData.pair.toUpperCase(),
-          type: formData.type as any,
-          entry: formData.entry,
-          tp1: formData.tp1,
-          tp2: formData.tp2,
-          tp3: formData.tp3,
-          sl: formData.sl,
-          explanation: formData.explanation,
-          photoUrl: formData.photoUrl,
-          status: formData.status as any
-        };
-      }
-      return s;
-    });
-
-    saveSignalsLocally(updated);
-    setIsAdding(false);
-    setEditingSignal(null);
-    setFormData({
-      pair: "",
-      type: "BUY",
-      entry: "",
-      tp1: "",
-      tp2: "",
-      tp3: "",
-      sl: "",
-      explanation: "",
-      photoUrl: "",
-      status: "ACTIVE"
+  // Copy Direct Link to Clipboard
+  const copyDirectLink = (id: string) => {
+    const origin = window.location.origin + window.location.pathname;
+    const shareUrl = `${origin}?page=signal&id=${id}&lang=${lang}`;
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      setCopiedId(id);
+      setTimeout(() => setCopiedId(null), 2500);
     });
   };
 
-  // Parse channel name helper (dummy placeholder now)
-  const extractChannelName = (url: string) => "nmerfx";
-  const handleApplyChannel = () => {
-    setShowConfig(false);
-  };
+  const t = translations[lang];
 
-  // Initial load
-  useEffect(() => {
-    fetchSignals(undefined, true);
-  }, []);
-
-  // Calculate standard forex lot sizes
-  useEffect(() => {
-    // Math: Lot Size = (Balance * Risk%) / (SL Pips * 10$) for standard 10$ per pip per lot
-    if (accountBalance > 0 && riskPercentage > 0 && stopLossPips > 0) {
-      const riskAmount = accountBalance * (riskPercentage / 100);
-      const lot = riskAmount / (stopLossPips * 10);
-      setCalculatedLotSize(parseFloat(lot.toFixed(2)));
-    }
-  }, [accountBalance, riskPercentage, stopLossPips]);
-
-  // Copy signal details to clipboard
-  const copyToClipboard = (sig: Signal) => {
-    const text = `📊 توصية تداول جديدة:
-🌐 الزوج/السلعة: ${sig.pair}
-🎯 الاتجاه: ${sig.type}
-💰 سعر الدخول: ${sig.entry}
-🚀 الأهداف:
-🎯 هدف أول: ${sig.tp1 || "N/A"}
-🎯 هدف ثاني: ${sig.tp2 || "N/A"}
-🎯 هدف ثالث: ${sig.tp3 || "N/A"}
-🛑 وقف الخسارة (SL): ${sig.sl || "N/A"}
-📱 المصدر: ${telegramUrl}
-⚠️ تداول بمسؤولية وإدارة رأس مال صارمة!`;
-
-    navigator.clipboard.writeText(text);
-    setCopiedId(sig.id);
-    setTimeout(() => setCopiedId(null), 2000);
-  };
-
-  // Filter signals
+  // Filters search query
   const filteredSignals = signals.filter((sig) => {
-    const matchesSearch =
-      sig.pair.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      sig.rawText.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      sig.explanation.toLowerCase().includes(searchQuery.toLowerCase());
-
-    if (statusFilter === "ALL") return matchesSearch;
-    if (statusFilter === "ACTIVE") return matchesSearch && sig.status === "ACTIVE";
-    if (statusFilter === "TP") return matchesSearch && ["TP1 HIT", "TP2 HIT", "TP3 HIT"].includes(sig.status);
-    if (statusFilter === "SL") return matchesSearch && sig.status === "SL HIT";
-    if (statusFilter === "INFO") return matchesSearch && sig.status === "INFO";
-    return matchesSearch;
+    const query = searchQuery.toLowerCase().trim();
+    if (!query) return true;
+    return (
+      sig.pair.toLowerCase().includes(query) ||
+      sig.explanation.toLowerCase().includes(query) ||
+      sig.type.toLowerCase().includes(query)
+    );
   });
 
-  // Calculate statistics from current signals list
-  const totalSigs = signals.length;
-  const activeSigs = signals.filter((s) => s.status === "ACTIVE").length;
-  const tpHitSigs = signals.filter((s) => ["TP1 HIT", "TP2 HIT", "TP3 HIT"].includes(s.status)).length;
-  const slHitSigs = signals.filter((s) => s.status === "SL HIT").length;
-  const winRate = totalSigs > 0 ? Math.round(((tpHitSigs) / (tpHitSigs + slHitSigs || 1)) * 100) : 85;
-
   return (
-    <div className="min-h-screen bg-[#090d16] text-[#e2e8f0] font-sans antialiased selection:bg-amber-500 selection:text-black">
-      {/* Top Banner / Ticker */}
-      <div className="bg-gradient-to-r from-amber-600 to-amber-500 text-black px-4 py-2 text-center text-xs font-semibold tracking-wide flex justify-between items-center sm:px-8 border-b border-amber-600">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>لوحة التحكم مستقلة (تم إلغاء ربط تليجرام بنجاح)</span>
-        </div>
-        <div className="hidden md:flex items-center gap-6">
-          <span>الذهب XAUUSD: صاعد</span>
-          <span>•</span>
-          <span>اليورو EURUSD: متعادل</span>
-          <span>•</span>
-          <span>الداوجونز US30: اتجاه هابط</span>
-        </div>
-        <div className="flex items-center gap-1 text-xs">
-          <span>تخزين سحابي محلي آمن 💾</span>
-        </div>
-      </div>
-
-      {/* Main Header */}
-      <header className="border-b border-[#1a2436] bg-[#0c1322]/80 backdrop-blur-md sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-3">
-            <div className="bg-amber-500 text-black p-2 rounded-xl shadow-lg shadow-amber-500/20">
-              <TrendingUp className="w-6 h-6" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
-                NMER FX Signals Hub
-                <span className="text-[10px] bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded-full border border-amber-500/20 font-normal">
-                  لوحة تحكم ذكية
-                </span>
-              </h1>
-              <p className="text-xs text-neutral-400">
-                لوحة إدارة وإضافة توصيات التداول الذاتية والتحكم المستقل
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2 self-end sm:self-auto">
-            <button
-              onClick={() => {
-                setIsAdding(!isAdding);
-                setEditingSignal(null);
-                setFormData({
-                  pair: "",
-                  type: "BUY",
-                  entry: "",
-                  tp1: "",
-                  tp2: "",
-                  tp3: "",
-                  sl: "",
-                  explanation: "",
-                  photoUrl: "",
-                  status: "ACTIVE"
-                });
-              }}
-              className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black px-4 py-2.5 rounded-xl font-bold text-sm transition-all shadow-md active:scale-95"
-            >
-              <Plus className="w-4 h-4" />
-              <span>إضافة توصية جديدة</span>
-            </button>
-            <button
-              onClick={() => {
-                const newVal = !soundEnabled;
-                setSoundEnabled(newVal);
-                localStorage.setItem("sound_notifications_enabled", String(newVal));
-                if (newVal) {
-                  playNotificationSound();
-                }
-              }}
-              className={`p-2.5 rounded-xl transition border flex items-center justify-center gap-2 ${
-                soundEnabled
-                  ? "text-emerald-400 bg-emerald-500/10 border-emerald-500/20 hover:bg-emerald-500/25"
-                  : "text-neutral-500 bg-[#141f32] border-[#1e2e4a] hover:text-neutral-400 hover:bg-[#1a2942]"
-              }`}
-              title={soundEnabled ? "إيقاف التنبيه الصوتي" : "تفعيل التنبيه الصوتي"}
-            >
-              {soundEnabled ? (
-                <>
-                  <Volume2 className="w-5 h-5" />
-                  <span className="text-xs font-semibold hidden md:inline">التنبيه الصوتي نشط</span>
-                </>
-              ) : (
-                <>
-                  <VolumeX className="w-5 h-5" />
-                  <span className="text-xs font-semibold hidden md:inline">التنبيه الصوتي مغلق</span>
-                </>
-              )}
-            </button>
-            <button
-              onClick={() => setShowConfig(!showConfig)}
-              className="p-2.5 text-neutral-400 hover:text-white bg-[#141f32] rounded-xl transition border border-[#1e2e4a]"
-              title="إعدادات المنصة"
-            >
-              <Settings className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => fetchSignals()}
-              disabled={loading}
-              className="flex items-center gap-2 bg-[#141f32] hover:bg-[#1a2942] text-amber-500 hover:text-amber-400 px-4 py-2.5 rounded-xl border border-amber-500/10 hover:border-amber-500/30 font-medium text-sm transition-all shadow-md active:scale-95 disabled:opacity-50"
-            >
-              <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
-              <span>تحديث البيانات</span>
-            </button>
-          </div>
-        </div>
-      </header>
-
-      <main className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 space-y-6">
-        
-        {/* Channel Settings Box */}
-        {showConfig && (
-          <div className="bg-[#0e1726] border border-amber-500/30 p-5 rounded-2xl shadow-xl space-y-4 animate-fadeIn">
-            <div className="flex justify-between items-center">
-              <h3 className="font-bold text-amber-500 text-base flex items-center gap-2">
-                <Settings className="w-5 h-5" />
-                إعدادات المنصة المحلية
-              </h3>
-              <span className="text-xs text-emerald-400">الوضع المستقل نشط</span>
-            </div>
-            <p className="text-sm text-neutral-300">
-              تلبية لطلبك، تم **إلغاء الربط بقنوات تليجرام** بالكامل وتوجيه المنصة لتعمل في الوضع المستقل الذاتي. يمكنك الآن إضافة وتعديل وحذف الصفقات والتحكم بحالتها ونشر تحليلاتك الفنية بحرية وأمان كامل، مع حفظ كافة تفضيلاتك وتوصياتك تلقائياً في ذاكرة المتصفح المحلية.
-            </p>
-
-            {/* Sound Notification Settings inside Settings Box */}
-            <div className="border-t border-[#1a2436]/60 pt-4 mt-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+    <div className="min-h-screen font-sans transition-colors duration-300 bg-[#f8f9fa] text-slate-800 dark:bg-[#060b13] dark:text-slate-100 selection:bg-amber-500 selection:text-black">
+      {/* 2. Primary Navigation */}
+      <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/90 dark:bg-[#0c1322]/90 border-b border-slate-200 dark:border-[#1a2436] transition-colors">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-20 items-center gap-4">
+            
+            {/* Logo / Brand */}
+            <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigateTo("home")}>
+              <div className="bg-amber-500 text-black p-2.5 rounded-xl font-extrabold text-xl shadow-lg shadow-amber-500/10 flex items-center justify-center tracking-tighter">
+                <Activity className="w-6 h-6 animate-pulse" />
+              </div>
               <div>
-                <h4 className="text-sm font-semibold text-white flex items-center gap-2">
-                  <Volume2 className="w-4 h-4 text-amber-500" />
-                  التحكم في التنبيهات الصوتية
-                </h4>
-                <p className="text-xs text-neutral-400 mt-1">
-                  تفعيل رنين تنبيه ناعم وجميل فور وصول صفقة جديدة أو تحديث لأي صفقات نشطة من قناة التلجرام.
-                </p>
-              </div>
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={() => {
-                    const newVal = !soundEnabled;
-                    setSoundEnabled(newVal);
-                    localStorage.setItem("sound_notifications_enabled", String(newVal));
-                    if (newVal) {
-                      playNotificationSound();
-                    }
-                  }}
-                  className={`px-4 py-2 text-xs font-bold rounded-lg transition-all border ${
-                    soundEnabled
-                      ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20 hover:bg-emerald-500/20"
-                      : "bg-[#141f32] text-neutral-400 border-[#1e2e4a] hover:bg-[#1a2942]"
-                  }`}
-                >
-                  {soundEnabled ? "التنبيه الصوتي: مفعّل" : "التنبيه الصوتي: معطّل"}
-                </button>
-                {soundEnabled && (
-                  <button
-                    onClick={playNotificationSound}
-                    className="text-xs text-amber-500 hover:text-amber-400 bg-[#141f32] hover:bg-[#1a2942] border border-[#1e2e4a] px-3 py-2 rounded-lg transition active:scale-95"
-                  >
-                    تجربة رنين التنبيه 🔊
-                  </button>
-                )}
+                <span className="text-xl font-black bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
+                  {t.meta.brandName}
+                </span>
+                <span className="text-[10px] text-amber-500 block font-bold leading-none uppercase tracking-widest mt-0.5">
+                  Pro Signals Hub
+                </span>
               </div>
             </div>
-          </div>
-        )}
 
-        {/* Top Quick Stats Grid */}
-        <section className="grid grid-cols-2 lg:grid-cols-4 gap-4" id="quick-stats">
-          <div className="bg-[#0c1322] border border-[#1a2436] p-4 rounded-2xl flex items-center gap-3 shadow-md">
-            <div className="bg-amber-500/10 text-amber-500 p-2.5 rounded-xl border border-amber-500/15">
-              <Activity className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="text-xs text-neutral-400 block">إجمالي التحديثات</span>
-              <span className="text-xl font-bold text-white block mt-0.5">{totalSigs || "--"}</span>
-            </div>
-          </div>
-
-          <div className="bg-[#0c1322] border border-[#1a2436] p-4 rounded-2xl flex items-center gap-3 shadow-md">
-            <div className="bg-emerald-500/10 text-emerald-400 p-2.5 rounded-xl border border-emerald-500/15">
-              <Zap className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="text-xs text-neutral-400 block">التوصيات النشطة</span>
-              <span className="text-xl font-bold text-white block mt-0.5">{activeSigs || "0"}</span>
-            </div>
-          </div>
-
-          <div className="bg-[#0c1322] border border-[#1a2436] p-4 rounded-2xl flex items-center gap-3 shadow-md">
-            <div className="bg-indigo-500/10 text-indigo-400 p-2.5 rounded-xl border border-indigo-500/15">
-              <TrendingUp className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="text-xs text-neutral-400 block">نسبة النجاح المقدرة</span>
-              <span className="text-xl font-bold text-white block mt-0.5">{winRate}%</span>
-            </div>
-          </div>
-
-          <div className="bg-[#0c1322] border border-[#1a2436] p-4 rounded-2xl flex items-center gap-3 shadow-md col-span-2 lg:col-span-1">
-            <div className="bg-amber-500/10 text-amber-500 p-2.5 rounded-xl border border-amber-500/15">
-              <CheckCircle2 className="w-5 h-5" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <span className="text-xs text-neutral-400 block">نمط التشغيل الحالي</span>
-              <span className="text-sm font-semibold text-emerald-400 block truncate mt-0.5">
-                مستقل ذاتي (محلي)
-              </span>
-            </div>
-          </div>
-        </section>
-
-        {/* Local Signal Creation & Editing Form */}
-        {isAdding && (
-          <div className="bg-[#0c1322] border border-amber-500/30 p-6 rounded-2xl shadow-xl space-y-4 animate-fadeIn">
-            <div className="flex justify-between items-center border-b border-[#1a2436] pb-3">
-              <h3 className="font-bold text-amber-500 text-lg flex items-center gap-2">
-                {editingSignal ? <Edit className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
-                {editingSignal ? "تعديل التوصية الفنية" : "إنشاء توصية تداول جديدة"}
-              </h3>
+            {/* Middle Nav Links */}
+            <div className="hidden md:flex items-center gap-1">
               <button
-                onClick={() => {
-                  setIsAdding(false);
-                  setEditingSignal(null);
-                }}
-                className="text-neutral-400 hover:text-white p-1 rounded-lg hover:bg-[#141f32] transition"
+                onClick={() => navigateTo("home")}
+                className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${
+                  page === "home" || page === "signal"
+                    ? "bg-amber-500/10 text-amber-500 dark:text-amber-400 font-extrabold"
+                    : "text-slate-600 dark:text-neutral-400 hover:bg-slate-100 dark:hover:bg-[#141f32] hover:text-slate-950 dark:hover:text-white"
+                }`}
               >
-                <X className="w-5 h-5" />
+                <Compass className="w-4 h-4" />
+                <span>{t.nav.home}</span>
+              </button>
+              <button
+                onClick={() => navigateTo("news")}
+                className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${
+                  page === "news"
+                    ? "bg-amber-500/10 text-amber-500 dark:text-amber-400 font-extrabold"
+                    : "text-slate-600 dark:text-neutral-400 hover:bg-slate-100 dark:hover:bg-[#141f32] hover:text-slate-950 dark:hover:text-white"
+                }`}
+              >
+                <FileText className="w-4 h-4" />
+                <span>{t.nav.news}</span>
+              </button>
+              <button
+                onClick={() => navigateTo("calendar")}
+                className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${
+                  page === "calendar"
+                    ? "bg-amber-500/10 text-amber-500 dark:text-amber-400 font-extrabold"
+                    : "text-slate-600 dark:text-neutral-400 hover:bg-slate-100 dark:hover:bg-[#141f32] hover:text-slate-950 dark:hover:text-white"
+                }`}
+              >
+                <Calendar className="w-4 h-4" />
+                <span>{t.nav.calendar}</span>
+              </button>
+              <button
+                onClick={() => navigateTo("sitemap")}
+                className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${
+                  page === "sitemap"
+                    ? "bg-amber-500/10 text-amber-500 dark:text-amber-400 font-extrabold"
+                    : "text-slate-600 dark:text-neutral-400 hover:bg-slate-100 dark:hover:bg-[#141f32] hover:text-slate-950 dark:hover:text-white"
+                }`}
+              >
+                <Map className="w-4 h-4" />
+                <span>{t.nav.sitemap}</span>
               </button>
             </div>
 
-            <form onSubmit={editingSignal ? handleSaveEdit : handleAddSignal} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {/* Pair Name */}
-                <div className="space-y-1">
-                  <label className="text-xs text-neutral-400 block text-right">اسم الأداة الماليّة (الزوج/السلعة) *</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="مثال: USDJPY أو XAUUSD"
-                    value={formData.pair}
-                    onChange={(e) => setFormData({ ...formData, pair: e.target.value })}
-                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
-                  />
-                </div>
+            {/* Right Control actions */}
+            <div className="flex items-center gap-2">
+              {/* Language Switcher */}
+              <button
+                onClick={toggleLanguage}
+                className="p-2.5 rounded-xl border border-slate-200 dark:border-[#1e2e4a] bg-slate-50 dark:bg-[#141f32] hover:bg-slate-100 dark:hover:bg-[#1a2942] text-slate-700 dark:text-neutral-300 transition-all flex items-center gap-1.5 text-xs font-bold"
+                title={t.nav.language}
+              >
+                <Globe className="w-4 h-4 text-amber-500" />
+                <span className="hidden sm:inline">{t.nav.language}</span>
+              </button>
 
-                {/* Entry Price */}
-                <div className="space-y-1">
-                  <label className="text-xs text-neutral-400 block text-right">سعر الدخول (Entry Price) *</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="مثال: 157.750"
-                    value={formData.entry}
-                    onChange={(e) => setFormData({ ...formData, entry: e.target.value })}
-                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
-                  />
-                </div>
+              {/* Theme Switcher */}
+              <button
+                onClick={toggleTheme}
+                className="p-2.5 rounded-xl border border-slate-200 dark:border-[#1e2e4a] bg-slate-50 dark:bg-[#141f32] hover:bg-slate-100 dark:hover:bg-[#1a2942] text-slate-700 dark:text-neutral-300 transition-all"
+                aria-label="Toggle Theme"
+              >
+                {theme === "dark" ? (
+                  <Sun className="w-4.5 h-4.5 text-amber-400" />
+                ) : (
+                  <Moon className="w-4.5 h-4.5 text-slate-700" />
+                )}
+              </button>
 
-                {/* Direction (Type) */}
-                <div className="space-y-1">
-                  <label className="text-xs text-neutral-400 block text-right">نوع وتوجّه الصفقة *</label>
-                  <select
-                    value={formData.type}
-                    onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
-                  >
-                    <option value="BUY">BUY (شراء)</option>
-                    <option value="SELL">SELL (بيع)</option>
-                    <option value="INFO">INFO (تحديث / أخبار السوق)</option>
-                  </select>
-                </div>
-              </div>
+              {/* Sound toggle */}
+              <button
+                onClick={() => {
+                  const s = !soundEnabled;
+                  setSoundEnabled(s);
+                  localStorage.setItem("decou_fx_sound", String(s));
+                  if (s) playNotificationSound();
+                }}
+                className={`p-2.5 rounded-xl border transition-all ${
+                  soundEnabled
+                    ? "border-amber-500/20 bg-amber-500/5 text-amber-500"
+                    : "border-slate-200 dark:border-[#1e2e4a] bg-slate-50 dark:bg-[#141f32] text-slate-400"
+                }`}
+                title="Toggle Sounds"
+              >
+                {soundEnabled ? <Volume2 className="w-4.5 h-4.5" /> : <VolumeX className="w-4.5 h-4.5" />}
+              </button>
 
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                {/* Target 1 */}
-                <div className="space-y-1">
-                  <label className="text-xs text-neutral-400 block text-right">الهدف الأول (TP1) *</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="مثال: 161.000"
-                    value={formData.tp1}
-                    onChange={(e) => setFormData({ ...formData, tp1: e.target.value })}
-                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
-                  />
-                </div>
+              {/* Refresh */}
+              <button
+                onClick={fetchSignals}
+                disabled={loading}
+                className="p-2.5 rounded-xl border border-slate-200 dark:border-[#1e2e4a] bg-slate-50 dark:bg-[#141f32] hover:bg-slate-100 dark:hover:bg-[#1a2942] text-slate-700 dark:text-neutral-300 transition-all disabled:opacity-50"
+                title="Refresh Desk"
+              >
+                <RefreshCw className={`w-4.5 h-4.5 ${loading ? "animate-spin text-amber-500" : ""}`} />
+              </button>
+            </div>
 
-                {/* Target 2 */}
-                <div className="space-y-1">
-                  <label className="text-xs text-neutral-400 block text-right">الهدف الثاني (TP2 - اختياري)</label>
-                  <input
-                    type="text"
-                    placeholder="مثال: 162.500"
-                    value={formData.tp2}
-                    onChange={(e) => setFormData({ ...formData, tp2: e.target.value })}
-                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
-                  />
-                </div>
+          </div>
+        </div>
+      </nav>
 
-                {/* Target 3 */}
-                <div className="space-y-1">
-                  <label className="text-xs text-neutral-400 block text-right">الهدف الثالث (TP3 - اختياري)</label>
-                  <input
-                    type="text"
-                    placeholder="مثال: 164.000"
-                    value={formData.tp3}
-                    onChange={(e) => setFormData({ ...formData, tp3: e.target.value })}
-                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
-                  />
-                </div>
+      {/* Mobile Nav Bar */}
+      <div className="md:hidden flex items-center justify-around bg-white dark:bg-[#0c1322] border-b border-slate-200 dark:border-[#1a2436] py-3 px-2">
+        <button
+          onClick={() => navigateTo("home")}
+          className={`flex flex-col items-center gap-1 text-[11px] font-bold ${page === "home" || page === "signal" ? "text-amber-500" : "text-slate-500"}`}
+        >
+          <Compass className="w-5 h-5" />
+          <span>{t.nav.home}</span>
+        </button>
+        <button
+          onClick={() => navigateTo("news")}
+          className={`flex flex-col items-center gap-1 text-[11px] font-bold ${page === "news" ? "text-amber-500" : "text-slate-500"}`}
+        >
+          <FileText className="w-5 h-5" />
+          <span>{t.nav.news}</span>
+        </button>
+        <button
+          onClick={() => navigateTo("calendar")}
+          className={`flex flex-col items-center gap-1 text-[11px] font-bold ${page === "calendar" ? "text-amber-500" : "text-slate-500"}`}
+        >
+          <Calendar className="w-5 h-5" />
+          <span>{t.nav.calendar}</span>
+        </button>
+        <button
+          onClick={() => navigateTo("sitemap")}
+          className={`flex flex-col items-center gap-1 text-[11px] font-bold ${page === "sitemap" ? "text-amber-500" : "text-slate-500"}`}
+        >
+          <Map className="w-5 h-5" />
+          <span>{t.nav.sitemap}</span>
+        </button>
+      </div>
 
-                {/* Stop Loss */}
-                <div className="space-y-1">
-                  <label className="text-xs text-neutral-400 block text-right">وقف الخسارة (Stop Loss) *</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="مثال: 156.400"
-                    value={formData.sl}
-                    onChange={(e) => setFormData({ ...formData, sl: e.target.value })}
-                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
-                  />
-                </div>
-              </div>
+      {/* 3. Main Container Area */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        
+        {/* === ROUTE: HOME PAGE === */}
+        {(page === "home") && (
+          <div className="space-y-8 animate-fadeIn">
+            
+            {/* Hero Brand Greeting */}
+            <div className="text-center max-w-3xl mx-auto space-y-4">
+              <span className="bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider inline-block">
+                {lang === "ar" ? "🥇 أفضل منصة لتوصيات سوق العملات لعام 2026" : "🥇 Top Forex Signals Platform 2026"}
+              </span>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-tight bg-gradient-to-r from-slate-900 via-slate-800 to-slate-950 dark:from-white dark:via-slate-200 dark:to-slate-300 bg-clip-text text-transparent">
+                {t.meta.title}
+              </h2>
+              <p className="text-base text-slate-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+                {t.meta.subtitle}
+              </p>
+            </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {/* Photo/Chart URL */}
-                <div className="md:col-span-2 space-y-1">
-                  <label className="text-xs text-neutral-400 block text-right">رابط شارت التحليل (مثال: /1787237745892.png أو رابط خارجي)</label>
-                  <input
-                    type="text"
-                    placeholder="اتركها فارغة لإخفاء صورة الشارت"
-                    value={formData.photoUrl}
-                    onChange={(e) => setFormData({ ...formData, photoUrl: e.target.value })}
-                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
-                  />
-                </div>
-
-                {/* Status */}
-                <div className="space-y-1">
-                  <label className="text-xs text-neutral-400 block text-right">حالة التوصية الحالية</label>
-                  <select
-                    value={formData.status}
-                    onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                    className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition"
-                  >
-                    <option value="ACTIVE">نشطة ومباشرة (ACTIVE)</option>
-                    <option value="TP1 HIT">تحقق الهدف الأول (TP1 HIT)</option>
-                    <option value="TP2 HIT">تحقق الهدف الثاني (TP2 HIT)</option>
-                    <option value="TP3 HIT">تحقق الهدف الأقصى (TP3 HIT)</option>
-                    <option value="SL HIT">ضرب وقف الخسارة (SL HIT)</option>
-                    <option value="CLOSED">مغلقة يدوياً (CLOSED)</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Explanation / Notes */}
-              <div className="space-y-1">
-                <label className="text-xs text-neutral-400 block text-right">الشرح والرؤية الفنية والتحليلية</label>
-                <textarea
-                  rows={3}
-                  placeholder="اكتب هنا تفاصيل التحليل الفني والفرص المتوقعة لهذا الزوج..."
-                  value={formData.explanation}
-                  onChange={(e) => setFormData({ ...formData, explanation: e.target.value })}
-                  className="w-full bg-[#141f32] border border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-white text-sm text-right transition resize-none"
+            {/* Quick Action bar & Signal search */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-between items-center bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-4 rounded-2xl shadow-sm">
+              <div className="relative w-full sm:max-w-md">
+                <Search className="absolute right-3.5 top-3.5 w-4 h-4 text-slate-400 dark:text-neutral-500" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder={t.signals.searchPlaceholder}
+                  className={`w-full bg-slate-50 dark:bg-[#141f32] border border-slate-200 dark:border-[#1e2e4a] focus:border-amber-500 rounded-xl py-2.5 outline-none text-sm transition-all text-slate-800 dark:text-white ${
+                    lang === "ar" ? "pr-10 pl-4 text-right" : "pl-10 pr-4 text-left"
+                  }`}
                 />
               </div>
 
-              <div className="flex justify-end gap-2 pt-2">
+              <div className="flex w-full sm:w-auto justify-end gap-2">
                 <button
-                  type="button"
                   onClick={() => {
-                    setIsAdding(false);
+                    setIsAdding(!isAdding);
                     setEditingSignal(null);
+                    resetForm();
                   }}
-                  className="bg-[#141f32] hover:bg-[#1a2942] border border-[#1e2e4a] text-neutral-300 font-semibold rounded-xl px-5 py-2.5 text-sm transition"
+                  className="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black px-5 py-2.5 rounded-xl font-black text-sm transition-all shadow-md active:scale-95 cursor-pointer w-full sm:w-auto justify-center"
                 >
-                  إلغاء
-                </button>
-                <button
-                  type="submit"
-                  className="bg-amber-500 hover:bg-amber-600 text-black font-extrabold rounded-xl px-6 py-2.5 text-sm transition shadow-lg shadow-amber-500/15"
-                >
-                  {editingSignal ? "حفظ التعديلات" : "نشر التوصية فوراً 🚀"}
+                  <Plus className="w-4 h-4" />
+                  <span>{t.form.addNew}</span>
                 </button>
               </div>
-            </form>
+            </div>
+
+            {/* Local Signal Insertion / Edit Form */}
+            {isAdding && (
+              <div className="bg-white dark:bg-[#0c1322] border-2 border-amber-500/30 p-6 rounded-3xl shadow-xl space-y-6 animate-slideDown">
+                <div className="flex justify-between items-center border-b border-slate-100 dark:border-[#1a2436] pb-4">
+                  <h3 className="font-extrabold text-amber-500 dark:text-amber-400 text-lg flex items-center gap-2">
+                    {editingSignal ? <Edit className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+                    <span>{editingSignal ? t.form.edit : t.form.addNew}</span>
+                  </h3>
+                  <button
+                    onClick={() => {
+                      setIsAdding(false);
+                      setEditingSignal(null);
+                      resetForm();
+                    }}
+                    className="text-slate-400 hover:text-slate-900 dark:hover:text-white p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-[#141f32] transition"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                <form onSubmit={editingSignal ? handleEditSignalSubmit : handleAddSignalSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="space-y-1">
+                      <label className="text-xs text-slate-500 dark:text-neutral-400 block font-bold">{t.form.pairLabel}</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder={t.form.pairPlaceholder}
+                        value={formData.pair}
+                        onChange={(e) => setFormData({ ...formData, pair: e.target.value })}
+                        className="w-full bg-slate-50 dark:bg-[#141f32] border border-slate-200 dark:border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-slate-800 dark:text-white text-sm transition"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-xs text-slate-500 dark:text-neutral-400 block font-bold">{t.form.entryLabel}</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder={t.form.entryPlaceholder}
+                        value={formData.entry}
+                        onChange={(e) => setFormData({ ...formData, entry: e.target.value })}
+                        className="w-full bg-slate-50 dark:bg-[#141f32] border border-slate-200 dark:border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-slate-800 dark:text-white text-sm transition"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-xs text-slate-500 dark:text-neutral-400 block font-bold">{t.form.typeLabel}</label>
+                      <select
+                        value={formData.type}
+                        onChange={(e) => setFormData({ ...formData, type: e.target.value as any })}
+                        className="w-full bg-slate-50 dark:bg-[#141f32] border border-slate-200 dark:border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-slate-800 dark:text-white text-sm transition"
+                      >
+                        <option value="BUY">BUY (شراء)</option>
+                        <option value="SELL">SELL (بيع)</option>
+                        <option value="INFO">INFO (تحديث / تلميح)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div className="space-y-1">
+                      <label className="text-xs text-slate-500 dark:text-neutral-400 block font-bold">{t.form.tp1Label}</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder={t.form.tp1Placeholder}
+                        value={formData.tp1}
+                        onChange={(e) => setFormData({ ...formData, tp1: e.target.value })}
+                        className="w-full bg-slate-50 dark:bg-[#141f32] border border-slate-200 dark:border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-slate-800 dark:text-white text-sm transition"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-xs text-slate-500 dark:text-neutral-400 block font-bold">{t.form.tp2Label}</label>
+                      <input
+                        type="text"
+                        placeholder={t.form.tp2Placeholder}
+                        value={formData.tp2}
+                        onChange={(e) => setFormData({ ...formData, tp2: e.target.value })}
+                        className="w-full bg-slate-50 dark:bg-[#141f32] border border-slate-200 dark:border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-slate-800 dark:text-white text-sm transition"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-xs text-slate-500 dark:text-neutral-400 block font-bold">{t.form.tp3Label}</label>
+                      <input
+                        type="text"
+                        placeholder={t.form.tp3Placeholder}
+                        value={formData.tp3}
+                        onChange={(e) => setFormData({ ...formData, tp3: e.target.value })}
+                        className="w-full bg-slate-50 dark:bg-[#141f32] border border-slate-200 dark:border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-slate-800 dark:text-white text-sm transition"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-xs text-slate-500 dark:text-neutral-400 block font-bold">{t.form.slLabel}</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder={t.form.slPlaceholder}
+                        value={formData.sl}
+                        onChange={(e) => setFormData({ ...formData, sl: e.target.value })}
+                        className="w-full bg-slate-50 dark:bg-[#141f32] border border-slate-200 dark:border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-slate-800 dark:text-white text-sm transition"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="md:col-span-2 space-y-1">
+                      <label className="text-xs text-slate-500 dark:text-neutral-400 block font-bold">{t.form.chartUrlLabel}</label>
+                      <input
+                        type="text"
+                        placeholder={t.form.chartUrlPlaceholder}
+                        value={formData.photoUrl}
+                        onChange={(e) => setFormData({ ...formData, photoUrl: e.target.value })}
+                        className="w-full bg-slate-50 dark:bg-[#141f32] border border-slate-200 dark:border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-slate-800 dark:text-white text-sm transition"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-xs text-slate-500 dark:text-neutral-400 block font-bold">{t.form.statusLabel}</label>
+                      <select
+                        value={formData.status}
+                        onChange={(e) => setFormData({ ...formData, status: e.target.value as any })}
+                        className="w-full bg-slate-50 dark:bg-[#141f32] border border-slate-200 dark:border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-slate-800 dark:text-white text-sm transition"
+                      >
+                        <option value="ACTIVE">ACTIVE (نشط)</option>
+                        <option value="TP1 HIT">TP1 HIT (ضرب الهدف 1)</option>
+                        <option value="TP2 HIT">TP2 HIT (ضرب الهدف 2)</option>
+                        <option value="TP3 HIT">TP3 HIT (ضرب الهدف الأقصى)</option>
+                        <option value="SL HIT">SL HIT (ضرب الستوب)</option>
+                        <option value="CLOSED">CLOSED (مغلق يدوياً)</option>
+                        <option value="INFO">INFO (تحليل)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="text-xs text-slate-500 dark:text-neutral-400 block font-bold">{t.form.explanationLabel}</label>
+                    <textarea
+                      rows={3}
+                      placeholder={t.form.explanationPlaceholder}
+                      value={formData.explanation}
+                      onChange={(e) => setFormData({ ...formData, explanation: e.target.value })}
+                      className="w-full bg-slate-50 dark:bg-[#141f32] border border-slate-200 dark:border-[#1e2e4a] focus:border-amber-500 rounded-xl px-4 py-2.5 outline-none text-slate-800 dark:text-white text-sm transition resize-none"
+                    />
+                  </div>
+
+                  <div className="flex justify-end gap-2 pt-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsAdding(false);
+                        setEditingSignal(null);
+                        resetForm();
+                      }}
+                      className="bg-slate-100 dark:bg-[#141f32] hover:bg-slate-200 dark:hover:bg-[#1a2942] border border-slate-200 dark:border-[#1e2e4a] text-slate-700 dark:text-neutral-300 font-bold rounded-xl px-5 py-2.5 text-sm transition cursor-pointer"
+                    >
+                      {t.form.cancel}
+                    </button>
+                    <button
+                      type="submit"
+                      className="bg-amber-500 hover:bg-amber-600 text-black font-black rounded-xl px-6 py-2.5 text-sm transition shadow-lg shadow-amber-500/15 cursor-pointer"
+                    >
+                      {editingSignal ? t.form.save : t.form.publish}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            )}
+
+            {/* Layout divided: Live Signals Grid & Side widgets */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              
+              {/* Left Column: Signals List (Grid span 2) */}
+              <div className="lg:col-span-2 space-y-6">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-xl font-extrabold flex items-center gap-2">
+                    <TrendingUp className="w-5 h-5 text-amber-500" />
+                    <span>{t.signals.title}</span>
+                  </h3>
+                  <span className="text-xs text-slate-500 dark:text-neutral-400 font-bold">
+                    {filteredSignals.length} {lang === "ar" ? "توصية متاحة" : "signals available"}
+                  </span>
+                </div>
+
+                {filteredSignals.length === 0 ? (
+                  <div className="text-center p-12 bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] rounded-2xl">
+                    <AlertTriangle className="w-12 h-12 text-amber-500 mx-auto mb-3" />
+                    <p className="text-slate-500 dark:text-neutral-400 font-bold">{t.signals.noSignals}</p>
+                  </div>
+                ) : (
+                  <div className="space-y-6">
+                    {filteredSignals.map((sig) => {
+                      const isSell = sig.type === "SELL";
+                      const isInfo = sig.type === "INFO";
+                      
+                      return (
+                        <div
+                          key={sig.id}
+                          className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] hover:border-amber-500/40 dark:hover:border-amber-500/30 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col justify-between"
+                        >
+                          {/* Top row: badge, pair, status */}
+                          <div className="p-5 md:p-6 border-b border-slate-100 dark:border-[#1a2436]/60 flex flex-wrap gap-4 items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              <span
+                                className={`px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider ${
+                                  isInfo
+                                    ? "bg-blue-500/10 text-blue-600 dark:text-blue-400"
+                                    : isSell
+                                    ? "bg-rose-500/10 text-rose-600 dark:text-rose-400"
+                                    : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                                }`}
+                              >
+                                {isInfo ? t.signals.directionInfo : isSell ? t.signals.directionSell : t.signals.directionBuy}
+                              </span>
+                              <h4 className="text-xl font-black tracking-tight">{sig.pair}</h4>
+                            </div>
+
+                            {/* Status label badge */}
+                            <span
+                              className={`px-3 py-1 rounded-lg text-xs font-black ${
+                                sig.status === "ACTIVE"
+                                  ? "bg-amber-500 text-black"
+                                  : sig.status.includes("TP")
+                                  ? "bg-emerald-500 text-black animate-pulse"
+                                  : sig.status === "SL HIT"
+                                  ? "bg-rose-600 text-white"
+                                  : "bg-slate-200 dark:bg-[#1a2436] text-slate-700 dark:text-neutral-400"
+                              }`}
+                            >
+                              {sig.status === "ACTIVE"
+                                ? t.signals.statusActive
+                                : sig.status === "TP1 HIT"
+                                ? t.signals.statusTp1
+                                : sig.status === "TP2 HIT"
+                                ? t.signals.statusTp2
+                                : sig.status === "TP3 HIT"
+                                ? t.signals.statusTp3
+                                : sig.status === "SL HIT"
+                                ? t.signals.statusSl
+                                : sig.status === "CLOSED"
+                                ? t.signals.statusClosed
+                                : sig.status}
+                            </span>
+                          </div>
+
+                          {/* Middle: trade values */}
+                          <div className="p-5 md:p-6 space-y-4">
+                            {!isInfo && (
+                              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-slate-50 dark:bg-[#141f32]/50 p-4 rounded-2xl border border-slate-100 dark:border-[#1e2e4a]/30">
+                                <div>
+                                  <span className="text-[11px] text-slate-400 dark:text-neutral-500 block uppercase font-bold">{t.signals.entry}</span>
+                                  <span className="text-base font-black text-slate-900 dark:text-white mt-1 block">{sig.entry}</span>
+                                </div>
+                                <div>
+                                  <span className="text-[11px] text-rose-400 dark:text-rose-500 block uppercase font-bold">{t.signals.stopLoss}</span>
+                                  <span className="text-base font-black text-rose-600 dark:text-rose-400 mt-1 block">{sig.sl}</span>
+                                </div>
+                                <div>
+                                  <span className="text-[11px] text-emerald-400 dark:text-emerald-500 block uppercase font-bold">{t.signals.takeProfit1}</span>
+                                  <span className="text-base font-black text-emerald-600 dark:text-emerald-400 mt-1 block">{sig.tp1}</span>
+                                </div>
+                                <div>
+                                  <span className="text-[11px] text-slate-400 dark:text-neutral-500 block uppercase font-bold">{t.signals.takeProfit2}</span>
+                                  <span className="text-base font-extrabold text-slate-700 dark:text-neutral-300 mt-1 block">{sig.tp2 || "—"}</span>
+                                </div>
+                              </div>
+                            )}
+
+                            {/* Brief technical explanation */}
+                            <p className="text-sm text-slate-600 dark:text-neutral-300 leading-relaxed text-justify line-clamp-2">
+                              {sig.explanation}
+                            </p>
+
+                            {/* Signal Quick status control toggler */}
+                            <div className="bg-slate-50 dark:bg-[#141f32]/20 border border-slate-200/50 dark:border-[#1e2e4a]/50 p-3 rounded-2xl flex flex-wrap items-center justify-between gap-2.5">
+                              <span className="text-[11px] text-slate-500 dark:text-neutral-400 font-black">
+                                {lang === "ar" ? "تعديل الحالة السريع:" : "Quick Status Update:"}
+                              </span>
+                              <div className="flex flex-wrap gap-1">
+                                {[
+                                  { code: "ACTIVE", label: lang === "ar" ? "نشطة" : "Active" },
+                                  { code: "TP1 HIT", label: lang === "ar" ? "هدف 1" : "TP1" },
+                                  { code: "TP2 HIT", label: lang === "ar" ? "هدف 2" : "TP2" },
+                                  { code: "TP3 HIT", label: lang === "ar" ? "هدف 3" : "TP3" },
+                                  { code: "SL HIT", label: lang === "ar" ? "ستوب" : "SL" },
+                                  { code: "CLOSED", label: lang === "ar" ? "مغلقة" : "Closed" }
+                                ].map((st) => (
+                                  <button
+                                    key={st.code}
+                                    onClick={() => handleToggleStatus(sig.id, st.code)}
+                                    className={`px-2.5 py-1 rounded-lg text-[10px] font-black transition-all cursor-pointer ${
+                                      sig.status === st.code
+                                        ? "bg-amber-500 text-black shadow-sm"
+                                        : "bg-slate-100 dark:bg-[#1c2b44] text-slate-700 dark:text-neutral-300 hover:bg-slate-200 dark:hover:bg-[#253958] hover:text-slate-900 dark:hover:text-white"
+                                    }`}
+                                  >
+                                    {st.label}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+
+                          </div>
+
+                          {/* Footer row of the card */}
+                          <div className="px-5 py-4 bg-slate-50 dark:bg-[#090f1d]/40 border-t border-slate-100 dark:border-[#1a2436]/60 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500 dark:text-neutral-400">
+                            <span className="flex items-center gap-1.5 font-semibold">
+                              <Eye className="w-3.5 h-3.5 text-slate-400" />
+                              <span>{sig.views} {t.signals.views}</span>
+                            </span>
+
+                            <div className="flex items-center gap-2">
+                              {/* Direct copyable page link */}
+                              <button
+                                onClick={() => copyDirectLink(sig.id)}
+                                className="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-[#1e2e4a] hover:bg-slate-100 dark:hover:bg-[#1a2942] transition-all font-bold cursor-pointer"
+                                title={t.signals.copyLink}
+                              >
+                                {copiedId === sig.id ? (
+                                  <>
+                                    <Check className="w-3.5 h-3.5 text-emerald-500 animate-bounce" />
+                                    <span className="text-emerald-500 font-bold">{lang === "ar" ? "تم نسخ الرابط" : "Link Copied"}</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <Share2 className="w-3.5 h-3.5 text-amber-500" />
+                                    <span>{lang === "ar" ? "مشاركة" : "Share"}</span>
+                                  </>
+                                )}
+                              </button>
+
+                              {/* Separate view page navigation button */}
+                              <button
+                                onClick={() => navigateTo("signal", sig.id)}
+                                className="flex items-center gap-1 bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 font-black px-3 py-1.5 rounded-lg border border-amber-500/20 transition cursor-pointer"
+                              >
+                                <span>{lang === "ar" ? "عرض تفاصيل الشارت والتحليل" : "View Full Analysis"}</span>
+                                <ArrowRight className={`w-3.5 h-3.5 ${lang === "ar" ? "rotate-180" : ""}`} />
+                              </button>
+
+                              {/* Form edit button */}
+                              <button
+                                onClick={() => handleStartEdit(sig)}
+                                className="p-1.5 text-slate-400 hover:text-amber-500 rounded-lg hover:bg-slate-100 dark:hover:bg-[#141f32] transition cursor-pointer"
+                                title="Edit Signal"
+                              >
+                                <Edit className="w-4 h-4" />
+                              </button>
+
+                              {/* Delete button */}
+                              <button
+                                onClick={() => handleDeleteSignal(sig.id)}
+                                className="p-1.5 text-slate-400 hover:text-rose-500 rounded-lg hover:bg-slate-100 dark:hover:bg-[#141f32] transition cursor-pointer"
+                                title="Delete Signal"
+                              >
+                                <Trash2 className="w-4 h-4" />
+                              </button>
+                            </div>
+                          </div>
+
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+
+              {/* Right Column: Widgets */}
+              <div className="space-y-8">
+                
+                {/* 1. Risk Calculator Widget */}
+                <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-6 rounded-3xl shadow-sm space-y-4">
+                  <div className="flex items-center gap-2 border-b border-slate-100 dark:border-[#1a2436] pb-3">
+                    <Calculator className="w-5 h-5 text-amber-500" />
+                    <h3 className="font-extrabold text-slate-900 dark:text-white text-base">{t.calculator.title}</h3>
+                  </div>
+                  <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed">
+                    {t.calculator.subtitle}
+                  </p>
+
+                  <div className="space-y-3">
+                    <div className="space-y-1">
+                      <label className="text-xs text-slate-500 dark:text-neutral-400 block font-bold">{t.calculator.balance}</label>
+                      <input
+                        type="number"
+                        value={accountBalance}
+                        onChange={(e) => setAccountBalance(Number(e.target.value))}
+                        className="w-full bg-slate-50 dark:bg-[#141f32] border border-slate-200 dark:border-[#1e2e4a] rounded-xl px-3 py-2 text-sm outline-none focus:border-amber-500 transition text-slate-900 dark:text-white"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="space-y-1">
+                        <label className="text-xs text-slate-500 dark:text-neutral-400 block font-bold">{t.calculator.risk}</label>
+                        <input
+                          type="number"
+                          step="0.5"
+                          value={riskPercentage}
+                          onChange={(e) => setRiskPercentage(Number(e.target.value))}
+                          className="w-full bg-slate-50 dark:bg-[#141f32] border border-slate-200 dark:border-[#1e2e4a] rounded-xl px-3 py-2 text-sm outline-none focus:border-amber-500 transition text-slate-900 dark:text-white"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-xs text-slate-500 dark:text-neutral-400 block font-bold">{t.calculator.pips}</label>
+                        <input
+                          type="number"
+                          value={stopLossPips}
+                          onChange={(e) => setStopLossPips(Number(e.target.value))}
+                          className="w-full bg-slate-50 dark:bg-[#141f32] border border-slate-200 dark:border-[#1e2e4a] rounded-xl px-3 py-2 text-sm outline-none focus:border-amber-500 transition text-slate-900 dark:text-white"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="p-4 bg-amber-500/5 dark:bg-amber-500/10 border border-amber-500/10 rounded-2xl space-y-2 mt-4 text-center">
+                      <span className="text-[11px] text-slate-500 dark:text-neutral-400 uppercase tracking-widest font-bold block">{t.calculator.result}</span>
+                      <span className="text-3xl font-black text-amber-600 dark:text-amber-400 tracking-wider block">
+                        {calculatedLotSize} <span className="text-xs text-slate-400 block font-normal mt-1">Standard Lots</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2. Trading Sentiment Indicator */}
+                <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-6 rounded-3xl shadow-sm space-y-4">
+                  <h3 className="font-extrabold text-slate-900 dark:text-white text-base flex items-center gap-2 border-b border-slate-100 dark:border-[#1a2436] pb-3">
+                    <TrendingUp className="w-5 h-5 text-emerald-500" />
+                    <span>{lang === "ar" ? "تحليل زخم السوق العالمي" : "Global Sentiment Momentum"}</span>
+                  </h3>
+                  
+                  <div className="space-y-3">
+                    <div>
+                      <div className="flex justify-between text-xs text-slate-500 dark:text-neutral-400 mb-1.5 font-semibold">
+                        <span>{lang === "ar" ? "شراء الثيران (Bullish) - 78%" : "Bullish Sentiment - 78%"}</span>
+                        <span>{lang === "ar" ? "بيع الدببة (Bearish) - 22%" : "Bearish Sentiment - 22%"}</span>
+                      </div>
+                      <div className="h-2.5 w-full bg-slate-100 dark:bg-[#141f32] rounded-full overflow-hidden flex">
+                        <div className="bg-emerald-500 h-full" style={{ width: "78%" }} />
+                        <div className="bg-rose-500 h-full" style={{ width: "22%" }} />
+                      </div>
+                    </div>
+
+                    <div className="p-3.5 bg-amber-500/5 dark:bg-[#141f32]/40 rounded-xl space-y-1.5">
+                      <span className="text-xs text-amber-600 dark:text-amber-400 font-extrabold block">💡 {lang === "ar" ? "نصيحة خبراء ديكواFX:" : "DecouFX Expert Advice:"}</span>
+                      <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed text-justify">
+                        {lang === "ar" 
+                          ? "يتداول زوج الدولار ين والذهب بالقرب من مستويات فنية حرجة. نوصي بتجنب صفقات الانعكاس المعاكسة والتركيز على صفقات الاتجاه اليومي الصاعد مع حماية الأرباح دائماً."
+                          : "Gold and USDJPY trade near historic psychological levels. Avoid raw counter-trend executions. Focus on daily trend breakouts with strict trailing stops."}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. Fast Static Links directory for SEO */}
+                <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-6 rounded-3xl shadow-sm space-y-3">
+                  <h3 className="font-extrabold text-slate-900 dark:text-white text-sm flex items-center gap-2 border-b border-slate-100 dark:border-[#1a2436] pb-3">
+                    <Compass className="w-4 h-4 text-amber-500" />
+                    <span>{lang === "ar" ? "أقسام الموقع السريعة" : "Quick Site Directories"}</span>
+                  </h3>
+                  <div className="grid grid-cols-2 gap-2 text-xs">
+                    <button onClick={() => navigateTo("home")} className="text-left rtl:text-right p-2 bg-slate-50 dark:bg-[#141f32] hover:bg-slate-100 dark:hover:bg-[#1a2942] rounded-lg transition font-semibold">{t.nav.home}</button>
+                    <button onClick={() => navigateTo("news")} className="text-left rtl:text-right p-2 bg-slate-50 dark:bg-[#141f32] hover:bg-slate-100 dark:hover:bg-[#1a2942] rounded-lg transition font-semibold">{t.nav.news}</button>
+                    <button onClick={() => navigateTo("calendar")} className="text-left rtl:text-right p-2 bg-slate-50 dark:bg-[#141f32] hover:bg-slate-100 dark:hover:bg-[#1a2942] rounded-lg transition font-semibold">{t.nav.calendar}</button>
+                    <button onClick={() => navigateTo("sitemap")} className="text-left rtl:text-right p-2 bg-slate-50 dark:bg-[#141f32] hover:bg-slate-100 dark:hover:bg-[#1a2942] rounded-lg transition font-semibold">{t.nav.sitemap}</button>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
         )}
 
-        {/* Secondary Block: Layout with Main Dashboard + Lot Calculator */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          
-          {/* Main Content Area (Signals & Filtering) */}
-          <section className="lg:col-span-2 space-y-6">
-            
-            {/* Filter controls */}
-            <div className="bg-[#0c1322] border border-[#1a2436] p-4 rounded-2xl space-y-4 shadow-sm">
-              <div className="flex flex-col sm:flex-row gap-3 justify-between items-center">
-                <div className="relative w-full sm:max-w-xs">
-                  <Search className="w-4 h-4 absolute right-3 top-3.5 text-neutral-500" />
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="ابحث عن زوج عملة أو كلمة مفتاحية..."
-                    className="w-full bg-[#141f32] text-sm text-white placeholder-neutral-500 border border-[#1e2e4a] focus:border-amber-500 rounded-xl pl-4 pr-10 py-2.5 outline-none transition"
-                  />
+        {/* === ROUTE: INDIVIDUAL RECOMMENDATION VIEW (SHARE LINK PAGE) === */}
+        {page === "signal" && (
+          <div className="animate-fadeIn max-w-4xl mx-auto space-y-8">
+            {/* Return button */}
+            <button
+              onClick={() => navigateTo("home")}
+              className="flex items-center gap-2 text-xs font-black text-amber-500 hover:text-amber-600 transition cursor-pointer"
+            >
+              <ArrowRight className={`w-4 h-4 ${lang === "ar" ? "" : "rotate-180"}`} />
+              <span>{t.signals.backToHome}</span>
+            </button>
+
+            {(() => {
+              const sig = signals.find((s) => s.id === selectedSignalId);
+              if (!sig) {
+                return (
+                  <div className="text-center p-12 bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] rounded-2xl">
+                    <AlertTriangle className="w-12 h-12 text-amber-500 mx-auto mb-3" />
+                    <p className="text-slate-500 dark:text-neutral-400 font-bold">
+                      {lang === "ar" ? "التوصية غير موجودة أو تم حذفها." : "Signal not found or has been deleted."}
+                    </p>
+                  </div>
+                );
+              }
+
+              const isSell = sig.type === "SELL";
+              const isInfo = sig.type === "INFO";
+
+              return (
+                <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] rounded-3xl overflow-hidden shadow-lg p-6 md:p-8 space-y-6">
+                  
+                  {/* Title & metadata */}
+                  <div className="flex flex-wrap gap-4 items-center justify-between border-b border-slate-100 dark:border-[#1a2436] pb-6">
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-3">
+                        <span
+                          className={`px-3 py-1 rounded-full text-xs font-black uppercase ${
+                            isInfo
+                              ? "bg-blue-500/10 text-blue-600 dark:text-blue-400"
+                              : isSell
+                              ? "bg-rose-500/10 text-rose-600 dark:text-rose-400"
+                              : "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                          }`}
+                        >
+                          {isInfo ? t.signals.directionInfo : isSell ? t.signals.directionSell : t.signals.directionBuy}
+                        </span>
+                        <h2 className="text-3xl font-black">{sig.pair}</h2>
+                      </div>
+                      <p className="text-xs text-slate-400">
+                        {t.signals.date}: {new Date(sig.date).toLocaleString(lang === "ar" ? "ar-EG" : "en-US")}
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <span
+                        className={`px-4 py-2 rounded-xl text-xs font-black ${
+                          sig.status === "ACTIVE"
+                            ? "bg-amber-500 text-black animate-pulse"
+                            : sig.status.includes("TP")
+                            ? "bg-emerald-500 text-black"
+                            : sig.status === "SL HIT"
+                            ? "bg-rose-600 text-white"
+                            : "bg-slate-200 dark:bg-[#1a2436] text-slate-700 dark:text-neutral-400"
+                        }`}
+                      >
+                        {sig.status === "ACTIVE" ? t.signals.statusActive : sig.status}
+                      </span>
+
+                      {/* Share link */}
+                      <button
+                        onClick={() => copyDirectLink(sig.id)}
+                        className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 dark:bg-[#141f32] dark:hover:bg-[#1a2942] border border-slate-200 dark:border-[#1e2e4a] px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer"
+                      >
+                        {copiedId === sig.id ? (
+                          <>
+                            <Check className="w-4 h-4 text-emerald-500" />
+                            <span className="text-emerald-500 font-extrabold">{lang === "ar" ? "تم النسخ" : "Link Copied"}</span>
+                          </>
+                        ) : (
+                          <>
+                            <Share2 className="w-4 h-4 text-amber-500" />
+                            <span>{lang === "ar" ? "نسخ الرابط المباشر للتوصية" : "Copy Direct Shareable Link"}</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Pricing matrices */}
+                  {!isInfo && (
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-slate-50 dark:bg-[#141f32]/50 p-6 rounded-2xl border border-slate-100 dark:border-[#1e2e4a]/40">
+                      <div>
+                        <span className="text-xs text-slate-500 dark:text-neutral-400 font-bold block uppercase">{t.signals.entry}</span>
+                        <span className="text-lg font-black text-slate-900 dark:text-white mt-1 block">{sig.entry}</span>
+                      </div>
+                      <div>
+                        <span className="text-xs text-rose-500 font-bold block uppercase">{t.signals.stopLoss}</span>
+                        <span className="text-lg font-black text-rose-600 dark:text-rose-400 mt-1 block">{sig.sl}</span>
+                      </div>
+                      <div>
+                        <span className="text-xs text-emerald-500 font-bold block uppercase">{t.signals.takeProfit1}</span>
+                        <span className="text-lg font-black text-emerald-600 dark:text-emerald-400 mt-1 block">{sig.tp1}</span>
+                      </div>
+                      <div>
+                        <span className="text-xs text-slate-500 dark:text-neutral-400 font-bold block uppercase">{t.signals.takeProfit2}</span>
+                        <span className="text-lg font-extrabold text-slate-800 dark:text-neutral-300 mt-1 block">{sig.tp2 || "—"}</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Technical Analysis Body */}
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-extrabold flex items-center gap-2 text-slate-900 dark:text-white border-b border-slate-100 dark:border-[#1a2436] pb-2">
+                      <TrendingUp className="w-5 h-5 text-amber-500" />
+                      <span>{t.signals.explanation}</span>
+                    </h3>
+                    <p className="text-slate-600 dark:text-neutral-300 leading-relaxed text-justify whitespace-pre-line">
+                      {sig.explanation}
+                    </p>
+                  </div>
+
+                  {/* Chart Visual integration */}
+                  {sig.photoUrl && (
+                    <div className="space-y-4">
+                      <h3 className="text-lg font-extrabold flex items-center gap-2 text-slate-900 dark:text-white border-b border-slate-100 dark:border-[#1a2436] pb-2">
+                        <Activity className="w-5 h-5 text-amber-500" />
+                        <span>{t.signals.chartTitle}</span>
+                      </h3>
+                      <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-[#1e2e4a] bg-[#141f32]">
+                        <img
+                          src={sig.photoUrl}
+                          alt={`${sig.pair} Analysis Chart`}
+                          referrerPolicy="no-referrer"
+                          className="w-full h-auto object-cover max-h-[500px]"
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Quick share statistics */}
+                  <div className="flex items-center justify-between text-xs text-slate-400 dark:text-neutral-500 pt-4 border-t border-slate-100 dark:border-[#1a2436]/60">
+                    <span>{sig.views} {t.signals.views}</span>
+                    <span>DecouFX Pro Analytics Hub © 2026</span>
+                  </div>
+
                 </div>
-                
-                {/* Horizontal status filter buttons */}
-                <div className="flex flex-wrap gap-1.5 w-full sm:w-auto justify-center sm:justify-start">
-                  {[
-                    { id: "ALL", label: "الكل" },
-                    { id: "ACTIVE", label: "نشطة" },
-                    { id: "TP", label: "الأهداف المحققة" },
-                    { id: "SL", label: "وقف الخسارة" },
-                    { id: "INFO", label: "أخبار وتحليلات" }
-                  ].map((btn) => (
-                    <button
-                      key={btn.id}
-                      onClick={() => setStatusFilter(btn.id)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                        statusFilter === btn.id
-                          ? "bg-amber-500 text-black font-semibold shadow-md shadow-amber-500/10"
-                          : "bg-[#141f32] text-neutral-400 hover:text-white hover:bg-[#1a2942]"
-                      }`}
-                    >
-                      {btn.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
+              );
+            })()}
+
+          </div>
+        )}
+
+        {/* === ROUTE: FINANCIAL NEWS & TECHNICAL ANALYSIS === */}
+        {page === "news" && (
+          <div className="animate-fadeIn space-y-8">
+            <div className="text-center max-w-2xl mx-auto space-y-3">
+              <span className="bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider inline-block">
+                {lang === "ar" ? "📰 التحليل اليومي الشامل" : "📰 Comprehensive Daily Analytics"}
+              </span>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight">{t.news.title}</h2>
+              <p className="text-sm text-slate-500 dark:text-neutral-400 leading-relaxed">
+                {t.news.subtitle}
+              </p>
             </div>
 
-            {/* Error Message */}
-            {error && (
-              <div className="bg-amber-500/10 border border-amber-500/20 text-amber-200 p-4 rounded-xl flex items-start gap-3">
-                <AlertTriangle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
-                <div className="text-xs space-y-1">
-                  <p className="font-semibold">{error}</p>
-                  <p className="text-neutral-400">ملاحظة: يمكنك تغيير معرف القناة من زر الإعدادات، أو الاستمرار بمشاهدة التوصيات الافتراضية المحملة أدناه.</p>
-                </div>
-              </div>
-            )}
+            {selectedNewsId ? (
+              /* News single view report */
+              (() => {
+                const article = newsArticles.find((art) => art.id === selectedNewsId);
+                if (!article) return <p className="text-center">{lang === "ar" ? "التقرير غير موجود." : "Article not found."}</p>;
+                return (
+                  <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] rounded-3xl p-6 md:p-8 max-w-3xl mx-auto space-y-6">
+                    <button
+                      onClick={() => setSelectedNewsId(null)}
+                      className="flex items-center gap-2 text-xs font-bold text-amber-500 hover:text-amber-600 transition cursor-pointer"
+                    >
+                      <ArrowRight className={`w-4 h-4 ${lang === "ar" ? "" : "rotate-180"}`} />
+                      <span>{t.news.backToNews}</span>
+                    </button>
 
-            {/* Loading state */}
-            {loading ? (
-              <div className="space-y-4">
-                {[1, 2, 3].map((n) => (
-                  <div key={n} className="bg-[#0c1322] border border-[#1a2436] rounded-2xl p-6 space-y-4 animate-pulse">
-                    <div className="flex justify-between items-center">
-                      <div className="h-6 w-32 bg-[#141f32] rounded-lg"></div>
-                      <div className="h-6 w-16 bg-[#141f32] rounded-lg"></div>
+                    <div className="space-y-2">
+                      <h3 className="text-2xl md:text-3xl font-black leading-tight text-slate-900 dark:text-white">
+                        {lang === "ar" ? article.titleAr : article.titleEn}
+                      </h3>
+                      <div className="flex items-center gap-4 text-xs text-slate-400 pt-2">
+                        <span>{t.news.author}: {lang === "ar" ? article.authorAr : article.authorEn}</span>
+                        <span>•</span>
+                        <span>{new Date(article.date).toLocaleDateString(lang === "ar" ? "ar" : "en")}</span>
+                      </div>
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                      {[1, 2, 3, 4].map((i) => (
-                        <div key={i} className="h-12 bg-[#141f32] rounded-xl"></div>
-                      ))}
+
+                    {article.image && (
+                      <div className="rounded-2xl overflow-hidden border border-slate-100 dark:border-[#1e2e4a]">
+                        <img
+                          src={article.image}
+                          alt="Technical news thumbnail"
+                          referrerPolicy="no-referrer"
+                          className="w-full h-auto object-cover max-h-[400px]"
+                        />
+                      </div>
+                    )}
+
+                    <p className="text-sm text-slate-600 dark:text-neutral-300 leading-relaxed text-justify whitespace-pre-line">
+                      {lang === "ar" ? article.contentAr : article.contentEn}
+                    </p>
+                  </div>
+                );
+              })()
+            ) : (
+              /* News Grid list */
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {newsArticles.map((art) => (
+                  <div
+                    key={art.id}
+                    onClick={() => navigateTo("news", null, art.id)}
+                    className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] hover:border-amber-500/30 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col justify-between"
+                  >
+                    <div className="p-5 space-y-4">
+                      {art.image && (
+                        <div className="rounded-xl overflow-hidden h-40 w-full bg-[#141f32]">
+                          <img
+                            src={art.image}
+                            alt="news report preview"
+                            referrerPolicy="no-referrer"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      )}
+                      <span className="bg-amber-500/15 text-amber-600 dark:text-amber-400 font-extrabold px-2.5 py-1 rounded text-[10px] uppercase tracking-wide inline-block">
+                        {art.category}
+                      </span>
+                      <h3 className="text-lg font-black leading-snug line-clamp-2 text-slate-900 dark:text-white">
+                        {lang === "ar" ? art.titleAr : art.titleEn}
+                      </h3>
+                      <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed line-clamp-3 text-justify">
+                        {lang === "ar" ? art.excerptAr : art.excerptEn}
+                      </p>
                     </div>
-                    <div className="h-4 bg-[#141f32] rounded-lg w-3/4"></div>
+
+                    <div className="px-5 py-4 bg-slate-50 dark:bg-[#0c1322]/40 border-t border-slate-100 dark:border-[#1a2436]/60 flex justify-between items-center text-xs text-amber-500 font-black">
+                      <span>{t.news.readMore}</span>
+                      <ArrowRight className={`w-3.5 h-3.5 ${lang === "ar" ? "rotate-180" : ""}`} />
+                    </div>
                   </div>
                 ))}
               </div>
-            ) : filteredSignals.length === 0 ? (
-              <div className="bg-[#0c1322] border border-[#1a2436] rounded-2xl p-12 text-center space-y-4">
-                <Info className="w-12 h-12 text-neutral-500 mx-auto" />
-                <div>
-                  <h3 className="text-lg font-bold text-white">لا توجد توصيات مطابقة</h3>
-                  <p className="text-sm text-neutral-400 mt-1">جرب تغيير إعدادات البحث أو فلترة الحالات لرؤية المزيد.</p>
-                </div>
+            )}
+
+          </div>
+        )}
+
+        {/* === ROUTE: ECONOMIC CALENDAR === */}
+        {page === "calendar" && (
+          <div className="animate-fadeIn space-y-8">
+            <div className="text-center max-w-2xl mx-auto space-y-3">
+              <span className="bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider inline-block">
+                {lang === "ar" ? "📅 الأجندة الاقتصادية الحية" : "📅 Live Economic Calendar"}
+              </span>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight">{t.calendar.title}</h2>
+              <p className="text-sm text-slate-500 dark:text-neutral-400 leading-relaxed">
+                {t.calendar.subtitle}
+              </p>
+            </div>
+
+            {/* Calendar filtering controls */}
+            <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-4 rounded-2xl flex flex-wrap gap-2 items-center justify-between">
+              <span className="text-xs font-bold text-slate-500 dark:text-neutral-400">{lang === "ar" ? "تصفية حسب الأثر الاقتصادي:" : "Filter by Volatility Impact:"}</span>
+              <div className="flex flex-wrap gap-1.5">
+                {(['ALL', 'HIGH', 'MEDIUM', 'LOW'] as any[]).map((filter) => (
+                  <button
+                    key={filter}
+                    onClick={() => setCalendarFilter(filter)}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-black cursor-pointer transition-all ${
+                      calendarFilter === filter
+                        ? "bg-amber-500 text-black font-extrabold"
+                        : "bg-slate-50 dark:bg-[#141f32] text-slate-600 dark:text-neutral-400 hover:bg-slate-100 dark:hover:bg-[#1a2942]"
+                    }`}
+                  >
+                    {filter === 'ALL' ? (lang === "ar" ? "عرض الكل" : "Show All") : t.calendar[`impact${filter.charAt(0) + filter.slice(1).toLowerCase() as 'High' | 'Medium' | 'Low'}`]}
+                  </button>
+                ))}
               </div>
-            ) : (
-              /* Signals Cards List */
-              <div className="space-y-4">
-                {filteredSignals.map((sig, idx) => {
-                  const isBuy = sig.type.toUpperCase().includes("BUY");
-                  const isSell = sig.type.toUpperCase().includes("SELL");
-                  const isInfo = sig.type.toUpperCase() === "INFO" || sig.pair === "تحديث السوق" || sig.pair === "MARKET UPDATE";
+            </div>
 
-                  return (
-                    <div
-                      key={sig.id || idx}
-                      className={`bg-[#0c1322] border ${
-                        sig.status === "ACTIVE"
-                          ? "border-[#1a2436]"
-                          : sig.status.includes("TP")
-                          ? "border-emerald-500/20"
-                          : sig.status.includes("SL")
-                          ? "border-rose-500/20"
-                          : "border-[#1a2436]"
-                      } rounded-2xl hover:border-amber-500/20 transition-all duration-300 shadow-md relative overflow-hidden`}
-                    >
-                      {/* Top bar indicator */}
-                      <div
-                        className={`h-1.5 w-full ${
-                          isInfo
-                            ? "bg-indigo-500/50"
-                            : isBuy
-                            ? "bg-emerald-500"
-                            : isSell
-                            ? "bg-rose-500"
-                            : "bg-neutral-600"
-                        }`}
-                      />
+            {/* Calendar list layout */}
+            <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] rounded-3xl overflow-hidden shadow-sm">
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-left rtl:text-right">
+                  <thead className="text-xs text-slate-400 uppercase bg-slate-50 dark:bg-[#141f32]/80 border-b border-slate-100 dark:border-[#1a2436] font-bold">
+                    <tr>
+                      <th className="px-6 py-4">{t.calendar.time}</th>
+                      <th className="px-6 py-4">{t.calendar.currency}</th>
+                      <th className="px-6 py-4">{t.calendar.event}</th>
+                      <th className="px-6 py-4">{t.calendar.impact}</th>
+                      <th className="px-6 py-4">{t.calendar.actual}</th>
+                      <th className="px-6 py-4">{t.calendar.forecast}</th>
+                      <th className="px-6 py-4">{t.calendar.previous}</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 dark:divide-[#1a2436]/60">
+                    {calendarEvents
+                      .filter((ev) => calendarFilter === "ALL" || ev.impact === calendarFilter)
+                      .map((ev) => {
+                        const isHigh = ev.impact === "HIGH";
+                        const isMed = ev.impact === "MEDIUM";
 
-                      <div className="p-5 sm:p-6 space-y-4">
-                        {/* Title and Badge Line */}
-                        <div className="flex flex-wrap items-center justify-between gap-3">
-                          <div className="flex items-center gap-3">
-                            <div
-                              className={`p-2.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 ${
-                                isInfo
-                                  ? "bg-indigo-500/10 text-indigo-400 border border-indigo-500/20"
-                                  : isBuy
-                                  ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
-                                  : isSell
-                                  ? "bg-rose-500/10 text-rose-400 border border-rose-500/20"
-                                  : "bg-[#141f32] text-neutral-400"
-                              }`}
-                            >
-                              {isBuy ? (
-                                <TrendingUp className="w-4 h-4" />
-                              ) : isSell ? (
-                                <TrendingDown className="w-4 h-4" />
-                              ) : (
-                                <Info className="w-4 h-4" />
-                              )}
-                              <span>{sig.type}</span>
-                            </div>
-                            <span className="text-lg font-extrabold text-white tracking-tight uppercase">
-                              {sig.pair}
-                            </span>
-                          </div>
-
-                          <div className="flex items-center gap-2">
-                            {/* Views Count */}
-                            <span className="flex items-center gap-1 text-xs text-neutral-500">
-                              <Eye className="w-3.5 h-3.5" />
-                              {sig.views}
-                            </span>
-
-                            {/* Status Badge */}
-                            <span
-                              className={`px-3 py-1 rounded-full text-xs font-bold tracking-wide border ${
-                                sig.status === "ACTIVE"
-                                  ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20 animate-pulse"
-                                  : sig.status.includes("TP")
-                                  ? "bg-emerald-600 text-white border-emerald-500"
-                                  : sig.status.includes("SL")
-                                  ? "bg-rose-600 text-white border-rose-500"
-                                  : "bg-neutral-800 text-neutral-400 border-neutral-700"
-                              }`}
-                            >
-                              {sig.status === "ACTIVE" ? (
-                                <span className="flex items-center gap-1">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                                  نشط ومباشر
-                                </span>
-                              ) : sig.status === "TP1 HIT" ? (
-                                "الهدف 1 تحقق ✅"
-                              ) : sig.status === "TP2 HIT" ? (
-                                "الهدف 2 تحقق ✅"
-                              ) : sig.status === "TP3 HIT" ? (
-                                "الهدف الأقصى ✅"
-                              ) : sig.status === "SL HIT" ? (
-                                "ضرب الستوب 🛑"
-                              ) : sig.status === "CLOSED" ? (
-                                "مغلقة"
-                              ) : (
-                                "تحديث السوق"
-                              )}
-                            </span>
-                          </div>
-                        </div>
-
-                        {/* Signal Matrix Grid */}
-                        {!isInfo && (
-                          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                            <div className="bg-[#141f32]/40 border border-[#1e2e4a]/60 p-3 rounded-xl text-center space-y-1">
-                              <span className="text-[10px] text-neutral-400 uppercase tracking-wider block">سعر الدخول</span>
-                              <span className="text-base font-bold text-white tracking-wide block">{sig.entry}</span>
-                            </div>
-
-                            <div className="bg-[#141f32]/40 border border-[#1e2e4a]/60 p-3 rounded-xl text-center space-y-1">
-                              <span className="text-[10px] text-neutral-400 uppercase tracking-wider block">الهدف الأول (TP1)</span>
-                              <span className="text-base font-bold text-emerald-400 tracking-wide block">{sig.tp1 || "--"}</span>
-                            </div>
-
-                            <div className="bg-[#141f32]/40 border border-[#1e2e4a]/60 p-3 rounded-xl text-center space-y-1">
-                              <span className="text-[10px] text-neutral-400 uppercase tracking-wider block">الهدف الثاني (TP2)</span>
-                              <span className="text-base font-bold text-emerald-400 tracking-wide block">{sig.tp2 || "--"}</span>
-                            </div>
-
-                            <div className="bg-[#141f32]/40 border border-[#1e2e4a]/60 p-3 rounded-xl text-center space-y-1">
-                              <span className="text-[10px] text-neutral-400 uppercase tracking-wider block">وقف الخسارة (SL)</span>
-                              <span className="text-base font-bold text-rose-400 tracking-wide block">{sig.sl || "--"}</span>
-                            </div>
-                          </div>
-                        )}
-
-                        {/* Message Image attachment if available */}
-                        {sig.photoUrl && (
-                          <div className="my-4 rounded-xl overflow-hidden border border-[#1e2e4a] max-h-72">
-                            <img
-                              src={sig.photoUrl}
-                              alt="Signal Chart Attachment"
-                              className="w-full h-full object-cover"
-                              referrerPolicy="no-referrer"
-                            />
-                          </div>
-                        )}
-
-                        {/* Structured Explanation Card */}
-                        <div className="p-3.5 bg-[#141f32]/20 border border-[#1e2e4a]/40 rounded-xl space-y-1.5 text-right">
-                          <span className="text-xs text-amber-500 font-bold block flex items-center gap-1 justify-end">
-                            <span>الرؤية والتحليل الفني</span>
-                            <Info className="w-3.5 h-3.5" />
-                          </span>
-                          <p className="text-sm text-neutral-300 leading-relaxed">
-                            {sig.explanation || "لا توجد تفاصيل إضافية في هذا المنشور."}
-                          </p>
-                        </div>
-
-                        {/* Quick Status Control bar */}
-                        <div className="bg-[#141f32]/30 border border-[#1e2e4a]/50 p-2.5 rounded-xl flex flex-wrap items-center justify-between gap-2">
-                          <span className="text-[11px] text-neutral-400 font-bold">تحديث الحالة السريع:</span>
-                          <div className="flex flex-wrap gap-1">
-                            {[
-                              { code: "ACTIVE", label: "نشطة" },
-                              { code: "TP1 HIT", label: "هدف 1" },
-                              { code: "TP2 HIT", label: "هدف 2" },
-                              { code: "TP3 HIT", label: "هدف 3" },
-                              { code: "SL HIT", label: "ستوب" },
-                              { code: "CLOSED", label: "مغلقة" }
-                            ].map((st) => (
-                              <button
-                                key={st.code}
-                                onClick={() => handleToggleStatus(sig.id, st.code)}
-                                className={`px-2 py-1 rounded text-[10px] font-bold transition-all ${
-                                  sig.status === st.code
-                                    ? "bg-amber-500 text-black shadow-sm"
-                                    : "bg-[#1c2b44] text-neutral-300 hover:bg-[#253958] hover:text-white"
+                        return (
+                          <tr key={ev.id} className="hover:bg-slate-50 dark:hover:bg-[#141f32]/40 transition duration-150">
+                            <td className="px-6 py-4 font-bold text-slate-400">{ev.time}</td>
+                            <td className="px-6 py-4 font-black text-amber-600 dark:text-amber-400">{ev.currency}</td>
+                            <td className="px-6 py-4 font-semibold text-slate-800 dark:text-white">
+                              {lang === "ar" ? ev.eventAr : ev.eventEn}
+                            </td>
+                            <td className="px-6 py-4">
+                              <span
+                                className={`px-2 py-1 rounded text-[10px] font-black uppercase ${
+                                  isHigh
+                                    ? "bg-rose-500/10 text-rose-600 dark:text-rose-400"
+                                    : isMed
+                                    ? "bg-amber-500/10 text-amber-600 dark:text-amber-400"
+                                    : "bg-blue-500/10 text-blue-600 dark:text-blue-400"
                                 }`}
                               >
-                                {st.label}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Actions & Timestamps */}
-                        <div className="flex flex-col sm:flex-row gap-3 items-center justify-between pt-2 border-t border-[#1a2436]/40 text-xs text-neutral-500">
-                          <span>
-                            تاريخ التوصية: {sig.date ? new Date(sig.date).toLocaleString("ar-EG") : "غير محدد"}
-                          </span>
-                          
-                          <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-                            <button
-                              onClick={() => copyToClipboard(sig)}
-                              className="flex items-center gap-1 text-xs hover:text-white bg-[#141f32] hover:bg-[#1a2942] border border-[#1e2e4a] px-3 py-2 rounded-lg transition"
-                              title="نسخ التوصية بالتنسيق الكامل"
-                            >
-                              {copiedId === sig.id ? (
-                                <>
-                                  <Check className="w-3.5 h-3.5 text-emerald-400" />
-                                  <span className="text-emerald-400">تم النسخ</span>
-                                </>
-                              ) : (
-                                <>
-                                  <Copy className="w-3.5 h-3.5" />
-                                  <span>نسخ التوصية</span>
-                                </>
-                              )}
-                            </button>
-
-                            <button
-                              onClick={() => {
-                                handleStartEdit(sig);
-                                window.scrollTo({ top: 0, behavior: 'smooth' });
-                              }}
-                              className="flex items-center gap-1 text-xs text-amber-500 hover:text-amber-400 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/20 px-3 py-2 rounded-lg transition font-semibold"
-                            >
-                              <Edit className="w-3.5 h-3.5" />
-                              <span>تعديل</span>
-                            </button>
-
-                            <button
-                              onClick={() => handleDeleteSignal(sig.id)}
-                              className="flex items-center gap-1 text-xs text-rose-400 hover:text-rose-300 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 px-3 py-2 rounded-lg transition font-semibold"
-                            >
-                              <Trash2 className="w-3.5 h-3.5" />
-                              <span>حذف</span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </section>
-
-          {/* Sidebar Area: Calculator & Technical Gauges */}
-          <section className="space-y-6">
-            
-            {/* Built-in Premium Risk and Lot Size Calculator */}
-            <div className="bg-[#0c1322] border border-[#1a2436] p-5 rounded-2xl shadow-md space-y-4">
-              <h3 className="font-bold text-white text-base flex items-center gap-2 border-b border-[#1a2436] pb-3">
-                <Calculator className="w-5 h-5 text-amber-500" />
-                حاسبة حجم اللوت والمخاطرة (Lot Size)
-              </h3>
-              
-              <p className="text-xs text-neutral-400 leading-relaxed text-right">
-                إدارة رأس المال هي سر النجاح. أدخل رأس مالك والستوب بـ (Pips) واحسب حجم صفقتك فوراً.
-              </p>
-
-              <div className="space-y-3 text-sm">
-                <div className="space-y-1">
-                  <label className="text-xs text-neutral-400 block text-right">رصيد الحساب ($)</label>
-                  <div className="relative">
-                    <DollarSign className="w-4 h-4 absolute left-3 top-3 text-neutral-500" />
-                    <input
-                      type="number"
-                      value={accountBalance}
-                      onChange={(e) => setAccountBalance(Number(e.target.value))}
-                      className="w-full bg-[#141f32] border border-[#1e2e4a] rounded-xl pl-4 pr-10 py-2 text-white outline-none transition focus:border-amber-500"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="space-y-1">
-                    <label className="text-xs text-neutral-400 block text-right">نسبة المخاطرة (%)</label>
-                    <input
-                      type="number"
-                      step="0.5"
-                      value={riskPercentage}
-                      onChange={(e) => setRiskPercentage(Number(e.target.value))}
-                      className="w-full bg-[#141f32] border border-[#1e2e4a] rounded-xl px-3 py-2 text-white outline-none transition focus:border-amber-500"
-                    />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-xs text-neutral-400 block text-right">الستوب (Pips)</label>
-                    <input
-                      type="number"
-                      value={stopLossPips}
-                      onChange={(e) => setStopLossPips(Number(e.target.value))}
-                      className="w-full bg-[#141f32] border border-[#1e2e4a] rounded-xl px-3 py-2 text-white outline-none transition focus:border-amber-500"
-                    />
-                  </div>
-                </div>
-
-                <div className="p-4 bg-amber-500/5 border border-amber-500/10 rounded-xl space-y-2 mt-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-neutral-400">قيمة المخاطرة الفعلية</span>
-                    <span className="font-semibold text-white">
-                      ${(accountBalance * (riskPercentage / 100)).toFixed(2)}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center border-t border-[#1a2436]/50 pt-2">
-                    <span className="text-sm font-bold text-amber-500">حجم اللوت المقترح:</span>
-                    <span className="text-lg font-extrabold text-white tracking-wider animate-pulse">
-                      {calculatedLotSize} <span className="text-xs text-neutral-400">Standard Lot</span>
-                    </span>
-                  </div>
-                </div>
+                                {t.calendar[`impact${ev.impact.charAt(0) + ev.impact.slice(1).toLowerCase() as 'High' | 'Medium' | 'Low'}`]}
+                              </span>
+                            </td>
+                            <td className="px-6 py-4 font-bold text-slate-800 dark:text-white">{ev.actual || "—"}</td>
+                            <td className="px-6 py-4 text-slate-500 dark:text-neutral-400">{ev.forecast || "—"}</td>
+                            <td className="px-6 py-4 text-slate-400">{ev.previous || "—"}</td>
+                          </tr>
+                        );
+                      })}
+                  </tbody>
+                </table>
               </div>
             </div>
 
-            {/* Trading Education Box */}
-            <div className="bg-[#0c1322] border border-[#1a2436] p-5 rounded-2xl shadow-md space-y-4">
-              <h3 className="font-bold text-white text-base flex items-center gap-2 border-b border-[#1a2436] pb-3">
-                <TrendingUp className="w-5 h-5 text-emerald-500" />
-                تحليل الزخم والسوق الحالي
-              </h3>
-              
-              <div className="space-y-3">
-                <div>
-                  <div className="flex justify-between text-xs text-neutral-400 mb-1">
-                    <span>ثور الهجوم (Bullish) - 72%</span>
-                    <span>دب البيع (Bearish) - 28%</span>
-                  </div>
-                  <div className="h-2 w-full bg-[#141f32] rounded-full overflow-hidden flex">
-                    <div className="bg-emerald-500 h-full" style={{ width: "72%" }} />
-                    <div className="bg-rose-500 h-full" style={{ width: "28%" }} />
-                  </div>
-                </div>
+          </div>
+        )}
 
-                <div className="p-3 bg-[#141f32]/30 rounded-xl space-y-1 text-right">
-                  <span className="text-xs text-emerald-400 font-bold block">💡 نصيحة الخبراء لليوم:</span>
-                  <p className="text-xs text-neutral-400 leading-relaxed">
-                    يتداول الذهب (GOLD) بالقرب من قمم تاريخية. نوصي بتجنب صفقات البيع العشوائي والتركيز على فرص الشراء عند الارتدادات والتصحيحات مع الالتزام التام بالستوب لوس.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Telegram Promotion Banner */}
-            <div className="bg-gradient-to-br from-[#1d273a] to-[#121b2d] border border-amber-500/20 p-5 rounded-2xl shadow-md space-y-4 text-center">
-              <span className="bg-amber-500/10 text-amber-400 px-3 py-1 rounded-full text-xs font-semibold inline-block">
-                انضم إلينا فوراً
+        {/* === ROUTE: DYNAMIC SITEMAP === */}
+        {page === "sitemap" && (
+          <div className="animate-fadeIn space-y-8 max-w-4xl mx-auto">
+            <div className="text-center max-w-2xl mx-auto space-y-2">
+              <span className="bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider inline-block">
+                <Map className="w-3.5 h-3.5 inline-block -mt-1" /> {lang === "ar" ? "الفهرس الكامل المحدث" : "Full Updated Index"}
               </span>
-              <h3 className="text-lg font-extrabold text-white leading-snug">
-                قناة NMER FX الرسمية على تلجرام
-              </h3>
-              <p className="text-xs text-neutral-400 leading-relaxed">
-                احصل على التنبيهات فور صدورها، واشترك في مناقشات وتحليلات السوق اليومية مع كبار الخبراء مجاناً.
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight">{t.sitemap.title}</h2>
+              <p className="text-sm text-slate-500 dark:text-neutral-400 leading-relaxed">
+                {t.sitemap.subtitle}
               </p>
-              <a
-                href={telegramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full inline-flex justify-center items-center gap-2 bg-amber-500 hover:bg-amber-600 text-black font-extrabold py-3 px-4 rounded-xl transition duration-300 shadow-lg shadow-amber-500/10"
-              >
-                <span>انضم للقناة الآن</span>
-                <ExternalLink className="w-4 h-4" />
-              </a>
             </div>
 
-          </section>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              
+              {/* Box 1: Static links */}
+              <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-6 rounded-3xl space-y-4 shadow-sm">
+                <h3 className="font-extrabold text-base text-amber-500 dark:text-amber-400 flex items-center gap-2 border-b border-slate-100 dark:border-[#1a2436] pb-3">
+                  <Compass className="w-5 h-5" />
+                  <span>{t.sitemap.staticPages}</span>
+                </h3>
+                <ul className="space-y-3">
+                  {[
+                    { label: t.nav.home, path: "home" },
+                    { label: t.nav.news, path: "news" },
+                    { label: t.nav.calendar, path: "calendar" },
+                    { label: t.sitemap.title, path: "sitemap" },
+                    { label: t.legal.privacyTitle, path: "privacy" },
+                    { label: t.legal.termsTitle, path: "terms" },
+                    { label: t.legal.disclaimerTitle, path: "disclaimer" }
+                  ].map((link, idx) => (
+                    <li key={idx} className="flex items-center gap-2 text-sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                      <button
+                        onClick={() => navigateTo(link.path)}
+                        className="text-slate-700 dark:text-neutral-300 hover:text-amber-500 font-semibold cursor-pointer underline hover:no-underline"
+                      >
+                        {link.label}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-        </div>
+              {/* Box 2: Dynamic Signals index */}
+              <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-6 rounded-3xl space-y-4 shadow-sm">
+                <h3 className="font-extrabold text-base text-amber-500 dark:text-amber-400 flex items-center gap-2 border-b border-slate-100 dark:border-[#1a2436] pb-3">
+                  <Activity className="w-5 h-5" />
+                  <span>{t.sitemap.dynamicSignals}</span>
+                </h3>
+                {signals.length === 0 ? (
+                  <p className="text-xs text-slate-400">{lang === "ar" ? "لا توجد صفقات منشورة حالياً." : "No published signals available yet."}</p>
+                ) : (
+                  <ul className="space-y-2 max-h-60 overflow-y-auto">
+                    {signals.map((sig) => (
+                      <li key={sig.id} className="flex justify-between items-center text-sm">
+                        <div className="flex items-center gap-2 truncate">
+                          <span className={`w-1.5 h-1.5 rounded-full ${sig.type === "SELL" ? "bg-rose-500" : "bg-emerald-500"}`}></span>
+                          <button
+                            onClick={() => navigateTo("signal", sig.id)}
+                            className="text-slate-700 dark:text-neutral-300 hover:text-amber-500 font-semibold cursor-pointer truncate"
+                          >
+                            {sig.pair} - {sig.entry}
+                          </button>
+                        </div>
+                        <span className="text-[10px] text-slate-400 block px-1.5 shrink-0 uppercase">{sig.status}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+
+            </div>
+          </div>
+        )}
+
+        {/* === ROUTES: LEGAL COMPLIANCE PAGES (Privacy, Terms, Risk Warning) === */}
+        {["privacy", "terms", "disclaimer"].includes(page) && (
+          <div className="animate-fadeIn max-w-3xl mx-auto space-y-6">
+            <button
+              onClick={() => navigateTo("home")}
+              className="flex items-center gap-2 text-xs font-black text-amber-500 hover:text-amber-600 transition cursor-pointer"
+            >
+              <ArrowRight className={`w-4 h-4 ${lang === "ar" ? "" : "rotate-180"}`} />
+              <span>{t.signals.backToHome}</span>
+            </button>
+
+            {(() => {
+              const legalKey = page === "privacy" ? "privacy" : page === "terms" ? "terms" : "disclaimer";
+              const title = t.legal[`${legalKey}Title` as 'privacyTitle' | 'termsTitle' | 'disclaimerTitle'];
+              const list = t.legal[`${legalKey}Content` as 'privacyContent' | 'termsContent' | 'disclaimerContent'];
+
+              return (
+                <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-6 md:p-8 rounded-3xl shadow-sm space-y-6">
+                  <div className="flex items-center gap-2.5 border-b border-slate-100 dark:border-[#1a2436] pb-4">
+                    <ShieldAlert className="w-6 h-6 text-amber-500 shrink-0" />
+                    <h2 className="text-2xl font-black text-slate-900 dark:text-white leading-tight">{title}</h2>
+                  </div>
+
+                  <div className="space-y-4">
+                    {list.map((paragraph, idx) => (
+                      <p key={idx} className="text-sm text-slate-600 dark:text-neutral-300 leading-relaxed text-justify">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+
+                  <div className="pt-4 border-t border-slate-100 dark:border-[#1a2436]/60 text-xs text-slate-400">
+                    {t.sitemap.allRights}
+                  </div>
+                </div>
+              );
+            })()}
+
+          </div>
+        )}
 
       </main>
 
-      <footer className="border-t border-[#1a2436] bg-[#070b12] py-8 text-neutral-500 text-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-          <p className="text-neutral-400 font-medium">NMER FX Trading Signals Hub © 2026</p>
-          <p className="max-w-2xl mx-auto leading-relaxed text-neutral-500">
-            تنبيه المخاطر: تنطوي تداولات سوق العملات الأجنبية والذهب والمعادن (Forex/CFD) على مخاطر عالية جداً وقد لا تكون مناسبة لجميع المستثمرين. يرجى التداول فقط بالأموال التي يمكنك تحمل خسارتها بالكامل. جميع التوصيات المستخرجة تلقائياً هي لأغراض استرشادية وتعليمية فقط وليست استشارات مالية مباشرة.
-          </p>
-          <div className="text-neutral-600 pt-2 flex justify-center gap-4">
-            <span>تحديث تلقائي: نشط</span>
-            <span>•</span>
-            <span>دقة التوجيه: 94%</span>
-            <span>•</span>
-            <span>الموقع لا يحتاج لقاعدة بيانات مستقلة</span>
+      {/* 4. Footers containing dynamic compliance pages */}
+      <footer className="border-t border-slate-200 dark:border-[#1a2436] bg-slate-100 dark:bg-[#04080e] py-12 text-slate-500 dark:text-neutral-400 text-xs transition-colors mt-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          
+          {/* Top block */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left rtl:text-right">
+            
+            {/* About platform */}
+            <div className="space-y-3">
+              <h4 className="font-extrabold text-sm text-slate-900 dark:text-white">{t.footer.about}</h4>
+              <p className="leading-relaxed text-slate-500 dark:text-neutral-400 text-justify">
+                {t.footer.aboutText}
+              </p>
+            </div>
+
+            {/* Quick sections */}
+            <div className="space-y-3">
+              <h4 className="font-extrabold text-sm text-slate-900 dark:text-white">{lang === "ar" ? "أقسام الأكاديمية" : "Desk Academy"}</h4>
+              <ul className="space-y-2">
+                <li>
+                  <button onClick={() => navigateTo("home")} className="hover:text-amber-500 cursor-pointer">{t.nav.home}</button>
+                </li>
+                <li>
+                  <button onClick={() => navigateTo("news")} className="hover:text-amber-500 cursor-pointer">{t.nav.news}</button>
+                </li>
+                <li>
+                  <button onClick={() => navigateTo("calendar")} className="hover:text-amber-500 cursor-pointer">{t.nav.calendar}</button>
+                </li>
+                <li>
+                  <button onClick={() => navigateTo("sitemap")} className="hover:text-amber-500 cursor-pointer">{t.nav.sitemap}</button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Legal Directory lists */}
+            <div className="space-y-3">
+              <h4 className="font-extrabold text-sm text-slate-900 dark:text-white">{t.footer.links}</h4>
+              <ul className="space-y-2">
+                <li>
+                  <button onClick={() => navigateTo("privacy")} className="hover:text-amber-500 text-left rtl:text-right cursor-pointer">{t.legal.privacyTitle}</button>
+                </li>
+                <li>
+                  <button onClick={() => navigateTo("terms")} className="hover:text-amber-500 text-left rtl:text-right cursor-pointer">{t.legal.termsTitle}</button>
+                </li>
+                <li>
+                  <button onClick={() => navigateTo("disclaimer")} className="hover:text-amber-500 text-left rtl:text-right cursor-pointer">{t.legal.disclaimerTitle}</button>
+                </li>
+              </ul>
+            </div>
+
           </div>
+
+          {/* Core regulatory Risk Warning details */}
+          <div className="border-t border-slate-200 dark:border-[#1a2436]/60 pt-6 space-y-4">
+            <div className="p-4 bg-slate-50 dark:bg-[#0c1322] border border-slate-200 dark:border-[#1e2e4a] rounded-2xl flex items-start gap-3">
+              <ShieldAlert className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
+              <p className="leading-relaxed text-slate-500 dark:text-neutral-400 text-justify text-[11px]">
+                <strong className="text-slate-800 dark:text-neutral-200 block mb-1">{t.legal.disclaimerTitle}</strong>
+                {t.legal.disclaimerContent[0]} {t.legal.disclaimerContent[1]}
+              </p>
+            </div>
+
+            <p className="text-center font-medium text-[11px] text-slate-400 dark:text-neutral-500 pt-2">
+              {t.footer.copyright}
+            </p>
+          </div>
+
         </div>
       </footer>
+
     </div>
   );
 }
 
-// Fallback high-fidelity mock signals to display if fetching fails or to populate beautifully initially
+// Full-fidelity mock data initial backing
 function getFallbackSignals(): Signal[] {
   return [
     {
       id: "f-sig-usdjpy-new",
-      pair: "USDJPY (دولار ين)",
+      pair: "USDJPY",
       type: "BUY",
       entry: "157.750",
       tp1: "161.000",
-      tp2: "",
-      tp3: "",
+      tp2: "162.500",
+      tp3: "164.000",
       sl: "156.400",
       status: "ACTIVE",
-      explanation: "توصية تداول: شراء دولار أمريكي / ين ياباني (USD/JPY) من سعر الدخول الموضح بناءً على الكسر الإيجابي الموضح بالتحليل الفني في الشارت المرفق.",
+      explanation: "توصية تداول شراء زوج الدولار ين (USD/JPY) من سعر الدخول المذكور، مستهدفاً صعوداً تاريخياً مع اختراق مقاومة هامة واستغلال كسر فني إيجابي واضح على الشارت التوضيحي المرفق.",
       date: new Date().toISOString(),
-      views: "1.8K",
+      views: "1.9K",
       photoUrl: "/1787237745892.png",
       rawText: "شراء الدولار ين من سعر 157.750\nستوب 156.400\nهدف 161.000"
     },
@@ -1261,17 +1681,17 @@ function getFallbackSignals(): Signal[] {
       id: "f-sig-1",
       pair: "XAUUSD (GOLD)",
       type: "BUY",
-      entry: "2422.50 - 2420.00",
+      entry: "2422.50",
       tp1: "2430.00",
       tp2: "2438.00",
       tp3: "2450.00",
       sl: "2412.00",
       status: "ACTIVE",
-      explanation: "تم رصد ارتداد صاعد قوي من خط الاتجاه اليومي مع اختراق لنموذج العلم الاستمراري. يمثل التراجع الحالي فرصة ممتازة للشراء بهدف أول عند مقاومة 2430 والهدف الأقصى عند 2450.",
+      explanation: "ارتداد قوي مرصود بدقة من خط الاتجاه الصاعد اليومي مع اختراق لنموذج العلم الاستمراري. التراجع الحالي فرصة ممتازة للشراء الآمن والالتزام بوقف الخسارة الموضح لحماية الأصول.",
       date: "2026-08-20T12:30:00.000Z",
-      views: "1.2K",
-      photoUrl: "https://i.postimg.cc/0NrxvhHB/71v-TIDF3x-QL-AC-SL1500.jpg",
-      rawText: "BUY GOLD AT 2422.50-2420.00 TP1: 2430.00 TP2: 2438.00 TP3: 2450.00 SL: 2412.00"
+      views: "1.5K",
+      photoUrl: "/1787237745892.png",
+      rawText: "BUY GOLD AT 2422.50 TP1: 2430.00 TP2: 2438.00 SL: 2412.00"
     },
     {
       id: "f-sig-2",
@@ -1283,43 +1703,27 @@ function getFallbackSignals(): Signal[] {
       tp3: "1.08000",
       sl: "1.09600",
       status: "TP1 HIT",
-      explanation: "فشل السعر في تخطي مستوى المقاومة الهام 1.0950 ومعدلات الفائدة الفيدرالية تدعم الدولار. تم تحقيق الهدف الأول عند 1.0890 بنجاح وننصح بحجز جزء من الأرباح ونقل الستوب لنقطة الدخول.",
+      explanation: "تراجع مستمر للزوج بعد الفشل في اختراق مستوى المقاومة الهام 1.0950. تم ضرب الهدف الأول عند 1.0890 بنجاح فني تام وننصح بحجز جزء مناسب من الأرباح فوراً ونقل الستوب للدخول.",
       date: "2026-08-20T10:15:00.000Z",
-      views: "980",
+      views: "1.1K",
       photoUrl: "",
-      rawText: "SELL EURUSD AT 1.09250 TP1: 1.08900 TP2: 1.08500 SL: 1.09600"
+      rawText: "SELL EURUSD AT 1.09250 TP1: 1.08900 SL: 1.09600"
     },
     {
       id: "f-sig-3",
       pair: "US30 (DOW JONES)",
-      type: "SELL LIMIT",
+      type: "SELL",
       entry: "39450",
       tp1: "39200",
       tp2: "38900",
       tp3: "38500",
       sl: "39650",
       status: "ACTIVE",
-      explanation: "ننتظر تصحيحاً هابطاً واختباراً لمستويات مقاومة الداو جونز الكبرى قبل الهبوط مجدداً. التوصية مفعلة بشكل معلق، يرجى التداول بحذر وبإدارة صارمة.",
+      explanation: "ترقب تصحيحي هابط ومحاولة اختبار لمستويات مقاومة الداو جونز الكبرى قبل استئناف التراجع مجدداً. التداول يرجى أن يكون بحذر شديد وبإدارة مخاطر صارمة.",
       date: "2026-08-20T08:00:00.000Z",
-      views: "1.5K",
+      views: "1.7K",
       photoUrl: "",
-      rawText: "SELL LIMIT US30 AT 39450 TP1: 39200 TP2: 38900 SL: 39650"
-    },
-    {
-      id: "f-sig-4",
-      pair: "تحديث السوق",
-      type: "INFO",
-      entry: "N/A",
-      tp1: "",
-      tp2: "",
-      tp3: "",
-      sl: "",
-      status: "INFO",
-      explanation: "تنبيه هام للمتداولين: تجنبوا التداول المفرط اليوم لوجود بيانات تضخم أمريكية هامة في تمام الساعة 3:30 عصراً بتوقيت مكة المكرمة. يفضل الخروج من الصفقات وحماية رؤوس الأموال.",
-      date: "2026-08-20T06:45:00.000Z",
-      views: "2.1K",
-      photoUrl: "",
-      rawText: "تنبيه هام للمتداولين قبل صدور بيانات التضخم الأمريكية اليوم"
+      rawText: "SELL US30 AT 39450 TP1: 39200 SL: 39650"
     }
   ];
 }

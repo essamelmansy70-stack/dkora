@@ -782,46 +782,6 @@ export default function App() {
                   <Moon className="w-4.5 h-4.5 text-slate-700" />
                 )}
               </button>
-
-              {/* Sound toggle */}
-              <button
-                onClick={() => {
-                  const s = !soundEnabled;
-                  setSoundEnabled(s);
-                  localStorage.setItem("decou_fx_sound", String(s));
-                  if (s) playNotificationSound();
-                }}
-                className={`p-2.5 rounded-xl border transition-all ${
-                  soundEnabled
-                    ? "border-amber-500/20 bg-amber-500/5 text-amber-500"
-                    : "border-slate-200 dark:border-[#1e2e4a] bg-slate-50 dark:bg-[#141f32] text-slate-400"
-                }`}
-                title="Toggle Sounds"
-              >
-                {soundEnabled ? <Volume2 className="w-4.5 h-4.5" /> : <VolumeX className="w-4.5 h-4.5" />}
-              </button>
-
-              {/* Admin Mode Toggle */}
-              <button
-                onClick={() => {
-                  if (isAdmin) {
-                    setIsAdmin(false);
-                    localStorage.setItem("dkorafx_is_admin", "false");
-                  } else {
-                    setShowAdminModal(true);
-                    setAdminPasscode("");
-                    setAdminError("");
-                  }
-                }}
-                className={`p-2.5 rounded-xl border transition-all ${
-                  isAdmin 
-                    ? "border-emerald-500/30 bg-emerald-500/5 text-emerald-500 hover:bg-emerald-500/10" 
-                    : "border-slate-200 dark:border-[#1e2e4a] bg-slate-50 dark:bg-[#141f32] hover:bg-slate-100 dark:hover:bg-[#1a2942] text-slate-700 dark:text-neutral-300"
-                }`}
-                title={isAdmin ? (lang === "ar" ? "خروج من وضع الإدارة" : "Exit Admin Mode") : (lang === "ar" ? "دخول الإدارة" : "Admin Login")}
-              >
-                {isAdmin ? <Unlock className="w-4.5 h-4.5 text-emerald-500" /> : <Lock className="w-4.5 h-4.5" />}
-              </button>
             </div>
 
           </div>
@@ -1370,6 +1330,40 @@ export default function App() {
                         {calculatedLotSize} <span className="text-xs text-slate-400 block font-normal mt-1">Standard Lots</span>
                       </span>
                     </div>
+                  </div>
+                </div>
+
+                {/* 1.5 Investing.com Technical Summary Widget */}
+                <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-6 rounded-3xl shadow-sm space-y-4">
+                  <div className="flex items-center gap-2 border-b border-slate-100 dark:border-[#1a2436] pb-3">
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse block"></span>
+                    <h3 className="font-extrabold text-slate-900 dark:text-white text-base">
+                      {lang === "ar" ? "الملخص الفني المباشر للأسواق" : "Live Technical Market Summary"}
+                    </h3>
+                  </div>
+                  
+                  <div className="w-full overflow-hidden rounded-2xl border border-slate-100 dark:border-[#1a2436] flex flex-col items-center bg-slate-50 dark:bg-[#141f32]/40 p-1">
+                    <iframe 
+                      src="https://ssltsw.investing.com?lang=3&forex=1,3,2,1634,157,1693,5&commodities=8849,8833,8862,8830,8836,8831,8832&indices=23660,166,172,27,179,175,170&stocks=345,346,347,348,349,350,352&tabs=1,2,3,4" 
+                      width="100%" 
+                      height="467"
+                      className="border-0 w-full max-w-[317px] rounded-xl"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  
+                  <div className="poweredBy text-center" style={{ fontFamily: "Cairo, arial, sans-serif", direction: "rtl" }}>
+                    <span className="text-[11px] text-slate-500 dark:text-neutral-400">
+                      {lang === "ar" ? "أداة الملخص الفني مقدمة من " : "Technical summary widget provided by "}
+                      <a 
+                        href="https://sa.investing.com/" 
+                        rel="nofollow" 
+                        target="_blank" 
+                        className="text-[11px] text-amber-600 dark:text-amber-400 font-extrabold hover:underline"
+                      >
+                        {lang === "ar" ? "السعودية Investing.com" : "Saudi Investing.com"}
+                      </a>
+                    </span>
                   </div>
                 </div>
 

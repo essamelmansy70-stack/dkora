@@ -1568,7 +1568,7 @@ export default function App() {
                     </div>
                   ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {rssNews.slice(0, 6).map((item, index) => {
+                      {rssNews.slice(0, 18).map((item, index) => {
                         const pubDateObj = new Date(item.pubDate || item.pubdate);
                         const formattedDate = pubDateObj.toLocaleDateString(lang === 'ar' ? 'ar-EG' : 'en-US', {
                           year: 'numeric',

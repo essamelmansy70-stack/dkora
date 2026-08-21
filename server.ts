@@ -430,7 +430,11 @@ async function startServer() {
 - تأكد أن كل النصوص باللغة العربية وموجهة لمتداولي منصة "ديكوراFX" (DecouraFX).`;
 
       // Array of reliable Gemini models to try in sequence in case of 503 high demand or unavailability
-      const modelsToTry = ["gemini-2.5-flash", "gemini-1.5-flash", "gemini-2.5-pro"];
+      const modelsToTry = [
+        "gemini-3.6-flash",
+        "gemini-3.5-flash",
+        "gemini-3.1-flash-lite"
+      ];
       let generatedContent = "";
       let lastError = null;
 
@@ -548,13 +552,37 @@ ${JSON.stringify(newestMessages.map((m, idx) => ({ index: idx, text: m.text })))
 
 Return ONLY a valid raw JSON array containing exactly the parsed items. Do not wrap in markdown blocks, do not write backticks, do not write any text outside the JSON array.`;
 
-          const geminiResponse = await ai.models.generateContent({
-            model: "gemini-3.6-flash",
-            contents: prompt,
-            config: {
-              responseMimeType: "application/json",
+          const modelsToTry = [
+            "gemini-3.6-flash",
+            "gemini-3.5-flash",
+            "gemini-3.1-flash-lite"
+          ];
+          let geminiResponse: any = null;
+          let lastErr: any = null;
+
+          for (const modelName of modelsToTry) {
+            try {
+              console.log(`Telegram parsing: attempting with model: ${modelName}`);
+              const res = await ai.models.generateContent({
+                model: modelName,
+                contents: prompt,
+                config: {
+                  responseMimeType: "application/json",
+                }
+              });
+              if (res && res.text) {
+                geminiResponse = res;
+                break;
+              }
+            } catch (err: any) {
+              console.warn(`Telegram parsing model ${modelName} failed or unavailable:`, err?.message || err);
+              lastErr = err;
             }
-          });
+          }
+
+          if (!geminiResponse) {
+            throw lastErr || new Error("All Gemini models failed to parse telegram signals");
+          }
 
           const parsedJsonText = geminiResponse.text?.trim() || "[]";
           const parsedSignals = JSON.parse(parsedJsonText);
@@ -945,15 +973,35 @@ The output must be a single beautifully synthesized natural photograph, aspect r
         text: promptText,
       };
 
-      const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash-image",
-        contents: { parts: [imagePart, textPart] },
-        config: {
-          imageConfig: {
-            aspectRatio: "1:1"
+      const imageModels = [
+        "gemini-3.6-flash",
+        "gemini-3.5-flash",
+        "gemini-3.1-flash-lite"
+      ];
+      let response: any = null;
+      let lastErr: any = null;
+
+      for (const modelName of imageModels) {
+        try {
+          console.log(`Football photo generation: attempting with model: ${modelName}`);
+          const res = await ai.models.generateContent({
+            model: modelName,
+            contents: { parts: [imagePart, textPart] },
+            config: {
+              imageConfig: {
+                aspectRatio: "1:1"
+              }
+            }
+          });
+          if (res && res.candidates && res.candidates[0]?.content?.parts) {
+            response = res;
+            break;
           }
+        } catch (err: any) {
+          console.warn(`Football photo generation with model ${modelName} failed or unavailable:`, err?.message || err);
+          lastErr = err;
         }
-      });
+      }
 
       let generatedBase64 = "";
 

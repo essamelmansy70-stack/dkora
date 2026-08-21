@@ -345,7 +345,7 @@ export default function App() {
     setRssLoading(true);
     setRssError(null);
     try {
-      const response = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://sa.investing.com/rss/news.rss");
+      const response = await fetch("/api/news");
       if (!response.ok) {
         throw new Error("Failed to fetch RSS news");
       }

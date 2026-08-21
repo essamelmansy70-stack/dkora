@@ -431,8 +431,8 @@ async function startServer() {
 
       // Array of reliable Gemini models to try in sequence in case of 503 high demand or unavailability
       const modelsToTry = [
-        "gemini-3.6-flash",
         "gemini-3.5-flash",
+        "gemini-3.6-flash",
         "gemini-3.1-flash-lite"
       ];
       let generatedContent = "";
@@ -446,7 +446,10 @@ async function startServer() {
             contents: prompt,
           });
           if (response && response.text) {
-            generatedContent = response.text;
+            let text = response.text;
+            // Clean any markdown code blocks or backticks to ensure raw HTML renders beautifully
+            text = text.replace(/```html/gi, "").replace(/```/g, "").trim();
+            generatedContent = text;
             break;
           }
         } catch (err: any) {
@@ -553,8 +556,8 @@ ${JSON.stringify(newestMessages.map((m, idx) => ({ index: idx, text: m.text })))
 Return ONLY a valid raw JSON array containing exactly the parsed items. Do not wrap in markdown blocks, do not write backticks, do not write any text outside the JSON array.`;
 
           const modelsToTry = [
-            "gemini-3.6-flash",
             "gemini-3.5-flash",
+            "gemini-3.6-flash",
             "gemini-3.1-flash-lite"
           ];
           let geminiResponse: any = null;
@@ -974,8 +977,8 @@ The output must be a single beautifully synthesized natural photograph, aspect r
       };
 
       const imageModels = [
-        "gemini-3.6-flash",
         "gemini-3.5-flash",
+        "gemini-3.6-flash",
         "gemini-3.1-flash-lite"
       ];
       let response: any = null;

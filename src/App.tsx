@@ -2058,7 +2058,17 @@ export default function App() {
                   </span>
                   <span>•</span>
                   <span>
-                    {new Date(activeRssArticle.pubDate || activeRssArticle.pubdate).toLocaleString(lang === 'ar' ? 'ar-EG' : 'en-US')}
+                    {(() => {
+                      try {
+                        const d = new Date(activeRssArticle.pubDate || activeRssArticle.pubdate);
+                        if (!isNaN(d.getTime())) {
+                          return d.toLocaleString(lang === 'ar' ? 'ar-EG' : 'en-US');
+                        }
+                      } catch (e) {
+                        console.error(e);
+                      }
+                      return activeRssArticle.pubDate || activeRssArticle.pubdate || "";
+                    })()}
                   </span>
                 </div>
                 <h3 className="text-lg md:text-xl font-black text-slate-900 dark:text-white leading-snug text-right">

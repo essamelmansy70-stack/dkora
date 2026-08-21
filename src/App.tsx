@@ -140,7 +140,7 @@ export default function App() {
 
   // 3. Signals state (local storage backed)
   const [signals, setSignals] = useState<Signal[]>(() => {
-    const saved = localStorage.getItem("decou_fx_local_signals_v5");
+    const saved = localStorage.getItem("decou_fx_local_signals_v7");
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -150,7 +150,7 @@ export default function App() {
       }
     }
     const fallback = getFallbackSignals();
-    localStorage.setItem("decou_fx_local_signals_v5", JSON.stringify(fallback));
+    localStorage.setItem("decou_fx_local_signals_v7", JSON.stringify(fallback));
     return fallback;
   });
 
@@ -294,7 +294,7 @@ export default function App() {
   const saveSignalsLocally = async (newList: Signal[]) => {
     // 1. Update state and local storage immediately for real-time smoothness
     localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(newList));
-    localStorage.setItem("decou_fx_local_signals_v5", JSON.stringify(newList));
+    localStorage.setItem("decou_fx_local_signals_v7", JSON.stringify(newList));
     setSignals(newList);
     prevSignalsRef.current = newList;
 
@@ -322,13 +322,13 @@ export default function App() {
       }
       
       if (!Array.isArray(currentList) || currentList.length === 0) {
-        const saved = localStorage.getItem("decou_fx_local_signals_v2") || localStorage.getItem("decou_fx_local_signals_v5");
+        const saved = localStorage.getItem("decou_fx_local_signals_v2") || localStorage.getItem("decou_fx_local_signals_v7");
         currentList = saved ? JSON.parse(saved) : getFallbackSignals();
       }
 
       setSignals(currentList);
       localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(currentList));
-      localStorage.setItem("decou_fx_local_signals_v5", JSON.stringify(currentList));
+      localStorage.setItem("decou_fx_local_signals_v7", JSON.stringify(currentList));
       
       if (soundEnabled) {
         playNotificationSound();
@@ -373,7 +373,7 @@ export default function App() {
           if (Array.isArray(list) && list.length > 0) {
             setSignals(list);
             localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(list));
-            localStorage.setItem("decou_fx_local_signals_v5", JSON.stringify(list));
+            localStorage.setItem("decou_fx_local_signals_v7", JSON.stringify(list));
           }
         }
       } catch (e) {
@@ -2142,6 +2142,38 @@ export default function App() {
 function getFallbackSignals(): Signal[] {
   return [
     {
+      id: "sig-usdjpy-buy-159",
+      pair: "USDJPY",
+      type: "BUY",
+      entry: "159.00",
+      tp1: "161.000",
+      tp2: "",
+      tp3: "",
+      sl: "156.400",
+      status: "ACTIVE",
+      explanation: "توصية شراء الدولار مقابل الين الياباني (USD/JPY) نظراً لوجود دعم فني قوي وبوادر صعود تصحيحي على المدى المتوسط والالتزام بأهداف إدارة المخاطر.",
+      date: new Date().toISOString(),
+      views: "1.2K",
+      photoUrl: "",
+      rawText: "شراء الدولار ين من 159\nستوب 156.400\nهدف 161.000"
+    },
+    {
+      id: "sig-audusd-sell-709",
+      pair: "AUDUSD",
+      type: "SELL",
+      entry: "0.70900",
+      tp1: "0.69000",
+      tp2: "",
+      tp3: "",
+      sl: "0.72000",
+      status: "ACTIVE",
+      explanation: "توصية بيع الدولار الأسترالي مقابل الدولار الأمريكي (AUD/USD) نتيجة لملامسة خط المقاومة الهابط وبدء الزخم السلبي على الفريمات اليومية.",
+      date: new Date().toISOString(),
+      views: "950",
+      photoUrl: "",
+      rawText: "بيع الدولار الاسترالى دولار امريكى من 0.70900\nستوب 0.72000\nهدف 0.69000"
+    },
+    {
       id: "sig-gold-sell-4520",
       pair: "XAUUSD (GOLD)",
       type: "SELL",
@@ -2152,7 +2184,7 @@ function getFallbackSignals(): Signal[] {
       sl: "4550",
       status: "SL HIT",
       explanation: "تم إغلاق توصية بيع الذهب (XAU/USD) على خسارة بعد أن لامس السعر مستويات وقف الخسارة (ستوب لوز) عند 4550. تم ترحيل هذه التوصية إلى أرشيف التوصيات لضمان الشفافية ومتابعة الأداء الإجمالي للمنصة.",
-      date: new Date().toISOString(),
+      date: "2026-08-21T13:30:00.000Z",
       views: "1.6K",
       photoUrl: "",
       rawText: "بيع الذهب من 4520\nستوب 4550\nهدف 4200\n\nتحديث: ضربت ستوب لوز وتم الإغلاق ونقلها للأرشيف."

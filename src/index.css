@@ -92,3 +92,44 @@ article p, article h3 {
   overflow-wrap: break-word;
 }
 
+/* Custom CSS Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 35s linear infinite;
+  white-space: nowrap;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom CSS RSS article reader inside the modal */
+.rss-article-content p {
+  margin-bottom: 1.25rem;
+  line-height: 1.75;
+}
+
+.rss-article-content img {
+  border-radius: 16px;
+  margin: 1.5rem auto;
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.rss-article-content a {
+  color: #f59e0b;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+

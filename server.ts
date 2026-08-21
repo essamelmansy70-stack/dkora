@@ -389,6 +389,85 @@ async function startServer() {
     }
   }
 
+  // API Endpoint to generate rich article content from RSS news titles using Gemini
+  app.post("/api/generate-news-content", async (req, res) => {
+    try {
+      const { title } = req.body;
+      if (!title) {
+        return res.status(400).json({ error: "Title is required" });
+      }
+
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey) {
+        return res.json({
+          content: `<p>عذراً، تفاصيل هذا الخبر متاحة حالياً عبر المصدر الأصلي فقط. يمكنك النقر على "قراءة الخبر من المصدر الأصلي" لمتابعة المقال الكامل.</p>`
+        });
+      }
+
+      const ai = new GoogleGenAI({
+        apiKey: apiKey,
+        httpOptions: {
+          headers: {
+            "User-Agent": "aistudio-build",
+          },
+        },
+      });
+
+      const prompt = `أنت خبير اقتصادي ومحلل مالي محترف في أسواق المال والبورصات العالمية والعملات الرقمية والمعادن الثمينة (الذهب والفضة والنفط).
+بناءً على عنوان الخبر العاجل التالي:
+"${title}"
+
+قم بكتابة تقرير أو مقال مالي تفصيلي وشامل ومقنع ومكتوب بلغة عربية فصحى ممتازة ومبسطة للمتداولين والمستثمرين.
+يجب أن يتكون التقرير من 3 إلى 4 فقرات طويلة منسقة، ويشمل ما يلي:
+1. مقدمة تشرح وتفصل مضمون عنوان الخبر بدقة.
+2. تحليل فني وأساسي مبسط يشمل الأسباب الكامنة وراء هذا التحرك أو الحدث الاقتصادي، والسياق الحالي في الأسواق (مثل تأثير أسعار الفائدة من الفيدرالي الأمريكي، التضخم، أو الطلب العالمي).
+3. التوقعات والسيناريوهات المستقبلية للأسعار أو الأصول المرتبطة (مثل الذهب، النفط، العملات الأجنبية الرئيسية، أو العملات الرقمية المعنية)، ونصائح استرشادية للمتداولين لكيفية التعامل مع هذا الحدث.
+
+شروط هامة:
+- لا تذكر في بداية المقال "أهلاً بكم" أو "هذا تقرير" أو أي مقدمات تمهيدية. ابدأ مباشرة في صياغة الخبر والتحليل.
+- استخدم لغة احترافية تشبه قنوات Bloomberg وReuters وInvesting.
+- قم بتنسيق الفقرات باستخدام وسوم HTML البسيطة مثل <p> للفقرات، و <strong> لتغميق الكلمات الهامة أو العناوين الفرعية، ولا تستخدم أي وسوم معقدة أو روابط خارجية.
+- تأكد أن كل النصوص باللغة العربية وموجهة لمتداولي منصة "ديكوراFX" (DecouraFX).`;
+
+      // Array of reliable Gemini models to try in sequence in case of 503 high demand or unavailability
+      const modelsToTry = ["gemini-2.5-flash", "gemini-1.5-flash", "gemini-2.5-pro"];
+      let generatedContent = "";
+      let lastError = null;
+
+      for (const modelName of modelsToTry) {
+        try {
+          console.log(`Attempting content generation with model: ${modelName}`);
+          const response = await ai.models.generateContent({
+            model: modelName,
+            contents: prompt,
+          });
+          if (response && response.text) {
+            generatedContent = response.text;
+            break;
+          }
+        } catch (err: any) {
+          console.warn(`Model ${modelName} failed or unavailable:`, err?.message || err);
+          lastError = err;
+        }
+      }
+
+      if (!generatedContent) {
+        // Safe, beautiful fallback response if all models are temporarily busy or rate limited
+        generatedContent = `
+          <p><strong>تنبيه مالي مباشر:</strong> تشهد البورصات والأسواق العالمية في هذه الأوقات تداولات نشطة وزخماً اقتصادياً مكثفاً للغاية.</p>
+          <p>هذا الخبر العاجل يؤثر بشكل مباشر على شهية المخاطرة للمستثمرين في الأسواق والعملات الرئيسية والذهب. ننصح زوار ومتداولي منصة <strong>ديكوراFX</strong> بمتابعة الرسوم البيانية والأسعار اللحظية بشكل مباشر على منصتنا لمعرفة التأثير اللحظي لهذا الحدث الهام.</p>
+          <p>للاطلاع على التغطية الشاملة للخبر فور صدورها من المحررين وقراءة المقال بالتفاصيل الأصلية، يرجى النقر على زر <strong>"زيارة المصدر الأصلي"</strong> في الأسفل لمتابعة المستجدات كاملة.</p>
+        `;
+      }
+
+      res.json({ success: true, content: generatedContent });
+
+    } catch (error: any) {
+      console.error("Error generating news content:", error);
+      res.status(500).json({ error: error.message || "Failed to generate news content" });
+    }
+  });
+
   // API Endpoint to fetch and parse Telegram public channel signals
   app.get("/api/telegram-signals", async (req, res) => {
     const channelName = (req.query.channel as string) || "nmerfx";

@@ -140,7 +140,7 @@ export default function App() {
 
   // 3. Signals state (local storage backed)
   const [signals, setSignals] = useState<Signal[]>(() => {
-    const saved = localStorage.getItem("decou_fx_local_signals_v4");
+    const saved = localStorage.getItem("decou_fx_local_signals_v5");
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -150,7 +150,7 @@ export default function App() {
       }
     }
     const fallback = getFallbackSignals();
-    localStorage.setItem("decou_fx_local_signals_v4", JSON.stringify(fallback));
+    localStorage.setItem("decou_fx_local_signals_v5", JSON.stringify(fallback));
     return fallback;
   });
 
@@ -159,6 +159,14 @@ export default function App() {
   const [calendarEvents] = useState<CalendarEvent[]>(initialCalendarEvents);
   const [calendarFilter, setCalendarFilter] = useState<'ALL' | 'HIGH' | 'MEDIUM' | 'LOW'>('ALL');
   const [feedTab, setFeedTab] = useState<'ACTIVE' | 'ARCHIVE'>('ACTIVE');
+
+  // RSS Live Market News States
+  const [rssNews, setRssNews] = useState<any[]>([]);
+  const [rssLoading, setRssLoading] = useState(false);
+  const [rssError, setRssError] = useState<string | null>(null);
+  const [activeRssArticle, setActiveRssArticle] = useState<any | null>(null);
+  const [rssContentLoading, setRssContentLoading] = useState(false);
+  const [generatedRssContent, setGeneratedRssContent] = useState<string | null>(null);
 
   // Other App States
   const [loading, setLoading] = useState(false);
@@ -286,7 +294,7 @@ export default function App() {
   const saveSignalsLocally = async (newList: Signal[]) => {
     // 1. Update state and local storage immediately for real-time smoothness
     localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(newList));
-    localStorage.setItem("decou_fx_local_signals_v4", JSON.stringify(newList));
+    localStorage.setItem("decou_fx_local_signals_v5", JSON.stringify(newList));
     setSignals(newList);
     prevSignalsRef.current = newList;
 
@@ -314,13 +322,13 @@ export default function App() {
       }
       
       if (!Array.isArray(currentList) || currentList.length === 0) {
-        const saved = localStorage.getItem("decou_fx_local_signals_v2") || localStorage.getItem("decou_fx_local_signals_v4");
+        const saved = localStorage.getItem("decou_fx_local_signals_v2") || localStorage.getItem("decou_fx_local_signals_v5");
         currentList = saved ? JSON.parse(saved) : getFallbackSignals();
       }
 
       setSignals(currentList);
       localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(currentList));
-      localStorage.setItem("decou_fx_local_signals_v4", JSON.stringify(currentList));
+      localStorage.setItem("decou_fx_local_signals_v5", JSON.stringify(currentList));
       
       if (soundEnabled) {
         playNotificationSound();
@@ -332,7 +340,30 @@ export default function App() {
     }
   };
 
-  // Synchronize on mount to load shared database signals
+  // RSS Market News Live Fetcher
+  const fetchRssNews = async () => {
+    setRssLoading(true);
+    setRssError(null);
+    try {
+      const response = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://sa.investing.com/rss/news.rss");
+      if (!response.ok) {
+        throw new Error("Failed to fetch RSS news");
+      }
+      const data = await response.json();
+      if (data && data.status === "ok" && Array.isArray(data.items)) {
+        setRssNews(data.items);
+      } else {
+        throw new Error("Invalid RSS data format");
+      }
+    } catch (err: any) {
+      console.error(err);
+      setRssError(lang === "ar" ? "فشل تحميل الأخبار الاقتصادية العاجلة" : "Failed to load live economic news");
+    } finally {
+      setRssLoading(false);
+    }
+  };
+
+  // Synchronize on mount to load shared database signals and live RSS news
   useEffect(() => {
     const loadInitialSignals = async () => {
       try {
@@ -342,8 +373,7 @@ export default function App() {
           if (Array.isArray(list) && list.length > 0) {
             setSignals(list);
             localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(list));
-            localStorage.setItem("decou_fx_local_signals_v4", JSON.stringify(list));
-            return;
+            localStorage.setItem("decou_fx_local_signals_v5", JSON.stringify(list));
           }
         }
       } catch (e) {
@@ -351,7 +381,51 @@ export default function App() {
       }
     };
     loadInitialSignals();
+    fetchRssNews();
   }, []);
+
+  // Dynamically generate news content using Gemini on backend when activeRssArticle changes
+  useEffect(() => {
+    if (!activeRssArticle) {
+      setGeneratedRssContent(null);
+      return;
+    }
+
+    const fetchGeneratedContent = async () => {
+      setRssContentLoading(true);
+      setGeneratedRssContent(null);
+      try {
+        const res = await fetch("/api/generate-news-content", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ title: activeRssArticle.title })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success && data.content) {
+            setGeneratedRssContent(data.content);
+          } else {
+            setGeneratedRssContent(lang === "ar"
+              ? `<p>عذراً، تفاصيل هذا الخبر متاحة حالياً عبر المصدر الأصلي فقط. يمكنك النقر على "زيارة المصدر الأصلي" لمتابعة المقال الكامل.</p>`
+              : `<p>Sorry, detail description is not available in the feed. Please click "Visit Source" to read the full article.</p>`
+            );
+          }
+        } else {
+          throw new Error("API call failed");
+        }
+      } catch (err) {
+        console.error("Failed to fetch generated news content:", err);
+        setGeneratedRssContent(lang === "ar"
+          ? `<p>حدث خطأ أثناء تحميل محتوى الخبر بالذكاء الاصطناعي. يمكنك النقر على "زيارة المصدر الأصلي" لقراءة التقرير من موقع Investing.</p>`
+          : `<p>An error occurred while loading article content. Please click "Visit Source" to read on the original website.</p>`
+        );
+      } finally {
+        setRssContentLoading(false);
+      }
+    };
+
+    fetchGeneratedContent();
+  }, [activeRssArticle, lang]);
 
   // Add / Create a new Signal
   const handleAddSignalSubmit = (e: React.FormEvent) => {
@@ -507,6 +581,34 @@ export default function App() {
 
   return (
     <div className="min-h-screen font-sans transition-colors duration-300 bg-[#f8f9fa] text-slate-800 dark:bg-[#060b13] dark:text-slate-100 selection:bg-amber-500 selection:text-black">
+      
+      {/* 1. Breaking News Ticker (شريط الأخبار العاجلة المتحرك) */}
+      {rssNews && rssNews.length > 0 && (
+        <div className="bg-slate-900 text-white dark:bg-[#080d19] border-b border-amber-500/30 text-xs py-2 overflow-hidden relative flex items-center z-50">
+          <div className="bg-amber-500 text-black px-3.5 py-1.5 font-black shrink-0 relative z-10 flex items-center gap-1.5 shadow-md text-[10px] md:text-xs tracking-wider rounded-r-md">
+            <span className="inline-block w-2.5 h-2.5 rounded-full bg-red-600 animate-ping"></span>
+            <span>{lang === "ar" ? "عاجل" : "BREAKING NEWS"}</span>
+          </div>
+          <div className="w-full overflow-hidden flex items-center">
+            <div className="inline-block animate-marquee flex gap-12 text-[11px] font-extrabold text-slate-100">
+              {rssNews.slice(0, 8).map((item, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveRssArticle(item)}
+                  className="hover:text-amber-400 transition flex items-center gap-2 cursor-pointer whitespace-nowrap bg-transparent border-none p-0 text-slate-100 font-extrabold"
+                >
+                  <span className="text-amber-500 text-sm">•</span>
+                  <span>{item.title}</span>
+                  <span className="text-slate-400 text-[10px] font-bold">
+                    ({new Date(item.pubDate).toLocaleTimeString(lang === 'ar' ? 'ar-EG' : 'en-US', {hour: '2-digit', minute: '2-digit'})})
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* 2. Primary Navigation */}
       <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/90 dark:bg-[#0c1322]/90 border-b border-slate-200 dark:border-[#1a2436] transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1439,42 +1541,177 @@ export default function App() {
                 );
               })()
             ) : (
-              /* News Grid list */
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {newsArticles.map((art) => (
-                  <div
-                    key={art.id}
-                    onClick={() => navigateTo("news", null, art.id)}
-                    className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] hover:border-amber-500/30 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col justify-between"
-                  >
-                    <div className="p-5 space-y-4">
-                      {art.image && (
-                        <div className="rounded-xl overflow-hidden h-40 w-full bg-[#141f32]">
-                          <img
-                            src={art.image}
-                            alt="news report preview"
-                            referrerPolicy="no-referrer"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      )}
-                      <span className="bg-amber-500/15 text-amber-600 dark:text-amber-400 font-extrabold px-2.5 py-1 rounded text-[10px] uppercase tracking-wide inline-block">
-                        {art.category}
-                      </span>
-                      <h3 className="text-lg font-black leading-snug line-clamp-2 text-slate-900 dark:text-white">
-                        {lang === "ar" ? art.titleAr : art.titleEn}
-                      </h3>
-                      <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed line-clamp-3 text-justify">
-                        {lang === "ar" ? art.excerptAr : art.excerptEn}
-                      </p>
+              /* News index list with both Live Breaking News and Technical Analysis */
+              <div className="space-y-12">
+                
+                {/* 1. Live Market News (RSS Feed) */}
+                <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] rounded-3xl p-6 md:p-8 space-y-6 shadow-sm">
+                  <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 border-b border-slate-100 dark:border-[#1a2436]/60 pb-5">
+                    <div className="flex items-center gap-3">
+                      <div className="bg-amber-500 text-black p-3 rounded-2xl shadow-lg shadow-amber-500/20 flex items-center justify-center">
+                        <Globe className="w-5 h-5 animate-spin" style={{ animationDuration: "12s" }} />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+                          <span>{lang === "ar" ? "أخبار السوق العاجلة" : "Live Market News"}</span>
+                          <span className="bg-red-500 text-white text-[9px] font-black px-2 py-0.5 rounded-full animate-pulse uppercase tracking-wider">
+                            {lang === "ar" ? "مباشر" : "Live"}
+                          </span>
+                        </h3>
+                        <p className="text-xs text-slate-500 dark:text-neutral-400 mt-1">
+                          {lang === "ar" ? "أخبار حية ومباشرة من البورصات العالمية والذهب والنفط والعملات" : "Live real-time feed from international forex, gold, and global markets"}
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="px-5 py-4 bg-slate-50 dark:bg-[#0c1322]/40 border-t border-slate-100 dark:border-[#1a2436]/60 flex justify-between items-center text-xs text-amber-500 font-black">
-                      <span>{t.news.readMore}</span>
-                      <ArrowRight className={`w-3.5 h-3.5 ${lang === "ar" ? "rotate-180" : ""}`} />
-                    </div>
+                    {/* Manual Refresh Button */}
+                    <button
+                      onClick={fetchRssNews}
+                      disabled={rssLoading}
+                      className="px-4 py-2.5 bg-amber-500 hover:bg-amber-600 disabled:bg-amber-500/50 text-black rounded-xl text-xs font-black transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-amber-500/10 active:scale-95 whitespace-nowrap self-start sm:self-auto"
+                    >
+                      <RefreshCw className={`w-3.5 h-3.5 ${rssLoading ? "animate-spin" : ""}`} />
+                      <span>{lang === "ar" ? "تحديث الأخبار" : "Refresh News"}</span>
+                    </button>
                   </div>
-                ))}
+
+                  {/* RSS Content States */}
+                  {rssLoading ? (
+                    <div className="flex flex-col items-center justify-center py-16 space-y-3">
+                      <RefreshCw className="w-8 h-8 text-amber-500 animate-spin" />
+                      <p className="text-sm font-bold text-slate-500 dark:text-neutral-400">
+                        {lang === "ar" ? "جاري جلب آخر الأخبار الاقتصادية العاجلة..." : "Fetching latest live market news..."}
+                      </p>
+                    </div>
+                  ) : rssError ? (
+                    <div className="bg-rose-500/5 border border-rose-500/10 rounded-2xl p-8 text-center space-y-4">
+                      <p className="text-rose-600 dark:text-rose-400 font-bold text-sm leading-relaxed">{rssError}</p>
+                      <button
+                        onClick={fetchRssNews}
+                        className="px-5 py-2 bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 rounded-xl text-xs font-bold transition cursor-pointer"
+                      >
+                        {lang === "ar" ? "إعادة المحاولة" : "Try Again"}
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {rssNews.slice(0, 6).map((item, index) => {
+                        const pubDateObj = new Date(item.pubDate || item.pubdate);
+                        const formattedDate = pubDateObj.toLocaleDateString(lang === 'ar' ? 'ar-EG' : 'en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric'
+                        });
+                        const formattedTime = pubDateObj.toLocaleTimeString(lang === 'ar' ? 'ar-EG' : 'en-US', {
+                          hour: '2-digit',
+                          minute: '2-digit'
+                        });
+
+                        // Filter descriptions from HTML tags for cleanliness
+                        const cleanDescription = item.description 
+                          ? item.description.replace(/<[^>]*>/g, '').trim().substring(0, 140) + "..."
+                          : "";
+
+                        return (
+                          <div
+                            key={index}
+                            onClick={() => setActiveRssArticle(item)}
+                            className="bg-slate-50 dark:bg-[#141f32]/40 border border-slate-100 dark:border-[#1a2436] hover:border-amber-500/30 rounded-2xl p-5 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-md group cursor-pointer"
+                          >
+                            <div className="space-y-3">
+                              <div className="flex justify-between items-center text-[10px] font-bold text-slate-400 dark:text-neutral-500">
+                                <span className="flex items-center gap-1">
+                                  <Calendar className="w-3.5 h-3.5 text-amber-500" />
+                                  <span>{formattedDate}</span>
+                                </span>
+                                <span className="bg-amber-500/10 text-amber-500 px-2 py-0.5 rounded font-black text-[9px]">
+                                  {formattedTime}
+                                </span>
+                              </div>
+
+                              <h4 className="text-sm font-black text-slate-900 dark:text-white leading-snug group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors line-clamp-3 text-right">
+                                {item.title}
+                              </h4>
+                              
+                              {cleanDescription && (
+                                <p className="text-xs text-slate-500 dark:text-neutral-400 line-clamp-2 leading-relaxed text-right">
+                                  {cleanDescription}
+                                </p>
+                              )}
+                            </div>
+
+                            <div className="pt-4 border-t border-slate-100 dark:border-[#1a2436]/40 mt-4 flex justify-between items-center text-xs">
+                              <span className="text-[10px] font-extrabold text-slate-400">
+                                {lang === "ar" ? "المصدر: Investing" : "Source: Investing"}
+                              </span>
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setActiveRssArticle(item);
+                                }}
+                                className="font-black text-amber-500 hover:text-amber-600 flex items-center gap-1 transition cursor-pointer bg-transparent border-none p-0"
+                              >
+                                <span>{lang === "ar" ? "اقرأ الخبر كاملاً" : "Read Full News"}</span>
+                                <ArrowRight className={`w-3.5 h-3.5 ${lang === "ar" ? "rotate-180" : ""}`} />
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+
+                {/* 2. Technical Reports & Market Analytics */}
+                <div className="space-y-6">
+                  <div className="border-t border-slate-200 dark:border-[#1a2436] pt-10 space-y-2">
+                    <h3 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2.5">
+                      <TrendingUp className="w-6 h-6 text-amber-500" />
+                      <span>{lang === "ar" ? "التحليلات والتقارير الفنية اليومية" : "Daily Technical Reports"}</span>
+                    </h3>
+                    <p className="text-xs text-slate-500 dark:text-neutral-400">
+                      {lang === "ar" ? "نظرة عميقة ومفصلة على حركة أزواج العملات والذهب والسلع من قبل خبرائنا" : "Deep analytics & forecasts on key pairs, gold, and indices by our experts"}
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {newsArticles.map((art) => (
+                      <div
+                        key={art.id}
+                        onClick={() => navigateTo("news", null, art.id)}
+                        className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] hover:border-amber-500/30 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col justify-between"
+                      >
+                        <div className="p-5 space-y-4">
+                          {art.image && (
+                            <div className="rounded-xl overflow-hidden h-40 w-full bg-[#141f32]">
+                              <img
+                                src={art.image}
+                                alt="news report preview"
+                                referrerPolicy="no-referrer"
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                          )}
+                          <span className="bg-amber-500/15 text-amber-600 dark:text-amber-400 font-extrabold px-2.5 py-1 rounded text-[10px] uppercase tracking-wide inline-block">
+                            {art.category}
+                          </span>
+                          <h3 className="text-lg font-black leading-snug line-clamp-2 text-slate-900 dark:text-white">
+                            {lang === "ar" ? art.titleAr : art.titleEn}
+                          </h3>
+                          <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed line-clamp-3 text-justify">
+                            {lang === "ar" ? art.excerptAr : art.excerptEn}
+                          </p>
+                        </div>
+
+                        <div className="px-5 py-4 bg-slate-50 dark:bg-[#0c1322]/40 border-t border-slate-100 dark:border-[#1a2436]/60 flex justify-between items-center text-xs text-amber-500 font-black">
+                          <span>{t.news.readMore}</span>
+                          <ArrowRight className={`w-3.5 h-3.5 ${lang === "ar" ? "rotate-180" : ""}`} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
               </div>
             )}
 
@@ -1834,6 +2071,96 @@ export default function App() {
         </div>
       )}
 
+      {/* 4. RSS Full Article In-App Reader Modal */}
+      {activeRssArticle && (
+        <div className="fixed inset-0 z-[120] flex items-center justify-center bg-black/80 backdrop-blur-md p-4">
+          <div className="w-full max-w-3xl bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+            
+            {/* Modal Header */}
+            <div className="p-6 border-b border-slate-100 dark:border-[#1a2436]/80 flex justify-between items-start gap-4">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-xs font-bold text-amber-500">
+                  <span className="bg-amber-500/10 text-amber-500 px-2.5 py-1 rounded-md font-black">
+                    {lang === "ar" ? "أخبار عاجلة" : "Breaking News"}
+                  </span>
+                  <span>•</span>
+                  <span>
+                    {new Date(activeRssArticle.pubDate || activeRssArticle.pubdate).toLocaleString(lang === 'ar' ? 'ar-EG' : 'en-US')}
+                  </span>
+                </div>
+                <h3 className="text-lg md:text-xl font-black text-slate-900 dark:text-white leading-snug text-right">
+                  {activeRssArticle.title}
+                </h3>
+              </div>
+              <button
+                onClick={() => setActiveRssArticle(null)}
+                className="bg-slate-100 hover:bg-slate-200 dark:bg-[#141f32] dark:hover:bg-[#1c2a42] text-slate-500 dark:text-neutral-400 p-2.5 rounded-full transition shrink-0 cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Body (Scrollable Content) */}
+            <div className="p-6 md:p-8 overflow-y-auto space-y-6 text-sm text-slate-700 dark:text-neutral-300 leading-relaxed text-justify">
+              
+              {/* Optional Enclosure / Cover Image */}
+              {activeRssArticle.thumbnail && (
+                <div className="rounded-2xl overflow-hidden max-h-72 bg-[#141f32] mb-4">
+                  <img
+                    src={activeRssArticle.thumbnail}
+                    alt="Article visual"
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+              )}
+
+              {/* Render content directly from feed safely or generated by Gemini */}
+              {rssContentLoading ? (
+                <div className="flex flex-col items-center justify-center py-16 space-y-4">
+                  <RefreshCw className="w-8 h-8 text-amber-500 animate-spin" />
+                  <p className="text-xs font-bold text-slate-500 dark:text-neutral-400">
+                    {lang === "ar" ? "جاري جلب وتحليل محتوى الخبر بالذكاء الاصطناعي..." : "Generating AI financial analysis and summary..."}
+                  </p>
+                </div>
+              ) : (
+                <div 
+                  className="rss-article-content text-right text-slate-800 dark:text-neutral-200 space-y-4"
+                  dangerouslySetInnerHTML={{
+                    __html: generatedRssContent || activeRssArticle.content || activeRssArticle.description || ""
+                  }}
+                />
+              )}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-5 bg-slate-50 dark:bg-[#0c1322]/60 border-t border-slate-100 dark:border-[#1a2436]/60 flex flex-col sm:flex-row justify-between items-center gap-4">
+              <span className="text-[11px] font-bold text-slate-400">
+                {lang === "ar" ? "المصدر الأصلي: Investing.com (العربية)" : "Source: Investing.com"}
+              </span>
+              <div className="flex items-center gap-3 w-full sm:w-auto">
+                <a
+                  href={activeRssArticle.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-initial px-4 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-[#141f32] dark:hover:bg-[#1c2a42] text-slate-700 dark:text-neutral-300 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5"
+                >
+                  <span>{lang === "ar" ? "زيارة المصدر الأصلي" : "Visit Source"}</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+                <button
+                  onClick={() => setActiveRssArticle(null)}
+                  className="flex-1 sm:flex-initial px-5 py-2 bg-amber-500 hover:bg-amber-600 text-black rounded-xl text-xs font-black transition cursor-pointer"
+                >
+                  {lang === "ar" ? "إغلاق" : "Close"}
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
@@ -1850,12 +2177,12 @@ function getFallbackSignals(): Signal[] {
       tp2: "",
       tp3: "",
       sl: "4550",
-      status: "ACTIVE",
-      explanation: "توصية بيع الذهب (XAU/USD) نظراً لملامسة مستويات قمة تاريخية هامة وبدء ظهور بوادر كسر للاتجاه الصاعد، يرجى الالتزام التام بالهدف ووقف الخسارة لضمان إدارة مخاطر سليمة.",
+      status: "SL HIT",
+      explanation: "تم إغلاق توصية بيع الذهب (XAU/USD) على خسارة بعد أن لامس السعر مستويات وقف الخسارة (ستوب لوز) عند 4550. تم ترحيل هذه التوصية إلى أرشيف التوصيات لضمان الشفافية ومتابعة الأداء الإجمالي للمنصة.",
       date: new Date().toISOString(),
-      views: "1.2K",
+      views: "1.6K",
       photoUrl: "",
-      rawText: "بيع الذهب من 4520\nستوب 4550\nهدف 4200"
+      rawText: "بيع الذهب من 4520\nستوب 4550\nهدف 4200\n\nتحديث: ضربت ستوب لوز وتم الإغلاق ونقلها للأرشيف."
     }
   ];
 }

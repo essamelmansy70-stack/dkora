@@ -582,33 +582,6 @@ export default function App() {
   return (
     <div className="min-h-screen font-sans transition-colors duration-300 bg-[#f8f9fa] text-slate-800 dark:bg-[#060b13] dark:text-slate-100 selection:bg-amber-500 selection:text-black">
       
-      {/* 1. Breaking News Ticker (شريط الأخبار العاجلة المتحرك) */}
-      {rssNews && rssNews.length > 0 && (
-        <div className="bg-slate-900 text-white dark:bg-[#080d19] border-b border-amber-500/30 text-xs py-2 overflow-hidden relative flex items-center z-50">
-          <div className="bg-amber-500 text-black px-3.5 py-1.5 font-black shrink-0 relative z-10 flex items-center gap-1.5 shadow-md text-[10px] md:text-xs tracking-wider rounded-r-md">
-            <span className="inline-block w-2.5 h-2.5 rounded-full bg-red-600 animate-ping"></span>
-            <span>{lang === "ar" ? "عاجل" : "BREAKING NEWS"}</span>
-          </div>
-          <div className="w-full overflow-hidden flex items-center">
-            <div className="inline-block animate-marquee flex gap-12 text-[11px] font-extrabold text-slate-100">
-              {rssNews.slice(0, 8).map((item, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveRssArticle(item)}
-                  className="hover:text-amber-400 transition flex items-center gap-2 cursor-pointer whitespace-nowrap bg-transparent border-none p-0 text-slate-100 font-extrabold"
-                >
-                  <span className="text-amber-500 text-sm">•</span>
-                  <span>{item.title}</span>
-                  <span className="text-slate-400 text-[10px] font-bold">
-                    ({new Date(item.pubDate).toLocaleTimeString(lang === 'ar' ? 'ar-EG' : 'en-US', {hour: '2-digit', minute: '2-digit'})})
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* 2. Primary Navigation */}
       <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/90 dark:bg-[#0c1322]/90 border-b border-slate-200 dark:border-[#1a2436] transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

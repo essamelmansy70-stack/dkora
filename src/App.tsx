@@ -1333,40 +1333,6 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* 1.5 Investing.com Technical Summary Widget */}
-                <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-6 rounded-3xl shadow-sm space-y-4">
-                  <div className="flex items-center gap-2 border-b border-slate-100 dark:border-[#1a2436] pb-3">
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse block"></span>
-                    <h3 className="font-extrabold text-slate-900 dark:text-white text-base">
-                      {lang === "ar" ? "الملخص الفني المباشر للأسواق" : "Live Technical Market Summary"}
-                    </h3>
-                  </div>
-                  
-                  <div className="w-full overflow-hidden rounded-2xl border border-slate-100 dark:border-[#1a2436] flex flex-col items-center bg-slate-50 dark:bg-[#141f32]/40 p-1">
-                    <iframe 
-                      src="https://ssltsw.investing.com?lang=3&forex=1,3,2,1634,157,1693,5&commodities=8849,8833,8862,8830,8836,8831,8832&indices=23660,166,172,27,179,175,170&stocks=345,346,347,348,349,350,352&tabs=1,2,3,4" 
-                      width="100%" 
-                      height="467"
-                      className="border-0 w-full max-w-[317px] rounded-xl"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  
-                  <div className="poweredBy text-center" style={{ fontFamily: "Cairo, arial, sans-serif", direction: "rtl" }}>
-                    <span className="text-[11px] text-slate-500 dark:text-neutral-400">
-                      {lang === "ar" ? "أداة الملخص الفني مقدمة من " : "Technical summary widget provided by "}
-                      <a 
-                        href="https://sa.investing.com/" 
-                        rel="nofollow" 
-                        target="_blank" 
-                        className="text-[11px] text-amber-600 dark:text-amber-400 font-extrabold hover:underline"
-                      >
-                        {lang === "ar" ? "السعودية Investing.com" : "Saudi Investing.com"}
-                      </a>
-                    </span>
-                  </div>
-                </div>
-
                 {/* 2. Trading Sentiment Indicator */}
                 <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-6 rounded-3xl shadow-sm space-y-4">
                   <h3 className="font-extrabold text-slate-900 dark:text-white text-base flex items-center gap-2 border-b border-slate-100 dark:border-[#1a2436] pb-3">

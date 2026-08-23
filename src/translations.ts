@@ -7,7 +7,7 @@ export interface TranslationType {
   nav: {
     home: string;
     news: string;
-    calendar: string;
+    school: string;
     sitemap: string;
     addSignal: string;
     lightMode: string;
@@ -133,7 +133,7 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
     nav: {
       home: "التوصيات الحية",
       news: "تحليلات وأخبار",
-      calendar: "الأجندة الاقتصادية",
+      school: "مدرسة التداول",
       sitemap: "خريطة الموقع",
       addSignal: "إضافة توصية",
       lightMode: "الوضع النهارى",
@@ -272,7 +272,7 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
     nav: {
       home: "Live Signals",
       news: "News & Analysis",
-      calendar: "Economic Calendar",
+      school: "Trading School",
       sitemap: "Sitemap",
       addSignal: "Add Signal",
       lightMode: "Light Mode",

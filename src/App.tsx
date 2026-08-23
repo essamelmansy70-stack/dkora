@@ -30,6 +30,7 @@ import {
   Compass,
   FileText,
   Calendar,
+  BookOpen,
   Share2,
   ArrowRight,
   Map,
@@ -110,8 +111,23 @@ export default function App() {
   });
 
   const [page, setPage] = useState<string>(() => {
+    // Check clean pathname first (e.g. /news, /school, /sitemap, /privacy, /terms)
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    const primaryPath = pathParts[0] || "";
+    const validPages = ["home", "news", "school", "sitemap", "privacy", "terms"];
+    
+    if (validPages.includes(primaryPath)) {
+      return primaryPath;
+    }
+
+    // Fallback to query param
     const params = new URLSearchParams(window.location.search);
-    return params.get("page") || "home";
+    const qPage = params.get("page");
+    if (qPage && validPages.includes(qPage)) {
+      return qPage;
+    }
+    
+    return "home";
   });
 
   const [selectedSignalId, setSelectedSignalId] = useState<string | null>(() => {
@@ -178,6 +194,7 @@ export default function App() {
   });
   const [showConfig, setShowConfig] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [selectedSchoolArticleId, setSelectedSchoolArticleId] = useState<string | null>(null);
 
   // Form states for creating & editing signals
   const [isAdding, setIsAdding] = useState(false);
@@ -222,11 +239,16 @@ export default function App() {
     }
   }, [theme]);
 
-  // Sync state transitions back to the browser's URL query string (Copyable/Shareable Links!)
+  // Sync state transitions back to the browser's URL path (Copyable/Shareable Links!)
   useEffect(() => {
     const url = new URL(window.location.href);
+    
+    // Set pathname to target page (e.g. /news, /school) or empty for home
+    url.pathname = page === "home" ? "/" : `/${page}`;
+    
+    // Set language and remove the legacy "page" search param
     url.searchParams.set("lang", lang);
-    url.searchParams.set("page", page);
+    url.searchParams.delete("page");
     
     if (selectedSignalId) {
       url.searchParams.set("id", selectedSignalId);
@@ -240,7 +262,7 @@ export default function App() {
       url.searchParams.delete("newsId");
     }
 
-    window.history.pushState({}, "", url.toString());
+    window.history.pushState({}, "", url.pathname + url.search + url.hash);
   }, [lang, page, selectedSignalId, selectedNewsId]);
 
   // Listen to browser forward & back button clicks to update state instantly
@@ -250,7 +272,17 @@ export default function App() {
       const urlLang = params.get("lang");
       if (urlLang === "en" || urlLang === "ar") setLang(urlLang);
       
-      setPage(params.get("page") || "home");
+      const pathParts = window.location.pathname.split("/").filter(Boolean);
+      const primaryPath = pathParts[0] || "";
+      const validPages = ["home", "news", "school", "sitemap", "privacy", "terms"];
+      
+      if (validPages.includes(primaryPath)) {
+        setPage(primaryPath);
+      } else {
+        const qPage = params.get("page");
+        setPage(qPage && validPages.includes(qPage) ? qPage : "home");
+      }
+      
       setSelectedSignalId(params.get("id") || null);
       setSelectedNewsId(params.get("newsId") || null);
     };
@@ -818,15 +850,15 @@ export default function App() {
                 <span>{t.nav.news}</span>
               </button>
               <button
-                onClick={() => navigateTo("calendar")}
+                onClick={() => navigateTo("school")}
                 className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all flex items-center gap-2 ${
-                  page === "calendar"
+                  page === "school"
                     ? "bg-amber-500/10 text-amber-500 dark:text-amber-400 font-extrabold"
                     : "text-slate-600 dark:text-neutral-400 hover:bg-slate-100 dark:hover:bg-[#141f32] hover:text-slate-950 dark:hover:text-white"
                 }`}
               >
-                <Calendar className="w-4 h-4" />
-                <span>{t.nav.calendar}</span>
+                <BookOpen className="w-4 h-4" />
+                <span>{t.nav.school}</span>
               </button>
             </div>
 
@@ -877,11 +909,11 @@ export default function App() {
           <span>{t.nav.news}</span>
         </button>
         <button
-          onClick={() => navigateTo("calendar")}
-          className={`flex flex-col items-center gap-1 text-[11px] font-bold ${page === "calendar" ? "text-amber-500" : "text-slate-500"}`}
+          onClick={() => navigateTo("school")}
+          className={`flex flex-col items-center gap-1 text-[11px] font-bold ${page === "school" ? "text-amber-500" : "text-slate-500"}`}
         >
-          <Calendar className="w-5 h-5" />
-          <span>{t.nav.calendar}</span>
+          <BookOpen className="w-5 h-5" />
+          <span>{t.nav.school}</span>
         </button>
       </div>
 
@@ -1842,92 +1874,260 @@ export default function App() {
           </div>
         )}
 
-        {/* === ROUTE: ECONOMIC CALENDAR === */}
-        {page === "calendar" && (
+        {/* === ROUTE: TRADING SCHOOL === */}
+        {page === "school" && (
           <div className="animate-fadeIn space-y-8">
             <div className="text-center max-w-2xl mx-auto space-y-3">
               <span className="bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider inline-block">
-                {lang === "ar" ? "📅 الأجندة الاقتصادية الحية" : "📅 Live Economic Calendar"}
+                {lang === "ar" ? "🎓 مدرسة تداول ديكوراFX" : "🎓 DkoraFX Trading School"}
               </span>
-              <h2 className="text-3xl md:text-4xl font-black tracking-tight">{t.calendar.title}</h2>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight text-slate-900 dark:text-white">
+                {lang === "ar" ? "مدرسة التداول" : "Trading School"}
+              </h2>
               <p className="text-sm text-slate-500 dark:text-neutral-400 leading-relaxed">
-                {t.calendar.subtitle}
+                {lang === "ar" 
+                  ? "تعلم أسرار أسواق المال وتداول العملات والعملات الرقمية مع أقوى المحاضرات والتقارير الحصرية" 
+                  : "Master forex and cryptocurrency trading with our premium free lessons and exclusive market courses"}
               </p>
             </div>
 
-            {/* Calendar filtering controls */}
-            <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-4 rounded-2xl flex flex-wrap gap-2 items-center justify-between">
-              <span className="text-xs font-bold text-slate-500 dark:text-neutral-400">{lang === "ar" ? "تصفية حسب الأثر الاقتصادي:" : "Filter by Volatility Impact:"}</span>
-              <div className="flex flex-wrap gap-1.5">
-                {(['ALL', 'HIGH', 'MEDIUM', 'LOW'] as any[]).map((filter) => (
-                  <button
-                    key={filter}
-                    onClick={() => setCalendarFilter(filter)}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-black cursor-pointer transition-all ${
-                      calendarFilter === filter
-                        ? "bg-amber-500 text-black font-extrabold"
-                        : "bg-slate-50 dark:bg-[#141f32] text-slate-600 dark:text-neutral-400 hover:bg-slate-100 dark:hover:bg-[#1a2942]"
-                    }`}
-                  >
-                    {filter === 'ALL' ? (lang === "ar" ? "عرض الكل" : "Show All") : t.calendar[`impact${filter.charAt(0) + filter.slice(1).toLowerCase() as 'High' | 'Medium' | 'Low'}`]}
-                  </button>
-                ))}
+            {selectedSchoolArticleId ? (
+              /* Single Article View */
+              (() => {
+                const schoolArticles = [
+                  {
+                    id: "meme-coins",
+                    titleAr: "مستقبل الاستثمار في \"ميمز كوينز\" وكيفية اقتناص الفرص بأمان",
+                    titleEn: "The Future of Meme Coins Investment & How to Safely Seize Opportunities",
+                    categoryAr: "العملات الرقمية",
+                    categoryEn: "Cryptocurrencies",
+                    image: "/src/assets/images/meme_coins_2026_1787419226241.jpg",
+                    contentAr: `ثورة "ميمز كوينز" من مجرد نكات إلى ركائز مالية في 2026:
+لم تعد ميمز كوينز مجرد ظاهرة عابرة أو صور كلاب وضفادع مضحكة تتدفق على شبكات التواصل الاجتماعي؛ بل تحولت بحلول عام 2026 إلى فئة أصول رقمية قائمة بذاتها، تتمتع بمليارات الدولارات من السيولة اليومية وتدعمها مجتمعات عالمية فائقة الولاء.
+
+في هذا الدليل الشامل والمفصل، سنغوص عميقاً في عالم ميمز كوينز، مستعرضين العوامل التي تحرك أسعارها، وأبرز الشبكات التي تحتضنها، وكيفية بناء استراتيجية تداول ذكية ومدروسة للحد من المخاطر واقتناص أعلى الأرباح.
+
+ما هي "ميمز كوينز" (Meme Coins)؟ وفيمَ تختلف عن العملات التقليدية؟
+ميمز كوينز هي عملات رقمية مشفرة تستلهم هويتها من نكات الإنترنت المألوفة (Memes)، أو الرسوم الساخرة، أو الشخصيات الشهيرة على منصات التواصل مثل X (تويتر سابقاً) وتيك توك.
+
+خلافاً للعملات الكبرى مثل البيتكوين (Bitcoin) الذي يُعتبر مخزناً للقيمة الرقمية، أو الإيثيريوم (Ethereum) الذي يمثل شبكة ذكية للعقود، فإن عملات الميم كانت تبدأ تاريخياً بلا فائدة وظيفية واضحة (Utility). إلا أن الوضع اختلف تماماً في عام 2026:
+- الاعتماد على زخم المجتمع: القوة الدافعة الحقيقية وراء أي عملة ميم هي قوة وولاء مجتمعها الرقمي.
+- السرعة الفائقة في الانتشار: بفضل خوارزميات الذكاء الاصطناعي والتواصل الاجتماعي، يمكن لعملة ميم جديدة أن تحقق قيمة سوقية بمليارات الدولارات في غضون أيام قليلة.
+- التطور نحو المنفعة (Utility Integration): تدمج كبرى عملات الميم اليوم تقنيات التمويل اللامركزي (DeFi)، وألعاب الويب 3 (Web3 Gaming)، والذكاء الاصطناعي لتأمين استمراريتها وتبرير قيمتها السوقية.
+
+خريطة هيمنة الشبكات على أسواق الـ Meme Coins:
+يتطلب نجاح الاستثمار في ميمز كوينز معرفة البيئة الحاضنة لها. في المشهد المالي لعام 2026، تتقاسم ثلاث شبكات رئيسية عرش هذه التجارة:
+1. شبكة سولانا (Solana - SOL): تُعد سولانا المقر الرئيسي والأكثر نشاطاً لإنشاء وتداول ميمز كوينز بفضل انخفاض رسوم الغاز لدرجة تقترب من الصفر وسرعة تنفيذ المعاملات الفائقة. منصات مثل Pump.fun والمنصات اللامركزية المطورة جعلت إطلاق عملة ميم عملية تستغرق ثوانٍ معدودة، مما جذب ملايين المتداولين اليوميين.
+2. شبكة إيثيريوم (Ethereum - ETH): رغم ارتفاع رسوم الشبكة نسبياً مقارنة بسولانا، تظل إيثيريوم الشبكة المفضلة لعملات الميم الضخمة وذات القيمة السوقية المليارية (مثل Shiba Inu و Pepe). يثق المستثمرون الكبار ("الحيتان") بأمان شبكة إيثيريوم وسيولتها العميقة.
+3. شبكة بيز (Base Network): الشبكة المدعومة من منصة Coinbase حققت نمواً انفجارياً في عام 2026، حيث أصبحت ملاذاً آمناً لعملات الميم المرتبطة بالتطبيقات الاجتماعية اللامركزية بفضل تكاملها المباشر مع الحافظات الرقمية سهلة الاستخدام للمبتدئين.
+
+قواعد ذهبية لتحليل واختيار "ميمز كوينز" الواعدة قبل الانفجار السعري:
+لا ينبغي أن يكون الاستثمار في ميمز كوينز ضرباً من العشوائية أو القمار. لتحقيق أرباح مستدامة وتجنب عمليات النصب والاحتيال (مثل سحب السيولة أو Rug Pulls)، يجب اتباع منهجية صارمة لتحليل العملات:
+- قفل السيولة (Locked Liquidity): تأكد دائماً من أن سيولة العملة في منصات التداول اللامركزية مقفلة لفترة طويلة أو محروقة تماماً لضمان عدم تمكن المطورين من سحب أموال المستثمرين.
+- التدقيق البرمجي (Contract Audit): ابحث عن العملات التي خضع عقدها الذكي لفحص من شركات أمنية موثوقة للتأكد من خلوه من الأكواد الخبيثة مثل منع البيع (Honeypot).
+- تحليل نشاط وحجم المجتمع الرقمي: المجتمع الصاخب والمتفاعل على منصة X وقنوات ديسكورد وتيليجرام هو الوقود الحقيقي للعملة. راقب معدل نمو المتابعين الحقيقيين وتجنب المشاريع التي تعتمد على الحسابات الوهمية.
+- حجم التداول اليومي ومعدل السيولة: العملة التي تمتلك سيولة ضعيفة مقارنة بحجم تداولها ستعاني من انزلاق سعري حاد (Slippage) عند محاولة البيع. ابحث عن توازن صحي بين حجم التداول والسيولة المتاحة لتسهيل عمليات الدخول والخروج.
+
+إدارة المخاطر: كيف تتداول الـ Meme Coins وتحمي رأس مالك؟
+تتميز ميمز كوينز بتقلباتها السعرية العنيفة التي قد تتجاوز 1000% صعوداً وهبوطاً في يوم واحد. إليك كيف تحمي محفظتك الاستثمارية:
+قاعدة الـ 5%: لا تخصص أكثر من 5% من إجمالي محفظتك الاستثمارية لعملات الميم عالية المخاطر. اجعل الجزء الأكبر من رأس مالك دائماً في عملات مستقرة وذات مشاريع حقيقية (مثل البيتكوين والإيثيريوم).
+تأمين الأرباح تدريجياً (Take Profit): بمجرد أن تحقق العملة صعوداً بمقدار ضعفين (2x)، اسحب رأس مالك الأصلي فوراً واترك الأرباح لتنمو بحرية.
+استخدام حاسبة المخاطر وإدارة اللوت: قبل دخول أي صفقة، حدد بدقة حجم الخسارة المقبول الذي يمكنك تحمله دون التأثير على استقرارك المالي.
+
+مستقبل "ميمز كوينز" في عام 2026 وما بعده:
+مع نضوج أسواق العملات المشفرة ودخول الصناديق الاستثمارية المتداولة (ETFs) لأسواق الكريبتو، لم يعد الذكاء الاصطناعي مجرد أداة تحليلية، بل أصبحت عملات الميم المدارة والمطورة بالكامل بواسطة وكلاء الذكاء الاصطناعي اللامركزيين (AI-generated memes) هي الصيحة الأكثر ربحية وقوة في عام 2026.
+تتحرك هذه العملات بناءً على تفاعلات حية وتغريدات ينشرها الروبوت بشكل تلقائي ومستقل، مما يفتح فصلاً جديداً ومثيراً تماماً في الاقتصاد الرقمي القائم على الانتباه والترفيه.
+
+خاتمة وتوصية ديكوراFX:
+تظل ميمز كوينز بوابة ممتازة وسريعة لتحقيق عوائد مالية خيالية إذا تم التعامل معها بوعي، وانضباط ذاتي، واعتماد على أدوات التحليل الفني والأساسي بدلاً من العواطف والمشاعر الاندفاعية (FOMO).
+تذكر دائماً أن المعرفة الفنية وإدارة المخاطر الصارمة هما صمام الأمان الوحيد لك في هذه الأسواق المتقلبة. تابع تحديثات منصة ديكوراFX أولاً بأول للحصول على أحدث التحليلات والتقارير الفنية المباشرة لأسواق الذهب، العملات، وأصول الكريبتو الواعدة.`,
+                    contentEn: `The Rise of Meme Coins from Jokes to Financial Giants:
+Meme coins are no longer a passing internet fad or silly pet photos; by 2026 they have evolved into a distinct asset class backed by massive trading volumes and ultra-loyal global communities.
+
+In this guide, we explore the primary factors driving meme coin dynamics, dominant ecosystems, and safety tips to maximize your gains.
+
+What are Meme Coins and How Do They Differ from Traditional Cryptos?
+Meme coins draw their brand identity from internet viral trends, jokes, or key figures on platforms like X and TikTok. Unlike Bitcoin or Ethereum, they historically lacked a technical use-case, but in 2026:
+- Community Power: Loyalty is the true engine of value.
+- Rapid Growth: Viral mechanics allow coins to hit billion-dollar market caps in days.
+- Utility Integration: Top meme coins now incorporate DeFi, Web3 games, and AI tools.
+
+The Major Blockchains of 2026:
+1. Solana (SOL): Low fees and near-instant processing make it the premier hub.
+2. Ethereum (ETH): Remains the preferred secure choice for high-volume whales.
+3. Base Network: Backed by Coinbase, ideal for beginner-friendly apps.
+
+Risk Management: How to Survive Volatility:
+Meme coins are highly volatile, often moving up or down by over 1000% daily:
+- The 5% rule: Never allocate more than 5% of your portfolio to highly risky assets.
+- Take Profit: Retrieve your initial investment as soon as your coin hits 2x.
+- Use safe lot calculators to hedge your exposures.`
+                  },
+                  {
+                    id: "intro-forex",
+                    titleAr: "أساسيات تداول العملات الأجنبية (الفوركس) للمبتدئين",
+                    titleEn: "Introduction to Forex Trading Basics for Beginners",
+                    categoryAr: "أساسيات التداول",
+                    categoryEn: "Trading Basics",
+                    image: "/src/assets/images/forex_basics.jpg",
+                    contentAr: `مرحباً بك في مدرسة التداول من ديكوراFX. في هذا الدرس، سنتعرف على أساسيات سوق العملات الأجنبية (الفوركس) وكيف يعمل:
+
+ما هو سوق الفوركس؟
+الفوركس (Forex) هو اختصار لـ Foreign Exchange وهو أكبر سوق مالي في العالم بحجم تداول يومي يتجاوز 7 تريليونات دولار. في هذا السوق، يتم تداول العملات في أزواج، مثل اليورو مقابل الدولار الأمريكي (EURUSD).
+
+كيف تحقق الأرباح؟
+الفكرة ببساطة هي شراء عملة وتوقع ارتفاع قيمتها مقابل العملة الأخرى، أو بيعها وتوقع انخفاضها.
+- إذا كنت تعتقد أن اليورو سيرتفع مقابل الدولار، ستقوم بعملية شراء (BUY) لزوج EURUSD.
+- إذا كنت تعتقد أن اليورو سينخفض، ستقوم بعملية بيع (SELL) لزوج EURUSD.
+
+المصطلحات الأساسية:
+- النقاط (Pips): هي وحدة قياس الحركة السعرية للزوج.
+- الرافعة المالية (Leverage): أداة تسمح لك بالتداول بأحجام أكبر من رأس مالك الأصلي لتعظيم الأرباح، ولكنها تزيد المخاطر أيضاً بشكل كبير.
+- السبريد (Spread): هو الفرق بين سعر الشراء وسعر البيع ويمثل عمولة شركة الوساطة.`,
+                    contentEn: `Welcome to DkoraFX Trading School. In this lesson, we cover the essentials of Foreign Exchange (Forex) and how it functions:
+
+What is Forex?
+Forex is the largest financial market globally, with a daily trading volume exceeding $7 trillion. Currencies are traded in pairs, such as EURUSD.
+
+How to Trade:
+You buy a currency expecting it to appreciate, or sell it expecting it to depreciate.
+- Buy EURUSD if you expect the Euro to rise against the Dollar.
+- Sell EURUSD if you expect the Euro to fall.`
+                  }
+                ];
+                const art = schoolArticles.find(a => a.id === selectedSchoolArticleId);
+                if (!art) return null;
+                return (
+                  <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] rounded-3xl p-6 md:p-8 max-w-3xl mx-auto space-y-6">
+                    <button
+                      onClick={() => setSelectedSchoolArticleId(null)}
+                      className="flex items-center gap-2 text-xs font-bold text-amber-500 hover:text-amber-600 transition cursor-pointer"
+                    >
+                      <ArrowRight className={`w-4 h-4 ${lang === "ar" ? "" : "rotate-180"}`} />
+                      <span>{lang === "ar" ? "العودة للمدرسة" : "Back to School"}</span>
+                    </button>
+
+                    <div className="space-y-2">
+                      <span className="bg-amber-500/10 text-amber-600 dark:text-amber-400 font-extrabold px-3 py-1 rounded-full text-xs">
+                        {lang === "ar" ? art.categoryAr : art.categoryEn}
+                      </span>
+                      <h3 className="text-2xl md:text-3xl font-black leading-tight text-slate-900 dark:text-white pt-2">
+                        {lang === "ar" ? art.titleAr : art.titleEn}
+                      </h3>
+                      <div className="flex items-center gap-4 text-xs text-slate-400 pt-2">
+                        <span>{lang === "ar" ? "ديكوراFX التعليمية" : "DkoraFX Academy"}</span>
+                        <span>•</span>
+                        <span>{lang === "ar" ? "درس مجاني" : "Free Lesson"}</span>
+                      </div>
+                    </div>
+
+                    {art.image && (
+                      <div className="rounded-2xl overflow-hidden border border-slate-100 dark:border-[#1e2e4a]">
+                        <img
+                          src={art.image}
+                          alt="Lesson visual"
+                          referrerPolicy="no-referrer"
+                          className="w-full h-auto object-cover max-h-[380px]"
+                        />
+                      </div>
+                    )}
+
+                    <div className="text-sm text-slate-600 dark:text-neutral-300 leading-relaxed text-justify whitespace-pre-line space-y-4">
+                      {lang === "ar" ? art.contentAr : art.contentEn}
+                    </div>
+                  </div>
+                );
+              })()
+            ) : (
+              /* Grid list of School articles */
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Featured Meme Coins Lesson */}
+                <div 
+                  onClick={() => setSelectedSchoolArticleId("meme-coins")}
+                  className="bg-white dark:bg-[#0c1322] border-2 border-amber-500/40 hover:border-amber-500 rounded-3xl overflow-hidden shadow-md transition-all duration-300 cursor-pointer flex flex-col md:col-span-2 md:flex-row"
+                >
+                  <div className="md:w-1/2 h-64 md:h-auto bg-[#141f32] relative overflow-hidden">
+                    <img 
+                      src="/src/assets/images/meme_coins_2026_1787419226241.jpg" 
+                      alt="Meme coins lesson" 
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-4 right-4 bg-amber-500 text-black px-3 py-1 rounded-full text-xs font-black uppercase">
+                      {lang === "ar" ? "🔥 درس متميز" : "🔥 Featured"}
+                    </div>
+                  </div>
+                  <div className="p-6 md:w-1/2 flex flex-col justify-between space-y-4">
+                    <div className="space-y-2">
+                      <span className="text-[10px] font-black text-amber-500 uppercase tracking-widest block">
+                        {lang === "ar" ? "تداول العملات الرقمية" : "CRYPTO TRADING"}
+                      </span>
+                      <h3 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white leading-tight">
+                        {lang === "ar" ? "مستقبل الاستثمار في \"ميمز كوينز\" وكيفية اقتناص الفرص بأمان" : "The Future of Meme Coins Investment & How to Safely Seize Opportunities"}
+                      </h3>
+                      <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed line-clamp-4 text-justify">
+                        {lang === "ar" 
+                          ? "لم تعد ميمز كوينز مجرد ظاهرة عابرة أو صور كلاب وضفادع مضحكة بل تحولت إلى فئة أصول رقمية قائمة بذاتها تتمتع بمليارات الدولارات من السيولة. تعلم أهم الاستراتيجيات العملية لعام 2026 وتفادى المخاطر الكبيرة."
+                          : "Meme coins have grown to be multi-billion asset hubs. Discover major blockchain choices like Solana or Ethereum and rule-of-thumb indicators to minimize execution risks."}
+                      </p>
+                    </div>
+                    <div className="flex justify-between items-center text-xs font-black text-amber-500 pt-2 border-t border-slate-100 dark:border-[#1a2436]">
+                      <span>{lang === "ar" ? "ابدأ الدرس الآن" : "Start Lesson Now"}</span>
+                      <ArrowRight className={`w-4 h-4 ${lang === "ar" ? "rotate-180" : ""}`} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Additional Forex Lesson Card */}
+                <div 
+                  onClick={() => setSelectedSchoolArticleId("intro-forex")}
+                  className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] hover:border-amber-500/30 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col justify-between"
+                >
+                  <div className="p-6 space-y-4">
+                    <span className="bg-slate-100 dark:bg-[#141f32] text-slate-700 dark:text-neutral-300 font-extrabold px-2.5 py-1 rounded text-[10px] uppercase tracking-wide inline-block">
+                      {lang === "ar" ? "أساسيات التداول" : "Trading Basics"}
+                    </span>
+                    <h3 className="text-lg font-black leading-snug text-slate-900 dark:text-white">
+                      {lang === "ar" ? "أساسيات تداول العملات الأجنبية (الفوركس) للمبتدئين" : "Introduction to Forex Trading Basics for Beginners"}
+                    </h3>
+                    <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed line-clamp-3">
+                      {lang === "ar" 
+                        ? "تعرف على أكبر سوق مالي في العالم، وكيفية حساب النقاط (Pips)، السبريد، والرافعة المالية وكيفية قراءة وتداول أزواج العملات بكفاءة."
+                        : "Understand how the currency markets function, leverage tools, margins, spreads and how to compute entry targets safely."}
+                    </p>
+                  </div>
+                  <div className="px-6 py-4 bg-slate-50 dark:bg-[#0c1322]/40 border-t border-slate-100 dark:border-[#1a2436]/60 flex justify-between items-center text-xs text-amber-500 font-black">
+                    <span>{lang === "ar" ? "ابدأ الدرس" : "Start Lesson"}</span>
+                    <ArrowRight className={`w-3.5 h-3.5 ${lang === "ar" ? "rotate-180" : ""}`} />
+                  </div>
+                </div>
+
+                {/* Safety & Risk Management Card */}
+                <div 
+                  onClick={() => navigateTo("home")} 
+                  className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] hover:border-amber-500/30 rounded-3xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
+                >
+                  <div className="space-y-4">
+                    <span className="bg-rose-500/10 text-rose-500 font-extrabold px-2.5 py-1 rounded text-[10px] uppercase tracking-wide inline-block">
+                      {lang === "ar" ? "إدارة المخاطر" : "Risk Management"}
+                    </span>
+                    <h3 className="text-lg font-black leading-snug text-slate-900 dark:text-white">
+                      {lang === "ar" ? "كيف تستخدم حاسبة إدارة المخاطر لحماية رأس المال؟" : "How to Use the Risk Sizing Calculator for Capital Preservation?"}
+                    </h3>
+                    <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed line-clamp-3">
+                      {lang === "ar" 
+                        ? "إن حماية رأس مالك هي السر الحقيقي للاستمرارية في الأسواق المالية. تعلم كيفية دمج حاسبة إدارة المخاطر لتحديد حجم اللوت الأنسب لكل صفقة."
+                        : "Preserving your assets is the key to longevity in trading. Use our live interactive calculator to measure risk ratios precisely."}
+                    </p>
+                  </div>
+                  <div className="pt-4 border-t border-slate-100 dark:border-[#1a2436]/60 flex justify-between items-center text-xs text-amber-500 font-black mt-4">
+                    <span>{lang === "ar" ? "افتح الحاسبة التفاعلية" : "Open Interactive Calculator"}</span>
+                    <ArrowRight className={`w-3.5 h-3.5 ${lang === "ar" ? "rotate-180" : ""}`} />
+                  </div>
+                </div>
+
               </div>
-            </div>
-
-            {/* Calendar list layout */}
-            <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] rounded-3xl overflow-hidden shadow-sm">
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm text-left rtl:text-right">
-                  <thead className="text-xs text-slate-400 uppercase bg-slate-50 dark:bg-[#141f32]/80 border-b border-slate-100 dark:border-[#1a2436] font-bold">
-                    <tr>
-                      <th className="px-6 py-4">{t.calendar.time}</th>
-                      <th className="px-6 py-4">{t.calendar.currency}</th>
-                      <th className="px-6 py-4">{t.calendar.event}</th>
-                      <th className="px-6 py-4">{t.calendar.impact}</th>
-                      <th className="px-6 py-4">{t.calendar.actual}</th>
-                      <th className="px-6 py-4">{t.calendar.forecast}</th>
-                      <th className="px-6 py-4">{t.calendar.previous}</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100 dark:divide-[#1a2436]/60">
-                    {calendarEvents
-                      .filter((ev) => calendarFilter === "ALL" || ev.impact === calendarFilter)
-                      .map((ev) => {
-                        const isHigh = ev.impact === "HIGH";
-                        const isMed = ev.impact === "MEDIUM";
-
-                        return (
-                          <tr key={ev.id} className="hover:bg-slate-50 dark:hover:bg-[#141f32]/40 transition duration-150">
-                            <td className="px-6 py-4 font-bold text-slate-400">{ev.time}</td>
-                            <td className="px-6 py-4 font-black text-amber-600 dark:text-amber-400">{ev.currency}</td>
-                            <td className="px-6 py-4 font-semibold text-slate-800 dark:text-white">
-                              {lang === "ar" ? ev.eventAr : ev.eventEn}
-                            </td>
-                            <td className="px-6 py-4">
-                              <span
-                                className={`px-2 py-1 rounded text-[10px] font-black uppercase ${
-                                  isHigh
-                                    ? "bg-rose-500/10 text-rose-600 dark:text-rose-400"
-                                    : isMed
-                                    ? "bg-amber-500/10 text-amber-600 dark:text-amber-400"
-                                    : "bg-blue-500/10 text-blue-600 dark:text-blue-400"
-                                }`}
-                              >
-                                {t.calendar[`impact${ev.impact.charAt(0) + ev.impact.slice(1).toLowerCase() as 'High' | 'Medium' | 'Low'}`]}
-                              </span>
-                            </td>
-                            <td className="px-6 py-4 font-bold text-slate-800 dark:text-white">{ev.actual || "—"}</td>
-                            <td className="px-6 py-4 text-slate-500 dark:text-neutral-400">{ev.forecast || "—"}</td>
-                            <td className="px-6 py-4 text-slate-400">{ev.previous || "—"}</td>
-                          </tr>
-                        );
-                      })}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
+            )}
           </div>
         )}
 
@@ -1956,7 +2156,7 @@ export default function App() {
                   {[
                     { label: t.nav.home, path: "home" },
                     { label: t.nav.news, path: "news" },
-                    { label: t.nav.calendar, path: "calendar" },
+                    { label: t.nav.school, path: "school" },
                     { label: t.sitemap.title, path: "sitemap" },
                     { label: t.legal.privacyTitle, path: "privacy" },
                     { label: t.legal.termsTitle, path: "terms" },

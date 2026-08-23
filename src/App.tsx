@@ -168,33 +168,56 @@ export default function App() {
   });
 
   const [page, setPage] = useState<string>(() => {
-    // Check clean pathname first (e.g. /news, /school, /sitemap, /privacy, /terms)
     const pathParts = window.location.pathname.split("/").filter(Boolean);
     const primaryPath = pathParts[0] || "";
     const validPages = ["home", "news", "school", "sitemap", "privacy", "terms"];
     
+    if (primaryPath === "signal" || primaryPath === "signals") {
+      return "home";
+    }
     if (validPages.includes(primaryPath)) {
       return primaryPath;
     }
 
-    // Fallback to query param
     const params = new URLSearchParams(window.location.search);
     const qPage = params.get("page");
     if (qPage && validPages.includes(qPage)) {
       return qPage;
     }
-    
     return "home";
   });
 
   const [selectedSignalId, setSelectedSignalId] = useState<string | null>(() => {
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    const primaryPath = pathParts[0] || "";
+    const secondaryPath = pathParts[1] || null;
+    if ((primaryPath === "signal" || primaryPath === "signals") && secondaryPath) {
+      return secondaryPath;
+    }
     const params = new URLSearchParams(window.location.search);
     return params.get("id") || null;
   });
 
   const [selectedNewsId, setSelectedNewsId] = useState<string | null>(() => {
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    const primaryPath = pathParts[0] || "";
+    const secondaryPath = pathParts[1] || null;
+    if (primaryPath === "news" && secondaryPath) {
+      return secondaryPath;
+    }
     const params = new URLSearchParams(window.location.search);
     return params.get("newsId") || null;
+  });
+
+  const [selectedSchoolArticleId, setSelectedSchoolArticleId] = useState<string | null>(() => {
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    const primaryPath = pathParts[0] || "";
+    const secondaryPath = pathParts[1] || null;
+    if (primaryPath === "school" && secondaryPath) {
+      return secondaryPath;
+    }
+    const params = new URLSearchParams(window.location.search);
+    return params.get("schoolId") || null;
   });
 
   // 2. Premium Light / Dark Theme State
@@ -251,7 +274,6 @@ export default function App() {
   });
   const [showConfig, setShowConfig] = useState(false);
   const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [selectedSchoolArticleId, setSelectedSchoolArticleId] = useState<string | null>(null);
 
   // Form states for creating & editing signals
   const [isAdding, setIsAdding] = useState(false);
@@ -300,27 +322,26 @@ export default function App() {
   useEffect(() => {
     const url = new URL(window.location.href);
     
-    // Set pathname to target page (e.g. /news, /school) or empty for home
-    url.pathname = page === "home" ? "/" : `/${page}`;
+    // Set clean path hierarchy
+    if (selectedSignalId) {
+      url.pathname = `/signal/${selectedSignalId}`;
+    } else if (selectedNewsId) {
+      url.pathname = `/news/${selectedNewsId}`;
+    } else if (selectedSchoolArticleId) {
+      url.pathname = `/school/${selectedSchoolArticleId}`;
+    } else {
+      url.pathname = page === "home" ? "/" : `/${page}`;
+    }
     
-    // Set language and remove the legacy "page" search param
+    // Set language and remove the legacy query params to keep URLs extremely clean
     url.searchParams.set("lang", lang);
     url.searchParams.delete("page");
+    url.searchParams.delete("id");
+    url.searchParams.delete("newsId");
+    url.searchParams.delete("schoolId");
     
-    if (selectedSignalId) {
-      url.searchParams.set("id", selectedSignalId);
-    } else {
-      url.searchParams.delete("id");
-    }
-
-    if (selectedNewsId) {
-      url.searchParams.set("newsId", selectedNewsId);
-    } else {
-      url.searchParams.delete("newsId");
-    }
-
     window.history.pushState({}, "", url.pathname + url.search + url.hash);
-  }, [lang, page, selectedSignalId, selectedNewsId]);
+  }, [lang, page, selectedSignalId, selectedNewsId, selectedSchoolArticleId]);
 
   // Listen to browser forward & back button clicks to update state instantly
   useEffect(() => {
@@ -331,17 +352,39 @@ export default function App() {
       
       const pathParts = window.location.pathname.split("/").filter(Boolean);
       const primaryPath = pathParts[0] || "";
+      const secondaryPath = pathParts[1] || null;
       const validPages = ["home", "news", "school", "sitemap", "privacy", "terms"];
       
-      if (validPages.includes(primaryPath)) {
-        setPage(primaryPath);
+      // Determine page
+      let targetPage = "home";
+      if (primaryPath === "signal" || primaryPath === "signals") {
+        targetPage = "home";
+      } else if (validPages.includes(primaryPath)) {
+        targetPage = primaryPath;
       } else {
         const qPage = params.get("page");
-        setPage(qPage && validPages.includes(qPage) ? qPage : "home");
+        targetPage = qPage && validPages.includes(qPage) ? qPage : "home";
+      }
+      setPage(targetPage);
+      
+      // Determine selected items
+      if ((primaryPath === "signal" || primaryPath === "signals") && secondaryPath) {
+        setSelectedSignalId(secondaryPath);
+      } else {
+        setSelectedSignalId(params.get("id") || null);
       }
       
-      setSelectedSignalId(params.get("id") || null);
-      setSelectedNewsId(params.get("newsId") || null);
+      if (primaryPath === "news" && secondaryPath) {
+        setSelectedNewsId(secondaryPath);
+      } else {
+        setSelectedNewsId(params.get("newsId") || null);
+      }
+      
+      if (primaryPath === "school" && secondaryPath) {
+        setSelectedSchoolArticleId(secondaryPath);
+      } else {
+        setSelectedSchoolArticleId(params.get("schoolId") || null);
+      }
     };
 
     window.addEventListener("popstate", handlePopState);

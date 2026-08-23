@@ -130,115 +130,143 @@ function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
   let lang = req.query.lang as string;
   const rawPath = req.path || "";
 
-  let articleSlug = (req.query.article as string) || "";
-  let view = (req.query.view as string) || "";
-  let productId = ((req.query.product || req.query.p || req.query.slug || req.query.keyword) as string) || "";
-  const keywordParam = req.query.keyword as string;
+  let view = "";
+  let subId = "";
 
-  if (rawPath.startsWith("/article/")) {
-    articleSlug = rawPath.replace("/article/", "").trim();
-  } else if (rawPath === "/articles") {
-    view = "articles";
-  } else if (rawPath.startsWith("/product/")) {
-    productId = rawPath.replace("/product/", "").trim();
-  } else if (rawPath === "/categories") {
-    view = "categories";
-  } else if (rawPath.startsWith("/category/")) {
-    view = "categories";
-  } else if (rawPath === "/comparisons") {
-    view = "comparisons";
-  } else if (rawPath === "/deals") {
-    view = "deals";
+  if (rawPath === "/news") {
+    view = "news";
+  } else if (rawPath.startsWith("/news/")) {
+    view = "news";
+    subId = rawPath.replace("/news/", "").trim();
+  } else if (rawPath === "/school") {
+    view = "school";
+  } else if (rawPath.startsWith("/school/")) {
+    view = "school";
+    subId = rawPath.replace("/school/", "").trim();
+  } else if (rawPath.startsWith("/signal/")) {
+    view = "signal";
+    subId = rawPath.replace("/signal/", "").trim();
   } else if (rawPath === "/sitemap") {
     view = "sitemap";
-  } else if (rawPath === "/admin") {
-    view = "admin";
   } else if (rawPath === "/privacy") {
     view = "privacy";
   } else if (rawPath === "/terms") {
     view = "terms";
-  } else if (rawPath === "/about") {
-    view = "about";
-  } else if (rawPath === "/contact") {
-    view = "contact";
-  } else if (rawPath === "/disclaimer") {
-    view = "disclaimer";
   }
 
   const protocol = req.headers["x-forwarded-proto"] || req.protocol || "https";
-  const host = req.get("host") || "dkora.online";
+  const host = req.get("host") || "decoura-fx.online";
   const baseUrl = `${protocol}://${host}`;
 
   if (lang !== "en" && lang !== "ar") {
     lang = "ar";
   }
 
-  let title = "ديكورا Dkora - دليلك الشامل لعدد ولوازم ديكورات احترافية";
-  let description = "دليلك الشامل لعدد ولوازم ديكورات احترافية";
-  let image = `${baseUrl}/og-image.jpg`;
+  let title = lang === "ar" 
+    ? "توصيات فوركس مجانية دقيقة | اربح مع خبراء سوق العملات | ديكوراFX" 
+    : "Free Accurate Forex Signals | Profit with Currency Market Experts | DecouFX";
+  let description = lang === "ar"
+    ? "منصة ديكوراFX تقدم توصيات فوركس حية ومباشرة مجاناً، بالإضافة إلى تحليلات فنية دقيقة ومدرسة متكاملة لتعليم التداول للمبتدئين والمحترفين."
+    : "DecouFX platform offers free live accurate Forex signals, professional technical analysis, and a comprehensive trading academy for beginners and advanced traders.";
+  let image = `${baseUrl}/forex_basics.jpg`;
   let canonicalUrl = `${baseUrl}${req.originalUrl || "/"}`;
 
-  if ((productId || keywordParam) && Array.isArray(storedProductsList)) {
-    const p = findProductByQueryParam(storedProductsList, productId, keywordParam);
-    if (p) {
-      title = `${p.titleAr} - ${p.brandName} (${p.modelNumber || ""}) | مراجعة وسعر ديكورا Dkora`;
-      description = `${p.summary || p.titleAr} - تعرف على المواصفات الفنية والتقييم وأسعار الشراء المباشرة على منصة ديكورا.`;
-      image = p.mainImage || image;
-      canonicalUrl = `${baseUrl}/product/${p.id}-${createProductSlug(p)}`;
+  if (view === "news") {
+    if (subId) {
+      if (subId === "fallback-meme-coins" || subId === "meme-coins") {
+        title = lang === "ar"
+          ? "انفجار تداولات عملات الميم في عام 2026: دليل الأمان والربح | ديكوراFX"
+          : "The 2026 Meme Coins Explosion: Safety & Profit Guide | DecouFX";
+        description = lang === "ar"
+          ? "شهدت أسواق الكريبتو انفجاراً حقيقياً في تداول عملات الميم. تعرف على كيفية استغلال هذه الموجة الاستثمارية بأمان وفهم تحولات السوق الجديدة."
+          : "Crypto markets witnessed a real explosion in meme coins trading. Learn how to safely leverage this investment wave and understand new market shifts.";
+        image = `${baseUrl}/meme_coins_2026_1787419226241.jpg`;
+      } else {
+        title = lang === "ar"
+          ? `تفاصيل المقال والتحليل الفني والأساسي | أخبار ديكوراFX`
+          : `Article Details & Market Analysis | DecouFX News`;
+        description = lang === "ar"
+          ? "تابع التغطية الشاملة والتحليلات الفنية اللحظية الصادرة من محررينا الاقتصاديين لكافة التطورات في الأسواق والعملات والمعادن."
+          : "Follow our comprehensive market updates and professional technical analyses on currency pairs, commodities, and digital assets.";
+      }
+      canonicalUrl = `${baseUrl}/news/${subId}`;
+    } else {
+      title = lang === "ar"
+        ? "أخبار الفوركس العاجلة والتحليلات الفنية اليومية | ديكوراFX"
+        : "Breaking Forex News & Daily Technical Analysis | DecouFX";
+      description = lang === "ar"
+        ? "ابق على اطلاع تام بأحدث التقارير الاقتصادية، أخبار البنوك المركزية، وتحليلات الذهب والنفط والعملات الأجنبية لحظة بلحظة."
+        : "Stay updated with the latest economic reports, central bank decisions, and gold, oil, and forex technical analysis in real-time.";
+      canonicalUrl = `${baseUrl}/news`;
     }
+  } else if (view === "school") {
+    if (subId) {
+      if (subId === "intro-forex" || subId === "intro_forex") {
+        title = lang === "ar"
+          ? "درس أساسيات سوق الفوركس للمبتدئين | مدرسة ديكوراFX للتداول"
+          : "Forex Trading Basics Lesson for Beginners | DecouFX Academy";
+        description = lang === "ar"
+          ? "مرحباً بك في الدرس الأول. تعلم ما هو سوق العملات الأجنبية (الفوركس) وكيف يعمل وهيكل التداولات وصناع السوق بطريقة مبسطة."
+          : "Welcome to lesson one. Learn what the foreign exchange market is, how it works, and how market makers operate in simple terms.";
+        image = `${baseUrl}/forex_basics.jpg`;
+      } else if (subId === "meme-coins-2026" || subId === "meme-coins") {
+        title = lang === "ar"
+          ? "مستقبل الاستثمار في عملات الميم وكيفية اغتنام الفرص بأمان | مدرسة ديكوراFX"
+          : "The Future of Meme Coins Investment & How to Seize Opportunities | DecouFX";
+        description = lang === "ar"
+          ? "درس تعليمي شامل يشرح تحول عملات الميم إلى فئات أصول بمليارات الدولارات وكيفية تداولها وتجنب مخاطر الاحتيال الرقمي."
+          : "A comprehensive lesson explaining the evolution of meme coins into multi-billion dollar assets and how to trade them safely while avoiding scams.";
+        image = `${baseUrl}/meme_coins_2026_1787419226241.jpg`;
+      } else {
+        title = lang === "ar"
+          ? "درس تعليمي مالي متقدم | مدرسة ديكوراFX للتداول"
+          : "Advanced Trading Lesson | DecouFX Academy";
+        description = lang === "ar"
+          ? "دروس وشروحات عملية مبسطة لمساعدتك على احتراف أسواق المال وتحليل الرسوم البيانية وإدارة المخاطر باحترافية."
+          : "Practical training lessons and tutorials to help you master financial markets, chart analysis, and professional risk management.";
+      }
+      canonicalUrl = `${baseUrl}/school/${subId}`;
+    } else {
+      title = lang === "ar"
+        ? "أكاديمية تعليم التداول المجانية للمبتدئين والمحترفين | ديكوراFX"
+        : "Free Trading Academy for Beginners & Advanced Traders | DecouFX";
+      description = lang === "ar"
+        ? "تعلم تداول العملات الأجنبية، المعادن، والمشتقات المالية خطوة بخطوة من خلال مقالات تفاعلية ودروس مبسطة لزيادة مهاراتك الاستثمارية."
+        : "Learn to trade forex, commodities, and derivatives step-by-step through interactive lessons and clean tutorials designed to boost your skills.";
+      canonicalUrl = `${baseUrl}/school`;
+    }
+  } else if (view === "signal") {
+    title = lang === "ar"
+      ? `توصية فوركس حية مباشرة ومفتوحة رقم ${subId} | ديكوراFX`
+      : `Live Forex Signal Details #${subId} | DecouFX`;
+    description = lang === "ar"
+      ? "توصية تداول فوركس نشطة ومحدثة تشمل زوج العملات، اتجاه الصفقة، سعر الدخول المقترح، مستويات أخذ الأرباح ووقف الخسارة بدقة."
+      : "Active live Forex signal including the specific currency pair, trade direction, suggested entry price, take profits, and stop loss levels.";
+    canonicalUrl = `${baseUrl}/signal/${subId}`;
   } else if (view === "sitemap") {
-    title = "خريطة الموقع التفاعلية (Dynamic XML Sitemap) | ديكورا Dkora";
-    description = "تصفح جميع روابط المنتجات والتصنيفات والمقالات المحدثة تلقائياً في دليل ديكورا Dkora.";
+    title = lang === "ar"
+      ? "خريطة الموقع التفاعلية (Dynamic XML Sitemap) | ديكوراFX"
+      : "Interactive Sitemap & Dynamic XML Links | DecouFX";
+    description = lang === "ar"
+      ? "تصفح الفهرس الشامل لروابط مدرسة التداول، التقارير الفنية، والتوصيات الحية في منصة ديكوراFX."
+      : "Browse the comprehensive index of trading school lessons, technical reports, and live active signals on DecouFX.";
     canonicalUrl = `${baseUrl}/sitemap`;
-  } else if (view === "categories") {
-    title = "تصنيفات العدد والأدوات والديكور | ديكورا Dkora";
-    description = "استكشف جميع تصنيفات الشنيور، الصاروخ، العدد اليدوية، وأدوات الديكور مع الأسعار والتقييمات.";
-    canonicalUrl = `${baseUrl}/categories`;
-  } else if (view === "comparisons") {
-    title = "أداة مقارنة العدد والأدوات الفنية جنباً إلى جنب | ديكورا Dkora";
-    description = "قارن بين مواصفات وأسعار أفضل ماركات العدد مثل ديوالت، بوش، وماكيتا بسهولة.";
-    canonicalUrl = `${baseUrl}/comparisons`;
-  } else if (view === "deals") {
-    title = "أحدث عروض وكوبونات خصم العدد والأدوات | ديكورا Dkora";
-    description = "تصفح أحدث الخصومات وأكواد التخفيض الحصرية للعدد الكهربائية والديكور في مصر والخليج.";
-    canonicalUrl = `${baseUrl}/deals`;
-  } else if (view === "articles") {
-    title = "مدونة ديكورا - دروس الصيانة ودليل اختيار العدد | Dkora";
-    description = "مقالات وشروحات فنية من خبراء الصيانة والديكور لمساعدتك في اختيار الأداة المناسبة.";
-    canonicalUrl = `${baseUrl}/articles`;
   } else if (view === "privacy") {
-    title = "سياسة الخصوصية وسرية البيانات | منصة ديكورا Dkora";
-    description = "سياسة الخصوصية وسرية البيانات ومعايير الشفافية الخاصة بمنصة ديكورا ومتطلبات AdSense.";
+    title = lang === "ar"
+      ? "سياسة الخصوصية وسرية البيانات | منصة ديكوراFX"
+      : "Privacy Policy & Data Security Statement | DecouFX";
+    description = lang === "ar"
+      ? "تعرف على معايير الأمان وحماية خصوصية بيانات زوار منصة ديكوراFX بما يتوافق مع السياسات العالمية."
+      : "Learn about the high security standards and privacy rules protecting our users on DecouFX.";
     canonicalUrl = `${baseUrl}/privacy`;
   } else if (view === "terms") {
-    title = "الشروط والأحكام وسياسة الاستخدام | منصة ديكورا Dkora";
-    description = "الشروط والأحكام لاتفاقية استخدام منصة ديكورا للعدد والأدوات والتسويق بالعمولة.";
+    title = lang === "ar"
+      ? "الشروط والأحكام واتفاقية الاستخدام | ديكوراFX"
+      : "Terms of Service & User Agreement | DecouFX";
+    description = lang === "ar"
+      ? "اتفاقية الاستخدام والشروط المنظمة لخدمات توصيات تداول العملات والمقالات التعليمية على منصة ديكوراFX."
+      : "The legal terms of service and conditions governing forex signal distribution and education on DecouFX.";
     canonicalUrl = `${baseUrl}/terms`;
-  } else if (view === "about") {
-    title = "من نحن - عن منصة ديكورا Dkora لدليل العدد والأدوات";
-    description = "تعرف على منصة ديكورا، رسالتنا، ومنهجية اختبار وتقييم المعدات والأدوات والعدد الكهربائية.";
-    canonicalUrl = `${baseUrl}/about`;
-  } else if (view === "contact") {
-    title = "اتصل بنا ومعلومات هيئة التحرير | منصة ديكورا Dkora";
-    description = "تواصل مع فريق عمل وإدارة منصة ديكورا للاستفسارات والاقتراحات والشراكات الرسمية.";
-    canonicalUrl = `${baseUrl}/contact`;
-  } else if (view === "disclaimer") {
-    title = "إخلاء المسؤولية وإفصاح التسويق بالعمولة | منصة ديكورا Dkora";
-    description = "إفصاح التسويق بالعمولة والأمان الفني لتقييمات العدد والأدوات الكهربائية واليدوية على ديكورا.";
-    canonicalUrl = `${baseUrl}/disclaimer`;
-  } else if (articleSlug) {
-    const artSeo = ARTICLES_SEO.find(a => a.slug === articleSlug);
-    const artMock = ARTICLES.find(a => a.slug === articleSlug || a.id === articleSlug);
-    if (artSeo) {
-      title = artSeo.titleAr;
-      description = artSeo.descAr;
-      canonicalUrl = `${baseUrl}/article/${artSeo.slug}`;
-    } else if (artMock) {
-      title = `${artMock.title} | ديكورا Dkora`;
-      description = artMock.excerpt;
-      image = artMock.coverImage || image;
-      canonicalUrl = `${baseUrl}/article/${artMock.slug}`;
-    }
   }
 
   const dir = lang === "ar" ? "rtl" : "ltr";
@@ -1142,58 +1170,20 @@ Sitemap: ${protocol}://${host}/sitemap.xml
 
     const rawUrls: Array<{ loc: string; lastmod: string; changefreq: string; priority: string }> = [
       { loc: `${baseUrl}/`, lastmod: currentDate, changefreq: "daily", priority: "1.0" },
-      { loc: `${baseUrl}/categories`, lastmod: currentDate, changefreq: "weekly", priority: "0.9" },
-      { loc: `${baseUrl}/comparisons`, lastmod: currentDate, changefreq: "weekly", priority: "0.9" },
-      { loc: `${baseUrl}/deals`, lastmod: currentDate, changefreq: "daily", priority: "0.9" },
-      { loc: `${baseUrl}/articles`, lastmod: currentDate, changefreq: "weekly", priority: "0.8" },
-      { loc: `${baseUrl}/sitemap`, lastmod: currentDate, changefreq: "always", priority: "0.7" },
-      { loc: `${baseUrl}/privacy`, lastmod: currentDate, changefreq: "monthly", priority: "0.8" },
-      { loc: `${baseUrl}/terms`, lastmod: currentDate, changefreq: "monthly", priority: "0.8" },
-      { loc: `${baseUrl}/about`, lastmod: currentDate, changefreq: "monthly", priority: "0.85" },
-      { loc: `${baseUrl}/contact`, lastmod: currentDate, changefreq: "monthly", priority: "0.85" },
-      { loc: `${baseUrl}/disclaimer`, lastmod: currentDate, changefreq: "monthly", priority: "0.8" },
-
-      ...CATEGORIES.map((cat) => ({
-        loc: `${baseUrl}/category/${cat.id}`,
-        lastmod: currentDate,
-        changefreq: "weekly",
-        priority: "0.85",
-      })),
-
-      ...getStoredProducts().map((prod: any) => ({
-        loc: createProductUrl(prod, baseUrl),
-        lastmod: currentDate,
-        changefreq: "weekly",
-        priority: "0.80",
-      })),
-
-      ...ARTICLES.map((art) => ({
-        loc: `${baseUrl}/article/${art.slug}`,
-        lastmod: art.date || currentDate,
-        changefreq: "monthly",
-        priority: "0.75",
-      })),
-
-      ...ARTICLES_SEO.map((art) => ({
-        loc: `${baseUrl}/article/${art.slug}`,
-        lastmod: currentDate,
-        changefreq: "weekly",
-        priority: "0.75",
-      })),
-
-      ...DEALS.map((deal) => ({
-        loc: `${baseUrl}/deals?deal=${deal.id}`,
+      { loc: `${baseUrl}/news`, lastmod: currentDate, changefreq: "daily", priority: "0.9" },
+      { loc: `${baseUrl}/news/fallback-meme-coins`, lastmod: currentDate, changefreq: "weekly", priority: "0.85" },
+      { loc: `${baseUrl}/school`, lastmod: currentDate, changefreq: "weekly", priority: "0.90" },
+      { loc: `${baseUrl}/school/intro-forex`, lastmod: currentDate, changefreq: "monthly", priority: "0.80" },
+      { loc: `${baseUrl}/school/meme-coins-2026`, lastmod: currentDate, changefreq: "monthly", priority: "0.80" },
+      { loc: `${baseUrl}/sitemap`, lastmod: currentDate, changefreq: "always", priority: "0.70" },
+      { loc: `${baseUrl}/privacy`, lastmod: currentDate, changefreq: "monthly", priority: "0.50" },
+      { loc: `${baseUrl}/terms`, lastmod: currentDate, changefreq: "monthly", priority: "0.50" },
+      ...getStoredSignals().map((sig: any) => ({
+        loc: `${baseUrl}/signal/${sig.id}`,
         lastmod: currentDate,
         changefreq: "daily",
-        priority: "0.80",
-      })),
-
-      ...BUYING_GUIDES.map((guide) => ({
-        loc: `${baseUrl}/articles?guide=${guide.id}`,
-        lastmod: currentDate,
-        changefreq: "monthly",
-        priority: "0.80",
-      })),
+        priority: "0.85"
+      }))
     ];
 
     // Remove duplicates

@@ -100,6 +100,63 @@ const playNotificationSound = () => {
   }
 };
 
+interface LazyImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+  src: string;
+  alt: string;
+  className?: string;
+}
+
+const LazyImage: React.FC<LazyImageProps> = ({ src, alt, className = "", ...props }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const imgRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        rootMargin: "100px",
+      }
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  return (
+    <div ref={imgRef} className={`relative overflow-hidden ${className}`}>
+      {(!isInView || !isLoaded) && (
+        <div className="absolute inset-0 bg-slate-200/50 dark:bg-slate-800/50 animate-pulse flex items-center justify-center">
+          <div className="w-6 h-6 border-2 border-amber-500/20 border-t-amber-500 rounded-full animate-spin"></div>
+        </div>
+      )}
+      {isInView && (
+        <img
+          src={src}
+          alt={alt}
+          onLoad={() => setIsLoaded(true)}
+          className={`w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          {...props}
+        />
+      )}
+    </div>
+  );
+};
+
 export default function App() {
   // 1. Language & Router Sync State
   const [lang, setLang] = useState<'ar' | 'en'>(() => {
@@ -383,7 +440,7 @@ export default function App() {
           link: "https://sa.investing.com/news/cryptocurrency-news/article-2459299",
           guid: "fallback-meme-coins",
           author: "ديكوراFX",
-          thumbnail: "/src/assets/images/meme_coins_2026_1787419226241.jpg",
+          thumbnail: "/meme_coins_2026_1787419226241.jpg",
           description: "شهدت أسواق الكريبتو في عام 2026 انفجاراً حقيقياً في تداول عملات الميم. تعرف على كيفية استغلال هذه الموجة الاستثمارية بأمان وفهم تحولات السوق الجديدة.",
           content: `<div class="space-y-4 text-slate-800 dark:text-neutral-200 leading-relaxed font-sans">
             
@@ -1617,7 +1674,7 @@ export default function App() {
                         <span>{t.signals.chartTitle}</span>
                       </h3>
                       <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-[#1e2e4a] bg-[#141f32]">
-                        <img
+                        <LazyImage
                           src={sig.photoUrl}
                           alt={`${sig.pair} Analysis Chart`}
                           referrerPolicy="no-referrer"
@@ -1681,7 +1738,7 @@ export default function App() {
 
                     {article.image && (
                       <div className="rounded-2xl overflow-hidden border border-slate-100 dark:border-[#1e2e4a]">
-                        <img
+                        <LazyImage
                           src={article.image}
                           alt="Technical news thumbnail"
                           referrerPolicy="no-referrer"
@@ -1840,7 +1897,7 @@ export default function App() {
                         <div className="p-5 space-y-4">
                           {art.image && (
                             <div className="rounded-xl overflow-hidden h-40 w-full bg-[#141f32]">
-                              <img
+                              <LazyImage
                                 src={art.image}
                                 alt="news report preview"
                                 referrerPolicy="no-referrer"
@@ -1901,7 +1958,7 @@ export default function App() {
                     titleEn: "The Future of Meme Coins Investment & How to Safely Seize Opportunities",
                     categoryAr: "العملات الرقمية",
                     categoryEn: "Cryptocurrencies",
-                    image: "/src/assets/images/meme_coins_2026_1787419226241.jpg",
+                    image: "/meme_coins_2026_1787419226241.jpg",
                     contentAr: `ثورة "ميمز كوينز" من مجرد نكات إلى ركائز مالية في 2026:
 لم تعد ميمز كوينز مجرد ظاهرة عابرة أو صور كلاب وضفادع مضحكة تتدفق على شبكات التواصل الاجتماعي؛ بل تحولت بحلول عام 2026 إلى فئة أصول رقمية قائمة بذاتها، تتمتع بمليارات الدولارات من السيولة اليومية وتدعمها مجتمعات عالمية فائقة الولاء.
 
@@ -1969,7 +2026,7 @@ Meme coins are highly volatile, often moving up or down by over 1000% daily:
                     titleEn: "Introduction to Forex Trading Basics for Beginners",
                     categoryAr: "أساسيات التداول",
                     categoryEn: "Trading Basics",
-                    image: "/src/assets/images/forex_basics.jpg",
+                    image: "/forex_basics.jpg",
                     contentAr: `مرحباً بك في مدرسة التداول من ديكوراFX. في هذا الدرس، سنتعرف على أساسيات سوق العملات الأجنبية (الفوركس) وكيف يعمل:
 
 ما هو سوق الفوركس؟
@@ -2023,7 +2080,7 @@ You buy a currency expecting it to appreciate, or sell it expecting it to deprec
 
                     {art.image && (
                       <div className="rounded-2xl overflow-hidden border border-slate-100 dark:border-[#1e2e4a]">
-                        <img
+                        <LazyImage
                           src={art.image}
                           alt="Lesson visual"
                           referrerPolicy="no-referrer"
@@ -2047,8 +2104,8 @@ You buy a currency expecting it to appreciate, or sell it expecting it to deprec
                   className="bg-white dark:bg-[#0c1322] border-2 border-amber-500/40 hover:border-amber-500 rounded-3xl overflow-hidden shadow-md transition-all duration-300 cursor-pointer flex flex-col md:col-span-2 md:flex-row"
                 >
                   <div className="md:w-1/2 h-64 md:h-auto bg-[#141f32] relative overflow-hidden">
-                    <img 
-                      src="/src/assets/images/meme_coins_2026_1787419226241.jpg" 
+                    <LazyImage 
+                      src="/meme_coins_2026_1787419226241.jpg" 
                       alt="Meme coins lesson" 
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover"
@@ -2440,8 +2497,8 @@ You buy a currency expecting it to appreciate, or sell it expecting it to deprec
               {/* Optional Enclosure / Cover Image */}
               {activeRssArticle.thumbnail && (
                 <div className="rounded-2xl overflow-hidden max-h-72 bg-[#141f32] mb-4">
-                  <img
-                    src={activeRssArticle.thumbnail}
+                  <LazyImage
+                    src={activeRssArticle.thumbnail === "/src/assets/images/meme_coins_2026_1787419226241.jpg" ? "/meme_coins_2026_1787419226241.jpg" : activeRssArticle.thumbnail}
                     alt="Article visual"
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"

@@ -236,7 +236,7 @@ export default function App() {
 
   // 3. Signals state (local storage backed)
   const [signals, setSignals] = useState<Signal[]>(() => {
-    const saved = localStorage.getItem("decou_fx_local_signals_v7");
+    const saved = localStorage.getItem("decou_fx_local_signals_v8");
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -246,7 +246,7 @@ export default function App() {
       }
     }
     const fallback = getFallbackSignals();
-    localStorage.setItem("decou_fx_local_signals_v7", JSON.stringify(fallback));
+    localStorage.setItem("decou_fx_local_signals_v8", JSON.stringify(fallback));
     return fallback;
   });
 
@@ -426,7 +426,7 @@ export default function App() {
   const saveSignalsLocally = async (newList: Signal[]) => {
     // 1. Update state and local storage immediately for real-time smoothness
     localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(newList));
-    localStorage.setItem("decou_fx_local_signals_v7", JSON.stringify(newList));
+    localStorage.setItem("decou_fx_local_signals_v8", JSON.stringify(newList));
     setSignals(newList);
     prevSignalsRef.current = newList;
 
@@ -454,13 +454,13 @@ export default function App() {
       }
       
       if (!Array.isArray(currentList) || currentList.length === 0) {
-        const saved = localStorage.getItem("decou_fx_local_signals_v2") || localStorage.getItem("decou_fx_local_signals_v7");
+        const saved = localStorage.getItem("decou_fx_local_signals_v2") || localStorage.getItem("decou_fx_local_signals_v8");
         currentList = saved ? JSON.parse(saved) : getFallbackSignals();
       }
 
       setSignals(currentList);
       localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(currentList));
-      localStorage.setItem("decou_fx_local_signals_v7", JSON.stringify(currentList));
+      localStorage.setItem("decou_fx_local_signals_v8", JSON.stringify(currentList));
       
       if (soundEnabled) {
         playNotificationSound();
@@ -689,7 +689,7 @@ export default function App() {
           if (Array.isArray(list) && list.length > 0) {
             setSignals(list);
             localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(list));
-            localStorage.setItem("decou_fx_local_signals_v7", JSON.stringify(list));
+            localStorage.setItem("decou_fx_local_signals_v8", JSON.stringify(list));
           }
         }
       } catch (e) {
@@ -2603,6 +2603,70 @@ You buy a currency expecting it to appreciate, or sell it expecting it to deprec
 function getFallbackSignals(): Signal[] {
   return [
     {
+      id: "sig-nzdjpy-sell-949",
+      pair: "NZDJPY",
+      type: "SELL",
+      entry: "94.90",
+      tp1: "90.00",
+      tp2: "",
+      tp3: "",
+      sl: "95.60",
+      status: "ACTIVE",
+      explanation: "توصية بيع زوج النيوزيلندي ين (NZD/JPY) من مستويات 94.90 نتيجة لملامسة مستويات مقاومة هامة وبدء ارتداد سلبي مدعوماً بزخم هابط.",
+      date: "2026-08-23T16:00:00.000Z",
+      views: "1.1K",
+      photoUrl: "",
+      rawText: "بيع نيوزلندى ين من سعر 94.9\nستوب 95.60\nهدف 90.00"
+    },
+    {
+      id: "sig-usdchf-buy-8025",
+      pair: "USDCHF",
+      type: "BUY",
+      entry: "0.8025",
+      tp1: "0.8110",
+      tp2: "",
+      tp3: "",
+      sl: "0.7940",
+      status: "ACTIVE",
+      explanation: "توصية شراء زوج الدولار فرانك (USD/CHF) من مستويات 0.8025 لملامسته خط اتجاه صاعد قوي وبداية تشكيل نموذج انعكاسي صاعد.",
+      date: "2026-08-23T16:00:00.000Z",
+      views: "850",
+      photoUrl: "",
+      rawText: "شراء الدولار فرانك من سعر .8025\nستوب .7940\nهدف .8110"
+    },
+    {
+      id: "sig-gbpjpy-sell-2166",
+      pair: "GBPJPY",
+      type: "SELL",
+      entry: "216.60",
+      tp1: "204.00",
+      tp2: "",
+      tp3: "",
+      sl: "219.30",
+      status: "ACTIVE",
+      explanation: "توصية بيع زوج الجنيه الاسترليني مقابل الين الياباني (GBP/JPY) من مستويات 216.60 لزيادة الضغوط السلبية وكسر مستويات الدعم المتوسطة.",
+      date: "2026-08-23T16:00:00.000Z",
+      views: "1.3K",
+      photoUrl: "",
+      rawText: "بيع الجنيه ين من سعر 216.6\nستوب 219.30\nهدف 204"
+    },
+    {
+      id: "sig-btcusd-sell-77800",
+      pair: "BTCUSD",
+      type: "SELL",
+      entry: "77,800",
+      tp1: "74,350",
+      tp2: "",
+      tp3: "",
+      sl: "79,500",
+      status: "ACTIVE",
+      explanation: "توصية بيع عملة البيتكوين الرقمية (BTC/USD) من مستويات 77,800 دولار لتشبع الشراء الفني وبداية حركة تصحيحية هابطة محتملة.",
+      date: "2026-08-23T16:00:00.000Z",
+      views: "2.4K",
+      photoUrl: "",
+      rawText: "بيع البيتكوي من سعر 77800\nستوب 79500\nهدف 74350"
+    },
+    {
       id: "sig-usdjpy-buy-159",
       pair: "USDJPY",
       type: "BUY",
@@ -2613,7 +2677,7 @@ function getFallbackSignals(): Signal[] {
       sl: "156.400",
       status: "ACTIVE",
       explanation: "توصية شراء الدولار مقابل الين الياباني (USD/JPY) نظراً لوجود دعم فني قوي وبوادر صعود تصحيحي على المدى المتوسط والالتزام بأهداف إدارة المخاطر.",
-      date: new Date().toISOString(),
+      date: "2026-08-21T15:30:00.000Z",
       views: "1.2K",
       photoUrl: "",
       rawText: "شراء الدولار ين من 159\nستوب 156.400\nهدف 161.000"
@@ -2629,7 +2693,7 @@ function getFallbackSignals(): Signal[] {
       sl: "0.72000",
       status: "ACTIVE",
       explanation: "توصية بيع الدولار الأسترالي مقابل الدولار الأمريكي (AUD/USD) نتيجة لملامسة خط المقاومة الهابط وبدء الزخم السلبي على الفريمات اليومية.",
-      date: new Date().toISOString(),
+      date: "2026-08-21T15:30:00.000Z",
       views: "950",
       photoUrl: "",
       rawText: "بيع الدولار الاسترالى دولار امريكى من 0.70900\nستوب 0.72000\nهدف 0.69000"

@@ -2010,7 +2010,7 @@ export default function App() {
                     titleEn: "Professional Guide: Forex Gold Risk Management in 2026",
                     categoryAr: "إدارة المخاطر",
                     categoryEn: "Risk Management",
-                    image: "/src/assets/images/gold_forex_risk_management_1787538156014.jpg",
+                    image: "/gold_forex_risk_management_1787538156014.jpg",
                     contentAr: `يعتبر الذهب (XAUUSD) بمثابة المغناطيس الأكبر لجميع المتداولين في أسواق المال والعملات الأجنبية. فهو الملاذ الآمن الأكثر شهرة وقوة عبر التاريخ، ولكنه في الوقت نفسه يمثل ساحة تداول شديدة التقلب والخطورة. هنا تبرز الأهمية القصوى لمفهوم اداره مخاطر فوركس الذهب كعنصر حاسم يفصل بين المتداول المحترف والناجح وبين المتداول الهاوي الذي قد يفقد كامل حسابه في حركة سعرية واحدة مفاجئة. في هذا المقال المتكامل والمتوافق مع أحدث معايير محركات البحث (SEO) لعام 2026، سنشرح بالتفصيل الممل كيف تبني نظاماً دفاعياً فولاذياً لحماية محفظتك الاستثمارية أثناء تداول الذهب.
 
 طبيعة تحركات الذهب ولماذا يختلف عن العملات؟
@@ -2394,7 +2394,7 @@ You buy a currency expecting it to appreciate, or sell it expecting it to deprec
                 >
                   <div className="h-44 bg-[#141f32] relative overflow-hidden">
                     <LazyImage 
-                      src="/src/assets/images/gold_forex_risk_management_1787538156014.jpg" 
+                      src="/gold_forex_risk_management_1787538156014.jpg" 
                       alt="Gold risk management lesson" 
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover"

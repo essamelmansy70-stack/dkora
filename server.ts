@@ -232,7 +232,7 @@ function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
         description = lang === "ar"
           ? "الدليل الحصري والشامل للاحتراف في اداره مخاطر فوركس الذهب ومعدلات اللوت المقترحة للحد من الانعكاس السعري وتأمين الحساب."
           : "Ultimate 2026 guide on Forex Gold Risk Management, lot sizing calculations, and drawdown mitigation for professional traders.";
-        image = `${baseUrl}/src/assets/images/gold_forex_risk_management_1787538156014.jpg`;
+        image = `${baseUrl}/gold_forex_risk_management_1787538156014.jpg`;
       } else {
         title = lang === "ar"
           ? "درس تعليمي مالي متقدم | مدرسة ديكوراFX للتداول"

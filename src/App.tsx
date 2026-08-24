@@ -211,7 +211,7 @@ export default function App() {
 
   // 3. Signals state (local storage backed)
   const [signals, setSignals] = useState<Signal[]>(() => {
-    const saved = localStorage.getItem("decou_fx_local_signals_v8");
+    const saved = localStorage.getItem("decou_fx_local_signals_v20");
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -221,7 +221,7 @@ export default function App() {
       }
     }
     const fallback = getFallbackSignals();
-    localStorage.setItem("decou_fx_local_signals_v8", JSON.stringify(fallback));
+    localStorage.setItem("decou_fx_local_signals_v20", JSON.stringify(fallback));
     return fallback;
   });
 
@@ -409,8 +409,7 @@ export default function App() {
 
   const saveSignalsLocally = async (newList: Signal[]) => {
     // 1. Update state and local storage immediately for real-time smoothness
-    localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(newList));
-    localStorage.setItem("decou_fx_local_signals_v8", JSON.stringify(newList));
+    localStorage.setItem("decou_fx_local_signals_v20", JSON.stringify(newList));
     setSignals(newList);
     prevSignalsRef.current = newList;
 
@@ -438,13 +437,12 @@ export default function App() {
       }
       
       if (!Array.isArray(currentList) || currentList.length === 0) {
-        const saved = localStorage.getItem("decou_fx_local_signals_v2") || localStorage.getItem("decou_fx_local_signals_v8");
+        const saved = localStorage.getItem("decou_fx_local_signals_v20");
         currentList = saved ? JSON.parse(saved) : getFallbackSignals();
       }
 
       setSignals(currentList);
-      localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(currentList));
-      localStorage.setItem("decou_fx_local_signals_v8", JSON.stringify(currentList));
+      localStorage.setItem("decou_fx_local_signals_v20", JSON.stringify(currentList));
       
       if (soundEnabled) {
         playNotificationSound();
@@ -672,8 +670,7 @@ export default function App() {
           const list = await response.json();
           if (Array.isArray(list) && list.length > 0) {
             setSignals(list);
-            localStorage.setItem("decou_fx_local_signals_v2", JSON.stringify(list));
-            localStorage.setItem("decou_fx_local_signals_v8", JSON.stringify(list));
+            localStorage.setItem("decou_fx_local_signals_v20", JSON.stringify(list));
           }
         }
       } catch (e) {
@@ -3130,6 +3127,22 @@ function getFallbackSignals(): Signal[] {
       views: "1.6K",
       photoUrl: "",
       rawText: "بيع الذهب من 4520\nستوب 4550\nهدف 4200\n\nتحديث: ضربت ستوب لوز وتم الإغلاق ونقلها للأرشيف."
+    },
+    {
+      id: "sig-usdcad-buy-13820",
+      pair: "USDCAD",
+      type: "BUY",
+      entry: "1.3820",
+      tp1: "1.40500",
+      tp2: "",
+      tp3: "",
+      sl: "1.36700",
+      status: "ACTIVE",
+      explanation: "توصية شراء زوج الدولار الأمريكي مقابل الدولار الكندي (USD/CAD) من مستويات الدعم الفنية 1.3820 بهدف صعودي حاد نحو 1.40500 ووقف خسارة صارم عند 1.36700.",
+      date: "2026-08-24T09:42:00.000Z",
+      views: "150",
+      photoUrl: "",
+      rawText: "شراء الدولار الكندى من سعر 1.3820\nستوب 1.36700\nهدف 1.40500"
     }
   ];
 }

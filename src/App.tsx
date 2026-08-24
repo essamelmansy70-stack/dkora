@@ -408,6 +408,15 @@ export default function App() {
     setPage(targetPage);
     setSelectedSignalId(id);
     setSelectedNewsId(newsId);
+    if (targetPage !== "school") {
+      setSelectedSchoolArticleId(null);
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const openSchoolArticle = (articleId: string) => {
+    setPage("school");
+    setSelectedSchoolArticleId(articleId);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -1250,7 +1259,7 @@ export default function App() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               
               {/* Left Column: Signals List (Grid span 2) */}
-              <div className="lg:col-span-2 space-y-6">
+              <div id="live-signals-board" className="lg:col-span-2 space-y-6 scroll-mt-24">
                 <div className="flex justify-between items-center">
                   <h3 className="text-xl font-extrabold flex items-center gap-2">
                     <TrendingUp className="w-5 h-5 text-amber-500" />
@@ -1486,7 +1495,7 @@ export default function App() {
               <div className="space-y-8">
                 
                 {/* 1. Risk Calculator Widget */}
-                <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-6 rounded-3xl shadow-sm space-y-4">
+                <div id="risk-calculator-widget" className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-6 rounded-3xl shadow-sm space-y-4 transition-all duration-500">
                   <div className="flex items-center gap-2 border-b border-slate-100 dark:border-[#1a2436] pb-3">
                     <Calculator className="w-5 h-5 text-amber-500" />
                     <h3 className="font-extrabold text-slate-900 dark:text-white text-base">{t.calculator.title}</h3>
@@ -1996,6 +2005,80 @@ export default function App() {
               (() => {
                 const schoolArticles = [
                   {
+                    id: "gold-risk-management",
+                    titleAr: "دليل الاحتراف: اداره مخاطر فوركس الذهب لعام 2026 وحماية رأس المال",
+                    titleEn: "Professional Guide: Forex Gold Risk Management in 2026",
+                    categoryAr: "إدارة المخاطر",
+                    categoryEn: "Risk Management",
+                    image: "/src/assets/images/gold_forex_risk_management_1787538156014.jpg",
+                    contentAr: `يعتبر الذهب (XAUUSD) بمثابة المغناطيس الأكبر لجميع المتداولين في أسواق المال والعملات الأجنبية. فهو الملاذ الآمن الأكثر شهرة وقوة عبر التاريخ، ولكنه في الوقت نفسه يمثل ساحة تداول شديدة التقلب والخطورة. هنا تبرز الأهمية القصوى لمفهوم اداره مخاطر فوركس الذهب كعنصر حاسم يفصل بين المتداول المحترف والناجح وبين المتداول الهاوي الذي قد يفقد كامل حسابه في حركة سعرية واحدة مفاجئة. في هذا المقال المتكامل والمتوافق مع أحدث معايير محركات البحث (SEO) لعام 2026، سنشرح بالتفصيل الممل كيف تبني نظاماً دفاعياً فولاذياً لحماية محفظتك الاستثمارية أثناء تداول الذهب.
+
+طبيعة تحركات الذهب ولماذا يختلف عن العملات؟
+للبدء في فهم قواعد اداره مخاطر فوركس الذهب، يجب أولاً إدراك الفروقات الجوهرية بين حركة المعادن الثمينة وحركة العملات التقليدية. يتميز الذهب بـ:
+1. الحساسية الجيوسياسية والاقتصادية الفائقة: أي تصريح من الاحتياطي الفيدرالي، أو تصاعد في التوترات العالمية، قد يدفع أسعار الذهب للتحرك بمئات النقاط في دقائق معدودة.
+2. الانزلاق السعري وفجوات السوق: يميل الذهب لفتح فجوات سعرية حادة مع بداية التداولات الأسبوعية أو خلال الأخبار الاقتصادية العنيفة.
+3. معدل السيولة العالي وتأثير خوارزميات التداول السريع: تتحكم الصناديق الكبرى والذكاء الاصطناعي بنسبة كبيرة من السيولة، مما يسبب حركات تصحيحية كاسحة وسريعة.
+
+الركائز الأساسية لـ اداره مخاطر فوركس الذهب:
+
+أولاً: قاعدة الـ 1% لحماية رأس المال
+تعتبر قاعدة الـ 1% بمثابة قانون البقاء الأول في أسواق المال. تنص هذه القاعدة ببساطة على ألا تتجاوز أقصى خسارة محتملة لك في الصفقة الواحدة أكثر من 1% إلى 2% من إجمالي حجم رأس مالك الفعلي. إذا كان حساب تداولك يحتوي على 10,000 دولار، فإن أقصى خسارة مقبولة في صفقة الذهب الواحدة هي 100 دولار فقط. الالتزام الصارم بهذا القانون يضمن لك الاستمرار في السوق حتى لو واجهت سلسلة متتالية من الصفقات الخاسرة.
+
+ثانياً: حساب حجم اللوت (Lot Sizing) بدقة بالغة
+تداول الذهب يتطلب دقة مضاعفة في حساب حجم العقد. نظراً لأن قيمة النقطة الواحدة في الذهب تختلف بشكل جذري عن أزواج العملات مثل اليورو دولار، فإن فتح عقد عشوائي دون حساب هو انتحار مالي.
+لحساب حجم اللوت الأنسب لصفقتك تذكر المعادلة التالية:
+حجم اللوت = (المبلغ المالي المعرض للمخاطرة بالدولار) / (عدد نقاط الوقف × قيمة النقطة للوت القياسي).
+باستخدام حاسبة إدارة المخاطر المدمجة في منصة ديكوراFX، يمكنك إدخال حجم حسابك، والنسبة المئوية للمخاطرة، ومستوى الستوب لوز، لتقوم الحاسبة فوراً بتوليد اللوت الأنسب لك لحماية حسابك من التسييل والالتزام بقواعد اداره مخاطر فوركس الذهب.
+
+ثالثاً: وضع أمر وقف الخسارة (Stop Loss) كقرار غير قابل للنقاش
+يعتقد بعض المتداولين الهواة أن بإمكانهم مراقبة السوق وإغلاق الصفقات يدوياً، وهو خطأ فادح يؤدي غالباً إلى تسييل الحساب خلال التحركات السريعة للذهب. في سياق اداره مخاطر فوركس الذهب، يجب أن يكون أمر وقف الخسارة محدداً وموضعاً في المنصة قبل تفعيل الصفقة نفسها.
+- ابحث عن مستويات الدعم والمقاومة الفنية القوية لوضع الستوب خلفها بمسافة كافية.
+- تجنب وضع الستوب لوز قريباً جداً لمنع ضربه نتيجة للتذبذبات العشوائية السعرية وتوسيع الاسبريد أثناء الأخبار.
+- لا تقم أبداً بتحريك الستوب لوز لزيادة الخسارة طمعاً في عودة السعر، بل تقبل الخسارة كجزء طبيعي من اللعبة.
+
+رابعاً: الرافعة المالية - الوحش الصامت
+تعتبر الرافعة المالية سلاحاً ذا حدين؛ فهي تتيح لك التداول بأحجام ضخمة بمبلغ صغير، لكنها في تداولات الذهب تمثل مكمن الخطر الأكبر. استخدام رافعة مالية مفرطة مع أصل عالي التقلب مثل الذهب يؤدي لتقليص الهامش المتاح بشكل لحظي. ننصح دائماً بتقنين الرافعة المالية بحدود (1:100) كحد أقصى للتحكم بالتعرض الإجمالي للسوق ونجاح خطط اداره مخاطر فوركس الذهب.
+
+علم نفس التداول والتحكم بالعواطف في إدارة مخاطر الذهب
+لا يمكن الحديث عن اداره مخاطر فوركس الذهب دون التطرق للجانب النفسي. الطمع والخوف هما العدوان الأكبر للمتداول.
+- الخوف من فوات الفرصة: يدفعك لدخول صفقات الذهب بأسعار غير مناسبة وبلوت مرتفع دون تخطيط.
+- الرغبة في الانتقام من السوق: بعد صفقة خاسرة، قد يندفع المتداول لمضاعفة اللوت لاستعادة خسائره، مما يضاعف الكارثة.
+الالتزام بخطة تداول مكتوبة ومحددة سلفاً هو الحل الوحيد للتغلب على هذه المشاعر العشوائية وضمان تطبيق قواعد اداره مخاطر فوركس الذهب بنجاح.
+
+خلاصة واستراتيجية عملية مقترحة لعام 2026:
+لتحقيق أرباح مستدامة عبر تداول الذهب في عام 2026، ننصحك بالخطوات التالية:
+1. لا تدخل أي صفقة ذهب دون تحديد مسبق لنقاط الدخول والخروج والهدف والستوب.
+2. استخدم حاسبة إدارة المخاطر في ديكوراFX لتحديد اللوت بدقة متناهية.
+3. وزع استثماراتك ولا تركز كامل رأس مالك في تداولات الذهب فقط.
+4. واصل التعلم الفني ومتابعة التقارير الفنية والأخبار الاقتصادية اللحظية التي نقدمها لك مجاناً.
+تذكر دائماً أن البقاء والاستمرارية في سوق الفوركس هي الهدف الأسمى، والوسيلة الوحيدة لتحقيق ذلك هي الانضباط التام وتطبيق مبادئ اداره مخاطر فوركس الذهب باحترافية وسهولة تامة لضمان الأمان والنمو المستمر لمحفظتك المالية.`,
+                    contentEn: `Gold (XAUUSD) acts as a powerful magnet for traders in financial markets. Known as a supreme safe haven throughout history, it also behaves as an extremely volatile and high-risk trading asset. This is why Forex Gold Risk Management is the ultimate shield separating professional traders from emotional amateurs. In this comprehensive 2026 guide, we outline the solid rules of preserving your equity while riding gold market waves.
+
+Understanding Gold Volatility (XAUUSD):
+To establish a rigid system of Forex Gold Risk Management, you must analyze why gold operates differently from traditional currencies:
+- High Geopolitical Sensitivity: Federal Reserve decisions and global events push gold prices hundreds of pips in a matter of seconds.
+- Market Gaps & Slippages: Gold has a higher tendency to create price gaps during weekly openings and major data releases.
+- Heavy Institutional Algorithm Action: Modern institutional AI systems control gold liquidity, making correction trends deeper.
+
+Core Principles of Forex Gold Risk Management:
+
+1. The 1% Asset Allocation Rule
+Never risk more than 1% to 2% of your total account balance on a single gold trade. If your account holds $10,000, your maximum allowed loss per trade must be strictly capped at $100. This ensures longevity under difficult market cycles.
+
+2. Precision Position Sizing (Lot Computation)
+Do not open trades randomly. Computing the correct lot size is crucial because gold pip value calculations differ significantly from currency pairs. Use our live interactive risk sizing calculator on DkoraFX to automatically obtain the exact lot size according to your preferred risk criteria.
+
+3. Uncompromised Stop Loss Strategy
+Always set a physical Stop Loss order directly in the platform before opening the trade. Never move your stop loss further away to accommodate losses, and avoid putting stops too tight to prevent execution from random spreads.
+
+Summary and Best Practices for 2026:
+To secure profitable yields in 2026 gold trading:
+- Pre-plan your entry, target, and stop loss.
+- Always run calculations using the DkoraFX Risk Calculator.
+- Keep your emotions in check, avoiding FOMO and revenge trading.
+- Remember, survival is the main goal, and proper Forex Gold Risk Management is the only path to it.`
+                  },
+                  {
                     id: "meme-coins",
                     titleAr: "مستقبل الاستثمار في \"ميمز كوينز\" وكيفية اقتناص الفرص بأمان",
                     titleEn: "The Future of Meme Coins Investment & How to Safely Seize Opportunities",
@@ -2135,6 +2218,132 @@ You buy a currency expecting it to appreciate, or sell it expecting it to deprec
                     <div className="text-sm text-slate-600 dark:text-neutral-300 leading-relaxed text-justify whitespace-pre-line space-y-4">
                       {lang === "ar" ? art.contentAr : art.contentEn}
                     </div>
+
+                    {/* Interactive Internal Links Block */}
+                    <div className="mt-10 pt-8 border-t border-slate-200 dark:border-[#1a2436] space-y-6">
+                      <div className="flex items-center gap-2">
+                        <Compass className="w-5 h-5 text-amber-500 animate-pulse" />
+                        <h4 className="font-extrabold text-base text-slate-900 dark:text-white">
+                          {lang === "ar" ? "📌 أدوات وتوصيات داخلية ذات صلة" : "📌 Related Internal Tools & Signals"}
+                        </h4>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {/* Link to Risk & Lot Calculator */}
+                        <div 
+                          onClick={() => {
+                            navigateTo("home");
+                            setTimeout(() => {
+                              const el = document.getElementById("risk-calculator-widget");
+                              if (el) {
+                                el.scrollIntoView({ behavior: "smooth", block: "center" });
+                                el.classList.add("ring-4", "ring-amber-500", "ring-offset-2", "dark:ring-offset-slate-900");
+                                setTimeout(() => {
+                                  el.classList.remove("ring-4", "ring-amber-500", "ring-offset-2", "dark:ring-offset-slate-900");
+                                }, 3000);
+                              }
+                            }, 300);
+                          }}
+                          className="bg-slate-50 dark:bg-[#141f32]/40 hover:bg-slate-100 dark:hover:bg-[#1a2942] border border-slate-200/60 dark:border-[#1e2e4a] p-4 rounded-2xl cursor-pointer transition-all hover:scale-[1.02] flex items-start gap-3 group"
+                        >
+                          <div className="bg-amber-500/10 text-amber-500 p-2.5 rounded-xl group-hover:bg-amber-500 group-hover:text-black transition shrink-0">
+                            <Calculator className="w-5 h-5" />
+                          </div>
+                          <div className="space-y-1">
+                            <span className="font-bold text-sm block group-hover:text-amber-500 transition">
+                              {lang === "ar" ? "حاسبة اللوت وإدارة المخاطر" : "Risk & Lot Size Calculator"}
+                            </span>
+                            <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed">
+                              {lang === "ar" 
+                                ? "طبق القواعد الحسابية واللوت المقترح بدقة لحماية محفظتك من التسييل."
+                                : "Apply precise lot sizing formulas to secure your assets against margin calls."}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Link to Live Signals with search filter */}
+                        <div 
+                          onClick={() => {
+                            const query = art.id === "gold-risk-management" ? "XAUUSD" : art.id === "meme-coins" ? "BTC" : "";
+                            setSearchQuery(query);
+                            navigateTo("home");
+                            setTimeout(() => {
+                              const el = document.getElementById("live-signals-board");
+                              if (el) {
+                                el.scrollIntoView({ behavior: "smooth", block: "start" });
+                              }
+                            }, 300);
+                          }}
+                          className="bg-slate-50 dark:bg-[#141f32]/40 hover:bg-slate-100 dark:hover:bg-[#1a2942] border border-slate-200/60 dark:border-[#1e2e4a] p-4 rounded-2xl cursor-pointer transition-all hover:scale-[1.02] flex items-start gap-3 group"
+                        >
+                          <div className="bg-amber-500/10 text-amber-500 p-2.5 rounded-xl group-hover:bg-amber-500 group-hover:text-black transition shrink-0">
+                            <TrendingUp className="w-5 h-5" />
+                          </div>
+                          <div className="space-y-1">
+                            <span className="font-bold text-sm block group-hover:text-amber-500 transition">
+                              {lang === "ar" ? "قناة التوصيات الحية المباشرة" : "Live Trading Signals Feed"}
+                            </span>
+                            <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed">
+                              {lang === "ar" 
+                                ? `عرض صفقات ${art.id === "gold-risk-management" ? "الذهب" : art.id === "meme-coins" ? "العملات الرقمية" : "الفوركس"} النشطة فوراً.`
+                                : `Browse active ${art.id === "gold-risk-management" ? "Gold" : art.id === "meme-coins" ? "Crypto" : "Forex"} recommended trades now.`}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Link to Market News */}
+                        <div 
+                          onClick={() => {
+                            navigateTo("news");
+                          }}
+                          className="bg-slate-50 dark:bg-[#141f32]/40 hover:bg-slate-100 dark:hover:bg-[#1a2942] border border-slate-200/60 dark:border-[#1e2e4a] p-4 rounded-2xl cursor-pointer transition-all hover:scale-[1.02] flex items-start gap-3 group"
+                        >
+                          <div className="bg-amber-500/10 text-amber-500 p-2.5 rounded-xl group-hover:bg-amber-500 group-hover:text-black transition shrink-0">
+                            <FileText className="w-5 h-5" />
+                          </div>
+                          <div className="space-y-1">
+                            <span className="font-bold text-sm block group-hover:text-amber-500 transition">
+                              {lang === "ar" ? "أخبار وتحليلات الأسواق الفورية" : "Live Market News & Feed"}
+                            </span>
+                            <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed">
+                              {lang === "ar" 
+                                ? "تابع تقارير التضخم وبيانات الفائدة اللحظية وتأثيرها على الأسعار."
+                                : "Track real-time inflation indicators and central bank policy news feeds."}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Link to next suggested lesson */}
+                        {(() => {
+                          const nextLesson = art.id === "gold-risk-management" 
+                            ? { id: "meme-coins", titleAr: "مستقبل عملات الميمز", titleEn: "The Future of Meme Coins" }
+                            : art.id === "meme-coins" 
+                            ? { id: "intro-forex", titleAr: "أساسيات تداول الفوركس", titleEn: "Introduction to Forex Trading" }
+                            : { id: "gold-risk-management", titleAr: "دليل إدارة مخاطر الذهب", titleEn: "Gold Risk Management Guide" };
+
+                          return (
+                            <div 
+                              onClick={() => openSchoolArticle(nextLesson.id)}
+                              className="bg-slate-50 dark:bg-[#141f32]/40 hover:bg-slate-100 dark:hover:bg-[#1a2942] border border-slate-200/60 dark:border-[#1e2e4a] p-4 rounded-2xl cursor-pointer transition-all hover:scale-[1.02] flex items-start gap-3 group"
+                            >
+                              <div className="bg-amber-500/10 text-amber-500 p-2.5 rounded-xl group-hover:bg-amber-500 group-hover:text-black transition shrink-0">
+                                <BookOpen className="w-5 h-5" />
+                              </div>
+                              <div className="space-y-1">
+                                <span className="font-bold text-sm block group-hover:text-amber-500 transition">
+                                  {lang === "ar" ? "الدرس الأكاديمي التالي" : "Next Recommended Lesson"}
+                                </span>
+                                <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed">
+                                  {lang === "ar" 
+                                    ? `انتقل فوراً لقراءة: "${nextLesson.titleAr}".`
+                                    : `Read next: "${nextLesson.titleEn}".`}
+                                </p>
+                              </div>
+                            </div>
+                          );
+                        })()}
+                      </div>
+                    </div>
                   </div>
                 );
               })()
@@ -2174,6 +2383,43 @@ You buy a currency expecting it to appreciate, or sell it expecting it to deprec
                     <div className="flex justify-between items-center text-xs font-black text-amber-500 pt-2 border-t border-slate-100 dark:border-[#1a2436]">
                       <span>{lang === "ar" ? "ابدأ الدرس الآن" : "Start Lesson Now"}</span>
                       <ArrowRight className={`w-4 h-4 ${lang === "ar" ? "rotate-180" : ""}`} />
+                    </div>
+                  </div>
+                </div>
+
+                 {/* Premium Gold Risk Management Card */}
+                <div 
+                  onClick={() => setSelectedSchoolArticleId("gold-risk-management")}
+                  className="bg-white dark:bg-[#0c1322] border border-amber-500/20 hover:border-amber-500 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col justify-between"
+                >
+                  <div className="h-44 bg-[#141f32] relative overflow-hidden">
+                    <LazyImage 
+                      src="/src/assets/images/gold_forex_risk_management_1787538156014.jpg" 
+                      alt="Gold risk management lesson" 
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-3 right-3 bg-rose-500 text-white px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">
+                      {lang === "ar" ? "🔥 مقال متميز" : "🔥 Featured Post"}
+                    </div>
+                  </div>
+                  <div className="p-6 flex flex-col justify-between space-y-4 flex-1">
+                    <div className="space-y-2">
+                      <span className="text-[10px] font-black text-rose-500 uppercase tracking-widest block">
+                        {lang === "ar" ? "إدارة مخاطر فوركس الذهب" : "GOLD RISK MANAGEMENT"}
+                      </span>
+                      <h3 className="text-lg font-black leading-snug text-slate-900 dark:text-white line-clamp-2">
+                        {lang === "ar" ? "دليل الاحتراف: اداره مخاطر فوركس الذهب لعام 2026 وحماية رأس المال" : "Professional Guide: Forex Gold Risk Management in 2026"}
+                      </h3>
+                      <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed line-clamp-3 text-justify">
+                        {lang === "ar" 
+                          ? "دليلك المتكامل والحصري لعام 2026 حول أسرار اداره مخاطر فوركس الذهب ومعدلات اللوت المقترحة لتفادي انعكاسات الأسعار وتداول الذهب بثقة تامة."
+                          : "Your ultimate guide on mastering Gold risk exposures, lot computation formulas, and capital preservation methods."}
+                      </p>
+                    </div>
+                    <div className="flex justify-between items-center text-xs font-black text-amber-500 pt-3 border-t border-slate-100 dark:border-[#1a2436]/60">
+                      <span>{lang === "ar" ? "ابدأ قراءة المقال" : "Read Full Article"}</span>
+                      <ArrowRight className={`w-3.5 h-3.5 ${lang === "ar" ? "rotate-180" : ""}`} />
                     </div>
                   </div>
                 </div>
@@ -2301,6 +2547,57 @@ You buy a currency expecting it to appreciate, or sell it expecting it to deprec
                     ))}
                   </ul>
                 )}
+              </div>
+
+              {/* Box 3: Academy Lessons Index */}
+              <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-6 rounded-3xl space-y-4 shadow-sm md:col-span-2">
+                <h3 className="font-extrabold text-base text-amber-500 dark:text-amber-400 flex items-center gap-2 border-b border-slate-100 dark:border-[#1a2436] pb-3">
+                  <BookOpen className="w-5 h-5" />
+                  <span>{lang === "ar" ? "دروس ومقالات الأكاديمية التعليمية" : "Educational Academy Lessons"}</span>
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {[
+                    {
+                      id: "gold-risk-management",
+                      titleAr: "إدارة مخاطر تداول الذهب لعام 2026",
+                      titleEn: "Forex Gold Risk Management in 2026",
+                      descAr: "قاعدة الـ 1% ومعادلات حساب حجم اللوت لتداول الذهب بأمان.",
+                      descEn: "1% rules and position lot calculation formulas for gold."
+                    },
+                    {
+                      id: "meme-coins",
+                      titleAr: "مستقبل الاستثمار في عملات الميمز",
+                      titleEn: "The Future of Meme Coins",
+                      descAr: "كيفية تحليل واقتناص الفرص في العملات الرقمية الواعدة بأمان.",
+                      descEn: "How to safely evaluate and seize opportunities in memes."
+                    },
+                    {
+                      id: "intro-forex",
+                      titleAr: "أساسيات تداول العملات للمبتدئين",
+                      titleEn: "Introduction to Forex Trading",
+                      descAr: "شرح النقاط (Pips)، الرافعة المالية، والسبريد بأسلوب مبسط.",
+                      descEn: "Clean explanation of pips, leverage margins and spreads."
+                    }
+                  ].map((lesson) => (
+                    <div
+                      key={lesson.id}
+                      onClick={() => openSchoolArticle(lesson.id)}
+                      className="bg-slate-50 dark:bg-[#141f32]/40 hover:bg-slate-100 dark:hover:bg-[#1a2942] border border-slate-200/60 dark:border-[#1e2e4a] p-4 rounded-2xl cursor-pointer transition-all hover:scale-[1.02] flex flex-col justify-between group"
+                    >
+                      <div className="space-y-1.5 text-right rtl:text-right ltr:text-left">
+                        <span className="font-bold text-sm text-slate-800 dark:text-white group-hover:text-amber-500 transition block">
+                          {lang === "ar" ? lesson.titleAr : lesson.titleEn}
+                        </span>
+                        <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed line-clamp-2">
+                          {lang === "ar" ? lesson.descAr : lesson.descEn}
+                        </p>
+                      </div>
+                      <span className="text-[10px] text-amber-500 font-black block pt-3 border-t border-slate-100 dark:border-[#1a2436]/60 mt-3 text-right rtl:text-right ltr:text-left">
+                        {lang === "ar" ? "قراءة الدرس المباشر ←" : "Read Lesson Now ←"}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
             </div>
@@ -2564,6 +2861,152 @@ You buy a currency expecting it to appreciate, or sell it expecting it to deprec
                     __html: generatedRssContent || activeRssArticle.content || activeRssArticle.description || ""
                   }}
                 />
+              )}
+
+              {/* Context-aware Internal Linking Banner */}
+              {activeRssArticle && (
+                <div className="mt-8 pt-6 border-t border-slate-200 dark:border-[#1a2436] space-y-4">
+                  <span className="text-xs font-black text-amber-500 uppercase tracking-wider block">
+                    {lang === "ar" ? "💡 أدوات وتوصيات داخلية مقترحة" : "💡 Suggested Tools & Lessons"}
+                  </span>
+                  
+                  {(() => {
+                    const titleText = (activeRssArticle.title || "").toLowerCase();
+                    const contentText = (activeRssArticle.content || "").toLowerCase();
+                    const isGold = titleText.includes("ذهب") || titleText.includes("gold") || titleText.includes("xauusd") || contentText.includes("ذهب") || contentText.includes("gold");
+                    const isCrypto = titleText.includes("بيتكوين") || titleText.includes("bitcoin") || titleText.includes("ميم") || titleText.includes("meme") || titleText.includes("crypto") || contentText.includes("bitcoin") || contentText.includes("meme");
+
+                    if (isGold) {
+                      return (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                          <button
+                            onClick={() => {
+                              setActiveRssArticle(null);
+                              openSchoolArticle("gold-risk-management");
+                            }}
+                            className="bg-slate-50 dark:bg-[#141f32]/40 hover:bg-slate-100 dark:hover:bg-[#1a2942] border border-slate-200/60 dark:border-[#1e2e4a] rounded-2xl p-4 text-right transition flex items-center gap-3 cursor-pointer font-extrabold text-xs"
+                          >
+                            <BookOpen className="w-5 h-5 shrink-0 text-amber-500" />
+                            <div className="space-y-0.5 text-right">
+                              <span className="block text-slate-800 dark:text-white font-black text-sm">
+                                {lang === "ar" ? "درس إدارة مخاطر الذهب" : "Gold Risk Management Lesson"}
+                              </span>
+                              <span className="text-slate-500 dark:text-neutral-400 font-medium block">{lang === "ar" ? "تعلم كيف تتداول الذهب بأمان وتفادي الانزلاقات السعرية." : "Master XAUUSD volatility control formulas."}</span>
+                            </div>
+                          </button>
+
+                          <button
+                            onClick={() => {
+                              setActiveRssArticle(null);
+                              setSearchQuery("XAUUSD");
+                              navigateTo("home");
+                              setTimeout(() => {
+                                const el = document.getElementById("live-signals-board");
+                                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                              }, 300);
+                            }}
+                            className="bg-slate-50 dark:bg-[#141f32]/40 hover:bg-slate-100 dark:hover:bg-[#1a2942] border border-slate-200/60 dark:border-[#1e2e4a] rounded-2xl p-4 text-right transition flex items-center gap-3 cursor-pointer font-extrabold text-xs"
+                          >
+                            <TrendingUp className="w-5 h-5 shrink-0 text-amber-500" />
+                            <div className="space-y-0.5 text-right">
+                              <span className="block text-slate-800 dark:text-white font-black text-sm">
+                                {lang === "ar" ? "توصيات الذهب المباشرة" : "Live Gold Recommendations"}
+                              </span>
+                              <span className="text-slate-500 dark:text-neutral-400 font-medium block">{lang === "ar" ? "تابع صفقات وتحليلات الذهب الفنية الفورية الآن." : "Browse all active XAUUSD target parameters."}</span>
+                            </div>
+                          </button>
+                        </div>
+                      );
+                    } else if (isCrypto) {
+                      return (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                          <button
+                            onClick={() => {
+                              setActiveRssArticle(null);
+                              openSchoolArticle("meme-coins");
+                            }}
+                            className="bg-slate-50 dark:bg-[#141f32]/40 hover:bg-slate-100 dark:hover:bg-[#1a2942] border border-slate-200/60 dark:border-[#1e2e4a] rounded-2xl p-4 text-right transition flex items-center gap-3 cursor-pointer font-extrabold text-xs"
+                          >
+                            <BookOpen className="w-5 h-5 shrink-0 text-amber-500" />
+                            <div className="space-y-0.5 text-right">
+                              <span className="block text-slate-800 dark:text-white font-black text-sm">
+                                {lang === "ar" ? "درس الاستثمار في عملات الميم" : "Meme Coins Investment"}
+                              </span>
+                              <span className="text-slate-500 dark:text-neutral-400 font-medium block">{lang === "ar" ? "كيف تقتنص عملات الميم وتتجنب عمليات سحب السيولة." : "How to securely spot viral coins."}</span>
+                            </div>
+                          </button>
+
+                          <button
+                            onClick={() => {
+                              setActiveRssArticle(null);
+                              setSearchQuery("BTC");
+                              navigateTo("home");
+                              setTimeout(() => {
+                                const el = document.getElementById("live-signals-board");
+                                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                              }, 300);
+                            }}
+                            className="bg-slate-50 dark:bg-[#141f32]/40 hover:bg-slate-100 dark:hover:bg-[#1a2942] border border-slate-200/60 dark:border-[#1e2e4a] rounded-2xl p-4 text-right transition flex items-center gap-3 cursor-pointer font-extrabold text-xs"
+                          >
+                            <TrendingUp className="w-5 h-5 shrink-0 text-amber-500" />
+                            <div className="space-y-0.5 text-right">
+                              <span className="block text-slate-800 dark:text-white font-black text-sm">
+                                {lang === "ar" ? "توصيات الكريبتو الحية" : "Live Crypto Recommendations"}
+                              </span>
+                              <span className="text-slate-500 dark:text-neutral-400 font-medium block">{lang === "ar" ? "تابع صفقات العملات الرقمية المباشرة فور صدورها." : "Monitor real-time coin target allocations."}</span>
+                            </div>
+                          </button>
+                        </div>
+                      );
+                    } else {
+                      return (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                          <button
+                            onClick={() => {
+                              setActiveRssArticle(null);
+                              openSchoolArticle("intro-forex");
+                            }}
+                            className="bg-slate-50 dark:bg-[#141f32]/40 hover:bg-slate-100 dark:hover:bg-[#1a2942] border border-slate-200/60 dark:border-[#1e2e4a] rounded-2xl p-4 text-right transition flex items-center gap-3 cursor-pointer font-extrabold text-xs"
+                          >
+                            <BookOpen className="w-5 h-5 shrink-0 text-amber-500" />
+                            <div className="space-y-0.5 text-right">
+                              <span className="block text-slate-800 dark:text-white font-black text-sm">
+                                {lang === "ar" ? "أساسيات الفوركس للمبتدئين" : "Introduction to Forex"}
+                              </span>
+                              <span className="text-slate-500 dark:text-neutral-400 font-medium block">{lang === "ar" ? "تأسيس كامل لفهم النقاط والرافعة المالية والسبريد." : "Understand leverage, pips, and spreads cleanly."}</span>
+                            </div>
+                          </button>
+
+                          <button
+                            onClick={() => {
+                              setActiveRssArticle(null);
+                              navigateTo("home");
+                              setTimeout(() => {
+                                const el = document.getElementById("risk-calculator-widget");
+                                if (el) {
+                                  el.scrollIntoView({ behavior: "smooth", block: "center" });
+                                  el.classList.add("ring-4", "ring-amber-500", "ring-offset-2", "dark:ring-offset-slate-900");
+                                  setTimeout(() => {
+                                    el.classList.remove("ring-4", "ring-amber-500", "ring-offset-2", "dark:ring-offset-slate-900");
+                                  }, 3000);
+                                }
+                              }, 300);
+                            }}
+                            className="bg-slate-50 dark:bg-[#141f32]/40 hover:bg-slate-100 dark:hover:bg-[#1a2942] border border-slate-200/60 dark:border-[#1e2e4a] rounded-2xl p-4 text-right transition flex items-center gap-3 cursor-pointer font-extrabold text-xs"
+                          >
+                            <Calculator className="w-5 h-5 shrink-0 text-amber-500" />
+                            <div className="space-y-0.5 text-right">
+                              <span className="block text-slate-800 dark:text-white font-black text-sm">
+                                {lang === "ar" ? "حاسبة إدارة المخاطر" : "Interactive Risk Calculator"}
+                              </span>
+                              <span className="text-slate-500 dark:text-neutral-400 font-medium block">{lang === "ar" ? "احسب حجم اللوت المقترح لأي صفقة حية فوراً." : "Calculate ideal standard lot size limits."}</span>
+                            </div>
+                          </button>
+                        </div>
+                      );
+                    }
+                  })()}
+                </div>
               )}
             </div>
 

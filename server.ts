@@ -178,9 +178,17 @@ function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
           ? "انفجار تداولات عملات الميم في عام 2026: دليل الأمان والربح | ديكوراFX"
           : "The 2026 Meme Coins Explosion: Safety & Profit Guide | DecouFX";
         description = lang === "ar"
-          ? "شهدت أسواق الكريبتو انفجاراً حقيقياً في تداول عملات الميم. تعرف على كيفية استغلال هذه الموجة الاستثمارية بأمان وفهم تحولات السوق الجديدة."
+          ? "شهدت أسواق الكريبتو انفجاراً حقيقياً في تداول عملات الميم. تعرف على كيفية استغلال هذه موجة الاستثمارية بأمان وفهم تحولات السوق الجديدة."
           : "Crypto markets witnessed a real explosion in meme coins trading. Learn how to safely leverage this investment wave and understand new market shifts.";
         image = `${baseUrl}/meme_coins_2026_1787419226241.jpg`;
+      } else if (subId === "news-gold-risk-management") {
+        title = lang === "ar"
+          ? "دليل الاحتراف: اداره مخاطر فوركس الذهب لعام 2026 وحماية رأس المال | ديكوراFX"
+          : "Professional Guide: Forex Gold Risk Management in 2026 | DecouFX";
+        description = lang === "ar"
+          ? "نظرة عميقة ومفصلة حول أسرار اداره مخاطر فوركس الذهب لحماية محفظتك من تذبذبات الذهب العنيفة باستخدام أهم الاستراتيجيات واللوت لعام 2026."
+          : "Ultimate 2026 guide on Forex Gold Risk Management, lot sizing calculations, and drawdown mitigation for professional traders.";
+        image = `${baseUrl}/src/assets/images/gold_forex_risk_management_1787538156014.jpg`;
       } else {
         title = lang === "ar"
           ? `تفاصيل المقال والتحليل الفني والأساسي | أخبار ديكوراFX`
@@ -217,6 +225,14 @@ function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
           ? "درس تعليمي شامل يشرح تحول عملات الميم إلى فئات أصول بمليارات الدولارات وكيفية تداولها وتجنب مخاطر الاحتيال الرقمي."
           : "A comprehensive lesson explaining the evolution of meme coins into multi-billion dollar assets and how to trade them safely while avoiding scams.";
         image = `${baseUrl}/meme_coins_2026_1787419226241.jpg`;
+      } else if (subId === "gold-risk-management") {
+        title = lang === "ar"
+          ? "اداره مخاطر فوركس الذهب لعام 2026 وحماية رأس المال | مدرسة ديكوراFX"
+          : "Forex Gold Risk Management 2026 Guide | DecouFX Academy";
+        description = lang === "ar"
+          ? "الدليل الحصري والشامل للاحتراف في اداره مخاطر فوركس الذهب ومعدلات اللوت المقترحة للحد من الانعكاس السعري وتأمين الحساب."
+          : "Ultimate 2026 guide on Forex Gold Risk Management, lot sizing calculations, and drawdown mitigation for professional traders.";
+        image = `${baseUrl}/src/assets/images/gold_forex_risk_management_1787538156014.jpg`;
       } else {
         title = lang === "ar"
           ? "درس تعليمي مالي متقدم | مدرسة ديكوراFX للتداول"
@@ -1171,8 +1187,10 @@ Sitemap: ${protocol}://${host}/sitemap.xml
     const rawUrls: Array<{ loc: string; lastmod: string; changefreq: string; priority: string }> = [
       { loc: `${baseUrl}/`, lastmod: currentDate, changefreq: "daily", priority: "1.0" },
       { loc: `${baseUrl}/news`, lastmod: currentDate, changefreq: "daily", priority: "0.9" },
+      { loc: `${baseUrl}/news/news-gold-risk-management`, lastmod: currentDate, changefreq: "weekly", priority: "0.90" },
       { loc: `${baseUrl}/news/fallback-meme-coins`, lastmod: currentDate, changefreq: "weekly", priority: "0.85" },
       { loc: `${baseUrl}/school`, lastmod: currentDate, changefreq: "weekly", priority: "0.90" },
+      { loc: `${baseUrl}/school/gold-risk-management`, lastmod: currentDate, changefreq: "weekly", priority: "0.95" },
       { loc: `${baseUrl}/school/intro-forex`, lastmod: currentDate, changefreq: "monthly", priority: "0.80" },
       { loc: `${baseUrl}/school/meme-coins-2026`, lastmod: currentDate, changefreq: "monthly", priority: "0.80" },
       { loc: `${baseUrl}/sitemap`, lastmod: currentDate, changefreq: "always", priority: "0.70" },

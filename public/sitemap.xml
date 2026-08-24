@@ -3,38 +3,86 @@
   <!-- Core Static Forex Pages for dkora.online -->
   <url>
     <loc>https://dkora.online/</loc>
-    <lastmod>2026-08-20</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
+  
+  <!-- Newly Added School Articles Prioritized -->
   <url>
-    <loc>https://dkora.online/?page=news</loc>
-    <lastmod>2026-08-20</lastmod>
+    <loc>https://dkora.online/school/gold-risk-management</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.98</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/school/intro-forex</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/school/meme-coins</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Newly Added News Articles -->
+  <url>
+    <loc>https://dkora.online/news/news-gold-risk-management</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/news/news-1</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/news/news-2</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/news/news-3</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Core Main Sections -->
+  <url>
+    <loc>https://dkora.online/news</loc>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://dkora.online/?page=calendar</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>daily</changefreq>
+    <loc>https://dkora.online/school</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://dkora.online/?page=privacy</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://dkora.online/?page=terms</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://dkora.online/?page=disclaimer</loc>
-    <lastmod>2026-08-20</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://dkora.online/sitemap</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>always</changefreq>
     <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/privacy</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://dkora.online/terms</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
   </url>
 </urlset>

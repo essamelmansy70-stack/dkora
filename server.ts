@@ -8,6 +8,7 @@ import compression from "compression";
 import * as cheerio from "cheerio";
 import { CATEGORIES, PRODUCTS, ARTICLES, DEALS, BUYING_GUIDES } from "./src/data/mockData";
 import { createProductSlug, createProductUrl, findProductByQueryParam } from "./src/utils/seo";
+import { initialNewsArticles } from "./src/data/newsAndCalendar";
 
 // Load environment variables
 dotenv.config();
@@ -1184,24 +1185,47 @@ Sitemap: ${protocol}://${host}/sitemap.xml
     const baseUrl = `${protocol}://${host}`;
     const currentDate = new Date().toISOString().split("T")[0];
 
+    const dynamicNewsUrls = initialNewsArticles.map((art: any) => ({
+      loc: `${baseUrl}/news/${art.id}`,
+      lastmod: currentDate,
+      changefreq: "daily",
+      priority: "0.95"
+    }));
+
+    const dynamicSchoolUrls = [
+      { id: "gold-risk-management", priority: "0.98", changefreq: "daily" },
+      { id: "intro-forex", priority: "0.90", changefreq: "weekly" },
+      { id: "meme-coins", priority: "0.90", changefreq: "weekly" }
+    ].map((sch: any) => ({
+      loc: `${baseUrl}/school/${sch.id}`,
+      lastmod: currentDate,
+      changefreq: sch.changefreq,
+      priority: sch.priority
+    }));
+
+    const dynamicSeoArticleUrls = ARTICLES_SEO.map((art: any) => ({
+      loc: `${baseUrl}/news/${art.slug}`,
+      lastmod: currentDate,
+      changefreq: "weekly",
+      priority: "0.85"
+    }));
+
     const rawUrls: Array<{ loc: string; lastmod: string; changefreq: string; priority: string }> = [
-      { loc: `${baseUrl}/`, lastmod: currentDate, changefreq: "daily", priority: "1.0" },
-      { loc: `${baseUrl}/news`, lastmod: currentDate, changefreq: "daily", priority: "0.9" },
-      { loc: `${baseUrl}/news/news-gold-risk-management`, lastmod: currentDate, changefreq: "weekly", priority: "0.90" },
-      { loc: `${baseUrl}/news/fallback-meme-coins`, lastmod: currentDate, changefreq: "weekly", priority: "0.85" },
-      { loc: `${baseUrl}/school`, lastmod: currentDate, changefreq: "weekly", priority: "0.90" },
-      { loc: `${baseUrl}/school/gold-risk-management`, lastmod: currentDate, changefreq: "weekly", priority: "0.95" },
-      { loc: `${baseUrl}/school/intro-forex`, lastmod: currentDate, changefreq: "monthly", priority: "0.80" },
-      { loc: `${baseUrl}/school/meme-coins-2026`, lastmod: currentDate, changefreq: "monthly", priority: "0.80" },
-      { loc: `${baseUrl}/sitemap`, lastmod: currentDate, changefreq: "always", priority: "0.70" },
-      { loc: `${baseUrl}/privacy`, lastmod: currentDate, changefreq: "monthly", priority: "0.50" },
-      { loc: `${baseUrl}/terms`, lastmod: currentDate, changefreq: "monthly", priority: "0.50" },
+      { loc: `${baseUrl}/`, lastmod: currentDate, changefreq: "always", priority: "1.0" },
+      ...dynamicSchoolUrls,
+      ...dynamicNewsUrls,
       ...getStoredSignals().map((sig: any) => ({
         loc: `${baseUrl}/signal/${sig.id}`,
         lastmod: currentDate,
-        changefreq: "daily",
-        priority: "0.85"
-      }))
+        changefreq: "always",
+        priority: "0.90"
+      })),
+      ...dynamicSeoArticleUrls,
+      { loc: `${baseUrl}/news`, lastmod: currentDate, changefreq: "daily", priority: "0.90" },
+      { loc: `${baseUrl}/school`, lastmod: currentDate, changefreq: "daily", priority: "0.90" },
+      { loc: `${baseUrl}/sitemap`, lastmod: currentDate, changefreq: "always", priority: "0.70" },
+      { loc: `${baseUrl}/privacy`, lastmod: currentDate, changefreq: "monthly", priority: "0.50" },
+      { loc: `${baseUrl}/terms`, lastmod: currentDate, changefreq: "monthly", priority: "0.50" }
     ];
 
     // Remove duplicates

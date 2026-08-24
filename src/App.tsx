@@ -1518,49 +1518,9 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* 2. Trading Sentiment Indicator */}
-                <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-6 rounded-3xl shadow-sm space-y-4">
-                  <h3 className="font-extrabold text-slate-900 dark:text-white text-base flex items-center gap-2 border-b border-slate-100 dark:border-[#1a2436] pb-3">
-                    <TrendingUp className="w-5 h-5 text-emerald-500" />
-                    <span>{lang === "ar" ? "تحليل زخم السوق العالمي" : "Global Sentiment Momentum"}</span>
-                  </h3>
-                  
-                  <div className="space-y-3">
-                    <div>
-                      <div className="flex justify-between text-xs text-slate-500 dark:text-neutral-400 mb-1.5 font-semibold">
-                        <span>{lang === "ar" ? "شراء الثيران (Bullish) - 78%" : "Bullish Sentiment - 78%"}</span>
-                        <span>{lang === "ar" ? "بيع الدببة (Bearish) - 22%" : "Bearish Sentiment - 22%"}</span>
-                      </div>
-                      <div className="h-2.5 w-full bg-slate-100 dark:bg-[#141f32] rounded-full overflow-hidden flex">
-                        <div className="bg-emerald-500 h-full" style={{ width: "78%" }} />
-                        <div className="bg-rose-500 h-full" style={{ width: "22%" }} />
-                      </div>
-                    </div>
 
-                    <div className="p-3.5 bg-amber-500/5 dark:bg-[#141f32]/40 rounded-xl space-y-1.5">
-                      <span className="text-xs text-amber-600 dark:text-amber-400 font-extrabold block">💡 {lang === "ar" ? "نصيحة خبراء ديكواFX:" : "DecouFX Expert Advice:"}</span>
-                      <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed text-justify">
-                        {lang === "ar" 
-                          ? "يتداول زوج الدولار ين والذهب بالقرب من مستويات فنية حرجة. نوصي بتجنب صفقات الانعكاس المعاكسة والتركيز على صفقات الاتجاه اليومي الصاعد مع حماية الأرباح دائماً."
-                          : "Gold and USDJPY trade near historic psychological levels. Avoid raw counter-trend executions. Focus on daily trend breakouts with strict trailing stops."}
-                      </p>
-                    </div>
-                  </div>
-                </div>
 
-                {/* 3. Fast Static Links directory for SEO */}
-                <div className="bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-[#1a2436] p-6 rounded-3xl shadow-sm space-y-3">
-                  <h3 className="font-extrabold text-slate-900 dark:text-white text-sm flex items-center gap-2 border-b border-slate-100 dark:border-[#1a2436] pb-3">
-                    <Compass className="w-4 h-4 text-amber-500" />
-                    <span>{lang === "ar" ? "أقسام الموقع السريعة" : "Quick Site Directories"}</span>
-                  </h3>
-                  <div className="grid grid-cols-2 gap-2 text-xs">
-                    <button onClick={() => navigateTo("home")} className="text-left rtl:text-right p-2 bg-slate-50 dark:bg-[#141f32] hover:bg-slate-100 dark:hover:bg-[#1a2942] rounded-lg transition font-semibold">{t.nav.home}</button>
-                    <button onClick={() => navigateTo("news")} className="text-left rtl:text-right p-2 bg-slate-50 dark:bg-[#141f32] hover:bg-slate-100 dark:hover:bg-[#1a2942] rounded-lg transition font-semibold">{t.nav.news}</button>
-                    <button onClick={() => navigateTo("calendar")} className="text-left rtl:text-right p-2 bg-slate-50 dark:bg-[#141f32] hover:bg-slate-100 dark:hover:bg-[#1a2942] rounded-lg transition font-semibold">{t.nav.calendar}</button>
-                    <button onClick={() => navigateTo("sitemap")} className="text-left rtl:text-right p-2 bg-slate-50 dark:bg-[#141f32] hover:bg-slate-100 dark:hover:bg-[#1a2942] rounded-lg transition font-semibold">{t.nav.sitemap}</button>
-                  </div>
-                </div>
+
 
               </div>
 

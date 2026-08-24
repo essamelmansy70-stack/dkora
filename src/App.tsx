@@ -108,51 +108,26 @@ interface LazyImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 
 const LazyImage: React.FC<LazyImageProps> = ({ src, alt, className = "", ...props }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
-  const imgRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsInView(true);
-            observer.disconnect();
-          }
-        });
-      },
-      {
-        rootMargin: "100px",
-      }
-    );
-
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
-    }
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  const [hasError, setHasError] = useState(false);
 
   return (
-    <div ref={imgRef} className={`relative overflow-hidden ${className}`}>
-      {(!isInView || !isLoaded) && (
+    <div className={`relative overflow-hidden ${className}`}>
+      {!isLoaded && !hasError && (
         <div className="absolute inset-0 bg-slate-200/50 dark:bg-slate-800/50 animate-pulse flex items-center justify-center">
           <div className="w-6 h-6 border-2 border-amber-500/20 border-t-amber-500 rounded-full animate-spin"></div>
         </div>
       )}
-      {isInView && (
-        <img
-          src={src}
-          alt={alt}
-          onLoad={() => setIsLoaded(true)}
-          className={`w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
-            isLoaded ? "opacity-100" : "opacity-0"
-          }`}
-          {...props}
-        />
-      )}
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        onLoad={() => setIsLoaded(true)}
+        onError={() => setHasError(true)}
+        className={`w-full h-full object-cover transition-opacity duration-300 ${
+          isLoaded ? "opacity-100" : "opacity-40"
+        }`}
+        {...props}
+      />
     </div>
   );
 };

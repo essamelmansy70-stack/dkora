@@ -102,7 +102,7 @@ To secure profitable yields in 2026 gold trading:
     category: "commodities",
     authorAr: "عصام المنسي - كبير محللي السلع",
     authorEn: "Essam El-Mansy - Senior Analyst",
-    image: "/src/assets/images/gold_forex_risk_management_1787538156014.jpg"
+    image: "/gold_forex_risk_management_1787538156014.jpg"
   },
   {
     id: "news-1",
@@ -116,7 +116,7 @@ To secure profitable yields in 2026 gold trading:
     category: "commodities",
     authorAr: "عصام المنسي - كبير محللي السلع",
     authorEn: "Essam El-Mansy - Senior Analyst",
-    image: "/1787237745892.png" // using existing high-quality image asset
+    image: "/gold_forex_risk_management_1787538156014.jpg"
   },
   {
     id: "news-2",

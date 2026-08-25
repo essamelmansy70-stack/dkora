@@ -27,6 +27,92 @@ export interface CalendarEvent {
 
 export const initialNewsArticles: NewsArticle[] = [
   {
+    id: "news-stop-loss-forex-2026",
+    titleAr: "ستوبل لوز فوركس: الدليل الشامل لعام 2026 لحماية حسابك من التسييل وتحقيق الأرباح",
+    titleEn: "Stop Loss Forex: The Ultimate 2026 Guide to Capital Protection and Profitability",
+    excerptAr: "تعلم أسرار تفعيل أمر ستوبل لوز فوركس الذكي وفقاً لأحدث معايير التداول لعام 2026 لحماية رأس مالك من تقلبات السوق العنيفة وتجنب الخسائر الفادحة.",
+    excerptEn: "Discover the hidden rules of setting a smart Stop Loss Forex order under 2026 market standards to fully secure your assets from abrupt slippages.",
+    contentAr: `في عالم التداول المالي المتقلب، يمثل الانضباط صمام الأمان الوحيد للمستمر والمحترف. وبالمقدمة من هذه الأدوات الرادعة للخسارة يبرز مصطلح "ستوبل لوز فوركس" كأهم ركيزة ميكانيكية وإستراتيجية يمتلكها المتداول لتجنب فقدان كامل أمواله في لمح البصر. إن الفارق الجوهري بين المتداول الذي يستمر لسنوات طويلة محققاً أرباحاً تراكمية مستدامة، وبين الهواة الذين يفقدون محافظهم المالية خلال الأسابيع الأولى من دخولهم السوق، يكمن مباشرة في مدى فهمهم وتطبيقهم الصارم لأمر ستوبل لوز فوركس (Stop Loss).
+
+في هذا المقال الشامل والمتوافق تماماً مع أحدث معايير السيو (SEO) لعام 2026، سنشرح بالتفصيل الدقيق كل ما يتعلق بأمر ستوبل لوز فوركس وكيفية توظيفه باحترافية كاملة لحماية وتنمية حسابك الاستثماري.
+
+أولاً: ما هو أمر ستوبل لوز فوركس (Stop Loss) وكيف يعمل؟
+أمر ستوبل لوز فوركس هو عبارة عن أمر معلق يتم إدخاله مسبقاً في منصة التداول (مثل ميتاتريدر أو سي تريدر) لتحديد نقطة سعرية معينة يخرج عندها المتداول تلقائياً من الصفقة بخسارة محددة ومدروسة سلفاً. الهدف الأساسي من ستوبل لوز فوركس هو وضع حد أقصى للمخاطرة المقبولة في كل صفقة؛ بحيث لو تحرك السوق بعكس توقعاتك، يتم إغلاق الصفقة آلياً دون الحاجة لتدخلك اليدوي ودون أن تقع ضحية للمشاعر العشوائية مثل الخوف أو الأمل الزائف في عودة السعر.
+
+على سبيل المثال، إذا قمت بشراء زوج اليورو دولار (EUR/USD) من سعر 1.1000 وتوقعت صعوده، ولكنك تدرك أن السوق قد يتحرك في الاتجاه المعاكس نتيجة لصدور أخبار اقتصادية مفاجئة، فإنك تقوم بوضع أمر ستوبل لوز فوركس عند مستوى 1.0960. هذا يعني أنك قد قبلت بمخاطرة قدرها 40 نقطة فقط. إذا هبط السعر ولامس 1.0960، ستغلق منصة التداول الصفقة فوراً وتنقذ حسابك من استمرار الهبوط الكارثي الذي قد يمتد لمئات النقاط.
+
+ثانياً: لماذا يعتبر عدم وضع ستوبل لوز فوركس انتحاراً مالياً في سوق العملات؟
+يتميز سوق العملات الأجنبية (الفوركس) بسيولته الضخمة التي تتجاوز 7 تريليونات دولار يومياً، وهو ما يجعله سوقاً سريع الحركة وشديد التقلب. إن الاعتماد على "المراقبة اليدوية" لإغلاق الصفقات الخاسرة هو أحد الأخطاء القاتلة الشائعة بين المبتدئين لعدة أسباب جوهرية:
+1. الانزلاقات السعرية الخاطفة: خلال فترات صدور البيانات الاقتصادية الكبرى (مثل تقرير التوظيف بغير القطاع الزراعي الأمريكي أو قرارات الفائدة للبنوك المركزية)، قد يتحرك السعر بمئات النقاط في أجزاء من الثانية. بدون وجود أمر ستوبل لوز فوركس مسبق ومثبت على خوادم الوسيط، لن تتمكن يدوياً من إغلاق الصفقة بالسرعة الكافية، مما يترتب عليه خسائر مضاعفة قد تنهي حسابك بالكامل.
+2. الفجوات السعرية الأسبوعية: يغلق سوق الفوركس يوم الجمعة ويفتتح مساء الأحد. خلال هذه العطلة، قد تحدث أحداث سياسية أو اقتصادية طارئة تؤدي إلى افتتاح السوق بفجوة سعرية ضخمة بعيدة عن سعر إغلاق الأسبوع الماضي. إن غياب ستوبل لوز فوركس يترك حسابك مكشوفاً تماماً لأي فجوات سلبية قاسية.
+3. تجميد المنصة أو انقطاع الاتصال: قد تواجه مشكلات فنية مفاجئة مثل انقطاع التيار الكهربائي، أو فقدان الاتصال بالإنترنت، أو عطل في المنصة. في مثل هذه الحالات، يعمل أمر ستوبل لوز فوركس كحارس شخصي مستقل يحمي أموالك حتى لو كنت غير متصل بالإنترنت تماماً.
+
+ثالثاً: استراتيجيات وضع ستوبل لوز فوركس باحترافية لعام 2026
+لا ينبغي أن يكون تحديد مستوى الستوب لوز عملية عشوائية أو مبنية على التخمين؛ بل يجب أن يستند إلى أسس تحليلية وفنية واضحة ومدروسة. إليك أهم الاستراتيجيات المعتمدة عالمياً في عام 2026:
+
+1. وقف الخسارة الفني (Technical Stop Loss):
+تعتمد هذه الطريقة على قراءة مستويات الدعم والمقاومة، أو خطوط الاتجاه، أو المتوسطات المتحركة (Moving Averages). في صفقات الشراء، يوضع أمر ستوبل لوز فوركس أسفل أقرب مستوى دعم فني قوي بمسافة كافية لتفادي التذبذبات العشوائية السعرية. أما في صفقات البيع، فيوضع الستوب أعلى مستوى المقاومة القوي مباشرة. هذه الاستراتيجية تعتبر الأكثر أماناً لأن السعر يحتاج لكسر حواجز فنية حقيقية للوصول إلى مستوى الستوب الخاص بك.
+
+2. وقف الخسارة بناءً على معدل التقلب (Volatility Stop Loss):
+تستخدم هذه الاستراتيجية مؤشرات قياس التقلب مثل مؤشر متوسط المدى الحقيقي (ATR - Average True Range). يساعدك مؤشر ATR على معرفة متوسط حركة الزوج خلال فترات زمنية معينة. بوضع أمر ستوبل لوز فوركس بمقدار يوازي (1.5x أو 2x) من قيمة ATR، تضمن أن الستوب لوز الخاص بك يتنفس بمساحة كافية تتماشى مع طبيعة تذبذبات الزوج المحددة دون أن يتم ضربه سريعاً نتيجة للحركات البسيطة العشوائية.
+
+3. وقف الخسارة الزمني (Time Stop Loss):
+تعد هذه الطريقة شائعة جداً بين متداولي العقود السريعة أو متداولي اليوم الواحد (Day Traders). تنص هذه الاستراتيجية على إغلاق الصفقة تلقائياً بعد مرور فترة زمنية محددة (مثل نهاية جلسة نيويورك أو قبل إغلاق السوق الأسبوعي) إذا لم تحقق الصفقة هدفها المطلوب أو لم تتحرك بالسرعة المتوقعة. تساهم هذه الطريقة في تحرير رأس المال وتقليل مخاطر الاحتفاظ بالصفقة أثناء فترات الخمول أو عطلات نهاية الأسبوع المليئة بالتقلبات المفاجئة.
+
+4. وقف الخسارة المتحرك (Trailing Stop Loss):
+أداة استثنائية تمكنك من حماية أرباحك أثناء تحرك السعر لصالح صفقتك. فمع تقدم السعر نحو الهدف، يتحرك أمر ستوبل لوز فوركس تلقائياً خلف السعر بمسافة محددة من النقاط. إذا انعكس السعر فجأة، يتم إغلاق الصفقة على ربح مضمون بدلاً من تحولها إلى صفقة خاسرة. تضمن لك هذه الاستراتيجية اقتناص أكبر نسبة ممكنة من الحركات الاتجاهية الطويلة مع القضاء تماماً على مخاطر انعكاس الأرباح.
+
+رابعاً: الأخطاء الشائعة القاتلة في وضع وقف الخسارة وكيفية تفاديها
+على الرغم من أهمية هذه الأداة، إلا أن إساءة استخدامها قد تؤدي لنتائج عكسية وإحباط شديد للمتداول. تجنب دائماً الأخطاء التالية:
+- الستوب الضيق جداً (Too Tight Stop Loss): وضع أمر ستوبل لوز فوركس قريباً جداً من سعر الدخول (على بعد نقاط معدودة) للتداول بلوت ضخم هو انتحار صامت. الحركات التصحيحية البسيطة وتوسيع الفارق السعري (Spread) للشركات أثناء تذبذب السوق ستؤدي لضرب الستوب الخاص بك فوراً قبل أن يبدأ السعر في التحرك نحو الاتجاه الصحيح الذي توقعته.
+- الستوب الواسع جداً (Too Wide Stop Loss): على النقيض تماماً، وضع وقف خسارة بعيد للغاية لمجرد تجنب ضربه يؤدي إلى تشويه معدل العائد إلى المخاطرة (Risk-to-Reward Ratio). يجب دائماً أن يكون الهدف الاستثماري (Take Profit) ضعف وقف الخسارة على الأقل (1:2) لتضمن الربحية على المدى الطويل.
+- تحريك الستوب لوز أثناء الخسارة: هذا هو الخطأ النفسي الأكثر تدميراً. عندما يقترب السعر من ضرب الستوب، يشعر المتداول بالخوف ويرفض تقبل الخسارة، فيقوم بتحريك الستوب لوز إلى أسفل ليعطي الصفقة "مزيداً من المساحة". هذا السلوك العاطفي يحول الخسارة البسيطة المدروسة إلى كارثة مالية تبتلع رأس المال.
+
+خامساً: كيف تساعدك حاسبة إدارة المخاطر في ديكوراFX على النجاح؟
+لتسهيل تطبيق قواعد إدارة المخاطر بدقة هندسية صارمة، توفر منصة ديكوراFX حاسبة تفاعلية متطورة مدمجة لحساب اللوت واداره الصفقات.
+عندما تحدد قيمة أمر ستوبل لوز فوركس بالنقاط (مثلاً 30 نقطة) وتدخل رأس مالك والنسبة المئوية التي ترغب في المخاطرة بها (نوصي بـ 1% إلى 2% كحد أقصى)، تقوم الحاسبة فوراً بالعمليات الرياضية المعقدة لتعطيك حجم العقد أو اللوت (Lot Size) القياسي الدقيق الذي يجب عليك فتحه في حسابك. تضمن هذه الطريقة العلمية ألا تتجاوز خسارتك الفعلية النسبة المحددة سلفاً مهما كانت سرعة أو تقلبات السوق، مما يمنحك راحة نفسية وانضباطاً لا مثيل له أثناء التداول اليومي.
+
+خلاصة القول لعام 2026:
+إن أمر ستوبل لوز فوركس ليس علامة على الضعف أو اعترافاً بالفشل الفني؛ بل هو السلاح الأقوى لرجال الأعمال والمستثمرين الأذكياء للبقاء في السوق وحماية ثرواتهم. احرص دائماً على دمج أمر ستوبل لوز فوركس في كل صفقة دون استثناء، واجعل منه قانوناً غير قابل للنقاش في تداولاتك اليومية لعام 2026 لتضمن الأمان المالي المستدام والنمو المتواصل لمحفظتك الاستثمارية مع عائلة ديكوراFX الرائدة.`,
+    contentEn: `In the highly volatile world of currency trading, discipline acts as the ultimate shield for long-term survival and professional growth. Among all defensive tools, the "Stop Loss Forex" order stands as the single most critical structural component. The defining difference between traders who thrive over decades and those who lose their entire accounts in the first few weeks lies squarely in how strictly they utilize their Stop Loss limits.
+
+In this comprehensive 2026 SEO-optimized guide, we explore the deep mechanics of setting a perfect Stop Loss Forex order and how to integrate it seamlessly into your daily trading blueprint.
+
+1. What is a Stop Loss Forex Order and How Does It Function?
+A Stop Loss Forex order is a pre-set pending instructions placed within your trading platform (like MetaTrader or cTrader) to automatically close an active transaction when price hits a specific unfavorable level. Its absolute purpose is to establish an uncompromised risk threshold on every individual trade, preventing emotional decisions during rapid market movements.
+
+For instance, if you buy EURUSD at 1.1000 with bullish expectations but understand that central bank announcements could disrupt price action, you place a Stop Loss Forex order at 1.0960. This defines your risk at exactly 40 pips. If the price slips to 1.0960, the platform triggers an automatic close, locking in a calculated loss and preserving your equity from deeper damage.
+
+2. Why Trading Without a Stop Loss is Financial Suicide
+The foreign exchange market boasts a daily trading volume of over $7 trillion, making it highly volatile. Relying on manual intervention to close losing trades is a fatal beginner error for several reasons:
+- Slippages & Sharp Movements: During high-impact news, prices can plunge hundreds of pips within milliseconds. Without a registered server-side Stop Loss Forex instruction, your manual click will never be fast enough.
+- Weekend Market Gaps: Unexpected geopolitical events over weekends often cause markets to open with wide price gaps, completely bypassing manual exit strategies.
+- Network Disruptions: Power blackouts, internet loss, or software freezing can disconnect you. A pre-set stop loss guarantees protection even when offline.
+
+3. Professional Stop Loss Strategies for 2026
+Determining your exit levels should never be an act of guesswork. Instead, use these tested analytical methods:
+- Technical Stop Loss: Based on support/resistance zones, trendlines, or key moving averages. Stop losses are placed behind major technical floors or ceilings, requiring real structural breakouts to get triggered.
+- Volatility Stop Loss (ATR-Based): Using Average True Range (ATR) to measure current market noise. Setting your Stop Loss Forex order at 1.5x or 2x of the ATR provides your trade with appropriate breathing room without getting prematurely closed by minor intraday noise.
+- Time-Based Exit: Popular with scalpers and day traders. If a trade doesn't reach its targets or move with expected momentum within a designated timeframe, it is closed to free up leverage margins.
+- Trailing Stop Loss: Automatically adjusts your exit level as price moves favorably. It locks in accrued profits and secures risk-free exposure as long as the market trend continues.
+
+4. Critical Mistakes and How to Avoid Them
+- Too Tight Stops: Placing stops too close to your entry to force oversized lot configurations often results in immediate stop outs due to normal spread expansion.
+- Too Wide Stops: Setting stop losses too far reduces your risk-to-reward ratio. Ideally, your take profit targets must double your stop loss distance (1:2 ratio).
+- Moving Stop Losses: Never widen your stop loss while a trade is running. This destructive habit turns a minor calculated loss into a major account wipeout.
+
+5. How the DkoraFX Risk Calculator Secures Your Trades
+To implement these mathematical rules with zero stress, DkoraFX offers an advanced in-app interactive Lot and Risk Calculator. By defining your Stop Loss Forex pips, inputting your capital, and setting your preferred risk percentage (ideally 1% to 2% per trade), our calculator computes the exact standard lot configuration you should execute. This safeguards your capital and guarantees that even worst-case scenarios remain fully under control.
+
+Conclusion for 2026:
+A Stop Loss Forex order is not an admission of technical failure; it is the ultimate mark of institutional-grade business planning. Make it an absolute, non-negotiable law in every position you take to secure steady and compound growth for your portfolio with DkoraFX.`,
+    date: "2026-08-24T15:55:00Z",
+    category: "forex",
+    authorAr: "عصام المنسي - كبير محللي العملات",
+    authorEn: "Essam El-Mansy - Senior Currency Analyst",
+    image: "/stop_loss_forex_2026_1787612278666.jpg"
+  },
+  {
     id: "news-gold-risk-management",
     titleAr: "دليل الاحتراف: اداره مخاطر فوركس الذهب لعام 2026 وحماية رأس المال",
     titleEn: "Professional Guide: Forex Gold Risk Management in 2026",

@@ -101,7 +101,7 @@ const playNotificationSound = () => {
 };
 
 interface LazyImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-  src: string;
+  src?: string;
   alt: string;
   className?: string;
 }
@@ -110,10 +110,38 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt, className = "", ...prop
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
 
+  useEffect(() => {
+    // Reset state if src changes
+    setIsLoaded(false);
+    setHasError(false);
+  }, [src]);
+
+  if (hasError || !src) {
+    return (
+      <div className={`relative overflow-hidden bg-gradient-to-br from-[#0c1322] to-[#142037] flex flex-col items-center justify-center p-6 text-center border border-slate-100/5 dark:border-[#1a2436] ${className}`} style={{ minHeight: "160px" }}>
+        {/* Subtle decorative grid pattern */}
+        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.07] bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+        
+        {/* Subtle glowing center */}
+        <div className="absolute w-32 h-32 rounded-full bg-amber-500/5 blur-xl"></div>
+        
+        <div className="relative z-10 space-y-2 flex flex-col items-center">
+          <div className="p-3 bg-amber-500/10 rounded-2xl border border-amber-500/20 text-amber-500">
+            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+          </div>
+          <span className="text-[10px] font-black tracking-widest text-amber-500 uppercase">DkoraFX</span>
+          <span className="text-[11px] font-bold text-slate-400 dark:text-neutral-400 max-w-[200px] line-clamp-1">{alt}</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={`relative overflow-hidden ${className}`}>
-      {!isLoaded && !hasError && (
-        <div className="absolute inset-0 bg-slate-200/50 dark:bg-slate-800/50 animate-pulse flex items-center justify-center">
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-slate-100 dark:bg-slate-900 animate-pulse flex items-center justify-center">
           <div className="w-6 h-6 border-2 border-amber-500/20 border-t-amber-500 rounded-full animate-spin"></div>
         </div>
       )}
@@ -121,10 +149,11 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt, className = "", ...prop
         src={src}
         alt={alt}
         loading="lazy"
+        referrerPolicy="no-referrer"
         onLoad={() => setIsLoaded(true)}
         onError={() => setHasError(true)}
         className={`w-full h-full object-cover transition-opacity duration-300 ${
-          isLoaded ? "opacity-100" : "opacity-40"
+          isLoaded ? "opacity-100" : "opacity-0"
         }`}
         {...props}
       />
@@ -225,9 +254,9 @@ export default function App() {
     return fallback;
   });
 
-  // 4. Custom News Articles & Calendar Events State (stored locally to allow additions if needed)
-  const [newsArticles] = useState<NewsArticle[]>(initialNewsArticles);
-  const [calendarEvents] = useState<CalendarEvent[]>(initialCalendarEvents);
+  // 4. Custom News Articles & Calendar Events State (stored directly as constants to avoid React stale state caching)
+  const newsArticles = initialNewsArticles;
+  const calendarEvents = initialCalendarEvents;
   const [calendarFilter, setCalendarFilter] = useState<'ALL' | 'HIGH' | 'MEDIUM' | 'LOW'>('ALL');
   const [feedTab, setFeedTab] = useState<'ACTIVE' | 'ARCHIVE'>('ACTIVE');
 
@@ -1935,6 +1964,7 @@ export default function App() {
             {selectedSchoolArticleId ? (
               /* Single Article View */
               (() => {
+                const stopLossNews = newsArticles.find(n => n.id === "news-stop-loss-forex-2026");
                 const schoolArticles = [
                   {
                     id: "gold-risk-management",
@@ -1942,7 +1972,7 @@ export default function App() {
                     titleEn: "Professional Guide: Forex Gold Risk Management in 2026",
                     categoryAr: "إدارة المخاطر",
                     categoryEn: "Risk Management",
-                    image: "https://images.unsplash.com/photo-1610375461246-83df859d8222?auto=format&fit=crop&w=800&q=80",
+                    image: "/gold_forex_risk_management_1787538156014.jpg",
                     contentAr: `يعتبر الذهب (XAUUSD) بمثابة المغناطيس الأكبر لجميع المتداولين في أسواق المال والعملات الأجنبية. فهو الملاذ الآمن الأكثر شهرة وقوة عبر التاريخ، ولكنه في الوقت نفسه يمثل ساحة تداول شديدة التقلب والخطورة. هنا تبرز الأهمية القصوى لمفهوم اداره مخاطر فوركس الذهب كعنصر حاسم يفصل بين المتداول المحترف والناجح وبين المتداول الهاوي الذي قد يفقد كامل حسابه في حركة سعرية واحدة مفاجئة. في هذا المقال المتكامل والمتوافق مع أحدث معايير محركات البحث (SEO) لعام 2026، سنشرح بالتفصيل الممل كيف تبني نظاماً دفاعياً فولاذياً لحماية محفظتك الاستثمارية أثناء تداول الذهب.
 
 طبيعة تحركات الذهب ولماذا يختلف عن العملات؟
@@ -2016,7 +2046,7 @@ To secure profitable yields in 2026 gold trading:
                     titleEn: "The Future of Meme Coins Investment & How to Safely Seize Opportunities",
                     categoryAr: "العملات الرقمية",
                     categoryEn: "Cryptocurrencies",
-                    image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=800&q=80",
+                    image: "/meme_coins_2026_1787419226241.jpg",
                     contentAr: `ثورة "ميمز كوينز" من مجرد نكات إلى ركائز مالية في 2026:
 لم تعد ميمز كوينز مجرد ظاهرة عابرة أو صور كلاب وضفادع مضحكة تتدفق على شبكات التواصل الاجتماعي؛ بل تحولت بحلول عام 2026 إلى فئة أصول رقمية قائمة بذاتها، تتمتع بمليارات الدولارات من السيولة اليومية وتدعمها مجتمعات عالمية فائقة الولاء.
 
@@ -2084,7 +2114,7 @@ Meme coins are highly volatile, often moving up or down by over 1000% daily:
                     titleEn: "Introduction to Forex Trading Basics for Beginners",
                     categoryAr: "أساسيات التداول",
                     categoryEn: "Trading Basics",
-                    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80",
+                    image: "/forex_basics_1787458410746.jpg",
                     contentAr: `مرحباً بك في مدرسة التداول من ديكوراFX. في هذا الدرس، سنتعرف على أساسيات سوق العملات الأجنبية (الفوركس) وكيف يعمل:
 
 ما هو سوق الفوركس؟
@@ -2108,7 +2138,17 @@ How to Trade:
 You buy a currency expecting it to appreciate, or sell it expecting it to depreciate.
 - Buy EURUSD if you expect the Euro to rise against the Dollar.
 - Sell EURUSD if you expect the Euro to fall.`
-                  }
+                  },
+                  ...(stopLossNews ? [{
+                    id: "stop-loss-forex",
+                    titleAr: stopLossNews.titleAr,
+                    titleEn: stopLossNews.titleEn,
+                    categoryAr: "إدارة المخاطر",
+                    categoryEn: "Risk Management",
+                    image: stopLossNews.image || "/stop_loss_forex_2026_1787612278666.jpg",
+                    contentAr: stopLossNews.contentAr,
+                    contentEn: stopLossNews.contentEn
+                  }] : [])
                 ];
                 const art = schoolArticles.find(a => a.id === selectedSchoolArticleId);
                 if (!art) return null;
@@ -2350,6 +2390,43 @@ You buy a currency expecting it to appreciate, or sell it expecting it to deprec
                     </div>
                     <div className="flex justify-between items-center text-xs font-black text-amber-500 pt-3 border-t border-slate-100 dark:border-[#1a2436]/60">
                       <span>{lang === "ar" ? "ابدأ قراءة المقال" : "Read Full Article"}</span>
+                      <ArrowRight className={`w-3.5 h-3.5 ${lang === "ar" ? "rotate-180" : ""}`} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Stop Loss Forex Lesson Card */}
+                <div 
+                  onClick={() => setSelectedSchoolArticleId("stop-loss-forex")}
+                  className="bg-white dark:bg-[#0c1322] border border-amber-500/20 hover:border-amber-500 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col justify-between"
+                >
+                  <div className="h-44 bg-[#141f32] relative overflow-hidden">
+                    <LazyImage 
+                      src="/stop_loss_forex_2026_1787612278666.jpg" 
+                      alt="Stop loss forex lesson" 
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-3 right-3 bg-emerald-500 text-black px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase">
+                      {lang === "ar" ? "🆕 جديد" : "🆕 New"}
+                    </div>
+                  </div>
+                  <div className="p-6 flex flex-col justify-between space-y-4 flex-1">
+                    <div className="space-y-2">
+                      <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest block">
+                        {lang === "ar" ? "إدارة المخاطر" : "RISK MANAGEMENT"}
+                      </span>
+                      <h3 className="text-lg font-black leading-snug text-slate-900 dark:text-white line-clamp-2">
+                        {lang === "ar" ? "ستوبل لوز فوركس: الدليل الشامل لعام 2026 لحماية حسابك من التسييل" : "Stop Loss Forex: The Ultimate 2026 Guide to Capital Protection"}
+                      </h3>
+                      <p className="text-xs text-slate-500 dark:text-neutral-400 leading-relaxed line-clamp-3 text-justify">
+                        {lang === "ar" 
+                          ? "تعلم أسرار تفعيل أمر ستوبل لوز فوركس الذكي وفقاً لأحدث معايير التداول لحماية رأس مالك من تقلبات السوق العنيفة."
+                          : "Discover the hidden rules of setting a smart Stop Loss order to fully secure your assets from abrupt slippages."}
+                      </p>
+                    </div>
+                    <div className="flex justify-between items-center text-xs font-black text-amber-500 pt-3 border-t border-slate-100 dark:border-[#1a2436]/60">
+                      <span>{lang === "ar" ? "ابدأ الدرس" : "Start Lesson"}</span>
                       <ArrowRight className={`w-3.5 h-3.5 ${lang === "ar" ? "rotate-180" : ""}`} />
                     </div>
                   </div>

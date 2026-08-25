@@ -27,6 +27,81 @@ export interface CalendarEvent {
 
 export const initialNewsArticles: NewsArticle[] = [
   {
+    id: "news-bitcoin-analysis-2026",
+    titleAr: "تحليل البيتكوين: ملخص وتحليل سوق البيتكوين (BTC/USD) والاتجاهات القادمة لعام 2026",
+    titleEn: "Bitcoin Analysis: Summary & Technical Outlook of BTC/USD and Key 2026 Trends",
+    excerptAr: "نظرة تفصيلية على تحليل البيتكوين وأسباب الاختراق الصعودي القوي لـ BTC/USD وتوقعات السعر والسيناريوهات المقترحة للمتداولين.",
+    excerptEn: "An in-depth look at Bitcoin technical analysis, drivers of the latest BTC/USD breakout, price targets, and recommended trading scenarios.",
+    contentAr: `يمثل تحليل البيتكوين البوصلة الأساسية لمتداولي العملات الرقمية حول العالم. في هذا التقرير الشامل، نقدم ملخصاً وتحليلاً فنياً مفصلاً لحركة زوج البيتكوين مقابل الدولار الأمريكي (BTC/USD).
+
+1. نظرة عامة على السوق:
+شهدت عملة البيتكوين اختراقاً صعودياً قوياً بعد فترة من التماسك دامت لأشهر، حيث لامست مستويات تقارب 79,475 دولاراً أمريكياً قبل أن تتراجع بشكل طفيف. هذا الزخم الصعودي القوي يعكس تحولاً إيجابياً في معنويات المستثمرين ويثبت جدوى تحليل البيتكوين الفني المستمر.
+
+2. المحفزات الأساسية للارتفاع (العوامل الاقتصادية):
+- تدفقات استثمارية هائلة نحو صناديق المؤشرات (ETFs): يُعد المحرك الرئيسي للارتفاع الحالي هو الإقبال الكثيف على صناديق المؤشرات المتداولة للبيتكوين الفورية؛ حيث جذبت هذه الصناديق أكثر من 307 ملايين دولار في يوم واحد فقط (الجمعة)، متجاوزة بذلك 1.92 مليار دولار كأرباح أسبوعية، ليرتفع إجمالي الأصول المُدارة فيها إلى 96 مليار دولار.
+- عوامل الاقتصاد الكلي والملاذ الآمن: أدى الارتفاع المقلق في حجم الدين العام الأمريكي (والذي بلغ 40 تريليون دولار) وقفزة عوائد السندات (سندات 30 عاماً بلغت 5.336%) إلى لجوء المستثمرين للبيتكوين والذهب كأصول ملاذ آمن وتأمين ضد التضخم، مستفيدين من الطبيعة الانكماشية للبيتكوين المحدود بـ 21 مليون عملة فقط، مما يجعل تحليل البيتكوين أكثر جاذبية مقارنة بالعملات التقليدية.
+
+3. التحليل الفني للمؤشرات:
+- كسر البيتكوين مستوى المقاومة الحرج الذي كان متمركزاً عند 66,875 دولاراً (أعلى مستوى في 21 يوليو الماضي).
+- تجاوز السعر المتوسط المتحرك الأسي (EMA) لـ 50 يوماً، مما يدعم الاتجاه الصعودي على المدى القصير والمتوسط.
+- مؤشر القوة النسبية (RSI) قفز إلى 75، مما يشير إلى دخول العملة في "منطقة ذروة الشراء"، وهو ما يفسر التراجع الهامشي المؤقت لجمع الزخم قبل مواصلة الصعود.
+- التوقعات الفنية: يتوقع المحللون بقاء السعر فوق دعم 70,000 دولار، وإذا نجح في اختراق القمة الأخيرة عند 79,475 دولاراً، فإن الطريق سيكون ممهداً نحو تحقيق مستويات قياسية جديدة تتجاوز 80,000 دولار وصولاً إلى 82,000 دولار.
+
+4. أحداث مرتقبة ستؤثر على السوق:
+الأسواق في حالة ترقب لبيانات اقتصادية هامة قد تحدد الاتجاه القادم للبيتكوين:
+- تقرير ثقة المستهلك الأمريكي: والمُتوقع أن يشهد تراجعاً بسبب التضخم، مما قد يدفع بمزيد من التحوط الاستثماري نحو الأصول المشفرة.
+- ندوة جاكسون هول: ومراقبة التصريحات المرتقبة (مثل بيان كيفن وارش)، بالإضافة إلى أي مستجدات حول الدين الأمريكي وتوجهات السياسة النقدية الفيدرالية.
+
+توصيات التداول المقترحة (السيناريوهات):
+بناءً على معطيات تحليل البيتكوين السابقة، تم طرح استراتيجيتين للتعامل مع السوق في المدى القصير (من يوم إلى يومين):
+
+السيناريو الشرائي (الأرجح):
+- نقطة الدخول: شراء زوج (BTC/USD) عند مستويات الدعم الحالية.
+- جني الأرباح (Take Profit): عند مستوى 82,000 دولار.
+- وقف الخسارة (Stop Loss): عند مستوى 70,000 دولار.
+
+السيناريو البيعي (العكسي):
+- نقطة الدخول: بيع زوج (BTC/USD) في حال فشل الاستقرار أعلى مستويات الدعم.
+- جني الأرباح (Take Profit): عند مستوى 70,000 دولار.
+- وقف الخسارة (Stop Loss): عند مستوى 82,000 دولار.`,
+    contentEn: `Bitcoin analysis represents the core navigational map for cryptocurrency traders globally. In this comprehensive report, we deliver a detailed technical and fundamental summary of BTC/USD behavior.
+
+1. Market Overview:
+Bitcoin experienced a powerful bullish breakout after months of consolidation, touching levels near $79,475 before a minor technical retracement. This strong upward momentum reflects a major positive shift in institutional and retail sentiment.
+
+2. Primary Fundamental Growth Drivers:
+- Massive Inflows into Spot ETFs: The primary catalyst of the current rise is the intense demand for Spot Bitcoin ETFs, which attracted over $307 million in a single day (Friday), exceeding $1.92 billion in weekly inflows and raising total assets under management (AUM) to $96 billion.
+- Macroeconomic Factors & Safe-Haven Plays: The alarming rise in US national debt to $40 trillion and the surge in bond yields (30-year yields touching 5.336%) led investors to favor Bitcoin and gold as inflation hedges, capitalizing on Bitcoin's deflationary maximum cap of 21 million coins.
+
+3. Technical Indicators & Chart Analysis:
+- Bitcoin broke the critical resistance at $66,875 (the July 21 peak).
+- Price moved comfortably above the 50-day Exponential Moving Average (EMA 50), reinforcing the short-to-medium-term bullish trend.
+- Relative Strength Index (RSI) jumped to 75, signalling an "overbought" condition which naturally justifies a temporary marginal pullback to gather liquidity before continuing higher.
+- Technical Outlook: Analysts expect prices to hold firm above the $70,000 support floor. A successful daily candle close above $79,475 clears the path toward $80,000 and eventually $82,000.
+
+4. Crucial Upcoming Events:
+Markets are highly anticipating major economic indicator updates:
+- US Consumer Confidence Report: Expected to decline due to persistent inflation pressures.
+- Jackson Hole Symposium: Key statements and policy hints (especially from Kevin Warsh) on US debt and Federal Reserve rate cuts.
+
+Recommended Trading Scenarios (Short-term, 1-2 Days):
+
+The Bullish Scenario (Primary):
+- Entry Point: Buy BTC/USD near current support zones.
+- Take Profit (TP): $82,000.
+- Stop Loss (SL): $70,000.
+
+The Bearish Scenario (Alternative):
+- Entry Point: Sell BTC/USD on clear failure to hold support.
+- Take Profit (TP): $70,000.
+- Stop Loss (SL): $82,000.`,
+    date: "2026-08-24T18:30:00Z",
+    category: "crypto",
+    authorAr: "عصام المنسي - كبير محللي الأسواق الرقمية",
+    authorEn: "Essam El-Mansy - Chief Digital Markets Analyst",
+    image: "/bitcoin_analysis_2026_1787623697779.jpg"
+  },
+  {
     id: "news-stop-loss-forex-2026",
     titleAr: "ستوبل لوز فوركس: الدليل الشامل لعام 2026 لحماية حسابك من التسييل وتحقيق الأرباح",
     titleEn: "Stop Loss Forex: The Ultimate 2026 Guide to Capital Protection and Profitability",

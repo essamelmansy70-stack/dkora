@@ -164,17 +164,33 @@ function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
   }
 
   let title = lang === "ar" 
-    ? "توصيات فوركس مجانية دقيقة | اربح مع خبراء سوق العملات | ديكوراFX" 
-    : "Free Accurate Forex Signals | Profit with Currency Market Experts | DecouFX";
+    ? "توصيات فوركس مجانية حية ومباشرة | تحليلات التداول اليومية - ديكوراFX" 
+    : "Free Live Forex Signals & Daily Trading Analytics | DecouFX";
   let description = lang === "ar"
-    ? "منصة ديكوراFX تقدم توصيات فوركس حية ومباشرة مجاناً، بالإضافة إلى تحليلات فنية دقيقة ومدرسة متكاملة لتعليم التداول للمبتدئين والمحترفين."
-    : "DecouFX platform offers free live accurate Forex signals, professional technical analysis, and a comprehensive trading academy for beginners and advanced traders.";
-  let image = `${baseUrl}/forex_basics.jpg`;
+    ? "منصة ديكوراFX تقدم توصيات فوركس حية ومباشرة مجاناً، بالإضافة إلى تحليلات فنية دقيقة ومدرسة متكاملة لتعليم التداول للمبتدئين والمحترفين وحاسبة مخاطر متطورة."
+    : "DecouFX platform offers free live accurate Forex signals, professional technical analysis, advanced risk calculators, and a comprehensive trading academy.";
+  let image = `${baseUrl}/forex_basics_1787458410746.jpg`;
   let canonicalUrl = `${baseUrl}${req.originalUrl || "/"}`;
 
   if (view === "news") {
     if (subId) {
-      if (subId === "fallback-meme-coins" || subId === "meme-coins") {
+      if (subId === "news-bitcoin-analysis-2026" || subId === "bitcoin-analysis" || subId === "bitcoin") {
+        title = lang === "ar"
+          ? "تحليل البيتكوين: ملخص وتحليل سوق البيتكوين (BTC/USD) والاتجاهات القادمة لعام 2026 | ديكوراFX"
+          : "Bitcoin Analysis: Technical Outlook of BTC/USD & Key 2026 Trends | DecouFX";
+        description = lang === "ar"
+          ? "تحليل البيتكوين: نظرة تفصيلية على حركة زوج BTC/USD وأسباب الاختراق الصعودي القوي لـ البيتكوين وصناديق الاستثمار ETFs وتوقعات الأسعار والسيناريوهات المقترحة لعام 2026."
+          : "Bitcoin analysis: In-depth report on the powerful BTC/USD bullish breakout, spot ETF inflows, national debt hedging, RSI overbought levels, and key trading targets.";
+        image = `${baseUrl}/bitcoin_analysis_2026_1787623697779.jpg`;
+      } else if (subId === "news-stop-loss-forex-2026" || subId === "stop-loss-forex" || subId === "stop-loss") {
+        title = lang === "ar"
+          ? "ستوبل لوز فوركس: الدليل الشامل لعام 2026 لحماية حسابك من التسييل | ديكوراFX"
+          : "Stop Loss Forex: The Ultimate 2026 Capital Protection Guide | DecouFX";
+        description = lang === "ar"
+          ? "تعلم أسرار تفعيل أمر ستوبل لوز فوركس (Stop Loss) لحماية رأس مالك من تقلبات السوق العنيفة وتجنب الخسائر والمارجن كول باستخدام الستوب لوز المتحرك."
+          : "Discover the professional rules of setting a smart Stop Loss order in Forex trading. Avoid margin calls, manage slippage, and preserve capital with trailing stops.";
+        image = `${baseUrl}/stop_loss_forex_2026_1787612278666.jpg`;
+      } else if (subId === "fallback-meme-coins" || subId === "meme-coins") {
         title = lang === "ar"
           ? "انفجار تداولات عملات الميم في عام 2026: دليل الأمان والربح | ديكوراFX"
           : "The 2026 Meme Coins Explosion: Safety & Profit Guide | DecouFX";
@@ -182,18 +198,26 @@ function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
           ? "شهدت أسواق الكريبتو انفجاراً حقيقياً في تداول عملات الميم. تعرف على كيفية استغلال هذه موجة الاستثمارية بأمان وفهم تحولات السوق الجديدة."
           : "Crypto markets witnessed a real explosion in meme coins trading. Learn how to safely leverage this investment wave and understand new market shifts.";
         image = `${baseUrl}/meme_coins_2026_1787419226241.jpg`;
-      } else if (subId === "news-gold-risk-management") {
+      } else if (subId === "news-gold-risk-management" || subId === "gold-risk-management") {
         title = lang === "ar"
           ? "دليل الاحتراف: اداره مخاطر فوركس الذهب لعام 2026 وحماية رأس المال | ديكوراFX"
           : "Professional Guide: Forex Gold Risk Management in 2026 | DecouFX";
         description = lang === "ar"
           ? "نظرة عميقة ومفصلة حول أسرار اداره مخاطر فوركس الذهب لحماية محفظتك من تذبذبات الذهب العنيفة باستخدام أهم الاستراتيجيات واللوت لعام 2026."
-          : "Ultimate 2026 guide on Forex Gold Risk Management, lot sizing calculations, and drawdown mitigation for professional traders.";
-        image = `${baseUrl}/src/assets/images/gold_forex_risk_management_1787538156014.jpg`;
+          : "Ultimate 2026 guide on Forex Gold Risk Management, lot sizing calculations, and drawdown mitigation for professional gold traders.";
+        image = `${baseUrl}/gold_forex_risk_management_1787538156014.jpg`;
+      } else if (subId === "intro-forex" || subId === "forex-basics" || subId === "forex_basics") {
+        title = lang === "ar"
+          ? "مقدمة وشرح أساسيات تداول الفوركس للمبتدئين مجاناً | ديكوراFX"
+          : "Introduction to Forex Trading Basics for Beginners | DecouFX";
+        description = lang === "ar"
+          ? "دليل المبتدئين للدخول إلى عالم تداول العملات الأجنبية. تعلم المصطلحات الأساسية، صفقات الشراء والبيع، وكيفية عمل الروافع المالية في الفوركس."
+          : "Learn the core basics of forex trading, exchange rates, leverage, pip calculations, and market structure in this professional, structured beginner's manual.";
+        image = `${baseUrl}/forex_basics_1787458410746.jpg`;
       } else {
         title = lang === "ar"
-          ? `تفاصيل المقال والتحليل الفني والأساسي | أخبار ديكوراFX`
-          : `Article Details & Market Analysis | DecouFX News`;
+          ? "أحدث مقالات التحليل المالي والفني والأساسي للأسواق | ديكوراFX"
+          : "Latest Financial, Technical & Fundamental Market Reports | DecouFX";
         description = lang === "ar"
           ? "تابع التغطية الشاملة والتحليلات الفنية اللحظية الصادرة من محررينا الاقتصاديين لكافة التطورات في الأسواق والعملات والمعادن."
           : "Follow our comprehensive market updates and professional technical analyses on currency pairs, commodities, and digital assets.";
@@ -201,11 +225,11 @@ function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
       canonicalUrl = `${baseUrl}/news/${subId}`;
     } else {
       title = lang === "ar"
-        ? "أخبار الفوركس العاجلة والتحليلات الفنية اليومية | ديكوراFX"
-        : "Breaking Forex News & Daily Technical Analysis | DecouFX";
+        ? "أخبار الفوركس العاجلة والتحليلات الفنية والأساسية لعام 2026 | ديكوراFX"
+        : "Forex Breaking News, Technical & Fundamental Analysis 2026 | DecouFX";
       description = lang === "ar"
-        ? "ابق على اطلاع تام بأحدث التقارير الاقتصادية، أخبار البنوك المركزية، وتحليلات الذهب والنفط والعملات الأجنبية لحظة بلحظة."
-        : "Stay updated with the latest economic reports, central bank decisions, and gold, oil, and forex technical analysis in real-time.";
+        ? "ابق على اطلاع تام بأحدث التقارير الاقتصادية والتحليلات الفنية والأساسية للعملات الرقمية والمعادن وأسواق الأسهم لحظة بلحظة مع خبراء ديكوراFX."
+        : "Stay highly updated with our professional real-time technical analysis, central bank policies, and financial news covering forex, gold, oil, and crypto markets.";
       canonicalUrl = `${baseUrl}/news`;
     }
   } else if (view === "school") {
@@ -215,12 +239,12 @@ function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
           ? "درس أساسيات سوق الفوركس للمبتدئين | مدرسة ديكوراFX للتداول"
           : "Forex Trading Basics Lesson for Beginners | DecouFX Academy";
         description = lang === "ar"
-          ? "مرحباً بك في الدرس الأول. تعلم ما هو سوق العملات الأجنبية (الفوركس) وكيف يعمل وهيكل التداولات وصناع السوق بطريقة مبسطة."
-          : "Welcome to lesson one. Learn what the foreign exchange market is, how it works, and how market makers operate in simple terms.";
-        image = `${baseUrl}/forex_basics.jpg`;
+          ? "مرحباً بك في الدرس الأول. تعلم ما هو سوق العملات الأجنبية (الفوركس) وكيف يعمل وهيكل التداولات وصناع السوق بطريقة مبسطة وصحيحة."
+          : "Welcome to lesson one. Learn what the foreign exchange market is, how it works, and how market makers operate in simple, accessible terms.";
+        image = `${baseUrl}/forex_basics_1787458410746.jpg`;
       } else if (subId === "meme-coins-2026" || subId === "meme-coins") {
         title = lang === "ar"
-          ? "مستقبل الاستثمار في عملات الميم وكيفية اغتنام الفرص بأمان | مدرسة ديكوراFX"
+          ? "درس مستقبل الاستثمار في عملات الميم وكيفية اغتنام الفرص بأمان | مدرسة ديكوراFX"
           : "The Future of Meme Coins Investment & How to Seize Opportunities | DecouFX";
         description = lang === "ar"
           ? "درس تعليمي شامل يشرح تحول عملات الميم إلى فئات أصول بمليارات الدولارات وكيفية تداولها وتجنب مخاطر الاحتيال الرقمي."
@@ -228,61 +252,97 @@ function getSeoMetaData(req: express.Request, storedProductsList?: any[]) {
         image = `${baseUrl}/meme_coins_2026_1787419226241.jpg`;
       } else if (subId === "gold-risk-management") {
         title = lang === "ar"
-          ? "اداره مخاطر فوركس الذهب لعام 2026 وحماية رأس المال | مدرسة ديكوراFX"
-          : "Forex Gold Risk Management 2026 Guide | DecouFX Academy";
+          ? "درس اداره مخاطر فوركس الذهب لعام 2026 وحماية الحساب | مدرسة ديكوراFX"
+          : "Gold Forex Risk Management & Lot Size Strategy | DecouFX Academy";
         description = lang === "ar"
           ? "الدليل الحصري والشامل للاحتراف في اداره مخاطر فوركس الذهب ومعدلات اللوت المقترحة للحد من الانعكاس السعري وتأمين الحساب."
-          : "Ultimate 2026 guide on Forex Gold Risk Management, lot sizing calculations, and drawdown mitigation for professional traders.";
+          : "Master the unique rules of trading gold, calculating precise lot sizes, and managing downside drawdowns on XAUUSD in this professional lesson.";
         image = `${baseUrl}/gold_forex_risk_management_1787538156014.jpg`;
+      } else if (subId === "stop-loss-forex") {
+        title = lang === "ar"
+          ? "درس ستوبل لوز فوركس: الإعدادات الاستراتيجية لإغلاق الصفقات | مدرسة ديكوراFX"
+          : "Stop Loss Forex: Strategic Technical Execution Lesson | DecouFX Academy";
+        description = lang === "ar"
+          ? "درس تعليمي شامل يشرح أهمية وضع أمر ستوبل لوز فوركس وتفادي الخسائر المفاجئة وتأمين الأرباح باستخدام الستوب لوز المتحرك وتعديل اللوت."
+          : "A detailed practical lesson on executing professional stop loss settings, dynamic calculations, and hedging strategies in high-volatility markets.";
+        image = `${baseUrl}/stop_loss_forex_2026_1787612278666.jpg`;
       } else {
         title = lang === "ar"
           ? "درس تعليمي مالي متقدم | مدرسة ديكوراFX للتداول"
           : "Advanced Trading Lesson | DecouFX Academy";
         description = lang === "ar"
-          ? "دروس وشروحات عملية مبسطة لمساعدتك على احتراف أسواق المال وتحليل الرسوم البيانية وإدارة المخاطر باحترافية."
+          ? "دروس وشروحات عملية مبسطة لمساعدتك على احتراف أسواق المال وتحليل الرسوم البيانية وإدارة المخاطر باحترافية كاملة."
           : "Practical training lessons and tutorials to help you master financial markets, chart analysis, and professional risk management.";
       }
       canonicalUrl = `${baseUrl}/school/${subId}`;
     } else {
       title = lang === "ar"
-        ? "أكاديمية تعليم التداول المجانية للمبتدئين والمحترفين | ديكوراFX"
-        : "Free Trading Academy for Beginners & Advanced Traders | DecouFX";
+        ? "أكاديمية تعليم التداول والتحليل الفني المجانية لعام 2026 | ديكوراFX"
+        : "Free Trading Academy, Chart Analysis & Strategy Guide | DecouFX";
       description = lang === "ar"
-        ? "تعلم تداول العملات الأجنبية، المعادن، والمشتقات المالية خطوة بخطوة من خلال مقالات تفاعلية ودروس مبسطة لزيادة مهاراتك الاستثمارية."
-        : "Learn to trade forex, commodities, and derivatives step-by-step through interactive lessons and clean tutorials designed to boost your skills.";
+        ? "تعلم التداول من الصفر إلى الاحتراف مجاناً. شروحات مبسطة لأساسيات الفوركس، إدارة مخاطر تداول الذهب، تحليل العملات الرقمية، وعملات الميم."
+        : "Learn trading from beginner to advanced completely free. High-fidelity tutorials on forex basics, gold risk management, and cryptocurrency analysis.";
       canonicalUrl = `${baseUrl}/school`;
     }
   } else if (view === "signal") {
+    // Attempt dynamic signal metadata parsing
+    let signalPair = "سوق العملات";
+    let signalType = lang === "ar" ? "توصية تداول فوركس" : "Forex Trading Signal";
+    const upperId = subId.toUpperCase();
+    if (upperId.includes("XAUUSD") || upperId.includes("GOLD")) {
+      signalPair = lang === "ar" ? "الذهب (XAUUSD)" : "Gold (XAUUSD)";
+    } else if (upperId.includes("EURUSD")) {
+      signalPair = "EURUSD";
+    } else if (upperId.includes("GBPUSD")) {
+      signalPair = "GBPUSD";
+    } else if (upperId.includes("USDJPY")) {
+      signalPair = "USDJPY";
+    } else if (upperId.includes("BTCUSD") || upperId.includes("BTC") || upperId.includes("BITCOIN")) {
+      signalPair = lang === "ar" ? "البيتكوين (BTC/USD)" : "Bitcoin (BTC/USD)";
+    } else if (upperId.includes("US30") || upperId.includes("DOW")) {
+      signalPair = "US30 (Dow Jones)";
+    } else if (upperId.includes("NAS100") || upperId.includes("NASDAQ")) {
+      signalPair = "NAS100 (Nasdaq)";
+    }
+
+    if (upperId.includes("BUY")) {
+      signalType = lang === "ar" ? "توصية شراء حية ومباشرة" : "Live Buy Trade Signal";
+    } else if (upperId.includes("SELL")) {
+      signalType = lang === "ar" ? "توصية بيع حية ومباشرة" : "Live Sell Trade Signal";
+    } else {
+      signalType = lang === "ar" ? "تحديث فني فوري واستراتيجي" : "Live Strategic Technical Update";
+    }
+
     title = lang === "ar"
-      ? `توصية فوركس حية مباشرة ومفتوحة رقم ${subId} | ديكوراFX`
-      : `Live Forex Signal Details #${subId} | DecouFX`;
+      ? `توصية فوركس حية ومباشرة لـ ${signalPair} - صفقة ${signalType} | ديكوراFX`
+      : `Live ${signalPair} ${signalType} - High Accuracy Trading | DecouFX`;
     description = lang === "ar"
-      ? "توصية تداول فوركس نشطة ومحدثة تشمل زوج العملات، اتجاه الصفقة، سعر الدخول المقترح، مستويات أخذ الأرباح ووقف الخسارة بدقة."
-      : "Active live Forex signal including the specific currency pair, trade direction, suggested entry price, take profits, and stop loss levels.";
+      ? `تابع تفاصيل توصية الفوركس المباشرة لـ ${signalPair} - صفقة ${signalType}. تشمل سعر الدخول المقترح، مستويات جني الأرباح (TP)، وقف الخسارة (SL)، ونسب المخاطر.`
+      : `Active live Forex signal for ${signalPair} with ${signalType} direction. Get professional suggested entries, stop loss, and multiple take profit targets.`;
     canonicalUrl = `${baseUrl}/signal/${subId}`;
   } else if (view === "sitemap") {
     title = lang === "ar"
-      ? "خريطة الموقع التفاعلية (Dynamic XML Sitemap) | ديكوراFX"
-      : "Interactive Sitemap & Dynamic XML Links | DecouFX";
+      ? "خريطة الموقع التفاعلية وروابط الأقسام | منصة ديكوراFX"
+      : "Interactive Dynamic XML Sitemap | DecouFX Platform";
     description = lang === "ar"
-      ? "تصفح الفهرس الشامل لروابط مدرسة التداول، التقارير الفنية، والتوصيات الحية في منصة ديكوراFX."
-      : "Browse the comprehensive index of trading school lessons, technical reports, and live active signals on DecouFX.";
+      ? "تصفح الفهرس الشامل لروابط مدرسة التداول، التقارير الفنية، والتوصيات الحية في منصة ديكوراFX لضمان سهولة الوصول والأرشفة."
+      : "Browse the complete, search-engine-optimized dynamic sitemap listing all academy lessons, crypto reports, and live signal pages on DecouFX.";
     canonicalUrl = `${baseUrl}/sitemap`;
   } else if (view === "privacy") {
     title = lang === "ar"
-      ? "سياسة الخصوصية وسرية البيانات | منصة ديكوراFX"
-      : "Privacy Policy & Data Security Statement | DecouFX";
+      ? "سياسة الخصوصية وأمان وسرية البيانات | منصة ديكوراFX"
+      : "Privacy Policy & Data Protection Statement | DecouFX";
     description = lang === "ar"
-      ? "تعرف على معايير الأمان وحماية خصوصية بيانات زوار منصة ديكوراFX بما يتوافق مع السياسات العالمية."
-      : "Learn about the high security standards and privacy rules protecting our users on DecouFX.";
+      ? "تعرف على معايير الأمان وحماية خصوصية بيانات زوار منصة ديكوراFX وقواعد الاحتفاظ الآمن بالبيانات بما يتوافق مع السياسات العالمية لسرية البيانات."
+      : "Learn about the high security standards, cookie declarations, and privacy rules protecting our users' secure data on DecouFX.";
     canonicalUrl = `${baseUrl}/privacy`;
   } else if (view === "terms") {
     title = lang === "ar"
-      ? "الشروط والأحكام واتفاقية الاستخدام | ديكوراFX"
-      : "Terms of Service & User Agreement | DecouFX";
+      ? "الشروط والأحكام واتفاقية الاستخدام وإخلاء المسؤولية | ديكوراFX"
+      : "Terms of Service, User Agreement & Risk Disclaimer | DecouFX";
     description = lang === "ar"
-      ? "اتفاقية الاستخدام والشروط المنظمة لخدمات توصيات تداول العملات والمقالات التعليمية على منصة ديكوراFX."
-      : "The legal terms of service and conditions governing forex signal distribution and education on DecouFX.";
+      ? "اتفاقية الاستخدام والشروط المنظمة لخدمات توصيات تداول العملات والمقالات التعليمية وإخلاء المسؤولية القانونية وتوضيح مخاطر الرافعة المالية على منصة ديكوراFX."
+      : "The legal terms of service, regulatory compliance guidelines, and critical financial risk disclaimers governing the use of forex tools on DecouFX.";
     canonicalUrl = `${baseUrl}/terms`;
   }
 

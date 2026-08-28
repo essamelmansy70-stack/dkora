@@ -23,9 +23,20 @@ import { Game } from "./types";
 import NativeSnake from "./components/NativeSnake";
 import NativeBrickBreaker from "./components/NativeBrickBreaker";
 import { translations } from "./translations";
+import Fuse from "fuse.js";
 
 export default function App() {
-  const [lang, setLang] = useState<"ar" | "en">("ar");
+  const [lang, setLang] = useState<"ar" | "en">(() => {
+    try {
+      const urlParams = new URLSearchParams(window.location.search || window.location.hash.split("?")[1] || "");
+      const queryLang = urlParams.get("lang");
+      if (queryLang === "ar" || queryLang === "en") return queryLang;
+      
+      const stored = localStorage.getItem("poki_lang") as "ar" | "en";
+      if (stored === "ar" || stored === "en") return stored;
+    } catch {}
+    return "ar";
+  });
   const [theme, setTheme] = useState<"dark" | "light">(() => {
     try {
       return (localStorage.getItem("poki_theme") as "dark" | "light") || "dark";
@@ -50,38 +61,30 @@ export default function App() {
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  // Helper to update the browser hash URL based on language and active page
+  // Store language preference changes
+  useEffect(() => {
+    try {
+      localStorage.setItem("poki_lang", lang);
+    } catch {}
+  }, [lang]);
+
+  // Helper to update the browser hash URL based on active page - strictly in English
   const updateHash = (
     currentLang: "ar" | "en", 
     game: Game | null, 
     legal: "privacy" | "terms" | "disclaimer" | null
   ) => {
     let newHash = "";
-    if (currentLang === "ar") {
-      if (legal === "privacy") {
-        newHash = "#/العاب-اونلاين-فري/سياسة-الخصوصية";
-      } else if (legal === "terms") {
-        newHash = "#/العاب-اونلاين-فري/شروط-الاستخدام";
-      } else if (legal === "disclaimer") {
-        newHash = "#/العاب-اونلاين-فري/إخلاء-المسؤولية";
-      } else {
-        newHash = "#/العاب-اونلاين-فري";
-        if (game) {
-          newHash += `/لعبة-${game.id}`;
-        }
-      }
+    if (legal === "privacy") {
+      newHash = "#/free-online-games/privacy-policy";
+    } else if (legal === "terms") {
+      newHash = "#/free-online-games/terms-of-use";
+    } else if (legal === "disclaimer") {
+      newHash = "#/free-online-games/disclaimer";
     } else {
-      if (legal === "privacy") {
-        newHash = "#/free-online-games/privacy-policy";
-      } else if (legal === "terms") {
-        newHash = "#/free-online-games/terms-of-use";
-      } else if (legal === "disclaimer") {
-        newHash = "#/free-online-games/disclaimer";
-      } else {
-        newHash = "#/free-online-games";
-        if (game) {
-          newHash += `/game-${game.id}`;
-        }
+      newHash = "#/free-online-games";
+      if (game) {
+        newHash += `/game-${game.id}`;
       }
     }
     if (window.location.hash !== newHash) {
@@ -89,10 +92,12 @@ export default function App() {
     }
   };
 
-  // Listen to hash changes and update app states accordingly
+  // Listen to hash changes and update app states accordingly (supporting English hashes and legacy Arabic redirects)
   useEffect(() => {
     const handleHashChange = () => {
       const hash = decodeURIComponent(window.location.hash);
+      
+      // Backward compatibility mapping for old Arabic URLs (redirects/maps them to the clean state and translates)
       if (hash.includes("العاب-اونلاين-فري")) {
         setLang("ar");
         if (hash.includes("سياسة-الخصوصية")) {
@@ -117,7 +122,7 @@ export default function App() {
           }
         }
       } else if (hash.includes("free-online-games")) {
-        setLang("en");
+        // Universal English URL structure - does not override current language preference
         if (hash.includes("privacy-policy")) {
           setActiveLegalPage("privacy");
           setSelectedGame(null);
@@ -152,7 +157,7 @@ export default function App() {
     };
   }, []);
 
-  // Update hash when states change (excluding initial load sync to avoid loops)
+  // Update hash when states change
   useEffect(() => {
     updateHash(lang, selectedGame, activeLegalPage);
   }, [lang, selectedGame, activeLegalPage]);
@@ -331,19 +336,37 @@ export default function App() {
     }
   };
 
-  // Filter games based on category, search, and favorites filter
-  const filteredGames = GAMES_DATA.filter((game) => {
-    const matchesSearch = 
-      game.titleAr.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      game.titleEn.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      game.categoryAr.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      game.categoryEn.toLowerCase().includes(searchQuery.toLowerCase());
-    
-    const matchesCategory = activeCategory === "all" || game.category === activeCategory;
-    const matchesFavorites = !showFavoritesOnly || favorites.includes(game.id);
+  // Memoize Fuse.js search instance for ultra-fast matching
+  const fuse = React.useMemo(() => {
+    return new Fuse(GAMES_DATA, {
+      keys: [
+        { name: "titleAr", weight: 0.5 },
+        { name: "titleEn", weight: 0.5 },
+        { name: "categoryAr", weight: 0.2 },
+        { name: "categoryEn", weight: 0.2 },
+        { name: "descriptionAr", weight: 0.1 },
+        { name: "descriptionEn", weight: 0.1 }
+      ],
+      threshold: 0.45, // A perfect balance allowing slight typos, missing letters, and phonetic inputs
+      includeScore: true
+    });
+  }, []);
 
-    return matchesSearch && matchesCategory && matchesFavorites;
-  });
+  // Filter games based on category, fuzzy search (with typo tolerance), and favorites
+  const filteredGames = React.useMemo(() => {
+    let gamesList = GAMES_DATA;
+
+    if (searchQuery.trim() !== "") {
+      const results = fuse.search(searchQuery);
+      gamesList = results.map((res) => res.item);
+    }
+
+    return gamesList.filter((game) => {
+      const matchesCategory = activeCategory === "all" || game.category === activeCategory;
+      const matchesFavorites = !showFavoritesOnly || favorites.includes(game.id);
+      return matchesCategory && matchesFavorites;
+    });
+  }, [searchQuery, activeCategory, showFavoritesOnly, favorites, fuse]);
 
   const categories = [
     { id: "all", nameAr: "🎮 الكل", nameEn: "🎮 All" },
@@ -903,7 +926,7 @@ export default function App() {
                 <ul className="space-y-3 text-xs">
                   <li>
                     <a 
-                      href="#/العاب-اونلاين-فري"
+                      href="#/free-online-games"
                       onClick={() => { playUISound("click"); setLang("ar"); setSelectedGame(null); setActiveLegalPage(null); setShowSitemapModal(false); }}
                       className="hover:underline text-purple-400 block font-bold"
                     >
@@ -921,38 +944,38 @@ export default function App() {
                   </li>
                   <li>
                     <a 
-                      href="#/العاب-اونلاين-فري/سياسة-الخصوصية"
-                      onClick={() => { playUISound("click"); setActiveLegalPage("privacy"); setShowSitemapModal(false); }}
+                      href="#/free-online-games/privacy-policy"
+                      onClick={() => { playUISound("click"); setLang("ar"); setActiveLegalPage("privacy"); setShowSitemapModal(false); }}
                       className="hover:underline text-slate-400 block"
                     >
-                      🔒 {translations.ar.footer.privacy}
+                      🔒 {translations.ar.footer.privacy} (العربية)
                     </a>
                   </li>
                   <li>
                     <a 
                       href="#/free-online-games/privacy-policy"
-                      onClick={() => { playUISound("click"); setActiveLegalPage("privacy"); setShowSitemapModal(false); }}
+                      onClick={() => { playUISound("click"); setLang("en"); setActiveLegalPage("privacy"); setShowSitemapModal(false); }}
                       className="hover:underline text-slate-400 block"
                     >
-                      🔒 {translations.en.footer.privacy}
-                    </a>
-                  </li>
-                  <li>
-                    <a 
-                      href="#/العاب-اونلاين-فري/شروط-الاستخدام"
-                      onClick={() => { playUISound("click"); setActiveLegalPage("terms"); setShowSitemapModal(false); }}
-                      className="hover:underline text-slate-400 block"
-                    >
-                      📜 {translations.ar.footer.terms}
+                      🔒 {translations.en.footer.privacy} (English)
                     </a>
                   </li>
                   <li>
                     <a 
                       href="#/free-online-games/terms-of-use"
-                      onClick={() => { playUISound("click"); setActiveLegalPage("terms"); setShowSitemapModal(false); }}
+                      onClick={() => { playUISound("click"); setLang("ar"); setActiveLegalPage("terms"); setShowSitemapModal(false); }}
                       className="hover:underline text-slate-400 block"
                     >
-                      📜 {translations.en.footer.terms}
+                      📜 {translations.ar.footer.terms} (العربية)
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href="#/free-online-games/terms-of-use"
+                      onClick={() => { playUISound("click"); setLang("en"); setActiveLegalPage("terms"); setShowSitemapModal(false); }}
+                      className="hover:underline text-slate-400 block"
+                    >
+                      📜 {translations.en.footer.terms} (English)
                     </a>
                   </li>
                 </ul>
@@ -971,11 +994,11 @@ export default function App() {
                       <span className="font-bold text-slate-400 block">{g.emoji} {lang === "ar" ? g.titleAr : g.titleEn}</span>
                       <div className="flex flex-col gap-1 text-[10px]">
                         <a 
-                          href={`#/العاب-اونلاين-فري/لعبة-${g.id}`}
+                          href={`#/free-online-games/game-${g.id}`}
                           onClick={() => { playUISound("click"); setLang("ar"); setSelectedGame(g); setShowSitemapModal(false); }}
                           className="hover:underline text-purple-400"
                         >
-                          العربية: {`#/العاب-اونلاين-فري/لعبة-${g.id}`}
+                          العربية: {`#/free-online-games/game-${g.id}`}
                         </a>
                         <a 
                           href={`#/free-online-games/game-${g.id}`}

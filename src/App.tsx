@@ -284,7 +284,7 @@ export default function App() {
         title = `العاب ${catName} مجانية - العاب اونلاين فري | بوكي بوكس`;
         desc = `استمتع بأفضل العاب ${catName} اونلاين فري ومجانية بالكامل مباشرة على بوكي بوكس بدون تحميل.`;
       } else {
-        title = "العاب اونلاين فري | أفضل ألعاب مجانية بدون تحميل على بوكي بوكس";
+        title = "العاب اونلاين فري | بوكي بوكس";
         desc = "العاب اونلاين فري - استمتع بأقوى وأحدث الألعاب المجانية مباشرة على بوكي بوكس بدون تحميل! العب ألعاب متصفح، ألعاب ذكاء، ألغاز، وألعاب ثلاثية الأبعاد خفيفة مجاناً وبسرعة فائقة.";
       }
     } else {
@@ -313,7 +313,7 @@ export default function App() {
         title = `${catName} Games - Free Online Games | PokiBox`;
         desc = `Play the best free online ${catName} games with zero downloads or popups on PokiBox.`;
       } else {
-        title = "Free Online Games | PokiBox Arcade Playgrounds";
+        title = "Free Online Games | PokiBox";
         desc = "Free Online Games - Play the best arcade, puzzle, and neon action games on PokiBox with zero downloads or popups.";
       }
     }

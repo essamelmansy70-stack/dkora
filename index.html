@@ -66,7 +66,27 @@
     </script>
 
     <!-- On-Page SEO Primary Metadata -->
-    <title>العاب اونلاين فري | أفضل ألعاب مجانية بدون تحميل على بوكي بوكس</title>
+    <title>العاب اونلاين فري | بوكي بوكس</title>
+    <script>
+      (function() {
+        var hash = window.location.hash || "";
+        var isEn = hash.indexOf("free-online-games") !== -1 || (hash.indexOf("العاب-اونلاين-فري") === -1 && navigator.language && navigator.language.startsWith("en"));
+        var title = isEn ? "Free Online Games | PokiBox" : "العاب اونلاين فري | بوكي بوكس";
+        var desc = isEn ? "Free Online Games - Play the best arcade, puzzle, and neon action games on PokiBox with zero downloads or popups." : "العاب اونلاين فري - استمتع بأقوى وأحدث الألعاب المجانية مباشرة على بوكي بوكس بدون تحميل! العب ألعاب متصفح، ألعاب ذكاء، ألغاز، وألعاب ثلاثية الأبعاد خفيفة مجاناً وبسرعة فائقة.";
+        
+        document.title = title;
+        
+        // Instant meta updates
+        var metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) metaDesc.setAttribute("content", desc);
+        
+        var ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.setAttribute("content", title);
+        
+        var ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) ogDesc.setAttribute("content", desc);
+      })();
+    </script>
     <meta name="description" content="العاب اونلاين فري - استمتع بأقوى وأحدث الألعاب المجانية مباشرة على بوكي بوكس بدون تحميل! العب ألعاب متصفح، ألعاب ذكاء، ألغاز، وألعاب ثلاثية الأبعاد خفيفة مجاناً وبسرعة فائقة." />
     <meta name="keywords" content="العاب اونلاين فري, ألعاب مجانية على الإنترنت, ألعاب متصفح مجانية, العاب بدون تحميل, بوكي بوكس, ألعاب فلاش, ألعاب ثلاثية الأبعاد, العاب نيون, ألعاب كلاسيكية, ألعاب ذكاء, PokiBox, free online games, browser games, play free games online" />
     <meta name="author" content="PokiBox Games" />
@@ -80,14 +100,14 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://dkora.online" />
     <meta property="og:site_name" content="بوكي بوكس - PokiBox" />
-    <meta property="og:title" content="العاب اونلاين فري | أفضل ألعاب مجانية بدون تحميل على بوكي بوكس" />
+    <meta property="og:title" content="العاب اونلاين فري | بوكي بوكس" />
     <meta property="og:description" content="العاب اونلاين فري - استمتع بأقوى وأحدث الألعاب المجانية مباشرة على بوكي بوكس بدون تحميل! العب ألعاب متصفح، ألعاب ذكاء، ألغاز، وألعاب ثلاثية الأبعاد خفيفة مجاناً وبسرعة فائقة." />
     <meta property="og:image" content="https://dkora.online/og-image.jpg" />
 
     <!-- Twitter Cards -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://dkora.online" />
-    <meta property="twitter:title" content="العاب اونلاين فري | أفضل ألعاب مجانية بدون تحميل على بوكي بوكس" />
+    <meta property="twitter:title" content="العاب اونلاين فري | بوكي بوكس" />
     <meta property="twitter:description" content="العاب اونلاين فري - استمتع بأقوى وأحدث الألعاب المجانية مباشرة على بوكي بوكس بدون تحميل! العب ألعاب متصفح، ألعاب ذكاء، ألغاز، وألعاب ثلاثية الأبعاد خفيفة مجاناً وبسرعة فائقة." />
     
     <!-- Structured Data JSON-LD (WebSite & GamePortal Schema) -->

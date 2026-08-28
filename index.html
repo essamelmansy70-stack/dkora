@@ -69,8 +69,43 @@
     <title>العاب اونلاين فري | بوكي بوكس</title>
     <script>
       (function() {
-        var hash = window.location.hash || "";
-        var isEn = hash.indexOf("free-online-games") !== -1 || (hash.indexOf("العاب-اونلاين-فري") === -1 && navigator.language && navigator.language.startsWith("en"));
+        var path = window.location.pathname || "/";
+        var isEn = false;
+        
+        // Priority 1: Check saved language preference in localStorage
+        try {
+          var saved = localStorage.getItem("poki_lang");
+          if (saved) {
+            isEn = (saved === "en");
+          } else {
+            // Priority 2: Check URL path markers
+            if (path.indexOf("privacy-policy") !== -1 || 
+                path.indexOf("terms-of-use") !== -1 || 
+                path.indexOf("disclaimer") !== -1 || 
+                path.indexOf("sitemap") !== -1 || 
+                path.indexOf("favorites") !== -1 || 
+                path.indexOf("category-") !== -1 || 
+                path.indexOf("game-") !== -1 ||
+                path.indexOf("free-online-games") !== -1) {
+              isEn = true;
+            } else if (path.indexOf("سياسة-الخصوصية") !== -1 || 
+                       path.indexOf("شروط-الاستخدام") !== -1 || 
+                       path.indexOf("إخلاء-المسؤولية") !== -1 || 
+                       path.indexOf("خريطة-الموقع") !== -1 || 
+                       path.indexOf("المفضلة") !== -1 || 
+                       path.indexOf("تصنيف-") !== -1 || 
+                       path.indexOf("لعبة-") !== -1 ||
+                       path.indexOf("العاب-اونلاين-فري") !== -1) {
+              isEn = false;
+            } else {
+              // Priority 3: Fallback to browser language
+              isEn = !!(navigator.language && navigator.language.startsWith("en"));
+            }
+          }
+        } catch (e) {
+          isEn = !!(navigator.language && navigator.language.startsWith("en"));
+        }
+
         var title = isEn ? "Free Online Games | PokiBox" : "العاب اونلاين فري | بوكي بوكس";
         var desc = isEn ? "Free Online Games - Play the best arcade, puzzle, and neon action games on PokiBox with zero downloads or popups." : "العاب اونلاين فري - استمتع بأقوى وأحدث الألعاب المجانية مباشرة على بوكي بوكس بدون تحميل! العب ألعاب متصفح، ألعاب ذكاء، ألغاز، وألعاب ثلاثية الأبعاد خفيفة مجاناً وبسرعة فائقة.";
         

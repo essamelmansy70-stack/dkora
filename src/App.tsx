@@ -25,6 +25,14 @@ import NativeBrickBreaker from "./components/NativeBrickBreaker";
 import { translations } from "./translations";
 import Fuse from "fuse.js";
 
+const CATEGORIES = [
+  { id: "all", nameAr: "🎮 الكل", nameEn: "🎮 All" },
+  { id: "intelligence", nameAr: "🧠 ذكاء", nameEn: "🧠 Brain" },
+  { id: "classic", nameAr: "👾 كلاسيك", nameEn: "👾 Classic" },
+  { id: "puzzles", nameAr: "🧩 ألغاز", nameEn: "🧩 Puzzles" },
+  { id: "casual", nameAr: "🎈 خفيفة", nameEn: "🎈 Casual" }
+];
+
 export default function App() {
   const [lang, setLang] = useState<"ar" | "en">(() => {
     try {
@@ -68,11 +76,13 @@ export default function App() {
     } catch {}
   }, [lang]);
 
-  // Helper to update the browser hash URL based on active page - strictly in English
+  // Helper to update the browser hash URL based on active states - strictly in English
   const updateHash = (
-    currentLang: "ar" | "en", 
     game: Game | null, 
-    legal: "privacy" | "terms" | "disclaimer" | null
+    legal: "privacy" | "terms" | "disclaimer" | null,
+    category: string,
+    favsOnly: boolean,
+    sitemap: boolean
   ) => {
     let newHash = "";
     if (legal === "privacy") {
@@ -81,11 +91,16 @@ export default function App() {
       newHash = "#/free-online-games/terms-of-use";
     } else if (legal === "disclaimer") {
       newHash = "#/free-online-games/disclaimer";
+    } else if (sitemap) {
+      newHash = "#/free-online-games/sitemap";
+    } else if (game) {
+      newHash = `#/free-online-games/game-${game.id}`;
+    } else if (favsOnly) {
+      newHash = "#/free-online-games/favorites";
+    } else if (category !== "all") {
+      newHash = `#/free-online-games/category-${category}`;
     } else {
       newHash = "#/free-online-games";
-      if (game) {
-        newHash += `/game-${game.id}`;
-      }
     }
     if (window.location.hash !== newHash) {
       window.history.pushState(null, "", newHash);
@@ -103,14 +118,22 @@ export default function App() {
         if (hash.includes("سياسة-الخصوصية")) {
           setActiveLegalPage("privacy");
           setSelectedGame(null);
+          setShowFavoritesOnly(false);
+          setShowSitemapModal(false);
         } else if (hash.includes("شروط-الاستخدام")) {
           setActiveLegalPage("terms");
           setSelectedGame(null);
+          setShowFavoritesOnly(false);
+          setShowSitemapModal(false);
         } else if (hash.includes("إخلاء-المسؤولية")) {
           setActiveLegalPage("disclaimer");
           setSelectedGame(null);
+          setShowFavoritesOnly(false);
+          setShowSitemapModal(false);
         } else {
           setActiveLegalPage(null);
+          setShowSitemapModal(false);
+          setShowFavoritesOnly(false);
           if (hash.includes("لعبة-brick-breaker")) {
             const game = GAMES_DATA.find(g => g.id === "brick-breaker") || null;
             setSelectedGame(game);
@@ -126,27 +149,55 @@ export default function App() {
         if (hash.includes("privacy-policy")) {
           setActiveLegalPage("privacy");
           setSelectedGame(null);
+          setShowFavoritesOnly(false);
+          setShowSitemapModal(false);
         } else if (hash.includes("terms-of-use")) {
           setActiveLegalPage("terms");
           setSelectedGame(null);
+          setShowFavoritesOnly(false);
+          setShowSitemapModal(false);
         } else if (hash.includes("disclaimer")) {
           setActiveLegalPage("disclaimer");
           setSelectedGame(null);
+          setShowFavoritesOnly(false);
+          setShowSitemapModal(false);
+        } else if (hash.includes("sitemap")) {
+          setActiveLegalPage(null);
+          setSelectedGame(null);
+          setShowFavoritesOnly(false);
+          setShowSitemapModal(true);
+        } else if (hash.includes("favorites")) {
+          setActiveLegalPage(null);
+          setSelectedGame(null);
+          setShowFavoritesOnly(true);
+          setActiveCategory("all");
+          setShowSitemapModal(false);
+        } else if (hash.includes("category-")) {
+          const catId = hash.split("category-")[1];
+          setActiveLegalPage(null);
+          setSelectedGame(null);
+          setShowFavoritesOnly(false);
+          setActiveCategory(catId);
+          setShowSitemapModal(false);
+        } else if (hash.includes("game-")) {
+          const gameId = hash.split("game-")[1];
+          const found = GAMES_DATA.find((g) => g.id === gameId);
+          if (found) {
+            setSelectedGame(found);
+            setActiveLegalPage(null);
+            setShowFavoritesOnly(false);
+            setShowSitemapModal(false);
+          }
         } else {
           setActiveLegalPage(null);
-          if (hash.includes("game-brick-breaker")) {
-            const game = GAMES_DATA.find(g => g.id === "brick-breaker") || null;
-            setSelectedGame(game);
-          } else if (hash.includes("game-neon-snake")) {
-            const game = GAMES_DATA.find(g => g.id === "neon-snake") || null;
-            setSelectedGame(game);
-          } else {
-            setSelectedGame(null);
-          }
+          setSelectedGame(null);
+          setShowFavoritesOnly(false);
+          setActiveCategory("all");
+          setShowSitemapModal(false);
         }
       } else {
         // Fallback or empty hash
-        updateHash(lang, selectedGame, activeLegalPage);
+        updateHash(selectedGame, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal);
       }
     };
 
@@ -159,8 +210,8 @@ export default function App() {
 
   // Update hash when states change
   useEffect(() => {
-    updateHash(lang, selectedGame, activeLegalPage);
-  }, [lang, selectedGame, activeLegalPage]);
+    updateHash(selectedGame, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal);
+  }, [selectedGame, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal]);
 
   // Dynamically update document title and description meta tags for maximum SEO visibility
   useEffect(() => {
@@ -177,10 +228,21 @@ export default function App() {
       } else if (activeLegalPage === "disclaimer") {
         title = "إخلاء المسؤولية وحقوق الملكية - العاب اونلاين فري | بوكي بوكس";
         desc = "بيان إخلاء المسؤولية وحماية حقوق الملكية الفكرية لمنصة العاب اونلاين فري بوكي بوكس.";
+      } else if (showSitemapModal) {
+        title = "خريطة الموقع والألعاب - العاب اونلاين فري | بوكي بوكس";
+        desc = "خريطة الموقع لجميع ألعاب بوكي بوكس والصفحات القانونية لسهولة الوصول والفهرسة السريعة.";
       } else if (selectedGame) {
         const gameTitle = selectedGame.titleAr;
         title = `العب لعبة ${gameTitle} اون لاين - العاب اونلاين فري | بوكي بوكس`;
         desc = `العب لعبة ${gameTitle} مجاناً وبدون تحميل على منصة بوكي بوكس - أقوى العاب اونلاين فري وسريعة بالكامل.`;
+      } else if (showFavoritesOnly) {
+        title = "ألعابي المفضلة - العاب اونلاين فري | بوكي بوكس";
+        desc = "استعرض قائمة ألعابك المفضلة التي قمت بحفظها للوصول إليها بسرعة وبدون تحميل على بوكي بوكس.";
+      } else if (activeCategory !== "all") {
+        const catObj = CATEGORIES.find(c => c.id === activeCategory);
+        const catName = catObj ? catObj.nameAr : "";
+        title = `العاب ${catName} مجانية - العاب اونلاين فري | بوكي بوكس`;
+        desc = `استمتع بأفضل العاب ${catName} اونلاين فري ومجانية بالكامل مباشرة على بوكي بوكس بدون تحميل.`;
       } else {
         title = "العاب اونلاين فري | أفضل ألعاب مجانية بدون تحميل على بوكي بوكس";
         desc = "العاب اونلاين فري - استمتع بأقوى وأحدث الألعاب المجانية مباشرة على بوكي بوكس بدون تحميل! العب ألعاب متصفح، ألعاب ذكاء، ألغاز، وألعاب ثلاثية الأبعاد خفيفة مجاناً وبسرعة فائقة.";
@@ -195,10 +257,21 @@ export default function App() {
       } else if (activeLegalPage === "disclaimer") {
         title = "Disclaimer - Free Online Games | PokiBox";
         desc = "Copyright and general disclaimer details for PokiBox - Free Online Games.";
+      } else if (showSitemapModal) {
+        title = "Sitemap Directory - Free Online Games | PokiBox";
+        desc = "Complete sitemap directory index of all games and legal pages on PokiBox.";
       } else if (selectedGame) {
         const gameTitle = selectedGame.titleEn;
         title = `Play ${gameTitle} Online - Free Online Games | PokiBox`;
         desc = `Play ${gameTitle} online for free with no downloads on PokiBox - The premier destination for free online games.`;
+      } else if (showFavoritesOnly) {
+        title = "My Favorite Games - Free Online Games | PokiBox";
+        desc = "View and play your saved favorite arcade and puzzle games on PokiBox.";
+      } else if (activeCategory !== "all") {
+        const catObj = CATEGORIES.find(c => c.id === activeCategory);
+        const catName = catObj ? catObj.nameEn : "";
+        title = `${catName} Games - Free Online Games | PokiBox`;
+        desc = `Play the best free online ${catName} games with zero downloads or popups on PokiBox.`;
       } else {
         title = "Free Online Games | PokiBox Arcade Playgrounds";
         desc = "Free Online Games - Play the best arcade, puzzle, and neon action games on PokiBox with zero downloads or popups.";
@@ -367,14 +440,6 @@ export default function App() {
       return matchesCategory && matchesFavorites;
     });
   }, [searchQuery, activeCategory, showFavoritesOnly, favorites, fuse]);
-
-  const categories = [
-    { id: "all", nameAr: "🎮 الكل", nameEn: "🎮 All" },
-    { id: "intelligence", nameAr: "🧠 ذكاء", nameEn: "🧠 Brain" },
-    { id: "classic", nameAr: "👾 كلاسيك", nameEn: "👾 Classic" },
-    { id: "puzzles", nameAr: "🧩 ألغاز", nameEn: "🧩 Puzzles" },
-    { id: "casual", nameAr: "🎈 خفيفة", nameEn: "🎈 Casual" }
-  ];
 
   return (
     <div className={`min-h-screen flex flex-col font-sans selection:bg-purple-600 selection:text-white overflow-x-hidden antialiased transition-colors duration-300 ${
@@ -583,7 +648,7 @@ export default function App() {
           theme === "dark" ? "border-slate-800" : "border-slate-200"
         }`}>
           <div className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
+            {CATEGORIES.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => { playUISound("click"); setActiveCategory(cat.id); setShowFavoritesOnly(false); }}

@@ -9,6 +9,54 @@
         <priority>1.0</priority>
     </url>
 
+    <!-- Brain / Intelligence Category -->
+    <url>
+        <loc>https://dkora.online/#/free-online-games/category-intelligence</loc>
+        <lastmod>2026-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Classic Category -->
+    <url>
+        <loc>https://dkora.online/#/free-online-games/category-classic</loc>
+        <lastmod>2026-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Puzzles Category -->
+    <url>
+        <loc>https://dkora.online/#/free-online-games/category-puzzles</loc>
+        <lastmod>2026-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Casual Category -->
+    <url>
+        <loc>https://dkora.online/#/free-online-games/category-casual</loc>
+        <lastmod>2026-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Saved Favorites Page -->
+    <url>
+        <loc>https://dkora.online/#/free-online-games/favorites</loc>
+        <lastmod>2026-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Visual Sitemap Directory Page -->
+    <url>
+        <loc>https://dkora.online/#/free-online-games/sitemap</loc>
+        <lastmod>2026-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
     <!-- 3D Brick Breaker -->
     <url>
         <loc>https://dkora.online/#/free-online-games/game-brick-breaker</loc>

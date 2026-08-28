@@ -157,6 +157,77 @@ export default function App() {
     updateHash(lang, selectedGame, activeLegalPage);
   }, [lang, selectedGame, activeLegalPage]);
 
+  // Dynamically update document title and description meta tags for maximum SEO visibility
+  useEffect(() => {
+    let title = "";
+    let desc = "";
+
+    if (lang === "ar") {
+      if (activeLegalPage === "privacy") {
+        title = "سياسة الخصوصية وسرية البيانات - العاب اونلاين فري | بوكي بوكس";
+        desc = "سياسة الخصوصية وسرية البيانات لمنصة العاب اونلاين فري (بوكي بوكس). نلتزم بحماية خصوصيتك وضمان لعب آمن لجميع اللاعبين.";
+      } else if (activeLegalPage === "terms") {
+        title = "شروط واتفاقية الاستخدام - العاب اونلاين فري | بوكي بوكس";
+        desc = "شروط واتفاقية الاستخدام للعب النظيف على منصة العاب اونلاين فري بوكي بوكس.";
+      } else if (activeLegalPage === "disclaimer") {
+        title = "إخلاء المسؤولية وحقوق الملكية - العاب اونلاين فري | بوكي بوكس";
+        desc = "بيان إخلاء المسؤولية وحماية حقوق الملكية الفكرية لمنصة العاب اونلاين فري بوكي بوكس.";
+      } else if (selectedGame) {
+        const gameTitle = selectedGame.titleAr;
+        title = `العب لعبة ${gameTitle} اون لاين - العاب اونلاين فري | بوكي بوكس`;
+        desc = `العب لعبة ${gameTitle} مجاناً وبدون تحميل على منصة بوكي بوكس - أقوى العاب اونلاين فري وسريعة بالكامل.`;
+      } else {
+        title = "العاب اونلاين فري | أفضل ألعاب مجانية بدون تحميل على بوكي بوكس";
+        desc = "العاب اونلاين فري - استمتع بأقوى وأحدث الألعاب المجانية مباشرة على بوكي بوكس بدون تحميل! العب ألعاب متصفح، ألعاب ذكاء، ألغاز، وألعاب ثلاثية الأبعاد خفيفة مجاناً وبسرعة فائقة.";
+      }
+    } else {
+      if (activeLegalPage === "privacy") {
+        title = "Privacy Policy - Free Online Games | PokiBox";
+        desc = "Privacy and Safe Gameplay Policy for PokiBox - Free Online Games.";
+      } else if (activeLegalPage === "terms") {
+        title = "Terms of Use - Free Online Games | PokiBox";
+        desc = "Terms of use and fair gameplay agreement for PokiBox - Free Online Games.";
+      } else if (activeLegalPage === "disclaimer") {
+        title = "Disclaimer - Free Online Games | PokiBox";
+        desc = "Copyright and general disclaimer details for PokiBox - Free Online Games.";
+      } else if (selectedGame) {
+        const gameTitle = selectedGame.titleEn;
+        title = `Play ${gameTitle} Online - Free Online Games | PokiBox`;
+        desc = `Play ${gameTitle} online for free with no downloads on PokiBox - The premier destination for free online games.`;
+      } else {
+        title = "Free Online Games | PokiBox Arcade Playgrounds";
+        desc = "Free Online Games - Play the best arcade, puzzle, and neon action games on PokiBox with zero downloads or popups.";
+      }
+    }
+
+    // Set page title
+    document.title = title;
+
+    // Dynamically update description meta tags
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute("content", desc);
+    }
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) {
+      ogDesc.setAttribute("content", desc);
+    }
+    const twitterDesc = document.querySelector('meta[property="twitter:description"]');
+    if (twitterDesc) {
+      twitterDesc.setAttribute("content", desc);
+    }
+    
+    // Dynamically update og/twitter titles too
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute("content", title);
+    }
+    const twitterTitle = document.querySelector('meta[property="twitter:title"]');
+    if (twitterTitle) {
+      twitterTitle.setAttribute("content", title);
+    }
+  }, [lang, selectedGame, activeLegalPage]);
+
   // Synchronize theme with local storage
   useEffect(() => {
     try {

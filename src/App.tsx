@@ -85,7 +85,7 @@ export default function App() {
     favsOnly: boolean,
     sitemap: boolean
   ) => {
-    let newPath = "/";
+    let newPath = currentLang === "ar" ? "/العاب-اونلاين-فري" : "/free-online-games";
     if (currentLang === "ar") {
       if (legal === "privacy") {
         newPath = "/سياسة-الخصوصية";
@@ -129,7 +129,7 @@ export default function App() {
     // Redirect old hashes for clean transition
     if (window.location.hash) {
       const hash = decodeURIComponent(window.location.hash);
-      let targetPath = "/";
+      let targetPath = "/العاب-اونلاين-فري";
       if (hash.includes("العاب-اونلاين-فري") || hash.includes("free-online-games")) {
         if (hash.includes("سياسة-الخصوصية") || hash.includes("privacy-policy")) {
           targetPath = hash.includes("سياسة-الخصوصية") ? "/سياسة-الخصوصية" : "/privacy-policy";
@@ -163,6 +163,7 @@ export default function App() {
       
       // Arabic URL mapping
       if (
+        path.includes("العاب-اونلاين-فري") ||
         path.includes("سياسة-الخصوصية") || 
         path.includes("شروط-الاستخدام") || 
         path.includes("إخلاء-المسؤولية") || 
@@ -214,10 +215,18 @@ export default function App() {
             setShowFavoritesOnly(false);
             setShowSitemapModal(false);
           }
+        } else {
+          // Exactly /العاب-اونلاين-فري
+          setActiveLegalPage(null);
+          setSelectedGame(null);
+          setShowFavoritesOnly(false);
+          setActiveCategory("all");
+          setShowSitemapModal(false);
         }
       } 
       // English URL mapping
       else if (
+        path.includes("free-online-games") ||
         path.includes("privacy-policy") || 
         path.includes("terms-of-use") || 
         path.includes("disclaimer") || 
@@ -269,14 +278,33 @@ export default function App() {
             setShowFavoritesOnly(false);
             setShowSitemapModal(false);
           }
+        } else {
+          // Exactly /free-online-games
+          setActiveLegalPage(null);
+          setSelectedGame(null);
+          setShowFavoritesOnly(false);
+          setActiveCategory("all");
+          setShowSitemapModal(false);
         }
       } else {
-        // Default to home page "/", keeping stored language preference
+        // Redirection on pure root "/" landing
+        let isEn = false;
+        try {
+          const saved = localStorage.getItem("poki_lang");
+          if (saved) {
+            isEn = (saved === "en");
+          } else {
+            isEn = !!(navigator.language && navigator.language.startsWith("en"));
+          }
+        } catch (e) {}
+        const targetPath = isEn ? "/free-online-games" : "/العاب-اونلاين-فري";
+        setLang(isEn ? "en" : "ar");
         setActiveLegalPage(null);
         setSelectedGame(null);
         setShowFavoritesOnly(false);
         setActiveCategory("all");
         setShowSitemapModal(false);
+        window.history.replaceState(null, "", targetPath);
       }
     };
 

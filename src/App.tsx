@@ -85,7 +85,9 @@ export default function App() {
     favsOnly: boolean,
     sitemap: boolean
   ) => {
-    let newPath = currentLang === "ar" ? "/العاب-اونلاين-فري" : "/free-online-games";
+    let newPath = "/";
+    let query = `?lang=${currentLang}`;
+
     if (currentLang === "ar") {
       if (legal === "privacy") {
         newPath = "/سياسة-الخصوصية";
@@ -119,8 +121,10 @@ export default function App() {
         newPath = `/category-${category}`;
       }
     }
-    if (window.location.pathname !== newPath) {
-      window.history.pushState(null, "", newPath);
+
+    const fullTarget = newPath + query;
+    if (window.location.pathname !== newPath || window.location.search !== query) {
+      window.history.pushState(null, "", fullTarget);
     }
   };
 
@@ -129,30 +133,30 @@ export default function App() {
     // Redirect old hashes for clean transition
     if (window.location.hash) {
       const hash = decodeURIComponent(window.location.hash);
-      let targetPath = "/العاب-اونلاين-فري";
+      let targetPath = "/?lang=ar";
       if (hash.includes("العاب-اونلاين-فري") || hash.includes("free-online-games")) {
         if (hash.includes("سياسة-الخصوصية") || hash.includes("privacy-policy")) {
-          targetPath = hash.includes("سياسة-الخصوصية") ? "/سياسة-الخصوصية" : "/privacy-policy";
+          targetPath = hash.includes("سياسة-الخصوصية") ? "/سياسة-الخصوصية?lang=ar" : "/privacy-policy?lang=en";
         } else if (hash.includes("شروط-الاستخدام") || hash.includes("terms-of-use")) {
-          targetPath = hash.includes("شروط-الاستخدام") ? "/شروط-الاستخدام" : "/terms-of-use";
+          targetPath = hash.includes("شروط-الاستخدام") ? "/شروط-الاستخدام?lang=ar" : "/terms-of-use?lang=en";
         } else if (hash.includes("إخلاء-المسؤولية") || hash.includes("disclaimer")) {
-          targetPath = hash.includes("إخلاء-المسؤولية") ? "/إخلاء-المسؤولية" : "/disclaimer";
+          targetPath = hash.includes("إخلاء-المسؤولية") ? "/إخلاء-المسؤولية?lang=ar" : "/disclaimer?lang=en";
         } else if (hash.includes("خريطة-الموقع") || hash.includes("sitemap")) {
-          targetPath = hash.includes("خريطة-الموقع") ? "/خريطة-الموقع" : "/sitemap";
+          targetPath = hash.includes("خريطة-الموقع") ? "/خريطة-الموقع?lang=ar" : "/sitemap?lang=en";
         } else if (hash.includes("المفضلة") || hash.includes("favorites")) {
-          targetPath = hash.includes("المفضلة") ? "/المفضلة" : "/favorites";
+          targetPath = hash.includes("المفضلة") ? "/المفضلة?lang=ar" : "/favorites?lang=en";
         } else if (hash.includes("تصنيف-")) {
           const cat = hash.split("تصنيف-")[1];
-          targetPath = `/تصنيف-${cat}`;
+          targetPath = `/تصنيف-${cat}?lang=ar`;
         } else if (hash.includes("category-")) {
           const cat = hash.split("category-")[1];
-          targetPath = `/category-${cat}`;
+          targetPath = `/category-${cat}?lang=en`;
         } else if (hash.includes("لعبة-")) {
           const game = hash.split("لعبة-")[1];
-          targetPath = `/لعبة-${game}`;
+          targetPath = `/لعبة-${game}?lang=ar`;
         } else if (hash.includes("game-")) {
           const game = hash.split("game-")[1];
-          targetPath = `/game-${game}`;
+          targetPath = `/game-${game}?lang=en`;
         }
       }
       window.history.replaceState(null, "", targetPath);
@@ -160,10 +164,28 @@ export default function App() {
 
     const handleLocationChange = () => {
       const path = decodeURIComponent(window.location.pathname);
+      const search = window.location.search || "";
       
-      // Arabic URL mapping
+      // Parse active language
+      let activeLang: "ar" | "en" = "ar";
+      if (search.indexOf("lang=en") !== -1) {
+        activeLang = "en";
+      } else if (search.indexOf("lang=ar") !== -1) {
+        activeLang = "ar";
+      } else {
+        try {
+          const saved = localStorage.getItem("poki_lang");
+          if (saved === "en" || saved === "ar") {
+            activeLang = saved;
+          } else {
+            activeLang = !!(navigator.language && navigator.language.startsWith("en")) ? "en" : "ar";
+          }
+        } catch (e) {}
+      }
+      setLang(activeLang);
+      
+      // Arabic or neutral paths matching
       if (
-        path.includes("العاب-اونلاين-فري") ||
         path.includes("سياسة-الخصوصية") || 
         path.includes("شروط-الاستخدام") || 
         path.includes("إخلاء-المسؤولية") || 
@@ -172,7 +194,6 @@ export default function App() {
         path.includes("تصنيف-") || 
         path.includes("لعبة-")
       ) {
-        setLang("ar");
         if (path.includes("سياسة-الخصوصية")) {
           setActiveLegalPage("privacy");
           setSelectedGame(null);
@@ -215,18 +236,10 @@ export default function App() {
             setShowFavoritesOnly(false);
             setShowSitemapModal(false);
           }
-        } else {
-          // Exactly /العاب-اونلاين-فري
-          setActiveLegalPage(null);
-          setSelectedGame(null);
-          setShowFavoritesOnly(false);
-          setActiveCategory("all");
-          setShowSitemapModal(false);
         }
       } 
-      // English URL mapping
+      // English paths matching
       else if (
-        path.includes("free-online-games") ||
         path.includes("privacy-policy") || 
         path.includes("terms-of-use") || 
         path.includes("disclaimer") || 
@@ -235,7 +248,6 @@ export default function App() {
         path.includes("category-") || 
         path.includes("game-")
       ) {
-        setLang("en");
         if (path.includes("privacy-policy")) {
           setActiveLegalPage("privacy");
           setSelectedGame(null);
@@ -278,33 +290,19 @@ export default function App() {
             setShowFavoritesOnly(false);
             setShowSitemapModal(false);
           }
-        } else {
-          // Exactly /free-online-games
-          setActiveLegalPage(null);
-          setSelectedGame(null);
-          setShowFavoritesOnly(false);
-          setActiveCategory("all");
-          setShowSitemapModal(false);
         }
       } else {
-        // Redirection on pure root "/" landing
-        let isEn = false;
-        try {
-          const saved = localStorage.getItem("poki_lang");
-          if (saved) {
-            isEn = (saved === "en");
-          } else {
-            isEn = !!(navigator.language && navigator.language.startsWith("en"));
-          }
-        } catch (e) {}
-        const targetPath = isEn ? "/free-online-games" : "/العاب-اونلاين-فري";
-        setLang(isEn ? "en" : "ar");
+        // Default to home page "/", ensuring active query parameter lang is enforced
         setActiveLegalPage(null);
         setSelectedGame(null);
         setShowFavoritesOnly(false);
         setActiveCategory("all");
         setShowSitemapModal(false);
-        window.history.replaceState(null, "", targetPath);
+        
+        const targetSearch = `?lang=${activeLang}`;
+        if (window.location.search !== targetSearch) {
+          window.history.replaceState(null, "", "/" + targetSearch);
+        }
       }
     };
 

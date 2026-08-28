@@ -1,88 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Core Static Forex Pages for dkora.online -->
-  <url>
-    <loc>https://dkora.online/</loc>
-    <lastmod>2026-08-23</lastmod>
-    <changefreq>always</changefreq>
-    <priority>1.0</priority>
-  </url>
-  
-  <!-- Newly Added School Articles Prioritized -->
-  <url>
-    <loc>https://dkora.online/school/gold-risk-management</loc>
-    <lastmod>2026-08-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.98</priority>
-  </url>
-  <url>
-    <loc>https://dkora.online/school/intro-forex</loc>
-    <lastmod>2026-08-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://dkora.online/school/meme-coins</loc>
-    <lastmod>2026-08-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <!-- Main Arabic Home -->
+    <url>
+        <loc>https://pokibox.com/#/العاب-اونلاين-فري</loc>
+        <lastmod>2026-08-27</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://pokibox.com/#/العاب-اونلاين-فري"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://pokibox.com/#/free-online-games"/>
+    </url>
 
-  <!-- Newly Added News Articles -->
-  <url>
-    <loc>https://dkora.online/news/news-gold-risk-management</loc>
-    <lastmod>2026-08-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://dkora.online/news/news-1</loc>
-    <lastmod>2026-08-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://dkora.online/news/news-2</loc>
-    <lastmod>2026-08-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://dkora.online/news/news-3</loc>
-    <lastmod>2026-08-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.95</priority>
-  </url>
+    <!-- Main English Home -->
+    <url>
+        <loc>https://pokibox.com/#/free-online-games</loc>
+        <lastmod>2026-08-27</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://pokibox.com/#/العاب-اونلاين-فري"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://pokibox.com/#/free-online-games"/>
+    </url>
 
-  <!-- Core Main Sections -->
-  <url>
-    <loc>https://dkora.online/news</loc>
-    <lastmod>2026-08-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://dkora.online/school</loc>
-    <lastmod>2026-08-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://dkora.online/sitemap</loc>
-    <lastmod>2026-08-23</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://dkora.online/privacy</loc>
-    <lastmod>2026-08-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
-  </url>
-  <url>
-    <loc>https://dkora.online/terms</loc>
-    <lastmod>2026-08-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.50</priority>
-  </url>
+    <!-- 3D Brick Breaker - Arabic Link -->
+    <url>
+        <loc>https://pokibox.com/#/العاب-اونلاين-فري/لعبة-brick-breaker</loc>
+        <lastmod>2026-08-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://pokibox.com/#/العاب-اونلاين-فري/لعبة-brick-breaker"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://pokibox.com/#/free-online-games/game-brick-breaker"/>
+    </url>
+
+    <!-- 3D Brick Breaker - English Link -->
+    <url>
+        <loc>https://pokibox.com/#/free-online-games/game-brick-breaker</loc>
+        <lastmod>2026-08-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://pokibox.com/#/العاب-اونلاين-فري/لعبة-brick-breaker"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://pokibox.com/#/free-online-games/game-brick-breaker"/>
+    </url>
+
+    <!-- Neon Snake - Arabic Link -->
+    <url>
+        <loc>https://pokibox.com/#/العاب-اونلاين-فري/لعبة-neon-snake</loc>
+        <lastmod>2026-08-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://pokibox.com/#/العاب-اونلاين-فري/لعبة-neon-snake"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://pokibox.com/#/free-online-games/game-neon-snake"/>
+    </url>
+
+    <!-- Neon Snake - English Link -->
+    <url>
+        <loc>https://pokibox.com/#/free-online-games/game-neon-snake</loc>
+        <lastmod>2026-08-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://pokibox.com/#/العاب-اونلاين-فري/لعبة-neon-snake"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://pokibox.com/#/free-online-games/game-neon-snake"/>
+    </url>
+
+    <!-- Legal - Privacy Policy (Arabic) -->
+    <url>
+        <loc>https://pokibox.com/#/العاب-اونلاين-فري/سياسة-الخصوصية</loc>
+        <lastmod>2026-08-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <!-- Legal - Terms (Arabic) -->
+    <url>
+        <loc>https://pokibox.com/#/العاب-اونلاين-فري/شروط-الاستخدام</loc>
+        <lastmod>2026-08-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <!-- Legal - Disclaimer (Arabic) -->
+    <url>
+        <loc>https://pokibox.com/#/العاب-اونلاين-فري/إخلاء-المسؤولية</loc>
+        <lastmod>2026-08-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
 </urlset>

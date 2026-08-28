@@ -224,42 +224,42 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
       impact: "التأثير"
     },
     sitemap: {
-      title: "خريطة الموقع الديناميكية (Sitemap)",
-      subtitle: "وصول سهل وفهرسة فورية لكافة صفحات منصة ديكوراFX والتوصيات النشطة والسابقة",
-      staticPages: "الصفحات والأقسام الثابتة",
-      dynamicSignals: "التوصيات والصفقات الفردية المباشرة",
-      allRights: "كافة الحقوق محفوظة لمنصة ديكوراFX لعام 2026."
+      title: "خريطة الموقع (Sitemap) - العاب اونلاين فري",
+      subtitle: "دليل متكامل للوصول الفوري والفهرسة السريعة لجميع ألعاب بوكي بوكس والمحتوى القانوني",
+      staticPages: "الأقسام الرئيسية والصفحات الثابتة",
+      dynamicSignals: "مستودع الألعاب المجانية المباشرة",
+      allRights: "كافة الحقوق محفوظة لمنصة بوكي بوكس © 2026."
     },
     footer: {
-      about: "عن ديكوراFX",
-      aboutText: "المنصة العربية الرائدة لتقديم توصيات وتحليلات أسواق المال العالمية والفوركس بدقة متناهية تحت إشراف نخبة من الخبراء والمحللين الفنيين والماليين.",
-      links: "روابط قانونية هامة",
-      privacy: "سياسة الخصوصية وسرية البيانات",
-      terms: "اتفاقية وشروط الاستخدام",
-      disclaimer: "إخلاء المسؤولية وتحذير المخاطر",
-      copyright: "ديكوراFX © 2026. توصيات فوركس دقيقة وأجندة تفاعلية متقدمة."
+      about: "عن بوكي بوكس",
+      aboutText: "منصة الألعاب الأبرز لتقديم العاب اونلاين فري بدون تحميل وألعاب المتصفح بجودة نيون فائقة وتطوير مستمر لمتعة آمنة ومجانية بالكامل لجميع الأعمار.",
+      links: "الروابط القانونية",
+      privacy: "سياسة الخصوصية والأمان",
+      terms: "اتفاقية الاستخدام واللعب الآمن",
+      disclaimer: "إخلاء المسؤولية وحقوق الملكية",
+      copyright: "بوكي بوكس © 2026. العاب اونلاين فري وألعاب متصفح ممتعة."
     },
     legal: {
-      privacyTitle: "سياسة الخصوصية وسرية البيانات",
-      termsTitle: "شروط واتفاقية الاستخدام",
-      disclaimerTitle: "إخلاء المسؤولية وتحذير المخاطر",
+      privacyTitle: "سياسة الخصوصية وسرية البيانات والألعاب الآمنة",
+      termsTitle: "اتفاقية وشروط الاستخدام واللعب النظيف",
+      disclaimerTitle: "إخلاء المسؤولية وحماية حقوق الملكية الفكرية",
       privacyContent: [
-        "نحن في ديكوراFX نلتزم بأعلى معايير الحماية والسرية التامة لبياناتك الشخصية وتفضيلاتك التداولية المتنوعة.",
-        "المنصة تعمل بالكامل محلياً وفي بيئة آمنة لحفظ الصفقات والتفضيلات الشخصية للمستخدم في ذاكرة المتصفح دون نقل بيانات لجهات خارجية.",
-        "ملفات تعريف الارتباط تُستخدم بشكل أساسي لتحسين تجربة التصفح وتذكر تفضيلاتك مثل اللغة المفضلة ونمط الإضاءة الحالي.",
-        "نحن لا نقوم ببيع أو مشاركة أو تداول أي بيانات خاصة بقرائنا أو زوارنا على الإطلاق."
+        "نحن في بوكي بوكس (PokiBox) نلتزم بخصوصية تامة لزوارنا الكرام وخاصة فئات صغار السن والعائلات، ونتبع سياسات تضمن سلامة تصفحكم للألعاب.",
+        "المنصة تعمل بالكامل بدون تجميع بيانات حساسة، ويتم تخزين تفضيلات الألعاب والأرقام القياسية والمفضلات محلياً 100% داخل ذاكرة المتصفح.",
+        "نحن نستخدم ملفات تعريف الارتباط الأساسية فقط للاحتفاظ بلغتكم المفضلة ومستوى الصوت ونمط التصميم الداكن أو الفاتح.",
+        "بوكي بوكس لا يحتوي على إعلانات منبثقة أو خبيثة، ونضمن بيئة نظيفة وآمنة بالكامل للعب العاب اونلاين فري."
       ],
       termsContent: [
-        "باستخدامك لمنصة ديكوراFX، فإنك توافق التوافق التام على شروط الاستخدام المذكورة في هذه الاتفاقية.",
-        "التوصيات والمعلومات المنشورة هنا هي لأغراض إرشادية وتثقيفية فقط، ولا يجب اعتبارها بأي شكل من الأشكال نصائح مالية مباشرة للاستثمار.",
-        "يتحمل المستخدم المسؤولية الكاملة والمنفردة عن استخدام هذه التوصيات وتطبيقها على حسابات التداول الحقيقية الخاصة به.",
-        "يحظر تماماً نسخ أو تداول توصياتنا الحصرية لأغراض تجارية دون إذن كتابي مسبق من الإدارة."
+        "باستخدامك لمنصة بوكي بوكس ولعب العاب اونلاين فري المتاحة، فإنك توافق توافقاً تاماً على شروط الاستخدام الموضحة في هذه الصفحة.",
+        "جميع الألعاب المقدمة هنا مخصصة للمتعة الشخصية والترفيه البريء، وتعمل مباشرة من المتصفح دون الحاجة لتنزيل أي برمجيات خارجية.",
+        "يُحظر تماماً محاولة تخريب أو اختراق أكواد الألعاب الحصرية، أو إعادة نشر ألعابنا على نطاق تجاري دون إذن خطي مسبق.",
+        "نحن نبذل قصارى جهدنا لضمان استمرارية تشغيل الألعاب بكفاءة فائقة وسرعة تامة على كافة متصفحات الموبايل والكمبيوتر."
       ],
       disclaimerContent: [
-        "تداول العملات الأجنبية (الفوركس) وعقود الفروقات ينطوي على مخاطر عالية جداً بسب الرافعة المالية، وقد يؤدي إلى خسارة رأس المال المستثمر بالكامل.",
-        "التحليلات والتوصيات المعروضة في ديكوراFX تعبر عن رؤية فنية لخبراء السوق، ولا تضمن بأي حال من الأحوال أرباحاً مستقبلية مؤكدة.",
-        "المنصة وفريق عملها ومحللوها غير مسؤولين عن أي خسائر مادية مباشرة أو غير مباشرة قد يتكبدها المستخدم نتيجة الاعتماد على هذه البيانات.",
-        "يرجى دائماً التداول بأموال يمكنك تحمل خسارتها، واستشارة مستشار مالي مستقل قبل اتخاذ قرارات تداول مصيرية."
+        "جميع الألعاب المعروضة على بوكي بوكس هي إما ألعاب حصرية مدمجة، أو مرخصة ومفتوحة المصدر ومتاحة للمشاركة العامة قانونياً.",
+        "إذا كنت تمتلك حقوق ملكية فكرية لأي لعبة معروضة وتعتقد أنها نُشرت دون إذنك، يرجى التواصل معنا فوراً لإزالتها وتصحيح الموقف.",
+        "نحن نخلي مسؤوليتنا التامة عن أي أضرار ناتجة عن انقطاع الإنترنت أو مشاكل تقنية خارجة عن إرادتنا أثناء تشغيل الألعاب.",
+        "تمتع بتجربة لعب ممتعة وخذ فترات راحة منتظمة أثناء اللعب للحفاظ على سلامة وصحة عينيك وجسدك."
       ]
     }
   },
@@ -363,42 +363,42 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
       impact: "Impact"
     },
     sitemap: {
-      title: "Dynamic Sitemap Directory",
-      subtitle: "Immediate index access to all DkoraFX static pages, interactive sections, and live active/historic signals",
-      staticPages: "Static Pages & Sections",
-      dynamicSignals: "Live Individual Signals & Trades",
-      allRights: "All Rights Reserved for DkoraFX © 2026."
+      title: "Sitemap Directory - Free Online Games",
+      subtitle: "Immediate index access to all PokiBox web games, native overlays, categories, and legal pages for search bot indexing",
+      staticPages: "Core Pages & Navigation Sections",
+      dynamicSignals: "Free Browser Games Directory",
+      allRights: "All Rights Reserved for PokiBox Games © 2026."
     },
     footer: {
-      about: "About DkoraFX",
-      aboutText: "The leading Arabic financial platform providing top-tier currency trading signals, market breakdowns, and daily analytics under senior expert supervision.",
-      links: "Legal Directory Links",
-      privacy: "Privacy & Data Policy",
-      terms: "Terms of Use Agreement",
-      disclaimer: "Risk Warning Disclaimer",
-      copyright: "DkoraFX © 2026. Precise Forex recommendations and interactive calendar."
+      about: "About PokiBox",
+      aboutText: "The premier web platform providing free online games with zero downloads or popups. Enjoy optimized responsive arcade and puzzle games in a high fidelity environment.",
+      links: "Legal Links",
+      privacy: "Privacy Policy",
+      terms: "Terms of Use",
+      disclaimer: "Disclaimer & Copyright",
+      copyright: "PokiBox © 2026. High fidelity free browser arcade playgrounds."
     },
     legal: {
-      privacyTitle: "Privacy & Data Policy",
-      termsTitle: "Terms of Use Agreement",
-      disclaimerTitle: "Risk Warning Disclaimer",
+      privacyTitle: "Privacy & Safe Gameplay Policy",
+      termsTitle: "Terms of Use & Fair Play Agreement",
+      disclaimerTitle: "Copyright Disclaimer & Risk Free Play",
       privacyContent: [
-        "We at DkoraFX respect your absolute privacy and guarantee high confidentiality of your preferences.",
-        "This platform runs entirely local-first inside your browser cache. All trading additions, metrics, and risk limits are stored safely on your device.",
-        "Cookies are only deployed for standard session persistence, such as keeping your current language and layout mode settings intact.",
-        "We never share, trade, or distribute your email or configuration values to any third party."
+        "We at PokiBox respect your absolute privacy and guarantee high confidentiality for all of our players, including families and children.",
+        "This platform runs entirely local-first inside your browser cache. All game favorites, ratings, and score rankings are stored safely on your device.",
+        "Cookies are only deployed for standard session persistence, such as maintaining your current language, audio settings, and theme choices.",
+        "We never track, sell, or distribute any user metrics or email values to third party networks."
       ],
       termsContent: [
-        "By accessing and using DkoraFX, you agree to comply with all terms and clauses stated in this license.",
-        "All recommendations, charts, and values are shared for general awareness and educational contexts, never as solid investing calls.",
-        "The end-user assumes total responsibility for any execution made on real or demo trading accounts.",
-        "Commercial reproduction, redistribution, or scraping of our intellectual signals is strictly forbidden without written permission."
+        "By accessing and playing on PokiBox, you agree to comply with all terms and clauses stated in this license.",
+        "All recommendations, instructions, and gameplay rules are shared for general awareness and entertaining recreation contexts.",
+        "Commercial reproduction, cloning, or scraping of our native games is strictly forbidden without written permission.",
+        "The end-user assumes responsibility for their browser stability, and we guarantee high uptime and rapid loading on both mobile and desktop."
       ],
       disclaimerContent: [
-        "Foreign Exchange (Forex) and CFD trading involve high leverage and bring significant risk of total capital loss.",
-        "Technical analysis, trend forecasts, and recommendations on DkoraFX express our analyst perspectives and do not promise definite yields.",
-        "DkoraFX, its operators, and affiliates reject any liability for physical losses resulting directly or indirectly from utilizing this web dashboard.",
-        "Always trade with capital you can afford to lose, and consult an independent certified financial advisor if needed."
+        "All games featured on PokiBox are legally embeddable, open-source, or custom designed for high fidelity web browser gameplay.",
+        "If you are a copyright owner and believe your game is embedded here incorrectly, contact us immediately and we will remove the asset.",
+        "PokiBox, its operators, and affiliates reject any liability for connectivity loss resulting from external network conditions.",
+        "Always take regular breaks during gameplay to preserve your eye health and physical wellness."
       ]
     }
   }

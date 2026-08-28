@@ -76,8 +76,9 @@ export default function App() {
     } catch {}
   }, [lang]);
 
-  // Helper to update the browser hash URL based on active states - strictly in English
+  // Helper to update the browser hash URL based on active states - localized by language
   const updateHash = (
+    currentLang: "ar" | "en", 
     game: Game | null, 
     legal: "privacy" | "terms" | "disclaimer" | null,
     category: string,
@@ -85,34 +86,53 @@ export default function App() {
     sitemap: boolean
   ) => {
     let newHash = "";
-    if (legal === "privacy") {
-      newHash = "#/free-online-games/privacy-policy";
-    } else if (legal === "terms") {
-      newHash = "#/free-online-games/terms-of-use";
-    } else if (legal === "disclaimer") {
-      newHash = "#/free-online-games/disclaimer";
-    } else if (sitemap) {
-      newHash = "#/free-online-games/sitemap";
-    } else if (game) {
-      newHash = `#/free-online-games/game-${game.id}`;
-    } else if (favsOnly) {
-      newHash = "#/free-online-games/favorites";
-    } else if (category !== "all") {
-      newHash = `#/free-online-games/category-${category}`;
+    if (currentLang === "ar") {
+      if (legal === "privacy") {
+        newHash = "#/العاب-اونلاين-فري/سياسة-الخصوصية";
+      } else if (legal === "terms") {
+        newHash = "#/العاب-اونلاين-فري/شروط-الاستخدام";
+      } else if (legal === "disclaimer") {
+        newHash = "#/العاب-اونلاين-فري/إخلاء-المسؤولية";
+      } else if (sitemap) {
+        newHash = "#/العاب-اونلاين-فري/خريطة-الموقع";
+      } else if (game) {
+        newHash = `#/العاب-اونلاين-فري/لعبة-${game.id}`;
+      } else if (favsOnly) {
+        newHash = "#/العاب-اونلاين-فري/المفضلة";
+      } else if (category !== "all") {
+        newHash = `#/العاب-اونلاين-فري/تصنيف-${category}`;
+      } else {
+        newHash = "#/العاب-اونلاين-فري";
+      }
     } else {
-      newHash = "#/free-online-games";
+      if (legal === "privacy") {
+        newHash = "#/free-online-games/privacy-policy";
+      } else if (legal === "terms") {
+        newHash = "#/free-online-games/terms-of-use";
+      } else if (legal === "disclaimer") {
+        newHash = "#/free-online-games/disclaimer";
+      } else if (sitemap) {
+        newHash = "#/free-online-games/sitemap";
+      } else if (game) {
+        newHash = `#/free-online-games/game-${game.id}`;
+      } else if (favsOnly) {
+        newHash = "#/free-online-games/favorites";
+      } else if (category !== "all") {
+        newHash = `#/free-online-games/category-${category}`;
+      } else {
+        newHash = "#/free-online-games";
+      }
     }
     if (window.location.hash !== newHash) {
       window.history.pushState(null, "", newHash);
     }
   };
 
-  // Listen to hash changes and update app states accordingly (supporting English hashes and legacy Arabic redirects)
+  // Listen to hash changes and update app states accordingly (supporting English and Arabic hashes)
   useEffect(() => {
     const handleHashChange = () => {
       const hash = decodeURIComponent(window.location.hash);
       
-      // Backward compatibility mapping for old Arabic URLs (redirects/maps them to the clean state and translates)
       if (hash.includes("العاب-اونلاين-فري")) {
         setLang("ar");
         if (hash.includes("سياسة-الخصوصية")) {
@@ -130,22 +150,42 @@ export default function App() {
           setSelectedGame(null);
           setShowFavoritesOnly(false);
           setShowSitemapModal(false);
+        } else if (hash.includes("خريطة-الموقع")) {
+          setActiveLegalPage(null);
+          setSelectedGame(null);
+          setShowFavoritesOnly(false);
+          setShowSitemapModal(true);
+        } else if (hash.includes("المفضلة")) {
+          setActiveLegalPage(null);
+          setSelectedGame(null);
+          setShowFavoritesOnly(true);
+          setActiveCategory("all");
+          setShowSitemapModal(false);
+        } else if (hash.includes("تصنيف-")) {
+          const catId = hash.split("تصنيف-")[1];
+          setActiveLegalPage(null);
+          setSelectedGame(null);
+          setShowFavoritesOnly(false);
+          setActiveCategory(catId);
+          setShowSitemapModal(false);
+        } else if (hash.includes("لعبة-")) {
+          const gameId = hash.split("لعبة-")[1];
+          const found = GAMES_DATA.find((g) => g.id === gameId);
+          if (found) {
+            setSelectedGame(found);
+            setActiveLegalPage(null);
+            setShowFavoritesOnly(false);
+            setShowSitemapModal(false);
+          }
         } else {
           setActiveLegalPage(null);
-          setShowSitemapModal(false);
+          setSelectedGame(null);
           setShowFavoritesOnly(false);
-          if (hash.includes("لعبة-brick-breaker")) {
-            const game = GAMES_DATA.find(g => g.id === "brick-breaker") || null;
-            setSelectedGame(game);
-          } else if (hash.includes("لعبة-neon-snake")) {
-            const game = GAMES_DATA.find(g => g.id === "neon-snake") || null;
-            setSelectedGame(game);
-          } else {
-            setSelectedGame(null);
-          }
+          setActiveCategory("all");
+          setShowSitemapModal(false);
         }
       } else if (hash.includes("free-online-games")) {
-        // Universal English URL structure - does not override current language preference
+        setLang("en");
         if (hash.includes("privacy-policy")) {
           setActiveLegalPage("privacy");
           setSelectedGame(null);
@@ -197,7 +237,7 @@ export default function App() {
         }
       } else {
         // Fallback or empty hash
-        updateHash(selectedGame, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal);
+        updateHash(lang, selectedGame, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal);
       }
     };
 
@@ -210,8 +250,8 @@ export default function App() {
 
   // Update hash when states change
   useEffect(() => {
-    updateHash(selectedGame, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal);
-  }, [selectedGame, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal]);
+    updateHash(lang, selectedGame, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal);
+  }, [lang, selectedGame, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal]);
 
   // Dynamically update document title and description meta tags for maximum SEO visibility
   useEffect(() => {
@@ -991,7 +1031,7 @@ export default function App() {
                 <ul className="space-y-3 text-xs">
                   <li>
                     <a 
-                      href="#/free-online-games"
+                      href="#/العاب-اونلاين-فري"
                       onClick={() => { playUISound("click"); setLang("ar"); setSelectedGame(null); setActiveLegalPage(null); setShowSitemapModal(false); }}
                       className="hover:underline text-purple-400 block font-bold"
                     >
@@ -1009,7 +1049,43 @@ export default function App() {
                   </li>
                   <li>
                     <a 
-                      href="#/free-online-games/privacy-policy"
+                      href="#/العاب-اونلاين-فري/المفضلة"
+                      onClick={() => { playUISound("click"); setLang("ar"); setSelectedGame(null); setActiveLegalPage(null); setShowFavoritesOnly(true); setShowSitemapModal(false); }}
+                      className="hover:underline text-purple-400/80 block"
+                    >
+                      ⭐ ألعابي المفضلة (العربية)
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href="#/free-online-games/favorites"
+                      onClick={() => { playUISound("click"); setLang("en"); setSelectedGame(null); setActiveLegalPage(null); setShowFavoritesOnly(true); setShowSitemapModal(false); }}
+                      className="hover:underline text-purple-400/80 block"
+                    >
+                      ⭐ My Favorite Games (English)
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href="#/العاب-اونلاين-فري/خريطة-الموقع"
+                      onClick={() => { playUISound("click"); setLang("ar"); setSelectedGame(null); setActiveLegalPage(null); setShowSitemapModal(true); }}
+                      className="hover:underline text-purple-400/80 block"
+                    >
+                      🗺️ خريطة الموقع (العربية)
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href="#/free-online-games/sitemap"
+                      onClick={() => { playUISound("click"); setLang("en"); setSelectedGame(null); setActiveLegalPage(null); setShowSitemapModal(true); }}
+                      className="hover:underline text-purple-400/80 block"
+                    >
+                      🗺️ Sitemap Index (English)
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href="#/العاب-اونلاين-فري/سياسة-الخصوصية"
                       onClick={() => { playUISound("click"); setLang("ar"); setActiveLegalPage("privacy"); setShowSitemapModal(false); }}
                       className="hover:underline text-slate-400 block"
                     >
@@ -1027,7 +1103,7 @@ export default function App() {
                   </li>
                   <li>
                     <a 
-                      href="#/free-online-games/terms-of-use"
+                      href="#/العاب-اونلاين-فري/شروط-الاستخدام"
                       onClick={() => { playUISound("click"); setLang("ar"); setActiveLegalPage("terms"); setShowSitemapModal(false); }}
                       className="hover:underline text-slate-400 block"
                     >
@@ -1041,6 +1117,24 @@ export default function App() {
                       className="hover:underline text-slate-400 block"
                     >
                       📜 {translations.en.footer.terms} (English)
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href="#/العاب-اونلاين-فري/إخلاء-المسؤولية"
+                      onClick={() => { playUISound("click"); setLang("ar"); setActiveLegalPage("disclaimer"); setShowSitemapModal(false); }}
+                      className="hover:underline text-slate-400 block"
+                    >
+                      ⚠️ {translations.ar.footer.disclaimer} (العربية)
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href="#/free-online-games/disclaimer"
+                      onClick={() => { playUISound("click"); setLang("en"); setActiveLegalPage("disclaimer"); setShowSitemapModal(false); }}
+                      className="hover:underline text-slate-400 block"
+                    >
+                      ⚠️ {translations.en.footer.disclaimer} (English)
                     </a>
                   </li>
                 </ul>
@@ -1059,11 +1153,11 @@ export default function App() {
                       <span className="font-bold text-slate-400 block">{g.emoji} {lang === "ar" ? g.titleAr : g.titleEn}</span>
                       <div className="flex flex-col gap-1 text-[10px]">
                         <a 
-                          href={`#/free-online-games/game-${g.id}`}
+                          href={`#/العاب-اونلاين-فري/لعبة-${g.id}`}
                           onClick={() => { playUISound("click"); setLang("ar"); setSelectedGame(g); setShowSitemapModal(false); }}
                           className="hover:underline text-purple-400"
                         >
-                          العربية: {`#/free-online-games/game-${g.id}`}
+                          العربية: {`#/العاب-اونلاين-فري/لعبة-${g.id}`}
                         </a>
                         <a 
                           href={`#/free-online-games/game-${g.id}`}

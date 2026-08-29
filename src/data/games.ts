@@ -34,5 +34,22 @@ export const GAMES_DATA: Game[] = [
     descriptionAr: "لعبة الثعبان الكلاسيكية بحلة نيون عصرية، تحكم بدقة بالغة واجمع النقاط والجوائز المخفية لتحقيق أعلى نتيجة دون الاصطدام بالجدران أو بذيلك.",
     descriptionEn: "The classic arcade snake game in beautiful neon colors. Steer smoothly, eat glowing food, grow longer, and score the ultimate high score.",
     aspectRatio: "2x2"
+  },
+  {
+    id: "cheese-pacman",
+    titleAr: "مغامرة آكل الجبنة (Pacman)",
+    titleEn: "Cheese Chomper (Pacman)",
+    category: "classic",
+    categoryAr: "ألعاب كلاسيكية",
+    categoryEn: "Classic Arcade",
+    emoji: "🧀",
+    image: "/src/assets/images/game_cover_cheese_pacman_1787963454078.jpg",
+    color: "from-amber-400 to-orange-500",
+    rating: 4.9,
+    plays: "2.1M",
+    isNative: true,
+    descriptionAr: "العب بشخصية الفأر الذكي وحاول التهام جميع مكعبات الجبن اللذيذة المتوهجة في ممرات المتاهة المضيئة بالكامل بالنيون! تجنب الاصطدام بالقطط الأربعة السريعة، وتناول مكعبات شيدر الذهبية العملاقة لتكتسب قوة خارقة تؤهلك لاصطياد القطط وتخطي مستويات ومراحل تزداد صعوبة وسرعة.",
+    descriptionEn: "Step into the paws of a hungry neon mouse in this premium 2D Pacman experience! Chomp down all cheddar cheese wedges in the glowing labyrinth while dodging 4 smart cats with unique tracking algorithms. Eat massive golden Cheddar blocks to unleash superhero powers, hunts cats, and master levels that accelerate in speed and complexity.",
+    aspectRatio: "2x2"
   }
 ];

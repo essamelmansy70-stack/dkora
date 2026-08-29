@@ -22,6 +22,7 @@ import { GAMES_DATA } from "./data/games";
 import { Game } from "./types";
 import NativeSnake from "./components/NativeSnake";
 import NativeBrickBreaker from "./components/NativeBrickBreaker";
+import NativePacman from "./components/NativePacman";
 import { translations } from "./translations";
 import Fuse from "fuse.js";
 
@@ -1347,6 +1348,8 @@ export default function App() {
                 <div className="w-full max-w-xl">
                   {selectedGame.id === "neon-snake" ? (
                     <NativeSnake lang={lang} />
+                  ) : selectedGame.id === "cheese-pacman" ? (
+                    <NativePacman lang={lang} />
                   ) : (
                     <NativeBrickBreaker lang={lang} />
                   )}

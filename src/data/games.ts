@@ -2,6 +2,23 @@ import { Game } from "../types";
 
 export const GAMES_DATA: Game[] = [
   {
+    id: "candy-blast",
+    titleAr: "كاندى كراش: مغامرة البلاست اللانهائية",
+    titleEn: "Candy Crush: Ultimate Blast Adventure",
+    category: "casual",
+    categoryAr: "ألعاب خفيفة",
+    categoryEn: "Casual",
+    emoji: "🍭",
+    image: "https://images.unsplash.com/photo-1581798459219-318e76aecc7b?auto=format&fit=crop&w=800&q=80",
+    color: "from-pink-500 via-purple-500 to-indigo-600",
+    rating: 4.9,
+    plays: "3.2M",
+    isNative: true,
+    descriptionAr: "استمتع بأروع تجربة لعبة كاندى كراش تفجير حلوى مجانية تماماً! طابق 3 قطع حلوى متشابهة أو أكثر لتفجيرها، واحصل على قنابل الألوان والحلويات المخططة لتفجير صفوف كاملة والاستمتاع بمستويات لانهائية من الإثارة ومؤثرات جزيئية وصوتية مذهلة مع تحكم لمس فائق السلاسة.",
+    descriptionEn: "Indulge in the ultimate unblocked Match-3 adventure! Blast candies by matching 3 or more of the same kind, unleash striped rows-clearing powers, generate massive Color Bombs, and challenge yourself across an infinite level progression with gorgeous visual physics and offline-synthesized arcade sounds.",
+    aspectRatio: "2x2"
+  },
+  {
     id: "brick-breaker",
     titleAr: "لعبة كسر الطوب ثلاثية الأبعاد (Breakout 3D)",
     titleEn: "Breakout 3D Arcade",

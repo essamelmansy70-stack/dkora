@@ -77,7 +77,7 @@ export default function App() {
     } catch {}
   }, [lang]);
 
-  // Helper to update the browser URL pathname based on active states - localized by language
+  // Helper to update the browser URL pathname based on active states - unified clean English URLs for optimal SEO
   const updatePath = (
     currentLang: "ar" | "en", 
     game: Game | null, 
@@ -89,38 +89,20 @@ export default function App() {
     let newPath = "/";
     let query = `?lang=${currentLang}`;
 
-    if (currentLang === "ar") {
-      if (legal === "privacy") {
-        newPath = "/سياسة-الخصوصية";
-      } else if (legal === "terms") {
-        newPath = "/شروط-الاستخدام";
-      } else if (legal === "disclaimer") {
-        newPath = "/إخلاء-المسؤولية";
-      } else if (sitemap) {
-        newPath = "/خريطة-الموقع";
-      } else if (game) {
-        newPath = `/لعبة-${game.id}`;
-      } else if (favsOnly) {
-        newPath = "/المفضلة";
-      } else if (category !== "all") {
-        newPath = `/تصنيف-${category}`;
-      }
-    } else {
-      if (legal === "privacy") {
-        newPath = "/privacy-policy";
-      } else if (legal === "terms") {
-        newPath = "/terms-of-use";
-      } else if (legal === "disclaimer") {
-        newPath = "/disclaimer";
-      } else if (sitemap) {
-        newPath = "/sitemap";
-      } else if (game) {
-        newPath = `/game-${game.id}`;
-      } else if (favsOnly) {
-        newPath = "/favorites";
-      } else if (category !== "all") {
-        newPath = `/category-${category}`;
-      }
+    if (legal === "privacy") {
+      newPath = "/privacy-policy";
+    } else if (legal === "terms") {
+      newPath = "/terms-of-use";
+    } else if (legal === "disclaimer") {
+      newPath = "/disclaimer";
+    } else if (sitemap) {
+      newPath = "/sitemap";
+    } else if (game) {
+      newPath = `/game-${game.id}`;
+    } else if (favsOnly) {
+      newPath = "/favorites";
+    } else if (category !== "all") {
+      newPath = `/category-${category}`;
     }
 
     const fullTarget = newPath + query;
@@ -129,36 +111,30 @@ export default function App() {
     }
   };
 
-  // Listen to path changes and update app states accordingly (supporting English and Arabic pathnames)
+  // Listen to path changes and update app states accordingly (supporting clean English-only pathnames)
   useEffect(() => {
     // Redirect old hashes for clean transition
     if (window.location.hash) {
       const hash = decodeURIComponent(window.location.hash);
       let targetPath = "/?lang=ar";
-      if (hash.includes("العاب-اونلاين-فري") || hash.includes("free-online-games")) {
-        if (hash.includes("سياسة-الخصوصية") || hash.includes("privacy-policy")) {
-          targetPath = hash.includes("سياسة-الخصوصية") ? "/سياسة-الخصوصية?lang=ar" : "/privacy-policy?lang=en";
-        } else if (hash.includes("شروط-الاستخدام") || hash.includes("terms-of-use")) {
-          targetPath = hash.includes("شروط-الاستخدام") ? "/شروط-الاستخدام?lang=ar" : "/terms-of-use?lang=en";
-        } else if (hash.includes("إخلاء-المسؤولية") || hash.includes("disclaimer")) {
-          targetPath = hash.includes("إخلاء-المسؤولية") ? "/إخلاء-المسؤولية?lang=ar" : "/disclaimer?lang=en";
-        } else if (hash.includes("خريطة-الموقع") || hash.includes("sitemap")) {
-          targetPath = hash.includes("خريطة-الموقع") ? "/خريطة-الموقع?lang=ar" : "/sitemap?lang=en";
-        } else if (hash.includes("المفضلة") || hash.includes("favorites")) {
-          targetPath = hash.includes("المفضلة") ? "/المفضلة?lang=ar" : "/favorites?lang=en";
-        } else if (hash.includes("تصنيف-")) {
-          const cat = hash.split("تصنيف-")[1];
-          targetPath = `/تصنيف-${cat}?lang=ar`;
-        } else if (hash.includes("category-")) {
-          const cat = hash.split("category-")[1];
-          targetPath = `/category-${cat}?lang=en`;
-        } else if (hash.includes("لعبة-")) {
-          const game = hash.split("لعبة-")[1];
-          targetPath = `/لعبة-${game}?lang=ar`;
-        } else if (hash.includes("game-")) {
-          const game = hash.split("game-")[1];
-          targetPath = `/game-${game}?lang=en`;
-        }
+      const activeLang = (hash.includes("lang=en") || hash.includes("en")) ? "en" : "ar";
+      
+      if (hash.includes("privacy") || hash.includes("سياسة")) {
+        targetPath = `/privacy-policy?lang=${activeLang}`;
+      } else if (hash.includes("terms") || hash.includes("شروط")) {
+        targetPath = `/terms-of-use?lang=${activeLang}`;
+      } else if (hash.includes("disclaimer") || hash.includes("إخلاء")) {
+        targetPath = `/disclaimer?lang=${activeLang}`;
+      } else if (hash.includes("sitemap") || hash.includes("خريطة")) {
+        targetPath = `/sitemap?lang=${activeLang}`;
+      } else if (hash.includes("favorites") || hash.includes("المفضلة")) {
+        targetPath = `/favorites?lang=${activeLang}`;
+      } else if (hash.includes("تصنيف-") || hash.includes("category-")) {
+        const cat = hash.includes("تصنيف-") ? hash.split("تصنيف-")[1] : hash.split("category-")[1];
+        targetPath = `/category-${cat}?lang=${activeLang}`;
+      } else if (hash.includes("لعبة-") || hash.includes("game-")) {
+        const game = hash.includes("لعبة-") ? hash.split("لعبة-")[1] : hash.split("game-")[1];
+        targetPath = `/game-${game}?lang=${activeLang}`;
       }
       window.history.replaceState(null, "", targetPath);
     }
@@ -185,7 +161,7 @@ export default function App() {
       }
       setLang(activeLang);
       
-      // Arabic or neutral paths matching
+      // If client accessed legacy Arabic URL path directly, redirect seamlessly to the English URL path
       if (
         path.includes("سياسة-الخصوصية") || 
         path.includes("شروط-الاستخدام") || 
@@ -195,52 +171,25 @@ export default function App() {
         path.includes("تصنيف-") || 
         path.includes("لعبة-")
       ) {
-        if (path.includes("سياسة-الخصوصية")) {
-          setActiveLegalPage("privacy");
-          setSelectedGame(null);
-          setShowFavoritesOnly(false);
-          setShowSitemapModal(false);
-        } else if (path.includes("شروط-الاستخدام")) {
-          setActiveLegalPage("terms");
-          setSelectedGame(null);
-          setShowFavoritesOnly(false);
-          setShowSitemapModal(false);
-        } else if (path.includes("إخلاء-المسؤولية")) {
-          setActiveLegalPage("disclaimer");
-          setSelectedGame(null);
-          setShowFavoritesOnly(false);
-          setShowSitemapModal(false);
-        } else if (path.includes("خريطة-الموقع")) {
-          setActiveLegalPage(null);
-          setSelectedGame(null);
-          setShowFavoritesOnly(false);
-          setShowSitemapModal(true);
-        } else if (path.includes("المفضلة")) {
-          setActiveLegalPage(null);
-          setSelectedGame(null);
-          setShowFavoritesOnly(true);
-          setActiveCategory("all");
-          setShowSitemapModal(false);
-        } else if (path.includes("تصنيف-")) {
+        let redirectPath = "/";
+        if (path.includes("سياسة-الخصوصية")) redirectPath = "/privacy-policy";
+        else if (path.includes("شروط-الاستخدام")) redirectPath = "/terms-of-use";
+        else if (path.includes("إخلاء-المسؤولية")) redirectPath = "/disclaimer";
+        else if (path.includes("خريطة-الموقع")) redirectPath = "/sitemap";
+        else if (path.includes("المفضلة")) redirectPath = "/favorites";
+        else if (path.includes("تصنيف-")) {
           const catId = path.split("تصنيف-")[1];
-          setActiveLegalPage(null);
-          setSelectedGame(null);
-          setShowFavoritesOnly(false);
-          setActiveCategory(catId);
-          setShowSitemapModal(false);
+          redirectPath = `/category-${catId}`;
         } else if (path.includes("لعبة-")) {
           const gameId = path.split("لعبة-")[1];
-          const found = GAMES_DATA.find((g) => g.id === gameId);
-          if (found) {
-            setSelectedGame(found);
-            setActiveLegalPage(null);
-            setShowFavoritesOnly(false);
-            setShowSitemapModal(false);
-          }
+          redirectPath = `/game-${gameId}`;
         }
-      } 
-      // English paths matching
-      else if (
+        window.history.replaceState(null, "", redirectPath + `?lang=${activeLang}`);
+        return;
+      }
+      
+      // Match clean English-only paths
+      if (
         path.includes("privacy-policy") || 
         path.includes("terms-of-use") || 
         path.includes("disclaimer") || 
@@ -1075,7 +1024,7 @@ export default function App() {
                   </li>
                   <li>
                     <a 
-                      href="/المفضلة"
+                      href="/favorites"
                       onClick={(e) => { e.preventDefault(); playUISound("click"); setLang("ar"); setSelectedGame(null); setActiveLegalPage(null); setShowFavoritesOnly(true); setShowSitemapModal(false); }}
                       className="hover:underline text-purple-400/80 block"
                     >
@@ -1093,7 +1042,7 @@ export default function App() {
                   </li>
                   <li>
                     <a 
-                      href="/خريطة-الموقع"
+                      href="/sitemap"
                       onClick={(e) => { e.preventDefault(); playUISound("click"); setLang("ar"); setSelectedGame(null); setActiveLegalPage(null); setShowSitemapModal(true); }}
                       className="hover:underline text-purple-400/80 block"
                     >
@@ -1111,7 +1060,7 @@ export default function App() {
                   </li>
                   <li>
                     <a 
-                      href="/سياسة-الخصوصية"
+                      href="/privacy-policy"
                       onClick={(e) => { e.preventDefault(); playUISound("click"); setLang("ar"); setActiveLegalPage("privacy"); setShowSitemapModal(false); }}
                       className="hover:underline text-slate-400 block"
                     >
@@ -1129,7 +1078,7 @@ export default function App() {
                   </li>
                   <li>
                     <a 
-                      href="/شروط-الاستخدام"
+                      href="/terms-of-use"
                       onClick={(e) => { e.preventDefault(); playUISound("click"); setLang("ar"); setActiveLegalPage("terms"); setShowSitemapModal(false); }}
                       className="hover:underline text-slate-400 block"
                     >
@@ -1147,7 +1096,7 @@ export default function App() {
                   </li>
                   <li>
                     <a 
-                      href="/إخلاء-المسؤولية"
+                      href="/disclaimer"
                       onClick={(e) => { e.preventDefault(); playUISound("click"); setLang("ar"); setActiveLegalPage("disclaimer"); setShowSitemapModal(false); }}
                       className="hover:underline text-slate-400 block"
                     >
@@ -1179,11 +1128,11 @@ export default function App() {
                       <span className="font-bold text-slate-400 block">{g.emoji} {lang === "ar" ? g.titleAr : g.titleEn}</span>
                       <div className="flex flex-col gap-1 text-[10px]">
                         <a 
-                          href={`/لعبة-${g.id}`}
+                          href={`/game-${g.id}?lang=ar`}
                           onClick={(e) => { e.preventDefault(); playUISound("click"); setLang("ar"); setSelectedGame(g); setShowSitemapModal(false); }}
                           className="hover:underline text-purple-400"
                         >
-                          العربية: {`/لعبة-${g.id}`}
+                          العربية: {`/game-${g.id}?lang=ar`}
                         </a>
                         <a 
                           href={`/game-${g.id}`}

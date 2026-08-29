@@ -326,61 +326,61 @@ export default function App() {
 
     if (lang === "ar") {
       if (activeLegalPage === "privacy") {
-        title = "سياسة الخصوصية وسرية البيانات - العاب اونلاين فري | بوكي بوكس";
-        desc = "سياسة الخصوصية وسرية البيانات لمنصة العاب اونلاين فري (بوكي بوكس). نلتزم بحماية خصوصيتك وضمان لعب آمن لجميع اللاعبين.";
+        title = "سياسة الخصوصية وسرية البيانات - ديكورا العاب اونلاين فرى | Dkora";
+        desc = "سياسة الخصوصية وسرية البيانات لمنصة ديكورا العاب اونلاين فرى. نلتزم بحماية خصوصيتك وضمان لعب آمن لجميع اللاعبين.";
       } else if (activeLegalPage === "terms") {
-        title = "شروط واتفاقية الاستخدام - العاب اونلاين فري | بوكي بوكس";
-        desc = "شروط واتفاقية الاستخدام للعب النظيف على منصة العاب اونلاين فري بوكي بوكس.";
+        title = "شروط واتفاقية الاستخدام - ديكورا العاب اونلاين فرى | Dkora";
+        desc = "شروط واتفاقية الاستخدام للعب النظيف على منصة ديكورا العاب اونلاين فرى.";
       } else if (activeLegalPage === "disclaimer") {
-        title = "إخلاء المسؤولية وحقوق الملكية - العاب اونلاين فري | بوكي بوكس";
-        desc = "بيان إخلاء المسؤولية وحماية حقوق الملكية الفكرية لمنصة العاب اونلاين فري بوكي بوكس.";
+        title = "إخلاء المسؤولية وحقوق الملكية - ديكورا العاب اونلاين فرى | Dkora";
+        desc = "بيان إخلاء المسؤولية وحماية حقوق الملكية الفكرية لمنصة ديكورا العاب اونلاين فرى.";
       } else if (showSitemapModal) {
-        title = "خريطة الموقع والألعاب - العاب اونلاين فري | بوكي بوكس";
-        desc = "خريطة الموقع لجميع ألعاب بوكي بوكس والصفحات القانونية لسهولة الوصول والفهرسة السريعة.";
+        title = "خريطة الموقع والألعاب - ديكورا العاب اونلاين فرى | Dkora";
+        desc = "خريطة الموقع لجميع ألعاب ديكورا العاب اونلاين فرى والصفحات القانونية لسهولة الوصول والفهرسة السريعة.";
       } else if (selectedGame) {
         const gameTitle = selectedGame.titleAr;
-        title = `العب لعبة ${gameTitle} اون لاين - العاب اونلاين فري | بوكي بوكس`;
-        desc = `العب لعبة ${gameTitle} مجاناً وبدون تحميل على منصة بوكي بوكس - أقوى العاب اونلاين فري وسريعة بالكامل.`;
+        title = `العب لعبة ${gameTitle} اون لاين - ديكورا العاب اونلاين فرى | Dkora`;
+        desc = `العب لعبة ${gameTitle} مجاناً وبدون تحميل على منصة ديكورا العاب اونلاين فرى - ألعاب متصفح سريعة وممتعة بالكامل.`;
       } else if (showFavoritesOnly) {
-        title = "ألعابي المفضلة - العاب اونلاين فري | بوكي بوكس";
-        desc = "استعرض قائمة ألعابك المفضلة التي قمت بحفظها للوصول إليها بسرعة وبدون تحميل على بوكي بوكس.";
+        title = "ألعابي المفضلة - ديكورا العاب اونلاين فرى | Dkora";
+        desc = "استعرض قائمة ألعابك المفضلة التي قمت بحفظها للوصول إليها بسرعة وبدون تحميل على ديكورا العاب اونلاين فرى.";
       } else if (activeCategory !== "all") {
         const catObj = CATEGORIES.find(c => c.id === activeCategory);
         const catName = catObj ? catObj.nameAr : "";
-        title = `العاب ${catName} مجانية - العاب اونلاين فري | بوكي بوكس`;
-        desc = `استمتع بأفضل العاب ${catName} اونلاين فري ومجانية بالكامل مباشرة على بوكي بوكس بدون تحميل.`;
+        title = `العاب ${catName} مجانية - ديكورا العاب اونلاين فرى | Dkora`;
+        desc = `استمتع بأفضل العاب ${catName} اونلاين فري ومجانية بالكامل مباشرة على ديكورا العاب اونلاين فرى بدون تحميل.`;
       } else {
-        title = "العاب اونلاين فري | بوكي بوكس";
-        desc = "العاب اونلاين فري - استمتع بأقوى وأحدث الألعاب المجانية مباشرة على بوكي بوكس بدون تحميل! العب ألعاب متصفح، ألعاب ذكاء، ألغاز، وألعاب ثلاثية الأبعاد خفيفة مجاناً وبسرعة فائقة.";
+        title = "ديكورا العاب اونلاين فرى | Dkora";
+        desc = "ديكورا العاب اونلاين فرى - استمتع بأقوى وأحدث الألعاب المجانية مباشرة بدون تحميل! العب ألعاب متصفح، ألعاب ذكاء، ألغاز، وألعاب ثلاثية الأبعاد خفيفة مجاناً وبسرعة فائقة.";
       }
     } else {
       if (activeLegalPage === "privacy") {
-        title = "Privacy Policy - Free Online Games | PokiBox";
-        desc = "Privacy and Safe Gameplay Policy for PokiBox - Free Online Games.";
+        title = "Privacy Policy - Dkora Free Online Games | Dkora";
+        desc = "Privacy and Safe Gameplay Policy for Dkora Free Online Games.";
       } else if (activeLegalPage === "terms") {
-        title = "Terms of Use - Free Online Games | PokiBox";
-        desc = "Terms of use and fair gameplay agreement for PokiBox - Free Online Games.";
+        title = "Terms of Use - Dkora Free Online Games | Dkora";
+        desc = "Terms of use and fair gameplay agreement for Dkora Free Online Games.";
       } else if (activeLegalPage === "disclaimer") {
-        title = "Disclaimer - Free Online Games | PokiBox";
-        desc = "Copyright and general disclaimer details for PokiBox - Free Online Games.";
+        title = "Disclaimer - Dkora Free Online Games | Dkora";
+        desc = "Copyright and general disclaimer details for Dkora Free Online Games.";
       } else if (showSitemapModal) {
-        title = "Sitemap Directory - Free Online Games | PokiBox";
-        desc = "Complete sitemap directory index of all games and legal pages on PokiBox.";
+        title = "Sitemap Directory - Dkora Free Online Games | Dkora";
+        desc = "Complete sitemap directory index of all games and legal pages on Dkora Free Online Games.";
       } else if (selectedGame) {
         const gameTitle = selectedGame.titleEn;
-        title = `Play ${gameTitle} Online - Free Online Games | PokiBox`;
-        desc = `Play ${gameTitle} online for free with no downloads on PokiBox - The premier destination for free online games.`;
+        title = `Play ${gameTitle} Online - Dkora Free Online Games | Dkora`;
+        desc = `Play ${gameTitle} online for free with no downloads on Dkora - The premier destination for free online games.`;
       } else if (showFavoritesOnly) {
-        title = "My Favorite Games - Free Online Games | PokiBox";
-        desc = "View and play your saved favorite arcade and puzzle games on PokiBox.";
+        title = "My Favorite Games - Dkora Free Online Games | Dkora";
+        desc = "View and play your saved favorite arcade and puzzle games on Dkora.";
       } else if (activeCategory !== "all") {
         const catObj = CATEGORIES.find(c => c.id === activeCategory);
         const catName = catObj ? catObj.nameEn : "";
-        title = `${catName} Games - Free Online Games | PokiBox`;
-        desc = `Play the best free online ${catName} games with zero downloads or popups on PokiBox.`;
+        title = `${catName} Games - Dkora Free Online Games | Dkora`;
+        desc = `Play the best free online ${catName} games with zero downloads or popups on Dkora Free Online Games.`;
       } else {
-        title = "Free Online Games | PokiBox";
-        desc = "Free Online Games - Play the best arcade, puzzle, and neon action games on PokiBox with zero downloads or popups.";
+        title = "Dkora Free Online Games | Dkora";
+        desc = "Dkora Free Online Games - Play the best arcade, puzzle, and neon action games with zero downloads or popups.";
       }
     }
 
@@ -581,7 +581,7 @@ export default function App() {
             </div>
             <div>
               <span className="text-xl md:text-2xl font-black tracking-tighter bg-gradient-to-r from-purple-400 via-pink-400 to-amber-300 bg-clip-text text-transparent">
-                {lang === "ar" ? "بوكي بوكس" : "PokiBox"}
+                {lang === "ar" ? "ديكورا العاب" : "Dkora Games"}
               </span>
               <span className={`text-[10px] block font-extrabold tracking-widest uppercase ${
                 theme === "dark" ? "text-purple-400" : "text-purple-600"
@@ -695,7 +695,7 @@ export default function App() {
             ? "bg-gradient-to-r from-purple-900/30 via-indigo-950/40 to-slate-900/30 border-purple-500/10"
             : "bg-gradient-to-r from-purple-500/10 via-indigo-500/5 to-pink-500/10 border-purple-200/50"
         }`}>
-          <div className="space-y-3 max-w-xl text-center md:text-left rlt:md:text-right">
+          <div className="space-y-3 w-full text-center md:text-left rtl:md:text-right">
             <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-bold uppercase tracking-wider mb-1 ${
               theme === "dark"
                 ? "bg-amber-500/10 border-amber-500/20 text-amber-400"
@@ -713,39 +713,9 @@ export default function App() {
               theme === "dark" ? "text-slate-400" : "text-slate-600"
             }`}>
               {lang === "ar" 
-                ? "العب أفضل ألعاب المتصفح والأركيد مجاناً دون أي نوافذ منبثقة أو حاجة للتحميل، مع ألعاب حصرية مدمجة خصيصاً لك."
+                ? "العب أفضل العاب اونلاين فري، ألعاب المتصفح والأركيد مجاناً دون أي نوافذ منبثقة أو حاجة للتحميل، مع ألعاب حصرية مدمجة خصيصاً لك."
                 : "Explore highly optimized HTML5 arcade and puzzle games directly on your device. Zero installs, instant load times, unlimited fun."}
             </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
-            {/* Surprise Me Button */}
-            <button
-              onClick={handleSurpriseMe}
-              className="w-full sm:w-auto bg-gradient-to-r from-amber-400 via-orange-500 to-yellow-400 hover:from-amber-500 hover:to-orange-600 text-slate-950 font-black px-8 py-4 rounded-2xl shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 transform hover:scale-102 active:scale-98 transition duration-200 cursor-pointer flex items-center justify-center gap-2 text-sm uppercase tracking-wider"
-            >
-              <span>🎲</span>
-              <span>{lang === "ar" ? "فاجئني بلعبة!" : "Surprise Me!"}</span>
-            </button>
-
-            {/* My Favorites quick tab */}
-            <button
-              onClick={() => { playUISound("click"); setShowFavoritesOnly(!showFavoritesOnly); }}
-              className={`w-full sm:w-auto font-black px-6 py-4 rounded-2xl border transition duration-200 cursor-pointer flex items-center justify-center gap-2 text-sm shadow-md ${
-                showFavoritesOnly 
-                  ? "bg-pink-600 hover:bg-pink-700 border-pink-500 text-white shadow-pink-500/20" 
-                  : theme === "dark"
-                    ? "bg-slate-900 hover:bg-slate-800 border-slate-800 text-slate-300"
-                    : "bg-white hover:bg-slate-100 border-slate-200 text-slate-700"
-              }`}
-            >
-              <Heart className={`w-4.5 h-4.5 ${showFavoritesOnly ? "fill-current text-white" : "text-pink-500"}`} />
-              <span>
-                {lang === "ar" 
-                  ? `مفضلاتي (${favorites.length})` 
-                  : `Favorites (${favorites.length})`}
-              </span>
-            </button>
           </div>
         </div>
 
@@ -780,27 +750,17 @@ export default function App() {
           </div>
         </div>
 
-        {/* Poki-style Bento Grid of Games */}
+        {/* Symmetrical Grid of Games */}
         {filteredGames.length > 0 ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5 auto-rows-[160px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {filteredGames.map((game) => {
-              // Map Bento Card Grid spans depending on aspect ratio setting
-              let gridClasses = "col-span-1 row-span-1";
-              if (game.aspectRatio === "2x1") {
-                gridClasses = "col-span-2 row-span-1";
-              } else if (game.aspectRatio === "1x2") {
-                gridClasses = "col-span-1 row-span-2";
-              } else if (game.aspectRatio === "2x2") {
-                gridClasses = "col-span-2 row-span-2";
-              }
-
               const isFav = favorites.includes(game.id);
 
               return (
                 <div
                   key={game.id}
                   onClick={() => { playUISound("click"); setSelectedGame(game); }}
-                  className={`${gridClasses} group relative rounded-3xl overflow-hidden cursor-pointer border hover:border-purple-500/50 shadow-md hover:shadow-2xl flex flex-col justify-end transition-all duration-300 ${
+                  className={`group relative rounded-3xl overflow-hidden cursor-pointer border hover:border-purple-500/50 shadow-md hover:shadow-2xl flex flex-col justify-end aspect-[1.4] w-full transition-all duration-300 ${
                     theme === "dark" ? "bg-slate-900/40 border-slate-800" : "bg-white border-slate-200"
                   }`}
                 >
@@ -999,7 +959,7 @@ export default function App() {
         </div>
 
         <div className="text-[10px] text-slate-600 uppercase tracking-widest font-semibold pt-2">
-          &copy; 2026 PokiBox Games. All Rights Reserved.
+          &copy; 2026 Dkora Games. All Rights Reserved.
         </div>
       </footer>
 
@@ -1021,7 +981,7 @@ export default function App() {
               <span className={`text-[10px] font-black uppercase tracking-wider block ${
                 theme === "dark" ? "text-purple-400" : "text-purple-600"
               }`}>
-                {lang === "ar" ? "الوثائق القانونية لبوكي بوكس" : "PokiBox Legal Documentation"}
+                {lang === "ar" ? "الوثائق القانونية لشبكة ديكورا" : "Dkora Games Legal Documentation"}
               </span>
               <h2 className="text-xl md:text-2xl font-black leading-tight">
                 {activeLegalPage === "privacy" 
@@ -1101,7 +1061,7 @@ export default function App() {
                       onClick={(e) => { e.preventDefault(); playUISound("click"); setLang("ar"); setSelectedGame(null); setActiveLegalPage(null); setShowSitemapModal(false); }}
                       className="hover:underline text-purple-400 block font-bold"
                     >
-                      🎮 بوكي بوكس - العاب اونلاين فري (العربية)
+                      🎮 ديكورا - العاب اونلاين فرى (العربية)
                     </a>
                   </li>
                   <li>
@@ -1110,7 +1070,7 @@ export default function App() {
                       onClick={(e) => { e.preventDefault(); playUISound("click"); setLang("en"); setSelectedGame(null); setActiveLegalPage(null); setShowSitemapModal(false); }}
                       className="hover:underline text-purple-400 block font-bold"
                     >
-                      🎮 PokiBox - Free Online Games (English)
+                      🎮 Dkora - Free Online Games (English)
                     </a>
                   </li>
                   <li>
@@ -1420,7 +1380,7 @@ export default function App() {
               {/* Bottom watermark / rating button */}
               <div className={`pt-4 border-t text-center ${theme === "dark" ? "border-slate-800/80" : "border-slate-200"}`}>
                 <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block">
-                  {lang === "ar" ? "استمتع باللعب مع بوكي بوكس" : "Powered by PokiBox Portal"}
+                  {lang === "ar" ? "استمتع باللعب مع ديكورا العاب اونلاين" : "Powered by Dkora Games Portal"}
                 </span>
               </div>
             </div>

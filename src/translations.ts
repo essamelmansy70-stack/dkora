@@ -224,39 +224,39 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
       impact: "التأثير"
     },
     sitemap: {
-      title: "خريطة الموقع (Sitemap) - العاب اونلاين فري",
-      subtitle: "دليل متكامل للوصول الفوري والفهرسة السريعة لجميع ألعاب بوكي بوكس والمحتوى القانوني",
+      title: "خريطة الموقع (Sitemap) - ديكورا العاب اونلاين فرى",
+      subtitle: "دليل متكامل للوصول الفوري والفهرسة السريعة لجميع ألعاب ديكورا العاب اونلاين فرى والمحتوى القانوني",
       staticPages: "الأقسام الرئيسية والصفحات الثابتة",
       dynamicSignals: "مستودع الألعاب المجانية المباشرة",
-      allRights: "كافة الحقوق محفوظة لمنصة بوكي بوكس © 2026."
+      allRights: "كافة الحقوق محفوظة لمنصة ديكورا العاب اونلاين فرى © 2026."
     },
     footer: {
-      about: "عن بوكي بوكس",
+      about: "عن ديكورا",
       aboutText: "منصة الألعاب الأبرز لتقديم العاب اونلاين فري بدون تحميل وألعاب المتصفح بجودة نيون فائقة وتطوير مستمر لمتعة آمنة ومجانية بالكامل لجميع الأعمار.",
       links: "الروابط القانونية",
       privacy: "سياسة الخصوصية والأمان",
       terms: "اتفاقية الاستخدام واللعب الآمن",
       disclaimer: "إخلاء المسؤولية وحقوق الملكية",
-      copyright: "بوكي بوكس © 2026. العاب اونلاين فري وألعاب متصفح ممتعة."
+      copyright: "ديكورا العاب اونلاين فرى © 2026. العاب اونلاين فري وألعاب متصفح ممتعة."
     },
     legal: {
       privacyTitle: "سياسة الخصوصية وسرية البيانات والألعاب الآمنة",
       termsTitle: "اتفاقية وشروط الاستخدام واللعب النظيف",
       disclaimerTitle: "إخلاء المسؤولية وحماية حقوق الملكية الفكرية",
       privacyContent: [
-        "نحن في بوكي بوكس (PokiBox) نلتزم بخصوصية تامة لزوارنا الكرام وخاصة فئات صغار السن والعائلات، ونتبع سياسات تضمن سلامة تصفحكم للألعاب.",
+        "نحن في ديكورا العاب اونلاين فرى (Dkora Games) نلتزم بخصوصية تامة لزوارنا الكرام وخاصة فئات صغار السن والعائلات، ونتبع سياسات تضمن سلامة تصفحكم للألعاب.",
         "المنصة تعمل بالكامل بدون تجميع بيانات حساسة، ويتم تخزين تفضيلات الألعاب والأرقام القياسية والمفضلات محلياً 100% داخل ذاكرة المتصفح.",
         "نحن نستخدم ملفات تعريف الارتباط الأساسية فقط للاحتفاظ بلغتكم المفضلة ومستوى الصوت ونمط التصميم الداكن أو الفاتح.",
-        "بوكي بوكس لا يحتوي على إعلانات منبثقة أو خبيثة، ونضمن بيئة نظيفة وآمنة بالكامل للعب العاب اونلاين فري."
+        "ديكورا العاب اونلاين فرى لا يحتوي على إعلانات منبثقة أو خبيثة، ونضمن بيئة نظيفة وآمنة بالكامل للعب العاب اونلاين فري."
       ],
       termsContent: [
-        "باستخدامك لمنصة بوكي بوكس ولعب العاب اونلاين فري المتاحة، فإنك توافق توافقاً تاماً على شروط الاستخدام الموضحة في هذه الصفحة.",
+        "باستخدامك لمنصة ديكورا العاب اونلاين فرى ولعب العاب اونلاين فري المتاحة، فإنك توافق توافقاً تاماً على شروط الاستخدام الموضحة في هذه الصفحة.",
         "جميع الألعاب المقدمة هنا مخصصة للمتعة الشخصية والترفيه البريء، وتعمل مباشرة من المتصفح دون الحاجة لتنزيل أي برمجيات خارجية.",
         "يُحظر تماماً محاولة تخريب أو اختراق أكواد الألعاب الحصرية، أو إعادة نشر ألعابنا على نطاق تجاري دون إذن خطي مسبق.",
         "نحن نبذل قصارى جهدنا لضمان استمرارية تشغيل الألعاب بكفاءة فائقة وسرعة تامة على كافة متصفحات الموبايل والكمبيوتر."
       ],
       disclaimerContent: [
-        "جميع الألعاب المعروضة على بوكي بوكس هي إما ألعاب حصرية مدمجة، أو مرخصة ومفتوحة المصدر ومتاحة للمشاركة العامة قانونياً.",
+        "جميع الألعاب المعروضة على ديكورا العاب اونلاين فرى هي إما ألعاب حصرية مدمجة، أو مرخصة ومفتوحة المصدر ومتاحة للمشاركة العامة قانونياً.",
         "إذا كنت تمتلك حقوق ملكية فكرية لأي لعبة معروضة وتعتقد أنها نُشرت دون إذنك، يرجى التواصل معنا فوراً لإزالتها وتصحيح الموقف.",
         "نحن نخلي مسؤوليتنا التامة عن أي أضرار ناتجة عن انقطاع الإنترنت أو مشاكل تقنية خارجة عن إرادتنا أثناء تشغيل الألعاب.",
         "تمتع بتجربة لعب ممتعة وخذ فترات راحة منتظمة أثناء اللعب للحفاظ على سلامة وصحة عينيك وجسدك."
@@ -364,40 +364,40 @@ export const translations: Record<'ar' | 'en', TranslationType> = {
     },
     sitemap: {
       title: "Sitemap Directory - Free Online Games",
-      subtitle: "Immediate index access to all PokiBox web games, native overlays, categories, and legal pages for search bot indexing",
+      subtitle: "Immediate index access to all Dkora Free Online Games web games, native overlays, categories, and legal pages for search bot indexing",
       staticPages: "Core Pages & Navigation Sections",
       dynamicSignals: "Free Browser Games Directory",
-      allRights: "All Rights Reserved for PokiBox Games © 2026."
+      allRights: "All Rights Reserved for Dkora Games © 2026."
     },
     footer: {
-      about: "About PokiBox",
+      about: "About Dkora",
       aboutText: "The premier web platform providing free online games with zero downloads or popups. Enjoy optimized responsive arcade and puzzle games in a high fidelity environment.",
       links: "Legal Links",
       privacy: "Privacy Policy",
       terms: "Terms of Use",
       disclaimer: "Disclaimer & Copyright",
-      copyright: "PokiBox © 2026. High fidelity free browser arcade playgrounds."
+      copyright: "Dkora Games © 2026. High fidelity free browser arcade playgrounds."
     },
     legal: {
       privacyTitle: "Privacy & Safe Gameplay Policy",
       termsTitle: "Terms of Use & Fair Play Agreement",
       disclaimerTitle: "Copyright Disclaimer & Risk Free Play",
       privacyContent: [
-        "We at PokiBox respect your absolute privacy and guarantee high confidentiality for all of our players, including families and children.",
+        "We at Dkora Games respect your absolute privacy and guarantee high confidentiality for all of our players, including families and children.",
         "This platform runs entirely local-first inside your browser cache. All game favorites, ratings, and score rankings are stored safely on your device.",
         "Cookies are only deployed for standard session persistence, such as maintaining your current language, audio settings, and theme choices.",
         "We never track, sell, or distribute any user metrics or email values to third party networks."
       ],
       termsContent: [
-        "By accessing and playing on PokiBox, you agree to comply with all terms and clauses stated in this license.",
+        "By accessing and playing on Dkora Games, you agree to comply with all terms and clauses stated in this license.",
         "All recommendations, instructions, and gameplay rules are shared for general awareness and entertaining recreation contexts.",
         "Commercial reproduction, cloning, or scraping of our native games is strictly forbidden without written permission.",
         "The end-user assumes responsibility for their browser stability, and we guarantee high uptime and rapid loading on both mobile and desktop."
       ],
       disclaimerContent: [
-        "All games featured on PokiBox are legally embeddable, open-source, or custom designed for high fidelity web browser gameplay.",
+        "All games featured on Dkora Games are legally embeddable, open-source, or custom designed for high fidelity web browser gameplay.",
         "If you are a copyright owner and believe your game is embedded here incorrectly, contact us immediately and we will remove the asset.",
-        "PokiBox, its operators, and affiliates reject any liability for connectivity loss resulting from external network conditions.",
+        "Dkora Games, its operators, and affiliates reject any liability for connectivity loss resulting from external network conditions.",
         "Always take regular breaks during gameplay to preserve your eye health and physical wellness."
       ]
     }

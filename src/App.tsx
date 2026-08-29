@@ -809,8 +809,8 @@ export default function App() {
                   
                   {/* Game image background */}
                   <img
-                    src={game.image}
-                    alt={game.titleAr}
+                    src={lang === "ar" ? (game.imageAr || game.image) : (game.imageEn || game.image)}
+                    alt={lang === "ar" ? game.titleAr : game.titleEn}
                     referrerPolicy="no-referrer"
                     className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-108 transition duration-500 ease-out z-0"
                   />

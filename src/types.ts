@@ -7,6 +7,8 @@ export interface Game {
   categoryEn: string;
   emoji: string;
   image: string;
+  imageAr?: string;
+  imageEn?: string;
   color: string;
   rating: number;
   plays: string;

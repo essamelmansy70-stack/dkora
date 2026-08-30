@@ -14,7 +14,7 @@ export const GAMES_DATA: Game[] = [
     rating: 4.9,
     plays: "2.4M",
     isNative: false,
-    embedUrl: "https://html5.gamedistribution.com/4254dba037de4b798541d2c97eae5016/?gd_sdk_referrer_url=https://www.example.com/games/candy-match",
+    embedUrl: "https://html5.gamedistribution.com/639df47033804f18bf39e113ef29f4fa/",
     descriptionAr: "استمتع بلعبة كاندي ريدلز (Candy Riddles) الشهيرة! طابق 3 قطع حلوى لطيفة أو أكثر لتفجيرها في أفضل لعبة مطابقة الفاكهة المجانية عبر الإنترنت fruit matching game free online! استعن بالمساعدات الخارقة لتخطي مئات المراحل والمستويات المليئة بالإثارة والألوان الجذابة مع واجهة تفاعلية كاملة.",
     descriptionEn: "Play the incredibly fun Candy Riddles: fruit matching game free online! Match 3 or more cute candies, meet playful cookie characters, unlock powerful sweet boosters, and match your way through hundreds of delightful levels directly in your browser.",
     aspectRatio: "2x2"

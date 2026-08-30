@@ -23,7 +23,6 @@ import { Game } from "./types";
 import NativeSnake from "./components/NativeSnake";
 import NativeBrickBreaker from "./components/NativeBrickBreaker";
 import NativePacman from "./components/NativePacman";
-import NativeCandyBlast from "./components/NativeCandyBlast";
 import { translations } from "./translations";
 import Fuse from "fuse.js";
 
@@ -1255,13 +1254,11 @@ export default function App() {
             <div className="flex-1 flex items-center justify-center p-4">
               {selectedGame.isNative ? (
                 // Renders custom offline gameplay component
-                <div className="w-full max-w-xl">
+                <div className="w-full max-w-2xl">
                   {selectedGame.id === "neon-snake" ? (
                     <NativeSnake lang={lang} />
                   ) : selectedGame.id === "cheese-pacman" ? (
                     <NativePacman lang={lang} />
-                  ) : selectedGame.id === "candy-blast" ? (
-                    <NativeCandyBlast lang={lang} />
                   ) : (
                     <NativeBrickBreaker lang={lang} />
                   )}

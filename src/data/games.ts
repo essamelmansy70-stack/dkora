@@ -2,20 +2,21 @@ import { Game } from "../types";
 
 export const GAMES_DATA: Game[] = [
   {
-    id: "candy-blast",
-    titleAr: "كاندى كراش: مغامرة البلاست اللانهائية",
-    titleEn: "Candy Crush: Ultimate Blast Adventure",
-    category: "casual",
-    categoryAr: "ألعاب خفيفة",
-    categoryEn: "Casual",
+    id: "candy-riddles",
+    titleAr: "كاندي ريدلز: لعبة مطابقة الفاكهة المجانية عبر الإنترنت (Fruit Matching Game Free Online)",
+    titleEn: "Candy Riddles: Fruit Matching Game Free Online",
+    category: "puzzles",
+    categoryAr: "ألعاب ألغاز",
+    categoryEn: "Puzzles",
     emoji: "🍭",
     image: "https://images.unsplash.com/photo-1581798459219-318e76aecc7b?auto=format&fit=crop&w=800&q=80",
     color: "from-pink-500 via-purple-500 to-indigo-600",
     rating: 4.9,
-    plays: "3.2M",
-    isNative: true,
-    descriptionAr: "استمتع بأروع تجربة لعبة كاندى كراش تفجير حلوى مجانية تماماً! طابق 3 قطع حلوى متشابهة أو أكثر لتفجيرها، واحصل على قنابل الألوان والحلويات المخططة لتفجير صفوف كاملة والاستمتاع بمستويات لانهائية من الإثارة ومؤثرات جزيئية وصوتية مذهلة مع تحكم لمس فائق السلاسة.",
-    descriptionEn: "Indulge in the ultimate unblocked Match-3 adventure! Blast candies by matching 3 or more of the same kind, unleash striped rows-clearing powers, generate massive Color Bombs, and challenge yourself across an infinite level progression with gorgeous visual physics and offline-synthesized arcade sounds.",
+    plays: "2.4M",
+    isNative: false,
+    embedUrl: "https://html5.gamedistribution.com/4254dba037de4b798541d2c97eae5016/?gd_sdk_referrer_url=https://www.example.com/games/candy-match",
+    descriptionAr: "استمتع بلعبة كاندي ريدلز (Candy Riddles) الشهيرة! طابق 3 قطع حلوى لطيفة أو أكثر لتفجيرها في أفضل لعبة مطابقة الفاكهة المجانية عبر الإنترنت fruit matching game free online! استعن بالمساعدات الخارقة لتخطي مئات المراحل والمستويات المليئة بالإثارة والألوان الجذابة مع واجهة تفاعلية كاملة.",
+    descriptionEn: "Play the incredibly fun Candy Riddles: fruit matching game free online! Match 3 or more cute candies, meet playful cookie characters, unlock powerful sweet boosters, and match your way through hundreds of delightful levels directly in your browser.",
     aspectRatio: "2x2"
   },
   {

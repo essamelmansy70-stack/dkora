@@ -324,11 +324,11 @@ export default function App() {
   // Premium embedded games fallback for 100% robust offline and iframe sandbox execution
   const PREMIUM_EMBEDDED_GAMES = [
     {
-      title: "Impossible Car Stunt Tracks",
+      title: "Impossible Car Stunt Tracks - Race Cars Game Free",
       category: "Racing",
       thumb: "https://img.gamemonetize.com/pirh6cfnd7of1k3r4dx2ghxtqid8tdhg/512x384.jpg",
       url: "https://html5.gamemonetize.co/pirh6cfnd7of1k3r4dx2ghxtqid8tdhg/",
-      description: "Race cars across impossible sky tracks packed with ramps, rotating obstacles, narrow bridges, and dangerous jumps. Choose your vehicle, unlock stunt levels, and reach every checkpoint before time runs out.",
+      description: "Play the ultimate race cars game free! Drive across impossible high-sky tracks packed with extreme ramps, narrow bridges, and thrilling stunt obstacles without any downloads.",
       instructions: "Use W or Up Arrow to accelerate. Use S or Down Arrow to brake and reverse. Steer with A/D or Left/Right Arrow.",
       width: "800",
       height: "600"

@@ -26,8 +26,10 @@ async function startServer() {
     const timeoutId = setTimeout(() => controller.abort(), 8000); // 8-second strict timeout
 
     try {
-      const category = req.query.category || "5";
-      const feedUrl = `https://gamemonetize.com/feed.php?format=1&category=${category}&num=100`;
+      const category = req.query.category;
+      const feedUrl = category 
+        ? `https://gamemonetize.com/feed.php?format=1&category=${category}&num=120`
+        : `https://gamemonetize.com/feed.php?format=1&num=120`;
       console.log(`GameMonetize proxy: Fetching XML feed: ${feedUrl}`);
 
       const response = await fetch(feedUrl, {

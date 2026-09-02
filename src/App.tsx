@@ -769,11 +769,11 @@ export default function App() {
     if (activeCategory !== "all") {
       list = list.filter(g => {
         const cat = g.category.toLowerCase();
-        if (activeCategory === "cars") return cat.includes("car") || cat.includes("racing") || cat.includes("drive") || cat.includes("moto");
+        if (activeCategory === "cars") return cat.includes("car") || cat.includes("racing") || cat.includes("drive") || cat.includes("moto") || cat.includes("sports");
         if (activeCategory === "intelligence" || activeCategory === "puzzles") return cat.includes("puzzle") || cat.includes("brain") || cat.includes("quiz") || cat.includes("logic");
-        if (activeCategory === "action") return cat.includes("action") || cat.includes("shoot") || cat.includes("fight") || cat.includes("battle");
-        if (activeCategory === "classic") return cat.includes("classic") || cat.includes("retro") || cat.includes("arcade");
-        if (activeCategory === "casual") return cat.includes("casual") || cat.includes("fun") || cat.includes("girls") || cat.includes("clicker");
+        if (activeCategory === "action") return cat.includes("action") || cat.includes("shoot") || cat.includes("fight") || cat.includes("battle") || cat.includes("adventure");
+        if (activeCategory === "classic") return cat.includes("classic") || cat.includes("retro") || cat.includes("arcade") || cat.includes("platformer");
+        if (activeCategory === "casual") return cat.includes("casual") || cat.includes("fun") || cat.includes("girls") || cat.includes("clicker") || cat.includes("cooking") || cat.includes("hypercasual") || cat.includes("boys");
         return true;
       });
     }

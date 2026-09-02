@@ -326,7 +326,7 @@ export default function App() {
     setGmLoading(true);
     setGmError(null);
     try {
-      const res = await fetch("/api/gamemonetize");
+      const res = await fetch("/api/gamemonetize", { credentials: "include" });
       if (!res.ok) {
         throw new Error(
           lang === "ar"
@@ -334,6 +334,12 @@ export default function App() {
             : "Failed to fetch games feed from server."
         );
       }
+      
+      const contentType = res.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new Error("Invalid format received");
+      }
+
       const data = await res.json();
       if (Array.isArray(data)) {
         setGamemonetizeGames(data);
@@ -349,7 +355,8 @@ export default function App() {
         err.message.includes("Unexpected token") || 
         err.message.includes("doctype") ||
         err.message.includes("parse") ||
-        err.message.includes("SyntaxError")
+        err.message.includes("SyntaxError") ||
+        err.message.includes("format")
       );
       if (isJsonError) {
         setGmError(

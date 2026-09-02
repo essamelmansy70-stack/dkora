@@ -327,7 +327,13 @@ export default function App() {
     setGmError(null);
     try {
       const res = await fetch("/api/gamemonetize");
-      if (!res.ok) throw new Error("Failed to fetch games feed");
+      if (!res.ok) {
+        throw new Error(
+          lang === "ar"
+            ? "فشل في جلب قائمة الألعاب من الخادم."
+            : "Failed to fetch games feed from server."
+        );
+      }
       const data = await res.json();
       if (Array.isArray(data)) {
         setGamemonetizeGames(data);
@@ -338,7 +344,26 @@ export default function App() {
       }
     } catch (err: any) {
       console.error("fetchGMGames error:", err);
-      setGmError(err.message || "Could not retrieve games list");
+      const isJsonError = err.message && (
+        err.message.includes("JSON") || 
+        err.message.includes("Unexpected token") || 
+        err.message.includes("doctype") ||
+        err.message.includes("parse") ||
+        err.message.includes("SyntaxError")
+      );
+      if (isJsonError) {
+        setGmError(
+          lang === "ar"
+            ? "عذراً، مكتبة الألعاب الخارجية تواجه ضغطاً حالياً. يرجى إعادة المحاولة."
+            : "The live games library is currently busy. Please try again."
+        );
+      } else {
+        setGmError(err.message || (
+          lang === "ar"
+            ? "فشل تحميل مكتبة الألعاب الحية. يرجى التحقق من اتصالك بالإنترنت."
+            : "Failed to load live games. Please check your internet connection."
+        ));
+      }
     } finally {
       setGmLoading(false);
     }

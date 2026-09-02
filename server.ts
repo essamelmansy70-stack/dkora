@@ -22,14 +22,20 @@ async function startServer() {
 
   // GameMonetize feed proxy to avoid CORS
   app.get("/api/gamemonetize", async (req, res) => {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000); // 8-second strict timeout
+
     try {
-      const response = await fetch("https://gamemonetize.com/feed.php?format=json", {
+      const response = await fetch("https://gamemonetize.com/feed.php?format=json&amount=150", {
+        signal: controller.signal,
         headers: {
           "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
           "Accept": "application/json, text/xml, application/xml, */*",
           "Accept-Language": "en-US,en;q=0.9"
         }
       });
+
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
         throw new Error(`Failed to fetch GameMonetize feed: ${response.status}`);
@@ -92,12 +98,17 @@ async function startServer() {
         });
 
         console.log(`GameMonetize proxy: Successfully parsed ${games.length} games from XML.`);
-        return res.json(games);
+        return res.json(games.slice(0, 120));
       }
 
       // Try to parse as standard JSON
       try {
-        const data = JSON.parse(trimmedText);
+        let data = JSON.parse(trimmedText);
+        if (Array.isArray(data)) {
+          data = data.slice(0, 120);
+        } else if (data && typeof data === "object" && Array.isArray(data.games)) {
+          data.games = data.games.slice(0, 120);
+        }
         return res.json(data);
       } catch (jsonErr) {
         // If JSON parsing fails, let's try regex fallback on XML in case starting tag check was missed
@@ -123,12 +134,13 @@ async function startServer() {
             }
           });
           if (games.length > 0) {
-            return res.json(games);
+            return res.json(games.slice(0, 120));
           }
         }
         throw jsonErr;
       }
     } catch (error: any) {
+      clearTimeout(timeoutId);
       console.error("GameMonetize proxy fetch error:", error);
       
       // Serve beautiful fallback games so the user never faces an empty screen if GameMonetize is down

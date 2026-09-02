@@ -18,3 +18,17 @@ export interface Game {
   descriptionEn: string;
   aspectRatio: "1:1" | "2x1" | "1x2" | "2x2";
 }
+
+export interface GameMonetizeGame {
+  id?: string;
+  title: string;
+  description: string;
+  instructions: string;
+  category: string;
+  thumb: string;
+  url: string;
+  width: string;
+  height: string;
+  tags?: string;
+}
+

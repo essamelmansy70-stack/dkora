@@ -15,11 +15,12 @@ import {
   VolumeX, 
   Info,
   ArrowRight,
+  ArrowLeft,
   Sun,
   Moon
 } from "lucide-react";
 import { GAMES_DATA } from "./data/games";
-import { Game } from "./types";
+import { Game, GameMonetizeGame } from "./types";
 import NativeSnake from "./components/NativeSnake";
 import NativeBrickBreaker from "./components/NativeBrickBreaker";
 import NativePacman from "./components/NativePacman";
@@ -56,6 +57,12 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
+  const [activeTab, setActiveTab] = useState<"poki" | "gamemonetize">("poki");
+  const [gamemonetizeGames, setGamemonetizeGames] = useState<GameMonetizeGame[]>([]);
+  const [gmLoading, setGmLoading] = useState(false);
+  const [gmError, setGmError] = useState<string | null>(null);
+  const [selectedGMGame, setSelectedGMGame] = useState<GameMonetizeGame | null>(null);
+  const [autoSelectGMIndex, setAutoSelectGMIndex] = useState<number | null>(null);
   const [activeLegalPage, setActiveLegalPage] = useState<"privacy" | "terms" | "disclaimer" | null>(null);
   const [showSitemapModal, setShowSitemapModal] = useState(false);
   
@@ -81,6 +88,8 @@ export default function App() {
   const updatePath = (
     currentLang: "ar" | "en", 
     game: Game | null, 
+    gmGame: GameMonetizeGame | null,
+    tab: "poki" | "gamemonetize",
     legal: "privacy" | "terms" | "disclaimer" | null,
     category: string,
     favsOnly: boolean,
@@ -97,10 +106,15 @@ export default function App() {
       newPath = "/disclaimer";
     } else if (sitemap) {
       newPath = "/sitemap";
+    } else if (gmGame) {
+      const idx = gamemonetizeGames.findIndex(g => g.title === gmGame.title);
+      newPath = `/game-gm-${idx !== -1 ? idx : 0}`;
     } else if (game) {
       newPath = `/game-${game.id}`;
     } else if (favsOnly) {
       newPath = "/favorites";
+    } else if (tab === "gamemonetize") {
+      newPath = "/gamemonetize-games";
     } else if (category !== "all") {
       newPath = `/category-${category}`;
     }
@@ -196,31 +210,38 @@ export default function App() {
         path.includes("sitemap") || 
         path.includes("favorites") || 
         path.includes("category-") || 
+        path.includes("gamemonetize-games") ||
+        path.includes("game-gm-") ||
         path.includes("game-")
       ) {
         if (path.includes("privacy-policy")) {
           setActiveLegalPage("privacy");
           setSelectedGame(null);
+          setSelectedGMGame(null);
           setShowFavoritesOnly(false);
           setShowSitemapModal(false);
         } else if (path.includes("terms-of-use")) {
           setActiveLegalPage("terms");
           setSelectedGame(null);
+          setSelectedGMGame(null);
           setShowFavoritesOnly(false);
           setShowSitemapModal(false);
         } else if (path.includes("disclaimer")) {
           setActiveLegalPage("disclaimer");
           setSelectedGame(null);
+          setSelectedGMGame(null);
           setShowFavoritesOnly(false);
           setShowSitemapModal(false);
         } else if (path.includes("sitemap")) {
           setActiveLegalPage(null);
           setSelectedGame(null);
+          setSelectedGMGame(null);
           setShowFavoritesOnly(false);
           setShowSitemapModal(true);
         } else if (path.includes("favorites")) {
           setActiveLegalPage(null);
           setSelectedGame(null);
+          setSelectedGMGame(null);
           setShowFavoritesOnly(true);
           setActiveCategory("all");
           setShowSitemapModal(false);
@@ -228,14 +249,32 @@ export default function App() {
           const catId = path.split("category-")[1];
           setActiveLegalPage(null);
           setSelectedGame(null);
+          setSelectedGMGame(null);
           setShowFavoritesOnly(false);
           setActiveCategory(catId);
           setShowSitemapModal(false);
+        } else if (path.includes("gamemonetize-games")) {
+          setActiveTab("gamemonetize");
+          setSelectedGMGame(null);
+          setSelectedGame(null);
+          setActiveLegalPage(null);
+          setShowFavoritesOnly(false);
+          setShowSitemapModal(false);
+        } else if (path.includes("game-gm-")) {
+          const gmIndexStr = path.split("game-gm-")[1];
+          const gmIndex = parseInt(gmIndexStr, 10);
+          setActiveTab("gamemonetize");
+          setSelectedGame(null);
+          setActiveLegalPage(null);
+          setShowFavoritesOnly(false);
+          setShowSitemapModal(false);
+          setAutoSelectGMIndex(gmIndex);
         } else if (path.includes("game-")) {
           const gameId = path.split("game-")[1];
           const found = GAMES_DATA.find((g) => g.id === gameId);
           if (found) {
             setSelectedGame(found);
+            setSelectedGMGame(null);
             setActiveLegalPage(null);
             setShowFavoritesOnly(false);
             setShowSitemapModal(false);
@@ -245,6 +284,8 @@ export default function App() {
         // Default to home page "/", ensuring active query parameter lang is enforced
         setActiveLegalPage(null);
         setSelectedGame(null);
+        setSelectedGMGame(null);
+        setActiveTab("poki");
         setShowFavoritesOnly(false);
         setActiveCategory("all");
         setShowSitemapModal(false);
@@ -263,10 +304,50 @@ export default function App() {
     };
   }, []);
 
+
+  // Fetch GameMonetize feed on mount or when we have an autoSelectGMIndex waiting
+  useEffect(() => {
+    fetchGMGames();
+  }, [autoSelectGMIndex]);
+
+  // Handle auto-selecting deep-linked GameMonetize game when the feed finishes loading
+  useEffect(() => {
+    if (autoSelectGMIndex !== null && gamemonetizeGames.length > 0) {
+      const targetGame = gamemonetizeGames[autoSelectGMIndex];
+      if (targetGame) {
+        setSelectedGMGame(targetGame);
+      }
+      setAutoSelectGMIndex(null);
+    }
+  }, [autoSelectGMIndex, gamemonetizeGames]);
+
+  const fetchGMGames = async () => {
+    if (gamemonetizeGames.length > 0) return;
+    setGmLoading(true);
+    setGmError(null);
+    try {
+      const res = await fetch("/api/gamemonetize");
+      if (!res.ok) throw new Error("Failed to fetch games feed");
+      const data = await res.json();
+      if (Array.isArray(data)) {
+        setGamemonetizeGames(data);
+      } else if (data && typeof data === "object" && Array.isArray(data.games)) {
+        setGamemonetizeGames(data.games);
+      } else {
+        setGamemonetizeGames([]);
+      }
+    } catch (err: any) {
+      console.error("fetchGMGames error:", err);
+      setGmError(err.message || "Could not retrieve games list");
+    } finally {
+      setGmLoading(false);
+    }
+  };
+
   // Update pathname when states change
   useEffect(() => {
-    updatePath(lang, selectedGame, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal);
-  }, [lang, selectedGame, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal]);
+    updatePath(lang, selectedGame, selectedGMGame, activeTab, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal);
+  }, [lang, selectedGame, selectedGMGame, activeTab, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal]);
 
   // Dynamically update document title and description meta tags for maximum SEO visibility
   useEffect(() => {
@@ -286,6 +367,10 @@ export default function App() {
       } else if (showSitemapModal) {
         title = "خريطة الموقع والألعاب - ديكورا العاب اونلاين فرى | Dkora";
         desc = "خريطة الموقع لجميع ألعاب ديكورا العاب اونلاين فرى والصفحات القانونية لسهولة الوصول والفهرسة السريعة.";
+      } else if (selectedGMGame) {
+        const gameTitle = selectedGMGame.title;
+        title = `العب لعبة ${gameTitle} اون لاين - ديكورا العاب اونلاين فرى | Dkora`;
+        desc = selectedGMGame.description || `العب لعبة ${gameTitle} مجاناً وبدون تحميل على منصة ديكورا العاب اونلاين فرى - ألعاب متصفح سريعة وممتعة بالكامل.`;
       } else if (selectedGame) {
         const gameTitle = selectedGame.titleAr;
         title = `العب لعبة ${gameTitle} اون لاين - ديكورا العاب اونلاين فرى | Dkora`;
@@ -315,6 +400,10 @@ export default function App() {
       } else if (showSitemapModal) {
         title = "Sitemap Directory - Dkora Free Online Games | Dkora";
         desc = "Complete sitemap directory index of all games and legal pages on Dkora Free Online Games.";
+      } else if (selectedGMGame) {
+        const gameTitle = selectedGMGame.title;
+        title = `Play ${gameTitle} Online - Dkora Free Online Games | Dkora`;
+        desc = selectedGMGame.description || `Play ${gameTitle} online for free with no downloads on Dkora - The premier destination for free online games.`;
       } else if (selectedGame) {
         const gameTitle = selectedGame.titleEn;
         title = `Play ${gameTitle} Online - Dkora Free Online Games | Dkora`;
@@ -495,6 +584,36 @@ export default function App() {
       return matchesCategory && matchesFavorites;
     });
   }, [searchQuery, activeCategory, showFavoritesOnly, favorites, fuse]);
+
+  // Filter GameMonetize games based on search queries and category matches
+  const filteredGMGames = React.useMemo(() => {
+    let list = gamemonetizeGames;
+    
+    // Fuzzy/Text filter
+    if (searchQuery.trim() !== "") {
+      const q = searchQuery.toLowerCase();
+      list = list.filter(g => 
+        g.title.toLowerCase().includes(q) ||
+        g.category.toLowerCase().includes(q) ||
+        (g.description && g.description.toLowerCase().includes(q))
+      );
+    }
+    
+    // Category mapping filter
+    if (activeCategory !== "all") {
+      list = list.filter(g => {
+        const cat = g.category.toLowerCase();
+        if (activeCategory === "cars") return cat.includes("car") || cat.includes("racing") || cat.includes("drive") || cat.includes("moto");
+        if (activeCategory === "intelligence" || activeCategory === "puzzles") return cat.includes("puzzle") || cat.includes("brain") || cat.includes("quiz") || cat.includes("logic");
+        if (activeCategory === "action") return cat.includes("action") || cat.includes("shoot") || cat.includes("fight") || cat.includes("battle");
+        if (activeCategory === "classic") return cat.includes("classic") || cat.includes("retro") || cat.includes("arcade");
+        if (activeCategory === "casual") return cat.includes("casual") || cat.includes("fun") || cat.includes("girls") || cat.includes("clicker");
+        return true;
+      });
+    }
+
+    return list;
+  }, [gamemonetizeGames, searchQuery, activeCategory]);
 
   return (
     <div className={`min-h-screen flex flex-col font-sans selection:bg-purple-600 selection:text-white overflow-x-hidden antialiased transition-colors duration-300 ${
@@ -694,84 +813,14 @@ export default function App() {
             theme === "dark" ? "text-slate-500" : "text-slate-400"
           }`}>
             {lang === "ar" 
-              ? `تم العثور على ${filteredGames.length} لعبة` 
-              : `Found ${filteredGames.length} games`}
+              ? `تم العثور على ${filteredGames.length + filteredGMGames.length} لعبة` 
+              : `Found ${filteredGames.length + filteredGMGames.length} games`}
           </div>
         </div>
 
         {/* Symmetrical Grid of Games */}
-        {filteredGames.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {filteredGames.map((game) => {
-              const isFav = favorites.includes(game.id);
-
-              return (
-                <div
-                  key={game.id}
-                  onClick={() => { playUISound("click"); setSelectedGame(game); }}
-                  className={`group relative rounded-3xl overflow-hidden cursor-pointer border hover:border-purple-500/50 shadow-md hover:shadow-2xl flex flex-col justify-end aspect-[1.4] w-full transition-all duration-300 ${
-                    theme === "dark" ? "bg-slate-900/40 border-slate-800" : "bg-white border-slate-200"
-                  }`}
-                >
-                  {/* Glowing game border accent */}
-                  <div className={`absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent z-10`} />
-                  
-                  {/* Game image background */}
-                  <img
-                    src={lang === "ar" ? (game.imageAr || game.image) : (game.imageEn || game.image)}
-                    alt={lang === "ar" ? game.titleAr : game.titleEn}
-                    referrerPolicy="no-referrer"
-                    className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-108 transition duration-500 ease-out z-0"
-                  />
-
-                  {/* Rating / Plays Badge */}
-                  <div className="absolute top-3 left-3 z-20 flex gap-1.5 items-center">
-                    <span className="flex items-center gap-1 bg-black/70 backdrop-blur-md text-[10px] text-amber-400 font-extrabold px-2 py-1 rounded-full border border-white/10">
-                      <Star className="w-3 h-3 fill-current text-amber-400" />
-                      <span>{game.rating}</span>
-                    </span>
-                    {game.isNative && (
-                      <span className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-[9px] font-black px-2 py-1 rounded-full uppercase tracking-wider shadow">
-                        {lang === "ar" ? "مدمجة" : "NATIVE"}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Favorite button */}
-                  <button
-                    onClick={(e) => toggleFavorite(game.id, e)}
-                    className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-slate-300 hover:text-pink-500 active:scale-90 transition duration-150 cursor-pointer"
-                  >
-                    <Heart className={`w-4 h-4 ${isFav ? "fill-current text-pink-500" : ""}`} />
-                  </button>
-
-                  {/* Game Title Info Strip */}
-                  <div className="p-4 z-20 space-y-1 transform group-hover:translate-y-[-2px] transition duration-300">
-                    <span className="text-[10px] font-extrabold text-purple-400 uppercase tracking-wider block">
-                      {lang === "ar" ? game.categoryAr : game.categoryEn}
-                    </span>
-                    <h3 className="text-sm md:text-base font-black text-white leading-tight line-clamp-1">
-                      {lang === "ar" ? game.titleAr : game.titleEn}
-                    </h3>
-                    <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1 opacity-0 group-hover:opacity-100 transition duration-300">
-                      <span className="flex items-center gap-1">
-                        <Flame className="w-3 h-3 text-orange-500 fill-current" />
-                        <span>{game.plays} {lang === "ar" ? "لاعب" : "plays"}</span>
-                      </span>
-                      <span className="text-amber-400 font-bold flex items-center gap-0.5">
-                        {lang === "ar" ? "العب الآن" : "Play Now"} 
-                        <ArrowRight className="w-3 h-3" />
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Hover visual pop */}
-                  <div className="absolute inset-0 bg-purple-600/10 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none" />
-                </div>
-              );
-            })}
-          </div>
-        ) : (
+        {filteredGames.length === 0 && filteredGMGames.length === 0 ? (
+          /* Empty State if absolutely nothing matches */
           <div className={`text-center py-16 rounded-3xl border space-y-4 max-w-lg mx-auto transition-all duration-300 ${
             theme === "dark" ? "bg-slate-900/30 border-slate-800" : "bg-white border-slate-200 shadow-lg"
           }`}>
@@ -794,6 +843,178 @@ export default function App() {
             >
               {lang === "ar" ? "عرض جميع الألعاب" : "Show All Games"}
             </button>
+          </div>
+        ) : (
+          <div className="space-y-12">
+            {/* 1. Curated/PokiBox Section */}
+            {filteredGames.length > 0 && (
+              <div className="space-y-6">
+                <div className="flex items-center gap-2.5 border-b pb-3 border-purple-500/10">
+                  <Gamepad2 className="w-5.5 h-5.5 text-purple-500" />
+                  <h2 className="text-lg md:text-xl font-black tracking-tight">
+                    {lang === "ar" ? "ألعاب دكورا الحصرية" : "Exclusive Dkora Games"}
+                  </h2>
+                  <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${
+                    theme === "dark" ? "bg-purple-500/15 text-purple-400" : "bg-purple-100 text-purple-700"
+                  }`}>
+                    {filteredGames.length}
+                  </span>
+                </div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                  {filteredGames.map((game) => {
+                    const isFav = favorites.includes(game.id);
+                    return (
+                      <div
+                        key={game.id}
+                        onClick={() => { playUISound("click"); setSelectedGame(game); }}
+                        className={`group relative rounded-3xl overflow-hidden cursor-pointer border hover:border-purple-500/50 shadow-md hover:shadow-2xl flex flex-col justify-end aspect-[1.4] w-full transition-all duration-300 ${
+                          theme === "dark" ? "bg-slate-900/40 border-slate-800" : "bg-white border-slate-200"
+                        }`}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent z-10" />
+                        <img
+                          src={lang === "ar" ? (game.imageAr || game.image) : (game.imageEn || game.image)}
+                          alt={lang === "ar" ? game.titleAr : game.titleEn}
+                          referrerPolicy="no-referrer"
+                          className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-108 transition duration-500 ease-out z-0"
+                        />
+                        <div className="absolute top-3 left-3 z-20 flex gap-1.5 items-center">
+                          <span className="flex items-center gap-1 bg-black/70 backdrop-blur-md text-[10px] text-amber-400 font-extrabold px-2 py-1 rounded-full border border-white/10">
+                            <Star className="w-3 h-3 fill-current text-amber-400" />
+                            <span>{game.rating}</span>
+                          </span>
+                          {game.isNative && (
+                            <span className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-[9px] font-black px-2 py-1 rounded-full uppercase tracking-wider shadow">
+                              {lang === "ar" ? "مدمجة" : "NATIVE"}
+                            </span>
+                          )}
+                        </div>
+                        <button
+                          onClick={(e) => toggleFavorite(game.id, e)}
+                          className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-slate-300 hover:text-pink-500 active:scale-90 transition duration-150 cursor-pointer"
+                        >
+                          <Heart className={`w-4 h-4 ${isFav ? "fill-current text-pink-500" : ""}`} />
+                        </button>
+                        <div className="p-4 z-20 space-y-1 transform group-hover:translate-y-[-2px] transition duration-300">
+                          <span className="text-[10px] font-extrabold text-purple-400 uppercase tracking-wider block">
+                            {lang === "ar" ? game.categoryAr : game.categoryEn}
+                          </span>
+                          <h3 className="text-sm md:text-base font-black text-white leading-tight line-clamp-1">
+                            {lang === "ar" ? game.titleAr : game.titleEn}
+                          </h3>
+                          <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1 opacity-0 group-hover:opacity-100 transition duration-300">
+                            <span className="flex items-center gap-1">
+                              <Flame className="w-3 h-3 text-orange-500 fill-current" />
+                              <span>{game.plays} {lang === "ar" ? "لاعب" : "plays"}</span>
+                            </span>
+                            <span className="text-amber-400 font-bold flex items-center gap-0.5">
+                              {lang === "ar" ? "العب الآن" : "Play Now"} 
+                              <ArrowRight className="w-3 h-3" />
+                            </span>
+                          </div>
+                        </div>
+                        <div className="absolute inset-0 bg-purple-600/10 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none" />
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* 2. GameMonetize Section */}
+            {!showFavoritesOnly && (
+              <div className="space-y-6 pt-4">
+                <div className="flex items-center gap-2.5 border-b pb-3 border-purple-500/10">
+                  <Sparkles className="w-5.5 h-5.5 text-amber-500 fill-amber-500/10" />
+                  <h2 className="text-lg md:text-xl font-black tracking-tight">
+                    {lang === "ar" ? "مكتبة الألعاب الحية" : "Live Arcade Games"}
+                  </h2>
+                  {!gmLoading && !gmError && filteredGMGames.length > 0 && (
+                    <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${
+                      theme === "dark" ? "bg-amber-500/15 text-amber-400" : "bg-amber-100 text-amber-700"
+                    }`}>
+                      {filteredGMGames.length}
+                    </span>
+                  )}
+                </div>
+
+                {gmLoading ? (
+                  <div className="flex flex-col items-center justify-center py-16 space-y-4">
+                    <div className="w-12 h-12 rounded-full border-4 border-purple-500 border-t-transparent animate-spin"></div>
+                    <p className="text-sm font-black text-purple-400 animate-pulse">
+                      {lang === "ar" ? "جاري تحميل ألعاب إضافية ممتعة..." : "Loading premium live games..."}
+                    </p>
+                  </div>
+                ) : gmError ? (
+                  <div className="text-center py-12 space-y-4 max-w-md mx-auto">
+                    <span className="text-4xl">⚠️</span>
+                    <p className="text-sm text-red-400 font-bold">{gmError}</p>
+                    <button
+                      onClick={() => { setGamemonetizeGames([]); fetchGMGames(); }}
+                      className="bg-purple-600 hover:bg-purple-700 text-white font-black px-6 py-2.5 rounded-xl text-xs transition cursor-pointer"
+                    >
+                      {lang === "ar" ? "إعادة المحاولة" : "Try Again"}
+                    </button>
+                  </div>
+                ) : filteredGMGames.length > 0 ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {filteredGMGames.map((game, idx) => (
+                      <div
+                        key={idx}
+                        onClick={() => { playUISound("click"); setSelectedGMGame(game); }}
+                        className={`group relative rounded-3xl overflow-hidden cursor-pointer border hover:border-purple-500/50 shadow-md hover:shadow-2xl flex flex-col justify-end aspect-[1.3] w-full transition-all duration-300 ${
+                          theme === "dark" ? "bg-slate-900/40 border-slate-800" : "bg-white border-slate-200"
+                        }`}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent z-10" />
+                        <img
+                          src={game.thumb}
+                          alt={game.title}
+                          referrerPolicy="no-referrer"
+                          className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-108 transition duration-500 ease-out z-0"
+                        />
+                        <div className="absolute top-3 left-3 z-20 flex gap-1.5 items-center">
+                          <span className="bg-black/70 backdrop-blur-md text-[9px] text-purple-400 font-black px-2 py-1 rounded-full uppercase tracking-wider border border-white/10">
+                            {game.category}
+                          </span>
+                        </div>
+                        <div className="p-4 z-20 space-y-1 transform group-hover:translate-y-[-2px] transition duration-300">
+                          <h3 className="text-sm md:text-base font-black text-white leading-tight line-clamp-1">
+                            {game.title}
+                          </h3>
+                          <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1 opacity-0 group-hover:opacity-100 transition duration-300">
+                            <span className="text-amber-400 font-bold flex items-center gap-0.5">
+                              {lang === "ar" ? "العب الآن" : "Play Now"} 
+                              <ArrowRight className="w-3 h-3" />
+                            </span>
+                          </div>
+                        </div>
+                        <div className="absolute inset-0 bg-purple-600/10 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none" />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className={`text-center py-12 rounded-3xl border space-y-3 max-w-md mx-auto transition-all duration-300 ${
+                    theme === "dark" ? "bg-slate-900/30 border-slate-800" : "bg-white border-slate-200 shadow-sm"
+                  }`}>
+                    <span className="text-3xl">🔍</span>
+                    <h3 className={`text-base font-black transition-colors duration-300 ${
+                      theme === "dark" ? "text-white" : "text-slate-800"
+                    }`}>
+                      {lang === "ar" ? "لا ألعاب متوفرة في هذا القسم حالياً" : "No live games in this category"}
+                    </h3>
+                    <p className={`text-xs max-w-xs mx-auto transition-colors duration-300 ${
+                      theme === "dark" ? "text-slate-400" : "text-slate-500"
+                    }`}>
+                      {lang === "ar"
+                        ? "اختر تصنيفاً آخر أو أعد تعيين التصفية لمشاهدة كافة الألعاب الحية."
+                        : "Try selecting a different category or reset searches to browse all premium games."}
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
 
@@ -1331,6 +1552,286 @@ export default function App() {
                 <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block">
                   {lang === "ar" ? "استمتع باللعب مع ديكورا العاب اونلاين" : "Powered by Dkora Games Portal"}
                 </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
+
+      {/* Immersive GameMonetize Game Player Modal / Game View Page */}
+      {selectedGMGame && (
+        <div 
+          className={`fixed inset-0 z-50 flex flex-col animate-fade-in overflow-y-auto ${
+            theme === "dark" ? "bg-[#080914] text-white" : "bg-[#f8f9fc] text-slate-800"
+          }`}
+        >
+          {/* Controller Top Bar */}
+          <div className={`sticky top-0 z-10 border-b px-4 py-3.5 flex items-center justify-between gap-4 select-none backdrop-blur-md shadow-md transition-all duration-300 ${
+            theme === "dark" 
+              ? "bg-[#0d0e1b]/95 border-purple-500/10 text-white" 
+              : "bg-white/95 border-purple-100 text-slate-800"
+          }`}>
+            {/* Game info branding */}
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl overflow-hidden border border-purple-500/20 shadow-md">
+                <img src={selectedGMGame.thumb} alt={selectedGMGame.title} className="w-full h-full object-cover" />
+              </div>
+              <div>
+                <h3 className="text-sm md:text-base font-black leading-tight font-sans">
+                  {selectedGMGame.title}
+                </h3>
+                <span className={`text-[10px] block font-extrabold uppercase tracking-wider font-sans ${
+                  theme === "dark" ? "text-purple-400" : "text-purple-600"
+                }`}>
+                  {selectedGMGame.category}
+                </span>
+              </div>
+            </div>
+
+            {/* Middle Action Controls */}
+            <div className="flex items-center gap-2">
+              {/* Back to games list */}
+              <button
+                onClick={() => { playUISound("click"); setSelectedGMGame(null); }}
+                className={`flex items-center gap-1 px-4 py-2 border rounded-xl text-xs font-black transition cursor-pointer font-sans ${
+                  theme === "dark"
+                    ? "bg-slate-900 hover:bg-slate-800 border-slate-800 text-slate-300 hover:text-white"
+                    : "bg-slate-100 hover:bg-slate-200 border-slate-200 text-slate-700 hover:text-slate-900"
+                }`}
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>{lang === "ar" ? "العودة للرئيسية" : "Back to Catalog"}</span>
+              </button>
+            </div>
+
+            {/* Exit Close Button */}
+            <button
+              onClick={() => { playUISound("click"); setSelectedGMGame(null); }}
+              className="p-2 bg-red-600/20 hover:bg-red-600 border border-red-500/20 hover:border-red-500 text-red-400 hover:text-white rounded-xl transition duration-150 cursor-pointer"
+              title={lang === "ar" ? "إغلاق اللعبة" : "Close Player"}
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Symmetrical Layout Stage with Interactive Ads around it */}
+          <div className="flex-1 flex flex-col py-6 px-4 md:px-8 space-y-8 max-w-7xl w-full mx-auto">
+            
+            {/* Center Stage Arena */}
+            <div className="flex flex-col xl:flex-row items-center xl:items-stretch justify-center gap-6">
+              
+              {/* Left Skyscraper Mock Ad Box (Visible on Desktop Screen sizes >= 1280px) */}
+              <div className={`hidden xl:flex w-[160px] border rounded-2xl p-4 flex-col justify-between items-center text-center select-none shadow-md transition-all duration-300 ${
+                theme === "dark" 
+                  ? "bg-[#0d0e1b]/60 border-purple-500/10 text-slate-400" 
+                  : "bg-slate-50 border-purple-100 text-slate-600"
+              }`}>
+                <div className="space-y-1">
+                  <span className="text-[9px] font-extrabold uppercase tracking-widest text-purple-400 font-sans">إعلان ممول</span>
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse mx-auto"></div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white mx-auto shadow-md">
+                    <Gamepad2 className="w-6 h-6 animate-bounce" />
+                  </div>
+                  <p className="text-xs font-black leading-tight font-sans">
+                    {lang === "ar" ? "أفضل ألعاب المتصفح بدون تحميل!" : "Play Top Web Games Instantly!"}
+                  </p>
+                  <p className="text-[10px] text-slate-500 font-sans">
+                    {lang === "ar" ? "سريعة وآمنة 100%" : "100% Free & Fast"}
+                  </p>
+                </div>
+                
+                <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-black py-2 rounded-xl text-[10px] uppercase tracking-wider transition font-sans">
+                  {lang === "ar" ? "العب الآن" : "Play Now"}
+                </button>
+              </div>
+
+              {/* Central Gameplay Area */}
+              <div className="flex-1 flex flex-col items-center w-full">
+                
+                {/* Horizontal Tablet/Mobile Mock Ad (Hidden on xl desktop) */}
+                <div className={`xl:hidden w-full max-w-3xl h-[80px] sm:h-[90px] border rounded-2xl p-3 flex items-center justify-between gap-4 mb-4 select-none shadow-sm transition-all duration-300 ${
+                  theme === "dark"
+                    ? "bg-[#0d0e1b]/60 border-purple-500/10 text-slate-400"
+                    : "bg-slate-50 border-purple-100 text-slate-600"
+                }`}>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center text-white shadow">
+                      <Sparkles className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <span className="text-[8px] font-black uppercase tracking-widest text-purple-400 block font-sans">ADVERTISEMENT | إعلان</span>
+                      <p className="text-xs font-black leading-tight text-slate-450 font-sans">
+                        {lang === "ar" ? "اضغط هنا لاستكشاف ألعاب الألغاز المميزة!" : "Unleash extreme puzzles & adventure!"}
+                      </p>
+                    </div>
+                  </div>
+                  <button className="bg-gradient-to-r from-purple-600 to-pink-500 text-white font-black px-4 py-2 rounded-xl text-[10px] uppercase transition shadow-md whitespace-nowrap font-sans">
+                    {lang === "ar" ? "ابدأ اللعب" : "Start Now"}
+                  </button>
+                </div>
+
+                {/* Primary Game frame container */}
+                <div className="w-full aspect-video max-w-4xl rounded-3xl overflow-hidden border border-purple-500/20 bg-black/60 shadow-2xl relative">
+                  <iframe
+                    src={selectedGMGame.url}
+                    title={selectedGMGame.title}
+                    className="w-full h-full border-none block bg-black"
+                    allowFullScreen
+                    allow="autoplay; gamepad; fullscreen"
+                    sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                  />
+                </div>
+              </div>
+
+              {/* Right Skyscraper Mock Ad Box (Visible on Desktop Screen sizes >= 1280px) */}
+              <div className={`hidden xl:flex w-[160px] border rounded-2xl p-4 flex-col justify-between items-center text-center select-none shadow-md transition-all duration-300 ${
+                theme === "dark" 
+                  ? "bg-[#0d0e1b]/60 border-purple-500/10 text-slate-400" 
+                  : "bg-slate-50 border-purple-100 text-slate-600"
+              }`}>
+                <div className="space-y-1">
+                  <span className="text-[9px] font-extrabold uppercase tracking-widest text-purple-400 font-sans">رعاة المنصة</span>
+                  <div className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse mx-auto"></div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center text-white mx-auto shadow-md">
+                    <Sparkles className="w-6 h-6 animate-pulse" />
+                  </div>
+                  <p className="text-xs font-black leading-tight font-sans">
+                    {lang === "ar" ? "ألعاب ذكاء وتحدي خارقة!" : "Play Mindblowing Brain Quizzes!"}
+                  </p>
+                  <p className="text-[10px] text-slate-500 font-sans">
+                    {lang === "ar" ? "ألعاب آمنة 100%" : "No Installs Required"}
+                  </p>
+                </div>
+                
+                <button className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-black py-2 rounded-xl text-[10px] uppercase tracking-wider transition font-sans">
+                  {lang === "ar" ? "اكتشف الآن" : "Explore"}
+                </button>
+              </div>
+
+            </div>
+
+            {/* Game Info, Instructions & Specifications */}
+            <div className="max-w-4xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-slate-800/20">
+              
+              {/* Instructions and specs */}
+              <div className="md:col-span-2 space-y-6">
+                
+                {/* How to Play Card */}
+                <div className={`p-6 border rounded-3xl space-y-4 transition-all duration-300 ${
+                  theme === "dark" ? "bg-slate-900/40 border-slate-800" : "bg-white border-slate-200 shadow-sm"
+                }`}>
+                  <div className="flex items-center gap-2 text-sm font-black text-purple-400">
+                    <Info className="w-4.5 h-4.5" />
+                    <span>{lang === "ar" ? "طريقة اللعب وإرشادات التحكم:" : "How to Play & Controls:"}</span>
+                  </div>
+                  <p className={`text-sm leading-relaxed whitespace-pre-wrap transition-colors duration-300 ${
+                    theme === "dark" ? "text-slate-300" : "text-slate-600"
+                  }`}>
+                    {selectedGMGame.instructions || (lang === "ar" 
+                      ? "استخدم الفأرة أو شاشة اللمس للتحكم في عناصر اللعبة واتباع التعليمات التي تظهر على الشاشة لبدء اللعب والاستمتاع باللعبة الحية مباشرة."
+                      : "Use your mouse or touchscreen to control the gameplay. Follow the in-game tutorials and have extreme fun playing instantly.")}
+                  </p>
+                </div>
+
+                {/* Description Card */}
+                <div className={`p-6 border rounded-3xl space-y-4 transition-all duration-300 ${
+                  theme === "dark" ? "bg-slate-900/40 border-slate-800" : "bg-white border-slate-200 shadow-sm"
+                }`}>
+                  <h4 className="text-sm font-black text-purple-400 uppercase tracking-wider">
+                    {lang === "ar" ? "تفاصيل ووصف اللعبة:" : "Game Description:"}
+                  </h4>
+                  <p className={`text-sm leading-relaxed whitespace-pre-wrap text-justify transition-colors duration-300 ${
+                    theme === "dark" ? "text-slate-400" : "text-slate-600"
+                  }`}>
+                    {selectedGMGame.description || (lang === "ar"
+                      ? "استمتع بلعب هذه اللعبة الممتازة مباشرة على متصفحك مجاناً وبدون الحاجة إلى تحميل أي ملفات إضافية."
+                      : "Play this premium high-quality online game immediately in your web browser for free with no downloading required.")}
+                  </p>
+                </div>
+
+              </div>
+
+              {/* Dynamic Game Specifications Sidebar */}
+              <div className="space-y-6">
+                
+                {/* Meta details card */}
+                <div className={`p-6 border rounded-3xl space-y-4 transition-all duration-300 ${
+                  theme === "dark" ? "bg-slate-900/40 border-slate-800" : "bg-white border-slate-200 shadow-sm"
+                }`}>
+                  <h4 className="text-sm font-black text-purple-400 uppercase tracking-wider font-sans">
+                    {lang === "ar" ? "مواصفات اللعبة" : "Game Specs"}
+                  </h4>
+                  
+                  <div className="space-y-3.5 text-xs font-bold font-sans">
+                    <div className="flex items-center justify-between py-1.5 border-b border-slate-850/10">
+                      <span className="text-slate-500">{lang === "ar" ? "التصنيف الرئيسي" : "Category"}</span>
+                      <span className="text-slate-300">{selectedGMGame.category}</span>
+                    </div>
+                    
+                    <div className="flex items-center justify-between py-1.5 border-b border-slate-850/10">
+                      <span className="text-slate-500">{lang === "ar" ? "حجم العرض المقترح" : "Resolution"}</span>
+                      <span className="text-slate-300">{selectedGMGame.width || "800"}x{selectedGMGame.height || "600"} px</span>
+                    </div>
+
+                    <div className="flex items-center justify-between py-1.5 border-b border-slate-850/10">
+                      <span className="text-slate-500">{lang === "ar" ? "ألعاب مدمجة بواسطة" : "Powered by"}</span>
+                      <span className="text-purple-400">GameMonetize</span>
+                    </div>
+
+                    <div className="flex items-center justify-between py-1.5">
+                      <span className="text-slate-500">{lang === "ar" ? "حالة اللعب" : "Status"}</span>
+                      <span className="text-green-400 flex items-center gap-1">
+                        <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+                        {lang === "ar" ? "متصلة / نشطة" : "Active / Live"}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Clean Watermark Branding */}
+                <div className="text-center space-y-2 select-none py-2 font-sans">
+                  <span className="text-[10px] text-slate-500 font-extrabold uppercase tracking-widest block">
+                    {lang === "ar" ? "بوابة ألعاب ديكورا اون لاين فرى" : "Dkora Games Web Portal"}
+                  </span>
+                  <span className="text-[9px] text-slate-600 block">
+                    {lang === "ar" ? "ألعاب متصفح مجانية متكاملة 100%" : "100% Free HTML5 Gaming Center"}
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
+
+            {/* Bottom Section: Related GameMonetize Games */}
+            <div className="space-y-4 pt-6 border-t border-slate-800/10">
+              <h3 className="text-base font-black text-white uppercase tracking-wider font-sans">
+                {lang === "ar" ? "ألعاب ذات صلة قد تعجبك" : "Related Games You Might Like"}
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {gamemonetizeGames
+                  .filter(g => g.title !== selectedGMGame.title)
+                  .slice(0, 4)
+                  .map((rel, idx) => (
+                    <div
+                      key={idx}
+                      onClick={() => { playUISound("click"); setSelectedGMGame(rel); }}
+                      className="group relative aspect-[1.4] rounded-2xl overflow-hidden cursor-pointer border border-slate-800 hover:border-purple-500/30 shadow-md transition duration-300"
+                    >
+                      <img src={rel.thumb} alt={rel.title} className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-10" />
+                      <div className="absolute bottom-2 left-2 right-2 z-20">
+                        <span className="text-[10px] text-white font-black line-clamp-1 font-sans">{rel.title}</span>
+                      </div>
+                    </div>
+                  ))
+                }
               </div>
             </div>
 

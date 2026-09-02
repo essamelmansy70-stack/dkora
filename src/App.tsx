@@ -321,6 +321,160 @@ export default function App() {
     }
   }, [autoSelectGMIndex, gamemonetizeGames]);
 
+  // Premium embedded games fallback for 100% robust offline and iframe sandbox execution
+  const PREMIUM_EMBEDDED_GAMES = [
+    {
+      title: "Impossible Car Stunt Tracks",
+      category: "Racing",
+      thumb: "https://img.gamemonetize.com/pirh6cfnd7of1k3r4dx2ghxtqid8tdhg/512x384.jpg",
+      url: "https://html5.gamemonetize.co/pirh6cfnd7of1k3r4dx2ghxtqid8tdhg/",
+      description: "Race cars across impossible sky tracks packed with ramps, rotating obstacles, narrow bridges, and dangerous jumps. Choose your vehicle, unlock stunt levels, and reach every checkpoint before time runs out.",
+      instructions: "Use W or Up Arrow to accelerate. Use S or Down Arrow to brake and reverse. Steer with A/D or Left/Right Arrow.",
+      width: "800",
+      height: "600"
+    },
+    {
+      title: "Crazy Car Drive Road Challenge",
+      category: "Racing",
+      thumb: "https://img.gamemonetize.com/lr5hsvl3tbnbie5oi73b2prqe59fq1fp/512x384.jpg",
+      url: "https://html5.gamemonetize.co/lr5hsvl3tbnbie5oi73b2prqe59fq1fp/",
+      description: "Draw a safe road and guide your cartoon car across hills, gaps, and dangerous obstacles. Collect coins, grab fuel, survive crashes, and travel as far as possible.",
+      instructions: "Drag with the mouse or touch to draw a road for the car. Click, tap, press W, Up Arrow, or Space to start driving.",
+      width: "800",
+      height: "600"
+    },
+    {
+      title: "Funny Putin Face",
+      category: "Puzzle",
+      thumb: "https://img.gamemonetize.com/bnb448rmjsbi8itab7vtm2fri2jxowsl/512x384.jpg",
+      url: "https://html5.gamemonetize.co/bnb448rmjsbi8itab7vtm2fri2jxowsl/",
+      description: "Funny Putin Face is a lighthearted parody game where you can twist and stretch Putin's face into outrageous, cartoonish expressions. It's suitable for players of all ages.",
+      instructions: "Mouse or touch drag to deform and twist face.",
+      width: "854",
+      height: "480"
+    },
+    {
+      title: "Infini Golf",
+      category: "Sports",
+      thumb: "https://img.gamemonetize.com/yh9fk48n9a31wbw2582xzbb3e7yekv94/512x384.jpg",
+      url: "https://html5.gamemonetize.co/yh9fk48n9a31wbw2582xzbb3e7yekv94/",
+      description: "Hey, would you like to play an infinite golf game? Yes, exactly! I mean, after one hole comes another right away, and you don't have to wait long lines.",
+      instructions: "Mouse click or tap to pull and release to shoot the ball.",
+      width: "720",
+      height: "1280"
+    },
+    {
+      title: "Chicken Yeet",
+      category: "Hypercasual",
+      thumb: "https://img.gamemonetize.com/etpyydtxan6rb7tdbe7rszeh58aep18g/512x384.jpg",
+      url: "https://html5.gamemonetize.co/etpyydtxan6rb7tdbe7rszeh58aep18g/",
+      description: "Chicken Yeet is a fast, funny arcade launcher about one brave chicken, one very enthusiastic farmer, and a completely unreasonable journey to space.",
+      instructions: "Launch: Click or press Space twice for a perfect start. Move left and right to navigate.",
+      width: "800",
+      height: "600"
+    },
+    {
+      title: "jumpNinja",
+      category: "Hypercasual",
+      thumb: "https://img.gamemonetize.com/9k7dfjr4vxr5l1yucaq4ixdzl481q94d/512x384.jpg",
+      url: "https://html5.gamemonetize.co/9k7dfjr4vxr5l1yucaq4ixdzl481q94d/",
+      description: "Jump Ninja is a fast-paced arcade game where you switch between the top and bottom platforms while avoiding incoming obstacles. Each successful jump increases your speed.",
+      instructions: "Use Space or left mouse click to jump. Or touch screen tap on mobile devices.",
+      width: "540",
+      height: "960"
+    },
+    {
+      title: "Super Grotto Escape",
+      category: "Shooting",
+      thumb: "https://img.gamemonetize.com/7y3k24fp7z5jjun4841k3m7btov33b4y/512x384.jpg",
+      url: "https://html5.gamemonetize.co/7y3k24fp7z5jjun4841k3m7btov33b4y/",
+      description: "Hey, our little yellow astronaut had a problem with his spaceship and had to land on the planet Grotto! Unfortunately, he lost some pieces of his spaceship.",
+      instructions: "Mouse click or tap to jump and navigate.",
+      width: "720",
+      height: "1280"
+    },
+    {
+      title: "Rainbow Color Ball Runner",
+      category: "Arcade",
+      thumb: "https://img.gamemonetize.com/7u37tao4fl8qfwzga505n433uujunux2/512x384.jpg",
+      url: "https://html5.gamemonetize.co/7u37tao4fl8qfwzga505n433uujunux2/",
+      description: "Rainbow Color Ball Runner is a colorful 3D runner where players guide a rolling ball through obstacle-filled levels, collect matching elements, and avoid danger.",
+      instructions: "Use the mouse on desktop or touch and drag on mobile to move the ball left and right.",
+      width: "800",
+      height: "600"
+    },
+    {
+      title: "Stickman Archery Ragdoll",
+      category: "Arcade",
+      thumb: "https://img.gamemonetize.com/m962i8tkn6he3orbput128bvbvzhabq7/512x384.jpg",
+      url: "https://html5.gamemonetize.co/m962i8tkn6he3orbput128bvbvzhabq7/",
+      description: "Stickman Archer is a sleek and athletic black stickman warrior with a simple but powerful silhouette. He has a round head with small glowing white eyes.",
+      instructions: "Mouse click, hold, drag to aim, release to shoot arrow.",
+      width: "920",
+      height: "552"
+    },
+    {
+      title: "BTS Budgie Coloring Book",
+      category: "Puzzle",
+      thumb: "https://img.gamemonetize.com/pliex8l0mk0bmy2ps37bf54uarp0pqyd/512x384.jpg",
+      url: "https://html5.gamemonetize.co/pliex8l0mk0bmy2ps37bf54uarp0pqyd/",
+      description: "Get ready for a colorful bird adventure with BTS Budgie Coloring Book! Pick your favorite colors and bring adorable budgies to life in this coloring book.",
+      instructions: "Mouse click and drag to color on desktop or tap to choose colors on mobile.",
+      width: "854",
+      height: "480"
+    },
+    {
+      title: "Coffee Merge House",
+      category: "Cooking",
+      thumb: "https://img.gamemonetize.com/8c0acgkq4yjf1vqecjczduiglvx4t4jl/512x384.jpg",
+      url: "https://img.gamemonetize.com/8c0acgkq4yjf1vqecjczduiglvx4t4jl/",
+      description: "Coffee Merge House is a cozy merge game where you combine ingredients, prepare increasingly valuable treats, and serve customers their requested orders.",
+      instructions: "Click and drag similar ingredients to merge them into advanced food items.",
+      width: "1920",
+      height: "1080"
+    },
+    {
+      title: "Hungry Ants",
+      category: "Arcade",
+      thumb: "https://img.gamemonetize.com/y0mpmmwa7o3j56xgrbz3pwuai1naegn6/512x384.jpg",
+      url: "https://html5.gamemonetize.co/y0mpmmwa7o3j56xgrbz3pwuai1naegn6/",
+      description: "Hungry Ants is a fun and addictive arcade game where you guide a hungry colony of ants through challenging paths in search of delicious food.",
+      instructions: "Mouse click or tap to navigate the lead ant.",
+      width: "800",
+      height: "600"
+    },
+    {
+      title: "Football Crash 2",
+      category: "Sports",
+      thumb: "https://img.gamemonetize.com/xiwve7mg3u1ei5h9n6x1upih5ls84qrv/512x384.jpg",
+      url: "https://html5.gamemonetize.co/xiwve7mg3u1ei5h9n6x1upih5ls84qrv/",
+      description: "Football Crash 2 is a fast and free American football runner you can play online, with no download. Grab the ball, sprint down the field and dodge waves.",
+      instructions: "Left/Right arrows or A/D to move. Touch sides of screen on mobile.",
+      width: "600",
+      height: "1024"
+    },
+    {
+      title: "Juice Sort Puzzle",
+      category: "Clicker",
+      thumb: "https://img.gamemonetize.com/va3rus9wpl7yke9i28n6znh6je71jss5/512x384.jpg",
+      url: "https://html5.gamemonetize.co/va3rus9wpl7yke9i28n6znh6je71jss5/",
+      description: "Juice Sort Puzzle is a colorful and relaxing sorting game set in a lively jungle juice bar. Pour vibrant juices into the correct cups.",
+      instructions: "Tap a bottle, then tap a matching cup to pour the juice. Sort every color correctly.",
+      width: "800",
+      height: "600"
+    },
+    {
+      title: "FruitBattle",
+      category: "Shooting",
+      thumb: "https://img.gamemonetize.com/ej0m9gk6alr7pubytkwxq1jp0mqh7mly/512x384.jpg",
+      url: "https://html5.gamemonetize.co/ej0m9gk6alr7pubytkwxq1jp0mqh7mly/",
+      description: "FruitBattle is easy to operate and master, allowing players of all ages to quickly master the core gameplay. It features dozens of bullets.",
+      instructions: "Launch by clicking on the turret.",
+      width: "750",
+      height: "1334"
+    }
+  ];
+
   const fetchGMGames = async () => {
     if (gamemonetizeGames.length > 0) return;
     setGmLoading(true);
@@ -328,49 +482,29 @@ export default function App() {
     try {
       const res = await fetch("/api/gamemonetize", { credentials: "include" });
       if (!res.ok) {
-        throw new Error(
-          lang === "ar"
-            ? "فشل في جلب قائمة الألعاب من الخادم."
-            : "Failed to fetch games feed from server."
-        );
+        throw new Error("Failed response status");
       }
       
       const contentType = res.headers.get("content-type");
       if (!contentType || !contentType.includes("application/json")) {
-        throw new Error("Invalid format received");
+        throw new Error("Invalid content-type format received");
       }
 
       const data = await res.json();
-      if (Array.isArray(data)) {
+      if (Array.isArray(data) && data.length > 0) {
         setGamemonetizeGames(data);
-      } else if (data && typeof data === "object" && Array.isArray(data.games)) {
+      } else if (data && typeof data === "object" && Array.isArray(data.games) && data.games.length > 0) {
         setGamemonetizeGames(data.games);
       } else {
-        setGamemonetizeGames([]);
+        // Fallback directly to embedded games if data is empty or invalid
+        console.log("Empty feed data. Loading premium embedded games...");
+        setGamemonetizeGames(PREMIUM_EMBEDDED_GAMES);
       }
     } catch (err: any) {
-      console.error("fetchGMGames error:", err);
-      const isJsonError = err.message && (
-        err.message.includes("JSON") || 
-        err.message.includes("Unexpected token") || 
-        err.message.includes("doctype") ||
-        err.message.includes("parse") ||
-        err.message.includes("SyntaxError") ||
-        err.message.includes("format")
-      );
-      if (isJsonError) {
-        setGmError(
-          lang === "ar"
-            ? "عذراً، مكتبة الألعاب الخارجية تواجه ضغطاً حالياً. يرجى إعادة المحاولة."
-            : "The live games library is currently busy. Please try again."
-        );
-      } else {
-        setGmError(err.message || (
-          lang === "ar"
-            ? "فشل تحميل مكتبة الألعاب الحية. يرجى التحقق من اتصالك بالإنترنت."
-            : "Failed to load live games. Please check your internet connection."
-        ));
-      }
+      console.warn("fetchGMGames API failed. Falling back to embedded games:", err);
+      // Fallback silently to embedded premium games for an optimal, uninterrupted user experience
+      setGamemonetizeGames(PREMIUM_EMBEDDED_GAMES);
+      setGmError(null); // Clear any blocking errors so the games list renders perfectly
     } finally {
       setGmLoading(false);
     }

@@ -1012,85 +1012,9 @@ export default function App() {
           </div>
         ) : (
           <div className="space-y-12">
-            {/* Curated/PokiBox Section (Moved elegantly to the top of page so games are instantly visible!) */}
-            {filteredGames.length > 0 && (
-              <div className="space-y-6 pt-4">
-                <div className="flex items-center gap-2.5 border-b pb-3 border-purple-500/10">
-                  <Gamepad2 className="w-5.5 h-5.5 text-purple-500" />
-                  <h2 className="text-lg md:text-xl font-black tracking-tight">
-                    {lang === "ar" ? "ألعاب دكورا الحصرية" : "Exclusive Dkora Games"}
-                  </h2>
-                  <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${
-                    theme === "dark" ? "bg-purple-500/15 text-purple-400" : "bg-purple-100 text-purple-700"
-                  }`}>
-                    {filteredGames.length}
-                  </span>
-                </div>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                  {filteredGames.map((game) => {
-                    const isFav = favorites.includes(game.id);
-                    return (
-                      <div
-                        key={game.id}
-                        onClick={() => { playUISound("click"); setSelectedGame(game); }}
-                        className={`group relative rounded-3xl overflow-hidden cursor-pointer border hover:border-purple-500/50 shadow-md hover:shadow-2xl flex flex-col justify-end aspect-[1.3] w-full transition-all duration-300 ${
-                          theme === "dark" ? "bg-slate-900/40 border-slate-800" : "bg-white border-slate-200"
-                        }`}
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent z-10" />
-                        <img
-                          src={lang === "ar" ? (game.imageAr || game.image) : (game.imageEn || game.image)}
-                          alt={lang === "ar" ? game.titleAr : game.titleEn}
-                          referrerPolicy="no-referrer"
-                          className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-108 transition duration-500 ease-out z-0"
-                        />
-                        <div className="absolute top-3 left-3 z-20 flex gap-1.5 items-center">
-                          <span className="flex items-center gap-1 bg-black/70 backdrop-blur-md text-[10px] text-amber-400 font-extrabold px-2 py-1 rounded-full border border-white/10">
-                            <Star className="w-3 h-3 fill-current text-amber-400" />
-                            <span>{game.rating}</span>
-                          </span>
-                          {game.isNative && (
-                            <span className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-[9px] font-black px-2 py-1 rounded-full uppercase tracking-wider shadow">
-                              {lang === "ar" ? "مدمجة" : "NATIVE"}
-                            </span>
-                          )}
-                        </div>
-                        <button
-                          onClick={(e) => toggleFavorite(game.id, e)}
-                          className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-slate-300 hover:text-pink-500 active:scale-90 transition duration-150 cursor-pointer"
-                        >
-                          <Heart className={`w-4 h-4 ${isFav ? "fill-current text-pink-500" : ""}`} />
-                        </button>
-                        <div className="p-4 z-20 space-y-1 transform group-hover:translate-y-[-2px] transition duration-300">
-                          <span className="text-[10px] font-extrabold text-purple-400 uppercase tracking-wider block">
-                            {lang === "ar" ? game.categoryAr : game.categoryEn}
-                          </span>
-                          <h3 className="text-sm md:text-base font-black text-white leading-tight line-clamp-1">
-                            {lang === "ar" ? game.titleAr : game.titleEn}
-                          </h3>
-                          <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1 opacity-0 group-hover:opacity-100 transition duration-300">
-                            <span className="flex items-center gap-1">
-                              <Flame className="w-3 h-3 text-orange-500 fill-current" />
-                              <span>{game.plays} {lang === "ar" ? "لاعب" : "plays"}</span>
-                            </span>
-                            <span className="text-amber-400 font-bold flex items-center gap-0.5">
-                              {lang === "ar" ? "العب الآن" : "Play Now"} 
-                              <ArrowRight className="w-3 h-3" />
-                            </span>
-                          </div>
-                        </div>
-                        <div className="absolute inset-0 bg-purple-600/10 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none" />
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-
             {/* GameMonetize Section */}
             {!showFavoritesOnly && (
-              <div className="space-y-6 pt-6 border-t border-purple-500/10">
+              <div className="space-y-6 pt-4">
                 <div className="flex items-center gap-2.5 border-b pb-3 border-purple-500/10">
                   <Sparkles className="w-5.5 h-5.5 text-amber-500 fill-amber-500/10" />
                   <h2 className="text-lg md:text-xl font-black tracking-tight">
@@ -1179,6 +1103,82 @@ export default function App() {
                     </p>
                   </div>
                 )}
+              </div>
+            )}
+
+            {/* Curated/PokiBox Section (Moved elegantly below live games) */}
+            {filteredGames.length > 0 && (
+              <div className="space-y-6 pt-6 border-t border-purple-500/10">
+                <div className="flex items-center gap-2.5 border-b pb-3 border-purple-500/10">
+                  <Gamepad2 className="w-5.5 h-5.5 text-purple-500" />
+                  <h2 className="text-lg md:text-xl font-black tracking-tight">
+                    {lang === "ar" ? "ألعاب دكورا الحصرية" : "Exclusive Dkora Games"}
+                  </h2>
+                  <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${
+                    theme === "dark" ? "bg-purple-500/15 text-purple-400" : "bg-purple-100 text-purple-700"
+                  }`}>
+                    {filteredGames.length}
+                  </span>
+                </div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                  {filteredGames.map((game) => {
+                    const isFav = favorites.includes(game.id);
+                    return (
+                      <div
+                        key={game.id}
+                        onClick={() => { playUISound("click"); setSelectedGame(game); }}
+                        className={`group relative rounded-3xl overflow-hidden cursor-pointer border hover:border-purple-500/50 shadow-md hover:shadow-2xl flex flex-col justify-end aspect-[1.3] w-full transition-all duration-300 ${
+                          theme === "dark" ? "bg-slate-900/40 border-slate-800" : "bg-white border-slate-200"
+                        }`}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent z-10" />
+                        <img
+                          src={lang === "ar" ? (game.imageAr || game.image) : (game.imageEn || game.image)}
+                          alt={lang === "ar" ? game.titleAr : game.titleEn}
+                          referrerPolicy="no-referrer"
+                          className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-108 transition duration-500 ease-out z-0"
+                        />
+                        <div className="absolute top-3 left-3 z-20 flex gap-1.5 items-center">
+                          <span className="flex items-center gap-1 bg-black/70 backdrop-blur-md text-[10px] text-amber-400 font-extrabold px-2 py-1 rounded-full border border-white/10">
+                            <Star className="w-3 h-3 fill-current text-amber-400" />
+                            <span>{game.rating}</span>
+                          </span>
+                          {game.isNative && (
+                            <span className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-[9px] font-black px-2 py-1 rounded-full uppercase tracking-wider shadow">
+                              {lang === "ar" ? "مدمجة" : "NATIVE"}
+                            </span>
+                          )}
+                        </div>
+                        <button
+                          onClick={(e) => toggleFavorite(game.id, e)}
+                          className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-slate-300 hover:text-pink-500 active:scale-90 transition duration-150 cursor-pointer"
+                        >
+                          <Heart className={`w-4 h-4 ${isFav ? "fill-current text-pink-500" : ""}`} />
+                        </button>
+                        <div className="p-4 z-20 space-y-1 transform group-hover:translate-y-[-2px] transition duration-300">
+                          <span className="text-[10px] font-extrabold text-purple-400 uppercase tracking-wider block">
+                            {lang === "ar" ? game.categoryAr : game.categoryEn}
+                          </span>
+                          <h3 className="text-sm md:text-base font-black text-white leading-tight line-clamp-1">
+                            {lang === "ar" ? game.titleAr : game.titleEn}
+                          </h3>
+                          <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1 opacity-0 group-hover:opacity-100 transition duration-300">
+                            <span className="flex items-center gap-1">
+                              <Flame className="w-3 h-3 text-orange-500 fill-current" />
+                              <span>{game.plays} {lang === "ar" ? "لاعب" : "plays"}</span>
+                            </span>
+                            <span className="text-amber-400 font-bold flex items-center gap-0.5">
+                              {lang === "ar" ? "العب الآن" : "Play Now"} 
+                              <ArrowRight className="w-3 h-3" />
+                            </span>
+                          </div>
+                        </div>
+                        <div className="absolute inset-0 bg-purple-600/10 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none" />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             )}
           </div>
@@ -1660,7 +1660,7 @@ export default function App() {
                     className="w-full h-full border-none block bg-transparent"
                     allowFullScreen
                     allow="autoplay; gamepad; fullscreen"
-                    sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-forms"
+                    sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
                   />
                 </div>
               )}
@@ -1848,7 +1848,7 @@ export default function App() {
                     className="w-full h-full border-none block bg-black"
                     allowFullScreen
                     allow="autoplay; gamepad; fullscreen"
-                    sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-forms"
+                    sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
                   />
                 </div>
               </div>

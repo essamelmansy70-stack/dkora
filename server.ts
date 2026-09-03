@@ -22,6 +22,11 @@ async function startServer() {
 
   // GameMonetize feed proxy to avoid CORS
   app.get("/api/gamemonetize", async (req, res) => {
+    // Prevent any browser or CDN/Edge caching on the live production environment
+    res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+    res.setHeader("Pragma", "no-cache");
+    res.setHeader("Expires", "0");
+
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 12000); // 12-second strict timeout for parallel fetches
 

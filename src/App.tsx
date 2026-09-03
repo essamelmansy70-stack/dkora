@@ -481,7 +481,7 @@ export default function App() {
     setGmLoading(true);
     setGmError(null);
     try {
-      const res = await fetch("/api/gamemonetize", { credentials: "include" });
+      const res = await fetch(`/api/gamemonetize?_t=${Date.now()}`, { credentials: "include" });
       if (!res.ok) {
         throw new Error("Failed response status");
       }

@@ -29,6 +29,7 @@ import Fuse from "fuse.js";
 
 const CATEGORIES = [
   { id: "all", nameAr: "🎮 الكل", nameEn: "🎮 All" },
+  { id: "girls", nameAr: "👗 بنات", nameEn: "👗 Girls" },
   { id: "intelligence", nameAr: "🧠 ذكاء", nameEn: "🧠 Brain" },
   { id: "classic", nameAr: "👾 كلاسيك", nameEn: "👾 Classic" },
   { id: "puzzles", nameAr: "🧩 ألغاز", nameEn: "🧩 Puzzles" },
@@ -779,6 +780,7 @@ export default function App() {
     if (activeCategory !== "all") {
       list = list.filter(g => {
         const cat = g.category.toLowerCase();
+        if (activeCategory === "girls") return cat.includes("girls") || cat.includes("cooking") || cat.includes("makeup") || cat.includes("dress") || cat.includes("princess") || cat.includes("salon") || cat.includes("makeover") || cat.includes("fashion") || cat.includes("wedding");
         if (activeCategory === "cars") return cat.includes("car") || cat.includes("racing") || cat.includes("drive") || cat.includes("moto") || cat.includes("sports");
         if (activeCategory === "intelligence" || activeCategory === "puzzles") return cat.includes("puzzle") || cat.includes("brain") || cat.includes("quiz") || cat.includes("logic");
         if (activeCategory === "action") return cat.includes("action") || cat.includes("shoot") || cat.includes("fight") || cat.includes("battle") || cat.includes("adventure");

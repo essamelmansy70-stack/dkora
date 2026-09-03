@@ -43,6 +43,7 @@ async function startServer() {
 
       const fetchPromises = urlsToFetch.map(async (url) => {
         try {
+          const isGirlsFeed = url.includes("category=10");
           const response = await fetch(url, {
             signal: controller.signal,
             headers: {
@@ -74,7 +75,7 @@ async function startServer() {
               const title = item.find("title").text().trim() || item.find("name").text().trim();
               const description = item.find("description").text().trim();
               const instructions = item.find("instructions").text().trim();
-              const categoryVal = item.find("category").text().trim() || "Arcade";
+              const categoryVal = isGirlsFeed ? "girls" : (item.find("category").text().trim() || "Arcade");
               
               // Image / Thumbnail
               let thumb = item.find("thumb").text().trim() || item.find("thumbnail").text().trim();
@@ -113,11 +114,18 @@ async function startServer() {
             // Parse as standard JSON
             try {
               const data = JSON.parse(trimmedText);
+              let itemsToPush: any[] = [];
               if (Array.isArray(data)) {
-                parsedGames.push(...data);
+                itemsToPush = data;
               } else if (data && typeof data === "object" && Array.isArray(data.games)) {
-                parsedGames.push(...data.games);
+                itemsToPush = data.games;
               }
+              if (isGirlsFeed) {
+                itemsToPush.forEach((x: any) => {
+                  x.category = "girls";
+                });
+              }
+              parsedGames.push(...itemsToPush);
             } catch (jsonErr) {
               // Regex fallback
               if (trimmedText.includes("<title>") && trimmedText.includes("<url>")) {
@@ -126,12 +134,13 @@ async function startServer() {
                   const item = $(el);
                   const title = item.find("title").text().trim() || item.find("name").text().trim();
                   const gameUrl = item.find("url").text().trim() || item.find("link").text().trim();
+                  const categoryVal = isGirlsFeed ? "girls" : (item.find("category").text().trim() || "Arcade");
                   if (title && gameUrl) {
                     parsedGames.push({
                       title,
                       description: item.find("description").text().trim(),
                       instructions: item.find("instructions").text().trim(),
-                      category: item.find("category").text().trim() || "Arcade",
+                      category: categoryVal,
                       thumb: item.find("thumb").text().trim() || item.find("thumbnail").text().trim(),
                       url: gameUrl,
                       width: item.find("width").text().trim() || "800",

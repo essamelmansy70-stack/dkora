@@ -20,6 +20,7 @@ import {
   Moon
 } from "lucide-react";
 import { GAMES_DATA } from "./data/games";
+import { GIRLS_GAMES } from "./data/girlsGames";
 import { Game, GameMonetizeGame } from "./types";
 import NativeSnake from "./components/NativeSnake";
 import NativeBrickBreaker from "./components/NativeBrickBreaker";
@@ -59,7 +60,7 @@ export default function App() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
   const [activeTab, setActiveTab] = useState<"poki" | "gamemonetize">("poki");
-  const [gamemonetizeGames, setGamemonetizeGames] = useState<GameMonetizeGame[]>([]);
+  const [gamemonetizeGames, setGamemonetizeGames] = useState<GameMonetizeGame[]>(GIRLS_GAMES);
   const [gmLoading, setGmLoading] = useState(false);
   const [gmError, setGmError] = useState<string | null>(null);
   const [selectedGMGame, setSelectedGMGame] = useState<GameMonetizeGame | null>(null);
@@ -477,7 +478,7 @@ export default function App() {
   ];
 
   const fetchGMGames = async () => {
-    if (gamemonetizeGames.length > 0) return;
+    if (gamemonetizeGames.length > GIRLS_GAMES.length) return;
     setGmLoading(true);
     setGmError(null);
     try {
@@ -492,20 +493,32 @@ export default function App() {
       }
 
       const data = await res.json();
+      let loaded: GameMonetizeGame[] = [];
       if (Array.isArray(data) && data.length > 0) {
-        setGamemonetizeGames(data);
+        loaded = data;
       } else if (data && typeof data === "object" && Array.isArray(data.games) && data.games.length > 0) {
-        setGamemonetizeGames(data.games);
+        loaded = data.games;
       } else {
-        // Fallback directly to embedded games if data is empty or invalid
-        console.log("Empty feed data. Loading premium embedded games...");
-        setGamemonetizeGames(PREMIUM_EMBEDDED_GAMES);
+        loaded = PREMIUM_EMBEDDED_GAMES;
       }
+
+      // Merge unique games, prioritizing GIRLS_GAMES
+      const uniqueMap = new Map<string, GameMonetizeGame>();
+      GIRLS_GAMES.forEach(g => uniqueMap.set(g.title.toLowerCase().trim(), g));
+      loaded.forEach(g => {
+        if (g && g.title) {
+          uniqueMap.set(g.title.toLowerCase().trim(), g);
+        }
+      });
+      setGamemonetizeGames(Array.from(uniqueMap.values()));
     } catch (err: any) {
       console.warn("fetchGMGames API failed. Falling back to embedded games:", err);
-      // Fallback silently to embedded premium games for an optimal, uninterrupted user experience
-      setGamemonetizeGames(PREMIUM_EMBEDDED_GAMES);
-      setGmError(null); // Clear any blocking errors so the games list renders perfectly
+      // Fallback silently to embedded premium games + GIRLS_GAMES for a bulletproof experience
+      const uniqueMap = new Map<string, GameMonetizeGame>();
+      GIRLS_GAMES.forEach(g => uniqueMap.set(g.title.toLowerCase().trim(), g));
+      PREMIUM_EMBEDDED_GAMES.forEach(g => uniqueMap.set(g.title.toLowerCase().trim(), g));
+      setGamemonetizeGames(Array.from(uniqueMap.values()));
+      setGmError(null);
     } finally {
       setGmLoading(false);
     }

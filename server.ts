@@ -23,128 +23,149 @@ async function startServer() {
   // GameMonetize feed proxy to avoid CORS
   app.get("/api/gamemonetize", async (req, res) => {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 8000); // 8-second strict timeout
+    const timeoutId = setTimeout(() => controller.abort(), 12000); // 12-second strict timeout for parallel fetches
 
     try {
       const category = req.query.category;
-      const feedUrl = category 
-        ? `https://gamemonetize.com/feed.php?format=1&category=${category}&num=120`
-        : `https://gamemonetize.com/feed.php?format=1&num=120`;
-      console.log(`GameMonetize proxy: Fetching XML feed: ${feedUrl}`);
+      
+      // We fetch both the default feed and the user's specific requested Driving feed (category 10, format 0) to merge them
+      const urlsToFetch: string[] = [];
+      if (category) {
+        urlsToFetch.push(`https://gamemonetize.com/feed.php?format=1&category=${category}&num=120`);
+      } else {
+        // User requested Driving Category 10 XML feed
+        urlsToFetch.push(`https://gamemonetize.com/feed.php?format=0&category=10&num=50&page=1`);
+        // General JSON feed
+        urlsToFetch.push(`https://gamemonetize.com/feed.php?format=1&num=120`);
+      }
 
-      const response = await fetch(feedUrl, {
-        signal: controller.signal,
-        headers: {
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-          "Accept": "application/json, text/xml, application/xml, */*",
-          "Accept-Language": "en-US,en;q=0.9"
+      console.log(`GameMonetize proxy: Fetching XML and JSON feeds:`, urlsToFetch);
+
+      const fetchPromises = urlsToFetch.map(async (url) => {
+        try {
+          const response = await fetch(url, {
+            signal: controller.signal,
+            headers: {
+              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+              "Accept": "application/json, text/xml, application/xml, */*",
+              "Accept-Language": "en-US,en;q=0.9"
+            }
+          });
+
+          if (!response.ok) {
+            console.error(`Failed to fetch sub-feed ${url}:`, response.status);
+            return [];
+          }
+
+          const text = await response.text();
+          const trimmedText = text.trim();
+          const parsedGames: any[] = [];
+
+          // Check if it's XML or HTML
+          if (trimmedText.startsWith("<") || trimmedText.includes("<?xml") || trimmedText.includes("<rss")) {
+            const $ = cheerio.load(text, { xmlMode: true });
+            let elements = $("item");
+            if (elements.length === 0) {
+              elements = $("game");
+            }
+
+            elements.each((_, el) => {
+              const item = $(el);
+              const title = item.find("title").text().trim() || item.find("name").text().trim();
+              const description = item.find("description").text().trim();
+              const instructions = item.find("instructions").text().trim();
+              const categoryVal = item.find("category").text().trim() || "Arcade";
+              
+              // Image / Thumbnail
+              let thumb = item.find("thumb").text().trim() || item.find("thumbnail").text().trim();
+              if (!thumb) {
+                const mediaThumb = item.find("media\\:thumbnail, thumbnail");
+                if (mediaThumb.attr("url")) {
+                  thumb = mediaThumb.attr("url") || "";
+                }
+              }
+              if (!thumb) {
+                const enclosure = item.find("enclosure");
+                if (enclosure.attr("url") && enclosure.attr("type")?.startsWith("image/")) {
+                  thumb = enclosure.attr("url") || "";
+                }
+              }
+
+              // Game frame play URL
+              const gameUrl = item.find("url").text().trim() || item.find("link").text().trim() || item.find("game_url").text().trim();
+              const width = item.find("width").text().trim() || "800";
+              const height = item.find("height").text().trim() || "600";
+
+              if (title && gameUrl) {
+                parsedGames.push({
+                  title,
+                  description,
+                  instructions,
+                  category: categoryVal,
+                  thumb,
+                  url: gameUrl,
+                  width,
+                  height
+                });
+              }
+            });
+          } else {
+            // Parse as standard JSON
+            try {
+              const data = JSON.parse(trimmedText);
+              if (Array.isArray(data)) {
+                parsedGames.push(...data);
+              } else if (data && typeof data === "object" && Array.isArray(data.games)) {
+                parsedGames.push(...data.games);
+              }
+            } catch (jsonErr) {
+              // Regex fallback
+              if (trimmedText.includes("<title>") && trimmedText.includes("<url>")) {
+                const $ = cheerio.load(text);
+                $("item, game").each((_, el) => {
+                  const item = $(el);
+                  const title = item.find("title").text().trim() || item.find("name").text().trim();
+                  const gameUrl = item.find("url").text().trim() || item.find("link").text().trim();
+                  if (title && gameUrl) {
+                    parsedGames.push({
+                      title,
+                      description: item.find("description").text().trim(),
+                      instructions: item.find("instructions").text().trim(),
+                      category: item.find("category").text().trim() || "Arcade",
+                      thumb: item.find("thumb").text().trim() || item.find("thumbnail").text().trim(),
+                      url: gameUrl,
+                      width: item.find("width").text().trim() || "800",
+                      height: item.find("height").text().trim() || "600"
+                    });
+                  }
+                });
+              }
+            }
+          }
+          return parsedGames;
+        } catch (e) {
+          console.error(`Error processing feed ${url}:`, e);
+          return [];
         }
       });
 
+      const allFeedsResults = await Promise.all(fetchPromises);
       clearTimeout(timeoutId);
 
-      if (!response.ok) {
-        throw new Error(`Failed to fetch GameMonetize feed: ${response.status}`);
-      }
-
-      const text = await response.text();
-      const trimmedText = text.trim();
-
-      // Check if it's XML or HTML
-      if (trimmedText.startsWith("<") || trimmedText.includes("<?xml") || trimmedText.includes("<rss")) {
-        console.log("GameMonetize proxy: Feed returned XML/RSS. Parsing with cheerio...");
-        const $ = cheerio.load(text, { xmlMode: true });
-        
-        // Try to query either RSS item tags or custom game tags
-        let elements = $("item");
-        if (elements.length === 0) {
-          elements = $("game");
-        }
-
-        const games: any[] = [];
-        elements.each((_, el) => {
-          const item = $(el);
-          const title = item.find("title").text().trim() || item.find("name").text().trim();
-          const description = item.find("description").text().trim();
-          const instructions = item.find("instructions").text().trim();
-          const category = item.find("category").text().trim() || "Arcade";
-          
-          // Image / Thumbnail
-          let thumb = item.find("thumb").text().trim() || item.find("thumbnail").text().trim();
-          if (!thumb) {
-            const mediaThumb = item.find("media\\:thumbnail, thumbnail");
-            if (mediaThumb.attr("url")) {
-              thumb = mediaThumb.attr("url") || "";
-            }
-          }
-          if (!thumb) {
-            const enclosure = item.find("enclosure");
-            if (enclosure.attr("url") && enclosure.attr("type")?.startsWith("image/")) {
-              thumb = enclosure.attr("url") || "";
-            }
-          }
-
-          // Game frame play URL
-          const url = item.find("url").text().trim() || item.find("link").text().trim() || item.find("game_url").text().trim();
-          const width = item.find("width").text().trim() || "800";
-          const height = item.find("height").text().trim() || "600";
-
-          if (title && url) {
-            games.push({
-              title,
-              description,
-              instructions,
-              category,
-              thumb,
-              url,
-              width,
-              height
-            });
+      // Deduplicate games by title
+      const uniqueGamesMap = new Map<string, any>();
+      allFeedsResults.forEach((gameList) => {
+        gameList.forEach((g) => {
+          if (g && g.title && g.url) {
+            uniqueGamesMap.set(g.title.toLowerCase().trim(), g);
           }
         });
+      });
 
-        console.log(`GameMonetize proxy: Successfully parsed ${games.length} games from XML.`);
-        return res.json(games.slice(0, 120));
-      }
-
-      // Try to parse as standard JSON
-      try {
-        let data = JSON.parse(trimmedText);
-        if (Array.isArray(data)) {
-          data = data.slice(0, 120);
-        } else if (data && typeof data === "object" && Array.isArray(data.games)) {
-          data.games = data.games.slice(0, 120);
-        }
-        return res.json(data);
-      } catch (jsonErr) {
-        // If JSON parsing fails, let's try regex fallback on XML in case starting tag check was missed
-        if (trimmedText.includes("<title>") && trimmedText.includes("<url>")) {
-          console.log("GameMonetize proxy: JSON parse failed but tags found. Retrying parse with cheerio...");
-          const $ = cheerio.load(text);
-          const games: any[] = [];
-          $("item, game").each((_, el) => {
-            const item = $(el);
-            const title = item.find("title").text().trim() || item.find("name").text().trim();
-            const url = item.find("url").text().trim() || item.find("link").text().trim();
-            if (title && url) {
-              games.push({
-                title,
-                description: item.find("description").text().trim(),
-                instructions: item.find("instructions").text().trim(),
-                category: item.find("category").text().trim() || "Arcade",
-                thumb: item.find("thumb").text().trim() || item.find("thumbnail").text().trim(),
-                url,
-                width: item.find("width").text().trim() || "800",
-                height: item.find("height").text().trim() || "600"
-              });
-            }
-          });
-          if (games.length > 0) {
-            return res.json(games.slice(0, 120));
-          }
-        }
-        throw jsonErr;
-      }
+      const combinedGames = Array.from(uniqueGamesMap.values());
+      console.log(`GameMonetize proxy: Successfully combined and unique-filtered ${combinedGames.length} games.`);
+      
+      return res.json(combinedGames.slice(0, 150));
     } catch (error: any) {
       clearTimeout(timeoutId);
       console.error("GameMonetize proxy fetch error:", error);

@@ -555,8 +555,8 @@ export default function App() {
         title = `العاب ${catName} مجانية - ديكورا العاب اونلاين فرى | Dkora`;
         desc = `استمتع بأفضل العاب ${catName} اونلاين فري ومجانية بالكامل مباشرة على ديكورا العاب اونلاين فرى بدون تحميل.`;
       } else {
-        title = "ديكورا العاب اونلاين فرى | Dkora";
-        desc = "ديكورا العاب اونلاين فرى - استمتع بأقوى وأحدث الألعاب المجانية مباشرة بدون تحميل! العب ألعاب متصفح، ألعاب ذكاء، ألغاز، وألعاب ثلاثية الأبعاد خفيفة مجاناً وبسرعة فائقة.";
+        title = "لعبة Crazy Car Drive Road Challenge | العب crazy car drive game أونلاين";
+        desc = "تحدَّ مهاراتك في لعبة Crazy Car Drive Road Challenge المثيرة! قد سيارتك بسرعة وتجنب العقبات على الطريق في أقوى crazy car drive game أونلاين مجاناً وبدون تحميل على ديكورا العاب اونلاين فرى.";
       }
     } else {
       if (activeLegalPage === "privacy") {
@@ -593,8 +593,8 @@ export default function App() {
         title = `${catName} Games - Dkora Free Online Games | Dkora`;
         desc = `Play the best free online ${catName} games with zero downloads or popups on Dkora Free Online Games.`;
       } else {
-        title = "Dkora Free Online Games | Dkora";
-        desc = "Dkora Free Online Games - Play the best arcade, puzzle, and neon action games with zero downloads or popups.";
+        title = "Crazy Car Drive Road Challenge | Play crazy car drive game online";
+        desc = "Challenge your skills in the exciting Crazy Car Drive Road Challenge game! Drive your car fast and avoid road obstacles in the ultimate crazy car drive game online for free on Dkora.";
       }
     }
 

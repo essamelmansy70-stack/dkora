@@ -1660,7 +1660,7 @@ export default function App() {
                     className="w-full h-full border-none block bg-transparent"
                     allowFullScreen
                     allow="autoplay; gamepad; fullscreen"
-                    sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                    sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-forms"
                   />
                 </div>
               )}
@@ -1848,7 +1848,7 @@ export default function App() {
                     className="w-full h-full border-none block bg-black"
                     allowFullScreen
                     allow="autoplay; gamepad; fullscreen"
-                    sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                    sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-forms"
                   />
                 </div>
               </div>

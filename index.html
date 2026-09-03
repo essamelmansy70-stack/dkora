@@ -100,8 +100,20 @@
           window.history.replaceState(null, "", window.location.pathname + targetSearch);
         }
 
-        var title = isEn ? "Dkora Free Online Games | Play Fruit Matching Game Free Online" : "ديكورا العاب اونلاين فرى | العب أفضل ألعاب المتصفح و fruit matching game free online مجاناً";
-        var desc = isEn ? "Play the best browser games and fruit matching game free online with zero downloads. Enjoy classic arcade, candy puzzles, and action games on Dkora." : "العب أفضل ألعاب المتصفح ولعبة مطابقة الفاكهة fruit matching game free online مجاناً وبدون تحميل على ديكورا العاب اونلاين فرى. تشكيلة ممتازة من الألعاب.";
+        var isCrazyCar = window.location.pathname.indexOf("game-gm-1") !== -1;
+        var title, desc;
+        
+        if (isCrazyCar) {
+          title = isEn 
+            ? "Crazy Car Drive Road Challenge | Play crazy car drive game online" 
+            : "لعبة Crazy Car Drive Road Challenge | العب crazy car drive game أونلاين";
+          desc = isEn 
+            ? "Challenge your skills in the exciting Crazy Car Drive Road Challenge game! Drive your car fast and avoid road obstacles in the ultimate crazy car drive game online for free." 
+            : "تحدَّ مهاراتك في لعبة Crazy Car Drive Road Challenge المثيرة! قد سيارتك بسرعة وتجنب العقبات على الطريق في أقوى crazy car drive game أونلاين مجاناً وبدون تحميل.";
+        } else {
+          title = isEn ? "Dkora Free Online Games | Play Fruit Matching Game Free Online" : "ديكورا العاب اونلاين فرى | العب أفضل ألعاب المتصفح و fruit matching game free online مجاناً";
+          desc = isEn ? "Play the best browser games and fruit matching game free online with zero downloads. Enjoy classic arcade, candy puzzles, and action games on Dkora." : "العب أفضل ألعاب المتصفح ولعبة مطابقة الفاكهة fruit matching game free online مجاناً وبدون تحميل على ديكورا العاب اونلاين فرى. تشكيلة ممتازة من الألعاب.";
+        }
         
         document.title = title;
         

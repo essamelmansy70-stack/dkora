@@ -535,8 +535,13 @@ export default function App() {
         desc = "خريطة الموقع لجميع ألعاب ديكورا العاب اونلاين فرى والصفحات القانونية لسهولة الوصول والفهرسة السريعة.";
       } else if (selectedGMGame) {
         const gameTitle = selectedGMGame.title;
-        title = `العب لعبة ${gameTitle} اون لاين - ديكورا العاب اونلاين فرى | Dkora`;
-        desc = selectedGMGame.description || `العب لعبة ${gameTitle} مجاناً وبدون تحميل على منصة ديكورا العاب اونلاين فرى - ألعاب متصفح سريعة وممتعة بالكامل.`;
+        if (gameTitle === "Crazy Car Drive Road Challenge") {
+          title = "لعبة Crazy Car Drive Road Challenge | العب crazy car drive game أونلاين";
+          desc = "تحدَّ مهاراتك في لعبة Crazy Car Drive Road Challenge المثيرة! قد سيارتك بسرعة وتجنب العقبات على الطريق في أقوى crazy car drive game أونلاين مجاناً وبدون تحميل.";
+        } else {
+          title = `العب لعبة ${gameTitle} اون لاين - ديكورا العاب اونلاين فرى | Dkora`;
+          desc = selectedGMGame.description || `العب لعبة ${gameTitle} مجاناً وبدون تحميل على منصة ديكورا العاب اونلاين فرى - ألعاب متصفح سريعة وممتعة بالكامل.`;
+        }
       } else if (selectedGame) {
         const gameTitle = selectedGame.titleAr;
         title = `العب لعبة ${gameTitle} اون لاين - ديكورا العاب اونلاين فرى | Dkora`;
@@ -568,8 +573,13 @@ export default function App() {
         desc = "Complete sitemap directory index of all games and legal pages on Dkora Free Online Games.";
       } else if (selectedGMGame) {
         const gameTitle = selectedGMGame.title;
-        title = `Play ${gameTitle} Online - Dkora Free Online Games | Dkora`;
-        desc = selectedGMGame.description || `Play ${gameTitle} online for free with no downloads on Dkora - The premier destination for free online games.`;
+        if (gameTitle === "Crazy Car Drive Road Challenge") {
+          title = "Crazy Car Drive Road Challenge | Play crazy car drive game online";
+          desc = "Challenge your skills in the exciting Crazy Car Drive Road Challenge game! Drive your car fast and avoid road obstacles in the ultimate crazy car drive game online for free.";
+        } else {
+          title = `Play ${gameTitle} Online - Dkora Free Online Games | Dkora`;
+          desc = selectedGMGame.description || `Play ${gameTitle} online for free with no downloads on Dkora - The premier destination for free online games.`;
+        }
       } else if (selectedGame) {
         const gameTitle = selectedGame.titleEn;
         title = `Play ${gameTitle} Online - Dkora Free Online Games | Dkora`;
@@ -614,7 +624,7 @@ export default function App() {
     if (twitterTitle) {
       twitterTitle.setAttribute("content", title);
     }
-  }, [lang, selectedGame, activeLegalPage]);
+  }, [lang, selectedGame, selectedGMGame, activeLegalPage, showSitemapModal, showFavoritesOnly, activeCategory]);
 
   // Synchronize theme with local storage
   useEffect(() => {

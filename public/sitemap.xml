@@ -3,15 +3,15 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <!-- Main Home Page -->
     <url>
-        <loc>https://dkora.online/#/free-online-games</loc>
+        <loc>https://dkora.online/</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
 
-    <!-- Girls / Girls Category -->
+    <!-- Girls Category -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/category-girls</loc>
+        <loc>https://dkora.online/category-girls</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -19,7 +19,7 @@
 
     <!-- Brain / Intelligence Category -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/category-intelligence</loc>
+        <loc>https://dkora.online/category-intelligence</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -27,7 +27,7 @@
 
     <!-- Classic Category -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/category-classic</loc>
+        <loc>https://dkora.online/category-classic</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -35,7 +35,7 @@
 
     <!-- Puzzles Category -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/category-puzzles</loc>
+        <loc>https://dkora.online/category-puzzles</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -43,7 +43,7 @@
 
     <!-- Casual Category -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/category-casual</loc>
+        <loc>https://dkora.online/category-casual</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -51,7 +51,7 @@
 
     <!-- Saved Favorites Page -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/favorites</loc>
+        <loc>https://dkora.online/favorites</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
@@ -59,7 +59,7 @@
 
     <!-- Visual Sitemap Directory Page -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/sitemap</loc>
+        <loc>https://dkora.online/sitemap</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
@@ -67,7 +67,7 @@
 
     <!-- 3D Brick Breaker -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-brick-breaker</loc>
+        <loc>https://dkora.online/game-brick-breaker</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
@@ -75,7 +75,7 @@
 
     <!-- Neon Snake -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-neon-snake</loc>
+        <loc>https://dkora.online/game-neon-snake</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
@@ -83,350 +83,350 @@
 
     <!-- Dinosaur Dig -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-0</loc>
+        <loc>https://dkora.online/game-gm-0</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Creepy Spa for Little Monsters -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-1</loc>
+        <loc>https://dkora.online/game-gm-1</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Barbie unicorn dress up -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-2</loc>
+        <loc>https://dkora.online/game-gm-2</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Hype Master -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-3</loc>
+        <loc>https://dkora.online/game-gm-3</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- High School Girls Classroom Life -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-4</loc>
+        <loc>https://dkora.online/game-gm-4</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Lucy: Makeup and Dress up -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-5</loc>
+        <loc>https://dkora.online/game-gm-5</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Baby Runner Game -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-6</loc>
+        <loc>https://dkora.online/game-gm-6</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Car Wash Simulator Summer Edition -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-7</loc>
+        <loc>https://dkora.online/game-gm-7</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- My Restaurant -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-8</loc>
+        <loc>https://dkora.online/game-gm-8</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Tidy Up the Dollhouse -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-9</loc>
+        <loc>https://dkora.online/game-gm-9</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Dress Makeover -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-10</loc>
+        <loc>https://dkora.online/game-gm-10</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Fall Boys Coloring Book -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-11</loc>
+        <loc>https://dkora.online/game-gm-11</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Reds Winding Way -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-12</loc>
+        <loc>https://dkora.online/game-gm-12</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Sofia Wedding Story -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-13</loc>
+        <loc>https://dkora.online/game-gm-13</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Home Makeover Cleaning Game -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-14</loc>
+        <loc>https://dkora.online/game-gm-14</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Haaland Coloring Book -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-15</loc>
+        <loc>https://dkora.online/game-gm-15</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- African Princesses: Style Island -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-16</loc>
+        <loc>https://dkora.online/game-gm-16</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Model Dress Up 3D -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-17</loc>
+        <loc>https://dkora.online/game-gm-17</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Wolfoos Kindergarten -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-18</loc>
+        <loc>https://dkora.online/game-gm-18</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Pony Color Fun -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-19</loc>
+        <loc>https://dkora.online/game-gm-19</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Dream Wedding Dress Up -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-20</loc>
+        <loc>https://dkora.online/game-gm-20</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Anime Idol Academy -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-21</loc>
+        <loc>https://dkora.online/game-gm-21</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Cat Block Puzzle -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-22</loc>
+        <loc>https://dkora.online/game-gm-22</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Jennifer Dress Up Challenge -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-23</loc>
+        <loc>https://dkora.online/game-gm-23</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Pet Salon: Cute Doctor -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-24</loc>
+        <loc>https://dkora.online/game-gm-24</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Diana S City Fashion Beauty -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-25</loc>
+        <loc>https://dkora.online/game-gm-25</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- 2 Player Games Design Salon -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-26</loc>
+        <loc>https://dkora.online/game-gm-26</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Lovely Princess -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-27</loc>
+        <loc>https://dkora.online/game-gm-27</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Cosmetic Box Cake Maker 2025 -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-28</loc>
+        <loc>https://dkora.online/game-gm-28</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- ASMR Fun Relaxing Games -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-29</loc>
+        <loc>https://dkora.online/game-gm-29</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- BTS Roblox Coloring -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-30</loc>
+        <loc>https://dkora.online/game-gm-30</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Bridal Makeup Salon Game -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-31</loc>
+        <loc>https://dkora.online/game-gm-31</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- K pop Makeover Idol  -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-32</loc>
+        <loc>https://dkora.online/game-gm-32</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Spring Magic Enchanted Wardrobe -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-33</loc>
+        <loc>https://dkora.online/game-gm-33</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- BTS Minecraft Coloring Time -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-34</loc>
+        <loc>https://dkora.online/game-gm-34</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- MakeOver Glow Up Match -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-35</loc>
+        <loc>https://dkora.online/game-gm-35</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Doll Dress up Game -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-36</loc>
+        <loc>https://dkora.online/game-gm-36</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Chibi Doll World -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-37</loc>
+        <loc>https://dkora.online/game-gm-37</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Fashion Valkyries Saga of Style -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-38</loc>
+        <loc>https://dkora.online/game-gm-38</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Easy Easter Coloring Eggs -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-39</loc>
+        <loc>https://dkora.online/game-gm-39</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Hospital Inc -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-40</loc>
+        <loc>https://dkora.online/game-gm-40</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Nail Stack Run Challenge -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-41</loc>
+        <loc>https://dkora.online/game-gm-41</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Superhero Nails Makeover -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-42</loc>
+        <loc>https://dkora.online/game-gm-42</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Sid &amp;amp; Ginny Y2K Glam Clash -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-43</loc>
+        <loc>https://dkora.online/game-gm-43</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Magic Coloring Book for Little Artists -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-44</loc>
+        <loc>https://dkora.online/game-gm-44</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Best Sweet Candy Shop -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-45</loc>
+        <loc>https://dkora.online/game-gm-45</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Cake Art 3D -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-46</loc>
+        <loc>https://dkora.online/game-gm-46</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Hyper Cakes -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-47</loc>
+        <loc>https://dkora.online/game-gm-47</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- Easy Apple Coloring Book -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-48</loc>
+        <loc>https://dkora.online/game-gm-48</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <!-- To Fu Girl -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/game-gm-49</loc>
+        <loc>https://dkora.online/game-gm-49</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -434,7 +434,7 @@
 
     <!-- Legal - Privacy Policy -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/privacy-policy</loc>
+        <loc>https://dkora.online/privacy-policy</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
@@ -442,7 +442,7 @@
 
     <!-- Legal - Terms of Use -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/terms-of-use</loc>
+        <loc>https://dkora.online/terms-of-use</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
@@ -450,7 +450,7 @@
 
     <!-- Legal - Disclaimer -->
     <url>
-        <loc>https://dkora.online/#/free-online-games/disclaimer</loc>
+        <loc>https://dkora.online/disclaimer</loc>
         <lastmod>2026-09-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>

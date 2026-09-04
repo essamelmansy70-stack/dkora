@@ -101,9 +101,17 @@
         }
 
         var isCrazyCar = window.location.pathname.indexOf("game-gm-1") !== -1 || window.location.pathname === "/" || window.location.pathname === "" || window.location.pathname.indexOf("crazy-car-drive") !== -1;
+        var isDinosaurDig = window.location.pathname.indexOf("game-gm-0") !== -1 || window.location.pathname.indexOf("dinosaur-dig") !== -1;
         var title, desc;
         
-        if (isCrazyCar) {
+        if (isDinosaurDig) {
+          title = isEn 
+            ? "Dinosaur Dig | Play dinosaur dig game online for Free" 
+            : "لعبة Dinosaur Dig | العب dinosaur dig game online مجاناً أونلاين";
+          desc = isEn 
+            ? "Embark on an archaeological expedition in the amazing Dinosaur Dig game! Hunt for ancient fossils and assemble skeleton blocks in the best dinosaur dig game online for free with no downloads." 
+            : "اكتشف أسرار العصور القديمة مع لعبة Dinosaur Dig المثيرة! ابحث عن الحفريات العتيقة ونظف العظام لتركيب هياكل الديناصورات في أقوى dinosaur dig game online مجاناً وبدون تحميل.";
+        } else if (isCrazyCar) {
           title = isEn 
             ? "Crazy Car Drive Road Challenge | Play crazy car drive game online" 
             : "لعبة Crazy Car Drive Road Challenge | العب crazy car drive game أونلاين";
@@ -129,7 +137,7 @@
       })();
     </script>
     <meta name="description" content="تحدَّ مهاراتك في لعبة Crazy Car Drive Road Challenge المثيرة! قد سيارتك بسرعة وتجنب العقبات على الطريق في أقوى crazy car drive game أونلاين مجاناً وبدون تحميل على ديكورا العاب اونلاين فرى." />
-    <meta name="keywords" content="crazy car drive game, Crazy Car Drive Road Challenge, fruit matching game free online, ديكورا العاب اونلاين فرى, ألعاب مجانية على الإنترنت, ألعاب متصفح مجانية, العاب بدون تحميل, ديكورا ألعاب" />
+    <meta name="keywords" content="dinosaur dig game online, crazy car drive game, Crazy Car Drive Road Challenge, fruit matching game free online, ديكورا العاب اونلاين فرى, ألعاب مجانية على الإنترنت, ألعاب متصفح مجانية, العاب بدون تحميل, ديكورا ألعاب" />
     <meta name="author" content="Dkora Games" />
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />

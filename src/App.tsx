@@ -552,6 +552,9 @@ export default function App() {
         if (gameTitle === "Crazy Car Drive Road Challenge") {
           title = "لعبة Crazy Car Drive Road Challenge | العب crazy car drive game أونلاين";
           desc = "تحدَّ مهاراتك في لعبة Crazy Car Drive Road Challenge المثيرة! قد سيارتك بسرعة وتجنب العقبات على الطريق في أقوى crazy car drive game أونلاين مجاناً وبدون تحميل.";
+        } else if (gameTitle === "Dinosaur Dig") {
+          title = "لعبة Dinosaur Dig | العب dinosaur dig game online مجاناً أونلاين";
+          desc = "اكتشف أسرار العصور القديمة مع لعبة Dinosaur Dig المثيرة! ابحث عن الحفريات العتيقة ونظف العظام لتركيب هياكل الديناصورات في أقوى dinosaur dig game online مجاناً وبدون تحميل.";
         } else {
           title = `العب لعبة ${gameTitle} اون لاين - ديكورا العاب اونلاين فرى | Dkora`;
           desc = selectedGMGame.description || `العب لعبة ${gameTitle} مجاناً وبدون تحميل على منصة ديكورا العاب اونلاين فرى - ألعاب متصفح سريعة وممتعة بالكامل.`;
@@ -590,6 +593,9 @@ export default function App() {
         if (gameTitle === "Crazy Car Drive Road Challenge") {
           title = "Crazy Car Drive Road Challenge | Play crazy car drive game online";
           desc = "Challenge your skills in the exciting Crazy Car Drive Road Challenge game! Drive your car fast and avoid road obstacles in the ultimate crazy car drive game online for free.";
+        } else if (gameTitle === "Dinosaur Dig") {
+          title = "Dinosaur Dig | Play dinosaur dig game online for Free";
+          desc = "Embark on an archaeological expedition in the amazing Dinosaur Dig game! Hunt for ancient fossils and assemble skeleton blocks in the best dinosaur dig game online for free with no downloads.";
         } else {
           title = `Play ${gameTitle} Online - Dkora Free Online Games | Dkora`;
           desc = selectedGMGame.description || `Play ${gameTitle} online for free with no downloads on Dkora - The premier destination for free online games.`;

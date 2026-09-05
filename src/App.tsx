@@ -554,10 +554,13 @@ export default function App() {
         const gameTitle = selectedGMGame.title;
         if (gameTitle === "Crazy Car Drive Road Challenge") {
           title = "لعبة Crazy Car Drive Road Challenge | العب crazy car drive game أونلاين";
-          desc = "تحدَّ مهاراتك في لعبة Crazy Car Drive Road Challenge المثيرة! قد سيارتك بسرعة وتجنب العقبات على الطريق في أقوى crazy car drive game أونلاين مجاناً وبدون تحميل.";
+          desc = "تحدَّ مهاراتك في لعبة Crazy Car Drive Road Challenge المثيرة! قد سيارتك بسرعة وتجنب العقبات على الطريق in أقوى crazy car drive game أونلاين مجاناً وبدون تحميل.";
         } else if (gameTitle === "Dinosaur Dig") {
           title = "لعبة Dinosaur Dig | العب dinosaur dig game online مجاناً أونلاين";
           desc = "اكتشف أسرار العصور القديمة مع لعبة Dinosaur Dig المثيرة! ابحث عن الحفريات العتيقة ونظف العظام لتركيب هياكل الديناصورات في أقوى dinosaur dig game online مجاناً وبدون تحميل.";
+        } else if (gameTitle === "Mine Keeper") {
+          title = "لعبة Mine Keeper | العب mine keeper crazy games أونلاين مجاناً";
+          desc = "العب لعبة Mine Keeper أونلاين مجاناً! ابنِ مملكتك الخاصة، واحمِ شعبك من الوحوش، واحفر المناجم العميقة لجمع الأحجار الكريمة مع أقوى لعبة mine keeper crazy games بدون تحميل.";
         } else {
           title = `العب لعبة ${gameTitle} اون لاين - ديكورا العاب اونلاين فرى | Dkora`;
           desc = selectedGMGame.description || `العب لعبة ${gameTitle} مجاناً وبدون تحميل على منصة ديكورا العاب اونلاين فرى - ألعاب متصفح سريعة وممتعة بالكامل.`;
@@ -599,6 +602,9 @@ export default function App() {
         } else if (gameTitle === "Dinosaur Dig") {
           title = "Dinosaur Dig | Play dinosaur dig game online for Free";
           desc = "Embark on an archaeological expedition in the amazing Dinosaur Dig game! Hunt for ancient fossils and assemble skeleton blocks in the best dinosaur dig game online for free with no downloads.";
+        } else if (gameTitle === "Mine Keeper") {
+          title = "Mine Keeper | Play mine keeper crazy games Online for Free";
+          desc = "Play Mine Keeper online for free! Build your dwarf kingdom, collect valuable gems, and defend your territory in the ultimate mine keeper crazy games with no downloads.";
         } else {
           title = `Play ${gameTitle} Online - Dkora Free Online Games | Dkora`;
           desc = selectedGMGame.description || `Play ${gameTitle} online for free with no downloads on Dkora - The premier destination for free online games.`;
@@ -814,6 +820,53 @@ export default function App() {
 
     return list;
   }, [gamemonetizeGames, searchQuery, activeCategory]);
+
+  const displayGMTitle = React.useMemo(() => {
+    if (!selectedGMGame) return "";
+    const gameTitle = selectedGMGame.title;
+    if (gameTitle === "Mine Keeper") {
+      return lang === "ar" ? "Mine Keeper - ماين كيبر" : "Mine Keeper";
+    }
+    if (gameTitle === "Crazy Car Drive Road Challenge") {
+      return lang === "ar" ? "Crazy Car Drive Road Challenge - تحدي قيادة السيارات" : "Crazy Car Drive Road Challenge";
+    }
+    if (gameTitle === "Dinosaur Dig") {
+      return lang === "ar" ? "Dinosaur Dig - التنقيب عن الديناصورات" : "Dinosaur Dig";
+    }
+    return gameTitle;
+  }, [selectedGMGame, lang]);
+
+  const displayGMDescription = React.useMemo(() => {
+    if (!selectedGMGame) return "";
+    const gameTitle = selectedGMGame.title;
+    if (gameTitle === "Mine Keeper") {
+      return lang === "ar" 
+        ? "العب لعبة Mine Keeper أونلاين مجاناً! ابنِ مملكتك الخاصة، واحمِ شعبك من الوحوش، واحفر المناجم العميقة لجمع الأحجار الكريمة مع أقوى لعبة mine keeper crazy games بدون تحميل."
+        : "Play Mine Keeper online for free! Build your dwarf kingdom, collect valuable gems, and defend your territory in the ultimate mine keeper crazy games with no downloads.";
+    }
+    if (gameTitle === "Crazy Car Drive Road Challenge") {
+      return lang === "ar"
+        ? "تحدَّ مهاراتك في لعبة Crazy Car Drive Road Challenge المثيرة! قد سيارتك بسرعة وتجنب العقبات على الطريق في أقوى crazy car drive game أونلاين مجاناً وبدون تحميل."
+        : "Challenge your skills in the exciting Crazy Car Drive Road Challenge game! Drive your car fast and avoid road obstacles in the ultimate crazy car drive game online for free.";
+    }
+    if (gameTitle === "Dinosaur Dig") {
+      return lang === "ar"
+        ? "اكتشف أسرار العصور القديمة مع لعبة Dinosaur Dig المثيرة! ابحث عن الحفريات العتيقة ونظف العظام لتركيب هياكل الديناصورات في أقوى dinosaur dig game online مجاناً وبدون تحميل."
+        : "Embark on an archaeological expedition in the amazing Dinosaur Dig game! Hunt for ancient fossils and assemble skeleton blocks in the best dinosaur dig game online for free with no downloads.";
+    }
+    return selectedGMGame.description || "";
+  }, [selectedGMGame, lang]);
+
+  const displayGMInstructions = React.useMemo(() => {
+    if (!selectedGMGame) return "";
+    const gameTitle = selectedGMGame.title;
+    if (gameTitle === "Mine Keeper") {
+      return lang === "ar"
+        ? "عناصر التحكم للكمبيوتر: استخدم مفاتيح الحركة WASD أو أسهم الحركة والماوس للتحرك واللعب. للهواتف المحمولة: استخدم عصا التحكم المدمجة على الشاشة للتحرك واللعب."
+        : "PC Controls: Use WASD / Arrow keys and drag left-click to move around. Mobile Controls: Use the in-game virtual joystick to move and interact.";
+    }
+    return selectedGMGame.instructions || "";
+  }, [selectedGMGame, lang]);
 
   return (
     <div className={`min-h-screen flex flex-col font-sans selection:bg-purple-600 selection:text-white overflow-x-hidden antialiased transition-colors duration-300 ${
@@ -1105,7 +1158,13 @@ export default function App() {
                         </div>
                         <div className="p-4 z-20 space-y-1 transform group-hover:translate-y-[-2px] transition duration-300">
                           <h3 className="text-sm md:text-base font-black text-white leading-tight line-clamp-1">
-                            {game.title}
+                            {game.title === "Mine Keeper" 
+                              ? (lang === "ar" ? "Mine Keeper - ماين كيبر" : "Mine Keeper")
+                              : game.title === "Dinosaur Dig"
+                              ? (lang === "ar" ? "Dinosaur Dig - التنقيب عن الديناصورات" : "Dinosaur Dig")
+                              : game.title === "Crazy Car Drive Road Challenge"
+                              ? (lang === "ar" ? "Crazy Car Drive Road Challenge - تحدي قيادة السيارات" : "Crazy Car Drive Road Challenge")
+                              : game.title}
                           </h3>
                           <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1 opacity-0 group-hover:opacity-100 transition duration-300">
                             <span className="text-amber-400 font-bold flex items-center gap-0.5">
@@ -1779,7 +1838,7 @@ export default function App() {
               </div>
               <div>
                 <h3 className="text-sm md:text-base font-black leading-tight font-sans">
-                  {selectedGMGame.title}
+                  {displayGMTitle}
                 </h3>
                 <span className={`text-[10px] block font-extrabold uppercase tracking-wider font-sans ${
                   theme === "dark" ? "text-purple-400" : "text-purple-600"
@@ -1934,7 +1993,7 @@ export default function App() {
                   <p className={`text-sm leading-relaxed whitespace-pre-wrap transition-colors duration-300 ${
                     theme === "dark" ? "text-slate-300" : "text-slate-600"
                   }`}>
-                    {selectedGMGame.instructions || (lang === "ar" 
+                    {displayGMInstructions || (lang === "ar" 
                       ? "استخدم الفأرة أو شاشة اللمس للتحكم في عناصر اللعبة واتباع التعليمات التي تظهر على الشاشة لبدء اللعب والاستمتاع باللعبة الحية مباشرة."
                       : "Use your mouse or touchscreen to control the gameplay. Follow the in-game tutorials and have extreme fun playing instantly.")}
                   </p>
@@ -1950,7 +2009,7 @@ export default function App() {
                   <p className={`text-sm leading-relaxed whitespace-pre-wrap text-justify transition-colors duration-300 ${
                     theme === "dark" ? "text-slate-400" : "text-slate-600"
                   }`}>
-                    {selectedGMGame.description || (lang === "ar"
+                    {displayGMDescription || (lang === "ar"
                       ? "استمتع بلعب هذه اللعبة الممتازة مباشرة على متصفحك مجاناً وبدون الحاجة إلى تحميل أي ملفات إضافية."
                       : "Play this premium high-quality online game immediately in your web browser for free with no downloading required.")}
                   </p>

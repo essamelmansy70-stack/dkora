@@ -919,6 +919,8 @@ export default function App() {
               className={`p-2 border rounded-xl text-xs font-bold shadow-md cursor-pointer ${
                 theme === "dark" ? "bg-slate-800/80 border-slate-700 text-slate-300" : "bg-white border-slate-200 text-slate-700"
               }`}
+              aria-label={theme === "dark" ? (lang === "ar" ? "تفعيل المظهر المضيء" : "Activate light theme") : (lang === "ar" ? "تفعيل المظهر المظلم" : "Activate dark theme")}
+              title={lang === "ar" ? "تبديل المظهر" : "Toggle Theme"}
             >
               {theme === "dark" ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-purple-600" />}
             </button>
@@ -927,6 +929,7 @@ export default function App() {
               className={`px-3 py-1.5 border rounded-xl text-xs font-bold shadow-md cursor-pointer ${
                 theme === "dark" ? "bg-slate-800/80 border-slate-700 text-slate-300" : "bg-white border-slate-200 text-slate-700"
               }`}
+              aria-label={lang === "ar" ? "Change language to English" : "تغيير اللغة للعربية"}
             >
               {lang === "ar" ? "English" : "العربية"}
             </button>
@@ -946,11 +949,13 @@ export default function App() {
                 ? "bg-slate-900/90 border-purple-500/20 focus:border-purple-500 text-white placeholder-slate-500 focus:ring-purple-500/20"
                 : "bg-white border-purple-300/40 focus:border-purple-500 text-slate-800 placeholder-slate-400 focus:ring-purple-500/10 shadow-sm"
             }`}
+            aria-label={lang === "ar" ? "ابحث عن ألعاب" : "Search games"}
           />
           {searchQuery && (
             <button 
               onClick={() => setSearchQuery("")}
               className="absolute top-1/2 right-4 -translate-y-1/2 text-slate-400 hover:text-white transition cursor-pointer"
+              aria-label={lang === "ar" ? "مسح البحث" : "Clear search"}
             >
               <X className="w-4 h-4" />
             </button>
@@ -968,6 +973,7 @@ export default function App() {
                 : "bg-white hover:bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900"
             }`}
             title={lang === "ar" ? "تبديل المظهر" : "Toggle Theme"}
+            aria-label={theme === "dark" ? (lang === "ar" ? "تفعيل المظهر المضيء" : "Activate light theme") : (lang === "ar" ? "تفعيل المظهر المظلم" : "Activate dark theme")}
           >
             {theme === "dark" ? (
               <Sun className="w-5 h-5 text-amber-400 fill-amber-400/10" />
@@ -985,6 +991,7 @@ export default function App() {
                 : "bg-white hover:bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-950"
             }`}
             title={lang === "ar" ? "تأثيرات الصوت" : "UI Audio"}
+            aria-label={soundEnabled ? (lang === "ar" ? "كتم المؤثرات الصوتية" : "Mute UI Audio") : (lang === "ar" ? "تشغيل المؤثرات الصوتية" : "Unmute UI Audio")}
           >
             {soundEnabled ? (
               <Volume2 className={`w-5 h-5 ${theme === "dark" ? "text-purple-400" : "text-purple-600"}`} />
@@ -1149,6 +1156,8 @@ export default function App() {
                           src={game.thumb}
                           alt={game.title}
                           referrerPolicy="no-referrer"
+                          loading={idx < 4 ? "eager" : "lazy"}
+                          fetchPriority={idx < 4 ? "high" : "low"}
                           className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-108 transition duration-500 ease-out z-0"
                         />
                         <div className="absolute top-3 left-3 z-20 flex gap-1.5 items-center">
@@ -1230,6 +1239,7 @@ export default function App() {
                           src={lang === "ar" ? (game.imageAr || game.image) : (game.imageEn || game.image)}
                           alt={lang === "ar" ? game.titleAr : game.titleEn}
                           referrerPolicy="no-referrer"
+                          loading="lazy"
                           className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-108 transition duration-500 ease-out z-0"
                         />
                         <div className="absolute top-3 left-3 z-20 flex gap-1.5 items-center">
@@ -1246,6 +1256,8 @@ export default function App() {
                         <button
                           onClick={(e) => toggleFavorite(game.id, e)}
                           className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-slate-300 hover:text-pink-500 active:scale-90 transition duration-150 cursor-pointer"
+                          aria-label={isFav ? (lang === "ar" ? "إزالة من المفضلة" : "Remove from favorites") : (lang === "ar" ? "أضف للمفضلة" : "Add to favorites")}
+                          title={isFav ? (lang === "ar" ? "إزالة من المفضلة" : "Remove from favorites") : (lang === "ar" ? "أضف للمفضلة" : "Add to favorites")}
                         >
                           <Heart className={`w-4 h-4 ${isFav ? "fill-current text-pink-500" : ""}`} />
                         </button>
@@ -1332,8 +1344,8 @@ export default function App() {
       </main>
 
       {/* Footer bar */}
-      <footer className={`border-t mt-16 px-4 md:px-8 py-8 text-center text-slate-500 space-y-4 transition-all duration-300 ${
-        theme === "dark" ? "bg-[#0b0c15] border-slate-800" : "bg-slate-100 border-slate-200"
+      <footer className={`border-t mt-16 px-4 md:px-8 py-8 text-center transition-all duration-300 ${
+        theme === "dark" ? "bg-[#0b0c15] border-slate-800 text-slate-300" : "bg-slate-100 border-slate-200 text-slate-700"
       }`}>
         <div className="max-w-xl mx-auto space-y-2">
           <span className={`text-sm font-black transition-colors duration-300 ${
@@ -1342,7 +1354,7 @@ export default function App() {
             🕹️ {translations[lang].footer.about} - {lang === "ar" ? "العاب اونلاين فري" : "Free Online Games"}
           </span>
           <p className={`text-xs leading-relaxed transition-colors duration-300 ${
-            theme === "dark" ? "text-slate-400" : "text-slate-600"
+            theme === "dark" ? "text-slate-300" : "text-slate-700"
           }`}>
             {translations[lang].footer.aboutText}
           </p>
@@ -1358,7 +1370,7 @@ export default function App() {
           >
             {translations[lang].footer.privacy}
           </button>
-          <span className="text-slate-600">|</span>
+          <span className="text-slate-400 dark:text-slate-500">|</span>
           <button
             onClick={() => { playUISound("click"); setActiveLegalPage("terms"); }}
             className={`transition-colors duration-200 cursor-pointer hover:underline ${
@@ -1367,7 +1379,7 @@ export default function App() {
           >
             {translations[lang].footer.terms}
           </button>
-          <span className="text-slate-600">|</span>
+          <span className="text-slate-400 dark:text-slate-500">|</span>
           <button
             onClick={() => { playUISound("click"); setActiveLegalPage("disclaimer"); }}
             className={`transition-colors duration-200 cursor-pointer hover:underline ${
@@ -1376,7 +1388,7 @@ export default function App() {
           >
             {translations[lang].footer.disclaimer}
           </button>
-          <span className="text-slate-600">|</span>
+          <span className="text-slate-400 dark:text-slate-500">|</span>
           <button
             onClick={() => { playUISound("click"); setShowSitemapModal(true); }}
             className={`transition-colors duration-200 cursor-pointer hover:underline ${
@@ -1387,7 +1399,9 @@ export default function App() {
           </button>
         </div>
 
-        <div className="text-[10px] text-slate-600 uppercase tracking-widest font-semibold pt-2">
+        <div className={`text-[10px] uppercase tracking-widest font-semibold pt-2 transition-colors duration-300 ${
+          theme === "dark" ? "text-slate-400" : "text-slate-800"
+        }`}>
           &copy; 2026 Dkora Games. All Rights Reserved.
         </div>
       </footer>
@@ -1402,6 +1416,7 @@ export default function App() {
               onClick={() => { playUISound("click"); setActiveLegalPage(null); }}
               className="absolute top-6 right-6 p-2 text-slate-400 hover:text-red-500 rounded-xl hover:bg-red-500/10 transition cursor-pointer"
               title={lang === "ar" ? "إغلاق" : "Close"}
+              aria-label={lang === "ar" ? "إغلاق النافذة" : "Close Modal"}
             >
               <X className="w-5 h-5" />
             </button>
@@ -1460,6 +1475,7 @@ export default function App() {
               onClick={() => { playUISound("click"); setShowSitemapModal(false); }}
               className="absolute top-6 right-6 p-2 text-slate-400 hover:text-red-500 rounded-xl hover:bg-red-500/10 transition cursor-pointer"
               title={lang === "ar" ? "إغلاق" : "Close"}
+              aria-label={lang === "ar" ? "إغلاق النافذة" : "Close Modal"}
             >
               <X className="w-5 h-5" />
             </button>
@@ -1686,6 +1702,7 @@ export default function App() {
                     : "bg-slate-100 hover:bg-slate-200 border-slate-200 hover:border-slate-300 text-slate-700 hover:text-slate-900"
                 }`}
                 title={lang === "ar" ? "إعادة تشغيل اللعبة" : "Reload Game"}
+                aria-label={lang === "ar" ? "إعادة تشغيل اللعبة" : "Reload Game"}
               >
                 <RotateCcw className="w-4 h-4" />
               </button>
@@ -1699,6 +1716,7 @@ export default function App() {
                     : "bg-slate-100 hover:bg-slate-200 border-slate-200 hover:border-slate-300 text-slate-700 hover:text-slate-900"
                 } ${isFullscreen ? "text-purple-400 border-purple-500/30" : ""}`}
                 title={lang === "ar" ? "شاشة كاملة" : "Fullscreen"}
+                aria-label={lang === "ar" ? "شاشة كاملة" : "Fullscreen"}
               >
                 <Maximize2 className="w-4 h-4" />
               </button>
@@ -1712,6 +1730,7 @@ export default function App() {
                     : "bg-slate-100 hover:bg-slate-200 border-slate-200 hover:border-slate-300 text-slate-700 hover:text-pink-600"
                 }`}
                 title={lang === "ar" ? "أضف للمفضلة" : "Favorite"}
+                aria-label={favorites.includes(selectedGame.id) ? (lang === "ar" ? "إزالة من المفضلة" : "Remove from favorites") : (lang === "ar" ? "أضف للمفضلة" : "Add to favorites")}
               >
                 <Heart className={`w-4 h-4 ${favorites.includes(selectedGame.id) ? "fill-current text-pink-500" : ""}`} />
               </button>
@@ -1722,6 +1741,7 @@ export default function App() {
               onClick={() => { playUISound("click"); setSelectedGame(null); }}
               className="p-2 bg-red-600/20 hover:bg-red-600 border border-red-500/20 hover:border-red-500 text-red-400 hover:text-white rounded-xl transition duration-150 cursor-pointer"
               title={lang === "ar" ? "إغلاق اللعبة" : "Close Player"}
+              aria-label={lang === "ar" ? "إغلاق اللعبة" : "Close Player"}
             >
               <X className="w-5 h-5" />
             </button>
@@ -1869,6 +1889,7 @@ export default function App() {
               onClick={() => { playUISound("click"); setSelectedGMGame(null); }}
               className="p-2 bg-red-600/20 hover:bg-red-600 border border-red-500/20 hover:border-red-500 text-red-400 hover:text-white rounded-xl transition duration-150 cursor-pointer"
               title={lang === "ar" ? "إغلاق اللعبة" : "Close Player"}
+              aria-label={lang === "ar" ? "إغلاق اللعبة" : "Close Player"}
             >
               <X className="w-5 h-5" />
             </button>
@@ -2083,7 +2104,7 @@ export default function App() {
                       onClick={() => { playUISound("click"); setSelectedGMGame(rel); }}
                       className="group relative aspect-[1.4] rounded-2xl overflow-hidden cursor-pointer border border-slate-800 hover:border-purple-500/30 shadow-md transition duration-300"
                     >
-                      <img src={rel.thumb} alt={rel.title} className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-300" />
+                      <img src={rel.thumb} alt={rel.title} loading="lazy" className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition duration-300" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-10" />
                       <div className="absolute bottom-2 left-2 right-2 z-20">
                         <span className="text-[10px] text-white font-black line-clamp-1 font-sans">{rel.title}</span>

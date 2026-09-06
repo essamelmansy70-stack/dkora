@@ -23,9 +23,9 @@ import { GAMES_DATA } from "./data/games";
 import { GIRLS_GAMES } from "./data/girlsGames";
 import { NEW_GAMES } from "./data/newGames";
 import { Game, GameMonetizeGame } from "./types";
-import NativeSnake from "./components/NativeSnake";
-import NativeBrickBreaker from "./components/NativeBrickBreaker";
-import NativePacman from "./components/NativePacman";
+const NativeSnake = React.lazy(() => import("./components/NativeSnake"));
+const NativeBrickBreaker = React.lazy(() => import("./components/NativeBrickBreaker"));
+const NativePacman = React.lazy(() => import("./components/NativePacman"));
 import { translations } from "./translations";
 import Fuse from "fuse.js";
 
@@ -1155,6 +1155,8 @@ export default function App() {
                         <img
                           src={game.thumb}
                           alt={game.title}
+                          width="512"
+                          height="384"
                           referrerPolicy="no-referrer"
                           loading={idx < 4 ? "eager" : "lazy"}
                           fetchPriority={idx < 4 ? "high" : "low"}
@@ -1238,6 +1240,8 @@ export default function App() {
                         <img
                           src={lang === "ar" ? (game.imageAr || game.image) : (game.imageEn || game.image)}
                           alt={lang === "ar" ? game.titleAr : game.titleEn}
+                          width="512"
+                          height="384"
                           referrerPolicy="no-referrer"
                           loading="lazy"
                           className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-108 transition duration-500 ease-out z-0"
@@ -1755,13 +1759,20 @@ export default function App() {
               {selectedGame.isNative ? (
                 // Renders custom offline gameplay component
                 <div className="w-full max-w-2xl">
-                  {selectedGame.id === "neon-snake" ? (
-                    <NativeSnake lang={lang} />
-                  ) : selectedGame.id === "cheese-pacman" ? (
-                    <NativePacman lang={lang} />
-                  ) : (
-                    <NativeBrickBreaker lang={lang} />
-                  )}
+                  <React.Suspense fallback={
+                    <div className="flex flex-col items-center justify-center p-12 text-slate-400">
+                      <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mb-3"></div>
+                      <span>{lang === "ar" ? "جاري تحميل اللعبة..." : "Loading Game..."}</span>
+                    </div>
+                  }>
+                    {selectedGame.id === "neon-snake" ? (
+                      <NativeSnake lang={lang} />
+                    ) : selectedGame.id === "cheese-pacman" ? (
+                      <NativePacman lang={lang} />
+                    ) : (
+                      <NativeBrickBreaker lang={lang} />
+                    )}
+                  </React.Suspense>
                 </div>
               ) : (
                 // Renders high-fidelity unblocked online HTML5 iframe

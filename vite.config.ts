@@ -33,6 +33,9 @@ export default defineConfig(() => {
               if (id.includes('motion')) {
                 return 'vendor-motion';
               }
+              if (id.includes('three')) {
+                return 'vendor-three';
+              }
               if (id.includes('cropperjs') || id.includes('html2canvas')) {
                 return 'vendor-tools';
               }

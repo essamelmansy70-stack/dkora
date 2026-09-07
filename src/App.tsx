@@ -552,7 +552,10 @@ export default function App() {
         desc = "خريطة الموقع لجميع ألعاب ديكورا العاب اونلاين فرى والصفحات القانونية لسهولة الوصول والفهرسة السريعة.";
       } else if (selectedGMGame) {
         const gameTitle = selectedGMGame.title;
-        if (gameTitle === "Crazy Car Drive Road Challenge") {
+        if (gameTitle === "Baby Runner Game") {
+          title = "لعبة Baby Runner Game | العب baby runner game online مجاناً";
+          desc = "العب لعبة Baby Runner Game المثيرة أونلاين مجاناً! ساعد الطفل الصغير اللطيف على الجري، وتفادي العقبات الصعبة، وجمع الهدايا والعملات في لعبة baby runner game online بدون تحميل وبأعلى سرعة.";
+        } else if (gameTitle === "Crazy Car Drive Road Challenge") {
           title = "لعبة Crazy Car Drive Road Challenge | العب crazy car drive game أونلاين";
           desc = "تحدَّ مهاراتك في لعبة Crazy Car Drive Road Challenge المثيرة! قد سيارتك بسرعة وتجنب العقبات على الطريق in أقوى crazy car drive game أونلاين مجاناً وبدون تحميل.";
         } else if (gameTitle === "Dinosaur Dig") {
@@ -596,7 +599,10 @@ export default function App() {
         desc = "Complete sitemap directory index of all games and legal pages on Dkora Free Online Games.";
       } else if (selectedGMGame) {
         const gameTitle = selectedGMGame.title;
-        if (gameTitle === "Crazy Car Drive Road Challenge") {
+        if (gameTitle === "Baby Runner Game") {
+          title = "Baby Runner Game | Play baby runner game online for Free";
+          desc = "Help the cute little baby run, dash, and dodge challenging obstacles in Baby Runner Game! Collect amazing rewards, coins, and reach the high score in the best baby runner game online with no downloads.";
+        } else if (gameTitle === "Crazy Car Drive Road Challenge") {
           title = "Crazy Car Drive Road Challenge | Play crazy car drive game online";
           desc = "Challenge your skills in the exciting Crazy Car Drive Road Challenge game! Drive your car fast and avoid road obstacles in the ultimate crazy car drive game online for free.";
         } else if (gameTitle === "Dinosaur Dig") {
@@ -824,6 +830,9 @@ export default function App() {
   const displayGMTitle = React.useMemo(() => {
     if (!selectedGMGame) return "";
     const gameTitle = selectedGMGame.title;
+    if (gameTitle === "Baby Runner Game") {
+      return lang === "ar" ? "Baby Runner Game - لعبة جري الأطفال" : "Baby Runner Game";
+    }
     if (gameTitle === "Mine Keeper") {
       return lang === "ar" ? "Mine Keeper - ماين كيبر" : "Mine Keeper";
     }
@@ -839,6 +848,11 @@ export default function App() {
   const displayGMDescription = React.useMemo(() => {
     if (!selectedGMGame) return "";
     const gameTitle = selectedGMGame.title;
+    if (gameTitle === "Baby Runner Game") {
+      return lang === "ar"
+        ? "العب لعبة Baby Runner Game المثيرة أونلاين مجاناً! ساعد الطفل الصغير اللطيف على الجري، وتفادي العقبات الصعبة، وجمع الهدايا والعملات في لعبة baby runner game online بدون تحميل وبأعلى سرعة."
+        : "Help the cute little baby run, dash, and dodge challenging obstacles in Baby Runner Game! Collect amazing rewards, coins, and reach the high score in the best baby runner game online with no downloads.";
+    }
     if (gameTitle === "Mine Keeper") {
       return lang === "ar" 
         ? "العب لعبة Mine Keeper أونلاين مجاناً! ابنِ مملكتك الخاصة، واحمِ شعبك من الوحوش، واحفر المناجم العميقة لجمع الأحجار الكريمة مع أقوى لعبة mine keeper crazy games بدون تحميل."
@@ -1169,7 +1183,9 @@ export default function App() {
                         </div>
                         <div className="p-4 z-20 space-y-1 transform group-hover:translate-y-[-2px] transition duration-300">
                           <h3 className="text-sm md:text-base font-black text-white leading-tight line-clamp-1">
-                            {game.title === "Mine Keeper" 
+                            {game.title === "Baby Runner Game"
+                              ? (lang === "ar" ? "Baby Runner Game - لعبة جري الأطفال" : "Baby Runner Game")
+                              : game.title === "Mine Keeper" 
                               ? (lang === "ar" ? "Mine Keeper - ماين كيبر" : "Mine Keeper")
                               : game.title === "Dinosaur Dig"
                               ? (lang === "ar" ? "Dinosaur Dig - التنقيب عن الديناصورات" : "Dinosaur Dig")

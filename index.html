@@ -101,11 +101,19 @@
           window.history.replaceState(null, "", window.location.pathname + targetSearch);
         }
 
+        var isBabyRunner = window.location.pathname.indexOf("game-gm-4") !== -1 || window.location.pathname.indexOf("baby-runner") !== -1;
         var isCrazyCar = window.location.pathname.indexOf("game-gm-1") !== -1 || window.location.pathname === "/" || window.location.pathname === "" || window.location.pathname.indexOf("crazy-car-drive") !== -1;
         var isDinosaurDig = window.location.pathname.indexOf("game-gm-0") !== -1 || window.location.pathname.indexOf("dinosaur-dig") !== -1;
         var title, desc;
         
-        if (isDinosaurDig) {
+        if (isBabyRunner) {
+          title = isEn 
+            ? "Baby Runner Game | Play baby runner game online for Free" 
+            : "لعبة Baby Runner Game | العب baby runner game online مجاناً";
+          desc = isEn 
+            ? "Help the cute little baby run, dash, and dodge challenging obstacles in Baby Runner Game! Collect amazing rewards, coins, and reach the high score in the best baby runner game online with no downloads." 
+            : "العب لعبة Baby Runner Game المثيرة أونلاين مجاناً! ساعد الطفل الصغير اللطيف على الجري، وتفادي العقبات الصعبة، وجمع الهدايا والعملات في لعبة baby runner game online بدون تحميل وبأعلى سرعة.";
+        } else if (isDinosaurDig) {
           title = isEn 
             ? "Dinosaur Dig | Play dinosaur dig game online for Free" 
             : "لعبة Dinosaur Dig | العب dinosaur dig game online مجاناً أونلاين";

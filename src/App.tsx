@@ -17,12 +17,19 @@ import {
   ArrowRight,
   ArrowLeft,
   Sun,
-  Moon
+  Moon,
+  BookOpen,
+  Clock,
+  User,
+  Calendar,
+  Newspaper
 } from "lucide-react";
 import { GAMES_DATA } from "./data/games";
 import { GIRLS_GAMES } from "./data/girlsGames";
 import { NEW_GAMES } from "./data/newGames";
+import { NewsArticle, initialNewsArticles } from "./data/newsAndCalendar";
 import { Game, GameMonetizeGame } from "./types";
+import ArticlesSection from "./components/ArticlesSection";
 const NativeSnake = React.lazy(() => import("./components/NativeSnake"));
 const NativeBrickBreaker = React.lazy(() => import("./components/NativeBrickBreaker"));
 const NativePacman = React.lazy(() => import("./components/NativePacman"));
@@ -68,6 +75,8 @@ export default function App() {
   const [autoSelectGMIndex, setAutoSelectGMIndex] = useState<number | null>(null);
   const [activeLegalPage, setActiveLegalPage] = useState<"privacy" | "terms" | "disclaimer" | null>(null);
   const [showSitemapModal, setShowSitemapModal] = useState(false);
+  const [selectedArticle, setSelectedArticle] = useState<NewsArticle | null>(null);
+  const [showArticlesPage, setShowArticlesPage] = useState(false);
   
   const [favorites, setFavorites] = useState<string[]>(() => {
     try {
@@ -96,7 +105,9 @@ export default function App() {
     legal: "privacy" | "terms" | "disclaimer" | null,
     category: string,
     favsOnly: boolean,
-    sitemap: boolean
+    sitemap: boolean,
+    articlesPage: boolean,
+    article: NewsArticle | null
   ) => {
     let newPath = "/";
     let query = `?lang=${currentLang}`;
@@ -109,6 +120,10 @@ export default function App() {
       newPath = "/disclaimer";
     } else if (sitemap) {
       newPath = "/sitemap";
+    } else if (article) {
+      newPath = `/article-${article.id}`;
+    } else if (articlesPage) {
+      newPath = "/articles";
     } else if (gmGame) {
       const idx = gamemonetizeGames.findIndex(g => g.title === gmGame.title);
       newPath = `/game-gm-${idx !== -1 ? idx : 0}`;
@@ -186,7 +201,9 @@ export default function App() {
         path.includes("خريطة-الموقع") || 
         path.includes("المفضلة") || 
         path.includes("تصنيف-") || 
-        path.includes("لعبة-")
+        path.includes("لعبة-") ||
+        path.includes("مقالات") ||
+        path.includes("مقال-")
       ) {
         let redirectPath = "/";
         if (path.includes("سياسة-الخصوصية")) redirectPath = "/privacy-policy";
@@ -194,7 +211,11 @@ export default function App() {
         else if (path.includes("إخلاء-المسؤولية")) redirectPath = "/disclaimer";
         else if (path.includes("خريطة-الموقع")) redirectPath = "/sitemap";
         else if (path.includes("المفضلة")) redirectPath = "/favorites";
-        else if (path.includes("تصنيف-")) {
+        else if (path.includes("مقالات")) redirectPath = "/articles";
+        else if (path.includes("مقال-")) {
+          const artId = path.split("مقال-")[1];
+          redirectPath = `/article-${artId}`;
+        } else if (path.includes("تصنيف-")) {
           const catId = path.split("تصنيف-")[1];
           redirectPath = `/category-${catId}`;
         } else if (path.includes("لعبة-")) {
@@ -215,7 +236,9 @@ export default function App() {
         path.includes("category-") || 
         path.includes("gamemonetize-games") ||
         path.includes("game-gm-") ||
-        path.includes("game-")
+        path.includes("game-") ||
+        path.includes("articles") ||
+        path.includes("article-")
       ) {
         if (path.includes("privacy-policy")) {
           setActiveLegalPage("privacy");
@@ -272,12 +295,37 @@ export default function App() {
           setShowFavoritesOnly(false);
           setShowSitemapModal(false);
           setAutoSelectGMIndex(gmIndex);
+        } else if (path.includes("articles")) {
+          setShowArticlesPage(true);
+          setSelectedArticle(null);
+          setActiveLegalPage(null);
+          setSelectedGame(null);
+          setSelectedGMGame(null);
+          setShowFavoritesOnly(false);
+          setShowSitemapModal(false);
+        } else if (path.includes("article-")) {
+          const articleId = path.split("article-")[1];
+          const foundArticle = initialNewsArticles.find((a) => a.id === articleId);
+          if (foundArticle) {
+            setSelectedArticle(foundArticle);
+            setShowArticlesPage(false);
+            setActiveLegalPage(null);
+            setSelectedGame(null);
+            setSelectedGMGame(null);
+            setShowFavoritesOnly(false);
+            setShowSitemapModal(false);
+          } else {
+            setShowArticlesPage(true);
+            setSelectedArticle(null);
+          }
         } else if (path.includes("game-")) {
           const gameId = path.split("game-")[1];
           const found = GAMES_DATA.find((g) => g.id === gameId);
           if (found) {
             setSelectedGame(found);
             setSelectedGMGame(null);
+            setSelectedArticle(null);
+            setShowArticlesPage(false);
             setActiveLegalPage(null);
             setShowFavoritesOnly(false);
             setShowSitemapModal(false);
@@ -288,6 +336,8 @@ export default function App() {
         setActiveLegalPage(null);
         setSelectedGame(null);
         setSelectedGMGame(null);
+        setSelectedArticle(null);
+        setShowArticlesPage(false);
         setActiveTab("poki");
         setShowFavoritesOnly(false);
         setActiveCategory("all");
@@ -529,8 +579,8 @@ export default function App() {
 
   // Update pathname when states change
   useEffect(() => {
-    updatePath(lang, selectedGame, selectedGMGame, activeTab, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal);
-  }, [lang, selectedGame, selectedGMGame, activeTab, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal]);
+    updatePath(lang, selectedGame, selectedGMGame, activeTab, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal, showArticlesPage, selectedArticle);
+  }, [lang, selectedGame, selectedGMGame, activeTab, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal, showArticlesPage, selectedArticle]);
 
   // Dynamically update document title and description meta tags for maximum SEO visibility
   useEffect(() => {
@@ -550,6 +600,12 @@ export default function App() {
       } else if (showSitemapModal) {
         title = "خريطة الموقع والألعاب - ديكورا العاب اونلاين فرى | Dkora";
         desc = "خريطة الموقع لجميع ألعاب ديكورا العاب اونلاين فرى والصفحات القانونية لسهولة الوصول والفهرسة السريعة.";
+      } else if (selectedArticle) {
+        title = `${selectedArticle.titleAr} - مقالات وأدلة ديكورا العاب | Dkora`;
+        desc = selectedArticle.excerptAr;
+      } else if (showArticlesPage) {
+        title = "أدلة ألعاب الفيديو وأسرار الفوز - ديكورا العاب | Dkora";
+        desc = "استكشف أحدث استراتيجيات وأدلة ألعاب الفيديو الشهيرة مثل Baby Runner و Mine Keeper و Crazy Car Drive لمضاعفة نتيجتك والتغلب على منافسيك على منصة ديكورا العاب.";
       } else if (selectedGMGame) {
         const gameTitle = selectedGMGame.title;
         if (gameTitle === "Baby Runner Game") {
@@ -597,6 +653,12 @@ export default function App() {
       } else if (showSitemapModal) {
         title = "Sitemap Directory - Dkora Free Online Games | Dkora";
         desc = "Complete sitemap directory index of all games and legal pages on Dkora Free Online Games.";
+      } else if (selectedArticle) {
+        title = `${selectedArticle.titleEn} - Dkora Gaming Guides & Insights | Dkora`;
+        desc = selectedArticle.excerptEn;
+      } else if (showArticlesPage) {
+        title = "Gaming Strategy Guides & Secret Victory Tips - Dkora Games | Dkora";
+        desc = "Discover top-tier video game walkthroughs, strategy guides, and secret tips for Baby Runner, Mine Keeper, and Crazy Car Drive on Dkora Free Online Games.";
       } else if (selectedGMGame) {
         const gameTitle = selectedGMGame.title;
         if (gameTitle === "Baby Runner Game") {
@@ -929,6 +991,18 @@ export default function App() {
           {/* Quick Controls */}
           <div className="flex items-center gap-2 md:hidden">
             <button
+              onClick={() => { playUISound("click"); setShowArticlesPage(!showArticlesPage); setSelectedArticle(null); setSelectedGame(null); setSelectedGMGame(null); setActiveLegalPage(null); setShowFavoritesOnly(false); }}
+              className={`p-2 border rounded-xl text-xs font-bold shadow-md cursor-pointer ${
+                showArticlesPage
+                  ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white border-transparent"
+                  : theme === "dark" ? "bg-slate-800/80 border-slate-700 text-slate-300" : "bg-white border-slate-200 text-slate-700"
+              }`}
+              title={lang === "ar" ? "المقالات" : "Articles"}
+              aria-label={lang === "ar" ? "تصفح المقالات" : "Browse Articles"}
+            >
+              <BookOpen className="w-4 h-4" />
+            </button>
+            <button
               onClick={() => { playUISound("click"); setTheme(theme === "dark" ? "light" : "dark"); }}
               className={`p-2 border rounded-xl text-xs font-bold shadow-md cursor-pointer ${
                 theme === "dark" ? "bg-slate-800/80 border-slate-700 text-slate-300" : "bg-white border-slate-200 text-slate-700"
@@ -978,6 +1052,21 @@ export default function App() {
 
         {/* Desktop Controls */}
         <div className="hidden md:flex items-center gap-3">
+          {/* Articles Button */}
+          <button
+            onClick={() => { playUISound("click"); setShowArticlesPage(!showArticlesPage); setSelectedArticle(null); setSelectedGame(null); setSelectedGMGame(null); setActiveLegalPage(null); setShowFavoritesOnly(false); }}
+            className={`px-4 py-2.5 border rounded-xl text-sm font-black transition duration-200 cursor-pointer shadow-md flex items-center gap-2 ${
+              showArticlesPage
+                ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white border-transparent"
+                : theme === "dark"
+                  ? "bg-slate-900 hover:bg-slate-800 border-slate-800 text-slate-300 hover:text-white"
+                  : "bg-white hover:bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900"
+            }`}
+          >
+            <BookOpen className="w-4 h-4" />
+            {lang === "ar" ? "المقالات والأدلة" : "Articles & Guides"}
+          </button>
+
           {/* Theme Toggler Button */}
           <button
             onClick={() => { playUISound("click"); setTheme(theme === "dark" ? "light" : "dark"); }}
@@ -1030,9 +1119,22 @@ export default function App() {
 
       {/* Main Hero & Quick Categories Navbar */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 md:px-8 py-6 space-y-8 z-10 relative">
-        
-        {/* Playful Banner */}
-        <div className={`border rounded-3xl p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden shadow-2xl transition-all duration-300 ${
+        {selectedArticle || showArticlesPage ? (
+          <ArticlesSection
+            lang={lang}
+            theme={theme}
+            selectedArticle={selectedArticle}
+            showArticlesPage={showArticlesPage}
+            setSelectedArticle={setSelectedArticle}
+            setShowArticlesPage={setShowArticlesPage}
+            setSelectedGame={setSelectedGame}
+            setSelectedGMGame={setSelectedGMGame}
+            playUISound={playUISound}
+          />
+        ) : (
+          <>
+            {/* Playful Banner */}
+            <div className={`border rounded-3xl p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden shadow-2xl transition-all duration-300 ${
           theme === "dark"
             ? "bg-gradient-to-r from-purple-900/30 via-indigo-950/40 to-slate-900/30 border-purple-500/10"
             : "bg-gradient-to-r from-purple-500/10 via-indigo-500/5 to-pink-500/10 border-purple-200/50"
@@ -1361,6 +1463,8 @@ export default function App() {
             </div>
           </div>
         </section>
+          </>
+        )}
       </main>
 
       {/* Footer bar */}

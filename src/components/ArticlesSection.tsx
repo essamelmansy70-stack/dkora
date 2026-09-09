@@ -205,14 +205,26 @@ export default function ArticlesSection({
           </div>
 
           {/* Featured styled placeholder or banner if image is absent */}
-          <div className="w-full aspect-[2.1] rounded-3xl overflow-hidden relative shadow-xl border border-purple-500/10 bg-gradient-to-tr from-purple-900/40 via-indigo-950/20 to-slate-900/40 flex items-center justify-center p-6">
-            <div className="absolute inset-0 bg-radial-gradient(ellipse_at_center,rgba(124,58,237,0.15),transparent)" />
-            <div className="z-10 text-center space-y-3">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center mx-auto shadow-lg">
-                <BookOpen className="w-8 h-8 text-white" />
-              </div>
-              <p className="text-xs font-extrabold tracking-wider uppercase text-purple-400">{lang === "ar" ? "شبكة ديكورا التعليمية" : "Dkora Insights Network"}</p>
-            </div>
+          <div className="w-full aspect-[2.1] rounded-3xl overflow-hidden relative shadow-xl border border-purple-500/10 bg-gradient-to-tr from-purple-900/40 via-indigo-950/20 to-slate-900/40 flex items-center justify-center">
+            {selectedArticle.image ? (
+              <img
+                src={selectedArticle.image}
+                alt={title}
+                loading="lazy"
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover transform hover:scale-103 transition duration-500"
+              />
+            ) : (
+              <>
+                <div className="absolute inset-0 bg-radial-gradient(ellipse_at_center,rgba(124,58,237,0.15),transparent)" />
+                <div className="z-10 text-center space-y-3 p-6">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center mx-auto shadow-lg">
+                    <BookOpen className="w-8 h-8 text-white" />
+                  </div>
+                  <p className="text-xs font-extrabold tracking-wider uppercase text-purple-400">{lang === "ar" ? "شبكة ديكورا التعليمية" : "Dkora Insights Network"}</p>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Formatted Text Content */}
@@ -471,9 +483,21 @@ export default function ArticlesSection({
               >
                 <div className="space-y-4 p-5">
                   {/* Article Card Banner Placeholder */}
-                  <div className="w-full aspect-[1.8] rounded-2xl overflow-hidden relative border border-purple-500/5 bg-gradient-to-tr from-purple-900/20 via-indigo-950/10 to-slate-900/20 flex items-center justify-center p-4">
-                    <div className="absolute inset-0 bg-radial-gradient(ellipse_at_center,rgba(124,58,237,0.1),transparent)" />
-                    <BookOpen className="w-10 h-10 text-purple-400 opacity-60 group-hover:scale-110 group-hover:text-purple-300 transition duration-300" />
+                  <div className="w-full aspect-[1.8] rounded-2xl overflow-hidden relative border border-purple-500/5 bg-gradient-to-tr from-purple-900/20 via-indigo-950/10 to-slate-900/20 flex items-center justify-center">
+                    {article.image ? (
+                      <img
+                        src={article.image}
+                        alt={artTitle}
+                        loading="lazy"
+                        referrerPolicy="no-referrer"
+                        className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-106 transition duration-500"
+                      />
+                    ) : (
+                      <>
+                        <div className="absolute inset-0 bg-radial-gradient(ellipse_at_center,rgba(124,58,237,0.1),transparent)" />
+                        <BookOpen className="w-10 h-10 text-purple-400 opacity-60 group-hover:scale-110 group-hover:text-purple-300 transition duration-300" />
+                      </>
+                    )}
                     <div className="absolute top-3 right-3 z-10">
                       <span className="bg-black/60 backdrop-blur-md text-[9px] text-purple-400 font-black px-2.5 py-1 rounded-full uppercase tracking-wider border border-white/10">
                         {categoriesList.find(c => c.id === article.category)?.[lang === "ar" ? "nameAr" : "nameEn"]}

@@ -222,6 +222,17 @@ async function startServer() {
     }
   });
 
+  // Serve robots.txt dynamically with no-transform cache control to prevent Cloudflare from injecting content signals
+  app.get("/robots.txt", (req, res) => {
+    res.setHeader("Content-Type", "text/plain; charset=utf-8");
+    res.setHeader("Cache-Control", "private, no-transform, no-store, no-cache, must-revalidate");
+    res.setHeader("Pragma", "no-cache");
+    res.setHeader("Expires", "0");
+    
+    const robotsPath = path.join(process.cwd(), "public", "robots.txt");
+    res.sendFile(robotsPath);
+  });
+
   // Serve public static assets
   app.use(express.static(path.join(process.cwd(), "public")));
 

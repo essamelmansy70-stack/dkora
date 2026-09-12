@@ -1,5 +1,5 @@
-# User-Agent rules for dkorafx.com
-# Optimized for DkoraFX Forex Trading Desk & Live Signals 2026
+# User-Agent rules for dkora.online
+# Optimized for Dkora Games Arcade & Strategy Guides 2026
 
 User-agent: *
 Allow: /

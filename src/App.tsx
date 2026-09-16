@@ -970,7 +970,18 @@ export default function App() {
           
           {/* Logo */}
           <div 
-            onClick={() => { playUISound("click"); setActiveCategory("all"); setShowFavoritesOnly(false); }}
+            onClick={() => { 
+              playUISound("click"); 
+              setSelectedGame(null);
+              setSelectedGMGame(null);
+              setActiveLegalPage(null);
+              setShowSitemapModal(false);
+              setSelectedArticle(null);
+              setShowArticlesPage(false);
+              setActiveCategory("all"); 
+              setShowFavoritesOnly(false); 
+              setSearchQuery("");
+            }}
             className="flex items-center gap-2.5 cursor-pointer group"
           >
             <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-pink-500 flex items-center justify-center shadow-lg shadow-purple-600/30 transform group-hover:scale-105 group-hover:rotate-3 transition duration-300">

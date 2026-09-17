@@ -1269,48 +1269,45 @@ export default function App() {
                     </button>
                   </div>
                 ) : filteredGMGames.length > 0 ? (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 2xl:grid-cols-9 gap-3 md:gap-4">
                     {filteredGMGames.map((game, idx) => (
                       <div
                         key={idx}
                         onClick={() => { playUISound("click"); setSelectedGMGame(game); }}
-                        className={`group relative rounded-3xl overflow-hidden cursor-pointer border hover:border-purple-500/50 shadow-md hover:shadow-2xl flex flex-col justify-end aspect-[1.3] w-full transition-all duration-300 ${
+                        className={`group relative rounded-[20px] md:rounded-[24px] overflow-hidden cursor-pointer border hover:border-purple-500/50 shadow-md hover:shadow-2xl flex flex-col justify-end aspect-square w-full transition-all duration-300 hover:scale-[1.05] hover:-rotate-1 active:scale-[0.97] ${
                           theme === "dark" ? "bg-slate-900/40 border-slate-800" : "bg-white border-slate-200"
                         }`}
                       >
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent z-10" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent z-10" />
                         <img
                           src={game.thumb}
                           alt={game.title}
                           width="512"
                           height="384"
                           referrerPolicy="no-referrer"
-                          loading={idx < 4 ? "eager" : "lazy"}
-                          fetchPriority={idx < 4 ? "high" : "low"}
-                          className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-108 transition duration-500 ease-out z-0"
+                          loading={idx < 8 ? "eager" : "lazy"}
+                          fetchPriority={idx < 8 ? "high" : "low"}
+                          className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500 ease-out z-0"
                         />
-                        <div className="absolute top-3 left-3 z-20 flex gap-1.5 items-center">
-                          <span className="bg-black/70 backdrop-blur-md text-[9px] text-purple-400 font-black px-2 py-1 rounded-full uppercase tracking-wider border border-white/10">
+                        <div className="absolute top-2 left-2 z-20 flex gap-1.5 items-center">
+                          <span className="bg-black/75 backdrop-blur-md text-[8px] text-purple-400 font-extrabold px-1.5 py-0.5 rounded-full uppercase tracking-wider border border-white/10">
                             {game.category}
                           </span>
                         </div>
-                        <div className="p-4 z-20 space-y-1 transform group-hover:translate-y-[-2px] transition duration-300">
-                          <h3 className="text-sm md:text-base font-black text-white leading-tight line-clamp-1">
+                        <div className="p-3 z-20 space-y-0.5 bg-gradient-to-t from-black/90 via-black/50 to-transparent pt-8">
+                          <h3 className="text-xs md:text-sm font-black text-white leading-tight line-clamp-1">
                             {game.title === "Baby Runner Game"
-                              ? (lang === "ar" ? "Baby Runner Game - لعبة جري الأطفال" : "Baby Runner Game")
+                              ? (lang === "ar" ? "جري الأطفال" : "Baby Runner")
                               : game.title === "Mine Keeper" 
-                              ? (lang === "ar" ? "Mine Keeper - ماين كيبر" : "Mine Keeper")
+                              ? (lang === "ar" ? "حامي المنجم" : "Mine Keeper")
                               : game.title === "Dinosaur Dig"
-                              ? (lang === "ar" ? "Dinosaur Dig - التنقيب عن الديناصورات" : "Dinosaur Dig")
+                              ? (lang === "ar" ? "حفر الديناصور" : "Dinosaur Dig")
                               : game.title === "Crazy Car Drive Road Challenge"
-                              ? (lang === "ar" ? "Crazy Car Drive Road Challenge - تحدي قيادة السيارات" : "Crazy Car Drive Road Challenge")
+                              ? (lang === "ar" ? "سباق سيارات" : "Crazy Car Drive")
                               : game.title}
                           </h3>
-                          <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1 opacity-0 group-hover:opacity-100 transition duration-300">
-                            <span className="text-amber-400 font-bold flex items-center gap-0.5">
-                              {lang === "ar" ? "العب الآن" : "Play Now"} 
-                              <ArrowRight className="w-3 h-3" />
-                            </span>
+                          <div className="text-[10px] text-purple-400 font-bold opacity-0 group-hover:opacity-100 transition duration-300">
+                            {lang === "ar" ? "العب الآن" : "Play Now"}
                           </div>
                         </div>
                         <div className="absolute inset-0 bg-purple-600/10 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none" />
@@ -1354,18 +1351,18 @@ export default function App() {
                   </span>
                 </div>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 2xl:grid-cols-9 gap-3 md:gap-4">
                   {filteredGames.map((game) => {
                     const isFav = favorites.includes(game.id);
                     return (
                       <div
                         key={game.id}
                         onClick={() => { playUISound("click"); setSelectedGame(game); }}
-                        className={`group relative rounded-3xl overflow-hidden cursor-pointer border hover:border-purple-500/50 shadow-md hover:shadow-2xl flex flex-col justify-end aspect-[1.3] w-full transition-all duration-300 ${
+                        className={`group relative rounded-[20px] md:rounded-[24px] overflow-hidden cursor-pointer border hover:border-purple-500/50 shadow-md hover:shadow-2xl flex flex-col justify-end aspect-square w-full transition-all duration-300 hover:scale-[1.05] hover:-rotate-1 active:scale-[0.97] ${
                           theme === "dark" ? "bg-slate-900/40 border-slate-800" : "bg-white border-slate-200"
                         }`}
                       >
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent z-10" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent z-10" />
                         <img
                           src={lang === "ar" ? (game.imageAr || game.image) : (game.imageEn || game.image)}
                           alt={lang === "ar" ? game.titleAr : game.titleEn}
@@ -1373,43 +1370,36 @@ export default function App() {
                           height="384"
                           referrerPolicy="no-referrer"
                           loading="lazy"
-                          className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-108 transition duration-500 ease-out z-0"
+                          className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500 ease-out z-0"
                         />
-                        <div className="absolute top-3 left-3 z-20 flex gap-1.5 items-center">
-                          <span className="flex items-center gap-1 bg-black/70 backdrop-blur-md text-[10px] text-amber-400 font-extrabold px-2 py-1 rounded-full border border-white/10">
-                            <Star className="w-3 h-3 fill-current text-amber-400" />
+                        <div className="absolute top-2 left-2 z-20 flex gap-1 items-center">
+                          <span className="flex items-center gap-0.5 bg-black/75 backdrop-blur-md text-[9px] text-amber-400 font-extrabold px-1.5 py-0.5 rounded-full border border-white/10">
+                            <Star className="w-2.5 h-2.5 fill-current text-amber-400" />
                             <span>{game.rating}</span>
                           </span>
                           {game.isNative && (
-                            <span className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-[9px] font-black px-2 py-1 rounded-full uppercase tracking-wider shadow">
+                            <span className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-[8px] font-black px-1.5 py-0.5 rounded-full uppercase tracking-wider shadow">
                               {lang === "ar" ? "مدمجة" : "NATIVE"}
                             </span>
                           )}
                         </div>
                         <button
                           onClick={(e) => toggleFavorite(game.id, e)}
-                          className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-slate-300 hover:text-pink-500 active:scale-90 transition duration-150 cursor-pointer"
+                          className="absolute top-2 right-2 z-20 w-7 h-7 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-slate-300 hover:text-pink-500 active:scale-90 transition duration-150 cursor-pointer"
                           aria-label={isFav ? (lang === "ar" ? "إزالة من المفضلة" : "Remove from favorites") : (lang === "ar" ? "أضف للمفضلة" : "Add to favorites")}
                           title={isFav ? (lang === "ar" ? "إزالة من المفضلة" : "Remove from favorites") : (lang === "ar" ? "أضف للمفضلة" : "Add to favorites")}
                         >
-                          <Heart className={`w-4 h-4 ${isFav ? "fill-current text-pink-500" : ""}`} />
+                          <Heart className={`w-3.5 h-3.5 ${isFav ? "fill-current text-pink-500" : ""}`} />
                         </button>
-                        <div className="p-4 z-20 space-y-1 transform group-hover:translate-y-[-2px] transition duration-300">
-                          <span className="text-[10px] font-extrabold text-purple-400 uppercase tracking-wider block">
+                        <div className="p-3 z-20 space-y-0.5 bg-gradient-to-t from-black/90 via-black/50 to-transparent pt-8">
+                          <span className="text-[9px] font-extrabold text-purple-400 uppercase tracking-wider block">
                             {lang === "ar" ? game.categoryAr : game.categoryEn}
                           </span>
-                          <h3 className="text-sm md:text-base font-black text-white leading-tight line-clamp-1">
+                          <h3 className="text-xs md:text-sm font-black text-white leading-tight line-clamp-1">
                             {lang === "ar" ? game.titleAr : game.titleEn}
                           </h3>
-                          <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1 opacity-0 group-hover:opacity-100 transition duration-300">
-                            <span className="flex items-center gap-1">
-                              <Flame className="w-3 h-3 text-orange-500 fill-current" />
-                              <span>{game.plays} {lang === "ar" ? "لاعب" : "plays"}</span>
-                            </span>
-                            <span className="text-amber-400 font-bold flex items-center gap-0.5">
-                              {lang === "ar" ? "العب الآن" : "Play Now"} 
-                              <ArrowRight className="w-3 h-3" />
-                            </span>
+                          <div className="text-[10px] text-amber-400 font-bold opacity-0 group-hover:opacity-100 transition duration-300">
+                            {lang === "ar" ? "العب الآن" : "Play Now"}
                           </div>
                         </div>
                         <div className="absolute inset-0 bg-purple-600/10 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none" />

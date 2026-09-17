@@ -1144,37 +1144,7 @@ export default function App() {
           />
         ) : (
           <>
-            {/* Playful Banner */}
-            <div className={`border rounded-3xl p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden shadow-2xl transition-all duration-300 ${
-          theme === "dark"
-            ? "bg-gradient-to-r from-purple-900/30 via-indigo-950/40 to-slate-900/30 border-purple-500/10"
-            : "bg-gradient-to-r from-purple-500/10 via-indigo-500/5 to-pink-500/10 border-purple-200/50"
-        }`}>
-          <div className="space-y-3 w-full text-center md:text-left rtl:md:text-right">
-            <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-bold uppercase tracking-wider mb-1 ${
-              theme === "dark"
-                ? "bg-amber-500/10 border-amber-500/20 text-amber-400"
-                : "bg-amber-500/15 border-amber-500/30 text-amber-700"
-            }`}>
-              <Sparkles className="w-3.5 h-3.5 fill-current animate-pulse" />
-              <span>{lang === "ar" ? "ألعاب متصفح ممتعة 100%" : "100% Fun Web Games"}</span>
-            </div>
-            <h2 className={`text-2xl md:text-4xl font-black leading-tight transition-colors duration-300 ${
-              theme === "dark" ? "text-white" : "text-slate-900"
-            }`}>
-              {lang === "ar" ? "عالم كامل من الألعاب بنقرة واحدة!" : "Your Ultimate Playground is One Click Away!"}
-            </h2>
-            <p className={`text-sm leading-relaxed transition-colors duration-300 ${
-              theme === "dark" ? "text-slate-400" : "text-slate-600"
-            }`}>
-              {lang === "ar" 
-                ? "العب أفضل العاب اونلاين فري، ألعاب المتصفح والأركيد مجاناً دون أي نوافذ منبثقة أو حاجة للتحميل، مع ألعاب حصرية مدمجة خصيصاً لك."
-                : "Explore highly optimized HTML5 arcade and puzzle games directly on your device. Zero installs, instant load times, unlimited fun."}
-            </p>
-          </div>
-        </div>
-
-        {/* Categories Bar */}
+            {/* Categories Bar */}
         <div className={`flex flex-wrap items-center justify-between gap-4 py-2 border-b transition-colors duration-300 ${
           theme === "dark" ? "border-slate-800" : "border-slate-200"
         }`}>

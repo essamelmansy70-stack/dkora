@@ -246,9 +246,27 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
-    // Production serving of static compiled build
+    // Production serving of static compiled build with optimal caching strategy
     const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
+    
+    // Serve hashed assets inside dist/assets with 1 year cache and immutable flag
+    app.use("/assets", express.static(path.join(distPath, "assets"), {
+      maxAge: "1y",
+      immutable: true,
+      fallthrough: false
+    }));
+
+    // Serve other static files (like favicon, icons, root public files) with short caching
+    app.use(express.static(distPath, {
+      maxAge: "1d",
+      setHeaders: (res, filePath) => {
+        if (filePath.endsWith(".html")) {
+          // Never cache HTML so updates are immediate
+          res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        }
+      }
+    }));
+
     app.get("*", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
     });

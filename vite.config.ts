@@ -12,8 +12,8 @@ export default defineConfig(() => {
       },
     },
     build: {
-      cssCodeSplit: true,
-      chunkSizeWarningLimit: 1200,
+      cssCodeSplit: false,
+      chunkSizeWarningLimit: 1500,
       rollupOptions: {
         treeshake: {
           moduleSideEffects: 'no-external',
@@ -22,24 +22,12 @@ export default defineConfig(() => {
         },
         output: {
           manualChunks(id) {
-            // Split third-party vendor dependencies to reduce initial JS payload
             if (id.includes('node_modules')) {
-              if (id.includes('react') || id.includes('react-dom') || id.includes('scheduler')) {
-                return 'vendor-core';
-              }
-              if (id.includes('lucide-react')) {
-                return 'vendor-icons';
-              }
-              if (id.includes('motion')) {
-                return 'vendor-motion';
-              }
+              // Only separate the ultra-heavy three.js package since it's lazy-loaded inside 3D brick breaker
               if (id.includes('three')) {
                 return 'vendor-three';
               }
-              if (id.includes('cropperjs') || id.includes('html2canvas')) {
-                return 'vendor-tools';
-              }
-              return 'vendor-utils';
+              return 'vendor';
             }
           }
         }

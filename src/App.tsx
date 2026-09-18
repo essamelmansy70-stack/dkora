@@ -77,7 +77,7 @@ export default function App() {
   const [showSitemapModal, setShowSitemapModal] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState<NewsArticle | null>(null);
   const [showArticlesPage, setShowArticlesPage] = useState(false);
-  const [visibleGMCount, setVisibleGMCount] = useState(24);
+  const [visibleGMCount, setVisibleGMCount] = useState(12);
   
   const [favorites, setFavorites] = useState<string[]>(() => {
     try {
@@ -1393,6 +1393,7 @@ export default function App() {
                             referrerPolicy="no-referrer"
                             loading={idx < 8 ? "eager" : "lazy"}
                             fetchPriority={idx < 8 ? "high" : "low"}
+                            decoding="async"
                             className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500 ease-out z-0"
                           />
                           <div className="absolute top-2 left-2 z-20 flex gap-1.5 items-center">
@@ -1492,6 +1493,7 @@ export default function App() {
                           height="384"
                           referrerPolicy="no-referrer"
                           loading="lazy"
+                          decoding="async"
                           className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500 ease-out z-0"
                         />
                         <div className="absolute top-2 left-2 z-20 flex gap-1 items-center">

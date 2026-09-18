@@ -29,7 +29,7 @@ import { GIRLS_GAMES } from "./data/girlsGames";
 import { NEW_GAMES } from "./data/newGames";
 import { NewsArticle, initialNewsArticles } from "./data/newsAndCalendar";
 import { Game, GameMonetizeGame } from "./types";
-import ArticlesSection from "./components/ArticlesSection";
+const ArticlesSection = React.lazy(() => import("./components/ArticlesSection"));
 const NativeSnake = React.lazy(() => import("./components/NativeSnake"));
 const NativeBrickBreaker = React.lazy(() => import("./components/NativeBrickBreaker"));
 const NativePacman = React.lazy(() => import("./components/NativePacman"));
@@ -77,6 +77,7 @@ export default function App() {
   const [showSitemapModal, setShowSitemapModal] = useState(false);
   const [selectedArticle, setSelectedArticle] = useState<NewsArticle | null>(null);
   const [showArticlesPage, setShowArticlesPage] = useState(false);
+  const [visibleGMCount, setVisibleGMCount] = useState(24);
   
   const [favorites, setFavorites] = useState<string[]>(() => {
     try {
@@ -363,6 +364,11 @@ export default function App() {
     fetchGMGames();
   }, [autoSelectGMIndex]);
 
+  // Reset visible games count on filter change to keep initial DOM size lightweight
+  useEffect(() => {
+    setVisibleGMCount(24);
+  }, [activeCategory, searchQuery]);
+
   // Handle auto-selecting deep-linked GameMonetize game when the feed finishes loading
   useEffect(() => {
     if (autoSelectGMIndex !== null && gamemonetizeGames.length > 0) {
@@ -582,146 +588,208 @@ export default function App() {
     updatePath(lang, selectedGame, selectedGMGame, activeTab, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal, showArticlesPage, selectedArticle);
   }, [lang, selectedGame, selectedGMGame, activeTab, activeLegalPage, activeCategory, showFavoritesOnly, showSitemapModal, showArticlesPage, selectedArticle]);
 
-  // Dynamically update document title and description meta tags for maximum SEO visibility
+  // Dynamically update document title, description, keywords, canonical URLs and OG/Twitter cards for maximum indexing visibility
   useEffect(() => {
     let title = "";
     let desc = "";
+    let keywords = "العاب مجانية, العاب اون لاين, العاب سيارات, العاب بنات, العاب اكشن, play online games, free games";
+    let imageUrl = "https://dkora.online/assets/icon.png";
+    const canonicalUrl = window.location.href;
 
     if (lang === "ar") {
       if (activeLegalPage === "privacy") {
         title = "سياسة الخصوصية وسرية البيانات - ديكورا العاب اونلاين فرى | Dkora";
         desc = "سياسة الخصوصية وسرية البيانات لمنصة ديكورا العاب اونلاين فرى. نلتزم بحماية خصوصيتك وضمان لعب آمن لجميع اللاعبين.";
+        keywords = "سياسة الخصوصية, سرية البيانات, لعب آمن, قوانين ديكورا العاب";
       } else if (activeLegalPage === "terms") {
         title = "شروط واتفاقية الاستخدام - ديكورا العاب اونلاين فرى | Dkora";
         desc = "شروط واتفاقية الاستخدام للعب النظيف على منصة ديكورا العاب اونلاين فرى.";
+        keywords = "شروط الاستخدام, اتفاقية اللعب, قوانين الألعاب, ديكورا العاب";
       } else if (activeLegalPage === "disclaimer") {
         title = "إخلاء المسؤولية وحقوق الملكية - ديكورا العاب اونلاين فرى | Dkora";
         desc = "بيان إخلاء المسؤولية وحماية حقوق الملكية الفكرية لمنصة ديكورا العاب اونلاين فرى.";
+        keywords = "إخلاء المسؤولية, حقوق الملكية الفكرية, قانونية الألعاب, Dkora disclaimer";
       } else if (showSitemapModal) {
         title = "خريطة الموقع والألعاب - ديكورا العاب اونلاين فرى | Dkora";
         desc = "خريطة الموقع لجميع ألعاب ديكورا العاب اونلاين فرى والصفحات القانونية لسهولة الوصول والفهرسة السريعة.";
+        keywords = "خريطة الموقع, sitemap, فروع الألعاب, دليل الصفحات, ديكورا";
       } else if (selectedArticle) {
         title = `${selectedArticle.titleAr} - مقالات وأدلة ديكورا العاب | Dkora`;
         desc = selectedArticle.excerptAr;
+        keywords = `${selectedArticle.titleAr.replace(/[\s\-\|:]+/g, ", ")}, مقالات العاب, سيو العاب, دليل الربح`;
+        if (selectedArticle.image) imageUrl = selectedArticle.image;
       } else if (showArticlesPage) {
         title = "أدلة ألعاب الفيديو وأسرار الفوز - ديكورا العاب | Dkora";
         desc = "استكشف أحدث استراتيجيات وأدلة ألعاب الفيديو الشهيرة مثل Baby Runner و Mine Keeper و Crazy Car Drive لمضاعفة نتيجتك والتغلب على منافسيك على منصة ديكورا العاب.";
+        keywords = "أدلة ألعاب الفيديو, أسرار الفوز, شروحات ألعاب, استراتيجيات اللعب";
       } else if (selectedGMGame) {
         const gameTitle = selectedGMGame.title;
+        if (selectedGMGame.thumb) imageUrl = selectedGMGame.thumb;
         if (gameTitle === "Baby Runner Game") {
           title = "لعبة Baby Runner Game | العب baby runner game online مجاناً";
-          desc = "العب لعبة Baby Runner Game المثيرة أونلاين مجاناً! ساعد الطفل الصغير اللطيف على الجري، وتفادي العقبات الصعبة، وجمع الهدايا والعملات في لعبة baby runner game online بدون تحميل وبأعلى سرعة.";
+          desc = "العب لعبة Baby Runner Game المثيرة أونلاين مجاناً! ساعد الطفل الصغير اللطيف على الجري, وتفادي العقبات الصعبة, وجمع الهدايا والعملات في لعبة baby runner game online بدون تحميل وبأعلى سرعة.";
+          keywords = "Baby Runner Game, لعبة بيبي رانر, العاب اطفال, العاب جري, baby runner online";
         } else if (gameTitle === "Crazy Car Drive Road Challenge") {
           title = "لعبة Crazy Car Drive Road Challenge | العب crazy car drive game أونلاين";
-          desc = "تحدَّ مهاراتك في لعبة Crazy Car Drive Road Challenge المثيرة! قد سيارتك بسرعة وتجنب العقبات على الطريق in أقوى crazy car drive game أونلاين مجاناً وبدون تحميل.";
+          desc = "تحدَّ مهاراتك في لعبة Crazy Car Drive Road Challenge المثيرة! قد سيارتك بسرعة وتجنب العقبات على الطريق في أقوى crazy car drive game أونلاين مجاناً وبدون تحميل.";
+          keywords = "Crazy Car Drive, لعبة سيارات مجنونة, سباق سيارات اون لاين, رسم طريق السيارة, crazy car drive";
         } else if (gameTitle === "Dinosaur Dig") {
           title = "لعبة Dinosaur Dig | العب dinosaur dig game online مجاناً أونلاين";
           desc = "اكتشف أسرار العصور القديمة مع لعبة Dinosaur Dig المثيرة! ابحث عن الحفريات العتيقة ونظف العظام لتركيب هياكل الديناصورات في أقوى dinosaur dig game online مجاناً وبدون تحميل.";
+          keywords = "Dinosaur Dig, حفر الديناصورات, العاب تنقيب, العاب تاريخية, dinosaur online";
         } else if (gameTitle === "Mine Keeper") {
           title = "لعبة Mine Keeper | العب mine keeper crazy games أونلاين مجاناً";
-          desc = "العب لعبة Mine Keeper أونلاين مجاناً! ابنِ مملكتك الخاصة، واحمِ شعبك من الوحوش، واحفر المناجم العميقة لجمع الأحجار الكريمة مع أقوى لعبة mine keeper crazy games بدون تحميل.";
+          desc = "العب لعبة Mine Keeper أونلاين مجاناً! ابنِ مملكتك الخاصة, واحمِ شعبك من الوحوش, واحفر المناجم العميقة لجمع الأحجار الكريمة مع أقوى لعبة mine keeper crazy games بدون تحميل.";
+          keywords = "Mine Keeper, حامي المناجم, العاب بناء واستراتيجية, العاب كريزي جيمز, mine keeper";
         } else {
           title = `العب لعبة ${gameTitle} اون لاين - ديكورا العاب اونلاين فرى | Dkora`;
           desc = selectedGMGame.description || `العب لعبة ${gameTitle} مجاناً وبدون تحميل على منصة ديكورا العاب اونلاين فرى - ألعاب متصفح سريعة وممتعة بالكامل.`;
+          keywords = `${gameTitle}, العاب متصفح مجانية, العاب ${selectedGMGame.category || "أركيد"}, العاب ${gameTitle}`;
         }
       } else if (selectedGame) {
         const gameTitle = selectedGame.titleAr;
+        if (selectedGame.thumb) imageUrl = selectedGame.thumb;
         title = `العب لعبة ${gameTitle} اون لاين - ديكورا العاب اونلاين فرى | Dkora`;
         desc = `العب لعبة ${gameTitle} مجاناً وبدون تحميل على منصة ديكورا العاب اونلاين فرى - ألعاب متصفح سريعة وممتعة بالكامل.`;
+        keywords = `${gameTitle}, العاب خفيفة, العاب متصفح, العاب ذكاء, العاب ${selectedGame.category}`;
       } else if (showFavoritesOnly) {
         title = "ألعابي المفضلة - ديكورا العاب اونلاين فرى | Dkora";
         desc = "استعرض قائمة ألعابك المفضلة التي قمت بحفظها للوصول إليها بسرعة وبدون تحميل على ديكورا العاب اونلاين فرى.";
+        keywords = "الألعاب المفضلة, ألعابي الخاصة, حفظ الألعاب, العاب سريعة";
       } else if (activeCategory !== "all") {
         const catObj = CATEGORIES.find(c => c.id === activeCategory);
         const catName = catObj ? catObj.nameAr : "";
         title = `العاب ${catName} مجانية - ديكورا العاب اونلاين فرى | Dkora`;
         desc = `استمتع بأفضل العاب ${catName} اونلاين فري ومجانية بالكامل مباشرة على ديكورا العاب اونلاين فرى بدون تحميل.`;
+        keywords = `العاب ${catName}, تصنيف العاب ${catName}, العاب متصفح ${catName}, العاب فري`;
       } else {
         title = "لعبة Crazy Car Drive Road Challenge | العب crazy car drive game أونلاين";
         desc = "تحدَّ مهاراتك في لعبة Crazy Car Drive Road Challenge المثيرة! قد سيارتك بسرعة وتجنب العقبات على الطريق في أقوى crazy car drive game أونلاين مجاناً وبدون تحميل على ديكورا العاب اونلاين فرى.";
+        keywords = "العاب فري, العاب اون لاين مجانا, العاب متصفح سريعة, العاب جوال وبث مباشر";
       }
     } else {
       if (activeLegalPage === "privacy") {
         title = "Privacy Policy - Dkora Free Online Games | Dkora";
         desc = "Privacy and Safe Gameplay Policy for Dkora Free Online Games.";
+        keywords = "privacy policy, safe gameplay, user data protection, Dkora rules";
       } else if (activeLegalPage === "terms") {
         title = "Terms of Use - Dkora Free Online Games | Dkora";
         desc = "Terms of use and fair gameplay agreement for Dkora Free Online Games.";
+        keywords = "terms of use, terms of service, gameplay rules, Dkora conditions";
       } else if (activeLegalPage === "disclaimer") {
         title = "Disclaimer - Dkora Free Online Games | Dkora";
         desc = "Copyright and general disclaimer details for Dkora Free Online Games.";
+        keywords = "disclaimer, copyright notice, legal disclaimer, Dkora copyright";
       } else if (showSitemapModal) {
         title = "Sitemap Directory - Dkora Free Online Games | Dkora";
         desc = "Complete sitemap directory index of all games and legal pages on Dkora Free Online Games.";
+        keywords = "sitemap directory, index of games, fast access pages, sitemap xml";
       } else if (selectedArticle) {
         title = `${selectedArticle.titleEn} - Dkora Gaming Guides & Insights | Dkora`;
         desc = selectedArticle.excerptEn;
+        keywords = `${selectedArticle.titleEn.replace(/[\s\-\|:]+/g, ", ")}, gaming strategy, rewards guide, earn play points free`;
+        if (selectedArticle.image) imageUrl = selectedArticle.image;
       } else if (showArticlesPage) {
         title = "Gaming Strategy Guides & Secret Victory Tips - Dkora Games | Dkora";
         desc = "Discover top-tier video game walkthroughs, strategy guides, and secret tips for Baby Runner, Mine Keeper, and Crazy Car Drive on Dkora Free Online Games.";
+        keywords = "gaming walkthroughs, strategy guides, secret cheats, victory tips, game guides";
       } else if (selectedGMGame) {
         const gameTitle = selectedGMGame.title;
+        if (selectedGMGame.thumb) imageUrl = selectedGMGame.thumb;
         if (gameTitle === "Baby Runner Game") {
           title = "Baby Runner Game | Play baby runner game online for Free";
           desc = "Help the cute little baby run, dash, and dodge challenging obstacles in Baby Runner Game! Collect amazing rewards, coins, and reach the high score in the best baby runner game online with no downloads.";
+          keywords = "Baby Runner, Baby Runner online, runner games, free baby runner";
         } else if (gameTitle === "Crazy Car Drive Road Challenge") {
           title = "Crazy Car Drive Road Challenge | Play crazy car drive game online";
           desc = "Challenge your skills in the exciting Crazy Car Drive Road Challenge game! Drive your car fast and avoid road obstacles in the ultimate crazy car drive game online for free.";
+          keywords = "Crazy Car Drive, road drawing game, kids racing game, draw road game, crazy car online";
         } else if (gameTitle === "Dinosaur Dig") {
           title = "Dinosaur Dig | Play dinosaur dig game online for Free";
           desc = "Embark on an archaeological expedition in the amazing Dinosaur Dig game! Hunt for ancient fossils and assemble skeleton blocks in the best dinosaur dig game online for free with no downloads.";
+          keywords = "Dinosaur Dig, fossil hunting, kids history game, assemble skeleton, dinosaur online";
         } else if (gameTitle === "Mine Keeper") {
           title = "Mine Keeper | Play mine keeper crazy games Online for Free";
           desc = "Play Mine Keeper online for free! Build your dwarf kingdom, collect valuable gems, and defend your territory in the ultimate mine keeper crazy games with no downloads.";
+          keywords = "Mine Keeper, dwarf strategy game, build mining kingdom, mine keeper online";
         } else {
           title = `Play ${gameTitle} Online - Dkora Free Online Games | Dkora`;
           desc = selectedGMGame.description || `Play ${gameTitle} online for free with no downloads on Dkora - The premier destination for free online games.`;
+          keywords = `${gameTitle}, browser games, free ${selectedGMGame.category || "arcade"} games, Dkora online`;
         }
       } else if (selectedGame) {
         const gameTitle = selectedGame.titleEn;
+        if (selectedGame.thumb) imageUrl = selectedGame.thumb;
         title = `Play ${gameTitle} Online - Dkora Free Online Games | Dkora`;
         desc = `Play ${gameTitle} online for free with no downloads on Dkora - The premier destination for free online games.`;
+        keywords = `${gameTitle}, puzzle games, HTML5 custom games, play free games, Dkora ${selectedGame.category}`;
       } else if (showFavoritesOnly) {
         title = "My Favorite Games - Dkora Free Online Games | Dkora";
         desc = "View and play your saved favorite arcade and puzzle games on Dkora.";
+        keywords = "favorites, saved games, my arcade list, personalized console";
       } else if (activeCategory !== "all") {
         const catObj = CATEGORIES.find(c => c.id === activeCategory);
         const catName = catObj ? catObj.nameEn : "";
         title = `${catName} Games - Dkora Free Online Games | Dkora`;
         desc = `Play the best free online ${catName} games with zero downloads or popups on Dkora Free Online Games.`;
+        keywords = `free ${catName} games, play ${catName} online, no download ${catName}`;
       } else {
         title = "Crazy Car Drive Road Challenge | Play crazy car drive game online";
         desc = "Challenge your skills in the exciting Crazy Car Drive Road Challenge game! Drive your car fast and avoid road obstacles in the ultimate crazy car drive game online for free on Dkora.";
+        keywords = "free arcade, puzzle games online, lightweight mobile browser games, instant play games";
       }
     }
 
     // Set page title
     document.title = title;
 
-    // Dynamically update description meta tags
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute("content", desc);
-    }
-    const ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) {
-      ogDesc.setAttribute("content", desc);
-    }
-    const twitterDesc = document.querySelector('meta[property="twitter:description"]');
-    if (twitterDesc) {
-      twitterDesc.setAttribute("content", desc);
-    }
-    
-    // Dynamically update og/twitter titles too
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) {
-      ogTitle.setAttribute("content", title);
-    }
-    const twitterTitle = document.querySelector('meta[property="twitter:title"]');
-    if (twitterTitle) {
-      twitterTitle.setAttribute("content", title);
-    }
-  }, [lang, selectedGame, selectedGMGame, activeLegalPage, showSitemapModal, showFavoritesOnly, activeCategory]);
+    // Helper function to update/inject metatags cleanly
+    const setMetaTag = (attribute: string, attrValue: string, content: string) => {
+      let meta = document.querySelector(`meta[${attribute}="${attrValue}"]`);
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute(attribute, attrValue);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute("content", content);
+    };
+
+    // Helper to update/inject canonical tag cleanly
+    const setCanonicalLink = (href: string) => {
+      let link = document.querySelector('link[rel="canonical"]');
+      if (!link) {
+        link = document.createElement("link");
+        link.setAttribute("rel", "canonical");
+        document.head.appendChild(link);
+      }
+      link.setAttribute("href", href);
+    };
+
+    // Injects descriptions
+    setMetaTag("name", "description", desc);
+    setMetaTag("property", "og:description", desc);
+    setMetaTag("property", "twitter:description", desc);
+
+    // Injects titles
+    setMetaTag("property", "og:title", title);
+    setMetaTag("property", "twitter:title", title);
+
+    // Injects keywords dynamically
+    setMetaTag("name", "keywords", keywords);
+
+    // Injects image URLs
+    setMetaTag("property", "og:image", imageUrl);
+    setMetaTag("property", "twitter:image", imageUrl);
+
+    // Injects canonicals and URLs
+    setMetaTag("property", "og:url", canonicalUrl);
+    setCanonicalLink(canonicalUrl);
+
+    // Injects OpenGraph/Twitter defaults
+    setMetaTag("property", "og:type", "website");
+    setMetaTag("property", "twitter:card", "summary_large_image");
+
+  }, [lang, selectedGame, selectedGMGame, selectedArticle, showArticlesPage, activeLegalPage, showSitemapModal, showFavoritesOnly, activeCategory]);
 
   // Synchronize theme with local storage
   useEffect(() => {
@@ -1189,17 +1257,26 @@ export default function App() {
         </div>
 
         {selectedArticle || showArticlesPage ? (
-          <ArticlesSection
-            lang={lang}
-            theme={theme}
-            selectedArticle={selectedArticle}
-            showArticlesPage={showArticlesPage}
-            setSelectedArticle={setSelectedArticle}
-            setShowArticlesPage={setShowArticlesPage}
-            setSelectedGame={setSelectedGame}
-            setSelectedGMGame={setSelectedGMGame}
-            playUISound={playUISound}
-          />
+          <React.Suspense fallback={
+            <div className="flex flex-col items-center justify-center py-20 space-y-4">
+              <div className="w-10 h-10 rounded-full border-4 border-purple-500 border-t-transparent animate-spin"></div>
+              <p className="text-sm font-black text-purple-400">
+                {lang === "ar" ? "جاري تحميل المقالات..." : "Loading articles..."}
+              </p>
+            </div>
+          }>
+            <ArticlesSection
+              lang={lang}
+              theme={theme}
+              selectedArticle={selectedArticle}
+              showArticlesPage={showArticlesPage}
+              setSelectedArticle={setSelectedArticle}
+              setShowArticlesPage={setShowArticlesPage}
+              setSelectedGame={setSelectedGame}
+              setSelectedGMGame={setSelectedGMGame}
+              playUISound={playUISound}
+            />
+          </React.Suspense>
         ) : (
           <>
             {/* Categories Bar */}
@@ -1297,50 +1374,67 @@ export default function App() {
                     </button>
                   </div>
                 ) : filteredGMGames.length > 0 ? (
-                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 2xl:grid-cols-9 gap-3 md:gap-4">
-                    {filteredGMGames.map((game, idx) => (
-                      <div
-                        key={idx}
-                        onClick={() => { playUISound("click"); setSelectedGMGame(game); }}
-                        className={`group relative rounded-[20px] md:rounded-[24px] overflow-hidden cursor-pointer border hover:border-purple-500/50 shadow-md hover:shadow-2xl flex flex-col justify-end aspect-square w-full transition-all duration-300 hover:scale-[1.05] hover:-rotate-1 active:scale-[0.97] ${
-                          theme === "dark" ? "bg-slate-900/40 border-slate-800" : "bg-white border-slate-200"
-                        }`}
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent z-10" />
-                        <img
-                          src={game.thumb}
-                          alt={game.title}
-                          width="512"
-                          height="384"
-                          referrerPolicy="no-referrer"
-                          loading={idx < 8 ? "eager" : "lazy"}
-                          fetchPriority={idx < 8 ? "high" : "low"}
-                          className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500 ease-out z-0"
-                        />
-                        <div className="absolute top-2 left-2 z-20 flex gap-1.5 items-center">
-                          <span className="bg-black/75 backdrop-blur-md text-[8px] text-purple-400 font-extrabold px-1.5 py-0.5 rounded-full uppercase tracking-wider border border-white/10">
-                            {game.category}
-                          </span>
-                        </div>
-                        <div className="p-3 z-20 space-y-0.5 bg-gradient-to-t from-black/90 via-black/50 to-transparent pt-8">
-                          <h3 className="text-xs md:text-sm font-black text-white leading-tight line-clamp-1">
-                            {game.title === "Baby Runner Game"
-                              ? (lang === "ar" ? "جري الأطفال" : "Baby Runner")
-                              : game.title === "Mine Keeper" 
-                              ? (lang === "ar" ? "حامي المنجم" : "Mine Keeper")
-                              : game.title === "Dinosaur Dig"
-                              ? (lang === "ar" ? "حفر الديناصور" : "Dinosaur Dig")
-                              : game.title === "Crazy Car Drive Road Challenge"
-                              ? (lang === "ar" ? "سباق سيارات" : "Crazy Car Drive")
-                              : game.title}
-                          </h3>
-                          <div className="text-[10px] text-purple-400 font-bold opacity-0 group-hover:opacity-100 transition duration-300">
-                            {lang === "ar" ? "العب الآن" : "Play Now"}
+                  <div className="space-y-8">
+                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 2xl:grid-cols-9 gap-3 md:gap-4">
+                      {filteredGMGames.slice(0, visibleGMCount).map((game, idx) => (
+                        <div
+                          key={idx}
+                          onClick={() => { playUISound("click"); setSelectedGMGame(game); }}
+                          className={`group relative rounded-[20px] md:rounded-[24px] overflow-hidden cursor-pointer border hover:border-purple-500/50 shadow-md hover:shadow-2xl flex flex-col justify-end aspect-square w-full transition-all duration-300 hover:scale-[1.05] hover:-rotate-1 active:scale-[0.97] ${
+                            theme === "dark" ? "bg-slate-900/40 border-slate-800" : "bg-white border-slate-200"
+                          }`}
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent z-10" />
+                          <img
+                            src={game.thumb}
+                            alt={game.title}
+                            width="512"
+                            height="384"
+                            referrerPolicy="no-referrer"
+                            loading={idx < 8 ? "eager" : "lazy"}
+                            fetchPriority={idx < 8 ? "high" : "low"}
+                            className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-500 ease-out z-0"
+                          />
+                          <div className="absolute top-2 left-2 z-20 flex gap-1.5 items-center">
+                            <span className="bg-black/75 backdrop-blur-md text-[8px] text-purple-400 font-extrabold px-1.5 py-0.5 rounded-full uppercase tracking-wider border border-white/10">
+                              {game.category}
+                            </span>
                           </div>
+                          <div className="p-3 z-20 space-y-0.5 bg-gradient-to-t from-black/90 via-black/50 to-transparent pt-8">
+                            <h3 className="text-xs md:text-sm font-black text-white leading-tight line-clamp-1">
+                              {game.title === "Baby Runner Game"
+                                ? (lang === "ar" ? "جري الأطفال" : "Baby Runner")
+                                : game.title === "Mine Keeper" 
+                                ? (lang === "ar" ? "حامي المنجم" : "Mine Keeper")
+                                : game.title === "Dinosaur Dig"
+                                ? (lang === "ar" ? "حفر الديناصور" : "Dinosaur Dig")
+                                : game.title === "Crazy Car Drive Road Challenge"
+                                ? (lang === "ar" ? "سباق سيارات" : "Crazy Car Drive")
+                                : game.title}
+                            </h3>
+                            <div className="text-[10px] text-purple-400 font-bold opacity-0 group-hover:opacity-100 transition duration-300">
+                              {lang === "ar" ? "العب الآن" : "Play Now"}
+                            </div>
+                          </div>
+                          <div className="absolute inset-0 bg-purple-600/10 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none" />
                         </div>
-                        <div className="absolute inset-0 bg-purple-600/10 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none" />
+                      ))}
+                    </div>
+                    
+                    {filteredGMGames.length > visibleGMCount && (
+                      <div className="flex justify-center pt-2">
+                        <button
+                          onClick={() => {
+                            playUISound("click");
+                            setVisibleGMCount(prev => prev + 24);
+                          }}
+                          className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-black px-8 py-3.5 rounded-2xl text-xs md:text-sm transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg shadow-purple-600/25 cursor-pointer flex items-center gap-2"
+                        >
+                          <span>{lang === "ar" ? "عرض المزيد من الألعاب الحية" : "Load More Live Games"}</span>
+                          <Sparkles className="w-4 h-4 text-amber-400" />
+                        </button>
                       </div>
-                    ))}
+                    )}
                   </div>
                 ) : (
                   <div className={`text-center py-12 rounded-3xl border space-y-3 max-w-md mx-auto transition-all duration-300 ${

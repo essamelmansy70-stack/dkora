@@ -1130,21 +1130,21 @@ export default function App() {
 
       {/* Main Hero & Quick Categories Navbar */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 md:px-8 py-6 space-y-8 z-10 relative">
-        {/* Freecash Promotional Affiliate Banner - Sleek Horizontal Rectangle */}
+        {/* RewardJoy Promotional Affiliate Banner - Sleek Horizontal Rectangle */}
         <div className={`rounded-2xl py-3 px-5 md:py-3.5 md:px-6 border relative overflow-hidden shadow-md transition-all duration-300 ${
           theme === "dark"
-            ? "bg-slate-900/80 border-emerald-500/20 shadow-emerald-500/5"
-            : "bg-white border-emerald-200 shadow shadow-emerald-500/5"
+            ? "bg-slate-900/80 border-purple-500/20 shadow-purple-500/5"
+            : "bg-white border-purple-200 shadow shadow-purple-500/5"
         }`}>
           {/* Subtle decorative radial gradient */}
-          <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/5 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-48 h-48 bg-purple-500/5 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
 
           <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4">
             {/* Left/Right Branding & Sleek Text */}
             <div className="flex items-center gap-3.5 w-full sm:w-auto text-center sm:text-left rtl:sm:text-right">
-              {/* Sleek dollar icon badge */}
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-green-400 flex items-center justify-center shadow shadow-emerald-500/20 shrink-0 transform hover:scale-105 transition duration-300">
-                <span className="text-lg font-black text-slate-950">$</span>
+              {/* Sleek RewardJoy brand badge */}
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-pink-500 flex items-center justify-center shadow shadow-purple-500/20 shrink-0 transform hover:scale-105 transition duration-300">
+                <span className="text-lg font-black text-white">🎁</span>
               </div>
               
               <div className="space-y-0.5">
@@ -1153,14 +1153,14 @@ export default function App() {
                     theme === "dark" ? "text-white" : "text-slate-900"
                   }`}>
                     {lang === "ar" 
-                      ? "العب الألعاب المصغرة واكسب المال الحقيقي مجاناً!" 
-                      : "Play Games & Earn Real PayPal Cash!"}
+                      ? "جرب RewardJoy واكسب بطاقات هدايا ورصيد مجاني!" 
+                      : "Try RewardJoy & Claim Free Giftcards & Cash!"}
                   </h3>
-                  <span className="bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 text-[9px] font-black px-2 py-0.5 rounded-full border border-emerald-500/10">
-                    {lang === "ar" ? "🔥 كاش حقيقي 100%" : "🔥 100% Real Cash"}
+                  <span className="bg-purple-500/10 text-purple-600 dark:text-purple-400 text-[9px] font-black px-2 py-0.5 rounded-full border border-purple-500/10">
+                    {lang === "ar" ? "🎮 العب واكسب" : "🎮 Play & Earn"}
                   </span>
                   <span className="hidden md:inline bg-amber-500/10 text-amber-500 text-[9px] font-black px-2 py-0.5 rounded-full border border-amber-500/10">
-                    {lang === "ar" ? "💰 متوسط الربح $17+ يومياً" : "💰 $17+ Daily Avg."}
+                    {lang === "ar" ? "⚡ سحب فوري وسريع" : "⚡ Instant Cashouts"}
                   </span>
                 </div>
                 
@@ -1168,21 +1168,21 @@ export default function App() {
                   theme === "dark" ? "text-slate-400" : "text-slate-500"
                 }`}>
                   {lang === "ar"
-                    ? "انضم لملايين المستخدمين على Freecash واسحب أرباحك فوراً عبر باي بال وبطاقات الهدايا."
-                    : "Earn rewards instantly by playing free games. Fastest payouts via PayPal, Crypto & Giftcards."}
+                    ? "العب ألعابك المفضلة، اجمع النقاط، واستبدلها فوراً بجوائز رائعة وبطاقات شحن مجانية عبر RewardJoy."
+                    : "Play simple browser games, collect reward coins, and redeem them for real cash and premium game credits."}
                 </p>
               </div>
             </div>
 
             {/* Compact Action CTA Button */}
             <a
-              href="https://freecash.com/r/fbf5ee5bf8"
+              href="https://www.rewardjoy.com/?r=essamelmansy"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => playUISound("click")}
-              className="bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-slate-950 font-black px-5 py-2 md:py-2.5 rounded-xl text-xs transition-all duration-300 flex items-center gap-1.5 shadow shadow-emerald-500/10 shrink-0 cursor-pointer hover:scale-105 active:scale-95 group w-full sm:w-auto justify-center"
+              className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-black px-5 py-2 md:py-2.5 rounded-xl text-xs transition-all duration-300 flex items-center gap-1.5 shadow shadow-purple-500/10 shrink-0 cursor-pointer hover:scale-105 active:scale-95 group w-full sm:w-auto justify-center"
             >
-              <span>{lang === "ar" ? "ابدأ الكسب مجاناً" : "Start Earning"}</span>
+              <span>{lang === "ar" ? "احصل على مكافأتك الآن" : "Claim Rewards Now"}</span>
               <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition duration-200" />
             </a>
           </div>
